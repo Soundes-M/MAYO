@@ -49,7 +49,7 @@ void computeP2(const unsigned char* oil_space, const unsigned char* P1, unsigned
 	}
 
 	int counter = 0;
-	// compute O*Temp;
+	// compute O*Temp = O*(P1*O^t + P1');
 	for (int i = 0; i < O; ++i)
 	{
 		for (int j = i; j < O; ++j)
@@ -69,9 +69,11 @@ void computeP2(const unsigned char* oil_space, const unsigned char* P1, unsigned
 	negate(P2,P2_BYTES);
 }
 
+// generate secret oil space (O-by-(N-O) matrix)
 void sample_oil_space(const unsigned char *seed, unsigned char *oil_space){
 	unsigned char randomness[OIL_SPACE_BYTES*2];
-	EXPAND(seed, SEED_BYTES, randomness, OIL_SPACE_BYTES*2);
+	// expand secret seed 
+	EXPelegenAND(seed, SEED_BYTES, randomness, OIL_SPACE_BYTES*2);
 
 	int ctr = 0;
 	for (int i = 0; i < OIL_SPACE_BYTES; ++i)
@@ -79,6 +81,7 @@ void sample_oil_space(const unsigned char *seed, unsigned char *oil_space){
 		while(randomness[ctr]% (1<<PRIME_BITS) >= PRIME){
 			ctr++;
 		}
+		// assign randomness to oil space
 		oil_space[i] = randomness[ctr];
 		ctr++;
 	}
@@ -86,18 +89,24 @@ void sample_oil_space(const unsigned char *seed, unsigned char *oil_space){
 	assert(ctr < OIL_SPACE_BYTES*2);
 }
 
+// key generation: compare to KeyGen() in the pseudo code (Figure 2)
 int keygen(unsigned char* pk, unsigned char* sk){
+	// generate random secret seed
 	RAND_bytes(SK_PRIVATE_SEED(sk),SEED_BYTES);
+	// generate random public seed
 	RAND_bytes(SK_PUBLIC_SEED(sk),SEED_BYTES);
 	memcpy(PK_SEED(pk),SK_PUBLIC_SEED(sk),SEED_BYTES);
 
+	// public seed is used to generate the coefficients of P1 (line 4 and 5 in the pseudocode)
 	unsigned char P1[P1_BYTES];
 	expand_pk(pk, P1);
 	
-
+	// secret seed is used to generate the secret oil space (line 1 in the pseudo code)
 	unsigned char oil_space[OIL_SPACE_BYTES];
 	sample_oil_space(SK_PRIVATE_SEED(sk),oil_space);
 
+	// together P1 and oil_space can be used to compute the rest of the public key P2 (line 6 in the pseudocode)
+	// P2 is part of the public key. P1 is only implicitely part of the public key, since the public seed is stored there
 	computeP2(oil_space, P1, PK_P2(pk));
 
 	return 0;
@@ -273,15 +282,19 @@ void message_digest(unsigned char *sig, const unsigned char *m, long long m_len,
 }
 
 void expand_sk(const unsigned char *sk, unsigned char *sk_exp){
-
+	// expand public seed to P1
 	expand_pk(SK_PUBLIC_SEED(sk), SK_EXP_P1(sk_exp));
+	// generate secret oil space (O-by-(N-O) matrix)
 	sample_oil_space(SK_PRIVATE_SEED(sk),SK_EXP_OIL(sk_exp));
+	// computes (P1 + P1^t) O^T + P2
 	compute_bilinear_part(SK_EXP_P1(sk_exp), SK_EXP_OIL(sk_exp), SK_EXP_BILINEAR(sk_exp));
 }
 
 int sign(const unsigned char* m , long long m_len, const unsigned char* sk, unsigned char* sig){
 	unsigned char sk_exp[SK_EXP_BYTES];
+	// first expand the secret key
 	expand_sk(sk,sk_exp);
+	// feed expanded sk to sign fast
 	return sign_fast(m, m_len, sk, sk_exp, sig);
 }
 
@@ -300,22 +313,29 @@ int sign_fast(const unsigned char* m , long long m_len, const unsigned char* sk,
 
 	while(1){
 		// sample vinegar and compute RHS
+		// inputs contains K concetenated vinegar variables
 		sample_vinegar(inputs);
 
+		// KC2 vectors in Fq^m 
 		unsigned char vinegar_evals[KC2*M];
+		// 
 		unsigned char linear[M*K*O] = {0};
 		int ctr = 0;
 		for (int i = 0; i < K; ++i)
 		{
 			for (int j = i; j < K; ++j)
 			{
+				// build pairwise sums of the generated K vinegar variables (will be KC2 = K*(K+1)/2 many)
 				unsigned char vinegar[N] = {0};
 				for (int k = 0; k < N; ++k)
 				{
+					// vi + vj in the paper
 					vinegar[k] = (inputs[i*N + k] + inputs[j*N + k])%PRIME;
 				}
 
 				// compute for RHS
+				// only the added vinegar pairs are fed to the public key map 
+				// results are stored in vinegar_evals which are KC2 many vectors in Fq^m 
 				evaluateP_vinegar(vinegar, P1, vinegar_evals + ctr*M);
 
 

@@ -2,7 +2,7 @@
 #include "immintrin.h"
 #include <stdalign.h>
 
-
+// Field element arithmetic
 void add_vectors(const unsigned char *v1, const unsigned char *v2, unsigned char *out){
 	for (int i = 0; i < M; ++i)
 	{
@@ -33,6 +33,8 @@ void scalar_multiply(unsigned char* v, unsigned char a, int len){
 
 #define REDUCTION_CT _mm256_set_epi16(2114, 2114, 2114, 2114, 2114, 2114, 2114, 2114, 2114, 2114, 2114, 2114, 2114, 2114, 2114, 2114)
 #define PRIMEX16 _mm256_set_epi16(PRIME, PRIME, PRIME, PRIME, PRIME, PRIME, PRIME, PRIME, PRIME, PRIME, PRIME, PRIME, PRIME, PRIME, PRIME, PRIME)
+
+
 
 void _linear_combination_avx(const unsigned char* vecs, const unsigned char* coeffs, int len, unsigned char *out){
 	__m256i accumulators[4] = {0};
@@ -103,21 +105,27 @@ void _linear_combination_avx(const unsigned char* vecs, const unsigned char* coe
 	memcpy(out,pre_out,M);
 }
 
+
+// scalar multiply each coefficient to the corresponding vector in Fq^m and add the results up; number of summands is len
 void _linear_combination(const unsigned char* vecs, const unsigned char* coeffs, int len, unsigned char *out){
 	uint32_t accumulators[M] = {0};
+	// compute linear combination
 	for (int i = 0; i < len; ++i)
 	{
+		// vectors with M entries are assumed
 		for(int j=0; j< M; j++){
 			accumulators[j] += ((uint32_t) vecs[i*M + j]) * ((uint32_t) coeffs[i]);
 		}
 	}
-
+	// reducing modulo q
 	for (int i = 0; i < M; ++i)
 	{
 		out[i] = (unsigned char) (accumulators[i] % PRIME);
 	}
 }
 
+
+// zero a vecor with m entries
 void zero_out(unsigned char *out){
 	for (int i = 0; i < M; ++i)
 	{
@@ -125,9 +133,12 @@ void zero_out(unsigned char *out){
 	}
 }
 
+
+// evaluate P(input)=output. The coefficients of P are stored in P1(first N-O rows) and P2(last O rows)
 void evaluateP(const unsigned char *input, const unsigned char *P1, const unsigned char *P2, unsigned char *output){
 	unsigned char products[MONOMIALS];
 //TIC
+// first: compute crossterms for all n variables of the input: x1x1 x1x2 x1x3 ...
 	int counter = 0;
 	// vinegar x vinegar
 	for (int i = 0; i < N-O; ++i)
@@ -155,20 +166,27 @@ void evaluateP(const unsigned char *input, const unsigned char *P1, const unsign
 			products[counter++] = (((uint32_t)input[i])*((uint32_t) input[j])) % PRIME;		
 		}
 	}
+	
+// second: multiply the products with the corresponding coefficient in the public key maps
+// this can be handled by the linear_combination function since the the generated products are multiplied to one coefficient of each of the m public key polynomials
 	unsigned char part1[M] = {0};
 	unsigned char part2[M] = {0};
 //TOC(products)
 	linear_combination(P1,products              , P1MONOMIALS, part1);
 	linear_combination(P2,products + P1MONOMIALS, P2MONOMIALS, part2);
 //TOC(lin_comb)
+	// merge the two linear combinations
 	add_vectors(part1,part2,output);
 }
 
+
+// evaluate P(input)=output. Here the input is a vinegar variable which means its last O entries are 0. Therefore, we only need to evaluate the input under P1
 void evaluateP_vinegar(const unsigned char *input, const unsigned char *P1, unsigned char *out){
 
 	unsigned char products[(N-O)*(N-O+1)/2];
-
+// first: compute crossterms the first N-O variables of the input: x1x1 x1x2 x1x3 ..
 	int counter = 0;
+	// vinegar x vinegar
 	for (int i = 0; i < N-O; ++i)
 	{
 		for (int j = i; j < N-O; ++j)
@@ -176,10 +194,11 @@ void evaluateP_vinegar(const unsigned char *input, const unsigned char *P1, unsi
 			products[counter++] = (((uint32_t)input[i])*((uint32_t) input[j])) % PRIME;	
 		}
 	}
-
+	// second: multiply the products with the corresponding coefficient in the public key maps
 	linear_combination(P1,products, (N-O)*(N-O+1)/2, out);
 }
 
+// print
 void print_system(uint32_t *matrix){
 	printf("\n");
 	for (int i = 0; i < M; ++i)
@@ -195,6 +214,8 @@ void print_system(uint32_t *matrix){
 	printf("\n");
 }
 
+
+// These functions are needed for the gauss reduction
 void swap_row(uint32_t *matrix, int a, int b){
 	__m256i *rowa = (__m256i*) (matrix + 64*a);
 	__m256i *rowb = (__m256i*) (matrix + 64*b);
@@ -205,7 +226,6 @@ void swap_row(uint32_t *matrix, int a, int b){
 		rowb[i] = tmp;
 	}
 }
-
 // TODO: make less retarded version if needed.
 uint32_t mod_inverse(uint32_t a){
 	uint16_t c = 1;
@@ -215,21 +235,18 @@ uint32_t mod_inverse(uint32_t a){
 	}
 	return c;
 }
-
 void scale(uint32_t *matrix, int row, uint32_t a){
 	for (int i = 0; i < (K*O)+1; ++i)
 	{
 		matrix[row*64 + i] = (((matrix[row*64 + i]%PRIME) * a) %PRIME);
 	}
 }
-
 void row_op(uint32_t *matrix, int s, int d, int coef){
 	for (int i = s; i < K*O+1; ++i)
 	{
 		matrix[d*64 + i] += (matrix[s*64 + i] * coef);
 	}
 }
-
 void gauss_reduction(uint32_t *matrix){
 	int row = 0;
 	int col = 0;
@@ -268,6 +285,7 @@ void gauss_reduction(uint32_t *matrix){
 	}
 }
 
+
 unsigned char random_element(){
 	return 1;
 	unsigned char r = PRIME;
@@ -277,6 +295,7 @@ unsigned char random_element(){
 	return r;
 }
 
+// solves a linear system with target vector rhs and assigns the solution 
 int sample_oil(const unsigned char *rhs,const unsigned char *linear, unsigned char *solution){
 //TIC
 	#if K*O > 8*8 - 1
@@ -284,6 +303,7 @@ int sample_oil(const unsigned char *rhs,const unsigned char *linear, unsigned ch
 	#endif
 	__m256i aug_matrix_avx[M*8];
 	uint32_t *aug_matrix = (uint32_t*) aug_matrix_avx;
+	// linear has K*O*M entries
 	for (int i = 0; i < M; ++i)
 	{
 		for (int j = 0; j < K*O; ++j)
