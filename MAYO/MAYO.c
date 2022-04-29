@@ -8,7 +8,8 @@ Oil space is O-by-(N-O) matrix stored in row-major order
 Temp is is (N-O)-by-O matrix stored in row-major order
 */
 
-
+// compute the lower right O-by-O matrix for each public polynomial according to page 10 of the MAYO paper
+// It only depends on the oil space and the first N-O rows of P
 void computeP2(const unsigned char* oil_space, const unsigned char* P1, unsigned char* P2){
 	// P2 = - O*P1*O^t - O*P1'
 
@@ -22,6 +23,7 @@ void computeP2(const unsigned char* oil_space, const unsigned char* P1, unsigned
 		for (int j = 0; j < O; ++j)
 		{
 			unsigned char vec[M];
+			// i-th row of P1 times j-th row of O for all m polynomials at once
 			linear_combination(P1 + p1_counter*M, oil_space + (j*(N-O) + i), N-O-i, vec);
 			add_vectors(temp + (i*O + j)*M, vec,temp + (i*O + j)*M);
 		}
@@ -33,11 +35,13 @@ void computeP2(const unsigned char* oil_space, const unsigned char* P1, unsigned
 		// P1' part
 		for (int j = 0; j < O; j++)
 		{
+			// add P1' part, again for all m polynomials at once
 			add_vectors(temp + (i*O + j)*M, P1 + p1_counter*M, temp + (i*O + j)*M);
 			p1_counter ++;
 		}
 	}
-
+	// Temp stores (N-O)-by-O matrix P1*O^t + P1' in column major form
+	// Transpose it to ease computation of O*temp
 	// permute Temp
 	unsigned char tempt[M*(N-O)*O] = {0};
 
@@ -48,6 +52,7 @@ void computeP2(const unsigned char* oil_space, const unsigned char* P1, unsigned
 		}
 	}
 
+	// compute P2; P2 stored in column major form?
 	int counter = 0;
 	// compute O*Temp = O*(P1*O^t + P1');
 	for (int i = 0; i < O; ++i)
@@ -73,7 +78,7 @@ void computeP2(const unsigned char* oil_space, const unsigned char* P1, unsigned
 void sample_oil_space(const unsigned char *seed, unsigned char *oil_space){
 	unsigned char randomness[OIL_SPACE_BYTES*2];
 	// expand secret seed 
-	EXPelegenAND(seed, SEED_BYTES, randomness, OIL_SPACE_BYTES*2);
+	EXPAND(seed, SEED_BYTES, randomness, OIL_SPACE_BYTES*2);
 
 	int ctr = 0;
 	for (int i = 0; i < OIL_SPACE_BYTES; ++i)
@@ -221,9 +226,9 @@ void compute_bilinear_part(const unsigned char *P1, const unsigned char *oil_spa
 		}
 	}
 
+	// P1P1T*O^t part
 	for (int i = 0; i < N-O; ++i)
 	{
-		// P1PiT*O^t part
 		for (int j = 0; j < O; ++j)
 		{
 			linear_combination(P1P1T + (M*i*(N-O)), oil_space + (j*(N-O)), N-O, bilinear_temp + (i*O + j)*M);
@@ -325,8 +330,8 @@ int sign_fast(const unsigned char* m , long long m_len, const unsigned char* sk,
 		{
 			for (int j = i; j < K; ++j)
 			{
-				// build pairwise sums of the generated K vinegar variables (will be KC2 = K*(K+1)/2 many)
 				unsigned char vinegar[N] = {0};
+				// build pairwise sums of the generated K vinegar variables (will be KC2 = K*(K+1)/2 many)
 				for (int k = 0; k < N; ++k)
 				{
 					// vi + vj in the paper
@@ -336,6 +341,7 @@ int sign_fast(const unsigned char* m , long long m_len, const unsigned char* sk,
 				// compute for RHS
 				// only the added vinegar pairs are fed to the public key map 
 				// results are stored in vinegar_evals which are KC2 many vectors in Fq^m 
+				// P(vi+vj)
 				evaluateP_vinegar(vinegar, P1, vinegar_evals + ctr*M);
 
 

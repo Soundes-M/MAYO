@@ -295,12 +295,15 @@ unsigned char random_element(){
 	return r;
 }
 
-// solves a linear system with target vector rhs and assigns the solution 
+// solves a linear system with M equations and K*O variables 
+// output K solution vectors with O-entries  
 int sample_oil(const unsigned char *rhs,const unsigned char *linear, unsigned char *solution){
 //TIC
 	#if K*O > 8*8 - 1
 		Error: K*O > 8*8 -1 not supported
 	#endif
+	// collect linear equations and target vector in aug_matrix
+	// system of m equations in K*O variables
 	__m256i aug_matrix_avx[M*8];
 	uint32_t *aug_matrix = (uint32_t*) aug_matrix_avx;
 	// linear has K*O*M entries
@@ -310,6 +313,7 @@ int sample_oil(const unsigned char *rhs,const unsigned char *linear, unsigned ch
 		{
 			aug_matrix[i*64 + j] = linear[j*M + i];
 		}
+		// right hand side has m entries
 		aug_matrix[i*64 + K*O] = rhs[i];
 	}
 //TOC(copy)
