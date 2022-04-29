@@ -10,6 +10,7 @@ Temp is is (N-O)-by-O matrix stored in row-major order
 
 // compute the lower right O-by-O matrix for each public polynomial according to page 10 of the MAYO paper
 // It only depends on the oil space and the first N-O rows of P
+//THis function coresponds to line 6 in keygen page 11
 void computeP2(const unsigned char* oil_space, const unsigned char* P1, unsigned char* P2){
 	// P2 = - O*P1*O^t - O*P1'
 
@@ -201,7 +202,10 @@ void merge_outputs(unsigned char* outputs, unsigned char *merged){
 	reduce_extension(Temp, merged);
 }
 
-// computes (P1 + P1^t) O^T + P2 
+// computes (P11 + P11^t) O^T + P12 
+// In this code P1 = P11||P12
+// P11 corresponds to P1 in the pseudocode
+// P12 corresponds to P2 in the pseudo 
 void compute_bilinear_part(const unsigned char *P1, const unsigned char *oil_space, unsigned char *bilinear){
 
 	unsigned char bilinear_temp[M*(N-O)*O];
@@ -297,7 +301,7 @@ void expand_sk(const unsigned char *sk, unsigned char *sk_exp){
 
 int sign(const unsigned char* m , long long m_len, const unsigned char* sk, unsigned char* sig){
 	unsigned char sk_exp[SK_EXP_BYTES];
-	// first expand the secret key
+	// first expand the secret key i.e., hash using SHAKE128 and two seeds sk_publickseed and sk_privateseed
 	expand_sk(sk,sk_exp);
 	// feed expanded sk to sign fast
 	return sign_fast(m, m_len, sk, sk_exp, sig);
