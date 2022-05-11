@@ -5,7 +5,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define TRIALS 1000
+#define TRIALS 10
 
 #define MESSAGE_LENGTH 100
 
@@ -128,7 +128,7 @@ int tests(){
 
 int main(){
 
-	/*if( tests()){
+	 if( tests()){
 		return -1;
 	}
 
@@ -156,10 +156,10 @@ int main(){
 	uint64_t signFastTime = 0;
 	uint64_t verifyFastTime = 0;
 	uint64_t t; 
-       */
-	run_test();
+      
+	 
 	
-/*
+ 
 	for(int i=0 ; i<TRIALS; i++){
 		t = rdtsc();
 		keygen(pk,sk);
@@ -209,6 +209,6 @@ int main(){
 			printf("Signature invalid! \n");
 		}
 	}
-*/
+ 
 	return 0;
 }
