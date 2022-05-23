@@ -1,0 +1,51 @@
+INFO: [HLS 200-10] Running '/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'osm' on host 'debian' (Linux_x86_64 version 5.10.0-14-amd64) on Sun May 22 21:10:37 CEST 2022
+INFO: [HLS 200-10] On os Debian GNU/Linux 11 (bullseye)
+INFO: [HLS 200-10] In directory '/home/osm/Documents/SECT-MAYO/MAYO/HLS'
+Sourcing Tcl script '/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/csim.tcl'
+INFO: [HLS 200-1510] Running: open_project hls_linear_combination 
+INFO: [HLS 200-10] Opening project '/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination'.
+INFO: [HLS 200-1510] Running: set_top hls_linear_combination 
+INFO: [HLS 200-1510] Running: add_files hls_linear_combination/hls_linear_combination.cpp 
+INFO: [HLS 200-10] Adding design file 'hls_linear_combination/hls_linear_combination.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files hls_linear_combination/hls_linear_combination.h 
+INFO: [HLS 200-10] Adding design file 'hls_linear_combination/hls_linear_combination.h' to the project
+INFO: [HLS 200-1510] Running: add_files -tb hls_linear_combination/hls_linear_combinations_test.cpp -cflags -Wno-unknown-pragmas 
+INFO: [HLS 200-10] Adding test bench file 'hls_linear_combination/hls_linear_combinations_test.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb hls_linear_combination/la -cflags -Wno-unknown-pragmas 
+INFO: [HLS 200-10] Adding test bench file 'hls_linear_combination/la' to the project
+INFO: [HLS 200-1510] Running: open_solution good -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_directive_top -name hls_linear_combination hls_linear_combination 
+INFO: [HLS 200-1510] Running: set_directive_pipeline hls_linear_combination/LOOP_LC2 
+INFO: [HLS 200-1510] Running: set_directive_pipeline hls_linear_combination/LOOP_LC1 
+INFO: [HLS 200-1510] Running: set_directive_array_partition -type cyclic -factor 16 -dim 1 hls_linear_combination accumulators 
+INFO: [HLS 200-1510] Running: csim_design -clean -setup -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../hls_linear_combinations_test.cpp in debug mode
+   Compiling ../../../hls_linear_combination.cpp in debug mode
+   Generating csim.exe
+In file included from /opt/Xilinx/Vitis_HLS/2020.2/include/hls_hotbm_apfixed.h:45:0,
+                 from /opt/Xilinx/Vitis_HLS/2020.2/include/hls_math.h:1065,
+                 from ../../../hls_linear_combination.h:7,
+                 from ../../../hls_linear_combinations_test.cpp:1:
+/opt/Xilinx/Vitis_HLS/2020.2/include/utils/x_hls_utils.h:243:40: warning: ‘hls_preserve’ attribute directive ignored [-Wattributes]
+ __attribute__((hls_preserve)) T reg(T d)
+                                        ^
+In file included from /opt/Xilinx/Vitis_HLS/2020.2/include/hls_hotbm_apfixed.h:45:0,
+                 from /opt/Xilinx/Vitis_HLS/2020.2/include/hls_math.h:1065,
+                 from ../../../hls_linear_combination.h:7,
+                 from ../../../hls_linear_combination.cpp:1:
+/opt/Xilinx/Vitis_HLS/2020.2/include/utils/x_hls_utils.h:243:40: warning: ‘hls_preserve’ attribute directive ignored [-Wattributes]
+ __attribute__((hls_preserve)) T reg(T d)
+                                        ^
+INFO: [SIM 211-1] CSim file generation done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 23.36 seconds. CPU system time: 1.26 seconds. Elapsed time: 28.84 seconds; current allocated memory: 180.452 MB.

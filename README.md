@@ -26,10 +26,11 @@ _Mind the versions used_
 # Directory Hierarchy:
 ```
 /mayo-c 		MAYO C[Only SW]-Based implementation (AVX Support)
+/HLS			HLS-C related projects/sources.
 /src			MAYO Custom HW Core
   /c			C/Kernel/Driver Code
   /hdl			HW Core Implementation
-/tb			    Testbenchs and other test scripts
+/tb			Testbenchs and other test scripts
 /vivado 		Vivado project files (.xdc)
 /vitis			Vitis/SDK project files
 /yocto			Yocto Linux project and meta-layers

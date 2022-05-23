@@ -1,0 +1,1635 @@
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 180.180 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 5.92 seconds. CPU system time: 0.44 seconds. Elapsed time: 7.86 seconds; current allocated memory: 181.320 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-188] Unrolling loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:94:12) in function 'linear_combination' partially with a factor of 2 (computeP2/c/computeP2.cpp:94:12)
+INFO: [HLS 214-188] Unrolling loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:103:12) in function 'add_vectors' partially with a factor of 2 (computeP2/c/computeP2.cpp:103:12)
+INFO: [HLS 214-188] Unrolling loop 'LOOP_N' (computeP2/c/computeP2.cpp:73:10) in function 'negate' partially with a factor of 2 (computeP2/c/computeP2.cpp:73:10)
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 6.53 seconds. CPU system time: 0.49 seconds. Elapsed time: 10.02 seconds; current allocated memory: 183.705 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 183.705 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.84 seconds; current allocated memory: 185.390 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.2 seconds; current allocated memory: 184.696 MB.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-4' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-5.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-6.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:85) in function 'linear_combination' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:85) in function 'linear_combination.2' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:85) in function 'linear_combination.1' for pipelining.
+INFO: [XFORM 203-501] Unrolling loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:85) in function 'linear_combination' partially with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:89) in function 'linear_combination' completely with a factor of 60.
+INFO: [XFORM 203-501] Unrolling loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:85) in function 'linear_combination.2' partially with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:89) in function 'linear_combination.2' completely with a factor of 60.
+INFO: [XFORM 203-501] Unrolling loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:85) in function 'linear_combination.1' partially with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:89) in function 'linear_combination.1' completely with a factor of 60.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 2.98 seconds. CPU system time: 0.01 seconds. Elapsed time: 3.14 seconds; current allocated memory: 209.587 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'LOOP_P12' (computeP2/c/computeP2.cpp:26:10) in function 'computeP2' the outer loop is not a perfect loop.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P1' (computeP2/c/computeP2.cpp:22:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P21' (computeP2/c/computeP2.cpp:36:23) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P2' (computeP2/c/computeP2.cpp:34:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P31' (computeP2/c/computeP2.cpp:47:21) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P3' (computeP2/c/computeP2.cpp:45:19) in function 'computeP2'.
+WARNING: [HLS 200-960] Cannot flatten loop 'LOOP_P4_1' (computeP2/c/computeP2.cpp:52:6) in function 'computeP2' more than one sub loop.
+WARNING: [HLS 200-960] Cannot flatten loop 'LOOP_P4' (computeP2/c/computeP2.cpp:52:6) in function 'computeP2' the outer loop is not a perfect loop.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:90:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:98:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:107:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 6.82 seconds. CPU system time: 0.03 seconds. Elapsed time: 7.23 seconds; current allocated memory: 246.687 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1'.
+WARNING: [HLS 200-880] The II Violation in module 'linear_combination' (loop 'LOOP_LC1'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between 'store' operation ('accumulators_addr_123_write_ln90', computeP2/c/computeP2.cpp:90) of variable 'add_ln90_650', computeP2/c/computeP2.cpp:90 on array 'accumulators', computeP2/c/computeP2.cpp:83 and 'load' operation ('accumulators_load_122', computeP2/c/computeP2.cpp:90) on array 'accumulators', computeP2/c/computeP2.cpp:83.
+WARNING: [HLS 200-885] Unable to schedule 'load' operation ('accumulators_load_128', computeP2/c/computeP2.cpp:90) on array 'accumulators', computeP2/c/computeP2.cpp:83 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'accumulators'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 2, Final II = 90, Depth = 90, loop 'LOOP_LC1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 2, Final II = 2, Depth = 39, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 5.27 seconds. CPU system time: 0.02 seconds. Elapsed time: 5.87 seconds; current allocated memory: 249.396 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.69 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.87 seconds; current allocated memory: 251.582 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_589) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_586) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_583) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_580) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_577) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_574) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_571) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_568) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_565) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_562) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_559) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_556) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_553) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_550) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_547) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_544) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_541) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_538) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_535) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_532) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_529) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_526) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_523) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_520) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_517) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_514) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_511) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_508) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_505) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_502) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_499) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_496) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_493) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_490) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_487) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_484) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_481) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_478) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_475) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_472) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_469) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_466) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_463) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_460) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_457) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_454) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_451) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_448) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_445) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_442) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_439) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_436) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_433) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_430) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_427) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_424) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_421) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_418) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_415) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln90_412) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1'.
+WARNING: [HLS 200-880] The II Violation in module 'linear_combination_1' (loop 'LOOP_LC1'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between 'store' operation ('accumulators_addr_63_write_ln90', computeP2/c/computeP2.cpp:90) of variable 'add_ln90_413', computeP2/c/computeP2.cpp:90 on array 'accumulators', computeP2/c/computeP2.cpp:83 and 'load' operation ('accumulators_load_62', computeP2/c/computeP2.cpp:90) on array 'accumulators', computeP2/c/computeP2.cpp:83.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 180.180 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 6.91 seconds. CPU system time: 0.5 seconds. Elapsed time: 10.93 seconds; current allocated memory: 181.321 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-188] Unrolling loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:92:12) in function 'linear_combination' partially with a factor of 2 (computeP2/c/computeP2.cpp:92:12)
+INFO: [HLS 214-188] Unrolling loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:100:12) in function 'add_vectors' partially with a factor of 2 (computeP2/c/computeP2.cpp:100:12)
+INFO: [HLS 214-188] Unrolling loop 'LOOP_N' (computeP2/c/computeP2.cpp:73:10) in function 'negate' partially with a factor of 2 (computeP2/c/computeP2.cpp:73:10)
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 6.93 seconds. CPU system time: 0.46 seconds. Elapsed time: 10.77 seconds; current allocated memory: 183.704 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 183.705 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 2.45 seconds; current allocated memory: 185.378 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.13 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.25 seconds; current allocated memory: 184.688 MB.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:84) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:92) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:84) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:92) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:84) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:92) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:100) in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:100) in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-4' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-5.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:100) in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-6.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_N' (computeP2/c/computeP2.cpp:73) in function 'computeP2' automatically.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:84) in function 'linear_combination' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:84) in function 'linear_combination.2' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:84) in function 'linear_combination.1' for pipelining.
+INFO: [XFORM 203-501] Unrolling loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:84) in function 'linear_combination' partially with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:87) in function 'linear_combination' completely with a factor of 60.
+INFO: [XFORM 203-501] Unrolling loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:84) in function 'linear_combination.2' partially with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:87) in function 'linear_combination.2' completely with a factor of 60.
+INFO: [XFORM 203-501] Unrolling loop 'LOOP_LC1' (computeP2/c/computeP2.cpp:84) in function 'linear_combination.1' partially with a factor of 2.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:87) in function 'linear_combination.1' completely with a factor of 60.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 3.21 seconds. CPU system time: 0.05 seconds. Elapsed time: 3.78 seconds; current allocated memory: 209.585 MB.
+WARNING: [HLS 200-960] Cannot flatten loop 'LOOP_P12' (computeP2/c/computeP2.cpp:26:10) in function 'computeP2' the outer loop is not a perfect loop.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P1' (computeP2/c/computeP2.cpp:22:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P21' (computeP2/c/computeP2.cpp:36:23) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P2' (computeP2/c/computeP2.cpp:34:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P31' (computeP2/c/computeP2.cpp:47:21) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P3' (computeP2/c/computeP2.cpp:45:19) in function 'computeP2'.
+WARNING: [HLS 200-960] Cannot flatten loop 'LOOP_P4_1' (computeP2/c/computeP2.cpp:52:6) in function 'computeP2' more than one sub loop.
+WARNING: [HLS 200-960] Cannot flatten loop 'LOOP_P4' (computeP2/c/computeP2.cpp:52:6) in function 'computeP2' the outer loop is not a perfect loop.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:88:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:95:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:103:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 6.85 seconds. CPU system time: 0.02 seconds. Elapsed time: 8.06 seconds; current allocated memory: 246.667 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1'.
+WARNING: [HLS 200-880] The II Violation in module 'linear_combination' (loop 'LOOP_LC1'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between 'store' operation ('accumulators_addr_123_write_ln88', computeP2/c/computeP2.cpp:88) of variable 'add_ln88', computeP2/c/computeP2.cpp:88 on array 'accumulators', computeP2/c/computeP2.cpp:82 and 'load' operation ('accumulators_load_122', computeP2/c/computeP2.cpp:88) on array 'accumulators', computeP2/c/computeP2.cpp:82.
+WARNING: [HLS 200-880] The II Violation in module 'linear_combination' (loop 'LOOP_LC1'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between 'store' operation ('accumulators_addr_123_write_ln88', computeP2/c/computeP2.cpp:88) of variable 'add_ln88', computeP2/c/computeP2.cpp:88 on array 'accumulators', computeP2/c/computeP2.cpp:82 and 'load' operation ('accumulators_load_122', computeP2/c/computeP2.cpp:88) on array 'accumulators', computeP2/c/computeP2.cpp:82.
+WARNING: [HLS 200-880] The II Violation in module 'linear_combination' (loop 'LOOP_LC1'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between 'store' operation ('accumulators_addr_123_write_ln88', computeP2/c/computeP2.cpp:88) of variable 'add_ln88_650', computeP2/c/computeP2.cpp:88 on array 'accumulators', computeP2/c/computeP2.cpp:82 and 'load' operation ('accumulators_load_122', computeP2/c/computeP2.cpp:88) on array 'accumulators', computeP2/c/computeP2.cpp:82.
+WARNING: [HLS 200-885] Unable to schedule 'load' operation ('accumulators_load_130', computeP2/c/computeP2.cpp:88) on array 'accumulators', computeP2/c/computeP2.cpp:82 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'accumulators'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 90, Depth = 90, loop 'LOOP_LC1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 5.92 seconds. CPU system time: 0.03 seconds. Elapsed time: 6.86 seconds; current allocated memory: 249.384 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.73 seconds. CPU system time: 0.02 seconds. Elapsed time: 2.03 seconds; current allocated memory: 251.625 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_589) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_586) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_583) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_580) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_577) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_574) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_571) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_568) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_565) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_562) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_559) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_556) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_553) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_550) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_547) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_544) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_541) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_538) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_535) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_532) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_529) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_526) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_523) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_520) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_517) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_514) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_511) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_508) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_505) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_502) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_499) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_496) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_493) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_490) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_487) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_484) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_481) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_478) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_475) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_472) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_469) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_466) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_463) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_460) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_457) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_454) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_451) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_448) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_445) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_442) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_439) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_436) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_433) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_430) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_427) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_424) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_421) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_418) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_415) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_412) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1'.
+WARNING: [HLS 200-880] The II Violation in module 'linear_combination_1' (loop 'LOOP_LC1'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between 'store' operation ('accumulators_addr_63_write_ln88', computeP2/c/computeP2.cpp:88) of variable 'add_ln88_413', computeP2/c/computeP2.cpp:88 on array 'accumulators', computeP2/c/computeP2.cpp:82 and 'load' operation ('accumulators_load_62', computeP2/c/computeP2.cpp:88) on array 'accumulators', computeP2/c/computeP2.cpp:82.
+WARNING: [HLS 200-880] The II Violation in module 'linear_combination_1' (loop 'LOOP_LC1'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between 'store' operation ('accumulators_addr_63_write_ln88', computeP2/c/computeP2.cpp:88) of variable 'add_ln88_413', computeP2/c/computeP2.cpp:88 on array 'accumulators', computeP2/c/computeP2.cpp:82 and 'load' operation ('accumulators_load_62', computeP2/c/computeP2.cpp:88) on array 'accumulators', computeP2/c/computeP2.cpp:82.
+WARNING: [HLS 200-885] Unable to schedule 'load' operation ('vecs_load_125', computeP2/c/computeP2.cpp:88) on array 'vecs' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'vecs'.
+WARNING: [HLS 200-885] Unable to schedule 'load' operation ('accumulators_load_120', computeP2/c/computeP2.cpp:88) on array 'accumulators', computeP2/c/computeP2.cpp:82 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'accumulators'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 64, Depth = 64, loop 'LOOP_LC1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 245.69 seconds. CPU system time: 0.81 seconds. Elapsed time: 256.41 seconds; current allocated memory: 255.425 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 2.96 seconds. CPU system time: 0.19 seconds. Elapsed time: 3.39 seconds; current allocated memory: 259.765 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_294) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_291) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_288) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_285) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_282) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_279) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_276) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_273) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_270) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_267) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_264) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_261) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_258) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_255) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_252) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_249) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_246) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_243) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_240) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_237) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_234) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_231) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_228) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_225) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_222) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_219) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_216) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_213) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_210) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_207) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_204) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_201) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_198) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP48 latency (root=add_ln88_195) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486]==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.07 seconds; current allocated memory: 180.180 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 6.4 seconds. CPU system time: 0.58 seconds. Elapsed time: 14.68 seconds; current allocated memory: 181.320 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 6.47 seconds. CPU system time: 0.55 seconds. Elapsed time: 10.93 seconds; current allocated memory: 183.449 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 183.450 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.08 seconds. CPU system time: 0 seconds. Elapsed time: 0.34 seconds; current allocated memory: 185.003 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 184.352 MB.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:85) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:90) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:85) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:90) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:85) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:90) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:97) in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-4' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-5.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_N' (computeP2/c/computeP2.cpp:73) in function 'computeP2' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.66 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.74 seconds; current allocated memory: 205.581 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:83:21) in function 'linear_combination.2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:83:21) in function 'linear_combination.1'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:83:21) in function 'linear_combination'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P21' (computeP2/c/computeP2.cpp:36:23) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P2' (computeP2/c/computeP2.cpp:34:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P31' (computeP2/c/computeP2.cpp:47:21) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P3' (computeP2/c/computeP2.cpp:45:19) in function 'computeP2'.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:86:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:92:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:99:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 113.21 seconds. CPU system time: 0.26 seconds. Elapsed time: 117.56 seconds; current allocated memory: 231.723 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.25 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.43 seconds; current allocated memory: 232.253 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.5 seconds. CPU system time: 0 seconds. Elapsed time: 0.75 seconds; current allocated memory: 232.623 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln86) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.41 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.47 seconds; current allocated memory: 233.020 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.63 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.82 seconds; current allocated memory: 233.481 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln86) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.43 seconds. CPU system time: 0 seconds. Elapsed time: 0.54 seconds; current allocated memory: 233.808 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.52 seconds. CPU system time: 0 seconds. Elapsed time: 0.56 seconds; current allocated memory: 234.227 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln57) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_P2_LOOP_P21_LOOP_AV1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 16, loop 'LOOP_P2_LOOP_P21_LOOP_AV1'
+INFO: [SCHED 204-61] Pipelining loop 'Loop 3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 3'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_P3_LOOP_P31_L'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 4, loop 'LOOP_P3_LOOP_P31_L'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_N'.
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:75) and wire read on port 'P2' (computeP2/c/computeP2.cpp:75).
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:75) and wire read on port 'P2' (computeP2/c/computeP2.cpp:75).
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:75) and wire read on port 'P2' (computeP2/c/computeP2.cpp:75).
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:75) and wire read on port 'P2' (computeP2/c/computeP2.cpp:75).
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 11, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:75) and wire read on port 'P2' (computeP2/c/computeP2.cpp:75).
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 12, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:75) and wire read on port 'P2' (computeP2/c/computeP2.cpp:75).
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 13, Depth = 14, loop 'LOOP_N'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.83 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.93 seconds; current allocated memory: 235.258 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.2 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.28 seconds; current allocated memory: 236.612 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_8ns_8ns_16_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_5_36_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.99 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.21 seconds; current allocated memory: 237.603 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_5ns_8ns_32ns_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_8_36_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.45 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.63 seconds; current allocated memory: 239.864 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_5ns_8ns_32ns_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_5_36_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.5 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.58 seconds; current allocated memory: 242.417 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/oil_space' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/P1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/P2' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'computeP2' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_15s_13ns_15_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'srem_9ns_6ns_8_13_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_6ns_6ns_5_10_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_6ns_6ns_6_10_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_9ns_6ns_5_13_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'computeP2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.66 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.74 seconds; current allocated memory: 246.453 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_mul_8ns_8ns_16_1_1_Multiplier_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_32ns_6ns_5_36_1_div'
+INFO: [RTMG 210-278] Implementing memory 'computeP2_linear_combination_accumulators_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_32ns_6ns_8_36_1_div'
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.04 seconds; current allocated memory: 180.180 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 7.59 seconds. CPU system time: 0.55 seconds. Elapsed time: 15.28 seconds; current allocated memory: 181.320 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 7.49 seconds. CPU system time: 0.65 seconds. Elapsed time: 14.07 seconds; current allocated memory: 183.448 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 183.449 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.08 seconds. CPU system time: 0.01 seconds. Elapsed time: 2.36 seconds; current allocated memory: 185.002 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.33 seconds; current allocated memory: 184.355 MB.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:89) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:94) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:89) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:94) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:89) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:94) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:102) in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-4' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-5.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_N' (computeP2/c/computeP2.cpp:75) in function 'computeP2' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.64 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.37 seconds; current allocated memory: 205.570 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:87:21) in function 'linear_combination.2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:87:21) in function 'linear_combination.1'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:87:21) in function 'linear_combination'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P21' (computeP2/c/computeP2.cpp:36:23) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P2' (computeP2/c/computeP2.cpp:34:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P31' (computeP2/c/computeP2.cpp:47:21) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P3' (computeP2/c/computeP2.cpp:45:19) in function 'computeP2'.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:90:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:96:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:104:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 122.31 seconds. CPU system time: 0.47 seconds. Elapsed time: 133.12 seconds; current allocated memory: 231.720 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.27 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.5 seconds; current allocated memory: 232.266 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.54 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.94 seconds; current allocated memory: 232.633 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln90) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.54 seconds. CPU system time: 0 seconds. Elapsed time: 0.8 seconds; current allocated memory: 233.012 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.58 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.73 seconds; current allocated memory: 233.473 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln90) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.54 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.61 seconds; current allocated memory: 233.815 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.52 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.55 seconds; current allocated memory: 234.232 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln57) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_P2_LOOP_P21_LOOP_AV1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 16, loop 'LOOP_P2_LOOP_P21_LOOP_AV1'
+INFO: [SCHED 204-61] Pipelining loop 'Loop 3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 3'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_P3_LOOP_P31_L'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 4, loop 'LOOP_P3_LOOP_P31_L'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_N'.
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:78) and wire read on port 'P2' (computeP2/c/computeP2.cpp:77).
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:78) and wire read on port 'P2' (computeP2/c/computeP2.cpp:77).
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:78) and wire read on port 'P2' (computeP2/c/computeP2.cpp:77).
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:78) and wire read on port 'P2' (computeP2/c/computeP2.cpp:77).
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 11, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:78) and wire read on port 'P2' (computeP2/c/computeP2.cpp:77).
+WARNING: [HLS 200-880] The II Violation in module 'computeP2' (loop 'LOOP_N'): Unable to enforce a carried dependence constraint (II = 12, distance = 1, offset = 1) between wire write on port 'P2' (computeP2/c/computeP2.cpp:78) and wire read on port 'P2' (computeP2/c/computeP2.cpp:77).
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 13, Depth = 14, loop 'LOOP_N'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.07 seconds. CPU system time: 0.03 seconds. Elapsed time: 1.21 seconds; current allocated memory: 235.265 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.31 seconds. CPU system time: 0 seconds. Elapsed time: 1.36 seconds; current allocated memory: 236.603 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_8ns_8ns_16_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_5_36_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.06 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.3 seconds; current allocated memory: 237.594 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_5ns_8ns_32ns_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_8_36_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.47 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.56 seconds; current allocated memory: 239.872 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_5ns_8ns_32ns_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_5_36_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.55 seconds. CPU system time: 0.04 seconds. Elapsed time: 0.62 seconds; current allocated memory: 242.426 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/oil_space' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/P1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/P2' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'computeP2' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_15s_13ns_15_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'srem_9ns_6ns_8_13_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_6ns_6ns_5_10_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_6ns_6ns_6_10_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_9ns_6ns_5_13_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'computeP2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.7 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.83 seconds; current allocated memory: 246.460 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_mul_8ns_8ns_16_1_1_Multiplier_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_32ns_6ns_5_36_1_div'
+INFO: [RTMG 210-278] Implementing memory 'computeP2_linear_combination_accumulators_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_32ns_6ns_8_36_1_div'
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 180.180 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 7.81 seconds. CPU system time: 0.73 seconds. Elapsed time: 13.58 seconds; current allocated memory: 181.320 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-188] Unrolling loop 'LOOP_N' (computeP2/c/computeP2.cpp:75:10) in function 'negate' partially with a factor of 4 (computeP2/c/computeP2.cpp:75:10)
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 7.04 seconds. CPU system time: 0.58 seconds. Elapsed time: 11.63 seconds; current allocated memory: 183.465 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 183.466 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.09 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.57 seconds; current allocated memory: 185.053 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.13 seconds. CPU system time: 0 seconds. Elapsed time: 0.2 seconds; current allocated memory: 184.389 MB.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:91) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:96) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:91) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:96) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:91) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:96) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:104) in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-4' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-5.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_N' (computeP2/c/computeP2.cpp:75) in function 'computeP2' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.66 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.83 seconds; current allocated memory: 205.589 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:89:21) in function 'linear_combination.2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:89:21) in function 'linear_combination.1'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:89:21) in function 'linear_combination'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P21' (computeP2/c/computeP2.cpp:36:23) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P2' (computeP2/c/computeP2.cpp:34:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P31' (computeP2/c/computeP2.cpp:47:21) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P3' (computeP2/c/computeP2.cpp:45:19) in function 'computeP2'.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:92:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:98:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:106:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 103.67 seconds. CPU system time: 0.11 seconds. Elapsed time: 106.16 seconds; current allocated memory: 231.672 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.24 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.57 seconds; current allocated memory: 232.200 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.49 seconds. CPU system time: 0 seconds. Elapsed time: 0.64 seconds; current allocated memory: 232.569 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln92) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.45 seconds. CPU system time: 0 seconds. Elapsed time: 0.51 seconds; current allocated memory: 232.976 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.49 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.52 seconds; current allocated memory: 233.407 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 180.210 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 7.77 seconds. CPU system time: 0.64 seconds. Elapsed time: 16.05 seconds; current allocated memory: 181.335 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-188] Unrolling loop 'LOOP_N' (computeP2/c/computeP2.cpp:76:10) in function 'negate' partially with a factor of 4 (computeP2/c/computeP2.cpp:76:10)
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 8.2 seconds. CPU system time: 0.62 seconds. Elapsed time: 12.16 seconds; current allocated memory: 183.435 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 183.436 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.3 seconds; current allocated memory: 185.025 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.13 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 184.359 MB.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:98) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:98) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:98) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:106) in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-4' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-5.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_N' (computeP2/c/computeP2.cpp:76) in function 'computeP2' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.82 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.92 seconds; current allocated memory: 205.575 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination.2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination.1'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P21' (computeP2/c/computeP2.cpp:37:23) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P2' (computeP2/c/computeP2.cpp:35:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P31' (computeP2/c/computeP2.cpp:48:21) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P3' (computeP2/c/computeP2.cpp:46:19) in function 'computeP2'.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:94:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:100:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:108:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 138.96 seconds. CPU system time: 0.38 seconds. Elapsed time: 147.66 seconds; current allocated memory: 231.672 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.28 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.62 seconds; current allocated memory: 232.201 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.54 seconds. CPU system time: 0 seconds. Elapsed time: 0.69 seconds; current allocated memory: 232.587 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln94) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.55 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.65 seconds; current allocated memory: 232.979 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.61 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.72 seconds; current allocated memory: 233.408 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: set_directive_unroll -factor 10 linear_combination/LOOP_LC2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 180.181 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 7.21 seconds. CPU system time: 0.67 seconds. Elapsed time: 16.22 seconds; current allocated memory: 181.275 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-188] Unrolling loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:98:12) in function 'linear_combination' partially with a factor of 10 (computeP2/c/computeP2.cpp:98:12)
+INFO: [HLS 214-188] Unrolling loop 'LOOP_N' (computeP2/c/computeP2.cpp:76:10) in function 'negate' partially with a factor of 4 (computeP2/c/computeP2.cpp:76:10)
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 7.54 seconds. CPU system time: 0.59 seconds. Elapsed time: 11.62 seconds; current allocated memory: 183.809 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0.01 seconds. Elapsed time: 0 seconds; current allocated memory: 183.810 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.1 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.82 seconds; current allocated memory: 185.492 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.13 seconds. CPU system time: 0 seconds. Elapsed time: 0.17 seconds; current allocated memory: 184.845 MB.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:98) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:98) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:98) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:106) in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-4' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-5.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_N' (computeP2/c/computeP2.cpp:76) in function 'computeP2' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.73 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.91 seconds; current allocated memory: 206.211 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination.2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination.1'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P21' (computeP2/c/computeP2.cpp:37:23) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P2' (computeP2/c/computeP2.cpp:35:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P31' (computeP2/c/computeP2.cpp:48:21) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P3' (computeP2/c/computeP2.cpp:46:19) in function 'computeP2'.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:94:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:100:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:108:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 111.52 seconds. CPU system time: 0.23 seconds. Elapsed time: 115.73 seconds; current allocated memory: 233.033 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'accumulators'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+WARNING: [HLS 200-885] Unable to schedule 'store' operation ('out_addr_11_write_ln100', computeP2/c/computeP2.cpp:100) of variable 'trunc_ln100_11', computeP2/c/computeP2.cpp:100 on array 'out_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'out_r'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 5, Depth = 42, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.58 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.76 seconds; current allocated memory: 234.101 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.77 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.82 seconds; current allocated memory: 235.124 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln94) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.82 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.94 seconds; current allocated memory: 235.490 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.51 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.56 seconds; current allocated memory: 235.923 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln94) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'accumulators'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+WARNING: [HLS 200-885] Unable to schedule 'store' operation ('out_addr_2_write_ln100', computeP2/c/computeP2.cpp:100) of variable 'trunc_ln100_2', computeP2/c/computeP2.cpp:100 on array 'out_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'out_r'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 5, Depth = 42, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.71 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.72 seconds; current allocated memory: 236.783 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.84 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.86 seconds; current allocated memory: 237.899 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln58) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_P2_LOOP_P21_LOOP_AV1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 16, loop 'LOOP_P2_LOOP_P21_LOOP_AV1'
+INFO: [SCHED 204-61] Pipelining loop 'Loop 3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 3'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_P3_LOOP_P31_L'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 4, loop 'LOOP_P3_LOOP_P31_L'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_N'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'LOOP_N'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.23 seconds. CPU system time: 0 seconds. Elapsed time: 1.23 seconds; current allocated memory: 238.850 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.31 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.42 seconds; current allocated memory: 240.118 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_8ns_8ns_16_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_5_36_1': 10 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.22 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.24 seconds; current allocated memory: 241.642 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_5ns_8ns_32ns_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_8_36_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.11 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.18 seconds; current allocated memory: 245.163 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_5ns_8ns_32ns_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_5_36_1': 10 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.67 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.69 seconds; current allocated memory: 248.225 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/oil_space' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/P1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/P2' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'computeP2' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_15s_13ns_15_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_6ns_6ns_5_10_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_6ns_6ns_6_10_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_9ns_6ns_5_13_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'computeP2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.32 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.35 seconds; current allocated memory: 253.328 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_mul_8ns_8ns_16_1_1_Multiplier_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_32ns_6ns_5_36_1_div'
+INFO: [RTMG 210-278] Implementing memory 'computeP2_linear_combination_accumulators_ram (RAM_1WnR)' using auto RAMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_32ns_6ns_8_36_1_div'
+INFO: [RTMG 210-278] Implementing memory 'computeP2_linear_combination_1_accumulators_ram (RAM)' using auto RAMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_6ns_6ns_5_10_seq_1_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_9ns_6ns_5_13_1_div'
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_6ns_6ns_6_10_seq_1_div'
+INFO: [RTMG 210-278] Implementing memory 'computeP2_temp_ram (RAM)' using auto RAMs.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: set_directive_unroll -factor 10 linear_combination/LOOP_LC2 
+INFO: [HLS 200-1510] Running: set_directive_pipeline linear_combination/LOOP_LC2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 180.183 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 6.27 seconds. CPU system time: 0.52 seconds. Elapsed time: 13.66 seconds; current allocated memory: 181.355 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-188] Unrolling loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:98:12) in function 'linear_combination' partially with a factor of 10 (computeP2/c/computeP2.cpp:98:12)
+INFO: [HLS 214-188] Unrolling loop 'LOOP_N' (computeP2/c/computeP2.cpp:76:10) in function 'negate' partially with a factor of 4 (computeP2/c/computeP2.cpp:76:10)
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 7.03 seconds. CPU system time: 0.54 seconds. Elapsed time: 11.41 seconds; current allocated memory: 183.826 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 183.826 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.1 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.21 seconds; current allocated memory: 185.512 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.12 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 184.860 MB.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:106) in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-4' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-5.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_N' (computeP2/c/computeP2.cpp:76) in function 'computeP2' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.69 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.82 seconds; current allocated memory: 206.230 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination.2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination.1'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P21' (computeP2/c/computeP2.cpp:37:23) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P2' (computeP2/c/computeP2.cpp:35:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P31' (computeP2/c/computeP2.cpp:48:21) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P3' (computeP2/c/computeP2.cpp:46:19) in function 'computeP2'.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:94:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:100:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:108:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 103.76 seconds. CPU system time: 0.12 seconds. Elapsed time: 105.8 seconds; current allocated memory: 233.065 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'accumulators'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+WARNING: [HLS 200-885] Unable to schedule 'store' operation ('out_addr_11_write_ln100', computeP2/c/computeP2.cpp:100) of variable 'trunc_ln100_11', computeP2/c/computeP2.cpp:100 on array 'out_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'out_r'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 5, Depth = 42, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.5 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.78 seconds; current allocated memory: 234.137 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.83 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.96 seconds; current allocated memory: 235.163 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln94) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.78 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.83 seconds; current allocated memory: 235.530 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.48 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.49 seconds; current allocated memory: 235.968 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln94) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'accumulators'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+WARNING: [HLS 200-885] Unable to schedule 'store' operation ('out_addr_2_write_ln100', computeP2/c/computeP2.cpp:100) of variable 'trunc_ln100_2', computeP2/c/computeP2.cpp:100 on array 'out_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'out_r'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 5, Depth = 42, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.84 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.98 seconds; current allocated memory: 236.814 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.99 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.08 seconds; current allocated memory: 237.929 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln58) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_P2_LOOP_P21_LOOP_AV1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 16, loop 'LOOP_P2_LOOP_P21_LOOP_AV1'
+INFO: [SCHED 204-61] Pipelining loop 'Loop 3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 3'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_P3_LOOP_P31_L'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 4, loop 'LOOP_P3_LOOP_P31_L'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_N'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'LOOP_N'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.32 seconds. CPU system time: 0.04 seconds. Elapsed time: 1.53 seconds; current allocated memory: 238.901 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.37 seconds. CPU system time: 0 seconds. Elapsed time: 1.48 seconds; current allocated memory: 240.170 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_8ns_8ns_16_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_5_36_1': 10 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.59 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.92 seconds; current allocated memory: 241.699 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_5ns_8ns_32ns_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_8_36_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.14 seconds. CPU system time: 0.03 seconds. Elapsed time: 1.37 seconds; current allocated memory: 245.229 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_5ns_8ns_32ns_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_5_36_1': 10 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.7 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.81 seconds; current allocated memory: 248.295 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/oil_space' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/P1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/P2' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'computeP2' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_15s_13ns_15_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_6ns_6ns_5_10_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_6ns_6ns_6_10_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_9ns_6ns_5_13_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'computeP2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.39 seconds. CPU system time: 0.04 seconds. Elapsed time: 1.51 seconds; current allocated memory: 253.412 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_mul_8ns_8ns_16_1_1_Multiplier_0'
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_32ns_6ns_5_36_1_div'
+INFO: [RTMG 210-278] Implementing memory 'computeP2_linear_combination_accumulators_ram (RAM_1WnR)' using auto RAMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_urem_32ns_6ns_8_36_1_div'
+INFO: [RTMG 210-278]==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_unroll -tripcount_threshold=1
+INFO: [XFORM 203-502] Automatic unrolling enabled: cut-off trip count is 1.
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_unroll -tripcount_threshold 1 
+INFO: [XFORM 203-502] Automatic unrolling enabled: cut-off trip count is 1.
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: set_directive_unroll -factor 10 linear_combination/LOOP_LC2 
+INFO: [HLS 200-1510] Running: set_directive_pipeline linear_combination/LOOP_LC2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 180.257 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 6.23 seconds. CPU system time: 0.56 seconds. Elapsed time: 14.77 seconds; current allocated memory: 181.414 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-188] Unrolling loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:98:12) in function 'linear_combination' partially with a factor of 10 (computeP2/c/computeP2.cpp:98:12)
+INFO: [HLS 214-188] Unrolling loop 'LOOP_N' (computeP2/c/computeP2.cpp:76:10) in function 'negate' partially with a factor of 4 (computeP2/c/computeP2.cpp:76:10)
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 7.56 seconds. CPU system time: 0.63 seconds. Elapsed time: 11.7 seconds; current allocated memory: 183.995 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 183.996 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.11 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.31 seconds; current allocated memory: 185.682 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.15 seconds. CPU system time: 0 seconds. Elapsed time: 0.18 seconds; current allocated memory: 185.030 MB.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination.1' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination.2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-2' in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_LC12' (computeP2/c/computeP2.cpp:93) in function 'linear_combination' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_AV1' (computeP2/c/computeP2.cpp:106) in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-4' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'Loop-5.1.1' in function 'computeP2' automatically.
+INFO: [XFORM 203-510] Pipelining loop 'LOOP_N' (computeP2/c/computeP2.cpp:76) in function 'computeP2' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.78 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.9 seconds; current allocated memory: 206.397 MB.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination.2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination.1'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_LC1' (computeP2/c/computeP2.cpp:91:21) in function 'linear_combination'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P21' (computeP2/c/computeP2.cpp:37:23) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P2' (computeP2/c/computeP2.cpp:35:20) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P31' (computeP2/c/computeP2.cpp:48:21) in function 'computeP2'.
+INFO: [XFORM 203-541] Flattening a loop nest 'LOOP_P3' (computeP2/c/computeP2.cpp:46:19) in function 'computeP2'.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:94:20)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:100:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:108:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 102.46 seconds. CPU system time: 0.14 seconds. Elapsed time: 104.63 seconds; current allocated memory: 233.211 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'accumulators'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 3, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+WARNING: [HLS 200-885] Unable to schedule 'store' operation ('out_addr_11_write_ln100', computeP2/c/computeP2.cpp:100) of variable 'trunc_ln100_11', computeP2/c/computeP2.cpp:100 on array 'out_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'out_r'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 5, Depth = 42, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.47 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.61 seconds; current allocated memory: 234.279 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.86 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.01 seconds; current allocated memory: 235.304 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln94) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.8 seconds. CPU system time: 0 seconds. Elapsed time: 0.92 seconds; current allocated memory: 235.699 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.55 seconds. CPU system time: 0 seconds. Elapsed time: 0.58 seconds; current allocated memory: 236.135 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln94) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'accumulators'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'Loop 1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 1'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC1_LOOP_LC12'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 6, loop 'LOOP_LC1_LOOP_LC12'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+WARNING: [HLS 200-885] Unable to schedule 'store' operation ('out_addr_2_write_ln100', computeP2/c/computeP2.cpp:100) of variable 'trunc_ln100_2', computeP2/c/computeP2.cpp:100 on array 'out_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'out_r'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 5, Depth = 42, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.68 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.73 seconds; current allocated memory: 236.999 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.84 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.96 seconds; current allocated memory: 238.057 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln58) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_P2_LOOP_P21_LOOP_AV1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 16, loop 'LOOP_P2_LOOP_P21_LOOP_AV1'
+INFO: [SCHED 204-61] Pipelining loop 'Loop 3'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'Loop 3'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_P3_LOOP_P31_L'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 4, loop 'LOOP_P3_LOOP_P31_L'
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_N'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 1, loop 'LOOP_N'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1.11 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.22 seconds; current allocated memory: 239.040 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 1.34 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.4 seconds; current allocated memory: 240.338 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mul_8ns_8ns_16_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_5_36_1': 10 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.23 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.37 seconds; current allocated memory: 241.837 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_5ns_8ns_32ns_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_8_36_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination_1'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.06 seconds. CPU system time: 0.02 seconds. Elapsed time: 1.15 seconds; current allocated memory: 245.365 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_5ns_8ns_32ns_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_32ns_6ns_5_36_1': 10 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'linear_combination_2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.61 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.64 seconds; current allocated memory: 248.430 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/oil_space' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/P1' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'computeP2/P2' to 'ap_ovld'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'computeP2' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Generating core module 'mul_mul_15s_13ns_15_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_6ns_6ns_5_10_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_6ns_6ns_6_10_seq_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'urem_9ns_6ns_5_13_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'computeP2'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1.26 seconds. CPU system time: 0.03 seconds. Elapsed time: 1.38 seconds; current allocated memory: 253.548 MB.
+INFO: [RTMG 210-282] Generating pipelined core: 'computeP2_mul_8ns_8ns_16_1_1_Multiplier_0'
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_unroll -tripcount_threshold=1
+INFO: [XFORM 203-502] Automatic unrolling enabled: cut-off trip count is 1.
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_unroll -tripcount_threshold 1 
+INFO: [XFORM 203-502] Automatic unrolling enabled: cut-off trip count is 1.
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: set_directive_unroll -factor 10 linear_combination/LOOP_LC2 
+INFO: [HLS 200-1510] Running: set_directive_pipeline linear_combination/LOOP_LC2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.01 seconds. CPU system time: 0 seconds. Elapsed time: 0.03 seconds; current allocated memory: 180.287 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 8.08 seconds. CPU system time: 0.7 seconds. Elapsed time: 18.43 seconds; current allocated memory: 181.429 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-188] Unrolling loop 'LOOP_LC2' (computeP2/c/computeP2.cpp:106:12) in function 'linear_combination' partially with a factor of 10 (computeP2/c/computeP2.cpp:106:12)
+INFO: [HLS 214-188] Unrolling loop 'LOOP_N' (computeP2/c/computeP2.cpp:81:10) in function 'negate' partially with a factor of 4 (computeP2/c/computeP2.cpp:81:10)
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 8.13 seconds. CPU system time: 0.61 seconds. Elapsed time: 13.09 seconds; current allocated memory: 183.997 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 183.998 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.1 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.85 seconds; current allocated memory: 185.703 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.14 seconds. CPU system time: 0 seconds. Elapsed time: 0.22 seconds; current allocated memory: 185.053 MB.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.67 seconds. CPU system time: 0 seconds. Elapsed time: 0.75 seconds; current allocated memory: 206.410 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:102:18)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:108:10)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:117:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 45.75 seconds. CPU system time: 0.13 seconds. Elapsed time: 47.46 seconds; current allocated memory: 234.376 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'accumulators'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+WARNING: [HLS 200-885] Unable to schedule 'store' operation ('out_addr_11_write_ln108', computeP2/c/computeP2.cpp:108) of variable 'trunc_ln108_11', computeP2/c/computeP2.cpp:108 on array 'out_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'out_r'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 5, Depth = 42, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.55 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.84 seconds; current allocated memory: 235.405 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.76 seconds. CPU system time: 0 seconds. Elapsed time: 0.94 seconds; current allocated memory: 236.453 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln102) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 38, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.79 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.85 seconds; current allocated memory: 236.784 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.49 seconds. CPU system time: 0 seconds. Elapsed time: 0.53 seconds; current allocated memory: 237.174 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln102) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-1457] Automatically inferring 1WnR RAM type for array 'accumulators'. Use bind_storage pragma to overwrite if needed.
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_LC2'.
+WARNING: [HLS 200-885] Unable to schedule 'store' operation ('out_addr_2_write_ln108', computeP2/c/computeP2.cpp:108) of variable 'trunc_ln108_2', computeP2/c/computeP2.cpp:108 on array 'out_r' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'out_r'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 5, Depth = 42, loop 'LOOP_LC2'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.72 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.81 seconds; current allocated memory: 238.006 MB.
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2 (64-bit)
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+INFO: [HLS 200-1464] Running solution command: config_unroll -tripcount_threshold=1
+INFO: [XFORM 203-502] Automatic unrolling enabled: cut-off trip count is 1.
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_unroll -tripcount_threshold 1 
+INFO: [XFORM 203-502] Automatic unrolling enabled: cut-off trip count is 1.
+INFO: [HLS 200-1510] Running: set_directive_top -name computeP2 computeP2 
+INFO: [HLS 200-1510] Running: set_directive_pipeline linear_combination/LOOP_LC2 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.07 seconds; current allocated memory: 180.256 MB.
+INFO: [HLS 200-10] Analyzing design file 'computeP2/c/computeP2.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 7.86 seconds. CPU system time: 0.68 seconds. Elapsed time: 20.68 seconds; current allocated memory: 181.428 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 214-188] Unrolling loop 'LOOP_N' (computeP2/c/computeP2.cpp:88:10) in function 'negate' partially with a factor of 2 (computeP2/c/computeP2.cpp:88:10)
+INFO: [HLS 214-178] Inlining function 'add_vectors(unsigned char*, unsigned char*, unsigned char*)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 214-178] Inlining function 'negate(unsigned char*, int)' into 'computeP2(unsigned char*, unsigned char*, unsigned char*)' (computeP2/c/computeP2.cpp:15:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 6.71 seconds. CPU system time: 0.55 seconds. Elapsed time: 10.32 seconds; current allocated memory: 183.607 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 183.608 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0.09 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.27 seconds; current allocated memory: 185.239 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0.11 seconds. CPU system time: 0 seconds. Elapsed time: 0.12 seconds; current allocated memory: 184.569 MB.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.68 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.77 seconds; current allocated memory: 205.755 MB.
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' (computeP2/c/computeP2.cpp:109:18)
+INFO: [HLS 200-472] Inferring partial write operation for 'out' (computeP2/c/computeP2.cpp:116:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'accumulators' 
+INFO: [HLS 200-472] Inferring partial write operation for 'temp' (computeP2/c/computeP2.cpp:125:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'tempt' 
+INFO: [HLS 200-472] Inferring partial write operation for 'vec.1' 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 44.96 seconds. CPU system time: 0.04 seconds. Elapsed time: 45.76 seconds; current allocated memory: 233.039 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'computeP2' ...
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.1' to 'linear_combination_1'.
+WARNING: [SYN 201-103] Legalizing function name 'linear_combination.2' to 'linear_combination_2'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.24 seconds. CPU system time: 0.02 seconds. Elapsed time: 0.59 seconds; current allocated memory: 233.516 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.44 seconds. CPU system time: 0 seconds. Elapsed time: 0.64 seconds; current allocated memory: 233.855 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln109) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.38 seconds. CPU system time: 0 seconds. Elapsed time: 0.4 seconds; current allocated memory: 234.176 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.47 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.52 seconds; current allocated memory: 234.519 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'linear_combination_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln109) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.44 seconds. CPU system time: 0 seconds. Elapsed time: 0.47 seconds; current allocated memory: 234.831 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.46 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.5 seconds; current allocated memory: 235.180 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'computeP2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP48 latency (root=mul_ln70) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.63 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.69 seconds; current allocated memory: 235.904 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.95 seconds. CPU system time: 0.01 seconds. Elapsed time: 1.03 seconds; current allocated memory: 236.817 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'linear_combination' 

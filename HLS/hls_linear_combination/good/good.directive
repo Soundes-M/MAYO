@@ -1,0 +1,24 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="hls_linear_combination" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="hls_linear_combination"/>
+            </pragma>
+        </directive>
+        <directive functionName="hls_linear_combination" label="LOOP_LC2" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="hls_linear_combination" label="LOOP_LC1" functionLabel="">
+            <pragma name="PIPELINE"/>
+        </directive>
+        <directive functionName="hls_linear_combination" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="accumulators" positionalBoolean="4"/>
+                <option name="cyclic" value="" positionalBoolean="type"/>
+                <option name="factor" value="16"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+

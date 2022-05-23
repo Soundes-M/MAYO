@@ -1,0 +1,65 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'computeP2'" level="0">
+<item name = "Date">Wed May 11 12:58:28 2022
+</item>
+<item name = "Version">2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)</item>
+<item name = "Project">computeP2</item>
+<item name = "Solution">solution2 (Vivado IP Flow Target)</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020-clg484-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">10.00 ns, 7.008 ns, 2.70 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">430802, 6067124, 4.308 ms, 60.671 ms, 430803, 6067125, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_linear_combination_fu_527">linear_combination, 485, 12595, 4.850 us, 0.126 ms, 485, 12595, none</column>
+<column name="grp_linear_combination_2_fu_535">linear_combination_2, 17215, 19315, 0.172 ms, 0.193 ms, 17215, 19315, none</column>
+<column name="grp_linear_combination_1_fu_544">linear_combination_1, 17215, 19315, 0.172 ms, 0.193 ms, 17215, 19315, none</column>
+<column name="grp_remainder_fu_553">remainder, 2, 14, 20.000 ns, 0.140 us, 2, 14, none</column>
+<column name="grp_remainder_fu_558">remainder, 2, 14, 20.000 ns, 0.140 us, 2, 14, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- LOOP_P1">214480, 4404400, 3830 ~ 78650, -, -, 56, no</column>
+<column name=" + LOOP_P12">3828, 78648, 638 ~ 13108, -, -, 6, no</column>
+<column name="  ++ add_vectors_label1">150, 510, 10 ~ 34, -, -, 15, no</column>
+<column name="- LOOP_P2">51184, 172144, 914 ~ 3074, -, -, 56, no</column>
+<column name=" + LOOP_P21">912, 3072, 152 ~ 512, -, -, 6, no</column>
+<column name="  ++ add_vectors_label1">150, 510, 10 ~ 34, -, -, 15, no</column>
+<column name="- Loop 3">20160, 20160, 1, -, -, 20160, no</column>
+<column name="- LOOP_P3">41004, 41004, 6834, -, -, 6, no</column>
+<column name=" + LOOP_P31">6832, 6832, 122, -, -, 56, no</column>
+<column name="  ++ LOOP_P31.1">120, 120, 2, -, -, 60, no</column>
+<column name="- LOOP_P4">103338, 1428780, 17223 ~ 238130, -, -, 6, no</column>
+<column name=" + LOOP_P4_1">17221, 238128, 17221 ~ 39688, -, -, 1 ~ 6, no</column>
+<column name="  ++ LOOP_P4_1.1">60, 60, 1, -, -, 60, no</column>
+<column name="  ++ add_vectors_label1">270, 990, 18 ~ 66, -, -, 15, no</column>
+<column name="- LOOP_N">630, 630, 1, -, -, 630, no</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

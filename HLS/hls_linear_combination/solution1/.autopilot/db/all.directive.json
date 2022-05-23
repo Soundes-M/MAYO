@@ -1,0 +1,73 @@
+{"sourceFile": [{
+      "name": "",
+      "directive": [
+        {
+          "functionName": "hls_linear_combination",
+          "label": "",
+          "functionLabel": "",
+          "pragma": {
+            "name": "TOP",
+            "option": [{
+                "name": "name",
+                "value": "hls_linear_combination"
+              }]
+          }
+        },
+        {
+          "functionName": "hls_linear_combination",
+          "label": "LOOP_LC2",
+          "functionLabel": "",
+          "pragma": {"name": "PIPELINE"}
+        },
+        {
+          "functionName": "hls_linear_combination",
+          "label": "LOOP_LC1",
+          "functionLabel": "",
+          "pragma": {"name": "PIPELINE"}
+        },
+        {
+          "functionName": "hls_linear_combination",
+          "label": "",
+          "functionLabel": "",
+          "pragma": {
+            "name": "ARRAY_PARTITION",
+            "option": [
+              {
+                "name": "variable",
+                "value": "accumulators"
+              },
+              {
+                "name": "cyclic",
+                "value": ""
+              },
+              {
+                "name": "factor",
+                "value": "16"
+              },
+              {
+                "name": "dim",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        {
+          "functionName": "hls_linear_combination",
+          "label": "",
+          "functionLabel": "",
+          "pragma": {"name": "PIPELINE"}
+        },
+        {
+          "functionName": "hls_linear_combination",
+          "label": "",
+          "functionLabel": "",
+          "pragma": {
+            "name": "TOP",
+            "option": [{
+                "name": "name",
+                "value": "hls_linear_combination"
+              }]
+          }
+        }
+      ]
+    }]}

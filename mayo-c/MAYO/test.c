@@ -4,11 +4,11 @@
 #include "params.h"
 #include <time.h>
 #include <stdlib.h>
+#include "debug.h"
 
-#define TRIALS 10
+#define TRIALS 1
 
 #define MESSAGE_LENGTH 100
-
 
 #define TEST(fn) \
 printf("%30s: ", #fn); \
@@ -128,7 +128,7 @@ int tests(){
 
 int main(){
 
-	 if( tests()){
+	if( tests()){
 		return -1;
 	}
 
@@ -146,9 +146,9 @@ int main(){
 
 	unsigned char message[MESSAGE_LENGTH];
 	message[0] = 42;
-	unsigned char sig[SIG_BYTES];
-	unsigned char pk_exp[PK_EXP_BYTES];
-	unsigned char sk_exp[SK_EXP_BYTES];
+	 unsigned char sig[SIG_BYTES];
+	 unsigned char pk_exp[PK_EXP_BYTES];
+	 unsigned char sk_exp[SK_EXP_BYTES];
 
 	uint64_t keygenTime = 0;
 	uint64_t signTime = 0;
@@ -156,14 +156,22 @@ int main(){
 	uint64_t signFastTime = 0;
 	uint64_t verifyFastTime = 0;
 	uint64_t t; 
-      
-	 
+       
 	
- 
+	//run_test();
+	
+
 	for(int i=0 ; i<TRIALS; i++){
 		t = rdtsc();
+		printf("Keygen..\n");
+		write_to_file("golden/sk_0.dat",sk,SK_BYTES);
+		write_to_file("golden/pk_0.dat",pk,PK_BYTES);
+
 		keygen(pk,sk);
+
 		keygenTime += rdtsc()-t;
+		write_to_file("golden/sk_1.dat",sk,SK_BYTES);
+		write_to_file("golden/pk_1.dat",pk,PK_BYTES);
 
 		t = rdtsc();
 		sign(message, MESSAGE_LENGTH, sk, sig);
@@ -204,11 +212,12 @@ int main(){
 
 	for (int i = 0; i < 100000; ++i)
 	{
+
 		int ver = verify_fast(message, MESSAGE_LENGTH, pk, pk_exp, sig);
 		if(ver < 0){
 			printf("Signature invalid! \n");
 		}
 	}
- 
+
 	return 0;
 }
