@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
-#include <hls_math.h>
 
 #define OIL_SPACE_BYTES 336
 #define P1_BYTES 115920

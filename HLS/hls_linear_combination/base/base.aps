@@ -5,6 +5,17 @@
     <downStreamTool>
         <DownStreamTool name="vivado"/>
     </downStreamTool>
+    <targetInfo>
+        <TargetInfo value="xc7z020:-clg484:-1"/>
+    </targetInfo>
+    <libraryList>
+        <library name="DefaultPlatform" value="xilinx/zynq/zynq"/>
+        <library name="DefaultPlatform" value="xilinx/zynq/zynq_fpv6"/>
+    </libraryList>
+    <flowTarget value="vivado"/>
+    <clockList>
+        <clock default="false" name="default" period="10"/>
+    </clockList>
     <config/>
     <UIConfigurations>
         <UIAutosynConf boardInfo="ZedBoard Zynq Evaluation and Development Kit (xc7z020clg484-1) " hideTrivialOp="true" isBasedOnBoard="true" isSolutionDirty="false" isStopAskAgain="false" showDetailDesignViewer="false">
@@ -44,26 +55,15 @@
         <Format formatName="sysgen_ise"/>
         <Format formatName="syn_dcp"/>
         <Format formatName="pcore" use_netlist="none"/>
+        <Format formatName="xo"/>
     </ExportDesign>
     <Simulation>
-        <SimFlow askAgain="true" clangSanitizer="false" compile="false" compileChoice="gcc" disableDeadlockDetect="false" dumpTrace="none" enableDataflowProfiling="false" enableFifoSizing="false" name="cosim" optimizeCompile="false" random_stall="false" reduce_diskspace="false" setup="false" toolName="Auto" waveDebug="false">
+        <SimFlow askAgain="true" clangSanitizer="false" compile="false" compileChoice="gcc" disableDeadlockDetect="false" dumpTrace="all" enableDataflowProfiling="false" enableFifoSizing="false" name="cosim" optimizeCompile="false" random_stall="false" reduce_diskspace="false" setup="false" toolName="ModelSim" waveDebug="false">
             <Rtl active="false" name="systemc"/>
-            <Rtl active="true" name="verilog"/>
-            <Rtl active="false" name="vhdl"/>
+            <Rtl active="false" name="verilog"/>
+            <Rtl active="true" name="vhdl"/>
         </SimFlow>
     </Simulation>
-    <flowTarget value="vivado"/>
-    <targetInfo>
-        <TargetInfo value="xc7z020:-clg484:-1"/>
-    </targetInfo>
-    <libraryList>
-        <library name="DefaultPlatform" value="xilinx/zynq/zynq"/>
-        <library name="DefaultPlatform" value="xilinx/zynq/zynq_fpv6"/>
-        <library value="xilinx/zynq/zynq" name="DefaultPlatform"/>
-    </libraryList>
-    <clockList>
-        <clock name="default" default="false" period="10"/>
-    </clockList>
     <name>
         <value string="base"/>
     </name>

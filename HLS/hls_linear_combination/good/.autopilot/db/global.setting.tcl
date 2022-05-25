@@ -45,12 +45,12 @@ set TargetInfo xc7z020:-clg484:-1
 set SourceFiles {sc {} c ../hls_linear_combination.cpp}
 set SourceFlags {sc {} c {{}}}
 set DirectiveFile /home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/good.directive
-set TBFiles {verilog {../0_0.dat ../hls_linear_combinations_test.cpp ../la} bc {../0_0.dat ../hls_linear_combinations_test.cpp ../la} vhdl {../0_0.dat ../hls_linear_combinations_test.cpp ../la} sc {../0_0.dat ../hls_linear_combinations_test.cpp ../la} cas {../0_0.dat ../hls_linear_combinations_test.cpp ../la} c {}}
+set TBFiles {verilog {../hls_linear_combinations_test.cpp ../test_sample_la} bc {../hls_linear_combinations_test.cpp ../test_sample_la} sc {../hls_linear_combinations_test.cpp ../test_sample_la} vhdl {../hls_linear_combinations_test.cpp ../test_sample_la} c {} cas {../hls_linear_combinations_test.cpp ../test_sample_la}}
 set SpecLanguage C
 set TVInFiles {bc {} c {} sc {} cas {} vhdl {} verilog {}}
 set TVOutFiles {bc {} c {} sc {} cas {} vhdl {} verilog {}}
-set TBTops {verilog {} bc {} vhdl {} sc {} cas {} c {}}
-set TBInstNames {verilog {} bc {} vhdl {} sc {} cas {} c {}}
+set TBTops {verilog {} bc {} sc {} vhdl {} c {} cas {}}
+set TBInstNames {verilog {} bc {} sc {} vhdl {} c {} cas {}}
 set XDCFiles {}
 set ExtraGlobalOptions {"area_timing" 1 "clock_gate" 1 "impl_flow" map "power_gate" 0}
 set TBTVFileNotFound {}

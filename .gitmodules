@@ -1,0 +1,3 @@
+[submodule "src/hdl/neoTRNG"]
+	path = src/hdl/neoTRNG
+	url = https://github.com/stnolting/neoTRNG.git

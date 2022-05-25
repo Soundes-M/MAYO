@@ -25,11 +25,6 @@
                 <option name="off" value="" positionalBoolean="1"/>
             </pragma>
         </directive>
-        <directive functionName="hls_linear_combination" label="" functionLabel="">
-            <pragma name="TOP">
-                <option name="name" value="hls_linear_combination"/>
-            </pragma>
-        </directive>
     </sourceFile>
 </AutoPilot:ProjectResources>
 

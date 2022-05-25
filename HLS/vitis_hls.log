@@ -1,51 +1,121 @@
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
 INFO: [HLS 200-10] Running '/opt/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'osm' on host 'debian' (Linux_x86_64 version 5.10.0-14-amd64) on Sun May 22 21:10:37 CEST 2022
+INFO: [HLS 200-10] For user 'osm' on host 'debian' (Linux_x86_64 version 5.10.0-14-amd64) on Wed May 25 14:55:35 CEST 2022
 INFO: [HLS 200-10] On os Debian GNU/Linux 11 (bullseye)
 INFO: [HLS 200-10] In directory '/home/osm/Documents/SECT-MAYO/MAYO/HLS'
-Sourcing Tcl script '/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/csim.tcl'
+Sourcing Tcl script '/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/cosim.tcl'
 INFO: [HLS 200-1510] Running: open_project hls_linear_combination 
 INFO: [HLS 200-10] Opening project '/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination'.
 INFO: [HLS 200-1510] Running: set_top hls_linear_combination 
-INFO: [HLS 200-1510] Running: add_files hls_linear_combination/hls_linear_combination.cpp 
-INFO: [HLS 200-10] Adding design file 'hls_linear_combination/hls_linear_combination.cpp' to the project
 INFO: [HLS 200-1510] Running: add_files hls_linear_combination/hls_linear_combination.h 
 INFO: [HLS 200-10] Adding design file 'hls_linear_combination/hls_linear_combination.h' to the project
-INFO: [HLS 200-1510] Running: add_files -tb hls_linear_combination/hls_linear_combinations_test.cpp -cflags -Wno-unknown-pragmas 
+INFO: [HLS 200-1510] Running: add_files hls_linear_combination/hls_linear_combination.cpp 
+INFO: [HLS 200-10] Adding design file 'hls_linear_combination/hls_linear_combination.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb hls_linear_combination/test_sample_la -cflags -Wno-unknown-pragmas -csimflags -Wno-unknown-pragmas 
+INFO: [HLS 200-10] Adding test bench file 'hls_linear_combination/test_sample_la' to the project
+INFO: [HLS 200-1510] Running: add_files -tb hls_linear_combination/hls_linear_combinations_test.cpp -cflags -Wno-unknown-pragmas -csimflags -Wno-unknown-pragmas 
 INFO: [HLS 200-10] Adding test bench file 'hls_linear_combination/hls_linear_combinations_test.cpp' to the project
-INFO: [HLS 200-1510] Running: add_files -tb hls_linear_combination/la -cflags -Wno-unknown-pragmas 
-INFO: [HLS 200-10] Adding test bench file 'hls_linear_combination/la' to the project
 INFO: [HLS 200-1510] Running: open_solution good -flow_target vivado 
 INFO: [HLS 200-10] Opening solution '/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good'.
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
 INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2020.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=/home/osm/Documents/SECT-MAYO/MAYO/HLS/ips/hls_linear_combination.zip
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=vhdl
 INFO: [HLS 200-1510] Running: set_part xc7z020-clg484-1 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output /home/osm/Documents/SECT-MAYO/MAYO/HLS/ips/hls_linear_combination.zip -rtl vhdl 
 INFO: [HLS 200-1510] Running: set_directive_top -name hls_linear_combination hls_linear_combination 
 INFO: [HLS 200-1510] Running: set_directive_pipeline hls_linear_combination/LOOP_LC2 
 INFO: [HLS 200-1510] Running: set_directive_pipeline hls_linear_combination/LOOP_LC1 
 INFO: [HLS 200-1510] Running: set_directive_array_partition -type cyclic -factor 16 -dim 1 hls_linear_combination accumulators 
-INFO: [HLS 200-1510] Running: csim_design -clean -setup -quiet 
-INFO: [SIM 211-2] *************** CSIM start ***************
-INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
-   Compiling ../../../hls_linear_combinations_test.cpp in debug mode
-   Compiling ../../../hls_linear_combination.cpp in debug mode
-   Generating csim.exe
-In file included from /opt/Xilinx/Vitis_HLS/2020.2/include/hls_hotbm_apfixed.h:45:0,
-                 from /opt/Xilinx/Vitis_HLS/2020.2/include/hls_math.h:1065,
-                 from ../../../hls_linear_combination.h:7,
-                 from ../../../hls_linear_combinations_test.cpp:1:
-/opt/Xilinx/Vitis_HLS/2020.2/include/utils/x_hls_utils.h:243:40: warning: ‘hls_preserve’ attribute directive ignored [-Wattributes]
- __attribute__((hls_preserve)) T reg(T d)
-                                        ^
-In file included from /opt/Xilinx/Vitis_HLS/2020.2/include/hls_hotbm_apfixed.h:45:0,
-                 from /opt/Xilinx/Vitis_HLS/2020.2/include/hls_math.h:1065,
-                 from ../../../hls_linear_combination.h:7,
-                 from ../../../hls_linear_combination.cpp:1:
-/opt/Xilinx/Vitis_HLS/2020.2/include/utils/x_hls_utils.h:243:40: warning: ‘hls_preserve’ attribute directive ignored [-Wattributes]
- __attribute__((hls_preserve)) T reg(T d)
-                                        ^
-INFO: [SIM 211-1] CSim file generation done with 0 errors.
-INFO: [SIM 211-3] *************** CSIM finish ***************
-INFO: [HLS 200-111] Finished Command csim_design CPU user time: 23.36 seconds. CPU system time: 1.26 seconds. Elapsed time: 28.84 seconds; current allocated memory: 180.452 MB.
+INFO: [HLS 200-1510] Running: cosim_design -rtl vhdl 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/opt/Xilinx/Vitis_HLS/2020.2/tps/lnx64/gcc-6.2.0/bin/g++"
+   Compiling apatb_hls_linear_combination.cpp
+   Compiling hls_linear_combination.cpp_pre.cpp.tb.cpp
+   Compiling hls_linear_combinations_test.cpp_pre.cpp.tb.cpp
+   Compiling apatb_hls_linear_combination_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+Starting..
+Failed!
+24 | 10
+30 | 0
+0 | 0
+10 | 0
+24 | 0
+5 | 0
+21 | 0
+6 | 0
+4 | 0
+16 | 0
+19 | 0
+17 | 0
+15 | 0
+8 | 0
+15 | 0
+21 | 0
+7 | 0
+5 | 0
+0 | 0
+18 | 0
+13 | 0
+7 | 0
+6 | 0
+1 | 0
+5 | 0
+7 | 0
+16 | 0
+10 | 0
+9 | 0
+28 | 0
+2 | 0
+18 | 0
+4 | 0
+10 | 0
+16 | 0
+21 | 0
+17 | 0
+4 | 0
+13 | 0
+15 | 0
+24 | 0
+11 | 0
+3 | 0
+3 | 0
+30 | 0
+26 | 0
+3 | 0
+16 | 0
+6 | 0
+28 | 0
+21 | 0
+7 | 0
+17 | 0
+2 | 0
+9 | 0
+20 | 0
+20 | 0
+2 | 0
+0 | 0
+6 | 0
+ERROR: [COSIM 212-359] Aborting co-simulation: C TB simulation failed, nonzero return value '1'.
+ERROR: [COSIM 212-320] C TB testing failed, stop generating test vectors. Please check C TB or re-run cosim.
+ERROR: [COSIM 212-5] *** C/RTL co-simulation file generation failed. ***
+ERROR: [COSIM 212-4] *** C/RTL co-simulation finished: FAIL ***
+INFO: [HLS 200-111] Finished Command cosim_design CPU user time: 7.99 seconds. CPU system time: 1.14 seconds. Elapsed time: 30.19 seconds; current allocated memory: 183.506 MB.
+command 'ap_source' returned error code
+    while executing
+"source /home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/cosim.tcl"
+    invoked from within
+"hls::main /home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/cosim.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel 1 hls::main {*}$newargs"
+    (procedure "hls_proc" line 16)
+    invoked from within
+"hls_proc [info nameofexecutable] $argv"

@@ -67,9 +67,9 @@
 			<location>/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/hls_linear_combinations_test.cpp</location>
 		</link>
 		<link>
-			<name>testbench/la</name>
+			<name>testbench/test_sample_la</name>
 			<type>2</type>
-			<location>/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/la</location>
+			<location>/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/test_sample_la</location>
 		</link>
 		<link>
 			<name>base/constraints/.xml.directive</name>

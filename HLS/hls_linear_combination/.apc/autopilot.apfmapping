@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
   <source>
-    <originFiles name="hls_linear_combination.cpp" path="/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/hls_linear_combination.cpp"/>
     <originFiles name="hls_linear_combination.h" path="/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/hls_linear_combination.h"/>
+    <originFiles name="hls_linear_combination.cpp" path="/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/hls_linear_combination.cpp"/>
   </source>
   <testbench>
+    <originFiles name="test_sample_la" path="/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/test_sample_la"/>
     <originFiles name="hls_linear_combinations_test.cpp" path="/home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/hls_linear_combinations_test.cpp"/>
   </testbench>
 </autopilotfilemapping:AutoPilotFileMapping>
