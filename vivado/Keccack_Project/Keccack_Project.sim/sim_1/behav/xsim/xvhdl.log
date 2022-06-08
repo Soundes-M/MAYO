@@ -1,0 +1,11 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/Keccack_Project/Keccack_Project.srcs/sources_1/imports/mid_range_core/keccak_globals.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/Keccack_Project/Keccack_Project.srcs/sources_1/imports/mid_range_core/chi_iota_theta.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'chi_iota_theta'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/Keccack_Project/Keccack_Project.srcs/sources_1/imports/mid_range_core/keccak.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'keccak'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/Keccack_Project/Keccack_Project.srcs/sources_1/imports/mid_range_core/keccak_round_constants_gen.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'keccak_round_constants_gen'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/Keccack_Project/Keccack_Project.srcs/sources_1/imports/mid_range_core/rho_pi.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'rho_pi'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/Keccack_Project/Keccack_Project.srcs/sources_1/imports/mid_range_core/tb_keccak.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'keccak_tb'

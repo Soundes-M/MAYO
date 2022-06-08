@@ -109,12 +109,18 @@ void _linear_combination_avx(const unsigned char* vecs, const unsigned char* coe
 // scalar multiply each coefficient to the corresponding vector in Fq^m and add the results up; number of summands is len
 void _linear_combination(const unsigned char* vecs, const unsigned char* coeffs, int len, unsigned char *out){
 	uint32_t accumulators[M] = {0};
+	uint32_t vec;
+	uint32_t coeff;
+	static int _calls = 0; 
+
 	// compute linear combination
 	for (int i = 0; i < len; ++i)
 	{
 		// vectors with M entries are assumed
 		for(int j=0; j< M; j++){
-			accumulators[j] += ((uint32_t) vecs[i*M + j]) * ((uint32_t) coeffs[i]);
+			vec = (uint32_t) vecs[i*M + j];
+			coeff =  (uint32_t) coeffs[i]; 
+			accumulators[j] += (vec  * coeff);
 		}
 	}
 	// reducing modulo q
@@ -122,6 +128,7 @@ void _linear_combination(const unsigned char* vecs, const unsigned char* coeffs,
 	{
 		out[i] = (unsigned char) (accumulators[i] % PRIME);
 	}
+	_calls++;
 }
 
 

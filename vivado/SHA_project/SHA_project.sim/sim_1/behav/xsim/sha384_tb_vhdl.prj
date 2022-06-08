@@ -1,0 +1,12 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../SHA_project.srcs/sources_1/imports/B128/RegisterFDRE.vhd" \
+"../../../../SHA_project.srcs/sources_1/new/SHA_mod_adder.vhd" \
+"../../../../SHA_project.srcs/sources_1/new/SHA_settings.vhd" \
+"../../../../SHA_project.srcs/sources_1/new/counter_inc.vhd" \
+"../../../../SHA_project.srcs/sources_1/new/counter_inc_init_barrel.vhd" \
+"../../../../SHA_project.srcs/sources_1/new/sha384_retiming_var_size.vhd" \
+"../../../../SHA_project.srcs/sim_1/new/sha384_tb.vhd" \
+
+# Do not sort compile order
+nosort

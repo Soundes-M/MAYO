@@ -1,0 +1,11 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Keccack_Project.srcs/sources_1/imports/mid_range_core/keccak_globals.vhd" \
+"../../../../Keccack_Project.srcs/sources_1/imports/mid_range_core/chi_iota_theta.vhd" \
+"../../../../Keccack_Project.srcs/sources_1/imports/mid_range_core/keccak.vhd" \
+"../../../../Keccack_Project.srcs/sources_1/imports/mid_range_core/keccak_round_constants_gen.vhd" \
+"../../../../Keccack_Project.srcs/sources_1/imports/mid_range_core/rho_pi.vhd" \
+"../../../../Keccack_Project.srcs/sources_1/imports/mid_range_core/tb_keccak.vhd" \
+
+# Do not sort compile order
+nosort

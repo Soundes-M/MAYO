@@ -1,3 +1,6 @@
 [submodule "src/hdl/neoTRNG"]
 	path = src/hdl/neoTRNG
 	url = https://github.com/stnolting/neoTRNG.git
+[submodule "src/hdl/BIKE"]
+	path = src/hdl/BIKE
+	url = https://github.com/Chair-for-Security-Engineering/BIKE.git

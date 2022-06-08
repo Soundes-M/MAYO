@@ -42,7 +42,7 @@ int test_sample_solution(){
 	unsigned char linear[M*K*O];
 	unsigned char rhs[M];
 	unsigned char solution[K*O];
-
+	char filename[50];
 	for (int i = 0; i < 1000; ++i)
 	{
 		while(1){
@@ -57,8 +57,19 @@ int test_sample_solution(){
 		}
 
 		unsigned char rhs2[M];
+		
+		sprintf(filename,"golden/test_sample_la/linear/%d.dat",i);
+		write_to_file(filename,linear,M*K*O);
+
+		sprintf(filename,"golden/test_sample_la/solution/%d.dat",i);
+		write_to_file(filename,solution,K*O);
+
 		linear_combination(linear,solution,K*O,rhs2);
 
+		sprintf(filename,"golden/test_sample_la/rhs/%d.golden.dat",i);
+		write_to_file(filename,rhs,M);
+
+		// rhs == rhs2 ?
 		if(memcmp(rhs,rhs2,M) != 0){
 			print_vec(rhs);
 			print_vec(rhs2);

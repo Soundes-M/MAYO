@@ -26,13 +26,13 @@ void computeP2(const unsigned char* oil_space, const unsigned char* P1, unsigned
 			unsigned char vec[M];
 			// i-th row of P1 times j-th row of O for all m polynomials at once
 			char filename[50];
-			sprintf(filename,"golden/la/vecs/%d_%d.dat",i,j);
-			write_to_file(filename,P1 + p1_counter*M,(N-O-i)*M);
-			sprintf(filename,"golden/la/coefs/%d_%d.dat",i,j);
-			write_to_file(filename,oil_space + (j*(N-O) + i),M);
+			// sprintf(filename,"golden/la/vecs/%d_%d.dat",i,j);
+			// write_to_file(filename,P1 + p1_counter*M,(N-O-i)*M);
+			// sprintf(filename,"golden/la/coefs/%d_%d.dat",i,j);
+			// write_to_file(filename,oil_space + (j*(N-O) + i),M);
 			linear_combination(P1 + p1_counter*M, oil_space + (j*(N-O) + i), N-O-i, vec);
-			sprintf(filename,"golden/la/out/%d_%d.dat",i,j);
-			write_to_file(filename,vec,M);
+			// sprintf(filename,"golden/la/out/%d_%d.dat",i,j);
+			// write_to_file(filename,vec,M);
 			
 			add_vectors(temp + (i*O + j)*M, vec,temp + (i*O + j)*M);
 		}

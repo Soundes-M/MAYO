@@ -1,0 +1,12 @@
+
+{ 
+    crc :  13706669325550154298  , 
+    ccp_crc :  0  , 
+    cmdline : " -wto 475a64454fc84b09a850331ecf9a7247 --incr --debug typical --relax --mt 8 -L work -L secureip --snapshot neoTRNG_tb_behav work.neoTRNG_tb" , 
+    buildDate : "Nov 18 2020" , 
+    buildTime : "09:20:35" , 
+    linkCmd : "/usr/bin/gcc -Wa,-W  -O -fPIC  -m64  -Wl,--no-as-needed  -Wl,--unresolved-symbols=ignore-all  -o \"xsim.dir/neoTRNG_tb_behav/xsimk\"   \"xsim.dir/neoTRNG_tb_behav/obj/xsim_0.lnx64.o\" \"xsim.dir/neoTRNG_tb_behav/obj/xsim_1.lnx64.o\" -L\"/opt/Xilinx/Vivado/2020.2/lib/lnx64.o\" -lrdi_simulator_kernel   -lrdi_simbridge_kernel" , 
+    aggregate_nets : 
+    [ 
+    ] 
+} 

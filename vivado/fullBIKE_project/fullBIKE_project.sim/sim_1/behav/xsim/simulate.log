@@ -1,0 +1,854 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Note: writing input0
+Time: 113920 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input1
+Time: 113930 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input2
+Time: 113940 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input3
+Time: 113950 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input4
+Time: 113960 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input5
+Time: 113970 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input6
+Time: 113980 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input7
+Time: 113990 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input8
+Time: 114 us  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input9
+Time: 114010 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input10
+Time: 114020 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input11
+Time: 114030 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input12
+Time: 114040 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input13
+Time: 114050 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input14
+Time: 114060 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input15
+Time: 114070 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input16
+Time: 114080 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input17
+Time: 114090 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input18
+Time: 114100 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input19
+Time: 114110 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input20
+Time: 114120 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input21
+Time: 114130 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input22
+Time: 114140 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input23
+Time: 114150 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input24
+Time: 114160 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input25
+Time: 114170 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input26
+Time: 114180 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input27
+Time: 114190 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input28
+Time: 114200 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input29
+Time: 114210 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input30
+Time: 114220 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input31
+Time: 114230 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input32
+Time: 115060 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input33
+Time: 115070 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input34
+Time: 115080 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input35
+Time: 115090 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input36
+Time: 115100 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input37
+Time: 115110 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input38
+Time: 115120 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input39
+Time: 115130 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input40
+Time: 115140 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input41
+Time: 115150 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input42
+Time: 115160 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input43
+Time: 115170 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input44
+Time: 115180 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input45
+Time: 115190 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input46
+Time: 115200 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input47
+Time: 115210 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input48
+Time: 115220 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input49
+Time: 115230 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input50
+Time: 115240 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input51
+Time: 115250 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input52
+Time: 115260 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input53
+Time: 115270 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input54
+Time: 115280 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input55
+Time: 115290 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input56
+Time: 115300 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input57
+Time: 115310 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input58
+Time: 115320 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input59
+Time: 115330 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input60
+Time: 115340 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input61
+Time: 115350 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input62
+Time: 115360 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input63
+Time: 115370 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input64
+Time: 116200 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input65
+Time: 116210 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input66
+Time: 116220 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input67
+Time: 116230 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input68
+Time: 116240 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input69
+Time: 116250 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input70
+Time: 116260 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input71
+Time: 116270 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input72
+Time: 116280 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input73
+Time: 116290 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input74
+Time: 116300 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input75
+Time: 116310 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input76
+Time: 116320 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input77
+Time: 116330 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input78
+Time: 116340 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input79
+Time: 116350 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input80
+Time: 116360 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input81
+Time: 116370 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input82
+Time: 116380 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input83
+Time: 116390 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input84
+Time: 116400 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input85
+Time: 116410 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input86
+Time: 116420 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input87
+Time: 116430 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input88
+Time: 116440 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input89
+Time: 116450 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input90
+Time: 116460 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input91
+Time: 116470 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input92
+Time: 116480 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input93
+Time: 116490 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input94
+Time: 116500 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input95
+Time: 116510 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input96
+Time: 117340 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input97
+Time: 117350 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input98
+Time: 117360 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input99
+Time: 117370 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input100
+Time: 117380 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input101
+Time: 117390 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input102
+Time: 117400 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input103
+Time: 117410 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input104
+Time: 117420 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input105
+Time: 117430 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input106
+Time: 117440 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input107
+Time: 117450 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input108
+Time: 117460 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input109
+Time: 117470 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input110
+Time: 117480 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input111
+Time: 117490 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input112
+Time: 117500 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input113
+Time: 117510 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input114
+Time: 117520 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input115
+Time: 117530 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input116
+Time: 117540 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input117
+Time: 117550 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input118
+Time: 117560 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input119
+Time: 117570 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input120
+Time: 117580 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input121
+Time: 117590 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input122
+Time: 117600 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input123
+Time: 117610 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input124
+Time: 117620 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input125
+Time: 117630 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input126
+Time: 117640 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input127
+Time: 117650 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input128
+Time: 118480 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input129
+Time: 118490 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input130
+Time: 118500 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input131
+Time: 118510 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input132
+Time: 118520 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input133
+Time: 118530 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input134
+Time: 118540 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input135
+Time: 118550 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input136
+Time: 118560 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input137
+Time: 118570 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input138
+Time: 118580 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input139
+Time: 118590 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input140
+Time: 118600 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input141
+Time: 118610 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input142
+Time: 118620 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input143
+Time: 118630 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input144
+Time: 118640 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input145
+Time: 118650 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input146
+Time: 118660 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input147
+Time: 118670 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input148
+Time: 118680 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input149
+Time: 118690 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input150
+Time: 118700 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input151
+Time: 118710 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input152
+Time: 118720 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input153
+Time: 118730 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input154
+Time: 118740 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input155
+Time: 118750 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input156
+Time: 118760 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input157
+Time: 118770 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input158
+Time: 118780 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input159
+Time: 118790 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input160
+Time: 119620 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input161
+Time: 119630 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input162
+Time: 119640 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input163
+Time: 119650 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input164
+Time: 119660 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input165
+Time: 119670 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input166
+Time: 119680 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input167
+Time: 119690 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input168
+Time: 119700 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input169
+Time: 119710 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input170
+Time: 119720 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input171
+Time: 119730 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input172
+Time: 119740 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input173
+Time: 119750 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input174
+Time: 119760 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input175
+Time: 119770 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input176
+Time: 119780 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input177
+Time: 119790 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input178
+Time: 119800 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input179
+Time: 119810 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input180
+Time: 119820 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input181
+Time: 119830 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input182
+Time: 119840 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input183
+Time: 119850 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input184
+Time: 119860 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input185
+Time: 119870 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input186
+Time: 119880 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input187
+Time: 119890 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input188
+Time: 119900 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input189
+Time: 119910 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input190
+Time: 119920 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input191
+Time: 119930 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input192
+Time: 120760 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input193
+Time: 120770 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input194
+Time: 120780 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input195
+Time: 120790 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input196
+Time: 120800 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input197
+Time: 120810 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input198
+Time: 120820 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input199
+Time: 120830 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input200
+Time: 120840 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input201
+Time: 120850 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input202
+Time: 120860 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input203
+Time: 120870 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input204
+Time: 120880 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input205
+Time: 120890 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input206
+Time: 120900 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input207
+Time: 120910 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input208
+Time: 120920 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input209
+Time: 120930 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input210
+Time: 120940 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input211
+Time: 120950 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input212
+Time: 120960 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input213
+Time: 120970 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input214
+Time: 120980 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input215
+Time: 120990 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input216
+Time: 121 us  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input217
+Time: 121010 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input218
+Time: 121020 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input219
+Time: 121030 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input220
+Time: 121040 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input221
+Time: 121050 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input222
+Time: 121060 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input223
+Time: 121070 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input224
+Time: 121900 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input225
+Time: 121910 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input226
+Time: 121920 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input227
+Time: 121930 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input228
+Time: 121940 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input229
+Time: 121950 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input230
+Time: 121960 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input231
+Time: 121970 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input232
+Time: 121980 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input233
+Time: 121990 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input234
+Time: 122 us  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input235
+Time: 122010 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input236
+Time: 122020 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input237
+Time: 122030 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input238
+Time: 122040 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input239
+Time: 122050 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input240
+Time: 122060 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input241
+Time: 122070 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input242
+Time: 122080 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input243
+Time: 122090 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input244
+Time: 122100 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input245
+Time: 122110 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input246
+Time: 122120 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input247
+Time: 122130 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input248
+Time: 122140 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input249
+Time: 122150 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input250
+Time: 122160 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input251
+Time: 122170 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input252
+Time: 122180 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input253
+Time: 122190 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input254
+Time: 122200 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input255
+Time: 122210 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input256
+Time: 123040 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input257
+Time: 123050 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input258
+Time: 123060 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input259
+Time: 123070 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input260
+Time: 123080 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input261
+Time: 123090 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input262
+Time: 123100 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input263
+Time: 123110 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input264
+Time: 123120 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input265
+Time: 123130 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input266
+Time: 123140 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input267
+Time: 123150 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input268
+Time: 123160 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input269
+Time: 123170 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input270
+Time: 123180 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input271
+Time: 123190 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input272
+Time: 123200 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input273
+Time: 123210 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input274
+Time: 123220 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input275
+Time: 123230 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input276
+Time: 123240 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input277
+Time: 123250 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input278
+Time: 123260 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input279
+Time: 123270 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input280
+Time: 123280 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input281
+Time: 123290 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input282
+Time: 123300 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input283
+Time: 123310 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input284
+Time: 123320 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input285
+Time: 123330 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input286
+Time: 123340 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input287
+Time: 123350 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input288
+Time: 124180 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input289
+Time: 124190 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input290
+Time: 124200 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input291
+Time: 124210 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input292
+Time: 124220 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input293
+Time: 124230 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input294
+Time: 124240 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input295
+Time: 124250 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input296
+Time: 124260 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input297
+Time: 124270 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input298
+Time: 124280 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input299
+Time: 124290 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input300
+Time: 124300 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input301
+Time: 124310 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input302
+Time: 124320 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input303
+Time: 124330 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input304
+Time: 124340 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input305
+Time: 124350 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input306
+Time: 124360 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input307
+Time: 124370 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input308
+Time: 124380 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input309
+Time: 124390 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input310
+Time: 124400 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input311
+Time: 124410 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input312
+Time: 124420 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input313
+Time: 124430 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input314
+Time: 124440 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input315
+Time: 124450 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input316
+Time: 124460 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input317
+Time: 124470 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input318
+Time: 124480 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input319
+Time: 124490 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input320
+Time: 125320 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input321
+Time: 125330 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input322
+Time: 125340 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input323
+Time: 125350 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input324
+Time: 125360 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input325
+Time: 125370 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input326
+Time: 125380 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input327
+Time: 125390 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input328
+Time: 125400 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input329
+Time: 125410 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input330
+Time: 125420 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input331
+Time: 125430 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input332
+Time: 125440 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input333
+Time: 125450 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input334
+Time: 125460 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input335
+Time: 125470 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input336
+Time: 125480 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input337
+Time: 125490 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input338
+Time: 125500 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input339
+Time: 125510 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input340
+Time: 125520 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input341
+Time: 125530 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input342
+Time: 125540 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input343
+Time: 125550 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input344
+Time: 125560 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input345
+Time: 125570 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input346
+Time: 125580 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input347
+Time: 125590 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input348
+Time: 125600 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input349
+Time: 125610 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input350
+Time: 125620 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input351
+Time: 125630 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input352
+Time: 126460 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input353
+Time: 126470 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input354
+Time: 126480 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input355
+Time: 126490 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input356
+Time: 126500 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input357
+Time: 126510 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input358
+Time: 126520 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input359
+Time: 126530 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input360
+Time: 126540 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input361
+Time: 126550 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input362
+Time: 126560 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input363
+Time: 126570 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input364
+Time: 126580 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input365
+Time: 126590 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input366
+Time: 126600 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input367
+Time: 126610 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input368
+Time: 126620 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input369
+Time: 126630 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input370
+Time: 126640 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input371
+Time: 126650 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input372
+Time: 126660 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input373
+Time: 126670 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input374
+Time: 126680 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input375
+Time: 126690 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input376
+Time: 126700 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input377
+Time: 126710 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input378
+Time: 126720 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input379
+Time: 126730 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input380
+Time: 126740 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input381
+Time: 126750 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input382
+Time: 126760 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input383
+Time: 126770 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input384
+Time: 127600 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input385
+Time: 127610 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input386
+Time: 127620 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input387
+Time: 127630 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input388
+Time: 127640 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input389
+Time: 127650 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input390
+Time: 127660 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input391
+Time: 127670 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input392
+Time: 127680 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input393
+Time: 127690 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input394
+Time: 127700 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input395
+Time: 127710 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input396
+Time: 127720 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input397
+Time: 127730 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input398
+Time: 127740 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input399
+Time: 127750 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input400
+Time: 127760 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input401
+Time: 127770 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input402
+Time: 127780 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input403
+Time: 127790 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input404
+Time: 127800 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input405
+Time: 127810 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input406
+Time: 127820 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input407
+Time: 127830 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input408
+Time: 127840 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input409
+Time: 127850 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input410
+Time: 127860 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input411
+Time: 127870 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input412
+Time: 127880 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input413
+Time: 127890 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input414
+Time: 127900 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing input415
+Time: 127910 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing output0
+Time: 128750 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing output1
+Time: 128760 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing output2
+Time: 128770 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing output3
+Time: 128780 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing output4
+Time: 128790 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing output5
+Time: 128800 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing output6
+Time: 128810 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: writing output7
+Time: 128820 ns  Iteration: 1  Process: /TB_BIKE/UUT/WRITING  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/BIKE.vhd
+Note: KEY CORRECT!
+Time: 128830 ns  Iteration: 0  Process: /TB_BIKE/STIM_PROCESS  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/TB_BIKE.vhd
+Note: CRYPTOGRAM CORRECT!
+Time: 132800 ns  Iteration: 0  Process: /TB_BIKE/STIM_PROCESS  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/fullBIKE_project/fullBIKE_project.srcs/sources_1/imports/B128/TB_BIKE.vhd

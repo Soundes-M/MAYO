@@ -1,0 +1,11 @@
+0.7
+2020.2
+Nov 18 2020
+09:20:35
+/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sim_1/new/sha384_tb.vhd,1654509465,vhdl,,,,sha384_tb,,,,,,,,
+/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/imports/B128/RegisterFDRE.vhd,1654079614,vhdl,/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/new/sha384_retiming_var_size.vhd,,,registerfdre,,,,,,,,
+/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/new/SHA_mod_adder.vhd,1654080475,vhdl,/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/new/sha384_retiming_var_size.vhd,,,sha_mod_adder,,,,,,,,
+/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/new/SHA_settings.vhd,1654080020,vhdl,/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/new/sha384_retiming_var_size.vhd,,,sha_settings,,,,,,,,
+/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/new/counter_inc.vhd,1654080526,vhdl,/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/new/sha384_retiming_var_size.vhd,,,counter_inc,,,,,,,,
+/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/new/counter_inc_init_barrel.vhd,1654080567,vhdl,/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/new/sha384_retiming_var_size.vhd,,,counter_inc_init_barrel,,,,,,,,
+/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHA_project/SHA_project.srcs/sources_1/new/sha384_retiming_var_size.vhd,1654080588,vhdl,,,,sha384_retiming_var_size,,,,,,,,

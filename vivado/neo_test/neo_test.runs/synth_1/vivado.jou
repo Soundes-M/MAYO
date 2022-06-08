@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue May 31 20:22:37 2022
+# Process ID: 280086
+# Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/neo_test/neo_test.runs/synth_1
+# Command line: vivado -log neoTRNG.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source neoTRNG.tcl
+# Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/neo_test/neo_test.runs/synth_1/neoTRNG.vds
+# Journal file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/neo_test/neo_test.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source neoTRNG.tcl -notrace

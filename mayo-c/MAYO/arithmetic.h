@@ -17,11 +17,11 @@ void evaluateP(const unsigned char *inputs, const unsigned char *P1, const unsig
 void evaluateP_vinegar(const unsigned char *inputs, const unsigned char *P1, unsigned char *out);
 void reduce(unsigned char* v, int len);
 
-#if M <= 64
-	#define linear_combination _linear_combination_avx
-#else
+// #if M <= 64
+// 	#define linear_combination _linear_combination_avx
+// #else
 	#define linear_combination _linear_combination
-#endif
+//#endif
 
 
 int sample_oil(const unsigned char *rhs,const unsigned char *linear, unsigned char *solution);

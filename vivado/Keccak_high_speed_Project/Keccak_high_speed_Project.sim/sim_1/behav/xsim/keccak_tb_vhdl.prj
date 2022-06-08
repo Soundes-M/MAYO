@@ -1,0 +1,11 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Keccak_high_speed_Project.srcs/sources_1/imports/high_speed_core/keccak_globals.vhd" \
+"../../../../Keccak_high_speed_Project.srcs/sources_1/imports/high_speed_core/keccak.vhd" \
+"../../../../Keccak_high_speed_Project.srcs/sources_1/imports/high_speed_core/keccak_buffer.vhd" \
+"../../../../Keccak_high_speed_Project.srcs/sources_1/imports/high_speed_core/keccak_round.vhd" \
+"../../../../Keccak_high_speed_Project.srcs/sources_1/imports/high_speed_core/keccak_round_constants_gen.vhd" \
+"../../../../Keccak_high_speed_Project.srcs/sources_1/imports/high_speed_core/tb_keccak.vhd" \
+
+# Do not sort compile order
+nosort

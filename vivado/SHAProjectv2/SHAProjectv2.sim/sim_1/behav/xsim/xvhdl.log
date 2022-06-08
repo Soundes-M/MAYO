@@ -1,0 +1,2 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAProjectv2/SHAProjectv2.srcs/sim_1/imports/new/sha384_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'sha384_tb'

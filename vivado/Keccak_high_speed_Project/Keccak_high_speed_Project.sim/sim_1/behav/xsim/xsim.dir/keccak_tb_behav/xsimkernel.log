@@ -1,0 +1,4 @@
+Running: xsim.dir/keccak_tb_behav/xsimk -simmode gui -wdb keccak_tb_behav.wdb -simrunnum 0 -socket 55219
+Design successfully loaded
+Design Loading Memory Usage: 39192 KB (Peak: 39192 KB)
+Design Loading CPU Usage: 60 ms

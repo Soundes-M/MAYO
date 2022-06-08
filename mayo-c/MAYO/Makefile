@@ -8,7 +8,8 @@ IMPLEMENTATION_SOURCE = MAYO.c test.c ../common/simdxorshift128plus.c arithmetic
 IMPLEMENTATION_HEADERS= MAYO.h keccaklib params.h ../common/simdxorshift128plus.h arithmetic.h
 
 test: $(IMPLEMENTATION_SOURCE) $(IMPLEMENTATION_HEADERS)
-	gcc-9 -o test $(IMPLEMENTATION_SOURCE) $(CFLAGS) $(LFLAGS) -std=c11 -O3 -g -march=native -funroll-loops -Wall -lm
+#-03 opt disabled
+	gcc-9 -o test $(IMPLEMENTATION_SOURCE) $(CFLAGS) $(LFLAGS) -std=c11  -g -march=native -funroll-loops -Wall -lm 
 
 keccaklib: 
 	(cd ../XKCP; make Haswell/libkeccak.a)
