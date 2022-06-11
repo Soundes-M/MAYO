@@ -1,1 +1,0 @@
--wto "c0edb9c48a974defbb2e169370435367" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "neoTRNG_tb_behav" "xil_defaultlib.neoTRNG_tb" -log "elaborate.log" 

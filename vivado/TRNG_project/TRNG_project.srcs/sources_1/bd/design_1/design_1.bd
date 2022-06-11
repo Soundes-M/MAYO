@@ -1,0 +1,50 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xc7z020clg484-1",
+      "gen_directory": "../../../../TRNG_project.gen/sources_1/bd/design_1",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2020.2"
+    },
+    "design_tree": {
+      "neoTRNG_0": "",
+      "fifo_generator_0": ""
+    },
+    "ports": {
+      "clk_100MHz": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "100000000"
+          }
+        }
+      }
+    },
+    "components": {
+      "neoTRNG_0": {
+        "vlnv": "user.org:user:neoTRNG:1.0",
+        "xci_name": "design_1_neoTRNG_0_0",
+        "xci_path": "ip/design_1_neoTRNG_0_0/design_1_neoTRNG_0_0.xci",
+        "inst_hier_path": "neoTRNG_0"
+      },
+      "fifo_generator_0": {
+        "vlnv": "xilinx.com:ip:fifo_generator:13.2",
+        "xci_name": "design_1_fifo_generator_0_0",
+        "xci_path": "ip/design_1_fifo_generator_0_0/design_1_fifo_generator_0_0.xci",
+        "inst_hier_path": "fifo_generator_0"
+      }
+    },
+    "nets": {
+      "clk_100MHz_1": {
+        "ports": [
+          "clk_100MHz",
+          "fifo_generator_0/clk"
+        ]
+      }
+    }
+  }
+}

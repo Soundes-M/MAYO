@@ -1,0 +1,1 @@
+-wto "ee0609dad2574a6bb453d9688122e31f" --incr --debug "typical" --relax --mt "8" -L "work" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "neoTRNG_tb_behav" "work.neoTRNG_tb" "work.glbl" -log "elaborate.log" 
