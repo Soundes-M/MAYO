@@ -27,7 +27,7 @@ package keccak_globals is
 constant num_plane : integer := 5;
 constant num_sheet : integer := 5;
 constant logD : integer :=4;
-constant N : integer := 64;
+constant N : integer := 64; -- modified for 32-bits systems
 
 -- the following 5 blocks of declaration are used for parametrize the core
 

@@ -4,21 +4,4 @@ Running: /opt/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto 694934da44e7
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
-Starting simulation data flow analysis
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling package std.standard
-Compiling package std.textio
-Compiling package ieee.std_logic_1164
-Compiling package synopsys.attributes
-Compiling package ieee.std_logic_misc
-Compiling package ieee.std_logic_arith
-Compiling package xil_defaultlib.keccak_globals
-Compiling package ieee.std_logic_textio
-Compiling package ieee.std_logic_unsigned
-Compiling architecture rtl of entity xil_defaultlib.rho_pi [rho_pi_default]
-Compiling architecture rtl of entity xil_defaultlib.chi_iota_theta [chi_iota_theta_default]
-Compiling architecture rtl of entity xil_defaultlib.keccak_round_constants_gen [keccak_round_constants_gen_defau...]
-Compiling architecture rtl of entity xil_defaultlib.keccak [keccak_default]
-Compiling architecture tb of entity xil_defaultlib.keccak_tb
-Built simulation snapshot keccak_tb_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

@@ -1,0 +1,25 @@
+Vivado Simulator 2020.2
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: /opt/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto a572b227f0ba45d18a695388a9a92fe8 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot shake128_tb_behav xil_defaultlib.shake128_tb -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.params
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package xil_defaultlib.keccak_settings
+Compiling architecture behavioral of entity xil_defaultlib.KECCAK_RC [keccak_rc_default]
+Compiling architecture behavioral of entity xil_defaultlib.KECCAK_ROUND [keccak_round_default]
+Compiling architecture behavioral of entity xil_defaultlib.KECCAK_COUNTER [\KECCAK_COUNTER(max_value=23)\]
+Compiling architecture fsm of entity xil_defaultlib.KECCAK_CONTROLLER [keccak_controller_default]
+Compiling architecture structural of entity xil_defaultlib.KECCAK [keccak_default]
+Compiling architecture behavioral of entity xil_defaultlib.shake128 [shake128_default]
+Compiling architecture behavioral of entity xil_defaultlib.shake128_tb
+Built simulation snapshot shake128_tb_behav
