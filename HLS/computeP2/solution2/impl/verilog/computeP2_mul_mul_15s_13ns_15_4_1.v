@@ -1,7 +1,7 @@
 
 `timescale 1 ns / 1 ps
 
-  module computeP2_mul_mul_15s_13ns_15_4_1_DSP48_1(clk, rst, ce, a, b, p);
+  module computeP2_mul_mul_15s_13ns_15_4_1_DSP48_2(clk, rst, ce, a, b, p);
 input clk;
 input rst;
 input ce;
@@ -51,7 +51,7 @@ output[dout_WIDTH - 1:0] dout;
 
 
 
-computeP2_mul_mul_15s_13ns_15_4_1_DSP48_1 computeP2_mul_mul_15s_13ns_15_4_1_DSP48_1_U(
+computeP2_mul_mul_15s_13ns_15_4_1_DSP48_2 computeP2_mul_mul_15s_13ns_15_4_1_DSP48_2_U(
     .clk( clk ),
     .rst( reset ),
     .ce( ce ),

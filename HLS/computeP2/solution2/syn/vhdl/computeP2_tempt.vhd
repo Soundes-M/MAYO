@@ -9,7 +9,7 @@ use ieee.std_logic_unsigned.all;
 
 entity computeP2_tempt_ram is 
     generic(
-            DWIDTH     : integer := 6; 
+            DWIDTH     : integer := 5; 
             AWIDTH     : integer := 15; 
             MEM_SIZE    : integer := 20160
     ); 
@@ -66,7 +66,7 @@ use IEEE.std_logic_1164.all;
 
 entity computeP2_tempt is
     generic (
-        DataWidth : INTEGER := 6;
+        DataWidth : INTEGER := 5;
         AddressRange : INTEGER := 20160;
         AddressWidth : INTEGER := 15);
     port (

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdfg:DBCdfg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cdfg="http://www.autoesl.com/DBCdfg" timeStamp="1656341330718">
+  <ports id="1" name="A" type="PortType" originalName="A" coreId="1701734764" bitwidth="32">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="2" name="B" type="PortType" originalName="B" coreId="1568753368" bitwidth="32">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="3" name="C" type="PortType" originalName="C" coreId="1568753536" bitwidth="32" direction="DirOut">
+    <dataInputObjs>write</dataInputObjs>
+  </ports>
+  <ports id="4" name="len" type="PortType" originalName="len" coreId="1811939456" bitwidth="32">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <edges id="34" source_obj="//@ports.3" sink_obj="//@blocks.0/@node_objs.0"/>
+  <edges id="37" source_obj="//@ports.0" sink_obj="//@blocks.0/@node_objs.1"/>
+  <edges id="39" source_obj="//@ports.1" sink_obj="//@blocks.0/@node_objs.2"/>
+  <edges id="40" source_obj="//@blocks.0/@node_objs.2" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="41" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@blocks.0/@node_objs.3"/>
+  <edges id="42" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@blocks.0/@node_objs.4"/>
+  <edges id="43" source_obj="//@regions.0/@basic_blocks.0/@node_objs.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0" is_back_edge="1"/>
+  <edges id="44" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0" is_back_edge="1"/>
+  <edges id="47" edge_type="CtrlEdge" source_obj="//@blocks.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.0"/>
+  <edges id="48" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.1"/>
+  <edges id="51" source_obj="//@regions.0/@basic_blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.2"/>
+  <edges id="52" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.2"/>
+  <edges id="53" source_obj="//@regions.0/@basic_blocks.0/@node_objs.2" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.3"/>
+  <edges id="54" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.3"/>
+  <edges id="55" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@regions.0/@basic_blocks.0/@node_objs.3"/>
+  <edges id="58" source_obj="//@regions.0/@basic_blocks.1/@node_objs.0" sink_obj="//@ports.2"/>
+  <edges id="59" source_obj="//@blocks.0/@node_objs.3" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.0"/>
+  <edges id="60" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@regions.0/@basic_blocks.1/@node_objs.1"/>
+  <edges id="161" edge_type="CtrlEdge" source_obj="//@blocks.0" sink_obj="//@regions.0/@basic_blocks.0"/>
+  <edges id="162" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@blocks.1"/>
+  <edges id="163" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.0" sink_obj="//@regions.0/@basic_blocks.1"/>
+  <edges id="164" edge_type="CtrlEdge" source_obj="//@regions.0/@basic_blocks.1" sink_obj="//@regions.0/@basic_blocks.0" is_back_edge="1"/>
+  <blocks id="19" name=".lr.ph" type="BlockType">
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>block_24</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="14" name="len_read" lineNumber="3" originalName="len" fileName="test_func.cpp" fileDirectory=".." coreId="0" contextFuncName="test_func" bitwidth="32" opcode="read" m_display="0" m_topoIndex="1" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="test_func.cpp" linenumber="3" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+      <dataInputObjs>len</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="15" name="A_read" lineNumber="5" fileName="test_func.cpp" fileDirectory=".." coreId="1568755824" contextFuncName="test_func" bitwidth="32" opcode="read" m_display="0" m_topoIndex="2" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="test_func.cpp" linenumber="5" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+      <dataInputObjs>A</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="16" name="B_read" lineNumber="5" fileName="test_func.cpp" fileDirectory=".." coreId="0" contextFuncName="test_func" bitwidth="32" opcode="read" m_display="0" m_topoIndex="3" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="test_func.cpp" linenumber="5" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+      <dataInputObjs>B</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="17" name="add_ln5" lineNumber="5" fileName="test_func.cpp" fileDirectory=".." rtlName="add_ln5_fu_74_p2" coreName="Adder" implIndex="fabric" control="auto" opType="add" coreId="1" contextFuncName="test_func" bitwidth="32" opcode="add" m_display="0" m_delay="2.55" m_topoIndex="4" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="test_func.cpp" linenumber="5" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>write</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="18" name="br_ln4" lineNumber="4" fileName="test_func.cpp" fileDirectory=".." coreId="0" contextFuncName="test_func" opcode="br" m_display="0" m_delay="1.58" m_topoIndex="5" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="test_func.cpp" linenumber="4" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+      <controlInputObjs>block_24</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="test_func.cpp">
+      <validLinenumbers>3</validLinenumbers>
+      <validLinenumbers>5</validLinenumbers>
+      <validLinenumbers>4</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="31" name="._crit_edge.loopexit" type="BlockType">
+    <controlInputObjs>block_24</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="30" name="_ln7" lineNumber="7" fileName="test_func.cpp" fileDirectory=".." coreId="1568763320" contextFuncName="test_func" opcode="ret" nodeLabel="2.0" m_display="0" m_topoIndex="12" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="test_func.cpp" linenumber="7" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+    </node_objs>
+    <fileValidLineNumbers fileName="test_func.cpp">
+      <validLinenumbers>7</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <regions anchor_node="-1" region_type="8" interval="1" typeName="Pipeline" id="82" pipe_depth="1" RegionName="SUM_LOOP">
+    <basic_blocks id="24" name="block_24" type="BlockType">
+      <controlInputObjs>.lr.ph</controlInputObjs>
+      <controlInputObjs>.split</controlInputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>._crit_edge.loopexit</controlOutputObjs>
+      <controlOutputObjs>.split</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="20" name="i" lineNumber="4" originalName="i" fileName="test_func.cpp" fileDirectory=".." coreId="1568758144" contextFuncName="test_func" bitwidth="32" opcode="phi" nodeLabel="1.0" m_display="0" m_topoIndex="6" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="test_func.cpp" linenumber="4" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+        <dataInputObjs>add</dataInputObjs>
+        <dataOutputObjs>add</dataOutputObjs>
+        <dataOutputObjs>icmp</dataOutputObjs>
+        <controlInputObjs>.split</controlInputObjs>
+        <controlInputObjs>.lr.ph</controlInputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="21" name="add_ln4" lineNumber="4" fileName="test_func.cpp" fileDirectory=".." rtlName="add_ln4_fu_80_p2" coreName="Adder" implIndex="fabric" control="auto" opType="add" coreId="1" contextFuncName="test_func" bitwidth="32" opcode="add" nodeLabel="1.0" m_display="0" m_delay="2.55" m_topoIndex="7" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="test_func.cpp" linenumber="4" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataOutputObjs>phi</dataOutputObjs>
+        <constName>empty</constName>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="22" name="icmp_ln4" lineNumber="4" fileName="test_func.cpp" fileDirectory=".." rtlName="icmp_ln4_fu_86_p2" opType="icmp" coreId="1811939456" contextFuncName="test_func" bitwidth="1" opcode="icmp" nodeLabel="1.0" m_display="0" m_delay="2.47" m_topoIndex="8" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="test_func.cpp" linenumber="4" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+        <dataInputObjs>phi</dataInputObjs>
+        <dataInputObjs>read</dataInputObjs>
+        <dataOutputObjs>br</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="23" name="br_ln4" lineNumber="4" fileName="test_func.cpp" fileDirectory=".." coreId="1568760232" contextFuncName="test_func" opcode="br" nodeLabel="1.0" m_display="0" m_topoIndex="9" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="test_func.cpp" linenumber="4" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+        <dataInputObjs>icmp</dataInputObjs>
+        <controlInputObjs>.split</controlInputObjs>
+        <controlInputObjs>._crit_edge.loopexit</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="test_func.cpp">
+        <validLinenumbers>4</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+    <basic_blocks id="29" name=".split" type="BlockType">
+      <controlInputObjs>block_24</controlInputObjs>
+      <controlOutputObjs>phi</controlOutputObjs>
+      <controlOutputObjs>br</controlOutputObjs>
+      <controlOutputObjs>block_24</controlOutputObjs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="27" name="C_write_ln5" lineNumber="5" fileName="test_func.cpp" fileDirectory=".." coreId="0" contextFuncName="test_func" opcode="write" nodeLabel="1.0" m_display="0" m_topoIndex="10" m_clusterGroupNumber="-1">
+        <inlineStackInfo fileName="test_func.cpp" linenumber="5" fileDirectory="/home/osm/Documents/SECT-MAYO/MAYO/vitis" functionName="test_func"/>
+        <dataInputObjs>add</dataInputObjs>
+        <dataOutputObjs>C</dataOutputObjs>
+      </node_objs>
+      <node_objs xsi:type="cdfg:CdfgNode" id="28" name="br_ln0" coreId="0" opcode="br" nodeLabel="1.0" m_display="0" m_topoIndex="11" m_clusterGroupNumber="-1">
+        <controlInputObjs>block_24</controlInputObjs>
+      </node_objs>
+      <fileValidLineNumbers fileName="test_func.cpp">
+        <validLinenumbers>5</validLinenumbers>
+      </fileValidLineNumbers>
+    </basic_blocks>
+  </regions>
+  <ScheduleInfo time="0"/>
+  <ScheduleInfo time="1"/>
+  <ScheduleInfo time="2"/>
+  <regnodes realName="add_ln4_reg_101">
+    <nodeIds>21</nodeIds>
+  </regnodes>
+  <regnodes realName="len_read_reg_91">
+    <nodeIds>14</nodeIds>
+  </regnodes>
+  <regnodes realName="add_ln5_reg_96">
+    <nodeIds>17</nodeIds>
+  </regnodes>
+  <regnodes realName="i_reg_63">
+    <nodeIds>20</nodeIds>
+  </regnodes>
+  <expressionNodes realName="icmp_ln4_fu_86">
+    <nodeIds>22</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln4_fu_80">
+    <nodeIds>21</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln5_fu_74">
+    <nodeIds>17</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="i_phi_fu_67">
+    <nodeIds>20</nodeIds>
+  </expressionNodes>
+  <ioNodes realName="A_read_read_fu_44">
+    <nodeIds>15</nodeIds>
+  </ioNodes>
+  <ioNodes realName="len_read_read_fu_38">
+    <nodeIds>14</nodeIds>
+  </ioNodes>
+  <ioNodes realName="B_read_read_fu_50">
+    <nodeIds>16</nodeIds>
+  </ioNodes>
+  <ioNodes realName="write_ln5_write_fu_56">
+    <nodeIds>27</nodeIds>
+  </ioNodes>
+  <ioPorts name="A">
+    <contents name="read">
+      <nodeIds>15</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="B">
+    <contents name="read">
+      <nodeIds>16</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="C">
+    <contents name="write">
+      <nodeIds>27</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="len">
+    <contents name="read">
+      <nodeIds>14</nodeIds>
+    </contents>
+  </ioPorts>
+  <fsm>
+    <states id="1">
+      <operations id="5" stage="1" latency="1"/>
+      <operations id="6" stage="1" latency="1"/>
+      <operations id="7" stage="1" latency="1"/>
+      <operations id="8" stage="1" latency="1"/>
+      <operations id="9" stage="1" latency="1"/>
+      <operations id="10" stage="1" latency="1"/>
+      <operations id="11" stage="1" latency="1"/>
+      <operations id="12" stage="1" latency="1"/>
+      <operations id="13" stage="1" latency="1"/>
+      <operations id="14" stage="1" latency="1"/>
+      <operations id="15" stage="1" latency="1"/>
+      <operations id="16" stage="1" latency="1"/>
+      <operations id="17" stage="1" latency="1"/>
+      <operations id="18" stage="1" latency="1"/>
+    </states>
+    <states id="2">
+      <operations id="20" stage="1" latency="1"/>
+      <operations id="21" stage="1" latency="1"/>
+      <operations id="22" stage="1" latency="1"/>
+      <operations id="23" stage="1" latency="1"/>
+      <operations id="25" stage="1" latency="1"/>
+      <operations id="26" stage="1" latency="1"/>
+      <operations id="27" stage="1" latency="1"/>
+      <operations id="28" stage="1" latency="1"/>
+    </states>
+    <states id="3">
+      <operations id="30" stage="1" latency="1"/>
+    </states>
+    <transitions inState="1" outState="2">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="2" outState="3">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="2" outState="2">
+      <condition id="-1"/>
+    </transitions>
+  </fsm>
+  <CFGRegionsRoot>
+    <cfgRegions mId="1" mTag="test_func" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="-1" mMaxLatency="-1">
+      <subRegions>2</subRegions>
+      <subRegions>3</subRegions>
+      <subRegions>4</subRegions>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="2" mTag="Entry" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>19</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="3" mTag="SUM_LOOP" mII="1" mDepth="1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="-1" mMaxLatency="-1" mType="1">
+      <basicBlocks>24</basicBlocks>
+      <basicBlocks>29</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="4" mTag="Return" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>31</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+  </CFGRegionsRoot>
+</cdfg:DBCdfg>

@@ -1,26 +1,6 @@
 <AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
     <sourceFile name="">
-        <directive functionName="hls_linear_combination" label="" functionLabel="">
-            <pragma name="TOP">
-                <option name="name" value="hls_linear_combination"/>
-            </pragma>
-        </directive>
-        <directive functionName="hls_linear_combination" label="" functionLabel="">
-            <pragma name="PIPELINE">
-                <option name="off" value="" positionalBoolean="1"/>
-            </pragma>
-        </directive>
-        <directive functionName="hls_linear_combination" label="LOOP_LC12" functionLabel="">
-            <pragma name="PIPELINE">
-                <option name="off" value="" positionalBoolean="1"/>
-            </pragma>
-        </directive>
         <directive functionName="hls_linear_combination" label="LOOP_LC2" functionLabel="">
-            <pragma name="PIPELINE">
-                <option name="off" value="" positionalBoolean="1"/>
-            </pragma>
-        </directive>
-        <directive functionName="hls_linear_combination" label="LOOP_LC1" functionLabel="">
             <pragma name="PIPELINE">
                 <option name="off" value="" positionalBoolean="1"/>
             </pragma>

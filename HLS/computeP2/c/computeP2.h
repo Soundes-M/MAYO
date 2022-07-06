@@ -18,9 +18,9 @@
 typedef unsigned char din_t; // TODO: not sure if this or arrays are needed
 
 // TODO: It could actually look like this
-// void computeP2(din_t oil_space[OIL_SPACE_BYTES], din_t P1[P1_BYTES], din_t P2[P2_BYTES]);
+void computeP2(din_t oil_space[OIL_SPACE_BYTES], din_t P1[P1_BYTES], din_t P2[P2_BYTES]);
 
-void computeP2(din_t * oil_space, din_t* P1, din_t* P2);
+//void computeP2(din_t * oil_space, din_t* P1, din_t* P2);
 void linear_combination(din_t* vecs, din_t* coeffs, int len, din_t* out);
 void add_vectors (din_t *v1, din_t *v2, din_t*out);
 void negate(din_t* v, int len);

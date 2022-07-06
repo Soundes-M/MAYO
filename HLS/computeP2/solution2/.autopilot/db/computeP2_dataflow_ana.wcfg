@@ -37,85 +37,85 @@
          <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2//AESL_inst_computeP2_activity.dataflowTxWaveData.Cycles</obj_property>
          <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2//AESL_inst_computeP2_activity.dataflowTxWaveData.OutStanding</obj_property>
          <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2//AESL_inst_computeP2_activity.dataflowTxTooltipData</obj_property>
-         <wvobject type="group" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_527/grp_linear_combination_fu_527_activity">
-            <obj_property name="label">grp_linear_combination_fu_527_activity</obj_property>
+         <wvobject type="group" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_1_fu_534/grp_add_vectors_1_fu_534_activity">
+            <obj_property name="label">grp_add_vectors_1_fu_534_activity</obj_property>
             <obj_property name="DisplayName">label</obj_property>
             <obj_property name="UseFullPath">true</obj_property>
-            <obj_property name="ElementShortName">grp_linear_combination_fu_527_activity</obj_property>
-            <obj_property name="ObjectShortName">grp_linear_combination_fu_527_activity</obj_property>
+            <obj_property name="ElementShortName">grp_add_vectors_1_fu_534_activity</obj_property>
+            <obj_property name="ObjectShortName">grp_add_vectors_1_fu_534_activity</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
             <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
             <obj_property name="CustomSignalColor">turquoise</obj_property>
             <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
-            <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_527/grp_linear_combination_fu_527_activity.dataflowTxWaveData.Cycles</obj_property>
-            <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_527/grp_linear_combination_fu_527_activity.dataflowTxWaveData.OutStanding</obj_property>
-            <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_527/grp_linear_combination_fu_527_activity.dataflowTxTooltipData</obj_property>
+            <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_1_fu_534/grp_add_vectors_1_fu_534_activity.dataflowTxWaveData.Cycles</obj_property>
+            <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_1_fu_534/grp_add_vectors_1_fu_534_activity.dataflowTxWaveData.OutStanding</obj_property>
+            <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_1_fu_534/grp_add_vectors_1_fu_534_activity.dataflowTxTooltipData</obj_property>
          </wvobject>
-         <wvobject type="group" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_535/grp_linear_combination_2_fu_535_activity">
-            <obj_property name="label">grp_linear_combination_2_fu_535_activity</obj_property>
+         <wvobject type="group" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_544/grp_linear_combination_fu_544_activity">
+            <obj_property name="label">grp_linear_combination_fu_544_activity</obj_property>
             <obj_property name="DisplayName">label</obj_property>
             <obj_property name="UseFullPath">true</obj_property>
-            <obj_property name="ElementShortName">grp_linear_combination_2_fu_535_activity</obj_property>
-            <obj_property name="ObjectShortName">grp_linear_combination_2_fu_535_activity</obj_property>
+            <obj_property name="ElementShortName">grp_linear_combination_fu_544_activity</obj_property>
+            <obj_property name="ObjectShortName">grp_linear_combination_fu_544_activity</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
             <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
             <obj_property name="CustomSignalColor">turquoise</obj_property>
             <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
-            <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_535/grp_linear_combination_2_fu_535_activity.dataflowTxWaveData.Cycles</obj_property>
-            <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_535/grp_linear_combination_2_fu_535_activity.dataflowTxWaveData.OutStanding</obj_property>
-            <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_535/grp_linear_combination_2_fu_535_activity.dataflowTxTooltipData</obj_property>
+            <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_544/grp_linear_combination_fu_544_activity.dataflowTxWaveData.Cycles</obj_property>
+            <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_544/grp_linear_combination_fu_544_activity.dataflowTxWaveData.OutStanding</obj_property>
+            <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_544/grp_linear_combination_fu_544_activity.dataflowTxTooltipData</obj_property>
          </wvobject>
-         <wvobject type="group" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_544/grp_linear_combination_1_fu_544_activity">
-            <obj_property name="label">grp_linear_combination_1_fu_544_activity</obj_property>
+         <wvobject type="group" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_556/grp_linear_combination_2_fu_556_activity">
+            <obj_property name="label">grp_linear_combination_2_fu_556_activity</obj_property>
             <obj_property name="DisplayName">label</obj_property>
             <obj_property name="UseFullPath">true</obj_property>
-            <obj_property name="ElementShortName">grp_linear_combination_1_fu_544_activity</obj_property>
-            <obj_property name="ObjectShortName">grp_linear_combination_1_fu_544_activity</obj_property>
+            <obj_property name="ElementShortName">grp_linear_combination_2_fu_556_activity</obj_property>
+            <obj_property name="ObjectShortName">grp_linear_combination_2_fu_556_activity</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
             <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
             <obj_property name="CustomSignalColor">turquoise</obj_property>
             <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
-            <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_544/grp_linear_combination_1_fu_544_activity.dataflowTxWaveData.Cycles</obj_property>
-            <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_544/grp_linear_combination_1_fu_544_activity.dataflowTxWaveData.OutStanding</obj_property>
-            <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_544/grp_linear_combination_1_fu_544_activity.dataflowTxTooltipData</obj_property>
+            <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_556/grp_linear_combination_2_fu_556_activity.dataflowTxWaveData.Cycles</obj_property>
+            <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_556/grp_linear_combination_2_fu_556_activity.dataflowTxWaveData.OutStanding</obj_property>
+            <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_556/grp_linear_combination_2_fu_556_activity.dataflowTxTooltipData</obj_property>
          </wvobject>
-         <wvobject type="group" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_553/grp_remainder_fu_553_activity">
-            <obj_property name="label">grp_remainder_fu_553_activity</obj_property>
+         <wvobject type="group" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_567/grp_linear_combination_1_fu_567_activity">
+            <obj_property name="label">grp_linear_combination_1_fu_567_activity</obj_property>
             <obj_property name="DisplayName">label</obj_property>
             <obj_property name="UseFullPath">true</obj_property>
-            <obj_property name="ElementShortName">grp_remainder_fu_553_activity</obj_property>
-            <obj_property name="ObjectShortName">grp_remainder_fu_553_activity</obj_property>
+            <obj_property name="ElementShortName">grp_linear_combination_1_fu_567_activity</obj_property>
+            <obj_property name="ObjectShortName">grp_linear_combination_1_fu_567_activity</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
             <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
             <obj_property name="CustomSignalColor">turquoise</obj_property>
             <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
-            <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_553/grp_remainder_fu_553_activity.dataflowTxWaveData.Cycles</obj_property>
-            <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_553/grp_remainder_fu_553_activity.dataflowTxWaveData.OutStanding</obj_property>
-            <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_553/grp_remainder_fu_553_activity.dataflowTxTooltipData</obj_property>
+            <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_567/grp_linear_combination_1_fu_567_activity.dataflowTxWaveData.Cycles</obj_property>
+            <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_567/grp_linear_combination_1_fu_567_activity.dataflowTxWaveData.OutStanding</obj_property>
+            <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_567/grp_linear_combination_1_fu_567_activity.dataflowTxTooltipData</obj_property>
          </wvobject>
-         <wvobject type="group" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_558/grp_remainder_fu_558_activity">
-            <obj_property name="label">grp_remainder_fu_558_activity</obj_property>
+         <wvobject type="group" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_2_fu_579/grp_add_vectors_2_fu_579_activity">
+            <obj_property name="label">grp_add_vectors_2_fu_579_activity</obj_property>
             <obj_property name="DisplayName">label</obj_property>
             <obj_property name="UseFullPath">true</obj_property>
-            <obj_property name="ElementShortName">grp_remainder_fu_558_activity</obj_property>
-            <obj_property name="ObjectShortName">grp_remainder_fu_558_activity</obj_property>
+            <obj_property name="ElementShortName">grp_add_vectors_2_fu_579_activity</obj_property>
+            <obj_property name="ObjectShortName">grp_add_vectors_2_fu_579_activity</obj_property>
             <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
             <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
             <obj_property name="EnumTransactionColorTable">0=blank ffff=blank 0bad=#FF0000</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
             <obj_property name="CustomSignalColor">turquoise</obj_property>
             <obj_property name="EnumTransactionValueTable">65535=blank</obj_property>
-            <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_558/grp_remainder_fu_558_activity.dataflowTxWaveData.Cycles</obj_property>
-            <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_558/grp_remainder_fu_558_activity.dataflowTxWaveData.OutStanding</obj_property>
-            <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_558/grp_remainder_fu_558_activity.dataflowTxTooltipData</obj_property>
+            <obj_property name="Render_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_2_fu_579/grp_add_vectors_2_fu_579_activity.dataflowTxWaveData.Cycles</obj_property>
+            <obj_property name="Value_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_2_fu_579/grp_add_vectors_2_fu_579_activity.dataflowTxWaveData.OutStanding</obj_property>
+            <obj_property name="Detail_Data">/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_2_fu_579/grp_add_vectors_2_fu_579_activity.dataflowTxTooltipData</obj_property>
          </wvobject>
       </wvobject>
    </wvobject>
@@ -126,25 +126,25 @@
    <wvobject type="group" fp_name="AESL_inst_computeP2_group">
       <obj_property name="label">AESL_inst_computeP2</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="protoinst" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_527/grp_linear_combination_fu_527_activity">
-         <obj_property name="ElementShortName">grp_linear_combination_fu_527_activity</obj_property>
-         <obj_property name="ObjectShortName">grp_linear_combination_fu_527_activity</obj_property>
+      <wvobject type="protoinst" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_1_fu_534/grp_add_vectors_1_fu_534_activity">
+         <obj_property name="ElementShortName">grp_add_vectors_1_fu_534_activity</obj_property>
+         <obj_property name="ObjectShortName">grp_add_vectors_1_fu_534_activity</obj_property>
       </wvobject>
-      <wvobject type="protoinst" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_535/grp_linear_combination_2_fu_535_activity">
-         <obj_property name="ElementShortName">grp_linear_combination_2_fu_535_activity</obj_property>
-         <obj_property name="ObjectShortName">grp_linear_combination_2_fu_535_activity</obj_property>
+      <wvobject type="protoinst" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_544/grp_linear_combination_fu_544_activity">
+         <obj_property name="ElementShortName">grp_linear_combination_fu_544_activity</obj_property>
+         <obj_property name="ObjectShortName">grp_linear_combination_fu_544_activity</obj_property>
       </wvobject>
-      <wvobject type="protoinst" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_544/grp_linear_combination_1_fu_544_activity">
-         <obj_property name="ElementShortName">grp_linear_combination_1_fu_544_activity</obj_property>
-         <obj_property name="ObjectShortName">grp_linear_combination_1_fu_544_activity</obj_property>
+      <wvobject type="protoinst" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_556/grp_linear_combination_2_fu_556_activity">
+         <obj_property name="ElementShortName">grp_linear_combination_2_fu_556_activity</obj_property>
+         <obj_property name="ObjectShortName">grp_linear_combination_2_fu_556_activity</obj_property>
       </wvobject>
-      <wvobject type="protoinst" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_553/grp_remainder_fu_553_activity">
-         <obj_property name="ElementShortName">grp_remainder_fu_553_activity</obj_property>
-         <obj_property name="ObjectShortName">grp_remainder_fu_553_activity</obj_property>
+      <wvobject type="protoinst" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_567/grp_linear_combination_1_fu_567_activity">
+         <obj_property name="ElementShortName">grp_linear_combination_1_fu_567_activity</obj_property>
+         <obj_property name="ObjectShortName">grp_linear_combination_1_fu_567_activity</obj_property>
       </wvobject>
-      <wvobject type="protoinst" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_558/grp_remainder_fu_558_activity">
-         <obj_property name="ElementShortName">grp_remainder_fu_558_activity</obj_property>
-         <obj_property name="ObjectShortName">grp_remainder_fu_558_activity</obj_property>
+      <wvobject type="protoinst" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_2_fu_579/grp_add_vectors_2_fu_579_activity">
+         <obj_property name="ElementShortName">grp_add_vectors_2_fu_579_activity</obj_property>
+         <obj_property name="ObjectShortName">grp_add_vectors_2_fu_579_activity</obj_property>
       </wvobject>
       <wvobject type="group" fp_name="AESL_inst_computeP2_Handshake_group">
          <obj_property name="label">Block-level handshake</obj_property>
@@ -162,101 +162,101 @@
             <obj_property name="ObjectShortName">ap_done</obj_property>
          </wvobject>
       </wvobject>
-      <wvobject type="group" fp_name="grp_linear_combination_fu_527_group">
-         <obj_property name="label">grp_linear_combination_fu_527</obj_property>
+      <wvobject type="group" fp_name="grp_add_vectors_1_fu_534_group">
+         <obj_property name="label">grp_add_vectors_1_fu_534</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject type="group" fp_name="grp_linear_combination_fu_527_Handshake_group">
+         <wvobject type="group" fp_name="grp_add_vectors_1_fu_534_Handshake_group">
             <obj_property name="label">Block-level handshake</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_527/ap_start">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_1_fu_534/ap_start">
                <obj_property name="ElementShortName">ap_start</obj_property>
                <obj_property name="ObjectShortName">ap_start</obj_property>
             </wvobject>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_527/ap_ready">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_1_fu_534/ap_ready">
                <obj_property name="ElementShortName">ap_ready</obj_property>
                <obj_property name="ObjectShortName">ap_ready</obj_property>
             </wvobject>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_527/ap_done">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_1_fu_534/ap_done">
                <obj_property name="ElementShortName">ap_done</obj_property>
                <obj_property name="ObjectShortName">ap_done</obj_property>
             </wvobject>
          </wvobject>
       </wvobject>
-      <wvobject type="group" fp_name="grp_linear_combination_2_fu_535_group">
-         <obj_property name="label">grp_linear_combination_2_fu_535</obj_property>
+      <wvobject type="group" fp_name="grp_linear_combination_fu_544_group">
+         <obj_property name="label">grp_linear_combination_fu_544</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject type="group" fp_name="grp_linear_combination_2_fu_535_Handshake_group">
+         <wvobject type="group" fp_name="grp_linear_combination_fu_544_Handshake_group">
             <obj_property name="label">Block-level handshake</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_535/ap_start">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_544/ap_start">
                <obj_property name="ElementShortName">ap_start</obj_property>
                <obj_property name="ObjectShortName">ap_start</obj_property>
             </wvobject>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_535/ap_ready">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_544/ap_ready">
                <obj_property name="ElementShortName">ap_ready</obj_property>
                <obj_property name="ObjectShortName">ap_ready</obj_property>
             </wvobject>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_535/ap_done">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_fu_544/ap_done">
                <obj_property name="ElementShortName">ap_done</obj_property>
                <obj_property name="ObjectShortName">ap_done</obj_property>
             </wvobject>
          </wvobject>
       </wvobject>
-      <wvobject type="group" fp_name="grp_linear_combination_1_fu_544_group">
-         <obj_property name="label">grp_linear_combination_1_fu_544</obj_property>
+      <wvobject type="group" fp_name="grp_linear_combination_2_fu_556_group">
+         <obj_property name="label">grp_linear_combination_2_fu_556</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject type="group" fp_name="grp_linear_combination_1_fu_544_Handshake_group">
+         <wvobject type="group" fp_name="grp_linear_combination_2_fu_556_Handshake_group">
             <obj_property name="label">Block-level handshake</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_544/ap_start">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_556/ap_start">
                <obj_property name="ElementShortName">ap_start</obj_property>
                <obj_property name="ObjectShortName">ap_start</obj_property>
             </wvobject>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_544/ap_ready">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_556/ap_ready">
                <obj_property name="ElementShortName">ap_ready</obj_property>
                <obj_property name="ObjectShortName">ap_ready</obj_property>
             </wvobject>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_544/ap_done">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_2_fu_556/ap_done">
                <obj_property name="ElementShortName">ap_done</obj_property>
                <obj_property name="ObjectShortName">ap_done</obj_property>
             </wvobject>
          </wvobject>
       </wvobject>
-      <wvobject type="group" fp_name="grp_remainder_fu_553_group">
-         <obj_property name="label">grp_remainder_fu_553</obj_property>
+      <wvobject type="group" fp_name="grp_linear_combination_1_fu_567_group">
+         <obj_property name="label">grp_linear_combination_1_fu_567</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject type="group" fp_name="grp_remainder_fu_553_Handshake_group">
+         <wvobject type="group" fp_name="grp_linear_combination_1_fu_567_Handshake_group">
             <obj_property name="label">Block-level handshake</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_553/ap_start">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_567/ap_start">
                <obj_property name="ElementShortName">ap_start</obj_property>
                <obj_property name="ObjectShortName">ap_start</obj_property>
             </wvobject>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_553/ap_ready">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_567/ap_ready">
                <obj_property name="ElementShortName">ap_ready</obj_property>
                <obj_property name="ObjectShortName">ap_ready</obj_property>
             </wvobject>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_553/ap_done">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_linear_combination_1_fu_567/ap_done">
                <obj_property name="ElementShortName">ap_done</obj_property>
                <obj_property name="ObjectShortName">ap_done</obj_property>
             </wvobject>
          </wvobject>
       </wvobject>
-      <wvobject type="group" fp_name="grp_remainder_fu_558_group">
-         <obj_property name="label">grp_remainder_fu_558</obj_property>
+      <wvobject type="group" fp_name="grp_add_vectors_2_fu_579_group">
+         <obj_property name="label">grp_add_vectors_2_fu_579</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject type="group" fp_name="grp_remainder_fu_558_Handshake_group">
+         <wvobject type="group" fp_name="grp_add_vectors_2_fu_579_Handshake_group">
             <obj_property name="label">Block-level handshake</obj_property>
             <obj_property name="DisplayName">label</obj_property>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_558/ap_start">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_2_fu_579/ap_start">
                <obj_property name="ElementShortName">ap_start</obj_property>
                <obj_property name="ObjectShortName">ap_start</obj_property>
             </wvobject>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_558/ap_ready">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_2_fu_579/ap_ready">
                <obj_property name="ElementShortName">ap_ready</obj_property>
                <obj_property name="ObjectShortName">ap_ready</obj_property>
             </wvobject>
-            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_remainder_fu_558/ap_done">
+            <wvobject type="logic" fp_name="/apatb_computeP2_top/AESL_inst_computeP2/grp_add_vectors_2_fu_579/ap_done">
                <obj_property name="ElementShortName">ap_done</obj_property>
                <obj_property name="ObjectShortName">ap_done</obj_property>
             </wvobject>

@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vitis HLS Report for 'hls_linear_combination'" level="0">
-<item name = "Date">Wed May 25 14:54:58 2022
+<item name = "Date">Wed Jul  6 20:18:09 2022
 </item>
 <item name = "Version">2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)</item>
 <item name = "Project">hls_linear_combination</item>
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">10.00 ns, 6.912 ns, 2.70 ns</column>
+<column name="ap_clk">10.00 ns, 6.716 ns, 2.70 ns</column>
 </table>
 </item>
 </section>
@@ -35,9 +35,15 @@
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- Loop 1">60, 60, 1, 1, 1, 60, yes</column>
-<column name="- LOOP_LC1">?, ?, 1, 1, 1, ?, yes</column>
-<column name="- LOOP_LC2">95, 95, 37, 1, 1, 60, yes</column>
+<column name="- READ_LOOP_VEC1">?, ?, 249, -, -, ?, no</column>
+<column name=" + READ_LOOP_VEC2">60, 60, 1, 1, 1, 60, yes</column>
+<column name=" + READ_LOOP_VEC2">60, 60, 1, 1, 1, 60, yes</column>
+<column name=" + READ_LOOP_VEC2">60, 60, 1, 1, 1, 60, yes</column>
+<column name=" + READ_LOOP_VEC2">60, 60, 1, 1, 1, 60, yes</column>
+<column name="- READ_LOOP_COEFS">60, 60, 1, 1, 1, 60, yes</column>
+<column name="- EX_LOOP_LC1">?, ?, 5, 1, 1, ?, yes</column>
+<column name="- EX_LOOP_LC2">95, 95, 37, 1, 1, 60, yes</column>
+<column name="- WRITE_LOOP_OUT">61, 61, 3, 1, 1, 60, yes</column>
 </table>
 </item>
 </section>

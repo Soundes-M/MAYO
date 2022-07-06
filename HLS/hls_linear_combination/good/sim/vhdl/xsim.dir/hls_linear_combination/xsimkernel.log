@@ -1,0 +1,7 @@
+Running: xsim.dir/hls_linear_combination/xsimk -simmode gui -wdb hls_linear_combination.wdb -simrunnum 0 -socket 36091
+Design successfully loaded
+Design Loading Memory Usage: 35328 KB (Peak: 35328 KB)
+Design Loading CPU Usage: 20 ms
+Simulation completed
+Simulation Memory Usage: 125688 KB (Peak: 174596 KB)
+Simulation CPU Usage: 570 ms

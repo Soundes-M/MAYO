@@ -121,7 +121,12 @@ int keygen(unsigned char* pk, unsigned char* sk){
 
 	// together P1 and oil_space can be used to compute the rest of the public key P2 (line 6 in the pseudocode)
 	// P2 is part of the public key. P1 is only implicitely part of the public key, since the public seed is stored there
+	write_to_file("P1_in.dat",oil_space,OIL_SPACE_BYTES);
 	computeP2(oil_space, P1, PK_P2(pk));
+	write_to_file("P1_golden.dat",oil_space,OIL_SPACE_BYTES);
+	write_to_file("P2_golden.dat",PK_P2(pk),P2_BYTES);
+	write_to_file("oil_space_golden.dat",oil_space,OIL_SPACE_BYTES);
+
 
 	return 0;
 }

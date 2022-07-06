@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Jul  6 20:47:07 2022
+# Process ID: 965983
+# Current directory: /home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/sim/vhdl
+# Command line: vivado -source open_wave.tcl
+# Log file: /home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/sim/vhdl/vivado.log
+# Journal file: /home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/sim/vhdl/vivado.jou
+#-----------------------------------------------------------
+start_gui
+source open_wave.tcl
+open_wave_config /home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/sim/vhdl/hls_linear_combination.wcfg

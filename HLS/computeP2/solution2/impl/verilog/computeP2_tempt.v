@@ -5,7 +5,7 @@
 `timescale 1 ns / 1 ps
 module computeP2_tempt_ram (addr0, ce0, d0, we0, q0,  clk);
 
-parameter DWIDTH = 6;
+parameter DWIDTH = 5;
 parameter AWIDTH = 15;
 parameter MEM_SIZE = 20160;
 
@@ -43,7 +43,7 @@ module computeP2_tempt(
     d0,
     q0);
 
-parameter DataWidth = 32'd6;
+parameter DataWidth = 32'd5;
 parameter AddressRange = 32'd20160;
 parameter AddressWidth = 32'd15;
 input reset;

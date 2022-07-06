@@ -5,11 +5,29 @@
                 <option name="name" value="hls_linear_combination"/>
             </pragma>
         </directive>
-        <directive functionName="hls_linear_combination" label="LOOP_LC2" functionLabel="">
-            <pragma name="PIPELINE"/>
+        <directive functionName="hls_linear_combination" label="" functionLabel="">
+            <pragma name="INTERFACE">
+                <option name="axis" value="" positionalBoolean="mode"/>
+                <option name="register" value="" positionalBoolean="1"/>
+                <option name="both" value="" positionalBoolean="register_mode"/>
+                <option name="port" value="vecs" positionalBoolean="4"/>
+            </pragma>
         </directive>
-        <directive functionName="hls_linear_combination" label="LOOP_LC1" functionLabel="">
-            <pragma name="PIPELINE"/>
+        <directive functionName="hls_linear_combination" label="" functionLabel="">
+            <pragma name="INTERFACE">
+                <option name="axis" value="" positionalBoolean="mode"/>
+                <option name="register" value="" positionalBoolean="1"/>
+                <option name="both" value="" positionalBoolean="register_mode"/>
+                <option name="port" value="coeffs" positionalBoolean="4"/>
+            </pragma>
+        </directive>
+        <directive functionName="hls_linear_combination" label="" functionLabel="">
+            <pragma name="INTERFACE">
+                <option name="axis" value="" positionalBoolean="mode"/>
+                <option name="register" value="" positionalBoolean="1"/>
+                <option name="both" value="" positionalBoolean="register_mode"/>
+                <option name="port" value="out" positionalBoolean="4"/>
+            </pragma>
         </directive>
         <directive functionName="hls_linear_combination" label="" functionLabel="">
             <pragma name="ARRAY_PARTITION">
@@ -18,6 +36,27 @@
                 <option name="factor" value="16"/>
                 <option name="dim" value="1"/>
             </pragma>
+        </directive>
+        <directive functionName="hls_linear_combination" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="vec_l" positionalBoolean="4"/>
+                <option name="cyclic" value="" positionalBoolean="type"/>
+                <option name="factor" value="6"/>
+                <option name="dim" value="2"/>
+            </pragma>
+        </directive>
+        <directive functionName="hls_linear_combination" label="READ_LOOP_VEC1" functionLabel="">
+            <pragma name="PIPELINE">
+                <option name="off" value="" positionalBoolean="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="hls_linear_combination" label="READ_LOOP_VEC1" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="4"/>
+            </pragma>
+        </directive>
+        <directive functionName="hls_linear_combination" label="READ_LOOP_VEC2" functionLabel="">
+            <pragma name="PIPELINE"/>
         </directive>
     </sourceFile>
 </AutoPilot:ProjectResources>

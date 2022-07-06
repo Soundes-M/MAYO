@@ -5,7 +5,7 @@
 `timescale 1 ns / 1 ps
 module computeP2_temp_ram (addr0, ce0, d0, we0, q0, addr1, ce1, d1, we1, q1,  clk);
 
-parameter DWIDTH = 6;
+parameter DWIDTH = 5;
 parameter AWIDTH = 15;
 parameter MEM_SIZE = 20160;
 
@@ -23,6 +23,9 @@ input clk;
 
 reg [DWIDTH-1:0] ram[0:MEM_SIZE-1];
 
+initial begin
+    $readmemh("./computeP2_temp_ram.dat", ram);
+end
 
 
 
@@ -63,7 +66,7 @@ module computeP2_temp(
     d1,
     q1);
 
-parameter DataWidth = 32'd6;
+parameter DataWidth = 32'd5;
 parameter AddressRange = 32'd20160;
 parameter AddressWidth = 32'd15;
 input reset;

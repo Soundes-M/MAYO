@@ -4,7 +4,7 @@
 // ==============================================================
 
 extern "C" void AESL_WRAP_hls_linear_combination (
-volatile void* vecs,
-volatile void* coeffs,
+hls::stream<int > vecs,
+hls::stream<int > coeffs,
 int len,
-volatile void* out);
+hls::stream<int > out);

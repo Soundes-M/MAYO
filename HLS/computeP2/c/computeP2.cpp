@@ -4,14 +4,9 @@
 
 #include "computeP2.h"
 
-// TODO: Figure out the big temp arrays
-// TODO: Figure out why the din_t inputs
-// TODO: Figure out the loop and better optimize
-
-
-void computeP2(din_t* oil_space, din_t* P1, din_t* P2){
+void computeP2(din_t oil_space[OIL_SPACE_BYTES], din_t P1[P1_BYTES], din_t P2[P2_BYTES]){
 #pragma HLS pipeline off
-	din_t temp[M*(N-O)*O];
+	static din_t temp[M*(N-O)*O];
  // TODO: Might be too big needs partition 20160
 
 	int p1_counter = 0;
@@ -43,7 +38,7 @@ void computeP2(din_t* oil_space, din_t* P1, din_t* P2){
 			}
 		}
 
-	din_t tempt[M*(N-O)*O] = {0};
+	static din_t tempt[M*(N-O)*O];
 
 	LOOP_P3:for (int i = 0; i < O; ++i)
 	{
@@ -89,7 +84,7 @@ void negate(din_t* v, int len){
 		// Increase memory read latency
 		v[i] = tmp;
 		// Modulo replaced
-		v[i] = hls::remainder((uint32_t)(31-tmp),(uint32_t)31); //TODO: Not sure if 16 or 32
+		v[i] = (31 - tmp) % 31;
 
 	}
 }
@@ -113,7 +108,7 @@ void linear_combination(din_t* vecs, din_t* coeffs, int len, din_t* out){
 	{
 #pragma HLS pipeline off
 		// Modulo replaced
-		out[i] = (din_t) hls::remainder(accumulators[i],(uint32_t)31);
+		out[i] = accumulators[i] % 31 ;
 	}
 }
 
@@ -123,6 +118,6 @@ void add_vectors (din_t *v1, din_t *v2, din_t *out){
 	{
 		uint32_t tmp = (uint16_t) v1[i] + (uint16_t) v2[i] ;
 		// Modulo replaced
-		out[i] = hls::remainder(tmp,(uint32_t)31);
+		out[i] = tmp % 31;
 	}
 }

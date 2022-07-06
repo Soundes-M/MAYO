@@ -28584,25 +28584,20 @@ namespace hls {
 typedef unsigned char din_t;
 
 
+__attribute__((sdx_kernel("computeP2", 0))) void computeP2(din_t oil_space[336], din_t P1[115920], din_t P2[1260]);
 
 
-__attribute__((sdx_kernel("computeP2", 0))) void computeP2(din_t * oil_space, din_t* P1, din_t* P2);
 void linear_combination(din_t* vecs, din_t* coeffs, int len, din_t* out);
 void add_vectors (din_t *v1, din_t *v2, din_t*out);
 void negate(din_t* v, int len);
 # 6 "computeP2/c/computeP2.cpp" 2
 
-
-
-
-
-
-__attribute__((sdx_kernel("computeP2", 0))) void computeP2(din_t* oil_space, din_t* P1, din_t* P2){
+__attribute__((sdx_kernel("computeP2", 0))) void computeP2(din_t oil_space[336], din_t P1[115920], din_t P2[1260]){_ssdm_SpecArrayDimSize(oil_space, 336);_ssdm_SpecArrayDimSize(P1, 115920);_ssdm_SpecArrayDimSize(P2, 1260);
 #pragma HLS TOP name=computeP2
-# 12 "computeP2/c/computeP2.cpp"
+# 7 "computeP2/c/computeP2.cpp"
 
 #pragma HLS pipeline off
- din_t temp[60*(62 -6)*6];
+ static din_t temp[60*(62 -6)*6];
 
 
  int p1_counter = 0;
@@ -28680,7 +28675,7 @@ void negate(din_t* v, int len){
 
  v[i] = tmp;
 
-  v[i] = hls::remainder((uint32_t)(31-tmp),(uint32_t)31);
+  v[i] = (31 - tmp) % 31;
 
  }
 }
@@ -28703,11 +28698,11 @@ void linear_combination(din_t* vecs, din_t* coeffs, int len, din_t* out){
  LOOP_LC2: for (int i = 0; i < 60; ++i)
  {
 #pragma HLS PIPELINE
-# 113 "computeP2/c/computeP2.cpp"
+# 108 "computeP2/c/computeP2.cpp"
 
 #pragma HLS pipeline off
 
- out[i] = (din_t) hls::remainder(accumulators[i],(uint32_t)31);
+ out[i] = accumulators[i] % 31 ;
  }
 }
 
@@ -28716,10 +28711,10 @@ void add_vectors (din_t *v1, din_t *v2, din_t *out){
  add_vectors_label1:for (int i = 0; i < 60; ++i)
  {
 #pragma HLS UNROLL factor=4
-# 123 "computeP2/c/computeP2.cpp"
+# 118 "computeP2/c/computeP2.cpp"
 
   uint32_t tmp = (uint16_t) v1[i] + (uint16_t) v2[i] ;
 
-  out[i] = hls::remainder(tmp,(uint32_t)31);
+  out[i] = tmp % 31;
  }
 }

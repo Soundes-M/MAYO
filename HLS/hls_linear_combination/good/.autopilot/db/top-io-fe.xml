@@ -1,14 +1,14 @@
 <root versionMajor = "1" versionMinor = "5">
   <kernel src_name="hls_linear_combination" language="c" hwCtrl="ap_ctrl_hs" mem_layout="fpga64-xilinx-none">
     <args>
-      <arg id="0" access_type="r" src_name="vecs" src_type="unsigned char*" src_isptr="1" src_bitwidth="8" src_size_or_depth="1">
-        <hw hw_usage="data" hw_interface="Register" hw_name="vecs" hw_bitwidth="8" hw_size_or_depth="1">
-          <constraint constraint_type="pragma interface" mode="ap_none" register_option="0"/>
+      <arg id="0" access_type="r" src_name="vecs" src_type="stream&lt;axis_data, 0&gt;&amp;" src_isptr="1" src_bitwidth="16" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="AXI-Stream" hw_name="vecs_V" hw_bitwidth="16" hw_size_or_depth="1">
+          <constraint constraint_type="pragma interface" mode="axis" register_option="0" register_mode="both"/>
         </hw>
       </arg>
-      <arg id="1" access_type="r" src_name="coeffs" src_type="unsigned char*" src_isptr="1" src_bitwidth="8" src_size_or_depth="1">
-        <hw hw_usage="data" hw_interface="Register" hw_name="coeffs" hw_bitwidth="8" hw_size_or_depth="1">
-          <constraint constraint_type="pragma interface" mode="ap_none" register_option="0"/>
+      <arg id="1" access_type="r" src_name="coeffs" src_type="stream&lt;axis_data, 0&gt;&amp;" src_isptr="1" src_bitwidth="16" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="AXI-Stream" hw_name="coeffs_V" hw_bitwidth="16" hw_size_or_depth="1">
+          <constraint constraint_type="pragma interface" mode="axis" register_option="0" register_mode="both"/>
         </hw>
       </arg>
       <arg id="2" access_type="r" src_name="len" src_type="int" src_isptr="0" src_bitwidth="32" src_size_or_depth="1">
@@ -16,9 +16,9 @@
           <constraint constraint_type="pragma interface" mode="ap_none" register_option="0"/>
         </hw>
       </arg>
-      <arg id="3" access_type="w" src_name="out" src_type="unsigned char*" src_isptr="1" src_bitwidth="8" src_size_or_depth="1">
-        <hw hw_usage="data" hw_interface="Register" hw_name="out" hw_bitwidth="8" hw_size_or_depth="1">
-          <constraint constraint_type="pragma interface" mode="ap_none" register_option="0"/>
+      <arg id="3" access_type="w" src_name="out" src_type="stream&lt;axis_data, 0&gt;&amp;" src_isptr="1" src_bitwidth="16" src_size_or_depth="1">
+        <hw hw_usage="data" hw_interface="AXI-Stream" hw_name="out_V" hw_bitwidth="16" hw_size_or_depth="1">
+          <constraint constraint_type="pragma interface" mode="axis" register_option="0" register_mode="both"/>
         </hw>
       </arg>
     </args>

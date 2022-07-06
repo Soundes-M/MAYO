@@ -9,7 +9,7 @@ use ieee.std_logic_unsigned.all;
 
 entity computeP2_temp_ram is 
     generic(
-            DWIDTH     : integer := 6; 
+            DWIDTH     : integer := 5; 
             AWIDTH     : integer := 15; 
             MEM_SIZE    : integer := 20160
     ); 
@@ -34,7 +34,7 @@ architecture rtl of computeP2_temp_ram is
 signal addr0_tmp : std_logic_vector(AWIDTH-1 downto 0); 
 signal addr1_tmp : std_logic_vector(AWIDTH-1 downto 0); 
 type mem_array is array (0 to MEM_SIZE-1) of std_logic_vector (DWIDTH-1 downto 0); 
-shared variable ram : mem_array;
+shared variable ram : mem_array := (others=>(others=>'0'));
 
 
 begin 
@@ -96,7 +96,7 @@ use IEEE.std_logic_1164.all;
 
 entity computeP2_temp is
     generic (
-        DataWidth : INTEGER := 6;
+        DataWidth : INTEGER := 5;
         AddressRange : INTEGER := 20160;
         AddressWidth : INTEGER := 15);
     port (

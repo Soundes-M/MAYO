@@ -57,6 +57,8 @@
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/lnx64/tools/systemc/include"/>
                                     									
+                                    <listOptionValue builtIn="false" value="/home/osm/Documents/SECT-MAYO/MAYO/HLS"/>
+                                    									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/include/ap_sysc"/>
@@ -90,6 +92,8 @@
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/lnx64/tools/auto_cc/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/lnx64/tools/systemc/include"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="/home/osm/Documents/SECT-MAYO/MAYO/HLS"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/include"/>
                                     									
@@ -255,6 +259,8 @@
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/lnx64/tools/systemc/include"/>
                                     									
+                                    <listOptionValue builtIn="false" value="/home/osm/Documents/SECT-MAYO/MAYO/HLS"/>
+                                    									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/include/ap_sysc"/>
@@ -278,6 +284,8 @@
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/lnx64/tools/auto_cc/include"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/lnx64/tools/systemc/include"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="/home/osm/Documents/SECT-MAYO/MAYO/HLS"/>
                                     									
                                     <listOptionValue builtIn="false" value="/opt/Xilinx/Vitis_HLS/2020.2/include"/>
                                     									

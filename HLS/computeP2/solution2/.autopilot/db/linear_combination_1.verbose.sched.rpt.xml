@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vitis HLS Report for 'linear_combination_1'" level="0">
-<item name = "Date">Wed May 11 12:58:25 2022
+<item name = "Date">Tue Jun 28 01:00:36 2022
 </item>
 <item name = "Version">2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)</item>
 <item name = "Project">computeP2</item>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="8">, min, max, min, max, min, max, Type</keys>
-<column name="">17215, 19315, 0.172 ms, 0.193 ms, 17215, 19315, none</column>
+<column name="">19371, 19371, 0.194 ms, 0.194 ms, 19371, 19371, none</column>
 </table>
 </item>
 <item name = "Detail">
@@ -36,9 +36,9 @@
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
 <column name="- Loop 1">60, 60, 1, -, -, 60, no</column>
-<column name="- LOOP_LC1">16912, 16912, 302, -, -, 56, no</column>
+<column name="- LOOP_LC1">16968, 16968, 303, -, -, 56, no</column>
 <column name=" + LOOP_LC12">300, 300, 5, -, -, 60, no</column>
-<column name="- LOOP_LC2">240, 2340, 4 ~ 39, -, -, 60, no</column>
+<column name="- LOOP_LC2">2340, 2340, 39, -, -, 60, no</column>
 </table>
 </item>
 </section>

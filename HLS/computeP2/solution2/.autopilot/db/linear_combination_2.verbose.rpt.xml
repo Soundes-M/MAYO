@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vitis HLS Report for 'linear_combination_2'" level="0">
-<item name = "Date">Wed May 11 12:58:31 2022
+<item name = "Date">Tue Jun 28 01:00:44 2022
 </item>
 <item name = "Version">2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)</item>
 <item name = "Project">computeP2</item>
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">10.00 ns, 6.878 ns, 2.70 ns</column>
+<column name="ap_clk">10.00 ns, 6.457 ns, 2.70 ns</column>
 </table>
 </item>
 </section>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="8">, min, max, min, max, min, max, Type</keys>
-<column name="">17215, 19315, 0.172 ms, 0.193 ms, 17215, 19315, none</column>
+<column name="">19311, 19311, 0.193 ms, 0.193 ms, 19311, 19311, none</column>
 </table>
 </item>
 <item name = "Detail">
@@ -36,9 +36,9 @@
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
 <column name="- Loop 1">60, 60, 1, -, -, 60, no</column>
-<column name="- LOOP_LC1">16912, 16912, 302, -, -, 56, no</column>
+<column name="- LOOP_LC1">16968, 16968, 303, -, -, 56, no</column>
 <column name=" + LOOP_LC12">300, 300, 5, -, -, 60, no</column>
-<column name="- LOOP_LC2">240, 2340, 4 ~ 39, -, -, 60, no</column>
+<column name="- LOOP_LC2">2280, 2280, 38, -, -, 60, no</column>
 </table>
 </item>
 </section>
@@ -51,12 +51,12 @@
 <item name = "Summary"><table name="" hasTotal="1">
 <keys size="6">Name, BRAM_18K, DSP, FF, LUT, URAM</keys>
 <column name="DSP">-, 1, -, -, -</column>
-<column name="Expression">-, -, 0, 218, -</column>
+<column name="Expression">-, -, 0, 164, -</column>
 <column name="FIFO">-, -, -, -, -</column>
 <column name="Instance">-, -, 394, 238, -</column>
 <column name="Memory">1, -, 0, 0, -</column>
-<column name="Multiplexer">-, -, -, 297, -</column>
-<column name="Register">-, -, 169, -, -</column>
+<column name="Multiplexer">-, -, -, 279, -</column>
+<column name="Register">-, -, 156, -, -</column>
 <specialColumn name="Available">280, 220, 106400, 53200, 0</specialColumn>
 <specialColumn name="Utilization (%)">~0, ~0, ~0, 1, 0</specialColumn>
 </table>
@@ -65,12 +65,12 @@
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="1">
 <keys size="7">Instance, Module, BRAM_18K, DSP, FF, LUT, URAM</keys>
-<column name="urem_32ns_6ns_32_36_seq_1_U20">urem_32ns_6ns_32_36_seq_1, 0, 0, 394, 238, 0</column>
+<column name="urem_32ns_6ns_5_36_seq_1_U31">urem_32ns_6ns_5_36_seq_1, 0, 0, 394, 238, 0</column>
 </table>
 </item>
 <item name = "DSP"><table name="" hasTotal="0">
 <keys size="3">Instance, Module, Expression</keys>
-<column name="mac_muladd_8ns_8ns_32ns_32_4_1_U21">mac_muladd_8ns_8ns_32ns_32_4_1, i0 + i1 * i2</column>
+<column name="mac_muladd_5ns_8ns_32ns_32_4_1_U32">mac_muladd_5ns_8ns_32ns_32_4_1, i0 + i1 * i2</column>
 </table>
 </item>
 <item name = "Memory"><table name="" hasTotal="1">
@@ -84,24 +84,18 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="add_ln102_fu_202_p2">+, 0, 0, 14, 6, 1</column>
-<column name="add_ln106_fu_253_p2">+, 0, 0, 14, 6, 1</column>
-<column name="add_ln108_2_fu_274_p2">+, 0, 0, 20, 15, 15</column>
-<column name="add_ln108_fu_248_p2">+, 0, 0, 20, 15, 15</column>
-<column name="add_ln112_fu_292_p2">+, 0, 0, 14, 6, 1</column>
-<column name="empty_20_fu_182_p2">+, 0, 0, 14, 6, 1</column>
-<column name="empty_23_fu_238_p2">-, 0, 0, 14, 13, 13</column>
-<column name="sub_ln657_fu_363_p2">-, 0, 0, 14, 1, 6</column>
-<column name="empty_26_fu_309_p2">icmp, 0, 0, 18, 32, 5</column>
-<column name="empty_27_fu_315_p2">icmp, 0, 0, 18, 32, 1</column>
-<column name="exitcond136_fu_193_p2">icmp, 0, 0, 10, 6, 4</column>
-<column name="icmp_ln102_fu_208_p2">icmp, 0, 0, 10, 6, 5</column>
-<column name="icmp_ln106_fu_268_p2">icmp, 0, 0, 10, 6, 4</column>
-<column name="icmp_ln112_fu_303_p2">icmp, 0, 0, 10, 6, 4</column>
-<column name="empty_28_fu_321_p2">or, 0, 0, 2, 1, 1</column>
-<column name="rem_V_6_fu_353_p3">select, 0, 0, 5, 1, 5</column>
-<column name="select_ln175_fu_369_p3">select, 0, 0, 6, 1, 6</column>
-<column name="rem_V_4_fu_348_p2">xor, 0, 0, 5, 5, 2</column>
+<column name="add_ln101_fu_273_p2">+, 0, 0, 14, 6, 1</column>
+<column name="add_ln103_2_fu_294_p2">+, 0, 0, 20, 15, 15</column>
+<column name="add_ln103_fu_264_p2">+, 0, 0, 20, 15, 15</column>
+<column name="add_ln107_fu_308_p2">+, 0, 0, 14, 6, 1</column>
+<column name="add_ln97_fu_204_p2">+, 0, 0, 14, 6, 1</column>
+<column name="empty_18_fu_187_p2">+, 0, 0, 14, 6, 1</column>
+<column name="empty_22_fu_254_p2">+, 0, 0, 14, 9, 9</column>
+<column name="empty_21_fu_244_p2">-, 0, 0, 14, 13, 13</column>
+<column name="exitcond136_fu_198_p2">icmp, 0, 0, 10, 6, 4</column>
+<column name="icmp_ln101_fu_288_p2">icmp, 0, 0, 10, 6, 4</column>
+<column name="icmp_ln107_fu_319_p2">icmp, 0, 0, 10, 6, 4</column>
+<column name="icmp_ln97_fu_214_p2">icmp, 0, 0, 10, 6, 5</column>
 </table>
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
@@ -109,33 +103,27 @@
 <column name="accumulators_address0">20, 4, 6, 24</column>
 <column name="accumulators_d0">14, 3, 32, 96</column>
 <column name="ap_NS_fsm">209, 48, 1, 48</column>
-<column name="ap_phi_mux_p_Val2_s_phi_fu_170_p4">9, 2, 6, 12</column>
-<column name="empty_reg_122">9, 2, 6, 12</column>
-<column name="i_1_reg_155">9, 2, 6, 12</column>
-<column name="i_reg_133">9, 2, 6, 12</column>
-<column name="j_reg_144">9, 2, 6, 12</column>
-<column name="p_Val2_s_reg_166">9, 2, 6, 12</column>
+<column name="empty_reg_139">9, 2, 6, 12</column>
+<column name="i_1_reg_172">9, 2, 6, 12</column>
+<column name="i_reg_150">9, 2, 6, 12</column>
+<column name="j_reg_161">9, 2, 6, 12</column>
 </table>
 </item>
 <item name = "Register"><table name="" hasTotal="1">
 <keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
-<column name="accumulators_addr_2_reg_434">6, 0, 6, 0</column>
-<column name="add_ln102_reg_408">6, 0, 6, 0</column>
-<column name="add_ln106_reg_421">6, 0, 6, 0</column>
-<column name="add_ln108_reg_416">15, 0, 15, 0</column>
-<column name="add_ln112_reg_444">6, 0, 6, 0</column>
+<column name="accumulators_addr_2_reg_398">6, 0, 6, 0</column>
+<column name="add_ln101_reg_385">6, 0, 6, 0</column>
+<column name="add_ln103_reg_375">15, 0, 15, 0</column>
+<column name="add_ln107_reg_408">6, 0, 6, 0</column>
+<column name="add_ln97_reg_362">6, 0, 6, 0</column>
 <column name="ap_CS_fsm">47, 0, 47, 0</column>
-<column name="empty_28_reg_462">1, 0, 1, 0</column>
-<column name="empty_reg_122">6, 0, 6, 0</column>
-<column name="i_1_reg_155">6, 0, 6, 0</column>
-<column name="i_reg_133">6, 0, 6, 0</column>
-<column name="j_reg_144">6, 0, 6, 0</column>
-<column name="p_Val2_s_reg_166">6, 0, 6, 0</column>
-<column name="r_sig_V_reg_473">1, 0, 1, 0</column>
-<column name="reg_178">32, 0, 32, 0</column>
-<column name="trunc_ln167_reg_466">5, 0, 5, 0</column>
-<column name="zext_ln102_reg_403">8, 0, 16, 8</column>
-<column name="zext_ln112_reg_449">6, 0, 64, 58</column>
+<column name="empty_reg_139">6, 0, 6, 0</column>
+<column name="i_1_reg_172">6, 0, 6, 0</column>
+<column name="i_reg_150">6, 0, 6, 0</column>
+<column name="j_reg_161">6, 0, 6, 0</column>
+<column name="reg_183">32, 0, 32, 0</column>
+<column name="zext_ln101_reg_380">8, 0, 13, 5</column>
+<column name="zext_ln107_reg_413">6, 0, 64, 58</column>
 </table>
 </item>
 </section>
@@ -151,15 +139,18 @@
 <column name="ap_done">out, 1, ap_ctrl_hs, linear_combination.2, return value</column>
 <column name="ap_idle">out, 1, ap_ctrl_hs, linear_combination.2, return value</column>
 <column name="ap_ready">out, 1, ap_ctrl_hs, linear_combination.2, return value</column>
-<column name="coeffs_read">in, 8, ap_none, coeffs_read, scalar</column>
+<column name="oil_space_address0">out, 9, ap_memory, oil_space, array</column>
+<column name="oil_space_ce0">out, 1, ap_memory, oil_space, array</column>
+<column name="oil_space_q0">in, 8, ap_memory, oil_space, array</column>
 <column name="vecs_address0">out, 15, ap_memory, vecs, array</column>
 <column name="vecs_ce0">out, 1, ap_memory, vecs, array</column>
-<column name="vecs_q0">in, 6, ap_memory, vecs, array</column>
+<column name="vecs_q0">in, 5, ap_memory, vecs, array</column>
 <column name="vecs_offset">in, 15, ap_none, vecs_offset, scalar</column>
+<column name="coeffs">in, 9, ap_none, coeffs, scalar</column>
 <column name="out_r_address0">out, 6, ap_memory, out_r, array</column>
 <column name="out_r_ce0">out, 1, ap_memory, out_r, array</column>
 <column name="out_r_we0">out, 1, ap_memory, out_r, array</column>
-<column name="out_r_d0">out, 6, ap_memory, out_r, array</column>
+<column name="out_r_d0">out, 5, ap_memory, out_r, array</column>
 </table>
 </item>
 </section>
