@@ -6,7 +6,7 @@
         <DownStreamTool name=""/>
     </downStreamTool>
     <config>
-        <config_export format="ip_catalog" output="/home/osm/Documents/SECT-MAYO/MAYO/HLS/ips/hls_linear_combination.zip" rtl="vhdl"/>
+        <config_export display_name="Linear_combination" format="ip_catalog" output="/home/osm/Documents/SECT-MAYO/MAYO/HLS/ips/hls_linear_combination.zip" rtl="vhdl" vendor="TU_Berlin"/>
     </config>
     <UIConfigurations>
         <UIAutosynConf hideTrivialOp="true" isBasedOnBoard="false" isSolutionDirty="false" isStopAskAgain="false" showDetailDesignViewer="false">
@@ -41,15 +41,15 @@
         </UIAutoSimConf>
     </UIConfigurations>
     <ExportDesign askAgain="true" evaluate="false" flow="false" flowChoice="syn" formatName="ip_catalog" output="/home/osm/Documents/SECT-MAYO/MAYO/HLS/ips/hls_linear_combination.zip" rtl="verilog" rtlButton="true" rtlCombo="vhdl">
-        <Format formatName="ip_catalog"/>
+        <Format display_name="Linear_combination" formatName="ip_catalog" vendor="TU_Berlin" description="" library="" ipname="hls_linear_combination" version="" taxonomy=""/>
         <Format formatName="sysgen"/>
         <Format formatName="sysgen_ise"/>
         <Format formatName="syn_dcp"/>
         <Format formatName="pcore" use_netlist="none"/>
         <Format formatName="xo"/>
     </ExportDesign>
-    <Simulation argv="">
-        <SimFlow askAgain="true" clangSanitizer="false" compile="false" compileChoice="gcc" disableDeadlockDetect="false" dumpTrace="all" enableDataflowProfiling="false" enableFifoSizing="false" name="cosim" optimizeCompile="false" random_stall="false" reduce_diskspace="false" setup="false" toolName="auto" waveDebug="true" ldflags="" mflags="" compiledLibrary="">
+    <Simulation>
+        <SimFlow askAgain="true" clangSanitizer="false" compile="false" compileChoice="gcc" disableDeadlockDetect="false" dumpTrace="all" enableDataflowProfiling="false" enableFifoSizing="false" name="cosim" optimizeCompile="false" random_stall="false" reduce_diskspace="false" setup="false" toolName="Auto" waveDebug="true">
             <Rtl active="false" name="systemc"/>
             <Rtl active="false" name="verilog"/>
             <Rtl active="true" name="vhdl"/>

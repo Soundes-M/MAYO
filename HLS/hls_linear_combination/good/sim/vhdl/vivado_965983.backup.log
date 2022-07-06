@@ -19,3 +19,7 @@ current_fileset: Time (s): cpu = 00:00:24 ; elapsed = 00:00:29 . Memory (MB): pe
 # open_wave_database hls_linear_combination.wdb
 open_wave_config /home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/sim/vhdl/hls_linear_combination.wcfg
 open_wave_database: Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 7295.352 ; gain = 67.035 ; free physical = 179 ; free virtual = 4199
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Jul  6 23:56:49 2022...

@@ -12,9 +12,9 @@ add_files -tb hls_linear_combination/hls_linear_combinations_test.cpp -cflags "-
 open_solution "good" -flow_target vivado
 set_part {xc7z020-clg484-1}
 create_clock -period 10 -name default
-config_export -format ip_catalog -output /home/osm/Documents/SECT-MAYO/MAYO/HLS/ips/hls_linear_combination.zip -rtl vhdl
+config_export -display_name Linear_combination -format ip_catalog -output /home/osm/Documents/SECT-MAYO/MAYO/HLS/ips/hls_linear_combination.zip -rtl vhdl -vendor {TU Berlin}
 source "./hls_linear_combination/good/directives.tcl"
 csim_design -clean
 csynth_design
 cosim_design -wave_debug -trace_level all -rtl vhdl
-export_design -rtl vhdl -format ip_catalog -output /home/osm/Documents/SECT-MAYO/MAYO/HLS/ips/hls_linear_combination.zip
+export_design -rtl vhdl -format ip_catalog -vendor "TU_Berlin" -display_name "Linear_combination" -output /home/osm/Documents/SECT-MAYO/MAYO/HLS/ips/hls_linear_combination.zip

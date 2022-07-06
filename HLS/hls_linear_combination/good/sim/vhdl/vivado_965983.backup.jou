@@ -12,3 +12,4 @@
 start_gui
 source open_wave.tcl
 open_wave_config /home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/good/sim/vhdl/hls_linear_combination.wcfg
+close_sim
