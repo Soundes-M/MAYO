@@ -6,13 +6,15 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : Thu Jul 14 19:35:22 2022
--- Last update : Thu Jul 14 23:00:16 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
 -- Copyright (c) 2022 TU Berlin
 -------------------------------------------------------------------------------
 -- Description: 
+-- Negate Input and write Output to BRAM (4 Bytes/CLK)
+-- Works only in chunks of 4!
+-- BRAM SIZE : Max attached BRAM SIZE (Xilinx Max 8K). log2(Size) is needed.
 --------------------------------------------------------------------------------
 -- Revisions:  Revisions and documentation are controlled by
 -- the revision control system (RCS).  The RCS should be consulted
@@ -25,11 +27,6 @@ use IEEE.NUMERIC_STD.all;
 
 use work.MAYO_COMMON.all;
 
---------------------------------------------------------------------------------
--- Negate Input and write Output to BRAM (4 Bytes/CLK)
--- Works only in chunks of 4!
--- BRAM SIZE : Max attached BRAM SIZE (Xilinx Max 8K). log2(Size) is needed.
---------------------------------------------------------------------------------
 
 entity mayo_negate is
 	generic (
@@ -52,7 +49,7 @@ end mayo_negate;
 
 architecture Behavioral of mayo_negate is
 
-	type state is (idle, read1, write1, write2, write3, done);
+	type state is (idle, read1, read2, write1, write2, write3, done);
 	signal t_state   : state := idle;
 	signal s_rstb    : std_logic;
 	signal s_enb     : std_logic;

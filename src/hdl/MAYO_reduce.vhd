@@ -6,30 +6,27 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : Thu Jul 14 19:35:22 2022
--- Last update : Thu Jul 14 23:03:45 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
 -- Copyright (c) 2022 TU Berlin
 -------------------------------------------------------------------------------
 -- Description: 
+-- Reduces Input and write Output to BRAM (4 Bytes/CLK)
+-- Works only in chunks of 4!
+-- BRAM SIZE : Max attached BRAM SIZE (Xilinx Max 8K). log2(Size) is needed.
 --------------------------------------------------------------------------------
 -- Revisions:  Revisions and documentation are controlled by
 -- the revision control system (RCS).  The RCS should be consulted
 -- on revision history.
 -------------------------------------------------------------------------------
 
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;
 
 use work.MAYO_COMMON.all;
-
---------------------------------------------------------------------------------
--- Reduces Input and write Output to BRAM (4 Bytes/CLK)
--- Works only in chunks of 4!
--- BRAM SIZE : Max attached BRAM SIZE (Xilinx Max 8K). log2(Size) is needed.
---------------------------------------------------------------------------------
 
 entity mayo_reduce is
 	generic (
@@ -52,7 +49,7 @@ end mayo_reduce;
 
 architecture Behavioral of mayo_reduce is
 
-	type state is (idle, read1, write1, write2, done);
+	type state is (idle, read1, read2, write1, write2, done);
 	signal t_state   : state := idle;
 	signal s_rstb    : std_logic;
 	signal s_enb     : std_logic;
