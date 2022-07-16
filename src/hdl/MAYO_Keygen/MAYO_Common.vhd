@@ -10,6 +10,10 @@ PACKAGE MAYO_COMMON IS
 
   FUNCTION P1MONOMIALS (N : positive; O : POSITIVE) RETURN real;
 
+  -- MOD Alternative
+  FUNCTION BARRETT_REDUCTION(A  : NATURAL) return natural;
+  FUNCTION MERSENNE_REDUCTION(A : NATURAL) return natural;
+
   -- Parameters ---
   -- MAYO
   CONSTANT PRIME      : positive := 31; -- q =31
@@ -40,5 +44,32 @@ PACKAGE BODY MAYO_COMMON IS
     return ((N - O) * (N - O + 1) / 2 + (N - O) * O);
 
   END FUNCTION;
+
+  function BARRETT_REDUCTION(A : NATURAL) return natural is
+    -- https://en.wikipedia.org/wiki/Barrett_reduction
+    -- k = 9
+    -- m = [512/31] = 16
+    -- e = 1/31 - 16/512 = 16/15872
+    --> A < 992 (Tested on 1022)
+    variable q : integer ;
+  begin
+    q := A * 16;
+    q := to_unsigned(q,16) srl 9;
+    A := A - (q * PRIME);
+    if (PRIME <= A) then
+      A := A - PRIME;
+    end if;
+    return A;
+  end function BARRETT_REDUCTION;
+
+  function MERSENNE_REDUCTION (A : NATURAL) return natural is
+    -- 31 = 2^5 -1  --> S = 5
+    variable i : integer;
+  begin
+    i := unsigned(std_logic_vector(to_unsigned(A,16)) & PRIME) + unsigned(std_logic_vector(to_unsigned(A,16)) srl 5);
+    if (PRIME <= A) then
+      A := A - PRIME;
+    end if;
+  end function MERSENNE_REDUCTION;
 
 END PACKAGE BODY MAYO_COMMON;
