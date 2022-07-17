@@ -32,6 +32,8 @@ use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;
 use work.UTILS_COMMON.all;
 
+
+-- Non Vivado Version
 entity bram_demux is
 	generic(
 		BRAM_COUNT : natural := 1 -- OUTPUT Instances (MAX32)
@@ -70,5 +72,6 @@ begin
 			end if;
 		end loop ;
 	end process;
+
 
 end architecture ; -- rtl
