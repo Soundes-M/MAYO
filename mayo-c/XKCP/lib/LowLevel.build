@@ -141,11 +141,20 @@ The fragments below allow to select the desired implementation of the permutatio
         <gcc>-fomit-frame-pointer</gcc>
         <gcc>-O2</gcc>
         <gcc>-g0</gcc>
+
+        <!-- 
+        ## Uncomment for ZYNQ CORTEX A9 LIB    
+            <gcc>-mthumb</gcc>
+        <gcc>-mcpu=cortex-a9</gcc>
+        <gcc>-mfpu=neon-vfpv3 -mfloat-abi=hard</gcc>
+        <gcc>-mtune=cortex-a9</gcc> -->
         <gcc>-march=native</gcc>
         <gcc>-mtune=native</gcc>
+
     </fragment>
 
-    <!-- Keccak-p[200] -->
+    <!-- Keccak-p[200]
+ -->
 
     <fragment name="width200">
     </fragment>
