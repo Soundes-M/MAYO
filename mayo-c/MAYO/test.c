@@ -164,14 +164,14 @@ int main(){
 	for(int i=0 ; i<TRIALS; i++){
 		t = rdtsc();
 		printf("Keygen..\n");
-		write_to_file("golden/sk_0.dat",sk,SK_BYTES);
-		write_to_file("golden/pk_0.dat",pk,PK_BYTES);
+		//write_to_file("golden/sk_0.dat",sk,SK_BYTES);
+		//write_to_file("golden/pk_0.dat",pk,PK_BYTES);
 
 		keygen(pk,sk);
 
 		keygenTime += rdtsc()-t;
-		write_to_file("golden/sk_1.dat",sk,SK_BYTES);
-		write_to_file("golden/pk_1.dat",pk,PK_BYTES);
+		//write_to_file("golden/sk_1.dat",sk,SK_BYTES);
+		//write_to_file("golden/pk_1.dat",pk,PK_BYTES);
 
 		t = rdtsc();
 		sign(message, MESSAGE_LENGTH, sk, sig);
