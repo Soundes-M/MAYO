@@ -5,7 +5,7 @@ USE ieee.numeric_std.ALL;
 PACKAGE UTILS_COMMON IS
 
   -- PARAMETERS
-  CONSTANT PORT_WIDTH : natural : 32; -- 32 Bit arch
+  CONSTANT PORT_WIDTH : natural := 32; -- 32 Bit arch
 
   -- BRAM
   type i_bram is record -- IN from BRAM
@@ -20,8 +20,11 @@ PACKAGE UTILS_COMMON IS
     o_we   : std_logic_vector (3 downto 0);
   end record o_bram;
 
-  type demux_output is array (natrual range <>) of o_bram;
-  type demux_input is array (natrual range <>) of i_bram;
+  type demux_output is array (natural range <>) of o_bram;
+  type demux_input is array (natural range <>) of i_bram;
+
+  -- Used for small storage (LUTs)
+  type array_32 is array(natural range <>) of std_logic_vector(31 downto 0);
 
 END PACKAGE UTILS_COMMON;
 

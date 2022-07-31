@@ -30,7 +30,6 @@ entity bram_demux_1_2 is
 end entity bram_demux_1_2;
 
 architecture rtl of bram_demux_1_2 is
-
 	signal i_bram_out  : o_bram;
 	signal o_bram_in   : i_bram;
 	signal i_brams_in  : demux_input(0 to 1);
