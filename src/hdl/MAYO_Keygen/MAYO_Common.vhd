@@ -1,3 +1,22 @@
+--------------------------------------------------------------------------------
+-- Title       : Common Package
+-- Project     : MAYO
+--------------------------------------------------------------------------------
+-- File        : MAYO_Common.vhd
+-- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
+-- Company     : TU Berlin
+-- Platform    : Designed for Zynq 7000 Series
+-- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
+--------------------------------------------------------------------------------
+-- Copyright (c) 2022 TU Berlin
+-------------------------------------------------------------------------------
+-- Description: 
+--------------------------------------------------------------------------------
+-- Revisions:  Revisions and documentation are controlled by
+-- the revision control system (RCS).  The RCS should be consulted
+-- on revision history.
+-------------------------------------------------------------------------------
+
 LIBRARY IEEE;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;

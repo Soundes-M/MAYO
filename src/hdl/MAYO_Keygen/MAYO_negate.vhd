@@ -49,7 +49,7 @@ end mayo_negate;
 
 architecture Behavioral of mayo_negate is
 
-	type state is (idle, read1, read2, write1, write2, write3, done);
+	type state is (idle, read1, read2, write1, write2, done);
 	signal t_state   : state := idle;
 	signal s_rstb    : std_logic;
 	signal s_enb     : std_logic;
@@ -98,20 +98,13 @@ begin
 						t_state <= write1;
 
 					when write1 =>
-						s_data(7 downto 0)   <= std_logic_vector(to_unsigned(PRIME,8) - unsigned(s_data(7 downto 0)));
-						s_data(15 downto 8)  <= std_logic_vector(to_unsigned(PRIME,8) - unsigned(s_data(15 downto 8)));
-						s_data(23 downto 16) <= std_logic_vector(to_unsigned(PRIME,8) - unsigned(s_data(23 downto 16)));
-						s_data(31 downto 24) <= std_logic_vector(to_unsigned(PRIME,8) - unsigned(s_data(31 downto 24)));
+						s_data(7 downto 0)   <= std_logic_vector((to_unsigned(PRIME,8) - unsigned(s_data(7 downto 0))) mod PRIME);
+						s_data(15 downto 8)  <= std_logic_vector((to_unsigned(PRIME,8) - unsigned(s_data(15 downto 8))) mod PRIME);
+						s_data(23 downto 16) <= std_logic_vector((to_unsigned(PRIME,8) - unsigned(s_data(23 downto 16))) mod PRIME);
+						s_data(31 downto 24) <= std_logic_vector((to_unsigned(PRIME,8) - unsigned(s_data(31 downto 24))) mod PRIME);
 						t_state              <= write2;
 
 					when write2 =>
-						s_data(7 downto 0)   <= std_logic_vector(unsigned(s_data(7 downto 0)) mod PRIME);
-						s_data(15 downto 8)  <= std_logic_vector(unsigned(s_data(15 downto 8)) mod PRIME);
-						s_data(23 downto 16) <= std_logic_vector(unsigned(s_data(23 downto 16)) mod PRIME);
-						s_data(31 downto 24) <= std_logic_vector(unsigned(s_data(31 downto 24)) mod PRIME);
-						t_state              <= write3;
-
-					when write3 =>
 						s_enb   <= '1';
 						s_web   <= "1111";                                  -- WRITE result back to ADR
 						s_addrb <= std_logic_vector(unsigned(s_addrb) + 4); -- Go to next ADR

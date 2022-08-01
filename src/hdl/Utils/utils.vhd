@@ -1,3 +1,24 @@
+--------------------------------------------------------------------------------
+-- Title       : Utility Package
+-- Project     : MAYO
+--------------------------------------------------------------------------------
+-- File        : utils.vhd
+-- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
+-- Company     : TU Berlin
+-- Created     : 
+-- Last update : Sun Jul 31 18:42:10 2022
+-- Platform    : Designed for Zynq 7000 Series
+-- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
+--------------------------------------------------------------------------------
+-- Copyright (c) 2022 TU Berlin
+-------------------------------------------------------------------------------
+-- Description: 
+--------------------------------------------------------------------------------
+-- Revisions:  Revisions and documentation are controlled by
+-- the revision control system (RCS).  The RCS should be consulted
+-- on revision history.
+-------------------------------------------------------------------------------
+
 LIBRARY IEEE;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -24,7 +45,9 @@ PACKAGE UTILS_COMMON IS
   type demux_input is array (natural range <>) of i_bram;
 
   -- Used for small storage (LUTs)
-  type array_32 is array(natural range <>) of std_logic_vector(31 downto 0);
+  type array_32 is array(natural range <>) of std_logic_vector(31 downto 0); 
+  type array_16 is array(natural range <>) of std_logic_vector(15 downto 0); 
+  type array_8 is array(natural range <>) of std_logic_vector(7 downto 0); 
 
 END PACKAGE UTILS_COMMON;
 
