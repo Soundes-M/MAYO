@@ -127,7 +127,7 @@ begin
 							o_mema_en <= '0';
 							t_state   <= hash1;
 						else
-							s_seed_index <= s_seed_index +1 ;
+							s_seed_index <= s_seed_index +4  ;
 							t_state      <= read_seed_1;
 						end if;
 					when hash1 =>
@@ -205,7 +205,7 @@ begin
 							if (i < 3) then
 								i := i +1;
 							else
-								s_ctr     <= s_ctr +1;
+								s_ctr     <= s_ctr +4 ;
 								t_state_1 <= main1; -- Get next 32 Bits of randomness
 							end if;
 						else
@@ -220,7 +220,7 @@ begin
 								i         := i +1 ;
 								t_state_1 <= main3;
 							else
-								s_ctr     <= s_ctr +1;
+								s_ctr     <= s_ctr + 4;
 								t_state_1 <= main1; -- Get next 32 Bits of randomness
 							end if;
 						else
@@ -240,7 +240,7 @@ begin
 						if (s_oil_index > OIL_SPACE_RANGE -1) then
 							t_state_1 <= done;
 						else
-							s_oil_index <= s_oil_index +1;
+							s_oil_index <= s_oil_index +4 ;
 							t_state_1   <= main3;
 						end if;
 

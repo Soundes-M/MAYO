@@ -47,7 +47,7 @@ architecture Behavioral of mayo_add_vectors is
 	signal s_main_start : std_logic := '0';
 	signal s_io_read    : std_logic := '0';
 
-	constant INDEX : natural := M /4;
+	constant INDEX : natural := M;
 
 	signal s_v1_addr  : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V1 ADR in BRAM
 	signal s_v2_addr  : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V2 ADR in BRAM
@@ -114,7 +114,7 @@ begin
 						if (s_ctr > INDEX) then
 							s_state <= done;
 						else
-							s_ctr   <= s_ctr +1;
+							s_ctr   <= s_ctr + 4;
 							s_state <= waiting;
 						end if;
 

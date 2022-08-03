@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sun Jul 31 18:42:10 2022
+-- Last update : Wed Aug  3 14:59:21 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -40,6 +40,11 @@ PACKAGE UTILS_COMMON IS
     o_rst  : std_logic;
     o_we   : std_logic_vector (3 downto 0);
   end record o_bram;
+
+  type bram_t is record
+    o_bram : o_bram; -- TO BRAM
+    i_bram : i_bram; -- FROM BRAM
+  end record bram_t;
 
   type demux_output is array (natural range <>) of o_bram;
   type demux_input is array (natural range <>) of i_bram;
