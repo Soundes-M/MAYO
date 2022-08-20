@@ -48,7 +48,7 @@ PACKAGE MAYO_COMMON IS
   CONSTANT OIL_SPACE_BYTES : positive := (O*(N-O)) ;
 
   ------------------------------------------------------------------------------
-  -- Address Mapping (In BRAM) -32Bits ADR Length 
+  -- Address Mapping (In BRAM I) - 32Bits ADR Length 
   -- SECRET KEY (SK)
   CONSTANT SK_BASE_ADR : positive := 16#0#;
   CONSTANT SK_RANGE    : positive := SK_BYTES / 4;
@@ -59,56 +59,57 @@ PACKAGE MAYO_COMMON IS
   CONSTANT RANDOMNESS_HIGH_ADR : positive := RANDOMNESS_BASE_ADR + RANDOMNESS_RANGE;
 
   CONSTANT OIL_SPACE_BASE_ADR : positive := RANDOMNESS_HIGH_ADR +1;
-  CONSTANT OIL_SPACE_RANGE :  positive := OIL_SPACE_BYTES / 4 ;
-  CONSTANT OIL_SPACE_HIGH_ADR : positive := OIL_SPACE_BASE_ADR +  OIL_SPACE_RANGE;
+  CONSTANT OIL_SPACE_RANGE    : positive := OIL_SPACE_BYTES / 4 ;
+  CONSTANT OIL_SPACE_HIGH_ADR : positive := OIL_SPACE_BASE_ADR + OIL_SPACE_RANGE;
 
+  -- Address Mapping (In BRAM II) - 32Bits ADR Length 
+  CONSTANT BRAM_II_SIZE : positive := 268435456; -- 256M TODO: Change this
 
+END PACKAGE MAYO_COMMON;
 
-    END PACKAGE MAYO_COMMON;
+-- PACKAGE BODY
 
-  -- PACKAGE BODY
+PACKAGE BODY MAYO_COMMON IS
 
-  PACKAGE BODY MAYO_COMMON IS
+  FUNCTION P2KC2_MONO (K : NATURAL) RETURN real IS
+  BEGIN
+    RETURN real((K * (K + 1)) / 2);
+  END FUNCTION;
 
-    FUNCTION P2KC2_MONO (K : NATURAL) RETURN real IS
-    BEGIN
-      RETURN real((K * (K + 1)) / 2);
-    END FUNCTION;
+  FUNCTION P1MONOMIALS (N : natural; O : natural) RETURN real IS
+  BEGIN
+    return real((N - O) * (N - O + 1) / 2 + (N - O) * O);
+  END FUNCTION;
 
-    FUNCTION P1MONOMIALS (N : natural; O : natural) RETURN real IS
-    BEGIN
-      return real((N - O) * (N - O + 1) / 2 + (N - O) * O);
-    END FUNCTION;
+  function BARRETT_REDUCTION(A : NATURAL) return natural is
+    -- https://en.wikipedia.org/wiki/Barrett_reduction
+    -- k = 9
+    -- m = [512/31] = 16
+    -- e = 1/31 - 16/512 = 16/15872
+    --> A < 992 (Tested on 1022)
+    variable q   : integer ;
+    variable res : natural;
+  begin
+    q   := A * 16;
+    q   := to_integer(to_unsigned(q,16) srl 9);
+    res := A - (q * PRIME);
+    if (PRIME <= res) then
+      res := res - PRIME;
+    end if;
+    return res;
+  end function BARRETT_REDUCTION;
 
-    function BARRETT_REDUCTION(A : NATURAL) return natural is
-      -- https://en.wikipedia.org/wiki/Barrett_reduction
-      -- k = 9
-      -- m = [512/31] = 16
-      -- e = 1/31 - 16/512 = 16/15872
-      --> A < 992 (Tested on 1022)
-      variable q   : integer ;
-      variable res : natural;
-    begin
-      q   := A * 16;
-      q   := to_integer(to_unsigned(q,16) srl 9);
-      res := A - (q * PRIME);
-      if (PRIME <= res) then
-        res := res - PRIME;
-      end if;
-      return res;
-    end function BARRETT_REDUCTION;
+  function MERSENNE_REDUCTION (A : NATURAL) return natural is
+    -- 31 = 2^5 -1  --> S = 5
+    -- No MULT Op
+    variable i : integer;
+  begin
+    -- i := to_integer(to_unsigned(A,16) and to_unsigned(PRIME,16));
+    i := to_integer(to_unsigned(A,16) and to_unsigned(PRIME,16) + (to_unsigned(A,16) srl 5));
+    if (PRIME <= i) then
+      i := i - PRIME;
+    end if;
+    return i;
+  end function MERSENNE_REDUCTION;
 
-    function MERSENNE_REDUCTION (A : NATURAL) return natural is
-      -- 31 = 2^5 -1  --> S = 5
-      -- No MULT Op
-      variable i : integer;
-    begin
-      -- i := to_integer(to_unsigned(A,16) and to_unsigned(PRIME,16));
-      i := to_integer(to_unsigned(A,16) and to_unsigned(PRIME,16) + (to_unsigned(A,16) srl 5));
-      if (PRIME <= i) then
-        i := i - PRIME;
-      end if;
-      return i;
-    end function MERSENNE_REDUCTION;
-
-  END PACKAGE BODY MAYO_COMMON;
+END PACKAGE BODY MAYO_COMMON;

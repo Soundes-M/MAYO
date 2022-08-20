@@ -1,11 +1,30 @@
+--------------------------------------------------------------------------------
+-- Title       : Add Vectors
+-- Project     : MAYO
+--------------------------------------------------------------------------------
+-- File        : MAYO_add_vectors.vhd
+-- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
+-- Company     : TU Berlin
+-- Created     : 
+-- Last update : Sat Aug 20 21:56:57 2022
+-- Platform    : Designed for Zynq 7000 Series
+-- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
+--------------------------------------------------------------------------------
+-- Copyright (c) 2022 TU Berlin
+-------------------------------------------------------------------------------
+-- Description: 
+--------------------------------------------------------------------------------
+-- Revisions:  Revisions and documentation are controlled by
+-- the revision control system (RCS).  The RCS should be consulted
+-- on revision history.
+-------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;
 
 use work.MAYO_COMMON.all;
 use work.UTILS_COMMON.all;
-
--- TODO : IMPROVE PIPELINE AND PARALLELISM
 
 entity mayo_add_vectors is
 	port (
@@ -57,11 +76,10 @@ architecture Behavioral of mayo_add_vectors is
 	signal s_v1 : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
 	signal s_v2 : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
 begin
-	IO_READ : process(i_clk)is
+	IO_READ : process(i_clk) is
 	begin
 		if (rising_edge (i_clk)) then
 			if (rst = '1') then
-				-- TODO : RESET VALUES
 				o_done      <= '0';
 				s_v1_addr   <= (others => '0');
 				s_v2_addr   <= (others => '0');

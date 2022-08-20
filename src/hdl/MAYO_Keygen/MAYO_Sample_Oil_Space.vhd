@@ -34,7 +34,7 @@ entity mayo_sample_oil_space is
 		o_done   : out std_logic; -- DONE
 
 		-- CONTROL 
-		i_oil_adr : in std_logic_vector(31 downto 0);
+		i_oil_addr : in std_logic_vector(31 downto 0);
 
 		-- SHAKE
 		i_hash_done       : in  std_logic;
@@ -112,7 +112,7 @@ begin
 						o_hash_enable <= '0';
 						o_memb_en     <= '0';
 						if (i_enable = '1') then -- START
-							s_oil_adr <= i_oil_adr;
+							s_oil_adr <= i_oil_addr;
 							t_state   <= read_seed_1;
 						end if;
 					when read_seed_1 =>
@@ -127,7 +127,7 @@ begin
 							o_mema_en <= '0';
 							t_state   <= hash1;
 						else
-							s_seed_index <= s_seed_index +4  ;
+							s_seed_index <= s_seed_index +4 ;
 							t_state      <= read_seed_1;
 						end if;
 					when hash1 =>
