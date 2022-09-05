@@ -61,7 +61,7 @@ int main() {
       exit(1);
     }
   }
-        std::cout << "PASS" << std::endl;
+  std::cout << "PASS" << std::endl;
 
   std::cout << std::endl;
   std::cout << "\nAdd_vectors:";

@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sat Aug 20 21:56:54 2022
+-- Last update : Sat Sep  3 21:59:24 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -70,9 +70,13 @@ PACKAGE UTILS_COMMON IS
 
   constant ZERO_32 : std_logic_vector(31 downto 0) := (others => '0');
 
-  -- DMA
+  -- CDMA Regs
   constant DMA_PRE_LOAD_DELAY : positive := 16;
-
+  CONSTANT CDMACR             : positive := 16#0#;  -- Control
+  CONSTANT CDMASR             : positive := 16#4#;  -- Status
+  CONSTANT SA                 : positive := 16#18#; -- Source Addr
+  CONSTANT DA                 : positive := 16#20#; -- Dest Addr
+  CONSTANT BTT                : positive := 16#28#; -- Bytes to transfer
 END PACKAGE UTILS_COMMON;
 
 -- PACKAGE BODY

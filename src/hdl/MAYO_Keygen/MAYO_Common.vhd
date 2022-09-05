@@ -65,6 +65,11 @@ PACKAGE MAYO_COMMON IS
   -- Address Mapping (In BRAM II) - 32Bits ADR Length 
   CONSTANT BRAM_II_SIZE : positive := 268435456; -- 256M TODO: Change this
 
+  -- Address Mapping DDR MAPPING 
+  CONSTANT DDR_BASE_ADR : positive := 16#0#; -- TODO CHANGE THIS
+  CONSTANT DDR_RANGE    : positive := 536_870_912 / 4; -- Zedboard --> 512MB DRAM
+  CONSTANT DDR_HIGH_ADR : positive := DDR_BASE_ADR + DDR_RANGE -1;
+
 END PACKAGE MAYO_COMMON;
 
 -- PACKAGE BODY
