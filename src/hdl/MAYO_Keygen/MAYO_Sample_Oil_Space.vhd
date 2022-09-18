@@ -37,13 +37,13 @@ entity mayo_sample_oil_space is
 		i_oil_addr : in std_logic_vector(31 downto 0);
 
 		-- SHAKE
-		i_hash_done       : in  std_logic;
-		i_hash_mnext      : in  std_logic;
-		i_hash_output_o   : in  std_logic_vector(255 downto 0);
-		o_hash_enable     : out std_logic;
-		o_hash_len        : out std_logic_vector(10 downto 0);
-		o_hash_output_len : out std_logic_vector(31 downto 0);
-		o_hash_input      : out std_logic_vector(255 downto 0);
+		i_hash_done      : in  std_logic;
+		i_hash_dyn_done  : in  std_logic;
+		o_hash_enable    : out std_logic;
+		o_hash_mlen      : out std_logic_vector(31 downto 0);
+		o_hash_olen      : out std_logic_vector(31 downto 0);
+		o_hash_write_adr : out std_logic_vector(31 downto 0);
+		o_hash_read_adr  : out std_logic_vector(31 downto 0);
 
 		--BRAM-A
 		i_mema_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -60,9 +60,6 @@ entity mayo_sample_oil_space is
 		o_memb_en   : out std_logic;
 		o_memb_rst  : out std_logic;
 		o_memb_we   : out std_logic_vector (3 downto 0)
-
-		-- TODO: FSM for hash done (Once first Full Word available)
-
 	);
 end entity mayo_sample_oil_space;
 
@@ -75,9 +72,10 @@ architecture Behavioral of mayo_sample_oil_space is
 	signal t_state   : state   := idle;
 	signal t_state_1 : state_1 := idle;
 
-	signal s_seed : array_32 (0 to ((SEED_BYTES / 4)-1)); -- TODO Possibilty to make this outisde of this module (Not in BRAM either)
+	signal s_seed : array_32 (0 to ((SEED_BYTES / 4)-1)); -- TODO Possibilty to make this outisde of this module (Not in BRAM either) (REMOVED SEED IS ONLY IN BRAM)
 
-	signal s_seed_index : natural   := 0;   -- BRAM counter 
+	signal s_seed_index : natural   := 0; -- BRAM counter 
+	signal i            : natural   := 0;
 	signal s_main_start : std_logic := '0'; -- Start the MAIN process 
 
 	signal s_rand      : std_logic_vector(31 downto 0);
@@ -94,6 +92,7 @@ begin
 			if (rst = '1') then
 				t_state      <= idle;
 				s_seed_index <= 0;
+				i            <= 0;
 				s_main_start <= '0';
 				s_oil_adr    <= (others => '0');
 
@@ -113,48 +112,57 @@ begin
 						o_memb_en     <= '0';
 						if (i_enable = '1') then -- START
 							s_oil_adr <= i_oil_addr;
-							t_state   <= read_seed_1;
+							t_state   <= hash1;
 						end if;
+
+					--------------------------------------------------------
+					-- SKIPPED (SEED STAYS IN BRAM)
+					--------------------------------------------------------
 					when read_seed_1 =>
-						o_mema_addr <= std_logic_vector(TO_UNSIGNED(SK_BASE_ADR + s_seed_index,PORT_WIDTH));
+						o_mema_addr <= std_logic_vector(TO_UNSIGNED(SK_BASE_ADR + SEED_BYTES + s_seed_index,PORT_WIDTH));
 						o_mema_en   <= '1';
 						o_mema_rst  <= '0';
 						o_mema_we   <= "0000";
 						t_state     <= read_seed_2;
 					when read_seed_2 =>
-						s_seed(s_seed_index) <= i_mema_dout;
+						s_seed(i) <= i_mema_dout;
 						if (s_seed_index > SK_RANGE -1) then -- Done reading
 							o_mema_en <= '0';
 							t_state   <= hash1;
 						else
 							s_seed_index <= s_seed_index +4 ;
 							t_state      <= read_seed_1;
+							i            <= i +1;
 						end if;
-					when hash1 =>
-						o_hash_len <= std_logic_vector(to_unsigned(OIL_SPACE_BYTES*2,10));
+					---------------------------------------------------------
 
-						-- TODO: Is For LOOP Unrolled
-						for i in 0 to ((SEED_BYTES / 4)-1) loop -- Set HASH input as seed
-							o_hash_input(31+i downto i) <= s_seed(i);
-						end loop;
-						o_hash_enable <= '1';
+					when hash1 => -- HASH with BRAMA!
+						o_hash_mlen      <= std_logic_vector(to_unsigned(SEED_BYTES,PORT_WIDTH));
+						o_hash_olen      <= std_logic_vector(to_unsigned(OIL_SPACE_BYTES*2,PORT_WIDTH));
+						o_hash_read_adr  <= Sk_PRIVATE_SEED_ADR;
+						o_hash_write_adr <= i_oil_addr;
+						o_hash_enable    <= '1';
+						t_state          <= hash2;
 
-						t_state <= hash2;
 					when hash2 =>
-						if (i_hash_done = '1') then -- GET RESULT
-							                        -- TODO : Hash OUTPUT NOT SUPPORTED (Maybe port to Using keccack.lib on ARMv8)
+						o_hash_enable <= '0';
+						if (i_hash_dyn_done = '1') then -- GET RESULT
 							t_state      <= hash3;
 							s_main_start <= '1';
-							-- Suppose that Hash here is done and Randomness is being written 
-							-- While hash is being imported you can start with the for loop in MAIN
-							-- Start once first 32 Bits arrived
-							-- TODO : Finish Implementation
-
+							-- Suppose that Randomness is being written 
+							-- While hash is exporting, you can start with the for loop in MAIN
+							-- Start once first 32 Bits arrived!
+						else 
+							t_state <= hash2;
 						end if;
+
 					when hash3 =>
-						null;
-					when hash4 =>
-						null;
+						if (i_hash_done = '1') then -- HASH DONE
+							t_state <= done; 
+						else
+							t_state <= hash3; 
+						end if;
+
 					when done =>
 						t_state <= idle;
 					when others =>
@@ -180,7 +188,7 @@ begin
 				case t_state_1 is
 					when idle =>
 						o_memb_en <= '0';
-
+						-- Randomness available
 						if (s_main_start = '1') then
 							t_state_1 <= main1;
 						end if;
@@ -234,7 +242,7 @@ begin
 						o_memb_en   <= '1';
 						o_memb_rst  <= '0';
 						o_memb_we   <= "1111"; -- WRITE FULLWORD in BRAM 
-						t_state_1   <= main5;
+						t_state_1   <= main6;
 
 					when main6 =>
 						if (s_oil_index > OIL_SPACE_RANGE -1) then

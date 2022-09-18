@@ -36,38 +36,68 @@ PACKAGE MAYO_COMMON IS
 
   -- Parameters ---
   -- MAYO
-  CONSTANT PRIME           : positive := 31; -- q =31
-  CONSTANT PRIME_BITS      : positive := 5;
-  CONSTANT M               : positive := 60; -- #Equations in public key map P
-  CONSTANT N               : positive := 62; -- #Variables in each QE of P
-  CONSTANT O               : positive := 6;  -- Dimension of the secret linear subspace
-  CONSTANT K               : positive := 10; -- Used to construct a larger map P*
-  CONSTANT SEED_BYTES      : positive := 16;
-  CONSTANT SK_BYTES        : positive := SEED_BYTES *2;
-  CONSTANT HASH_BYTES      : positive := 32;
+  CONSTANT PRIME      : positive := 31; -- q =31
+  CONSTANT PRIME_BITS : positive := 5;
+  CONSTANT M          : positive := 60; -- #Equations in public key map P
+  CONSTANT N          : positive := 62; -- #Variables in each QE of P
+  CONSTANT O          : positive := 6;  -- Dimension of the secret linear subspace
+  CONSTANT K          : positive := 10; -- Used to construct a larger map P*
+
+  CONSTANT SEED_BYTES : positive := 16;
+  CONSTANT SK_BYTES   : positive := SEED_BYTES *2;
+  CONSTANT PK_BYTES   : positive := SEED_BYTES + M*O*(O+1)/2; -- (PK_P2(0) + M*O*(O+1)/2) = (((0) + SEED_BYTES) + M*O*(O+1)/2)
+
+
+  -- Number of coefficients that are needed to characterize a quadratic polynomial with N variables
+  CONSTANT MONOMIALS : positive := (N*(N+1)/2);
+
+  --(N-O)*(N-O+1)/2 coefficients belong to the monoms xi*xj where 1 <= i <= j <= N-O (upper left part of matrix P)
+  --(N-O)*O coefficients belong to the monoms xi*xj where 1 <= i <= N-O and N-O+1 <= j <= N (upper right part of matrix P)
+  CONSTANT P1MONOMIALS : positive := (N-O)*(N-O+1)/2 + (N-O)*O;
+  -- (O*(O+1)/2 coefficients belong to the monoms xi*xj where N-O+1 <= i <= j <= N (lower right part of matrix P)
+  CONSTANT P2MONOMIALS : positive := O*(O+1)/2;
+
+  CONSTANT P1_BYTES : positive := M*P1MONOMIALS; -- Number of coefficients in all m quadratic polynomials belonging to P1
+  CONSTANT P2_BYTES : positive := M*P2MONOMIALS; --  Number of coefficients in all m quadratic polynomials belonging to P2
+
+  CONSTANT HASH_BYTES : positive := 32;
+
   CONSTANT OIL_SPACE_BYTES : positive := (O*(N-O)) ;
 
   ------------------------------------------------------------------------------
   -- Address Mapping (In BRAM I) - 32Bits ADR Length 
+  ------------------------------------------------------------------------------
   -- SECRET KEY (SK)
   CONSTANT SK_BASE_ADR : positive := 16#0#;
-  CONSTANT SK_RANGE    : positive := SK_BYTES / 4;
-  CONSTANT SK_HIGH_ADR : positive := SK_BASE_ADR + SK_RANGE -1;
+  CONSTANT SK_RANGE    : positive := SK_BYTES ;
+  CONSTANT SK_HIGH_ADR : positive := SK_BASE_ADR + SK_RANGE -1; -- TODO: -1 or not
+
+  -- SK Components
+  CONSTANT Sk_PRIVATE_SEED_ADR : positive := SK_BASE_ADR + SEED_BYTES;
+  CONSTANT SK_PUBLIC_SEED_ADR  : positive := SK_BASE_ADR;
+
   -- Sample_oil_space
-  CONSTANT RANDOMNESS_BASE_ADR : positive := SK_HIGH_ADR +1;
-  CONSTANT RANDOMNESS_RANGE    : positive := OIL_SPACE_BYTES*2 / 4;
-  CONSTANT RANDOMNESS_HIGH_ADR : positive := RANDOMNESS_BASE_ADR + RANDOMNESS_RANGE;
+  CONSTANT RANDOMNESS_BASE_ADR : positive := SK_HIGH_ADR ;
+  CONSTANT RANDOMNESS_RANGE    : positive := OIL_SPACE_BYTES*2 ;
+  CONSTANT RANDOMNESS_HIGH_ADR : positive := RANDOMNESS_BASE_ADR + RANDOMNESS_RANGE - 1;
 
-  CONSTANT OIL_SPACE_BASE_ADR : positive := RANDOMNESS_HIGH_ADR +1;
-  CONSTANT OIL_SPACE_RANGE    : positive := OIL_SPACE_BYTES / 4 ;
-  CONSTANT OIL_SPACE_HIGH_ADR : positive := OIL_SPACE_BASE_ADR + OIL_SPACE_RANGE;
+  CONSTANT OIL_SPACE_BASE_ADR : positive := RANDOMNESS_HIGH_ADR ;
+  CONSTANT OIL_SPACE_RANGE    : positive := OIL_SPACE_BYTES ;
+  CONSTANT OIL_SPACE_HIGH_ADR : positive := OIL_SPACE_BASE_ADR + OIL_SPACE_RANGE -1;
 
+  -- PUBLIC KEY (PK)
+  CONSTANT PK_BASE_ADR : positive := OIL_SPACE_HIGH_ADR;
+  CONSTANT PK_RANGE    : positive := PK_BYTES ;
+  CONSTANT PK_HIGH_ADR : positive := PK_BASE_ADR + PK_RANGE -1; -- TODO: -1 or not
+
+  ------------------------------------------------------------------------------
   -- Address Mapping (In BRAM II) - 32Bits ADR Length 
+  ------------------------------------------------------------------------------
   CONSTANT BRAM_II_SIZE : positive := 268435456; -- 256M TODO: Change this
 
   -- Address Mapping DDR MAPPING 
-  CONSTANT DDR_BASE_ADR : positive := 16#0#; -- TODO CHANGE THIS
-  CONSTANT DDR_RANGE    : positive := 536_870_912 / 4; -- Zedboard --> 512MB DRAM
+  CONSTANT DDR_BASE_ADR : positive := 16#0#;           -- TODO CHANGE THIS
+  CONSTANT DDR_RANGE    : positive := 536_870_912 / 4; -- Zedboard --> 512MB DRAM TODO: Chnage this!
   CONSTANT DDR_HIGH_ADR : positive := DDR_BASE_ADR + DDR_RANGE -1;
 
 END PACKAGE MAYO_COMMON;

@@ -68,6 +68,8 @@ entity mayo_linear_combination is
 		i_enable : in  std_logic; -- ENABLE
 		o_done   : out std_logic; -- DONE
 
+		i_bram_halt : in std_logic; -- DMA Wait for Copy (Big BRAM)
+
 		i_vec_addr    : in std_logic_vector(PORT_WIDTH-1 downto 0);
 		i_coeffs_addr : in std_logic_vector(PORT_WIDTH-1 downto 0);
 		i_out_addr    : in std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -168,6 +170,7 @@ begin
 		);
 
 	INPUT_Pr : process(i_clk) is
+	variable next_state : t_state;
 	begin
 		if(rising_edge(i_clk)) then
 			if(rst = '1') then
@@ -206,16 +209,15 @@ begin
 						bram1a.o.o_en   <= '1';
 						bram1a.o.o_rst  <= '0';
 						bram1a.o.o_we   <= "0000";
+						t_state         <= read2;
 
 					when read2 => -- Also update ADR
-
 						s_coeffs      <= bram0a.i.i_dout; -- 32 Bits (1 Byte/clk)
 						bram0a.o.o_en <= '0';             -- Coeffs not needed anymore
 						s_vecs        <= bram1a.i.i_dout; -- 32 Bits (4 Byte/clk)
 						s_main        <= '1';             -- Start lin_comb
 
-						if(i > (unsigned(s_len)-1)) then
-							-- i Loop done --> Reset i
+						if(i > (unsigned(s_len)-1)) then -- i Loop done --> Reset i
 							bram0a.o.o_addr <= s_coeffs_addr;
 							bram1a.o.o_addr <= s_vecs_addr;
 							i               <= 0 ;
@@ -226,6 +228,7 @@ begin
 							else
 								j <= j +4 ;
 							end if;
+
 						else
 							i <= i +1 ;
 							--Coeffs
@@ -321,7 +324,6 @@ begin
 	end process;
 
 	dspb <= s_coeffs((c-1)*8+7 downto (c-1)*8);
-
 
 	--BRAM0-A
 	bram0a.i.i_dout <= i_mem0a_dout;

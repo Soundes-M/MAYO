@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sat Sep  3 21:59:24 2022
+-- Last update : Sun Sep 18 19:18:37 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -28,7 +28,10 @@ PACKAGE UTILS_COMMON IS
   -- PARAMETERS
   CONSTANT PORT_WIDTH : natural := 32; -- 32 Bit arch
 
-  -- BRAM Types
+  ------------------------------------------------------------------------------
+  -- BRAM 
+  ------------------------------------------------------------------------------
+
   type i_bram is record -- IN from BRAM
     i_dout : std_logic_vector(PORT_WIDTH-1 downto 0);
   end record i_bram;
@@ -59,6 +62,40 @@ PACKAGE UTILS_COMMON IS
   constant DEFAULT_BRAM : bram_t := (
       o => DEFAULT_OUT_BRAM,
       i => DEFAULT_IN_BRAM);
+  ------------------------------------------------------------------------------
+  -- TRNG
+  ------------------------------------------------------------------------------
+
+  type o_trng is record -- out to trng
+    r    : std_logic;
+    w    : std_logic;
+    data : std_logic_vector(31 downto 0); -- size 
+  end record o_trng;
+
+  type i_trng is record -- in from trng
+    valid : std_logic;
+    done  : std_logic;
+    data  : std_logic_vector(31 downto 0); -- trng data
+  end record i_trng;
+
+  type trng_t is record
+    o : o_trng;
+    i : i_trng;
+  end record trng_t;
+
+  constant DEFAULT_OUT_TRNG : o_trng := (
+      r    => '0';
+      w    => '0';
+      data => ( others => '0');
+    );
+  constant DEFAULT_IN_TRNG : i_trng := (
+      valid => '0';
+      done  => '0';
+      data  => ( others => '0');
+    );
+  constant DEFAULT_TRNG : trng_t := (
+      o => DEFAULT_OUT_TRNG,
+      i => DEFAULT_IN_TRNG);
 
   type demux_output is array (natural range <>) of o_bram;
   type demux_input is array (natural range <>) of i_bram;
@@ -70,7 +107,9 @@ PACKAGE UTILS_COMMON IS
 
   constant ZERO_32 : std_logic_vector(31 downto 0) := (others => '0');
 
-  -- CDMA Regs
+  ------------------------------------------------------------------------------
+  -- CDMA REG SPACE
+  ------------------------------------------------------------------------------
   constant DMA_PRE_LOAD_DELAY : positive := 16;
   CONSTANT CDMACR             : positive := 16#0#;  -- Control
   CONSTANT CDMASR             : positive := 16#4#;  -- Status

@@ -1,3 +1,23 @@
+--------------------------------------------------------------------------------
+-- Title       : AXI BRAM MOVER
+-- Project     : MAYO
+--------------------------------------------------------------------------------
+-- File        : AXI_bram_mover.vhd
+-- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
+-- Company     : TU Berlin
+-- Last update : Mon Sep  5 12:38:21 2022
+-- Platform    : Designed for Zynq 7000 Series
+-- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
+--------------------------------------------------------------------------------
+-- Copyright (c) 2022 TU Berlin
+-------------------------------------------------------------------------------
+-- Description: Copies data from BRAM to DDR and fetches the next block.
+--------------------------------------------------------------------------------
+-- Revisions:  Revisions and documentation are controlled by
+-- the revision control system (RCS).  The RCS should be consulted
+-- on revision history.
+-------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;
@@ -9,7 +29,7 @@ entity axi_bram_mover is
 	generic (
 		-- Width of M_AXI address bus. 
 		-- The master generates the read and write addresses of width specified as C_M_AXI_ADDR_WIDTH.
-		C_M_AXI_ADDR_WIDTH : integer := 6; -- 256 Possible
+		C_M_AXI_ADDR_WIDTH : integer := 6;
 		-- Width of M_AXI data bus. 
 		-- The master issues write data and accept read data where the width of the data bus is C_M_AXI_DATA_WIDTH
 		C_M_AXI_DATA_WIDTH : integer := PORT_WIDTH;
@@ -132,7 +152,7 @@ begin
 	-- offset added 
 	M_AXI_LITE_AWADDR <= std_logic_vector (unsigned(C_M_TARGET_SLAVE_BASE_ADDR) + unsigned(axi_awaddr));
 	--AXI 4 write data
-	M_AXI_LITE_WDATA   <= axi_wdata;
+	M_AXI_LITE_WDATA <= axi_wdata;
 	--M_AXI_LITE_AWPROT  <= "000";
 	M_AXI_LITE_AWVALID <= axi_awvalid;
 	--Write Data(W)
@@ -279,10 +299,10 @@ begin
 				-- STORE BRAM IN DDR (DMA Transaction)
 				------------------------------------------------------------
 				when main0 => -- IS DMA IDLE?
-					-- M_AXI_LITE_WSTRB <= "0000";
-					axi_araddr  <= std_logic_vector(to_unsigned(CDMASR,PORT_WIDTH));
-					axi_read    <= '1';
-					t_main      <= main1;
+					          -- M_AXI_LITE_WSTRB <= "0000";
+					axi_araddr <= std_logic_vector(to_unsigned(CDMASR,PORT_WIDTH));
+					axi_read   <= '1';
+					t_main     <= main1;
 
 				when main1 =>
 					axi_read <= '0';
@@ -303,37 +323,37 @@ begin
 						axi_awaddr    <= axi_araddr;
 						axi_wdata(12) <= '1'; -- DMA Complete IRQ EN 
 						axi_wdata(14) <= '0'; -- DMA Err IRQ EN
-						-- M_AXI_LITE_WSTRB   <= "1111";
-						axi_write     <= '0';
-						t_main        <= main3;
+						                      -- M_AXI_LITE_WSTRB   <= "1111";
+						axi_write <= '0';
+						t_main    <= main3;
 					end if;
 
 				when main3 => -- SOURCE ADDR
 					axi_write <= '0';
 					if (axi_write_done = '1' and axi_error = '0') then
-						axi_wdata   <= C_BRAM_BASE_ADDR;
-						axi_awaddr  <= std_logic_vector(to_unsigned(SA,PORT_WIDTH));
+						axi_wdata  <= C_BRAM_BASE_ADDR;
+						axi_awaddr <= std_logic_vector(to_unsigned(SA,PORT_WIDTH));
 						-- M_AXI_LITE_WSTRB <= "1111";
-						axi_write   <= '1';
-						t_main      <= main4;
+						axi_write <= '1';
+						t_main    <= main4;
 					end if;
 				when main4 => -- DEST ADDR
 					axi_write <= '0';
 					if (axi_write_done = '1' and axi_error = '0') then
-						axi_wdata   <= C_DDR_BASE_ADDR;
-						axi_awaddr  <= std_logic_vector(to_unsigned(DA,PORT_WIDTH));
+						axi_wdata  <= C_DDR_BASE_ADDR;
+						axi_awaddr <= std_logic_vector(to_unsigned(DA,PORT_WIDTH));
 						-- M_AXI_LITE_WSTRB <= "1111";
-						axi_write   <= '1';
-						t_main      <= main5;
+						axi_write <= '1';
+						t_main    <= main5;
 					end if;
 				when main5 => -- BTT And START
 					axi_write <= '0';
 					if (axi_write_done = '1' and axi_error = '0') then
-						axi_wdata   <= std_logic_vector(to_unsigned(BRAM_II_SIZE,PORT_WIDTH));
-						axi_awaddr  <= std_logic_vector(to_unsigned(BTT,PORT_WIDTH));
+						axi_wdata  <= std_logic_vector(to_unsigned(BRAM_II_SIZE,PORT_WIDTH));
+						axi_awaddr <= std_logic_vector(to_unsigned(BTT,PORT_WIDTH));
 						-- M_AXI_LITE_WSTRB <= "1111";
-						axi_write   <= '1';
-						t_main      <= main6;
+						axi_write <= '1';
+						t_main    <= main6;
 					end if;
 				when main6 => -- Wait for DMA
 					axi_write <= '0';
@@ -362,38 +382,38 @@ begin
 						axi_awaddr    <= axi_araddr;
 						axi_wdata(12) <= '1'; -- DMA Complete IRQ EN 
 						axi_wdata(14) <= '0'; -- DMA Err IRQ EN
-						-- M_AXI_LITE_WSTRB   <= "1111";
-						axi_write     <= '0';
-						t_main        <= main10;
+						                      -- M_AXI_LITE_WSTRB   <= "1111";
+						axi_write <= '0';
+						t_main    <= main10;
 					end if;
 
 				when main10 => -- SOURCE ADDR
 					axi_write <= '0';
 					if (axi_write_done = '1' and axi_error = '0') then
-						axi_wdata   <= std_logic_vector(unsigned(C_DDR_BASE_ADDR)+ to_unsigned(BRAM_II_SIZE,C_DDR_BASE_ADDR'length)); -- TODO: Fix this is more than 1 copy is needed
-						axi_awaddr  <= std_logic_vector(to_unsigned(SA,PORT_WIDTH));
+						axi_wdata  <= std_logic_vector(unsigned(C_DDR_BASE_ADDR)+ to_unsigned(BRAM_II_SIZE,C_DDR_BASE_ADDR'length)); -- TODO: Fix this is more than 1 copy is needed
+						axi_awaddr <= std_logic_vector(to_unsigned(SA,PORT_WIDTH));
 						-- M_AXI_LITE_WSTRB <= "1111";
-						axi_write   <= '1';
-						t_main      <= main11;
+						axi_write <= '1';
+						t_main    <= main11;
 					end if;
 				when main11 => -- DEST ADDR
 					axi_write <= '0';
 					if (axi_write_done = '1' and axi_error = '0') then
-						axi_wdata   <= C_BRAM_BASE_ADDR;
-						axi_awaddr  <= std_logic_vector(to_unsigned(DA,PORT_WIDTH));
+						axi_wdata  <= C_BRAM_BASE_ADDR;
+						axi_awaddr <= std_logic_vector(to_unsigned(DA,PORT_WIDTH));
 						-- M_AXI_LITE_WSTRB <= "1111";
-						axi_write   <= '1';
-						t_main      <= main12;
+						axi_write <= '1';
+						t_main    <= main12;
 					end if;
 
 				when main12 => -- BTT And START
 					axi_write <= '0';
 					if (axi_write_done = '1' and axi_error = '0') then
-						axi_wdata   <= std_logic_vector(to_unsigned(BRAM_II_SIZE,PORT_WIDTH));
-						axi_awaddr  <= std_logic_vector(to_unsigned(BTT,PORT_WIDTH));
+						axi_wdata  <= std_logic_vector(to_unsigned(BRAM_II_SIZE,PORT_WIDTH));
+						axi_awaddr <= std_logic_vector(to_unsigned(BTT,PORT_WIDTH));
 						-- M_AXI_LITE_WSTRB <= "1111";
-						axi_write   <= '1';
-						t_main      <= main13;
+						axi_write <= '1';
+						t_main    <= main13;
 					end if;
 
 				when main13 => -- Wait for DMA
