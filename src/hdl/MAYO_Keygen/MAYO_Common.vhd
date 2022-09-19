@@ -95,6 +95,10 @@ PACKAGE MAYO_COMMON IS
   ------------------------------------------------------------------------------
   CONSTANT BRAM_II_SIZE : positive := 268435456; -- 256M TODO: Change this
 
+  CONSTANT P1_BASE_ADR : positive := 16#0#;
+  CONSTANT P1_RANGE    : positive := P1_BYTES ;
+  CONSTANT P1_HIGH_ADR : positive := P1_BASE_ADR + P1_RANGE -1; -- TODO: -1 or not
+
   -- Address Mapping DDR MAPPING 
   CONSTANT DDR_BASE_ADR : positive := 16#0#;           -- TODO CHANGE THIS
   CONSTANT DDR_RANGE    : positive := 536_870_912 / 4; -- Zedboard --> 512MB DRAM TODO: Chnage this!

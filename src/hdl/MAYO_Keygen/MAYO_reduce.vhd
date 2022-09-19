@@ -38,6 +38,7 @@ entity mayo_reduce is
 		i_enable : in  std_logic;                      -- ENABLE
 		i_len    : in  std_logic_vector (31 downto 0); -- BYTE LEN
 		i_doutb  : in  std_logic_vector (31 downto 0); -- dout port bram
+		i_adr    : in  std_logic_vector (31 downto 0); -- ADR in BRAM
 		o_addrb  : out std_logic_vector (31 downto 0); -- address port bram
 		o_dinb   : out std_logic_vector (31 downto 0); -- din port bram
 		o_enb    : out std_logic;                      -- enable read, write, reset operations port b  
@@ -58,6 +59,7 @@ architecture Behavioral of mayo_reduce is
 	signal s_data    : std_logic_vector(31 downto 0)          := (others => '0');
 	signal s_index   : natural range 0 to (2**BRAM_SIZE-1 +1) := 0 ; --LOOP INDEX
 	signal s_max_len : natural range 0 to 2**BRAM_SIZE-1      := 0 ;
+	signal s_addr    : std_logic_vector (31 downto 0)         := (others => '0');
 
 
 begin
@@ -82,13 +84,20 @@ begin
 						o_done  <= '0';
 						if(i_enable = '1') then -- START
 							t_state   <= read1;
+							s_addr    <= i_adr;
 							s_max_len <= to_integer(unsigned(i_len) srl 2); -- Div 4
 						else
 							t_state <= idle;
 						end if;
 
 					when read1 =>
-						s_addrb <= s_addrb; -- Set READ ADR
+						s_addrb <= s_addr; -- Set READ ADR
+						s_enb   <= '1';
+						s_rstb  <= '0';
+						s_web   <= "0000";
+						t_state <= read2;
+
+					when read3 =>
 						s_enb   <= '1';
 						s_rstb  <= '0';
 						s_web   <= "0000";
@@ -114,7 +123,7 @@ begin
 							t_state <= done;
 						else
 							s_index <= s_index +1;
-							t_state <= read1;
+							t_state <= read3;
 						end if;
 
 					when done =>

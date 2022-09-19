@@ -1,0 +1,44 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Block Memory Generator module MAYO_SHAKE_tb.BR.inst.\native_mem_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+BRAM : Read 0xd808ee98 from 0x0!
+BRAM : Read 0xd808ee98 from 0x4!
+BRAM : Read 0xd808ee98 from 0x8!
+Start tb
+SHAKE: Start Block Fetch
+SHAKE : Read 0xa84f7d23 from 0x0!
+SHAKE : read_desc_adr :  0, c0 : 0
+SHAKE : Read 0xa84f7d23 from 0x4!
+SHAKE : read_desc_adr :  0, c0 : 1
+SHAKE : Read 0xd808ee98 from 0x8!
+SHAKE : read_desc_adr :  1, c0 : 0
+SHAKE : Read 0x38520eba from 0xc!
+SHAKE : read_desc_adr :  1, c0 : 1
+SHAKE : Read 0xa84f7d23 from 0x10!
+SHAKE : read_desc_adr :  2, c0 : 0
+SHAKE : Read 0x15a05fe0 from 0x14!
+SHAKE : read_desc_adr :  2, c0 : 1
+SHAKE : Read 0xc871aaba from 0x18!
+SHAKE : read_desc_adr :  3, c0 : 0
+SHAKE : Read 0xe8528969 from 0x1c!
+SHAKE : read_desc_adr :  3, c0 : 1
+SHAKE : Write 0xad71293d to 0x20!
+SHAKE : write_desc_adr :  0, c0 : 0
+SHAKE : Write 0x1239248b to 0x24!
+SHAKE : write_desc_adr :  0, c0 : 1
+SHAKE : Write 0x2a4baf46 to 0x28!
+SHAKE : write_desc_adr :  1, c0 : 0
+SHAKE : Write 0x82ff6d8d to 0x2c!
+SHAKE : write_desc_adr :  1, c0 : 1
+SHAKE : Write 0x4fd460d5 to 0x30!
+SHAKE : write_desc_adr :  2, c0 : 0
+SHAKE : Write 0x51122cf3 to 0x34!
+SHAKE : write_desc_adr :  2, c0 : 1
+SHAKE: done!
+SHAKE : Write 0xd1605d74 to 0x38!
+SHAKE : write_desc_adr :  3, c0 : 0
+SHAKE : Write 0x1a5e751e to 0x3c!
+SHAKE : write_desc_adr :  3, c0 : 1
+SHAKE : Write 0x0 to 0x40!
+SHAKE : write_desc_adr :  4, c0 : 0
+SHAKE: Write Done

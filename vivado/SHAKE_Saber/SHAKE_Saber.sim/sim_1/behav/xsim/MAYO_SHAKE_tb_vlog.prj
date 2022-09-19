@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../SHAKE_Saber.gen/sources_1/ip/blk_mem_gen_0_1/sim/blk_mem_gen_0_1.v" \
+"../../../../SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v" \
+"../../../../../../src/hdl/SABER_HW/Verilog_src/Keccak_Core/SHA_SHAKE_wrapper.v" \
+"../../../../SHAKE_Saber.srcs/sim_1/new/MAYO_SHAKE_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

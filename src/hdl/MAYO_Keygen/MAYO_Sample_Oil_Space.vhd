@@ -126,15 +126,15 @@ begin
 						t_state     <= read_seed_2;
 					when read_seed_2 =>
 						s_seed(i) <= i_mema_dout;
-						if (s_seed_index > SK_RANGE -1) then -- Done reading
+						if (o_mema_addr > SK_RANGE -1) then -- Done reading
 							o_mema_en <= '0';
 							t_state   <= hash1;
 						else
-							s_seed_index <= s_seed_index +4 ;
-							t_state      <= read_seed_1;
-							i            <= i +1;
+							o_mema_addr <= o_mema_addr +4 ;
+							t_state     <= read_seed_2;
+							i           <= i +1;
 						end if;
-					---------------------------------------------------------
+						---------------------------------------------------------
 
 					when hash1 => -- HASH with BRAMA!
 						o_hash_mlen      <= std_logic_vector(to_unsigned(SEED_BYTES,PORT_WIDTH));
@@ -149,18 +149,18 @@ begin
 						if (i_hash_dyn_done = '1') then -- GET RESULT
 							t_state      <= hash3;
 							s_main_start <= '1';
-							-- Suppose that Randomness is being written 
-							-- While hash is exporting, you can start with the for loop in MAIN
-							-- Start once first 32 Bits arrived!
-						else 
+						-- Suppose that Randomness is being written 
+						-- While hash is exporting, you can start with the for loop in MAIN
+						-- Start once first 32 Bits arrived!
+						else
 							t_state <= hash2;
 						end if;
 
 					when hash3 =>
 						if (i_hash_done = '1') then -- HASH DONE
-							t_state <= done; 
+							t_state <= done;
 						else
-							t_state <= hash3; 
+							t_state <= hash3;
 						end if;
 
 					when done =>

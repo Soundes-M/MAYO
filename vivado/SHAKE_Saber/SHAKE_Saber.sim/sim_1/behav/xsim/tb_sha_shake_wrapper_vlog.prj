@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../SHAKE_Saber.gen/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v" \
+"../../../../../../src/hdl/SABER_HW/Verilog_src/Keccak_Core/SHA_SHAKE_wrapper.v" \
+"../../../../../../src/hdl/SABER_HW/Verilog_src/Keccak_Core/SHA_SHAKE_wrapper_test.v" \
+"../../../../../../src/hdl/SABER_HW/Verilog_src/Keccak_Core/tb_SHA_SHAKE_wrapper.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
