@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Mon Sep 19 21:26:41 2022
+-- Last update : Thu Sep 22 13:51:45 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ ENTITY MAYO_KEYGEN IS
     i_trng_valid : in  std_logic;
     i_trng_done  : in  std_logic;
 
-    --Hash (EXPAND [SHAKE128])
+    --HASH (EXPAND [SHAKE128])
     o_hash_en        : out std_logic;
     o_hash_mlen      : out std_logic_vector(31 downto 0);
     o_hash_olen      : out std_logic_vector(31 downto 0);
@@ -66,6 +66,22 @@ ENTITY MAYO_KEYGEN IS
     o_sam_enable   : out std_logic;
     i_sam_done     : in  std_logic;
     o_sam_oil_addr : out std_logic_vector(31 downto 0);
+
+    -- LINEAR COMBINATION 
+    o_lin_enable      : out std_logic;
+    i_lin_done        : in  std_logic;
+    o_lin_bram_halt   : out std_logic; -- DMA Wait for Copy (Big BRAM)
+    o_lin_vec_addr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_lin_coeffs_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_lin_out_addr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_lin_len         : out std_logic_vector(PORT_WIDTH-1 downto 0);
+
+    -- ADD VECTORS
+    o_add_enable   : out std_logic;
+    o_add_v1_addr  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_add_v2_addr  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_add_out_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    i_add_done     : in  std_logic;
 
     --BRAM0-A
     i_mem0a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -104,7 +120,14 @@ ARCHITECTURE RTL OF MAYO_KEYGEN IS
 
   signal trng : trng_t := DEFAULT_TRNG;
 
-  signal index : integer := 0;
+  signal index             : integer := 0;
+  signal p1_counter        : integer := 0;
+  signal i,j               : integer := 0;
+  signal s_p1_index        : integer := 0;
+  signal s_oil_space_index : integer := 0;
+  signal s_v1_index        : integer := 0;
+  signal s_src_index       : integer := 0;
+  signal s_dest_index      : integer := 0;
 
   ------------------------------------------------------------------------------
   -- Reg Space (AXI-LITE)
@@ -127,7 +150,6 @@ ARCHITECTURE RTL OF MAYO_KEYGEN IS
   ------------------------------------------------------------------------------
   signal bram0a : bram_t := DEFAULT_BRAM;
   signal bram0b : bram_t := DEFAULT_BRAM;
-
   signal bram1a : bram_t := DEFAULT_BRAM;
 
 
@@ -291,6 +313,129 @@ BEGIN
             -- COMPUTEP2
             --------------------------------------------------------------------
             when compute0 =>
+              i <= 0;
+              j <= 0;
+              -- Lin Combination
+              s_p1_index        <= P1_BASE_ADR;        -- fix 
+              s_oil_space_index <= OIL_SPACE_BASE_ADR; -- fix 
+
+              -- Add vec
+              s_v1_index <= TEMP_BASE_ADR;
+              state      <= compute1 ;
+
+            when compute1 =>
+              if (i < N-O) then
+                state <= compute2 ;
+              else
+                state <= compute8;
+              end if;
+
+            when compute2 =>
+              if (j < O) then
+                s_p1_index <= s_p1_index + p1_counter*M;
+                state      <= compute3;
+              else
+                state <= compute7;
+              end if;
+
+            when compute3 =>
+              o_lin_vec_addr    <= s_p1_index;
+              o_lin_coeffs_addr <= s_oil_space_index;
+              o_lin_len         <= N-O-i;
+              o_lin_vec_addr    <= P2VEC_BASE_ADR;
+              o_lin_enable      <= '1';
+              state             <= compute4;
+
+            when compute4 =>
+              o_lin_enable <= '0';
+              if (i_lin_done) then
+                state <= compute5;
+              end if;
+
+            when compute5 =>
+              o_add_v1_addr  <= s_v1_index;
+              o_add_v2_addr  <= P2VEC_BASE_ADR;
+              o_add_out_addr <= s_v1_index;
+              o_add_enable   <= '1';
+              state          <= compute6;
+
+            when compute6 =>
+              o_add_enable <= '0';
+              if (i_add_done) then
+                j                 <= j+1;
+                s_oil_space_index <= s_oil_space_index + (N-O);
+                s_v1_index        <= s_v1_index + M;
+                state             <= compute2;
+              end if;
+
+            when compute7 =>
+              p1_counter <= p1_counter + (N-O-i);
+              -- update ctrs for next round
+              s_oil_space_index <= OIL_SPACE_BASE_ADR + i+1;
+              s_v1_index        <= TEMP_BASE_ADR + (i+1)*O*M;
+              i                 <= i+1 ;
+              j                 <= 0;
+              state             <= compute1;
+
+            when compute8
+              i <= 0;
+              j <= 0;
+
+              -- Add vec
+              s_v1_index <= TEMP_BASE_ADR;
+              s_p1_index <= P1_BASE_ADR;
+              state      <= compute9 ;
+
+            when compute9 =>
+              if (i < N-O) then
+                state <= compute10;
+              else
+                state <= tranpose0;
+              end if;
+
+            when compute10 =>
+              if (j < O) then
+                s_p1_index <= s_p1_index + p1_counter*M;
+                state      <= compute11;
+              else
+                state <= compute13;
+              end if;
+
+            when compute11 =>
+              o_add_v1_addr  <= s_v1_index;
+              o_add_v2_addr  <= s_p1_index;
+              o_add_out_addr <= s_v1_index;
+              o_add_enable   <= '1';
+              state          <= compute12;
+
+            when compute12 =>
+              o_add_enable <= '0';
+              if (i_add_done) then
+                j          <= j+1;
+                p1_counter <= p1_counter +1;
+                s_v1_index <= s_v1_index + M;
+                state      <= compute10;
+              end if;
+
+            when compute13 =>
+              s_v1_index <= TEMP_BASE_ADR + (i+1)*O*M;
+              i          <= i+1 ;
+              j          <= 0;
+              state      <= compute9;
+
+            when tranpose0 => -- Transpose
+              i            <= 0;
+              j            <= 0;
+              s_src_index  <= TEMP_BASE_ADR;
+              s_dest_index <= TEMPT_BASE_ADR;
+              
+
+
+
+
+
+
+
 
 
             when others =>
