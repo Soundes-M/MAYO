@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sun Sep 18 19:18:37 2022
+-- Last update : Sun Sep 25 15:53:55 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -78,21 +78,22 @@ PACKAGE UTILS_COMMON IS
     data  : std_logic_vector(31 downto 0); -- trng data
   end record i_trng;
 
+  constant DEFAULT_OUT_TRNG : o_trng := (
+      r    => '0',
+      w    => '0',
+      data => ( others => '0')
+    );
+  constant DEFAULT_IN_TRNG : i_trng := (
+      valid => '0',
+      done  => '0',
+      data  => ( others => '0')
+    );
+
   type trng_t is record
     o : o_trng;
     i : i_trng;
   end record trng_t;
 
-  constant DEFAULT_OUT_TRNG : o_trng := (
-      r    => '0';
-      w    => '0';
-      data => ( others => '0');
-    );
-  constant DEFAULT_IN_TRNG : i_trng := (
-      valid => '0';
-      done  => '0';
-      data  => ( others => '0');
-    );
   constant DEFAULT_TRNG : trng_t := (
       o => DEFAULT_OUT_TRNG,
       i => DEFAULT_IN_TRNG);

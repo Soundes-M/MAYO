@@ -170,7 +170,6 @@ begin
 		);
 
 	INPUT_Pr : process(i_clk) is
-	variable next_state : t_state;
 	begin
 		if(rising_edge(i_clk)) then
 			if(rst = '1') then
@@ -211,7 +210,7 @@ begin
 						bram1a.o.o_we   <= "0000";
 						t_state         <= read2;
 
-					when read2 => -- Also update ADR
+					when read2 =>                         -- Also update ADR
 						s_coeffs      <= bram0a.i.i_dout; -- 32 Bits (1 Byte/clk)
 						bram0a.o.o_en <= '0';             -- Coeffs not needed anymore
 						s_vecs        <= bram1a.i.i_dout; -- 32 Bits (4 Byte/clk)
