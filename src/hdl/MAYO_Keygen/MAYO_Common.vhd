@@ -27,7 +27,7 @@ PACKAGE MAYO_COMMON IS
 
   FUNCTION P2KC2_MONO (K : NATURAL) RETURN real;
 
-  FUNCTION P1MONOMIALS (N : NATURAL; O : NATURAL) RETURN real;
+  FUNCTION P1MONOMIALS_F (N : NATURAL; O : NATURAL) RETURN real;
 
   -- MOD Alternative
   FUNCTION BARRETT_REDUCTION(A  : NATURAL) return natural;
@@ -62,7 +62,7 @@ PACKAGE MAYO_COMMON IS
 
   CONSTANT HASH_BYTES : positive := 32;
 
-  CONSTANT OIL_SPACE_BYTES : positive := (O*(N-O)) ;
+  CONSTANT OIL_SPACE_BYTES : positive := (O*(N-O));
 
 
   ------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ PACKAGE MAYO_COMMON IS
   -- Address Mapping (In BRAM I) (SMALL DATA)
   ------------------------------------------------------------------------------
   -- SECRET KEY (SK)
-  CONSTANT SK_BASE_ADR : positive := 16#0#;
+  CONSTANT SK_BASE_ADR : natural := 0;
   CONSTANT SK_RANGE    : positive := SK_BYTES ;
   CONSTANT SK_HIGH_ADR : positive := SK_BASE_ADR + SK_RANGE -4;
 
@@ -111,7 +111,7 @@ PACKAGE MAYO_COMMON IS
   ------------------------------------------------------------------------------
   CONSTANT BRAM_II_SIZE : positive := 268435456; -- 256M TODO: Change this
 
-  CONSTANT P1_BASE_ADR : positive := 16#0#;
+  CONSTANT P1_BASE_ADR : natural := 16#0#;
   CONSTANT P1_RANGE    : positive := P1_BYTES ;
   CONSTANT P1_HIGH_ADR : positive := P1_BASE_ADR + P1_RANGE - 4;
 
@@ -140,7 +140,7 @@ PACKAGE BODY MAYO_COMMON IS
     RETURN real((K * (K + 1)) / 2);
   END FUNCTION;
 
-  FUNCTION P1MONOMIALS (N : natural; O : natural) RETURN real IS
+  FUNCTION P1MONOMIALS_F (N : natural; O : natural) RETURN real IS
   BEGIN
     return real((N - O) * (N - O + 1) / 2 + (N - O) * O);
   END FUNCTION;

@@ -87,7 +87,7 @@ ENTITY MAYO_KEYGEN IS
     -- NEGATE 
     o_neg_enable : out std_logic;
     o_neg_len    : out std_logic_vector (31 downto 0);
-    o_neg_adr    : out std_logic_vector(BRAM_SIZE-1 downto 0);
+    o_neg_adr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
     i_neg_done   : in  std_logic;
 
     --BRAM0-A
@@ -167,38 +167,6 @@ ARCHITECTURE RTL OF MAYO_KEYGEN IS
   signal bram1a : bram_t := DEFAULT_BRAM;
 
 BEGIN
-  --- trng
-  o_trng_r     <= trng.o.r;
-  o_trng_w     <= trng.o.w ;
-  o_trng_data  <= trng.o.data;
-  trng.i.valid <= i_trng_valid;
-  trng.i.done  <= i_trng_done;
-  trng.i.data  <= i_trng_data;
-
-  --- brams
-  --BRAM0-A
-  bram0a.i.i_dout <= i_mem0a_dout;
-  o_mem0a_din     <= bram0a.o.o_din;
-  o_mem0a_addr    <= bram0a.o.o_addr;
-  o_mem0a_en      <= bram0a.o.o_en;
-  o_mem0a_rst     <= bram0a.o.o_rst;
-  o_mem0a_we      <= bram0a.o.o_we;
-
-  --BRAM0-B
-  bram0b.i.i_dout <= i_mem0b_dout;
-  o_mem0b_din     <= bram0b.o.o_din;
-  o_mem0b_addr    <= bram0b.o.o_addr;
-  o_mem0b_en      <= bram0b.o.o_en;
-  o_mem0b_rst     <= bram0b.o.o_rst;
-  o_mem0b_we      <= bram0b.o.o_we;
-
-  --BRAM1-A
-  bram1a.i.i_dout <= i_mem1a_dout;
-  o_mem1a_din     <= bram1a.o.o_din;
-  o_mem1a_addr    <= bram1a.o.o_addr;
-  o_mem1a_en      <= bram1a.o.o_en;
-  o_mem1a_rst     <= bram1a.o.o_rst;
-  o_mem1a_we      <= bram1a.o.o_we;
 
   o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5) else '0';
   o_mem0b_control <= '1' when (state = rand2 or state = rand3 or state = rand4 or state = rand5) else '0';
@@ -210,10 +178,10 @@ BEGIN
     if (rising_edge(clk)) then
       if (RESET = '1') then
         -- add reset werte!
-        trng               <= DEFAULT_TRNG;
-        bram0a             <= DEFAULT_BRAM;
-        bram0b             <= DEFAULT_BRAM;
-        bram1a             <= DEFAULT_BRAM;
+        trng.o              <= DEFAULT_OUT_TRNG;
+        bram0a.o             <= DEFAULT_OUT_BRAM;
+        bram0b.o             <= DEFAULT_OUT_BRAM;
+        bram1a.o             <= DEFAULT_OUT_BRAM;
         index              <= 0 ;
         counter            <= 0;
         p1_counter         <= 0;
@@ -260,7 +228,7 @@ BEGIN
 
             if ( trng.i.valid = '1') then
               bram0a.o.o_we   <= "1111";
-              bram0a.o.o_din  <= trng.i.data;
+              bram0a.o.o_din  <= i_trng_data;
               bram0a.o.o_en   <= '1';
               bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) + 4) ; -- TODO : Check 
             else
@@ -300,11 +268,11 @@ BEGIN
           when rand4 =>
             bram0b.o.o_addr <= std_logic_vector(unsigned(bram0b.o.o_addr) + 4) ;
             bram0b.o.o_en   <= '1';
-            bram0b.o.o_din  <= bram0a.i.i_dout;
+            bram0b.o.o_din  <= i_mem0a_dout;
 
             bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) + 4) ;
             bram1a.o.o_en   <= '1';
-            bram1a.o.o_din  <= bram0a.i.i_dout;
+            bram1a.o.o_din  <= i_mem0a_dout;
 
             if (index >= 4) then
               state <= rand5;
@@ -528,8 +496,8 @@ BEGIN
             state           <= transpose4;
 
           when transpose4 => -- writeback
-            o_mem1a_addr   <= std_logic_vector(to_unsigned(s_dest_index + copy_index,PORT_WIDTH));
-            bram1a.o.o_din <= bram1a.i.i_dout;
+            bram1a.o.o_addr   <= std_logic_vector(to_unsigned(s_dest_index + copy_index,PORT_WIDTH));
+            bram1a.o.o_din <= i_mem1a_dout;
             bram1a.o.o_we  <= "1111";
             copy_index     <= copy_index +4;
             state          <= transpose5;
@@ -658,4 +626,37 @@ BEGIN
     end if;
 
   END PROCESS KEYGEN;
+  
+    --- trng
+  o_trng_r     <= trng.o.r;
+  o_trng_w     <= trng.o.w ;
+  o_trng_data  <= trng.o.data;
+  trng.i.valid <= i_trng_valid;
+  trng.i.done  <= i_trng_done;
+  --trng.i.data  <= i_trng_data;
+
+  --- brams
+  --BRAM0-A
+  bram0a.i.i_dout <= i_mem0a_dout;
+  o_mem0a_din     <= bram0a.o.o_din;
+  o_mem0a_addr    <= bram0a.o.o_addr;
+  o_mem0a_en      <= bram0a.o.o_en;
+  o_mem0a_rst     <= bram0a.o.o_rst;
+  o_mem0a_we      <= bram0a.o.o_we;
+
+  --BRAM0-B
+  -- bram0b.i.i_dout <= i_mem0b_dout;
+  o_mem0b_din     <= bram0b.o.o_din;
+  o_mem0b_addr    <= bram0b.o.o_addr;
+  o_mem0b_en      <= bram0b.o.o_en;
+  o_mem0b_rst     <= bram0b.o.o_rst;
+  o_mem0b_we      <= bram0b.o.o_we;
+
+  --BRAM1-A
+  bram1a.i.i_dout <= i_mem1a_dout;
+  o_mem1a_din     <= bram1a.o.o_din;
+  o_mem1a_addr    <= bram1a.o.o_addr;
+  o_mem1a_en      <= bram1a.o.o_en;
+  o_mem1a_rst     <= bram1a.o.o_rst;
+  o_mem1a_we      <= bram1a.o.o_we;
 END ARCHITECTURE RTL;
