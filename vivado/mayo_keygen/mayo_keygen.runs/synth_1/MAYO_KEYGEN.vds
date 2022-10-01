@@ -1,0 +1,213 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Sep 30 20:34:05 2022
+# Process ID: 277368
+# Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_keygen/mayo_keygen.runs/synth_1
+# Command line: vivado -log MAYO_KEYGEN.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source MAYO_KEYGEN.tcl
+# Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_keygen/mayo_keygen.runs/synth_1/MAYO_KEYGEN.vds
+# Journal file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_keygen/mayo_keygen.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source MAYO_KEYGEN.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/AXI_LITE_Master_Test_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_shake128_project/mayo_shake128_project.srcs'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2020.2/data/ip'.
+Command: synth_design -top MAYO_KEYGEN -part xc7z020clg484-1 -directive PerformanceOptimized
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 277410
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2215.395 ; gain = 0.000 ; free physical = 5357 ; free virtual = 9896
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'MAYO_KEYGEN' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Keygen.vhd:124]
+	Parameter SIZE bound to: 999 - type: integer 
+	Parameter BRAM_SIZE bound to: 31 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'MAYO_KEYGEN' (1#1) [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Keygen.vhd:124]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:13 . Memory (MB): peak = 2215.395 ; gain = 0.000 ; free physical = 5440 ; free virtual = 9989
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 2215.395 ; gain = 0.000 ; free physical = 5437 ; free virtual = 9986
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 2223.254 ; gain = 7.859 ; free physical = 5435 ; free virtual = 9985
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 2223.254 ; gain = 7.859 ; free physical = 5304 ; free virtual = 9878
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 13    
++---Registers : 
+	               32 Bit    Registers := 31    
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 3     
+	                1 Bit    Registers := 13    
++---Multipliers : 
+	               7x32  Multipliers := 4     
+	               4x32  Multipliers := 1     
++---Muxes : 
+	   3 Input   32 Bit        Muxes := 3     
+	  52 Input   32 Bit        Muxes := 6     
+	   2 Input    6 Bit        Muxes := 8     
+	   2 Input    5 Bit        Muxes := 2     
+	  52 Input    4 Bit        Muxes := 2     
+	  52 Input    2 Bit        Muxes := 4     
+	  11 Input    1 Bit        Muxes := 1     
+	  52 Input    1 Bit        Muxes := 40    
+	   4 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:44 . Memory (MB): peak = 2266.246 ; gain = 50.852 ; free physical = 5115 ; free virtual = 9706
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:45 . Memory (MB): peak = 2266.246 ; gain = 50.852 ; free physical = 5115 ; free virtual = 9706
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:46 . Memory (MB): peak = 2274.254 ; gain = 58.859 ; free physical = 5114 ; free virtual = 9705
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:51 . Memory (MB): peak = 2274.254 ; gain = 58.859 ; free physical = 5110 ; free virtual = 9703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:51 . Memory (MB): peak = 2274.254 ; gain = 58.859 ; free physical = 5110 ; free virtual = 9703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:51 . Memory (MB): peak = 2274.254 ; gain = 58.859 ; free physical = 5110 ; free virtual = 9703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:51 . Memory (MB): peak = 2274.254 ; gain = 58.859 ; free physical = 5110 ; free virtual = 9703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:51 . Memory (MB): peak = 2274.254 ; gain = 58.859 ; free physical = 5110 ; free virtual = 9703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:51 . Memory (MB): peak = 2274.254 ; gain = 58.859 ; free physical = 5110 ; free virtual = 9703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |   225|
+|3     |LUT1   |    82|
+|4     |LUT2   |   606|
+|5     |LUT3   |   128|
+|6     |LUT4   |   202|
+|7     |LUT5   |    58|
+|8     |LUT6   |   120|
+|9     |MUXF7  |     2|
+|10    |FDRE   |   759|
+|11    |FDSE   |    11|
+|12    |IBUF   |   108|
+|13    |OBUF   |   766|
+|14    |OBUFT  |     1|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |  3069|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:51 . Memory (MB): peak = 2274.254 ; gain = 58.859 ; free physical = 5110 ; free virtual = 9703
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:51 . Memory (MB): peak = 2274.254 ; gain = 58.859 ; free physical = 5112 ; free virtual = 9705
+Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:51 . Memory (MB): peak = 2274.262 ; gain = 58.859 ; free physical = 5112 ; free virtual = 9705
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2274.262 ; gain = 0.000 ; free physical = 5202 ; free virtual = 9797
+INFO: [Netlist 29-17] Analyzing 227 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'MAYO_KEYGEN' is not ideal for floorplanning, since the cellview 'MAYO_KEYGEN' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2348.078 ; gain = 0.000 ; free physical = 5123 ; free virtual = 9718
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+19 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:00:57 . Memory (MB): peak = 2348.078 ; gain = 132.828 ; free physical = 5197 ; free virtual = 9792
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_keygen/mayo_keygen.runs/synth_1/MAYO_KEYGEN.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file MAYO_KEYGEN_utilization_synth.rpt -pb MAYO_KEYGEN_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Sep 30 20:35:29 2022...

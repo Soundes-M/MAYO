@@ -1,0 +1,146 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Color Coded_Layers":"/rst_ps7_0_100M_peripheral_aresetn:true|/processing_system7_0_FCLK_RESET0_N:true|/processing_system7_0_FCLK_CLK0:true|",
+   "Color Coded_ScaleFactor":"0.430804",
+   "Color Coded_TopLeft":"-332,0",
+   "Default View_ScaleFactor":"0.696385",
+   "Default View_TopLeft":"0,1970",
+   "Display-PortTypeClock":"true",
+   "Display-PortTypeOthers":"true",
+   "Display-PortTypeReset":"true",
+   "ExpandedHierarchyInLayout":"",
+   "Interfaces View_Layers":"/rst_ps7_0_100M_peripheral_aresetn:false|/processing_system7_0_FCLK_RESET0_N:false|/processing_system7_0_FCLK_CLK0:false|",
+   "Interfaces View_ScaleFactor":"1.25",
+   "Interfaces View_TopLeft":"-347,-288",
+   "No Loops_ExpandedHierarchyInLayout":"",
+   "No Loops_Layout":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 2020 -y 2520 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 2020 -y 2540 -defaultsOSRD
+preplace inst TRNG_0 -pg 1 -lvl 2 -x 580 -y 2000 -swap {0 1 6 3 5 4 2 7} -defaultsOSRD -pinDir CLK_I left -pinY CLK_I 0L -pinDir RST left -pinY RST 20L -pinDir R_I right -pinY R_I 80R -pinDir W_I right -pinY W_I 20R -pinBusDir TRNG_DATA_I right -pinBusY TRNG_DATA_I 60R -pinBusDir TRNG_DATA_O right -pinBusY TRNG_DATA_O 40R -pinDir TRNG_VALID_O right -pinY TRNG_VALID_O 0R -pinDir TRNG_DONE_O right -pinY TRNG_DONE_O 100R
+preplace inst processing_system7_0 -pg 1 -lvl 4 -x 1430 -y 2520 -swap {0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 67 68 70 69 66 71} -defaultsOSRD -pinDir DDR right -pinY DDR 0R -pinDir FIXED_IO right -pinY FIXED_IO 20R -pinDir USBIND_0 right -pinY USBIND_0 40R -pinDir M_AXI_GP0 right -pinY M_AXI_GP0 60R -pinDir TTC0_WAVE0_OUT right -pinY TTC0_WAVE0_OUT 100R -pinDir TTC0_WAVE1_OUT right -pinY TTC0_WAVE1_OUT 120R -pinDir TTC0_WAVE2_OUT right -pinY TTC0_WAVE2_OUT 140R -pinDir M_AXI_GP0_ACLK left -pinY M_AXI_GP0_ACLK 0L -pinDir FCLK_CLK0 right -pinY FCLK_CLK0 80R -pinDir FCLK_RESET0_N left -pinY FCLK_RESET0_N 20L
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 180 -y 1920 -swap {0 9 2 3 4 1 5 6 7 8} -defaultsOSRD -pinDir slowest_sync_clk right -pinY slowest_sync_clk 0R -pinDir ext_reset_in right -pinY ext_reset_in 620R -pinDir aux_reset_in left -pinY aux_reset_in 0L -pinDir mb_debug_sys_rst left -pinY mb_debug_sys_rst 20L -pinDir dcm_locked left -pinY dcm_locked 40L -pinDir mb_reset right -pinY mb_reset 20R -pinBusDir bus_struct_reset right -pinBusY bus_struct_reset 40R -pinBusDir peripheral_reset right -pinBusY peripheral_reset 60R -pinBusDir interconnect_aresetn right -pinBusY interconnect_aresetn 80R -pinBusDir peripheral_aresetn right -pinBusY peripheral_aresetn 100R
+preplace inst Small_Bram -pg 1 -lvl 5 -x 1820 -y 2220 -defaultsOSRD -pinDir BRAM_PORTA left -pinY BRAM_PORTA 0L -pinDir BRAM_PORTA.addra left -pinY BRAM_PORTA.addra 20L -pinDir BRAM_PORTA.clka left -pinY BRAM_PORTA.clka 40L -pinDir BRAM_PORTA.dina left -pinY BRAM_PORTA.dina 60L -pinDir BRAM_PORTA.douta left -pinY BRAM_PORTA.douta 80L -pinDir BRAM_PORTA.ena left -pinY BRAM_PORTA.ena 100L -pinDir BRAM_PORTA.wea left -pinY BRAM_PORTA.wea 140L -pinDir BRAM_PORTB left -pinY BRAM_PORTB 160L
+preplace inst blk_mem_gen_1 -pg 1 -lvl 1 -x 180 -y 2640 -defaultsOSRD -pinDir BRAM_PORTA left -pinY BRAM_PORTA 0L -pinDir BRAM_PORTB left -pinY BRAM_PORTB 20L
+preplace inst mayo_negate_0 -pg 1 -lvl 2 -x 580 -y 1260 -swap {1 5 6 4 2 0 7 8 9 10 11 3} -defaultsOSRD -pinDir i_clk left -pinY i_clk 20L -pinDir rst left -pinY rst 40L -pinDir i_enable right -pinY i_enable 60R -pinBusDir i_len right -pinBusY i_len 40R -pinBusDir i_adr right -pinBusY i_adr 0R -pinBusDir i_doutb left -pinBusY i_doutb 0L -pinBusDir o_addrb right -pinBusY o_addrb 80R -pinBusDir o_dinb right -pinBusY o_dinb 100R -pinDir o_enb right -pinY o_enb 120R -pinDir o_rstb right -pinY o_rstb 140R -pinBusDir o_web right -pinBusY o_web 160R -pinDir o_done right -pinY o_done 20R
+preplace inst mayo_reduce_0 -pg 1 -lvl 2 -x 580 -y 620 -swap {1 4 6 5 0 3 7 8 9 10 11 2} -defaultsOSRD -pinDir i_clk left -pinY i_clk 20L -pinDir rst left -pinY rst 40L -pinDir i_enable right -pinY i_enable 60R -pinBusDir i_len right -pinBusY i_len 40R -pinBusDir i_doutb left -pinBusY i_doutb 0L -pinBusDir i_adr right -pinBusY i_adr 20R -pinBusDir o_addrb right -pinBusY o_addrb 80R -pinBusDir o_dinb right -pinBusY o_dinb 100R -pinDir o_enb right -pinY o_enb 120R -pinDir o_rstb right -pinY o_rstb 140R -pinBusDir o_web right -pinBusY o_web 160R -pinDir o_done right -pinY o_done 0R
+preplace inst mayo_sample_oil_space_0 -pg 1 -lvl 2 -x 580 -y 1560 -swap {12 18 4 2 3 0 1 7 8 9 10 11 5 13 14 15 16 17 6 19 20 21 22 23} -defaultsOSRD -pinDir i_clk left -pinY i_clk 80L -pinDir rst left -pinY rst 100L -pinDir i_enable right -pinY i_enable 40R -pinDir o_done right -pinY o_done 0R -pinBusDir i_oil_addr right -pinBusY i_oil_addr 20R -pinDir i_hash_done left -pinY i_hash_done 0L -pinDir i_hash_dyn_done left -pinY i_hash_dyn_done 20L -pinDir o_hash_enable right -pinY o_hash_enable 60R -pinBusDir o_hash_mlen right -pinBusY o_hash_mlen 80R -pinBusDir o_hash_olen right -pinBusY o_hash_olen 100R -pinBusDir o_hash_write_adr right -pinBusY o_hash_write_adr 120R -pinBusDir o_hash_read_adr right -pinBusY o_hash_read_adr 140R -pinBusDir i_mema_dout left -pinBusY i_mema_dout 40L -pinBusDir o_mema_din right -pinBusY o_mema_din 160R -pinBusDir o_mema_addr right -pinBusY o_mema_addr 180R -pinDir o_mema_en right -pinY o_mema_en 200R -pinDir o_mema_rst right -pinY o_mema_rst 220R -pinBusDir o_mema_we right -pinBusY o_mema_we 240R -pinBusDir i_memb_dout left -pinBusY i_memb_dout 60L -pinBusDir o_memb_din right -pinBusY o_memb_din 260R -pinBusDir o_memb_addr right -pinBusY o_memb_addr 280R -pinDir o_memb_en right -pinY o_memb_en 300R -pinDir o_memb_rst right -pinY o_memb_rst 320R -pinBusDir o_memb_we right -pinBusY o_memb_we 340R
+preplace inst mem_mux_0 -pg 1 -lvl 1 -x 180 -y 2760 -defaultsOSRD -pinBusDir BRAMA_din left -pinBusY BRAMA_din 0L -pinBusDir BRAMA_addr left -pinBusY BRAMA_addr 20L -pinDir BRAMA_en left -pinY BRAMA_en 40L -pinDir BRAMA_rst left -pinY BRAMA_rst 60L -pinDir BRAMA_we left -pinY BRAMA_we 80L -pinBusDir BRAMA_dout right -pinBusY BRAMA_dout 0R -pinBusDir BRAMB_din left -pinBusY BRAMB_din 100L -pinBusDir BRAMB_addr left -pinBusY BRAMB_addr 120L -pinDir BRAMB_en left -pinY BRAMB_en 140L -pinDir BRAMB_rst left -pinY BRAMB_rst 160L -pinDir BRAMB_we left -pinY BRAMB_we 180L -pinBusDir BRAMB_dout right -pinBusY BRAMB_dout 20R -pinBusDir BRAM_din right -pinBusY BRAM_din 40R -pinBusDir BRAM_addr right -pinBusY BRAM_addr 60R -pinDir BRAM_en right -pinY BRAM_en 80R -pinDir BRAM_rst right -pinY BRAM_rst 100R -pinDir BRAM_we right -pinY BRAM_we 120R -pinBusDir BRAM_dout left -pinBusY BRAM_dout 200L -pinDir bram_control left -pinY bram_control 220L
+preplace inst mem_mux_1 -pg 1 -lvl 4 -x 1430 -y 2220 -swap {18 1 2 3 4 5 6 7 8 9 10 12 13 11 15 16 17 14 0} -defaultsOSRD -pinBusDir BRAMA_din left -pinBusY BRAMA_din 200L -pinBusDir BRAMA_addr left -pinBusY BRAMA_addr 20L -pinDir BRAMA_en left -pinY BRAMA_en 40L -pinDir BRAMA_rst left -pinY BRAMA_rst 60L -pinDir BRAMA_we left -pinY BRAMA_we 80L -pinBusDir BRAMA_dout right -pinBusY BRAMA_dout 0R -pinBusDir BRAMB_din left -pinBusY BRAMB_din 100L -pinBusDir BRAMB_addr left -pinBusY BRAMB_addr 120L -pinDir BRAMB_en left -pinY BRAMB_en 140L -pinDir BRAMB_rst left -pinY BRAMB_rst 160L -pinDir BRAMB_we left -pinY BRAMB_we 180L -pinBusDir BRAMB_dout right -pinBusY BRAMB_dout 40R -pinBusDir BRAM_din right -pinBusY BRAM_din 60R -pinBusDir BRAM_addr right -pinBusY BRAM_addr 20R -pinDir BRAM_en right -pinY BRAM_en 100R -pinDir BRAM_rst right -pinY BRAM_rst 120R -pinDir BRAM_we right -pinY BRAM_we 140R -pinBusDir BRAM_dout right -pinBusY BRAM_dout 80R -pinDir bram_control left -pinY bram_control 0L
+preplace inst mem_mux_2 -pg 1 -lvl 5 -x 1820 -y 2600 -defaultsOSRD -pinBusDir BRAMA_din left -pinBusY BRAMA_din 0L -pinBusDir BRAMA_addr left -pinBusY BRAMA_addr 20L -pinDir BRAMA_en left -pinY BRAMA_en 40L -pinDir BRAMA_rst left -pinY BRAMA_rst 60L -pinDir BRAMA_we left -pinY BRAMA_we 80L -pinBusDir BRAMA_dout right -pinBusY BRAMA_dout 0R -pinBusDir BRAMB_din left -pinBusY BRAMB_din 100L -pinBusDir BRAMB_addr left -pinBusY BRAMB_addr 120L -pinDir BRAMB_en left -pinY BRAMB_en 140L -pinDir BRAMB_rst left -pinY BRAMB_rst 160L -pinDir BRAMB_we left -pinY BRAMB_we 180L -pinBusDir BRAMB_dout right -pinBusY BRAMB_dout 20R -pinBusDir BRAM_din right -pinBusY BRAM_din 40R -pinBusDir BRAM_addr right -pinBusY BRAM_addr 60R -pinDir BRAM_en right -pinY BRAM_en 80R -pinDir BRAM_rst right -pinY BRAM_rst 100R -pinDir BRAM_we right -pinY BRAM_we 120R -pinBusDir BRAM_dout left -pinBusY BRAM_dout 200L -pinDir bram_control left -pinY bram_control 220L
+preplace inst MAYO_KEYGEN_0 -pg 1 -lvl 3 -x 1000 -y 60 -swap {36 2 35 6 8 5 9 49 41 43 42 40 55 13 14 15 16 17 12 18 22 21 20 19 39 37 38 4 11 10 0 1 7 3 29 28 26 27 30 34 33 31 32 23 44 45 46 47 48 24 50 51 52 53 54 25 56 57 58 59 61 63 60 62} -defaultsOSRD -pinDir CLK left -pinY CLK 1440L -pinDir ENABLE left -pinY ENABLE 40L -pinDir RESET left -pinY RESET 1420L -pinBusDir PUBLIC_KEY_ADDR_I left -pinBusY PUBLIC_KEY_ADDR_I 100L -pinBusDir SECRET_KEY_ADDR_I left -pinBusY SECRET_KEY_ADDR_I 140L -pinDir o_done right -pinY o_done 0R -pinDir i_debug left -pinY i_debug 160L -pinDir o_trng_r left -pinY o_trng_r 2020L -pinDir o_trng_w left -pinY o_trng_w 1960L -pinBusDir o_trng_data left -pinBusY o_trng_data 2000L -pinBusDir i_trng_data left -pinBusY i_trng_data 1980L -pinDir i_trng_valid left -pinY i_trng_valid 1940L -pinDir i_trng_done left -pinY i_trng_done 2040L -pinDir o_hash_en right -pinY o_hash_en 1600R -pinBusDir o_hash_mlen right -pinBusY o_hash_mlen 1620R -pinBusDir o_hash_olen right -pinBusY o_hash_olen 1640R -pinBusDir o_hash_write_adr right -pinBusY o_hash_write_adr 1660R -pinBusDir o_hash_read_adr right -pinBusY o_hash_read_adr 1680R -pinDir i_hash_done left -pinY i_hash_done 300L -pinDir i_hash_dyn_done left -pinY i_hash_dyn_done 320L -pinDir o_red_enable left -pinY o_red_enable 620L -pinBusDir o_red_len left -pinBusY o_red_len 600L -pinBusDir o_red_adr left -pinBusY o_red_adr 580L -pinDir i_red_done left -pinY i_red_done 560L -pinDir o_sam_enable left -pinY o_sam_enable 1540L -pinDir i_sam_done left -pinY i_sam_done 1500L -pinBusDir o_sam_oil_addr left -pinBusY o_sam_oil_addr 1520L -pinDir o_lin_enable left -pinY o_lin_enable 80L -pinDir i_lin_done left -pinY i_lin_done 280L -pinDir o_lin_bram_halt left -pinY o_lin_bram_halt 180L -pinBusDir o_lin_vec_addr left -pinBusY o_lin_vec_addr 0L -pinBusDir o_lin_coeffs_addr left -pinBusY o_lin_coeffs_addr 20L -pinBusDir o_lin_out_addr left -pinBusY o_lin_out_addr 120L -pinBusDir o_lin_len left -pinBusY o_lin_len 60L -pinDir o_add_enable left -pinY o_add_enable 880L -pinBusDir o_add_v1_addr left -pinBusY o_add_v1_addr 860L -pinBusDir o_add_v2_addr left -pinBusY o_add_v2_addr 820L -pinBusDir o_add_out_addr left -pinBusY o_add_out_addr 840L -pinDir i_add_done left -pinY i_add_done 900L -pinDir o_neg_enable left -pinY o_neg_enable 1260L -pinBusDir o_neg_len left -pinBusY o_neg_len 1240L -pinBusDir o_neg_adr left -pinBusY o_neg_adr 1200L -pinDir i_neg_done left -pinY i_neg_done 1220L -pinBusDir i_mem0a_dout left -pinBusY i_mem0a_dout 640L -pinBusDir o_mem0a_din right -pinBusY o_mem0a_din 1700R -pinBusDir o_mem0a_addr right -pinBusY o_mem0a_addr 1720R -pinDir o_mem0a_en right -pinY o_mem0a_en 1740R -pinDir o_mem0a_rst right -pinY o_mem0a_rst 1760R -pinBusDir o_mem0a_we right -pinBusY o_mem0a_we 1780R -pinBusDir i_mem0b_dout left -pinBusY i_mem0b_dout 660L -pinBusDir o_mem0b_din right -pinBusY o_mem0b_din 1800R -pinBusDir o_mem0b_addr right -pinBusY o_mem0b_addr 1820R -pinDir o_mem0b_en right -pinY o_mem0b_en 1840R -pinDir o_mem0b_rst right -pinY o_mem0b_rst 1860R -pinBusDir o_mem0b_we right -pinBusY o_mem0b_we 1880R -pinBusDir i_mem1a_dout left -pinBusY i_mem1a_dout 680L -pinBusDir o_mem1a_din right -pinBusY o_mem1a_din 1900R -pinBusDir o_mem1a_addr right -pinBusY o_mem1a_addr 1920R -pinDir o_mem1a_en right -pinY o_mem1a_en 1940R -pinDir o_mem1a_rst right -pinY o_mem1a_rst 1960R -pinBusDir o_mem1a_we right -pinBusY o_mem1a_we 2000R -pinDir o_mem0a_control right -pinY o_mem0a_control 2040R -pinDir o_mem0b_control right -pinY o_mem0b_control 1980R -pinDir o_mem1a_control right -pinY o_mem1a_control 2020R
+preplace inst mayo_add_vectors_0 -pg 1 -lvl 2 -x 580 -y 880 -swap {7 13 5 4 2 3 6 0 8 9 10 11 12 1 14 15 16 17 18} -defaultsOSRD -pinDir i_clk left -pinY i_clk 40L -pinDir rst left -pinY rst 60L -pinDir i_enable right -pinY i_enable 60R -pinBusDir i_v1_addr right -pinBusY i_v1_addr 40R -pinBusDir i_v2_addr right -pinBusY i_v2_addr 0R -pinBusDir i_out_addr right -pinBusY i_out_addr 20R -pinDir o_done right -pinY o_done 80R -pinBusDir i_mema_dout left -pinBusY i_mema_dout 0L -pinBusDir o_mema_din right -pinBusY o_mema_din 100R -pinBusDir o_mema_addr right -pinBusY o_mema_addr 120R -pinDir o_mema_en right -pinY o_mema_en 140R -pinDir o_mema_rst right -pinY o_mema_rst 160R -pinBusDir o_mema_we right -pinBusY o_mema_we 180R -pinBusDir i_memb_dout left -pinBusY i_memb_dout 20L -pinBusDir o_memb_din right -pinBusY o_memb_din 200R -pinBusDir o_memb_addr right -pinBusY o_memb_addr 220R -pinDir o_memb_en right -pinY o_memb_en 240R -pinDir o_memb_rst right -pinY o_memb_rst 260R -pinBusDir o_memb_we right -pinBusY o_memb_we 280R
+preplace inst mayo_linear_combinat_0 -pg 1 -lvl 2 -x 580 -y 60 -swap {15 21 5 16 10 2 3 6 4 0 7 8 11 12 13 9 14 17 18 19 20 1 22 23 24 25 26} -defaultsOSRD -pinDir i_clk left -pinY i_clk 440L -pinDir rst left -pinY rst 460L -pinDir i_enable right -pinY i_enable 80R -pinDir o_done right -pinY o_done 280R -pinDir i_bram_halt right -pinY i_bram_halt 180R -pinBusDir i_vec_addr right -pinBusY i_vec_addr 0R -pinBusDir i_coeffs_addr right -pinBusY i_coeffs_addr 20R -pinBusDir i_out_addr right -pinBusY i_out_addr 120R -pinBusDir i_len right -pinBusY i_len 60R -pinBusDir i_mem0a_dout left -pinBusY i_mem0a_dout 380L -pinBusDir o_mem0a_din right -pinBusY o_mem0a_din 140R -pinBusDir o_mem0a_addr right -pinBusY o_mem0a_addr 160R -pinDir o_mem0a_en right -pinY o_mem0a_en 200R -pinDir o_mem0a_rst right -pinY o_mem0a_rst 220R -pinBusDir o_mem0a_we right -pinBusY o_mem0a_we 240R -pinBusDir i_mem0b_dout left -pinBusY i_mem0b_dout 420L -pinBusDir o_mem0b_din right -pinBusY o_mem0b_din 260R -pinBusDir o_mem0b_addr right -pinBusY o_mem0b_addr 300R -pinDir o_mem0b_en right -pinY o_mem0b_en 320R -pinDir o_mem0b_rst right -pinY o_mem0b_rst 340R -pinBusDir o_mem0b_we right -pinBusY o_mem0b_we 360R -pinBusDir i_mem1a_dout left -pinBusY i_mem1a_dout 400L -pinBusDir o_mem1a_din right -pinBusY o_mem1a_din 380R -pinBusDir o_mem1a_addr right -pinBusY o_mem1a_addr 400R -pinDir o_mem1a_en right -pinY o_mem1a_en 420R -pinDir o_mem1a_rst right -pinY o_mem1a_rst 440R -pinBusDir o_mem1a_we right -pinBusY o_mem1a_we 460R
+preplace netloc processing_system7_0_FCLK_CLK0 1 1 4 360 1500 780 2160 NJ 2160 1640
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 3 NJ 2540 NJ 2540 NJ
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 2 380 1480 N
+preplace netloc mem_mux_1_BRAM_addr 1 4 1 N 2240
+preplace netloc Small_Bram_douta 1 4 1 NJ 2300
+preplace netloc mem_mux_1_BRAM_en 1 4 1 N 2320
+preplace netloc mem_mux_1_BRAM_we 1 4 1 N 2360
+preplace netloc mem_mux_1_BRAM_din 1 4 1 N 2280
+preplace netloc MAYO_KEYGEN_0_o_trng_r 1 2 1 NJ 2080
+preplace netloc MAYO_KEYGEN_0_o_trng_w 1 2 1 NJ 2020
+preplace netloc MAYO_KEYGEN_0_o_trng_data 1 2 1 NJ 2060
+preplace netloc TRNG_0_TRNG_DATA_O 1 2 1 N 2040
+preplace netloc TRNG_0_TRNG_VALID_O 1 2 1 N 2000
+preplace netloc TRNG_0_TRNG_DONE_O 1 2 1 N 2100
+preplace netloc MAYO_KEYGEN_0_o_red_enable 1 2 1 NJ 680
+preplace netloc MAYO_KEYGEN_0_o_red_len 1 2 1 NJ 660
+preplace netloc MAYO_KEYGEN_0_o_red_adr 1 2 1 NJ 640
+preplace netloc mayo_reduce_0_o_done 1 2 1 N 620
+preplace netloc MAYO_KEYGEN_0_o_mem0a_control 1 3 1 1220 2100n
+preplace netloc MAYO_KEYGEN_0_o_lin_enable 1 2 1 NJ 140
+preplace netloc MAYO_KEYGEN_0_o_lin_vec_addr 1 2 1 NJ 60
+preplace netloc MAYO_KEYGEN_0_o_lin_coeffs_addr 1 2 1 NJ 80
+preplace netloc MAYO_KEYGEN_0_o_lin_out_addr 1 2 1 NJ 180
+preplace netloc MAYO_KEYGEN_0_o_lin_len 1 2 1 NJ 120
+preplace netloc mayo_linear_combinat_0_o_done 1 2 1 N 340
+preplace netloc MAYO_KEYGEN_0_o_add_enable 1 2 1 NJ 940
+preplace netloc MAYO_KEYGEN_0_o_add_v1_addr 1 2 1 NJ 920
+preplace netloc MAYO_KEYGEN_0_o_add_v2_addr 1 2 1 NJ 880
+preplace netloc MAYO_KEYGEN_0_o_add_out_addr 1 2 1 NJ 900
+preplace netloc mayo_add_vectors_0_o_done 1 2 1 N 960
+preplace netloc MAYO_KEYGEN_0_o_neg_enable 1 2 1 NJ 1320
+preplace netloc MAYO_KEYGEN_0_o_neg_len 1 2 1 NJ 1300
+preplace netloc MAYO_KEYGEN_0_o_neg_adr 1 2 1 NJ 1260
+preplace netloc mayo_negate_0_o_done 1 2 1 N 1280
+preplace netloc MAYO_KEYGEN_0_o_lin_bram_halt 1 2 1 NJ 240
+preplace netloc MAYO_KEYGEN_0_o_sam_enable 1 2 1 NJ 1600
+preplace netloc MAYO_KEYGEN_0_o_sam_oil_addr 1 2 1 NJ 1580
+preplace netloc mayo_sample_oil_space_0_o_done 1 2 1 N 1560
+preplace netloc processing_system7_0_DDR 1 4 2 NJ 2520 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 4 2 NJ 2540 NJ
+levelinfo -pg 1 0 180 580 1000 1430 1820 2020
+pagesize -pg 1 -db -bbox -sgen 0 0 2140 3040
+",
+   "No Loops_ScaleFactor":"0.317434",
+   "No Loops_TopLeft":"-1707,-236",
+   "Reduced Jogs_ScaleFactor":"0.412393",
+   "Reduced Jogs_TopLeft":"-424,0",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 2430 -y 2420 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 2430 -y 2440 -defaultsOSRD
+preplace inst TRNG_0 -pg 1 -lvl 2 -x 700 -y 2540 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 4 -x 1810 -y 2500 -swap {0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 67 68 70 69 66 71} -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 200 -y 2430 -defaultsOSRD
+preplace inst Small_Bram -pg 1 -lvl 5 -x 2230 -y 2240 -defaultsOSRD
+preplace inst blk_mem_gen_1 -pg 1 -lvl 1 -x 200 -y 2580 -defaultsOSRD
+preplace inst mayo_linear_combinat_0 -pg 1 -lvl 2 -x 700 -y 210 -defaultsOSRD
+preplace inst mayo_negate_0 -pg 1 -lvl 2 -x 700 -y 1870 -defaultsOSRD
+preplace inst mayo_reduce_0 -pg 1 -lvl 2 -x 700 -y 510 -defaultsOSRD
+preplace inst mem_mux_0 -pg 1 -lvl 1 -x 200 -y 2820 -defaultsOSRD
+preplace inst mem_mux_1 -pg 1 -lvl 4 -x 1810 -y 2190 -defaultsOSRD
+preplace inst mem_mux_2 -pg 1 -lvl 5 -x 2230 -y 2610 -defaultsOSRD
+preplace inst MAYO_KEYGEN_0 -pg 1 -lvl 3 -x 1210 -y 1220 -defaultsOSRD
+preplace inst mayo_add_vectors_0 -pg 1 -lvl 2 -x 700 -y 1420 -swap {7 13 5 4 2 3 6 0 8 9 10 11 12 1 14 15 16 17 18} -defaultsOSRD
+preplace inst mayo_sample_oil_space_0 -pg 1 -lvl 2 -x 700 -y 2220 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 20 2330 380 750 990 590 NJ 590 2040
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 5 20 2650 NJ 2650 NJ 2650 NJ 2650 2040
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 2 390 1080 N
+preplace netloc mem_mux_1_BRAM_addr 1 4 1 N 2190
+preplace netloc Small_Bram_douta 1 3 2 1600 2360 2050J
+preplace netloc mem_mux_1_BRAM_en 1 4 1 2030 2210n
+preplace netloc mem_mux_1_BRAM_we 1 4 1 2020 2250n
+preplace netloc mem_mux_1_BRAM_din 1 4 1 2050 2170n
+preplace netloc MAYO_KEYGEN_0_o_trng_r 1 1 3 490 2430 NJ 2430 1570
+preplace netloc MAYO_KEYGEN_0_o_trng_w 1 1 3 500 2440 NJ 2440 1560
+preplace netloc MAYO_KEYGEN_0_o_trng_data 1 1 3 500 2640 NJ 2640 1550
+preplace netloc TRNG_0_TRNG_DATA_O 1 2 1 950 1160n
+preplace netloc TRNG_0_TRNG_VALID_O 1 2 1 960 1180n
+preplace netloc TRNG_0_TRNG_DONE_O 1 2 1 990 1200n
+preplace netloc MAYO_KEYGEN_0_o_red_enable 1 1 3 460 690 NJ 690 1440
+preplace netloc MAYO_KEYGEN_0_o_red_len 1 1 3 500 640 NJ 640 1470
+preplace netloc MAYO_KEYGEN_0_o_red_adr 1 1 3 470 710 NJ 710 1430
+preplace netloc mayo_reduce_0_o_done 1 2 1 930 560n
+preplace netloc MAYO_KEYGEN_0_o_mem0a_control 1 3 1 1590 1620n
+preplace netloc MAYO_KEYGEN_0_o_lin_enable 1 1 3 450 620 900J 600 1520
+preplace netloc MAYO_KEYGEN_0_o_lin_vec_addr 1 1 3 400 720 NJ 720 1450
+preplace netloc MAYO_KEYGEN_0_o_lin_coeffs_addr 1 1 3 430 680 NJ 680 1490
+preplace netloc MAYO_KEYGEN_0_o_lin_out_addr 1 1 3 480 630 NJ 630 1540
+preplace netloc MAYO_KEYGEN_0_o_lin_len 1 1 3 440 700 NJ 700 1480
+preplace netloc mayo_linear_combinat_0_o_done 1 2 1 940 60n
+preplace netloc MAYO_KEYGEN_0_o_add_enable 1 1 3 410 650 NJ 650 1530
+preplace netloc MAYO_KEYGEN_0_o_add_v1_addr 1 1 3 500 740 920J 620 1590
+preplace netloc MAYO_KEYGEN_0_o_add_v2_addr 1 1 3 480 660 NJ 660 1580
+preplace netloc MAYO_KEYGEN_0_o_add_out_addr 1 1 3 490 730 910J 610 1600
+preplace netloc mayo_add_vectors_0_o_done 1 2 1 N 1320
+preplace netloc MAYO_KEYGEN_0_o_neg_enable 1 1 3 490 1730 NJ 1730 1450
+preplace netloc MAYO_KEYGEN_0_o_neg_len 1 1 3 500 1740 NJ 1740 1440
+preplace netloc MAYO_KEYGEN_0_o_neg_adr 1 1 3 460 1720 NJ 1720 1430
+preplace netloc mayo_negate_0_o_done 1 2 1 980 1340n
+preplace netloc MAYO_KEYGEN_0_o_lin_bram_halt 1 1 3 420 670 NJ 670 1460
+preplace netloc MAYO_KEYGEN_0_o_sam_enable 1 1 3 470 1750 NJ 1750 1510
+preplace netloc MAYO_KEYGEN_0_o_sam_oil_addr 1 1 3 480 1760 NJ 1760 1500
+preplace netloc mayo_sample_oil_space_0_o_done 1 2 1 970 1280n
+preplace netloc processing_system7_0_FIXED_IO 1 4 2 NJ 2440 NJ
+preplace netloc processing_system7_0_DDR 1 4 2 NJ 2420 NJ
+levelinfo -pg 1 0 200 700 1210 1810 2230 2430
+pagesize -pg 1 -db -bbox -sgen 0 0 2550 2990
+"
+}
+{
+   "da_clkrst_cnt":"6",
+   "da_ps7_cnt":"1"
+}

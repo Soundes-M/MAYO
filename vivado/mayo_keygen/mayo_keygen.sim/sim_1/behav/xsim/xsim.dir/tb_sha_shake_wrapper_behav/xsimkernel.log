@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_sha_shake_wrapper_behav/xsimk -simmode gui -wdb tb_sha_shake_wrapper_behav.wdb -simrunnum 0 -socket 60231
+Design successfully loaded
+Design Loading Memory Usage: 41800 KB (Peak: 41800 KB)
+Design Loading CPU Usage: 50 ms
+Simulation completed
+Simulation Memory Usage: 134968 KB (Peak: 181068 KB)
+Simulation CPU Usage: 440 ms

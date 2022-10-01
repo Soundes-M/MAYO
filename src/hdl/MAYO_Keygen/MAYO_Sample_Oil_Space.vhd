@@ -48,7 +48,7 @@ entity mayo_sample_oil_space is
 		--BRAM-A
 		i_mema_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mema_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_mema_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mema_addr : out std_logic_vector(BRAM_I_SIZE downto 0);
 		o_mema_en   : out std_logic;
 		o_mema_rst  : out std_logic;
 		o_mema_we   : out std_logic_vector (3 downto 0);
@@ -56,7 +56,7 @@ entity mayo_sample_oil_space is
 		--BRAM-B
 		i_memb_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_memb_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_memb_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_memb_addr : out std_logic_vector(BRAM_I_SIZE downto 0);
 		o_memb_en   : out std_logic;
 		o_memb_rst  : out std_logic;
 		o_memb_we   : out std_logic_vector (3 downto 0)

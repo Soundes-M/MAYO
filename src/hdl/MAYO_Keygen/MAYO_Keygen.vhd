@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sun Sep 25 16:14:02 2022
+-- Last update : Sun Oct  2 01:04:06 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ ENTITY MAYO_KEYGEN IS
     --BRAM0-A
     i_mem0a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
     o_mem0a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_mem0a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_mem0a_addr : out std_logic_vector(BRAM_I_SIZE downto 0);
     o_mem0a_en   : out std_logic;
     o_mem0a_rst  : out std_logic;
     o_mem0a_we   : out std_logic_vector (3 downto 0);
@@ -101,7 +101,7 @@ ENTITY MAYO_KEYGEN IS
     --BRAM0-B
     i_mem0b_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
     o_mem0b_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_mem0b_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_mem0b_addr : out std_logic_vector(BRAM_I_SIZE downto 0);
     o_mem0b_en   : out std_logic;
     o_mem0b_rst  : out std_logic;
     o_mem0b_we   : out std_logic_vector (3 downto 0);
@@ -109,7 +109,7 @@ ENTITY MAYO_KEYGEN IS
     --BRAM1-A
     i_mem1a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
     o_mem1a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_mem1a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_mem1a_addr : out std_logic_vector(BRAM_II_SIZE downto 0);
     o_mem1a_en   : out std_logic;
     o_mem1a_rst  : out std_logic;
     o_mem1a_we   : out std_logic_vector (3 downto 0);
@@ -178,10 +178,10 @@ BEGIN
     if (rising_edge(clk)) then
       if (RESET = '1') then
         -- add reset werte!
-        trng.o              <= DEFAULT_OUT_TRNG;
-        bram0a.o             <= DEFAULT_OUT_BRAM;
-        bram0b.o             <= DEFAULT_OUT_BRAM;
-        bram1a.o             <= DEFAULT_OUT_BRAM;
+        trng.o             <= DEFAULT_OUT_TRNG;
+        bram0a.o           <= DEFAULT_OUT_BRAM;
+        bram0b.o           <= DEFAULT_OUT_BRAM;
+        bram1a.o           <= DEFAULT_OUT_BRAM;
         index              <= 0 ;
         counter            <= 0;
         p1_counter         <= 0;
@@ -496,11 +496,11 @@ BEGIN
             state           <= transpose4;
 
           when transpose4 => -- writeback
-            bram1a.o.o_addr   <= std_logic_vector(to_unsigned(s_dest_index + copy_index,PORT_WIDTH));
-            bram1a.o.o_din <= i_mem1a_dout;
-            bram1a.o.o_we  <= "1111";
-            copy_index     <= copy_index +4;
-            state          <= transpose5;
+            bram1a.o.o_addr <= std_logic_vector(to_unsigned(s_dest_index + copy_index,PORT_WIDTH));
+            bram1a.o.o_din  <= i_mem1a_dout;
+            bram1a.o.o_we   <= "1111";
+            copy_index      <= copy_index +4;
+            state           <= transpose5;
 
           when transpose5 => --write 
             if (copy_index < 60) then
@@ -626,8 +626,8 @@ BEGIN
     end if;
 
   END PROCESS KEYGEN;
-  
-    --- trng
+
+  --- trng
   o_trng_r     <= trng.o.r;
   o_trng_w     <= trng.o.w ;
   o_trng_data  <= trng.o.data;
@@ -646,11 +646,11 @@ BEGIN
 
   --BRAM0-B
   -- bram0b.i.i_dout <= i_mem0b_dout;
-  o_mem0b_din     <= bram0b.o.o_din;
-  o_mem0b_addr    <= bram0b.o.o_addr;
-  o_mem0b_en      <= bram0b.o.o_en;
-  o_mem0b_rst     <= bram0b.o.o_rst;
-  o_mem0b_we      <= bram0b.o.o_we;
+  o_mem0b_din  <= bram0b.o.o_din;
+  o_mem0b_addr <= bram0b.o.o_addr;
+  o_mem0b_en   <= bram0b.o.o_en;
+  o_mem0b_rst  <= bram0b.o.o_rst;
+  o_mem0b_we   <= bram0b.o.o_we;
 
   --BRAM1-A
   bram1a.i.i_dout <= i_mem1a_dout;

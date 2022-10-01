@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Sep 19 19:26:42 2022
-# Process ID: 637682
+# Start of session at: Thu Sep 29 13:53:50 2022
+# Process ID: 6754
 # Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.runs/synth_1
 # Command line: vivado -log MAYO_SHAKE.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source MAYO_SHAKE.tcl
 # Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.runs/synth_1/MAYO_SHAKE.vds

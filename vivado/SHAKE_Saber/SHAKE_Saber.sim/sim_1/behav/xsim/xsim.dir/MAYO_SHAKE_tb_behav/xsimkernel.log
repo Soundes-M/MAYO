@@ -1,7 +1,7 @@
-Running: xsim.dir/MAYO_SHAKE_tb_behav/xsimk -simmode gui -wdb MAYO_SHAKE_tb_behav.wdb -simrunnum 0 -socket 43689
+Running: xsim.dir/MAYO_SHAKE_tb_behav/xsimk -simmode gui -wdb MAYO_SHAKE_tb_behav.wdb -simrunnum 0 -socket 39719
 Design successfully loaded
-Design Loading Memory Usage: 42120 KB (Peak: 42120 KB)
-Design Loading CPU Usage: 70 ms
+Design Loading Memory Usage: 42116 KB (Peak: 42116 KB)
+Design Loading CPU Usage: 50 ms
 Simulation completed
-Simulation Memory Usage: 135296 KB (Peak: 181388 KB)
-Simulation CPU Usage: 260 ms
+Simulation Memory Usage: 135288 KB (Peak: 181384 KB)
+Simulation CPU Usage: 270 ms

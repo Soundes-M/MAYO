@@ -52,8 +52,8 @@ module MAYO_SHAKE(rst, clk, en,
   wire [1:0] rate_type;
   wire [8:0] rd_address_shake, wt_address_shake;
   wire [63:0] din_shake, dout_shake;
-  reg [63:0] din_shake_reg = 0;
-  reg [63:0] dout_shake_reg = 0;
+  //reg [63:0] din_shake_reg = 0;
+  //reg [63:0] dout_shake_reg = 0;
   wire sample_dout, done_shake;
 
   // Descriptors
@@ -66,6 +66,7 @@ module MAYO_SHAKE(rst, clk, en,
   integer i;
   reg fill_read = 0;
   reg empty_write = 0;
+  reg enabled = 0;
 
   // OPs
   assign INS = command_reg0[4:0];
@@ -81,7 +82,7 @@ module MAYO_SHAKE(rst, clk, en,
   assign rate_type = (INS==5'd1) ? 2'd1 : (INS==5'd2) ? 2'd0 : 2'd2;
 
   // IO SHAKE <-> descriptors
-  assign din_shake = (en) ? read_desc[read_ctr] : 0 ;
+  assign din_shake = (enable_sha) ? read_desc[read_ctr] : 0 ;
   always @(posedge clk)
     begin
       if (rst)
@@ -108,7 +109,7 @@ module MAYO_SHAKE(rst, clk, en,
   always @(posedge clk)
     begin
       if (rst)
-        olen_remaining <= 0;
+        olen_remaining <= 1;
       else if (en)
         olen_remaining <= olen;
       else if (empty_write)
@@ -127,9 +128,6 @@ module MAYO_SHAKE(rst, clk, en,
     begin
       if(rst)
         begin
-          //          for (i = 0; i <C_WRITE_DESC_SIZE; i = i+1)
-          //            write_desc[i] <= 64'b0;
-
           for (i = 0; i <C_READ_DESC_SIZE; i = i+1)
             read_desc[i] <= 64'b0;
 
@@ -158,32 +156,34 @@ module MAYO_SHAKE(rst, clk, en,
                 if (en)
                   begin
                     $display("SHAKE: Start Block Fetch");
+                    bram_addr <= read_adr; // Start Prefetch
+                    bram_en <= 1'b1;
+                    bram_we <= 4'b0000;
                     state1 <= 6'd6;
                   end
                 else
                   state1 <= 6'd0;
               end
+              
             6'd6 :
               begin
-                bram_addr <= read_adr_reg; // Start Prefetch
-                bram_en <= 1'b1;
-                bram_we <= 4'b0000;
+                bram_addr <= bram_addr + 4;
                 fill_read <= 1'b1;
                 state1 <= 6'd1;
               end
-
+              
             6'd1: // READ FROM BRAM (1 Round)
               begin
                 $display("SHAKE : Read 0x%0h from 0x%0h!", BRAMA_dout, bram_addr); // debug output
                 $display("SHAKE : read_desc_adr :  %0d, c0 : %0d", read_desc_adr, c0);
                 read_desc[read_desc_adr][c0*32 +: 32] <= BRAMA_dout ;
-                if (read_desc_adr < C_READ_DESC_SIZE && mleng0)
+                if (read_desc_adr < C_READ_DESC_SIZE && mleng4)
                   begin
                     c0 <= !c0;
                     read_desc_adr <= read_desc_adr + c0; // Next Descriptor when done with both 32s
                     bram_addr <= bram_addr + 4;
                   end
-                else if (!mleng0)
+                else if (!mleng4)
                   begin // all read is done
                     bram_addr <= write_adr_reg;  // Prepare for write
                     fill_read <= 1'b0;
@@ -263,6 +263,7 @@ module MAYO_SHAKE(rst, clk, en,
           state0 <= 0;
           mlen_reg <= 0;
           olen_reg <= 0;
+          enabled <= 0;
         end
       else
         begin
@@ -275,6 +276,7 @@ module MAYO_SHAKE(rst, clk, en,
                     olen_reg <= olen;
                     read_adr_reg <= read_adr;
                     write_adr_reg <= write_adr;
+                    enabled <= 1;
                     state0 <= 6'd1;
                   end
                 else
@@ -359,10 +361,13 @@ module MAYO_SHAKE(rst, clk, en,
         read_ctr <= 0;
       else
         begin
+         if (enabled)
+         begin
           if (read_ctr < C_READ_DESC_SIZE-1 )
             read_ctr <= read_ctr +1;
           else
             read_ctr <= 0 ;
+         end
         end
     end
 

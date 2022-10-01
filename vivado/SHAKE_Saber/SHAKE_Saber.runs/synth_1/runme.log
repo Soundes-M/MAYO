@@ -15,9 +15,9 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 637788
+INFO: [Synth 8-7075] Helper process launched with PID 6803
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:10 . Memory (MB): peak = 2352.363 ; gain = 0.000 ; free physical = 3764 ; free virtual = 9580
+Starting Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:14 . Memory (MB): peak = 2352.410 ; gain = 0.000 ; free physical = 239 ; free virtual = 11493
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'MAYO_SHAKE' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:3]
 	Parameter C_BRAMSIZE bound to: 31 - type: integer 
@@ -26,11 +26,13 @@ INFO: [Synth 8-6157] synthesizing module 'MAYO_SHAKE' [/home/osm/Documents/SECT-
 INFO: [Synth 8-251] SHAKE: Start Block Fetch [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:160]
 INFO: [Synth 8-251] SHAKE : Read 0xxxxxxxxx from 0xxxxxxxxx! [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:177]
 INFO: [Synth 8-251] SHAKE : read_desc_adr :  x, c0 : x [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:178]
-INFO: [Synth 8-251] SHAKE : Write 0xxxxxxxxx to 0xxxxxxxxx! [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:227]
-INFO: [Synth 8-251] SHAKE: Write Done [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:247]
-INFO: [Synth 8-251] SHAKE: done! [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:319]
-WARNING: [Synth 8-567] referenced signal 'write_ctr' should be on the sensitivity list [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:338]
-WARNING: [Synth 8-567] referenced signal 'read_ctr' should be on the sensitivity list [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:351]
+INFO: [Synth 8-251] SHAKE : Write 0xxxxxxxxx to 0xxxxxxxxx! [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:228]
+INFO: [Synth 8-251] SHAKE : write_desc_adr :  x, c0 : x [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:229]
+INFO: [Synth 8-251] SHAKE: Write Done [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:249]
+INFO: [Synth 8-251] SHAKE: done! [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:321]
+WARNING: [Synth 8-567] referenced signal 'sample_dout' should be on the sensitivity list [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:340]
+WARNING: [Synth 8-567] referenced signal 'write_ctr' should be on the sensitivity list [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:340]
+WARNING: [Synth 8-567] referenced signal 'read_ctr' should be on the sensitivity list [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:356]
 INFO: [Synth 8-6157] synthesizing module 'SHA_SHAKE_wrapper' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/SABER_HW/Verilog_src/Keccak_Core/SHA_SHAKE_wrapper.v:27]
 INFO: [Synth 8-638] synthesizing module 'keccak' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/SABER_HW/Verilog_src/Keccak_Core/keccak.vhd:39]
 INFO: [Synth 8-3491] module 'keccak_round' declared at '/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/SABER_HW/Verilog_src/Keccak_Core/keccak_round.vhd:21' bound to instance 'round_map' of component 'keccak_round' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/SABER_HW/Verilog_src/Keccak_Core/keccak.vhd:100]
@@ -46,11 +48,15 @@ INFO: [Synth 8-256] done synthesizing module 'keccak' (4#1) [/home/osm/Documents
 INFO: [Synth 8-6155] done synthesizing module 'SHA_SHAKE_wrapper' (5#1) [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/SABER_HW/Verilog_src/Keccak_Core/SHA_SHAKE_wrapper.v:27]
 INFO: [Synth 8-6155] done synthesizing module 'MAYO_SHAKE' (6#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:3]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 2352.363 ; gain = 0.000 ; free physical = 4288 ; free virtual = 10107
+Finished Synthesize : Time (s): cpu = 00:00:35 ; elapsed = 00:00:47 . Memory (MB): peak = 2352.410 ; gain = 0.000 ; free physical = 629 ; free virtual = 12135
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:30 ; elapsed = 00:00:34 . Memory (MB): peak = 2352.363 ; gain = 0.000 ; free physical = 4275 ; free virtual = 10093
+Finished Constraint Validation : Time (s): cpu = 00:00:37 ; elapsed = 00:00:50 . Memory (MB): peak = 2352.410 ; gain = 0.000 ; free physical = 642 ; free virtual = 12168
 ---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'SHA_SHAKE_wrapper'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
@@ -69,8 +75,9 @@ INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'SHA_S
                  iSTATE1 |                     100000000000 |                             1101
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'SHA_SHAKE_wrapper'
+WARNING: [Synth 8-327] inferring latch for variable 'write_ctr_reg' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:343]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:10 ; elapsed = 00:02:00 . Memory (MB): peak = 2372.145 ; gain = 19.781 ; free physical = 1849 ; free virtual = 7671
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:17 ; elapsed = 00:02:32 . Memory (MB): peak = 2372.191 ; gain = 19.781 ; free physical = 745 ; free virtual = 10102
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
@@ -78,12 +85,12 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   32 Bit       Adders := 4     
+	   2 Input   32 Bit       Adders := 3     
 	   2 Input    9 Bit       Adders := 2     
 	   2 Input    8 Bit       Adders := 1     
 	   2 Input    6 Bit       Adders := 1     
 	   2 Input    5 Bit       Adders := 3     
-	   2 Input    4 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 2     
 +---XORs : 
 	   5 Input      1 Bit         XORs := 320   
 	   3 Input      1 Bit         XORs := 1600  
@@ -102,7 +109,7 @@ Detailed RTL Component Info :
 	   2 Input 1344 Bit        Muxes := 6     
 	   2 Input   64 Bit        Muxes := 61    
 	   8 Input   64 Bit        Muxes := 8     
-	   2 Input   32 Bit        Muxes := 9     
+	   2 Input   32 Bit        Muxes := 7     
 	   8 Input   32 Bit        Muxes := 1     
 	  12 Input   12 Bit        Muxes := 1     
 	   2 Input   12 Bit        Muxes := 8     
@@ -110,15 +117,15 @@ Detailed RTL Component Info :
 	   2 Input    6 Bit        Muxes := 4     
 	   2 Input    5 Bit        Muxes := 11    
 	   8 Input    5 Bit        Muxes := 1     
-	   2 Input    4 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 3     
 	   8 Input    4 Bit        Muxes := 2     
 	   3 Input    3 Bit        Muxes := 1     
 	   2 Input    3 Bit        Muxes := 2     
 	   2 Input    2 Bit        Muxes := 3     
 	   3 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 51    
+	   2 Input    1 Bit        Muxes := 52    
 	  12 Input    1 Bit        Muxes := 5     
-	   8 Input    1 Bit        Muxes := 14    
+	   8 Input    1 Bit        Muxes := 15    
 	   9 Input    1 Bit        Muxes := 3     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -137,20 +144,20 @@ No constraint files found.
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:26 ; elapsed = 00:03:51 . Memory (MB): peak = 2518.004 ; gain = 165.641 ; free physical = 317 ; free virtual = 6064
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:43 ; elapsed = 00:04:50 . Memory (MB): peak = 2516.051 ; gain = 163.641 ; free physical = 283 ; free virtual = 8596
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:32 ; elapsed = 00:03:58 . Memory (MB): peak = 2518.004 ; gain = 165.641 ; free physical = 311 ; free virtual = 6065
+Finished Timing Optimization : Time (s): cpu = 00:02:50 ; elapsed = 00:04:58 . Memory (MB): peak = 2516.051 ; gain = 163.641 ; free physical = 243 ; free virtual = 8596
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:40 ; elapsed = 00:04:06 . Memory (MB): peak = 2518.004 ; gain = 165.641 ; free physical = 330 ; free virtual = 6076
+Finished Technology Mapping : Time (s): cpu = 00:02:59 ; elapsed = 00:05:08 . Memory (MB): peak = 2516.051 ; gain = 163.641 ; free physical = 227 ; free virtual = 8614
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -168,37 +175,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:48 ; elapsed = 00:04:15 . Memory (MB): peak = 2518.004 ; gain = 165.641 ; free physical = 314 ; free virtual = 6076
+Finished IO Insertion : Time (s): cpu = 00:03:08 ; elapsed = 00:05:19 . Memory (MB): peak = 2516.051 ; gain = 163.641 ; free physical = 187 ; free virtual = 8617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:48 ; elapsed = 00:04:15 . Memory (MB): peak = 2518.004 ; gain = 165.641 ; free physical = 314 ; free virtual = 6076
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:09 ; elapsed = 00:05:19 . Memory (MB): peak = 2516.051 ; gain = 163.641 ; free physical = 187 ; free virtual = 8618
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:49 ; elapsed = 00:04:16 . Memory (MB): peak = 2518.004 ; gain = 165.641 ; free physical = 320 ; free virtual = 6075
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:10 ; elapsed = 00:05:20 . Memory (MB): peak = 2516.051 ; gain = 163.641 ; free physical = 185 ; free virtual = 8616
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:50 ; elapsed = 00:04:16 . Memory (MB): peak = 2518.004 ; gain = 165.641 ; free physical = 320 ; free virtual = 6074
+Finished Renaming Generated Ports : Time (s): cpu = 00:03:10 ; elapsed = 00:05:20 . Memory (MB): peak = 2516.051 ; gain = 163.641 ; free physical = 184 ; free virtual = 8617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:51 ; elapsed = 00:04:18 . Memory (MB): peak = 2518.004 ; gain = 165.641 ; free physical = 336 ; free virtual = 6075
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:12 ; elapsed = 00:05:23 . Memory (MB): peak = 2516.051 ; gain = 163.641 ; free physical = 170 ; free virtual = 8610
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:52 ; elapsed = 00:04:19 . Memory (MB): peak = 2518.004 ; gain = 165.641 ; free physical = 336 ; free virtual = 6075
+Finished Renaming Generated Nets : Time (s): cpu = 00:03:12 ; elapsed = 00:05:23 . Memory (MB): peak = 2516.051 ; gain = 163.641 ; free physical = 169 ; free virtual = 8610
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -215,52 +222,54 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     1|
-|2     |CARRY4 |    59|
-|3     |LUT1   |    92|
-|4     |LUT2   |    63|
-|5     |LUT3   |  1345|
-|6     |LUT4   |  1815|
-|7     |LUT5   |  3019|
-|8     |LUT6   |  1748|
+|2     |CARRY4 |    51|
+|3     |LUT1   |    93|
+|4     |LUT2   |    18|
+|5     |LUT3   |  1329|
+|6     |LUT4   |  1806|
+|7     |LUT5   |  3016|
+|8     |LUT6   |  1667|
 |9     |MUXF7  |   192|
 |10    |FDCE   |  2974|
 |11    |FDPE   |     1|
-|12    |FDRE   |  1928|
+|12    |FDRE   |  1927|
 |13    |FDSE   |     2|
-|14    |IBUF   |   163|
-|15    |OBUF   |    71|
+|14    |LDC    |     4|
+|15    |IBUF   |   163|
+|16    |OBUF   |    71|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+--------------------------+---------------------------+------+
 |      |Instance                  |Module                     |Cells |
 +------+--------------------------+---------------------------+------+
-|1     |top                       |                           | 13473|
-|2     |  SH                      |SHA_SHAKE_wrapper          | 10442|
-|3     |    KECCAK                |keccak                     | 10182|
-|4     |      buffer_in           |keccak_buffer              |  8566|
+|1     |top                       |                           | 13315|
+|2     |  SH                      |SHA_SHAKE_wrapper          | 10435|
+|3     |    KECCAK                |keccak                     | 10175|
+|4     |      buffer_in           |keccak_buffer              |  8559|
 |5     |      round_constants_gen |keccak_round_constants_gen |     7|
 +------+--------------------------+---------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:52 ; elapsed = 00:04:19 . Memory (MB): peak = 2518.004 ; gain = 165.641 ; free physical = 336 ; free virtual = 6075
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:12 ; elapsed = 00:05:23 . Memory (MB): peak = 2516.051 ; gain = 163.641 ; free physical = 169 ; free virtual = 8610
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:03:01 ; elapsed = 00:04:24 . Memory (MB): peak = 2521.914 ; gain = 169.551 ; free physical = 4355 ; free virtual = 10099
-Synthesis Optimization Complete : Time (s): cpu = 00:03:01 ; elapsed = 00:04:24 . Memory (MB): peak = 2521.914 ; gain = 169.551 ; free physical = 4355 ; free virtual = 10099
+Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:22 ; elapsed = 00:05:26 . Memory (MB): peak = 2519.961 ; gain = 167.551 ; free physical = 3691 ; free virtual = 12146
+Synthesis Optimization Complete : Time (s): cpu = 00:03:22 ; elapsed = 00:05:26 . Memory (MB): peak = 2519.961 ; gain = 167.551 ; free physical = 3691 ; free virtual = 12147
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.19 . Memory (MB): peak = 2521.914 ; gain = 0.000 ; free physical = 4353 ; free virtual = 10091
-INFO: [Netlist 29-17] Analyzing 251 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.26 ; elapsed = 00:00:00.28 . Memory (MB): peak = 2519.961 ; gain = 0.000 ; free physical = 3672 ; free virtual = 12144
+INFO: [Netlist 29-17] Analyzing 247 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2534.012 ; gain = 0.000 ; free physical = 4292 ; free virtual = 10030
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2532.059 ; gain = 0.000 ; free physical = 3529 ; free virtual = 12089
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 4 instances were transformed.
+  LDC => LDCE: 4 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-35 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+36 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:03:09 ; elapsed = 00:04:32 . Memory (MB): peak = 2534.012 ; gain = 181.793 ; free physical = 4346 ; free virtual = 10084
+synth_design: Time (s): cpu = 00:03:32 ; elapsed = 00:05:38 . Memory (MB): peak = 2532.059 ; gain = 179.793 ; free physical = 3677 ; free virtual = 12239
 INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.runs/synth_1/MAYO_SHAKE.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file MAYO_SHAKE_utilization_synth.rpt -pb MAYO_SHAKE_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Sep 19 19:31:42 2022...
+INFO: [Common 17-206] Exiting Vivado at Thu Sep 29 14:00:05 2022...
