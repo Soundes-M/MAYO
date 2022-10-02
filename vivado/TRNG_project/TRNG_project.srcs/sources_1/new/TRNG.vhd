@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de
 -- Company     : TU Berlin
 -- Created     : Thu Jun  9 16:56:13 2022
--- Last update : Thu Jun  9 17:16:53 2022
+-- Last update : Mon Sep  5 23:11:37 2022
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -23,15 +23,6 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE ieee.numeric_std.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
--- use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
--- library UNISIM;
--- use UNISIM.VComponents.all;
-
 ENTITY TRNG IS
     GENERIC (
         IS_SIM : boolean
@@ -44,7 +35,7 @@ ENTITY TRNG IS
         TRNG_DATA_I  : IN  std_logic_vector(31 DOWNTO 0); -- SIZE in bytes
         TRNG_DATA_O  : OUT std_logic_vector(31 DOWNTO 0);
         TRNG_VALID_O : OUT std_logic;
-        TRNG_DONE_O  : OUT std_logic    
+        TRNG_DONE_O  : OUT std_logic
     );
 END ENTITY TRNG;
 
@@ -117,11 +108,11 @@ ARCHITECTURE BEHAVIORAL OF TRNG IS
     -- control
     signal enable           : std_logic := '0';
     signal out_byte_counter : integer   := 0;
-    signal done : std_logic := '0';
+    signal done             : std_logic := '0';
     type read_state_t is (idle_s, start_s, reading_s, done_s);
-    signal read_state : read_state_t:= idle_s;
+    signal read_state : read_state_t := idle_s;
     type rng_state_t is (reset_s, empty_s , write_s, full_s);
-    signal rng_state : rng_state_t := reset_s;   
+    signal rng_state : rng_state_t := reset_s;
 
     -- arbiter
     signal OUT_SIZE : integer := 0;
@@ -164,7 +155,7 @@ BEGIN
         );
     TRNG_DONE_O <= done;
     -- done <= '1' when (OUT_SIZE = out_byte_counter) else '0';
-    
+
     RW_ACCESS  : PROCESS (CLK_I) IS
         VARIABLE i : natural := 0;
     BEGIN
@@ -173,28 +164,28 @@ BEGIN
                 OUT_SIZE         <= 0 ;
                 out_byte_counter <= 0;
                 i                := 0;
-                TRNG_VALID_O <= '0';
-                read_state <= idle_s;
+                TRNG_VALID_O     <= '0';
+                read_state       <= idle_s;
             else
                 if (w_i = '1') then -- write params
                     OUT_SIZE         <= to_integer(unsigned(TRNG_DATA_I(CTRL_DATA_SIZE_MSB_C DOWNTO CTRL_DATA_SIZE_LSB_C)));
                     out_byte_counter <= 0;
                     i                := 0;
-                    TRNG_VALID_O <= '0';
-                    read_state <= start_s;
+                    TRNG_VALID_O     <= '0';
+                    read_state       <= start_s;
                 end if;
-                
+
                 if (r_i = '1') then -- read random bytes      
-                    case read_state is 
+                    case read_state is
                         when start_s =>
-                            fifo.rd_en <= '1';
-                            i := 0;
-                            TRNG_data_o <= (others => '0');
+                            fifo.rd_en   <= '1';
+                            i            := 0;
+                            TRNG_data_o  <= (others => '0');
                             TRNG_VALID_O <= '0';
-                            read_state <=  reading_s;
-                        when reading_s  => 
+                            read_state   <= reading_s;
+                        when reading_s =>
                             if (i = 0 ) then
-                                TRNG_data_o <= (others => '0');
+                                TRNG_data_o  <= (others => '0');
                                 TRNG_VALID_O <= '0';
                             end if;
                             if (fifo.valid = '1') then
@@ -207,24 +198,24 @@ BEGIN
                                     i            := 0 ;
                                 end if;
                             end if;
-                            if (out_byte_counter = OUT_SIZE -1) then 
+                            if (out_byte_counter = OUT_SIZE -1) then
                                 fifo.rd_en <= '0';
                                 read_state <= done_s;
-                                done <= '1';
+                                done       <= '1';
                             end if;
-                            
+
                         when done_s =>
-                              done <= '0';
-                              TRNG_VALID_O <= '0';
-                              read_state <= idle_s;
-                        when idle_s =>
-                            done <= '0';
-                            TRNG_data_o <= (others => '0');
+                            done         <= '0';
                             TRNG_VALID_O <= '0';
-                            
+                            read_state   <= idle_s;
+                        when idle_s =>
+                            done         <= '0';
+                            TRNG_data_o  <= (others => '0');
+                            TRNG_VALID_O <= '0';
+
                         when others =>
-                            null;                           
-                      end case;                          
+                            null;
+                    end case;
                 end if;
             end if;
         END IF;
@@ -240,17 +231,17 @@ BEGIN
             else
                 case rng_state is
                     when reset_s =>
-                        if (fifo.empty = '1'  and fifo.full = '0') then -- FIFO start empty 
+                        if (fifo.empty = '1' and fifo.full = '0') then -- FIFO start empty 
                             rng_state <= empty_s;
                         end if;
-                    when empty_s => -- can also be seen as NOT FULL
+                    when empty_s =>    -- can also be seen as NOT FULL
                         enable <= '1'; -- enables neoTRNG
                         if fifo.almost_full = '1' then
                             enable    <= '0';
                             rng_state <= full_s; -- NO overflow is allowed
                         end if;
                     when full_s =>
-                        if ( fifo.almost_full = '0') then -- ADD more random data to FIFO
+                        if (fifo.almost_full = '0') then -- ADD more random data to FIFO
                             rng_state <= empty_s;
                         end if;
                     when others =>

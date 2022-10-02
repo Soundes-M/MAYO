@@ -95,7 +95,7 @@ begin
         din.input(31 downto 0) <= X"deadbeef";
 
         wait until dout.done = '1';
-        if (dout.o /= X"4164fb1f2e99f6e900de9c2355e98cdf2461a9fee5a5c27f9c72d45c7c8f567f") then
+        if (dout.o /= X"4164fb1f2e99f6e900de9c2355e98cdf2461a9fee5a5c27f9c72d45c7c8f567f4b2f7c638ab7dad54bec1578906d1e67d031bf6daec999bfb3b13e388838c1f4") then
             report "Test Failed!" severity failure;
         else
             report "Success";

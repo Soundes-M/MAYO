@@ -14,22 +14,34 @@ end shake128;
 -- We only allow message sizes < 1344 
 -- Taken from the SHAKE inside XMSS
 
+-- TODO:
+-- Add other state to in more message blocks with padding-
+-- -> Keep Paddding states but Loop
+
+-- Add others states to truncate Z to d bits.
+-- Turn off shake absorb and truncate the first r bits of "S" to Z which is output of f(shake)  
+-- In here it works the other way around so first is 1343 downto...)
+
 architecture Behavioral of shake128 is
 
 	constant padding_block : unsigned(255 downto 0) := x"1f00000000000000000000000000000000000000000000000000000000000000";
 	constant padding       : unsigned(63 downto 0)  := x"1f00000000000080";
 
-	type state_type is (S_IDLE, S_MSG_ABSORB_1, S_HASH, S_PADDING, S_HASH_START);
+	type state_type is (S_IDLE, S_MSG_ABSORB_1, S_HASH, S_PADDING, S_HASH_START, S_SQUEEZE_1, S_SQUEEZE_2, S_SQUEEZE_3, S_SQUEEZE_4, S_SQUEEZE_5);
 
 	type reg_type is record
 		state : state_type;
 
 		message       : unsigned(1343 downto 0); -- 1344 bit message block to be absorbed
+		hash_output : std_logic_vector((n*8)-1 downto 0);
+		
 		remaining_len : integer range 0 to MAX_MLEN;
+		remaining_output : integer ;
 
 		is_padded, padding_next, done : std_logic;
 
 		ctr : integer range 0 to 5;
+		out_ctr :integer range 0 to 6;
 	end record;
 
 	type out_signals is record
@@ -53,15 +65,19 @@ begin
 			data_in  => shake_in.din,
 			ready    => modules.shake.ready,
 			data_out => modules.shake.dout
-
 		);
 		
-	shake_in.din <= std_logic_vector(r_in.message);
+	
 
-	-- Output the first 256 Bit of the Keccak permutation
-	q.o    <= modules.shake.dout(1343 downto 1088);
+	
+	-- q.o    <= modules.shake.dout(1343 downto 832);
+    -- Output the first 256 Bit of the Keccak permutation
+    q.o <= r.hash_output;
 	q.done <= r.done;
-
+	
+	
+	
+    
 	combinational : process (r, d, modules, reset)
 		variable v    : reg_type;
 	begin
@@ -69,6 +85,7 @@ begin
 
 		-- default assignments
 		q.mnext        <= '0';
+		q.o_valid     <= '0';
 		v.done         := '0';
 		v.padding_next := '0';
 		shake_in.start <= '0';
@@ -77,7 +94,10 @@ begin
 		case r.state is
 			when S_IDLE =>
 				if d.enable = '1' then
-					shake_reset              <= '1'; -- Reset the Keccak state to 0
+				    if reset = '1' then 
+					   shake_reset              <= '1'; -- Reset the Keccak state to 0
+					   v.remaining_output := d.outputLen;
+					end if;
 					v.message(319 downto 64) := unsigned(d.input);
 
 					v.is_padded := '0';
@@ -128,15 +148,47 @@ begin
 				end if;
 				-- Enable the hash function (start signal needs 2 cycles)
 				shake_in.start <= '1';
+				shake_in.din <= std_logic_vector(r_in.message);
 				v.state        := S_HASH_START;
+				
 			when S_HASH_START =>
 				shake_in.start <= '1';
-				v.state        := S_HASH;
+				shake_in.din <= std_logic_vector(r_in.message);
+				v.state        := S_HASH;	
 			when S_HASH =>
 				-- Wait until hash is done
 				if modules.shake.ready = '1' then
-					v.done  := '1';
+				    -- Squeeze
+				    if (v.remaining_output >= 1344) then 
+				        r.hash_output <= modules.shake.dout(1343 downto 1088);
+				        v.state := S_SQUEEZE_1;
+				    elsif(v.remaining_output < 1344) then 
+				        
+				    end if; 
+				end if;
+	       when S_SQUEEZE_1 => 
+				        r.hash_output <= modules.shake.dout(1087 downto 832);
+				        v.state := S_SQUEEZE_2;
+	       when S_SQUEEZE_2 => 
+	       				r.hash_output <= modules.shake.dout(831 downto 576);
+				        v.state := S_SQUEEZE_3;
+	       when S_SQUEEZE_3 => 
+	       				r.hash_output <= modules.shake.dout(575 downto 320);
+				        v.state := S_SQUEEZE_4;
+	       when S_SQUEEZE_4 =>
+	                    r.hash_output <= modules.shake.dout(319 downto 64);
+				        v.state := S_SQUEEZE_5;
+	       when S_SQUEEZE_5 =>  
+				        r.hash_output <= modules.shake.dout(63 downto 0);
+				        v.state := 
+				    else 
+				        v.remaining_output := 0;
+				    end if;
+				    if (v.remaining_output = 0 ) then  
+					   v.done  := '1';
+					end if;
 					v.state := S_IDLE;
+					
 				end if;
 		end case;
 

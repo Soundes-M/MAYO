@@ -4,13 +4,13 @@ use ieee.numeric_std.all;
 use work.params.ALL;
 
 entity mayo_shake128 is
-    Generic(n : integer := 8);
     Port ( clk_i : in STD_LOGIC;
         reset_i : in STD_LOGIC;
 
         halt_i   : in STD_LOGIC;
         enable_i : in STD_LOGIC;
         len_i    : in std_logic_vector(10 downto 0);
+        outputLen_i : in std_logic_vector(31 downto 0);
         input_i  : in std_logic_vector((n*8)-1 downto 0);
 
         done_o   : out std_logic;
@@ -36,7 +36,8 @@ begin
     din.enable <= enable_i;
     din.len    <= to_integer(unsigned(len_i));
     din.input  <= input_i;
-
+    din.outputLen <= to_integer(unsigned(outputLen_i));
+    
     done_o   <= dout.done;
     mnext_o  <= dout.mnext;
     output_o <= dout.o;

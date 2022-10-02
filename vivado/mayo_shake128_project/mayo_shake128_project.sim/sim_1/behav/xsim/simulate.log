@@ -6,12 +6,6 @@ Note: Success
 Time: 425 ns  Iteration: 2  Process: /shake128_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_shake128_project/mayo_shake128_project.srcs/sim_1/new/shake128_tb.vhd
 Note: Advanced test 1...
 Time: 445 ns  Iteration: 0  Process: /shake128_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_shake128_project/mayo_shake128_project.srcs/sim_1/new/shake128_tb.vhd
-Note: Success
+Failure: Test Failed!
 Time: 775 ns  Iteration: 2  Process: /shake128_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_shake128_project/mayo_shake128_project.srcs/sim_1/new/shake128_tb.vhd
-Note: Advanced test 2...
-Time: 825 ns  Iteration: 0  Process: /shake128_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_shake128_project/mayo_shake128_project.srcs/sim_1/new/shake128_tb.vhd
-Note: Success
-Time: 1155 ns  Iteration: 2  Process: /shake128_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_shake128_project/mayo_shake128_project.srcs/sim_1/new/shake128_tb.vhd
-Failure: DONE.
-Time: 1165 ns  Iteration: 0  Process: /shake128_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_shake128_project/mayo_shake128_project.srcs/sim_1/new/shake128_tb.vhd
-$finish called at time : 1165 ns : File "/home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_shake128_project/mayo_shake128_project.srcs/sim_1/new/shake128_tb.vhd" Line 199
+$finish called at time : 775 ns : File "/home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_shake128_project/mayo_shake128_project.srcs/sim_1/new/shake128_tb.vhd" Line 142

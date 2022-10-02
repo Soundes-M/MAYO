@@ -11,6 +11,7 @@ package params is
         done : std_logic;
         mnext: std_logic;
         o    : std_logic_vector((n*8)-1 downto 0);
+        o_valid : std_logic;
 	end record;
 
 	type absorb_message_input_type is record
@@ -18,6 +19,7 @@ package params is
         enable: std_logic;
         len   : integer range 0 to 2048;
         input : std_logic_vector((n*8)-1 downto 0);
+        outputLen : integer;
     end record;
 
 

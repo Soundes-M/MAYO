@@ -9,16 +9,6 @@
       "synth_flow_mode": "Hierarchical",
       "tool_version": "2020.2"
     },
-    "design_tree": {
-      "mayo_shake128_0": ""
-    },
-    "components": {
-      "mayo_shake128_0": {
-        "vlnv": "user.org:user:mayo_shake128:1.0",
-        "xci_name": "design_1_mayo_shake128_0_0",
-        "xci_path": "ip/design_1_mayo_shake128_0_0/design_1_mayo_shake128_0_0.xci",
-        "inst_hier_path": "mayo_shake128_0"
-      }
-    }
+    "design_tree": {}
   }
 }

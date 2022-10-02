@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/add_mod_test_project/add_mod_test_project.srcs/sources_1/new/dsp_accumu.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'dsp_accumu'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/add_mod_test_project/add_mod_test_project.srcs/sim_1/new/dsp_accumu_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'dsp_accumu_tb'

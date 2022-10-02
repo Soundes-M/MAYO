@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Aug  1 19:39:30 2022
+# Process ID: 965796
+# Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/add_mod_test_project/add_mod_test_project.sim/sim_1/synth/timing/xsim
+# Command line: wbtcv -mode batch -source /home/osm/Documents/SECT-MAYO/MAYO/vivado/add_mod_test_project/add_mod_test_project.sim/sim_1/synth/timing/xsim/xsim.dir/adder_tb_time_synth/webtalk/xsim_webtalk.tcl -notrace
+# Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/add_mod_test_project/add_mod_test_project.sim/sim_1/synth/timing/xsim/webtalk.log
+# Journal file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/add_mod_test_project/add_mod_test_project.sim/sim_1/synth/timing/xsim/webtalk.jou
+#-----------------------------------------------------------
+source /home/osm/Documents/SECT-MAYO/MAYO/vivado/add_mod_test_project/add_mod_test_project.sim/sim_1/synth/timing/xsim/xsim.dir/adder_tb_time_synth/webtalk/xsim_webtalk.tcl -notrace

@@ -19,11 +19,11 @@
       "mayo_negate_0": "",
       "mayo_reduce_0": "",
       "mem_mux_0": "",
-      "mem_mux_1": "",
       "mem_mux_2": "",
       "MAYO_KEYGEN_0": "",
       "mayo_add_vectors_0": "",
-      "mayo_sample_oil_space_0": ""
+      "mayo_sample_oil_space_0": "",
+      "MAYO_SHAKE_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -977,6 +977,9 @@
         "xci_path": "ip/Mayo_keygen_blk_mem_gen_0_0/Mayo_keygen_blk_mem_gen_0_0.xci",
         "inst_hier_path": "Small_Bram",
         "parameters": {
+          "Byte_Size": {
+            "value": "8"
+          },
           "Enable_32bit_Address": {
             "value": "false"
           },
@@ -995,20 +998,35 @@
           "Port_B_Write_Rate": {
             "value": "50"
           },
+          "Read_Width_A": {
+            "value": "32"
+          },
+          "Read_Width_B": {
+            "value": "32"
+          },
           "Register_PortA_Output_of_Memory_Primitives": {
-            "value": "true"
+            "value": "false"
           },
           "Register_PortB_Output_of_Memory_Primitives": {
-            "value": "true"
+            "value": "false"
           },
           "Use_Byte_Write_Enable": {
-            "value": "false"
+            "value": "true"
           },
           "Use_RSTA_Pin": {
             "value": "false"
           },
           "Use_RSTB_Pin": {
             "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "16384"
+          },
+          "Write_Width_A": {
+            "value": "32"
+          },
+          "Write_Width_B": {
+            "value": "32"
           },
           "use_bram_block": {
             "value": "Stand_Alone"
@@ -1339,97 +1357,6 @@
         "xci_name": "Mayo_keygen_mem_mux_0_0",
         "xci_path": "ip/Mayo_keygen_mem_mux_0_0/Mayo_keygen_mem_mux_0_0.xci",
         "inst_hier_path": "mem_mux_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mem_mux",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "BRAMA_din": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "BRAMA_addr": {
-            "direction": "I",
-            "left": "13",
-            "right": "0"
-          },
-          "BRAMA_en": {
-            "direction": "I"
-          },
-          "BRAMA_rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "BRAMA_we": {
-            "direction": "I"
-          },
-          "BRAMA_dout": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "BRAMB_din": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "BRAMB_addr": {
-            "direction": "I",
-            "left": "13",
-            "right": "0"
-          },
-          "BRAMB_en": {
-            "direction": "I"
-          },
-          "BRAMB_rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "BRAMB_we": {
-            "direction": "I"
-          },
-          "BRAMB_dout": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "BRAM_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "BRAM_addr": {
-            "direction": "O",
-            "left": "13",
-            "right": "0"
-          },
-          "BRAM_en": {
-            "direction": "O"
-          },
-          "BRAM_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "BRAM_we": {
-            "direction": "O"
-          },
-          "BRAM_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "bram_control": {
-            "direction": "I"
-          }
-        }
-      },
-      "mem_mux_1": {
-        "vlnv": "xilinx.com:module_ref:mem_mux:1.0",
-        "xci_name": "Mayo_keygen_mem_mux_0_1",
-        "xci_path": "ip/Mayo_keygen_mem_mux_0_1/Mayo_keygen_mem_mux_0_1.xci",
-        "inst_hier_path": "mem_mux_1",
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "mem_mux",
@@ -2114,6 +2041,12 @@
             "right": "0"
           }
         }
+      },
+      "MAYO_SHAKE_0": {
+        "vlnv": "user.org:user:MAYO_SHAKE:2.0",
+        "xci_name": "Mayo_keygen_MAYO_SHAKE_0_0",
+        "xci_path": "ip/Mayo_keygen_MAYO_SHAKE_0_0/Mayo_keygen_MAYO_SHAKE_0_0.xci",
+        "inst_hier_path": "MAYO_SHAKE_0"
       }
     },
     "interface_nets": {
@@ -2142,7 +2075,9 @@
           "mayo_reduce_0/i_clk",
           "MAYO_KEYGEN_0/CLK",
           "mayo_add_vectors_0/i_clk",
-          "mayo_sample_oil_space_0/i_clk"
+          "mayo_sample_oil_space_0/i_clk",
+          "MAYO_SHAKE_0/clk",
+          "Small_Bram/clkb"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -2160,37 +2095,8 @@
           "mayo_reduce_0/rst",
           "MAYO_KEYGEN_0/RESET",
           "mayo_add_vectors_0/rst",
-          "mayo_sample_oil_space_0/rst"
-        ]
-      },
-      "mem_mux_1_BRAM_addr": {
-        "ports": [
-          "mem_mux_1/BRAM_addr",
-          "Small_Bram/addra"
-        ]
-      },
-      "Small_Bram_douta": {
-        "ports": [
-          "Small_Bram/douta",
-          "mem_mux_1/BRAM_dout"
-        ]
-      },
-      "mem_mux_1_BRAM_en": {
-        "ports": [
-          "mem_mux_1/BRAM_en",
-          "Small_Bram/ena"
-        ]
-      },
-      "mem_mux_1_BRAM_we": {
-        "ports": [
-          "mem_mux_1/BRAM_we",
-          "Small_Bram/wea"
-        ]
-      },
-      "mem_mux_1_BRAM_din": {
-        "ports": [
-          "mem_mux_1/BRAM_din",
-          "Small_Bram/dina"
+          "mayo_sample_oil_space_0/rst",
+          "MAYO_SHAKE_0/rst"
         ]
       },
       "MAYO_KEYGEN_0_o_trng_r": {
@@ -2251,12 +2157,6 @@
         "ports": [
           "mayo_reduce_0/o_done",
           "MAYO_KEYGEN_0/i_red_done"
-        ]
-      },
-      "MAYO_KEYGEN_0_o_mem0a_control": {
-        "ports": [
-          "MAYO_KEYGEN_0/o_mem0a_control",
-          "mem_mux_1/bram_control"
         ]
       },
       "MAYO_KEYGEN_0_o_lin_enable": {
@@ -2371,6 +2271,56 @@
         "ports": [
           "mayo_sample_oil_space_0/o_done",
           "MAYO_KEYGEN_0/i_sam_done"
+        ]
+      },
+      "mayo_sample_oil_space_0_o_hash_mlen": {
+        "ports": [
+          "mayo_sample_oil_space_0/o_hash_mlen",
+          "MAYO_SHAKE_0/mlen"
+        ]
+      },
+      "mayo_sample_oil_space_0_o_hash_olen": {
+        "ports": [
+          "mayo_sample_oil_space_0/o_hash_olen",
+          "MAYO_SHAKE_0/olen"
+        ]
+      },
+      "mayo_sample_oil_space_0_o_hash_enable": {
+        "ports": [
+          "mayo_sample_oil_space_0/o_hash_enable",
+          "MAYO_SHAKE_0/en"
+        ]
+      },
+      "MAYO_SHAKE_0_done": {
+        "ports": [
+          "MAYO_SHAKE_0/done",
+          "mayo_sample_oil_space_0/i_hash_done",
+          "MAYO_KEYGEN_0/i_hash_done"
+        ]
+      },
+      "MAYO_SHAKE_0_dyn_done": {
+        "ports": [
+          "MAYO_SHAKE_0/dyn_done",
+          "mayo_sample_oil_space_0/i_hash_dyn_done",
+          "MAYO_KEYGEN_0/i_hash_dyn_done"
+        ]
+      },
+      "mayo_sample_oil_space_0_o_hash_write_adr": {
+        "ports": [
+          "mayo_sample_oil_space_0/o_hash_write_adr",
+          "MAYO_SHAKE_0/write_adr"
+        ]
+      },
+      "mayo_sample_oil_space_0_o_hash_read_adr": {
+        "ports": [
+          "mayo_sample_oil_space_0/o_hash_read_adr",
+          "MAYO_SHAKE_0/read_adr"
+        ]
+      },
+      "MAYO_SHAKE_0_BRAMA_we": {
+        "ports": [
+          "MAYO_SHAKE_0/BRAMA_we",
+          "Small_Bram/wea"
         ]
       }
     }
