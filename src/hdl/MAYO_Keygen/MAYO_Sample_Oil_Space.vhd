@@ -48,7 +48,7 @@ entity mayo_sample_oil_space is
 		--BRAM-A
 		i_mema_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mema_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_mema_addr : out std_logic_vector(BRAM_I_SIZE downto 0);
+		o_mema_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mema_en   : out std_logic;
 		o_mema_rst  : out std_logic;
 		o_mema_we   : out std_logic_vector (3 downto 0);
@@ -56,10 +56,13 @@ entity mayo_sample_oil_space is
 		--BRAM-B
 		i_memb_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_memb_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_memb_addr : out std_logic_vector(BRAM_I_SIZE downto 0);
+		o_memb_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_memb_en   : out std_logic;
 		o_memb_rst  : out std_logic;
-		o_memb_we   : out std_logic_vector (3 downto 0)
+		o_memb_we   : out std_logic_vector (3 downto 0);
+
+		o_controla : out std_logic;
+		o_controlb : out std_logic
 	);
 end entity mayo_sample_oil_space;
 
@@ -83,9 +86,11 @@ architecture Behavioral of mayo_sample_oil_space is
 	signal s_ctr       : natural := 0; -- BRAM Counter
 	signal s_oil_adr   : std_logic_vector(31 downto 0);
 	signal s_oil_index : natural := 0; -- BRAM counter 
-
+	
+	signal s_brama_addr : std_logic_vector(31 downto 0) := ZERO_32;
 
 begin
+    o_mema_addr <= s_brama_addr;
 	IO : process (i_clk) is
 	begin
 		if (rising_edge (i_clk)) then
@@ -95,7 +100,7 @@ begin
 				i            <= 0;
 				s_main_start <= '0';
 				s_oil_adr    <= (others => '0');
-
+                s_brama_addr <= ZERO_32;
 				o_done        <= '0';
 				o_hash_enable <= '0';
 				o_mema_en     <= '0';
@@ -110,9 +115,11 @@ begin
 						o_done        <= '0';
 						o_hash_enable <= '0';
 						o_memb_en     <= '0';
+						o_controla <= '0';
 						if (i_enable = '1') then -- START
 							s_oil_adr <= i_oil_addr;
 							t_state   <= hash1;
+							o_controla <= '1';
 						end if;
 
 					--------------------------------------------------------
@@ -126,11 +133,12 @@ begin
 						t_state     <= read_seed_2;
 					when read_seed_2 =>
 						s_seed(i) <= i_mema_dout;
-						if (o_mema_addr > SK_RANGE -1) then -- Done reading
+						if (unsigned(s_brama_addr) > SK_RANGE -1) then -- Done reading
 							o_mema_en <= '0';
 							t_state   <= hash1;
+							o_controla <= '0';
 						else
-							o_mema_addr <= o_mema_addr +4 ;
+							s_brama_addr <= std_logic_vector(unsigned(s_brama_addr)+4) ;
 							t_state     <= read_seed_2;
 							i           <= i +1;
 						end if;
@@ -139,7 +147,7 @@ begin
 					when hash1 => -- HASH with BRAMA!
 						o_hash_mlen      <= std_logic_vector(to_unsigned(SEED_BYTES,PORT_WIDTH));
 						o_hash_olen      <= std_logic_vector(to_unsigned(OIL_SPACE_BYTES*2,PORT_WIDTH));
-						o_hash_read_adr  <= Sk_PRIVATE_SEED_ADR;
+						o_hash_read_adr  <= std_logic_vector(to_unsigned(Sk_PRIVATE_SEED_ADR,PORT_WIDTH));
 						o_hash_write_adr <= i_oil_addr;
 						o_hash_enable    <= '1';
 						t_state          <= hash2;
@@ -189,8 +197,10 @@ begin
 					when idle =>
 						o_memb_en <= '0';
 						-- Randomness available
+						o_controlb <= '0';
 						if (s_main_start = '1') then
 							t_state_1 <= main1;
+							o_controlb <= '1';
 						end if;
 
 					when main1 =>

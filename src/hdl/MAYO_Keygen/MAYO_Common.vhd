@@ -78,9 +78,9 @@ PACKAGE MAYO_COMMON IS
   ------------------------------------------------------------------------------
   -- Address Mapping (In BRAM I) (SMALL DATA)
   ------------------------------------------------------------------------------
-  CONSTANT BRAM_I_SIZE : natural := 13; -- bram_adr[BRAM_I_SIZE:0];
+  CONSTANT BRAM_I_SIZE : natural  := 31;
   -- SECRET KEY (SK)
-  CONSTANT SK_BASE_ADR : natural := 0;
+  CONSTANT SK_BASE_ADR : natural  := 0;
   CONSTANT SK_RANGE    : positive := SK_BYTES ;
   CONSTANT SK_HIGH_ADR : positive := SK_BASE_ADR + SK_RANGE -4;
 
@@ -110,9 +110,8 @@ PACKAGE MAYO_COMMON IS
   ------------------------------------------------------------------------------
   -- Address Mapping (In BRAM II) (BIG DATA)
   ------------------------------------------------------------------------------
-  CONSTANT BRAM_II_SIZE : positive := 31;
-
-  CONSTANT P1_BASE_ADR : natural := 16#0#;
+  CONSTANT BRAM_II_SIZE : natural  := 31;
+  CONSTANT P1_BASE_ADR : natural  := 16#0#;
   CONSTANT P1_RANGE    : positive := P1_BYTES ;
   CONSTANT P1_HIGH_ADR : positive := P1_BASE_ADR + P1_RANGE - 4;
 

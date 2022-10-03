@@ -1,0 +1,322 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Oct  3 14:40:37 2022
+# Process ID: 784121
+# Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_keygen/mayo_keygen.runs/synth_1
+# Command line: vivado -log mayo_sample_oil_space.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_sample_oil_space.tcl
+# Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_keygen/mayo_keygen.runs/synth_1/mayo_sample_oil_space.vds
+# Journal file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_keygen/mayo_keygen.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source mayo_sample_oil_space.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/AXI_LITE_Mayo_Keygen_1.5'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/AXI_LITE_Master_Test_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_shake128_project/mayo_shake128_project.srcs'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.2/data/ip'.
+Command: synth_design -top mayo_sample_oil_space -part xc7z020clg484-1 -directive PerformanceOptimized
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 784274
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2324.586 ; gain = 0.000 ; free physical = 17032 ; free virtual = 26476
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'mayo_sample_oil_space' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:70]
+INFO: [Synth 8-226] default block is never used [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:196]
+INFO: [Synth 8-256] done synthesizing module 'mayo_sample_oil_space' (1#1) [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:70]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2324.586 ; gain = 0.000 ; free physical = 16845 ; free virtual = 26289
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2324.586 ; gain = 0.000 ; free physical = 16843 ; free virtual = 26287
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 16843 ; free virtual = 26287
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17507 ; free virtual = 26953
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 2     
+	   2 Input   31 Bit       Adders := 4     
++---Registers : 
+	               32 Bit    Registers := 9     
+	               31 Bit    Registers := 2     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 2     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   8 Input   32 Bit        Muxes := 3     
+	   2 Input   32 Bit        Muxes := 2     
+	   8 Input   31 Bit        Muxes := 1     
+	   8 Input    4 Bit        Muxes := 1     
+	  10 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 2     
+	   8 Input    1 Bit        Muxes := 25    
+	   2 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin <const0> with 1st driver pin 'i_1/out[31]' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin <const0> with 2nd driver pin 'GND' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net <const0> is connected to at least one constant driver which has been preserved, other driver is ignored [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'o_done_reg__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:104]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:104]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:104]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17323 ; free virtual = 26770
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17321 ; free virtual = 26769
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5966] Removing register instance (\s_ctr_reg[0] ) from module (mayo_sample_oil_space) as it has self-loop and (\s_ctr_reg[0]__0 ) is actual driver [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17317 ; free virtual = 26765
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17318 ; free virtual = 26766
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17318 ; free virtual = 26766
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[30] with 1st driver pin 'o_mema_addr_reg[30]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[30] with 2nd driver pin 's_brama_addr_reg[30]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[29] with 1st driver pin 'o_mema_addr_reg[29]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[29] with 2nd driver pin 's_brama_addr_reg[29]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[28] with 1st driver pin 'o_mema_addr_reg[28]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[28] with 2nd driver pin 's_brama_addr_reg[28]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[27] with 1st driver pin 'o_mema_addr_reg[27]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[27] with 2nd driver pin 's_brama_addr_reg[27]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[26] with 1st driver pin 'o_mema_addr_reg[26]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[26] with 2nd driver pin 's_brama_addr_reg[26]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[25] with 1st driver pin 'o_mema_addr_reg[25]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[25] with 2nd driver pin 's_brama_addr_reg[25]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[24] with 1st driver pin 'o_mema_addr_reg[24]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[24] with 2nd driver pin 's_brama_addr_reg[24]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[23] with 1st driver pin 'o_mema_addr_reg[23]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[23] with 2nd driver pin 's_brama_addr_reg[23]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[22] with 1st driver pin 'o_mema_addr_reg[22]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[22] with 2nd driver pin 's_brama_addr_reg[22]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[21] with 1st driver pin 'o_mema_addr_reg[21]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[21] with 2nd driver pin 's_brama_addr_reg[21]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[20] with 1st driver pin 'o_mema_addr_reg[20]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[20] with 2nd driver pin 's_brama_addr_reg[20]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[19] with 1st driver pin 'o_mema_addr_reg[19]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[19] with 2nd driver pin 's_brama_addr_reg[19]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[18] with 1st driver pin 'o_mema_addr_reg[18]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[18] with 2nd driver pin 's_brama_addr_reg[18]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[17] with 1st driver pin 'o_mema_addr_reg[17]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[17] with 2nd driver pin 's_brama_addr_reg[17]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[16] with 1st driver pin 'o_mema_addr_reg[16]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[16] with 2nd driver pin 's_brama_addr_reg[16]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[15] with 1st driver pin 'o_mema_addr_reg[15]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[15] with 2nd driver pin 's_brama_addr_reg[15]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[14] with 1st driver pin 'o_mema_addr_reg[14]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[14] with 2nd driver pin 's_brama_addr_reg[14]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[13] with 1st driver pin 'o_mema_addr_reg[13]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[13] with 2nd driver pin 's_brama_addr_reg[13]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[12] with 1st driver pin 'o_mema_addr_reg[12]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[12] with 2nd driver pin 's_brama_addr_reg[12]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[11] with 1st driver pin 'o_mema_addr_reg[11]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[11] with 2nd driver pin 's_brama_addr_reg[11]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[10] with 1st driver pin 'o_mema_addr_reg[10]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[10] with 2nd driver pin 's_brama_addr_reg[10]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[9] with 1st driver pin 'o_mema_addr_reg[9]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[9] with 2nd driver pin 's_brama_addr_reg[9]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[8] with 1st driver pin 'o_mema_addr_reg[8]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[8] with 2nd driver pin 's_brama_addr_reg[8]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[7] with 1st driver pin 'o_mema_addr_reg[7]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[7] with 2nd driver pin 's_brama_addr_reg[7]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[6] with 1st driver pin 'o_mema_addr_reg[6]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[6] with 2nd driver pin 's_brama_addr_reg[6]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[5] with 1st driver pin 'o_mema_addr_reg[5]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[5] with 2nd driver pin 's_brama_addr_reg[5]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[4] with 1st driver pin 'o_mema_addr_reg[4]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[4] with 2nd driver pin 's_brama_addr_reg[4]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[3] with 1st driver pin 'o_mema_addr_reg[3]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[3] with 2nd driver pin 's_brama_addr_reg[3]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[2] with 1st driver pin 'o_mema_addr_reg[2]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin o_mema_addr_OBUF[2] with 2nd driver pin 's_brama_addr_reg[2]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:93]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[30] with 1st driver pin 's_ctr_reg[30]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[30] with 2nd driver pin 's_ctr_reg[30]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[29] with 1st driver pin 's_ctr_reg[29]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[29] with 2nd driver pin 's_ctr_reg[29]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[28] with 1st driver pin 's_ctr_reg[28]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[28] with 2nd driver pin 's_ctr_reg[28]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[27] with 1st driver pin 's_ctr_reg[27]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[27] with 2nd driver pin 's_ctr_reg[27]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[26] with 1st driver pin 's_ctr_reg[26]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[26] with 2nd driver pin 's_ctr_reg[26]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[25] with 1st driver pin 's_ctr_reg[25]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[25] with 2nd driver pin 's_ctr_reg[25]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[24] with 1st driver pin 's_ctr_reg[24]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[24] with 2nd driver pin 's_ctr_reg[24]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[23] with 1st driver pin 's_ctr_reg[23]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[23] with 2nd driver pin 's_ctr_reg[23]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[22] with 1st driver pin 's_ctr_reg[22]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[22] with 2nd driver pin 's_ctr_reg[22]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[21] with 1st driver pin 's_ctr_reg[21]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[21] with 2nd driver pin 's_ctr_reg[21]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[20] with 1st driver pin 's_ctr_reg[20]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[20] with 2nd driver pin 's_ctr_reg[20]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[19] with 1st driver pin 's_ctr_reg[19]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[19] with 2nd driver pin 's_ctr_reg[19]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[18] with 1st driver pin 's_ctr_reg[18]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[18] with 2nd driver pin 's_ctr_reg[18]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[17] with 1st driver pin 's_ctr_reg[17]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[17] with 2nd driver pin 's_ctr_reg[17]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[16] with 1st driver pin 's_ctr_reg[16]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[16] with 2nd driver pin 's_ctr_reg[16]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[15] with 1st driver pin 's_ctr_reg[15]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[15] with 2nd driver pin 's_ctr_reg[15]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[14] with 1st driver pin 's_ctr_reg[14]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[14] with 2nd driver pin 's_ctr_reg[14]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[13] with 1st driver pin 's_ctr_reg[13]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[13] with 2nd driver pin 's_ctr_reg[13]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[12] with 1st driver pin 's_ctr_reg[12]/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:208]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin s_ctr[12] with 2nd driver pin 's_ctr_reg[12]__0/Q' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd:114]
+INFO: [Common 17-14] Message 'Synth 8-6859' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|       60|Failed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17318 ; free virtual = 26766
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17318 ; free virtual = 26766
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17318 ; free virtual = 26766
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17318 ; free virtual = 26766
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    63|
+|3     |LUT1   |     5|
+|4     |LUT2   |   131|
+|5     |LUT3   |    40|
+|6     |LUT4   |    51|
+|7     |LUT5   |    13|
+|8     |LUT6   |    23|
+|9     |FDRE   |   418|
+|10    |IBUF   |    69|
+|11    |OBUF   |   240|
+|12    |OBUFT  |    32|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |  1086|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17318 ; free virtual = 26766
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 126 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.488 ; gain = 7.902 ; free physical = 17324 ; free virtual = 26772
+Synthesis Optimization Complete : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.496 ; gain = 7.902 ; free physical = 17324 ; free virtual = 26772
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2332.496 ; gain = 0.000 ; free physical = 17402 ; free virtual = 26850
+INFO: [Netlist 29-17] Analyzing 63 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'mayo_sample_oil_space' is not ideal for floorplanning, since the cellview 'mayo_sample_oil_space' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2388.516 ; gain = 0.000 ; free physical = 17325 ; free virtual = 26773
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+23 Infos, 1 Warnings, 102 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 2388.516 ; gain = 64.031 ; free physical = 17467 ; free virtual = 26915
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/mayo_keygen/mayo_keygen.runs/synth_1/mayo_sample_oil_space.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file mayo_sample_oil_space_utilization_synth.rpt -pb mayo_sample_oil_space_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Oct  3 14:40:52 2022...

@@ -30,37 +30,37 @@ use work.MAYO_COMMON.all;
 
 entity mayo_reduce is
 	generic (
-		BRAM_SIZE : natural := 13 -- 2^13 = 8K
+		BRAM_SIZE : natural := 32 -- 2^13 = 8K
 	);
 	port (
-		i_clk    : in  std_logic;                      -- CLK
-		rst      : in  std_logic;                      -- RST
-		i_enable : in  std_logic;                      -- ENABLE
-		i_len    : in  std_logic_vector (31 downto 0); -- BYTE LEN
-		i_doutb  : in  std_logic_vector (31 downto 0); -- dout port bram
-		i_adr    : in  std_logic_vector (31 downto 0); -- ADR in BRAM
-		o_addrb  : out std_logic_vector (31 downto 0); -- address port bram
-		o_dinb   : out std_logic_vector (31 downto 0); -- din port bram
-		o_enb    : out std_logic;                      -- enable read, write, reset operations port b  
-		o_rstb   : out std_logic;                      -- reset port b 
-		o_web    : out std_logic_vector (3 downto 0);  -- write enable port b   
-		o_done   : out std_logic
+		i_clk     : in  std_logic;                      -- CLK
+		rst       : in  std_logic;                      -- RST
+		i_enable  : in  std_logic;                      -- ENABLE
+		i_len     : in  std_logic_vector (31 downto 0); -- BYTE LEN
+		i_doutb   : in  std_logic_vector (31 downto 0); -- dout port bram
+		i_adr     : in  std_logic_vector (31 downto 0); -- ADR in BRAM
+		o_addrb   : out std_logic_vector (31 downto 0); -- address port bram
+		o_dinb    : out std_logic_vector (31 downto 0); -- din port bram
+		o_enb     : out std_logic;                      -- enable read, write, reset operations port b  
+		o_rstb    : out std_logic;                      -- reset port b 
+		o_web     : out std_logic_vector (3 downto 0);  -- write enable port b   
+		o_done    : out std_logic;
+		o_control : out std_logic
 	);
 end mayo_reduce;
 
 architecture Behavioral of mayo_reduce is
 
-	type state is (idle, read1, read2, write1, write2, done);
+	type state is (idle, read1, read2,read3, write1, write2, done);
 	signal t_state   : state := idle;
 	signal s_rstb    : std_logic;
 	signal s_enb     : std_logic;
 	signal s_web     : std_logic_vector(3 downto 0);                              -- enable port b (4 Cells)
 	signal s_addrb   : std_logic_vector(BRAM_SIZE-1 downto 0) := (others => '0'); -- Max Depth 8k 
 	signal s_data    : std_logic_vector(31 downto 0)          := (others => '0');
-	signal s_index   : natural range 0 to (2**BRAM_SIZE-1 +1) := 0 ; --LOOP INDEX
-	signal s_max_len : natural range 0 to 2**BRAM_SIZE-1      := 0 ;
+	signal s_index   : natural := 0 ; --LOOP INDEX
+	signal s_max_len : natural := 0 ;
 	signal s_addr    : std_logic_vector (31 downto 0)         := (others => '0');
-
 
 begin
 
@@ -82,10 +82,12 @@ begin
 						s_enb   <= '0';
 						s_web   <= "0000";
 						o_done  <= '0';
+						o_control <= '0';
 						if(i_enable = '1') then -- START
 							t_state   <= read1;
 							s_addr    <= i_adr;
 							s_max_len <= to_integer(unsigned(i_len) srl 2); -- Div 4
+							o_control <= '1';
 						else
 							t_state <= idle;
 						end if;
@@ -141,7 +143,7 @@ begin
 		end if;
 	end process;
 
-	o_addrb <= (31 downto BRAM_SIZE => '0') & s_addrb; -- Default 32Bits
+	o_addrb <= s_addrb; -- Default 32Bits
 	o_dinb  <= s_data;
 	o_enb   <= s_enb;
 	o_rstb  <= s_rstb;

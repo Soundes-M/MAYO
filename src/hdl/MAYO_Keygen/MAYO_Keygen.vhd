@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sun Oct  2 01:04:06 2022
+-- Last update : Mon Oct  3 14:20:46 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ ENTITY MAYO_KEYGEN IS
     --BRAM0-A
     i_mem0a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
     o_mem0a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_mem0a_addr : out std_logic_vector(BRAM_I_SIZE downto 0);
+    o_mem0a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
     o_mem0a_en   : out std_logic;
     o_mem0a_rst  : out std_logic;
     o_mem0a_we   : out std_logic_vector (3 downto 0);
@@ -101,7 +101,7 @@ ENTITY MAYO_KEYGEN IS
     --BRAM0-B
     i_mem0b_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
     o_mem0b_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_mem0b_addr : out std_logic_vector(BRAM_I_SIZE downto 0);
+    o_mem0b_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
     o_mem0b_en   : out std_logic;
     o_mem0b_rst  : out std_logic;
     o_mem0b_we   : out std_logic_vector (3 downto 0);
@@ -109,7 +109,7 @@ ENTITY MAYO_KEYGEN IS
     --BRAM1-A
     i_mem1a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
     o_mem1a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_mem1a_addr : out std_logic_vector(BRAM_II_SIZE downto 0);
+    o_mem1a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
     o_mem1a_en   : out std_logic;
     o_mem1a_rst  : out std_logic;
     o_mem1a_we   : out std_logic_vector (3 downto 0);
@@ -171,6 +171,7 @@ BEGIN
   o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5) else '0';
   o_mem0b_control <= '1' when (state = rand2 or state = rand3 or state = rand4 or state = rand5) else '0';
   o_mem1a_control <= '1' when (state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = transpose3 or state = transpose4 or state = transpose5) else '0';
+
 
   -- sync compute!
   KEYGEN : PROCESS (CLK) IS

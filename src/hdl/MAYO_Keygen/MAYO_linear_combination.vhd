@@ -97,7 +97,11 @@ entity mayo_linear_combination is
 		o_mem1a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem1a_en   : out std_logic;
 		o_mem1a_rst  : out std_logic;
-		o_mem1a_we   : out std_logic_vector (3 downto 0)
+		o_mem1a_we   : out std_logic_vector (3 downto 0);
+
+		o_control0a : out std_logic;
+		o_control0b : out std_logic;
+		o_control1a : out std_logic
 	);
 
 
@@ -173,9 +177,9 @@ begin
 	begin
 		if(rising_edge(i_clk)) then
 			if(rst = '1') then
-				bram0a        <= DEFAULT_BRAM;
-				bram0b        <= DEFAULT_BRAM;
-				bram1a        <= DEFAULT_BRAM;
+				--bram0a.o        <= DEFAULT_OUT_BRAM;
+				--bram0b.o        <= DEFAULT_OUT_BRAM;
+				--bram1a.o        <= DEFAULT_OUT_BRAM;
 				s_vecs_addr   <= ZERO_32;
 				s_coeffs_addr <= ZERO_32;
 				s_out_addr    <= ZERO_32;
@@ -183,7 +187,6 @@ begin
 				s_vecs        <= ZERO_32;
 				s_coeffs      <= ZERO_32;
 				s_main        <= '0';
-				s_acc_sel     <= '0';
 				t_state       <= idle;
 
 			else
@@ -196,14 +199,17 @@ begin
 							s_out_addr    <= i_out_addr;
 							s_len         <= i_len;
 							t_state       <= read1;
+							o_control0a   <= '1';
+							o_control1a   <= '1';
 						else
-							t_state <= idle;
+							t_state     <= idle;
+							o_control0a <= '0';
+							o_control1a <= '0';
 						end if;
 					when read1 =>
 						-- Enable BRAMs and start reading
 						bram0a.o.o_addr <= s_coeffs_addr;
 						bram0a.o.o_en   <= '1';
-
 						bram1a.o.o_addr <= s_vecs_addr;
 						bram1a.o.o_en   <= '1';
 						bram1a.o.o_rst  <= '0';
@@ -215,12 +221,12 @@ begin
 						bram0a.o.o_en <= '0';             -- Coeffs not needed anymore
 						s_vecs        <= bram1a.i.i_dout; -- 32 Bits (4 Byte/clk)
 						s_main        <= '1';             -- Start lin_comb
-
+						s_acc_change  <= '0';
 						if(i > (unsigned(s_len)-1)) then -- i Loop done --> Reset i
 							bram0a.o.o_addr <= s_coeffs_addr;
 							bram1a.o.o_addr <= s_vecs_addr;
 							i               <= 0 ;
-							s_acc_change    <= not s_acc_change; -- Change acc buffer
+							s_acc_change    <= '1'; -- Change acc buffer
 
 							if (j > (M -1)) then --j loop done
 								t_state <= done; -- END; no more input data
@@ -257,11 +263,13 @@ begin
 	MAIN_Pr : process(i_clk) is
 	begin
 		if(rising_edge(i_clk)) then
-			-- Change to next buffer
-			if (s_acc_change = '1') then
-				s_acc_sel    <= not s_acc_sel;
-				s_write      <= '1'; -- Start with OUT
-				s_acc_change <= '0';
+			if (rst = '1') then
+				s_acc_sel <= '0';
+			else
+				-- Change to next buffer
+				if (s_acc_change = '1') then
+					s_acc_sel <= not s_acc_sel;
+				end if;
 			end if;
 		end if;
 	end process;
@@ -277,12 +285,13 @@ begin
 			else
 				case (t_state1) is
 					when idle =>
-						o_done <= '0';
+						o_done      <= '0';
+						o_control0b <= '0';
 						if (s_write= '1') then
 							t_state1 <= main1;
 						end if;
-					when main1 =>
 
+					when main1 =>
 						if (s_acc_sel = '1') then
 							bram0b.o.o_din <= std_logic_vector(resize(unsigned(s_acc(3)) mod PRIME,8)) &
 								std_logic_vector(resize(unsigned(s_acc(2)) mod PRIME,8)) &
@@ -296,6 +305,7 @@ begin
 								std_logic_vector(resize(unsigned(s_acc(4)) mod PRIME,8));
 						end if;
 						s_acc_flush <= '1';
+						o_control0b <= '1';
 						t_state1    <= write1;
 
 					when write1 =>
@@ -311,6 +321,7 @@ begin
 							t_state1  <= idle;
 						end if;
 						s_write <= '0';
+
 					when done =>
 						o_done        <= '1';
 						bram0b.o.o_en <= '0';

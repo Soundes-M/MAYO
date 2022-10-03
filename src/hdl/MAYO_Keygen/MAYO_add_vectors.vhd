@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sat Aug 20 21:56:57 2022
+-- Last update : Mon Oct  3 13:48:33 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -50,7 +50,10 @@ entity mayo_add_vectors is
 		o_memb_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_memb_en   : out std_logic;
 		o_memb_rst  : out std_logic;
-		o_memb_we   : out std_logic_vector (3 downto 0)
+		o_memb_we   : out std_logic_vector (3 downto 0);
+
+		o_controla : out std_logic;
+		o_controlb : out std_logic
 	);
 
 end entity mayo_add_vectors;
@@ -92,6 +95,9 @@ begin
 				o_mema_rst  <= '0';
 				o_mema_addr <= (others => '0');
 				o_mema_we   <= "0000";
+				o_controla  <= '0';
+				o_controlb  <= '0';
+
 			else
 				case (s_state) is
 					when idle =>
@@ -106,6 +112,7 @@ begin
 							s_v1_addr  <= i_v1_addr;
 							s_v2_addr  <= i_v2_addr;
 							s_out_addr <= i_out_addr;
+							o_controla <= '1';
 						end if;
 					when read1 => --READ BLOCK from v1 and v2
 
@@ -129,6 +136,7 @@ begin
 						s_v2         <= i_mema_dout;
 						o_mema_en    <= '0';
 						s_main_start <= '1';
+						o_controla   <= '0';
 						if (s_ctr > INDEX) then
 							s_state <= done;
 						else
@@ -167,6 +175,7 @@ begin
 						if (s_main_start = '1') then
 							s_state_1 <= main;
 						end if;
+						o_controlb <= '0';
 					when main =>
 						for k in 0 to 3 loop -- ADDITION && MOD
 							o_memb_din(k*8+7 downto k*8) <= std_logic_vector(resize(unsigned(s_v1(k*8+7 downto k*8)) + unsigned(s_v2(k*8+7 downto k*8)),8) mod PRIME);
@@ -174,6 +183,7 @@ begin
 						s_io_read <= '1'; -- need next block
 						s_state_1 <= write1;
 					when write1 =>
+						o_controlb   <= '1';
 						o_memb_en    <= '1';
 						o_memb_we    <= "1111"; -- WRITE result back to ADR
 						o_memb_addr  <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));

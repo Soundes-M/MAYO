@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="MAYO_SHAKE_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="MAYO_SHAKE_tb" />
+            <top_module name="glbl" />
+            <top_module name="keccak_globals" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1016670fs"></ZoomStartTime>
+      <ZoomEndTime time="1226071fs"></ZoomEndTime>
+      <Cursor1Time time="1074070fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="263"></NameColumnWidth>
+      <ValueColumnWidth column_width="150"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="35" />
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/en">
+      <obj_property name="ElementShortName">en</obj_property>
+      <obj_property name="ObjectShortName">en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/done">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/write_adr">
+      <obj_property name="ElementShortName">write_adr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">write_adr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/read_adr">
+      <obj_property name="ElementShortName">read_adr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">read_adr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/ena">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/wea_bram">
+      <obj_property name="ElementShortName">wea_bram[3:0]</obj_property>
+      <obj_property name="ObjectShortName">wea_bram[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/en_bram">
+      <obj_property name="ElementShortName">en_bram</obj_property>
+      <obj_property name="ObjectShortName">en_bram</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/addr_bram">
+      <obj_property name="ElementShortName">addr_bram[13:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_bram[13:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/din_bram">
+      <obj_property name="ElementShortName">din_bram[31:0]</obj_property>
+      <obj_property name="ObjectShortName">din_bram[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/bram_control">
+      <obj_property name="ElementShortName">bram_control</obj_property>
+      <obj_property name="ObjectShortName">bram_control</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/BR/addra">
+      <obj_property name="ElementShortName">addra[13:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[13:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/BR/douta">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/BR/ena">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/state0">
+      <obj_property name="ElementShortName">state0[5:0]</obj_property>
+      <obj_property name="ObjectShortName">state0[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/state1">
+      <obj_property name="ElementShortName">state1[5:0]</obj_property>
+      <obj_property name="ObjectShortName">state1[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/din_shake">
+      <obj_property name="ElementShortName">din_shake[63:0]</obj_property>
+      <obj_property name="ObjectShortName">din_shake[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/rd_address_shake">
+      <obj_property name="ElementShortName">rd_address_shake[8:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_address_shake[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/read_ctr">
+      <obj_property name="ElementShortName">read_ctr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">read_ctr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/read_desc">
+      <obj_property name="ElementShortName">read_desc[0:7][63:0]</obj_property>
+      <obj_property name="ObjectShortName">read_desc[0:7][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/BRAMA_din">
+      <obj_property name="ElementShortName">BRAMA_din[31:0]</obj_property>
+      <obj_property name="ObjectShortName">BRAMA_din[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/BRAMA_dout">
+      <obj_property name="ElementShortName">BRAMA_dout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">BRAMA_dout[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/bram_addr">
+      <obj_property name="ElementShortName">bram_addr[13:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_addr[13:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/uut/BRAMA_en">
+      <obj_property name="ElementShortName">BRAMA_en</obj_property>
+      <obj_property name="ObjectShortName">BRAMA_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/uut/bram_en">
+      <obj_property name="ElementShortName">bram_en</obj_property>
+      <obj_property name="ObjectShortName">bram_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/mlen">
+      <obj_property name="ElementShortName">mlen[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mlen[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/mlen_reg">
+      <obj_property name="ElementShortName">mlen_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mlen_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/mlen_remaining">
+      <obj_property name="ElementShortName">mlen_remaining[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mlen_remaining[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/olen_remaining">
+      <obj_property name="ElementShortName">olen_remaining[31:0]</obj_property>
+      <obj_property name="ObjectShortName">olen_remaining[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/write_desc">
+      <obj_property name="ElementShortName">write_desc[0:15][63:0]</obj_property>
+      <obj_property name="ObjectShortName">write_desc[0:15][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/write_ctr">
+      <obj_property name="ElementShortName">write_ctr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">write_ctr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/MAYO_SHAKE_tb/uut/dout_shake">
+      <obj_property name="ElementShortName">dout_shake[63:0]</obj_property>
+      <obj_property name="ObjectShortName">dout_shake[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/uut/sample_dout">
+      <obj_property name="ElementShortName">sample_dout</obj_property>
+      <obj_property name="ObjectShortName">sample_dout</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/MAYO_SHAKE_tb/uut/done_shake">
+      <obj_property name="ElementShortName">done_shake</obj_property>
+      <obj_property name="ObjectShortName">done_shake</obj_property>
+   </wvobject>
+</wave_config>

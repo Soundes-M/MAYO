@@ -12,9 +12,9 @@ var WshShell = new ActiveXObject( "WScript.Shell" );
 var ProcEnv = WshShell.Environment( "Process" );
 var PathVal = ProcEnv("PATH");
 if ( PathVal.length == 0 ) {
-  PathVal = "/opt/Xilinx/Vitis/2020.2/bin:/opt/Xilinx/Vivado/2020.2/ids_lite/ISE/bin/lin64;/opt/Xilinx/Vivado/2020.2/bin;";
+  PathVal = "/tools/Xilinx/Vivado/2020.2/ids_lite/ISE/bin/lin64;/tools/Xilinx/Vivado/2020.2/bin;";
 } else {
-  PathVal = "/opt/Xilinx/Vitis/2020.2/bin:/opt/Xilinx/Vivado/2020.2/ids_lite/ISE/bin/lin64;/opt/Xilinx/Vivado/2020.2/bin;" + PathVal;
+  PathVal = "/tools/Xilinx/Vivado/2020.2/ids_lite/ISE/bin/lin64;/tools/Xilinx/Vivado/2020.2/bin;" + PathVal;
 }
 
 ProcEnv("PATH") = PathVal;
@@ -27,7 +27,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log MAYO_KEYGEN.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source MAYO_KEYGEN.tcl" );
+         "-log mayo_sample_oil_space.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_sample_oil_space.tcl" );
 
 
 

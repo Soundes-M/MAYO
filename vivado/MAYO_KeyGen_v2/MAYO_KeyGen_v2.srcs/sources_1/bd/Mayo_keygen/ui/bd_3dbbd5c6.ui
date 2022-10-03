@@ -1,0 +1,89 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.219048",
+   "Default View_TopLeft":"-2607,0",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 5 -x 2340 -y 2720 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 5 -x 2340 -y 2740 -defaultsOSRD
+preplace inst MAYO_SHAKE_0 -pg 1 -lvl 2 -x 680 -y 1850 -defaultsOSRD
+preplace inst AXI_LITE_Mayo_Keygen_0 -pg 1 -lvl 4 -x 1920 -y 1450 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -x 680 -y 2800 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 3 -x 1270 -y 2580 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 200 -y 2580 -defaultsOSRD
+preplace inst TRNG_0 -pg 1 -lvl 3 -x 1270 -y 1860 -defaultsOSRD
+preplace inst Small_BRAM8k -pg 1 -lvl 1 -x 200 -y 1260 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 1 -x 200 -y 1380 -defaultsOSRD
+preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1270 -y 180 -defaultsOSRD
+preplace inst mayo_linear_combinat_0 -pg 1 -lvl 3 -x 1270 -y 630 -defaultsOSRD
+preplace inst mayo_negate_0 -pg 1 -lvl 3 -x 1270 -y 1620 -defaultsOSRD
+preplace inst mayo_reduce_0 -pg 1 -lvl 3 -x 1270 -y 1060 -defaultsOSRD
+preplace inst mayo_sample_oil_space_0 -pg 1 -lvl 2 -x 680 -y 2240 -defaultsOSRD
+preplace inst mayo_hash_arbiter_0 -pg 1 -lvl 3 -x 1270 -y 2260 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 4 10 2470 390 1700 930 1320 1700
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 3 20 2480 380J 2490 890
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 3 400 1710 960 1330 1710
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_trng_r 1 2 3 1050 1300 1600J 810 2140
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_trng_w 1 2 3 1060 1310 1610J 820 2130
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_trng_data 1 2 3 1030 1290 1660J 860 2100
+preplace netloc TRNG_0_TRNG_DATA_O 1 3 1 1660 1360n
+preplace netloc TRNG_0_TRNG_VALID_O 1 3 1 1680 1380n
+preplace netloc TRNG_0_TRNG_DONE_O 1 3 1 1690 1400n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_red_enable 1 2 3 1030 1210 1570J 870 2160
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_red_len 1 2 3 1070 1190 1510J 840 2190
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_red_adr 1 2 3 1080 1200 1580J 880 2170
+preplace netloc mayo_reduce_0_o_done 1 3 1 1630 1100n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_sam_enable 1 1 4 420 1220 NJ 1220 1550J 850 2200
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_sam_oil_addr 1 1 4 430 1230 NJ 1230 1620J 950 2110
+preplace netloc mayo_sample_oil_space_0_o_done 1 2 2 910J 1500 1540
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_enable 1 2 3 1010 940 NJ 940 2120
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_bram_halt 1 2 3 1020 930 NJ 930 2150
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_vec_addr 1 2 3 1060 910 NJ 910 2180
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_coeffs_addr 1 2 3 1070 890 1480J 830 2290
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_out_addr 1 2 3 1040 1180 1590J 900 2220
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_len 1 2 3 1080 900 1540J 890 2280
+preplace netloc mayo_linear_combinat_0_o_done 1 3 1 1640 450n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_enable 1 2 3 1030 870 1460J 740 2300
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_v1_addr 1 2 3 1040 360 NJ 360 2320
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_v2_addr 1 2 3 1000 920 NJ 920 2270
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_out_addr 1 2 3 1050 880 1470J 750 2310
+preplace netloc mayo_add_vectors_0_o_done 1 3 1 1650 60n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_neg_enable 1 2 3 1040 1980 NJ 1980 2120
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_neg_len 1 2 3 1070 1960 NJ 1960 2110
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_neg_adr 1 2 3 1080 1970 NJ 1970 2100
+preplace netloc mayo_negate_0_o_done 1 3 1 1720 1540n
+preplace netloc mayo_hash_arbiter_0_o_en 1 1 3 450 1720 970J 1740 1510
+preplace netloc mayo_hash_arbiter_0_o_mlen 1 1 3 470 1990 NJ 1990 1460
+preplace netloc mayo_hash_arbiter_0_o_olen 1 1 3 440 2640 920J 2700 1640
+preplace netloc mayo_hash_arbiter_0_o_write_adr 1 1 3 410 2660 900J 2710 1580
+preplace netloc mayo_hash_arbiter_0_o_read_adr 1 1 3 450 2650 910J 2730 1510
+preplace netloc MAYO_SHAKE_0_dyn_done 1 2 1 970 1800n
+preplace netloc MAYO_SHAKE_0_done 1 2 1 900 1820n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_en 1 2 3 990 1240 1490J 760 2250
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_mlen 1 2 3 1000 1250 1500J 770 2240
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_olen 1 2 3 1010 1260 1520J 780 2230
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_write_adr 1 2 3 1020 1280 1560J 800 2210
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_read_adr 1 2 3 980 1270 1530J 790 2260
+preplace netloc mayo_sample_oil_space_0_o_hash_enable 1 2 1 950 2090n
+preplace netloc mayo_sample_oil_space_0_o_hash_mlen 1 2 1 940 2110n
+preplace netloc mayo_sample_oil_space_0_o_hash_olen 1 2 1 910 2130n
+preplace netloc mayo_sample_oil_space_0_o_hash_write_adr 1 2 1 920 2150n
+preplace netloc mayo_sample_oil_space_0_o_hash_read_adr 1 2 1 890 2170n
+preplace netloc mayo_hash_arbiter_0_o_key_done 1 3 1 1730 1420n
+preplace netloc mayo_hash_arbiter_0_o_key_dyn_done 1 3 1 1740 1440n
+preplace netloc mayo_hash_arbiter_0_o_sam_done 1 1 3 460 2470 950J 2460 1470
+preplace netloc mayo_hash_arbiter_0_o_sam_dyn_done 1 1 3 470 2480 940J 2450 1460
+preplace netloc processing_system7_0_FIXED_IO 1 2 3 NJ 2740 NJ 2740 NJ
+preplace netloc processing_system7_0_M_AXI_GP0 1 2 1 940 2520n
+preplace netloc ps7_0_axi_periph_M00_AXI 1 3 1 1670 1260n
+preplace netloc processing_system7_0_DDR 1 2 3 NJ 2720 NJ 2720 NJ
+levelinfo -pg 1 -10 200 680 1270 1920 2340
+pagesize -pg 1 -db -bbox -sgen -10 0 2460 2950
+"
+}
+{
+   "da_axi4_cnt":"1",
+   "da_clkrst_cnt":"7",
+   "da_ps7_cnt":"1"
+}
