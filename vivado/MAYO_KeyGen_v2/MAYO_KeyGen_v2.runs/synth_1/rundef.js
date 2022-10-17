@@ -27,7 +27,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log mayo_bram_arbiter.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_bram_arbiter.tcl" );
+         "-log mayo_hash_arbiter.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_hash_arbiter.tcl" );
 
 
 

@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1664802194">
-  <File Type="VDS-TIMING-PB" Name="mayo_bram_arbiter_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="mayo_bram_arbiter_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="mayo_bram_arbiter.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="mayo_bram_arbiter_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="mayo_bram_arbiter_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="mayo_bram_arbiter_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="mayo_bram_arbiter.vds"/>
-  <File Type="REPORTS-TCL" Name="mayo_bram_arbiter_reports.tcl"/>
-  <File Type="PA-TCL" Name="mayo_bram_arbiter.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1666034989">
+  <File Type="REPORTS-TCL" Name="mayo_hash_arbiter_reports.tcl"/>
+  <File Type="PA-TCL" Name="mayo_hash_arbiter.tcl"/>
+  <File Type="RDS-DCP" Name="mayo_hash_arbiter.dcp"/>
+  <File Type="RDS-RDS" Name="mayo_hash_arbiter.vds"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Common.vhd">
@@ -23,27 +18,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_BRAM_Arbiter.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_HASH_Arbiter.vhd">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Keygen.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PGENDIR/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd">
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_BRAM_Arbiter.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -58,6 +39,20 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_linear_combination.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Keygen.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -109,7 +104,10 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="mayo_bram_arbiter"/>
+      <Option Name="TopModule" Val="mayo_hash_arbiter"/>
+      <Option Name="TopLib" Val="xil_defaultlib"/>
+      <Option Name="TopArchitecture" Val="Behavioral"/>
+      <Option Name="TopRTLFile" Val="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_HASH_Arbiter.vhd"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

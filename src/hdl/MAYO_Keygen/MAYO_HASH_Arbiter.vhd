@@ -7,7 +7,6 @@ use work.UTILS_COMMON.all;
 
 entity mayo_hash_arbiter is
 	port (
-		clk : in std_logic;
 		rst : in std_logic;
 
 		--HASH
@@ -42,32 +41,33 @@ architecture Behavioral of mayo_hash_arbiter is
 	signal sam_en : std_logic := '0' ;
 begin
 
-	KEY_PR : process(clk) is
+	KEY_PR : process(rst,i_key_en,i_sam_en,i_done) is
 	begin
-	   if (rising_edge(clk)) then 
-	   if (rst = '1') then 
-	    key_en <=  '0';
-	    sam_en <=  '0';
-	   else 
-		if (i_key_en = '1') then
-				key_en <= '1';
-			else
-				sam_en <= '1';
-		end if;
-
-		if (i_done = '1' and key_en ='1') then
+			if (rst = '1') then
 				key_en <= '0';
-			elsif (i_done = '1' and sam_en = '1') then
 				sam_en <= '0';
-		end if;
-		end if;
-		end if;
+			else
+				if (i_key_en = '1') then
+					key_en <= '1';
+					sam_en <= '0';
+				elsif(i_sam_en = '1') then
+					sam_en <= '1';
+					key_en <= '0';
+				end if;
+
+				if (falling_edge(i_done) and key_en ='1') then
+					key_en <= '0';
+				elsif (falling_edge(i_done) and sam_en = '1') then
+					sam_en <= '0';
+				end if;
+			end if;
 	end process;
-	o_en           <= '1'        when ((i_key_en = '1') or (i_sam_en ='1')) else '0';
-	o_mlen         <= i_key_mlen      when ((key_en = '1') or (i_key_en = '1')) else i_sam_mlen when ((sam_en = '1') or (i_sam_en = '1')) else (others => '0');
-	o_olen         <= i_key_olen      when ((key_en = '1') or (i_key_en = '1')) else i_sam_olen when ((sam_en = '1') or (i_sam_en = '1')) else (others => '0');
+
+	o_en           <= '1'             when ((i_key_en = '1') or (i_sam_en ='1')) else '0';
+	o_mlen         <= i_key_mlen      when ((key_en = '1') or (i_key_en = '1')) else i_sam_mlen when ((sam_en = '1') or (i_sam_en = '1')) else (others           => '0');
+	o_olen         <= i_key_olen      when ((key_en = '1') or (i_key_en = '1')) else i_sam_olen when ((sam_en = '1') or (i_sam_en = '1')) else (others           => '0');
 	o_write_adr    <= i_key_write_adr when ((key_en = '1') or (i_key_en = '1')) else i_sam_write_adr when ((sam_en = '1') or (i_sam_en = '1')) else (others => '0');
-	o_read_adr     <= i_key_read_adr  when ((key_en = '1') or (i_key_en = '1')) else i_sam_read_adr when ((sam_en = '1') or (i_sam_en = '1')) else (others => '0');
+	o_read_adr     <= i_key_read_adr  when ((key_en = '1') or (i_key_en = '1')) else i_sam_read_adr when ((sam_en = '1') or (i_sam_en = '1')) else (others   => '0');
 	o_sam_done     <= i_done          when (sam_en = '1') else '0';
 	o_sam_dyn_done <= i_dyn_done      when (sam_en = '1') else '0';
 	o_key_done     <= i_done          when (key_en = '1') else '0';

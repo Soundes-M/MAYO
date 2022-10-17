@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Mon Oct  3 13:48:33 2022
+-- Last update : Mon Oct 17 21:25:31 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -83,21 +83,19 @@ begin
 	begin
 		if (rising_edge (i_clk)) then
 			if (rst = '1') then
-				o_done      <= '0';
-				s_v1_addr   <= (others => '0');
-				s_v2_addr   <= (others => '0');
-				s_out_addr  <= (others => '0');
-				s_ctr       <= 0;
-				s_io_read   <= '0';
-				s_state     <= idle;
-				o_mema_din  <= (others => '0');
-				o_mema_en   <= '0';
-				o_mema_rst  <= '0';
-				o_mema_addr <= (others => '0');
-				o_mema_we   <= "0000";
-				o_controla  <= '0';
-				o_controlb  <= '0';
-
+				o_done       <= '0';
+				s_v1_addr    <= (others => '0');
+				s_v2_addr    <= (others => '0');
+				s_out_addr   <= (others => '0');
+				s_ctr        <= 0;
+				s_main_start <= '0';
+				s_state      <= idle;
+				o_mema_din   <= (others => '0');
+				o_mema_en    <= '0';
+				o_mema_rst   <= '0';
+				o_mema_addr  <= (others => '0');
+				o_mema_we    <= "0000";
+				o_controla   <= '0';
 			else
 				case (s_state) is
 					when idle =>
@@ -106,7 +104,6 @@ begin
 						s_v2_addr  <= (others => '0');
 						s_out_addr <= (others => '0');
 						s_ctr      <= 0;
-						s_io_read  <= '0';
 						if (i_enable = '1') then
 							s_state    <= read1;
 							s_v1_addr  <= i_v1_addr;
@@ -145,13 +142,14 @@ begin
 						end if;
 
 					when waiting => -- Another BLOCK is needed .. waiting
+						s_main_start <= '0';
 						if (s_io_read = '1') then
-							s_io_read <= '0'; -- ACK
-							s_state   <= read1;
+							s_state <= read1;
 						end if;
 					when done =>
-						o_done  <= '1';
-						s_state <= idle;
+						o_done       <= '1';
+						s_main_start <= '0';
+						s_state      <= idle;
 					when others =>
 						null;
 				end case;
@@ -169,6 +167,8 @@ begin
 				o_memb_addr <= (others => '0');
 				o_memb_we   <= "0000";
 				s_state_1   <= idle;
+				s_io_read   <= '0';
+				o_controlb   <= '0';
 			else
 				case (s_state_1) is
 					when idle =>
@@ -176,19 +176,21 @@ begin
 							s_state_1 <= main;
 						end if;
 						o_controlb <= '0';
+
 					when main =>
+						o_controlb  <= '1';
 						for k in 0 to 3 loop -- ADDITION && MOD
 							o_memb_din(k*8+7 downto k*8) <= std_logic_vector(resize(unsigned(s_v1(k*8+7 downto k*8)) + unsigned(s_v2(k*8+7 downto k*8)),8) mod PRIME);
 						end loop;
 						s_io_read <= '1'; -- need next block
 						s_state_1 <= write1;
+						
 					when write1 =>
-						o_controlb   <= '1';
-						o_memb_en    <= '1';
-						o_memb_we    <= "1111"; -- WRITE result back to ADR
-						o_memb_addr  <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
-						s_main_start <= '0'; -- ACK
-						s_state_1    <= idle;
+						s_io_read   <= '0';
+						o_memb_en   <= '1';
+						o_memb_we   <= "1111"; -- WRITE result back to ADR
+						o_memb_addr <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+						s_state_1   <= idle;
 					when others =>
 						null;
 

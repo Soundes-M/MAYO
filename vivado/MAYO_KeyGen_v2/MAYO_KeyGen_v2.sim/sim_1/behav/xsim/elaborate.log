@@ -1,0 +1,10 @@
+Vivado Simulator 2020.2
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: /tools/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto c288448962fe4364bad66aba55020fde --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip -L xpm --snapshot mayo_bram_arbiter_tb_behav xil_defaultlib.mayo_bram_arbiter_tb -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-1537] value 0 is out of target constraint range 1 to 2147483647 [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Common.vhd:89]
+WARNING: [VRFC 10-1537] value 0 is out of target constraint range 1 to 2147483647 [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Common.vhd:128]
+WARNING: [VRFC 10-1537] value 0 is out of target constraint range 1 to 2147483647 [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/Utils/utils.vhd:115]
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

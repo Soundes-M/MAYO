@@ -186,7 +186,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../ip_repo/component.xml">
+      <File Path="$PPRDIR/../ip_repo/mayo_shake/component.xml">
         <FileInfo SFType="IPXACT"/>
       </File>
       <Config>

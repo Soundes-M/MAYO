@@ -1,0 +1,1 @@
+-wto "c288448962fe4364bad66aba55020fde" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "mayo_hash_arbiter_tb_behav" "xil_defaultlib.mayo_hash_arbiter_tb" -log "elaborate.log" 

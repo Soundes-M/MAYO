@@ -1,0 +1,9 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../src/hdl/MAYO_Keygen/MAYO_Common.vhd" \
+"../../../../../../src/hdl/Utils/utils.vhd" \
+"../../../../../../src/hdl/MAYO_Keygen/MAYO_BRAM_Arbiter.vhd" \
+"../../../../MAYO_KeyGen_v2.srcs/sim_1/new/maybo_bram_arbiter_tb.vhd" \
+
+# Do not sort compile order
+nosort
