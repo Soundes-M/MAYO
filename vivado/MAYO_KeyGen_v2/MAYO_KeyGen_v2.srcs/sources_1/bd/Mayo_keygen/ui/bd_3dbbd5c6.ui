@@ -1,161 +1,174 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.503729",
-   "Default View_TopLeft":"89,395",
+   "Default View_ScaleFactor":"0.839869",
+   "Default View_TopLeft":"967,882",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 8 -x 4580 -y 2880 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 8 -x 4580 -y 2900 -defaultsOSRD
-preplace inst AXI_LITE_Mayo_Keygen_0 -pg 1 -lvl 7 -x 4120 -y 1320 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 5 -x 2650 -y 2120 -defaultsOSRD
-preplace inst ps7_0_axi_periph -pg 1 -lvl 6 -x 3475 -y 2050 -defaultsOSRD
-preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 190 -y 2000 -defaultsOSRD
-preplace inst TRNG_0 -pg 1 -lvl 6 -x 3475 -y 1250 -defaultsOSRD
-preplace inst Ground0 -pg 1 -lvl 3 -x 1150 -y 1190 -defaultsOSRD
-preplace inst mayo_linear_combinat_0 -pg 1 -lvl 6 -x 3475 -y 2610 -defaultsOSRD
-preplace inst mayo_negate_0 -pg 1 -lvl 3 -x 1150 -y 520 -defaultsOSRD
-preplace inst mayo_reduce_0 -pg 1 -lvl 3 -x 1150 -y 790 -defaultsOSRD
-preplace inst mayo_sample_oil_space_0 -pg 1 -lvl 3 -x 1150 -y 1510 -defaultsOSRD
-preplace inst Ground32 -pg 1 -lvl 3 -x 1150 -y 1800 -defaultsOSRD
-preplace inst hash -pg 1 -lvl 2 -x 630 -y 2020 -defaultsOSRD
-preplace inst BRAM_small -pg 1 -lvl 5 -x 2650 -y 1170 -defaultsOSRD
-preplace inst BRAM_big -pg 1 -lvl 7 -x 4120 -y 2460 -defaultsOSRD
-preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1150 -y 190 -defaultsOSRD
-preplace inst Ground4 -pg 1 -lvl 4 -x 1650 -y 1000 -defaultsOSRD
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 7 10 1900 370 1440 820 950 1570 940 1900 1850 2990 1130 3770
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 6 0 1770 NJ 1770 850J 1970 NJ 1970 N 1970 2860
-preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 6 380 1460 850 960 1550 870 1940 528 2920 1120 3850
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_trng_r 1 5 3 3070 800 NJ 800 4320
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_trng_w 1 5 3 3080 820 NJ 820 4310
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_trng_data 1 5 3 3100 830 3850J 810 4330
-preplace netloc TRNG_0_TRNG_DATA_O 1 6 1 N 1230
-preplace netloc TRNG_0_TRNG_VALID_O 1 6 1 N 1250
-preplace netloc TRNG_0_TRNG_DONE_O 1 6 1 N 1270
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_red_enable 1 2 6 920 920 1380J 680 1790 418 2920J 420 NJ 420 4350
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_red_len 1 2 6 930 930 1350J 690 1800 428 2900J 430 NJ 430 4340
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_red_adr 1 2 6 950 910 1370J 670 1780 408 2930J 410 NJ 410 4370
-preplace netloc mayo_reduce_0_o_done 1 3 4 1420 790 1860 498 2900J 500 3890J
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_sam_enable 1 2 6 940 1920 NJ 1920 1830 1900 2970J 1800 3810J 1960 4540
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_sam_oil_addr 1 2 6 920 1950 NJ 1950 2070 1920 2980J 1830 3820J 1820 4340
-preplace netloc mayo_sample_oil_space_0_o_done 1 3 4 1440 330 1730 328 3100J 330 3910J
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_enable 1 5 3 3100 1900 3820J 1920 4430
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_bram_halt 1 5 3 3070 1780 3870J 1900 4370
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_vec_addr 1 5 3 3090 1910 3780J 1930 4400
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_coeffs_addr 1 5 3 3060 1790 3880J 1830 4320
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_out_addr 1 5 3 3080 1870 NJ 1870 4330
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_len 1 5 3 3050 1850 NJ 1850 4310
-preplace netloc mayo_linear_combinat_0_o_done 1 6 1 3830 1370n
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_enable 1 2 6 920 370 NJ 370 1730 358 3060J 360 NJ 360 4420
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_v1_addr 1 2 6 900 0 NJ 0 N 0 NJ 0 NJ 0 4530
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_v2_addr 1 2 6 910 10 NJ 10 N 10 NJ 10 NJ 10 4520
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_out_addr 1 2 6 930 380 NJ 380 1740 368 3050J 370 NJ 370 4470
-preplace netloc mayo_add_vectors_0_o_done 1 3 4 NJ 70 N 70 NJ 70 3920
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_neg_enable 1 2 6 920 650 NJ 650 1760 388 3020J 390 NJ 390 4460
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_neg_len 1 2 6 930 660 NJ 660 1770 398 2990J 400 NJ 400 4450
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_neg_adr 1 2 6 950 640 NJ 640 1750 378 3030J 380 NJ 380 4510
-preplace netloc mayo_negate_0_o_done 1 3 4 1500J 820 1910 518 3080J 520 3880
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_en 1 1 7 440 1800 910J 1860 NJ 1860 1730 1820 2930J 1750 3920J 1840 4410
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_mlen 1 1 7 450 1810 830J 1900 NJ 1900 1780 1880 NJ 1880 NJ 1880 4490
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_olen 1 1 7 460 1840 820J 1880 NJ 1880 1760 1870 2910J 1890 NJ 1890 4480
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_write_adr 1 1 7 410 1790 890J 1890 1550J 1870 1740 1830 2960J 1760 3900J 1910 4500
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_read_adr 1 1 7 400 1780 870J 1910 NJ 1910 1800 1890 2880J 1860 NJ 1860 4380
-preplace netloc mayo_sample_oil_space_0_o_hash_enable 1 1 3 430 1830 800J 1930 1410
-preplace netloc mayo_sample_oil_space_0_o_hash_mlen 1 1 3 420 1820 860J 1870 1360
-preplace netloc mayo_sample_oil_space_0_o_hash_olen 1 1 3 440 2190 NJ 2190 1390
-preplace netloc mayo_sample_oil_space_0_o_hash_write_adr 1 1 3 450 2200 NJ 2200 1370
-preplace netloc mayo_sample_oil_space_0_o_hash_read_adr 1 1 3 390 1740 NJ 1740 1350
-preplace netloc mayo_hash_arbiter_0_o_key_done 1 2 5 810J 970 1470J 730 1840 468 3080J 470 3930
-preplace netloc mayo_hash_arbiter_0_o_key_dyn_done 1 2 5 840J 980 1480J 750 1850 488 2930J 490 3900
-preplace netloc mayo_hash_arbiter_0_o_sam_done 1 2 1 880 1520n
-preplace netloc mayo_hash_arbiter_0_o_sam_dyn_done 1 2 1 900 1540n
-preplace netloc mayo_add_vectors_0_o_controla 1 3 2 N 290 1950
-preplace netloc mayo_add_vectors_0_o_controlb 1 3 2 N 310 1830
-preplace netloc mayo_linear_combinat_0_o_control0a 1 4 3 2100 2860 NJ 2860 3680
-preplace netloc mayo_linear_combinat_0_o_control0b 1 4 3 2160 2870 NJ 2870 3670
-preplace netloc mayo_linear_combinat_0_o_control1a 1 6 1 3920 2590n
-preplace netloc mayo_add_vectors_0_o_mema_din 1 3 2 N 90 2090
-preplace netloc mayo_add_vectors_0_o_mema_addr 1 3 2 N 110 2060
-preplace netloc mayo_add_vectors_0_o_mema_en 1 3 2 N 130 2050
-preplace netloc mayo_add_vectors_0_o_mema_rst 1 3 2 N 150 2040
-preplace netloc mayo_add_vectors_0_o_mema_we 1 3 2 N 170 2030
-preplace netloc arbit_brama0_BRAM_add_dout 1 2 4 940 390 1570J 710 1820 458 2870
-preplace netloc mayo_add_vectors_0_o_memb_din 1 3 2 N 190 1980
-preplace netloc mayo_add_vectors_0_o_memb_addr 1 3 2 N 210 1960
-preplace netloc mayo_add_vectors_0_o_memb_en 1 3 2 N 230 1930
-preplace netloc mayo_add_vectors_0_o_memb_rst 1 3 2 N 250 1890
-preplace netloc mayo_add_vectors_0_o_memb_we 1 3 2 N 270 1880
-preplace netloc mayo_bram_arbiter_1_BRAM_add_dout 1 2 4 950 400 1560J 700 1810 438 2890
-preplace netloc mayo_linear_combinat_0_o_mem0a_din 1 4 3 2090 2320 NJ 2320 3680
-preplace netloc mayo_linear_combinat_0_o_mem0a_addr 1 4 3 2120 2310 NJ 2310 3700
-preplace netloc mayo_linear_combinat_0_o_mem0a_en 1 4 3 2110 2330 NJ 2330 3690
-preplace netloc mayo_linear_combinat_0_o_mem0a_rst 1 4 3 2080 2370 NJ 2370 3670
-preplace netloc mayo_linear_combinat_0_o_mem0a_we 1 4 3 2130 2340 3030J 2300 3740
-preplace netloc arbit_brama0_BRAM_lin_dout 1 5 1 2900 1100n
-preplace netloc mayo_linear_combinat_0_o_mem0b_din 1 4 3 2150 2380 3040J 2340 3710
-preplace netloc mayo_linear_combinat_0_o_mem0b_addr 1 4 3 2210 1840 NJ 1840 3750
-preplace netloc mayo_linear_combinat_0_o_mem0b_en 1 4 3 2140 2880 NJ 2880 3740
-preplace netloc mayo_linear_combinat_0_o_mem0b_rst 1 4 3 2180 2350 NJ 2350 3730
-preplace netloc mayo_linear_combinat_0_o_mem0b_we 1 4 3 2190 2360 NJ 2360 3720
-preplace netloc mayo_bram_arbiter_1_BRAM_lin_dout 1 5 1 2890 1220n
-preplace netloc mayo_linear_combinat_0_o_mem1a_din 1 6 1 3850 2410n
-preplace netloc mayo_linear_combinat_0_o_mem1a_addr 1 6 1 3870 2430n
-preplace netloc mayo_linear_combinat_0_o_mem1a_en 1 6 1 3890 2450n
-preplace netloc mayo_linear_combinat_0_o_mem1a_rst 1 6 1 3900 2470n
-preplace netloc mayo_linear_combinat_0_o_mem1a_we 1 6 1 3910 2490n
-preplace netloc arbit_brama1_BRAM_lin_dout 1 5 3 3100 2890 NJ 2890 4310
-preplace netloc mayo_reduce_0_o_addrb 1 3 2 1460 880 1920
-preplace netloc mayo_reduce_0_o_dinb 1 3 2 1430 890 1910
-preplace netloc mayo_reduce_0_o_enb 1 3 2 1410 900 1870
-preplace netloc mayo_reduce_0_o_rstb 1 3 2 1400 910 1850
-preplace netloc mayo_reduce_0_o_web 1 3 2 1390 920 1840
-preplace netloc arbit_brama0_BRAM_red_dout 1 2 4 940 940 1450J 770 1870 508 2880
-preplace netloc mayo_reduce_0_o_control 1 3 2 1360 930 1730
-preplace netloc mayo_negate_0_o_addrb 1 3 2 1550 720 2020
-preplace netloc mayo_negate_0_o_dinb 1 3 2 1540 740 2010
-preplace netloc mayo_negate_0_o_enb 1 3 2 1530 760 2000
-preplace netloc mayo_negate_0_o_rstb 1 3 2 1520 780 1990
-preplace netloc mayo_negate_0_o_web 1 3 2 1510 810 1970
-preplace netloc arbit_brama0_BRAM_neg_dout 1 2 4 940 670 1360J 800 1920 538 2860
-preplace netloc mayo_negate_0_o_control 1 3 2 1490 840 1860
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_control 1 4 4 2220 1790 2940J 1770 3840J 1940 4350
-preplace netloc arbit_brama0_BRAM_key_dout 1 5 2 2930J 1140 3870
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_din 1 4 4 2220 348 3070J 350 NJ 350 4550
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_addr 1 4 4 2200 338 3080J 340 NJ 340 4560
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_en 1 4 4 2210 448 3030J 450 NJ 450 4440
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_rst 1 4 4 2170 1810 2940J 1820 3790J 1950 4360
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_we 1 4 4 2200 1800 2950J 1810 3760J 1970 4390
-preplace netloc arbit_brama0_BRAM_sam_dout 1 2 4 930 1960 NJ 1960 N 1960 2870
-preplace netloc mayo_sample_oil_space_0_o_mema_din 1 3 2 1460 1140 N
-preplace netloc mayo_sample_oil_space_0_o_mema_addr 1 3 2 1480 1160 N
-preplace netloc mayo_sample_oil_space_0_o_mema_en 1 3 2 1500 1180 N
-preplace netloc mayo_sample_oil_space_0_o_mema_rst 1 3 2 1530 1200 N
-preplace netloc mayo_sample_oil_space_0_o_mema_we 1 3 2 1550 1220 N
-preplace netloc arbit_bramb0_BRAM_sam_dout 1 2 4 950 1940 NJ 1940 2050 1910 2860
-preplace netloc mayo_sample_oil_space_0_o_memb_din 1 3 2 N 1560 1800
-preplace netloc mayo_sample_oil_space_0_o_memb_addr 1 3 2 N 1580 1790
-preplace netloc mayo_sample_oil_space_0_o_memb_en 1 3 2 N 1600 1770
-preplace netloc mayo_sample_oil_space_0_o_memb_rst 1 3 2 N 1620 1750
-preplace netloc mayo_sample_oil_space_0_o_memb_we 1 3 2 N 1640 1740
-preplace netloc mayo_sample_oil_space_0_o_controlb 1 3 2 N 1680 1730
-preplace netloc mayo_sample_oil_space_0_o_controla 1 3 2 1570 1360 N
-preplace netloc arbit_brama1_BRAM_hash_dout 1 1 7 460 2390 NJ 2390 NJ 2390 N 2390 3020J 2240 NJ 2240 4320
-preplace netloc MAYO_SHAKE_1_BRAMA_en 1 2 5 N 2100 NJ 2100 1730 2290 NJ 2290 3760J
-preplace netloc MAYO_SHAKE_1_BRAMA_din 1 2 5 N 2080 NJ 2080 1740 2280 NJ 2280 3790J
-preplace netloc MAYO_SHAKE_1_BRAMA_addr 1 2 5 N 2060 NJ 2060 1770 2270 NJ 2270 3800J
-preplace netloc MAYO_SHAKE_1_BRAMA_we 1 2 5 N 2040 NJ 2040 1750 2300 3010J 2260 3780J
-preplace netloc MAYO_SHAKE_1_o_control 1 2 5 N 2020 NJ 2020 1760 2850 NJ 2850 3930J
-preplace netloc Ground0_dout 1 3 4 N 1190 2070 478 3030J 480 3860
-preplace netloc Ground32_dout 1 3 4 N 1800 2030 2260 3000J 2250 3810J
-preplace netloc arbit_bramb0_BRAM_key_dout 1 5 2 2960 1150 3760J
-preplace netloc arbit_brama1_BRAM_key_dout 1 6 2 3930 1980 4330
-preplace netloc processing_system7_0_FIXED_IO 1 5 3 2870J 2190 NJ 2190 4520J
-preplace netloc ps7_0_axi_periph_M00_AXI 1 6 1 3800 1130n
-preplace netloc processing_system7_0_M_AXI_GP0 1 5 1 3030 1970n
-preplace netloc processing_system7_0_DDR 1 5 3 2880J 2200 NJ 2200 4360J
-preplace netloc ps7_0_axi_periph_M01_AXI 1 6 1 3820 2060n
-levelinfo -pg 1 -20 190 630 1150 1650 2650 3475 4120 4580
-pagesize -pg 1 -db -bbox -sgen -20 -10 4700 3700
+preplace port DDR -pg 1 -lvl 7 -x 4150 -y 2400 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 7 -x 4150 -y 2420 -defaultsOSRD
+preplace inst AXI_LITE_Mayo_Keygen_0 -pg 1 -lvl 6 -x 3590 -y 1130 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 4 -x 2220 -y 2480 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 5 -x 2800 -y 2200 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 200 -y 1960 -defaultsOSRD
+preplace inst TRNG_0 -pg 1 -lvl 5 -x 2800 -y 670 -defaultsOSRD
+preplace inst Ground0 -pg 1 -lvl 3 -x 1150 -y 1770 -defaultsOSRD
+preplace inst mayo_linear_combinat_0 -pg 1 -lvl 5 -x 2800 -y 1590 -defaultsOSRD
+preplace inst mayo_negate_0 -pg 1 -lvl 3 -x 1150 -y 160 -defaultsOSRD
+preplace inst mayo_reduce_0 -pg 1 -lvl 3 -x 1150 -y 820 -defaultsOSRD
+preplace inst Ground32 -pg 1 -lvl 3 -x 1150 -y 1670 -defaultsOSRD
+preplace inst hash -pg 1 -lvl 2 -x 680 -y 1990 -defaultsOSRD
+preplace inst BRAM_big -pg 1 -lvl 6 -x 3590 -y 1990 -defaultsOSRD
+preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1150 -y 490 -defaultsOSRD
+preplace inst Ground4 -pg 1 -lvl 3 -x 1150 -y 1870 -defaultsOSRD
+preplace inst mayo_sample_oil_space_0 -pg 1 -lvl 3 -x 1150 -y 1420 -defaultsOSRD
+preplace inst BRAM_small -pg 1 -lvl 4 -x 2220 -y 1040 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 6 20 1860 380 1760 860 1610 1690 1810 2510 2430 3300
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 5 20 2620 NJ 2620 NJ 2620 NJ 2620 2430
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 5 390 1770 870 1600 1720 1820 2530 2390 3310
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_trng_r 1 4 3 2600 560 NJ 560 3790
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_trng_w 1 4 3 2610 570 NJ 570 3780
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_trng_data 1 4 3 2590 550 NJ 550 3800
+preplace netloc TRNG_0_TRNG_DATA_O 1 5 1 3400 650n
+preplace netloc TRNG_0_TRNG_VALID_O 1 5 1 3380 670n
+preplace netloc TRNG_0_TRNG_DONE_O 1 5 1 3370 690n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_red_enable 1 2 5 940 690 1560J 200 NJ 200 NJ 200 3880
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_red_len 1 2 5 950 700 1410J 210 NJ 210 NJ 210 3870
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_red_adr 1 2 5 920 680 1400J 190 NJ 190 NJ 190 3890
+preplace netloc mayo_reduce_0_o_done 1 3 3 1490 1740 2460J 1300 2990J
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_sam_enable 1 2 5 920 1220 1450J 1780 2500J 1340 3340J 1700 3880
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_sam_oil_addr 1 2 5 940 1230 1430J 1790 2520J 1350 3330J 1710 3870
+preplace netloc mayo_sample_oil_space_0_o_done 1 3 3 1440 1750 2470J 1310 3010J
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_enable 1 4 3 2560 780 2990J 580 3860
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_bram_halt 1 4 3 2570 790 3010J 590 3850
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_vec_addr 1 4 3 2580 800 3230J 600 3840
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_coeffs_addr 1 4 3 2590 810 3280J 610 3830
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_out_addr 1 4 3 2600 820 3300J 620 3820
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_lin_len 1 4 3 2610 830 3310J 630 3810
+preplace netloc mayo_linear_combinat_0_o_done 1 5 1 3270 1180n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_enable 1 2 5 950 310 1540J 170 NJ 170 NJ 170 3930
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_v1_addr 1 2 5 890 20 NJ 20 NJ 20 NJ 20 4070
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_v2_addr 1 2 5 900 30 NJ 30 NJ 30 NJ 30 4060
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_add_out_addr 1 2 5 880 10 NJ 10 NJ 10 NJ 10 4130
+preplace netloc mayo_add_vectors_0_o_done 1 3 3 1670 1760 2480J 1320 3250J
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_neg_enable 1 2 5 950 40 NJ 40 NJ 40 NJ 40 4110
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_neg_len 1 2 5 920 280 1510J 140 NJ 140 NJ 140 4100
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_neg_adr 1 2 5 940 290 1520J 150 NJ 150 NJ 150 4090
+preplace netloc mayo_negate_0_o_done 1 3 3 1460 1770 2490J 1330 3290J
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_en 1 1 6 400 1780 950J 1930 NJ 1930 2520J 1940 3170J 2270 4030
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_mlen 1 1 6 430 2170 NJ 2170 NJ 2170 2560J 2030 3140J 2290 4050
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_olen 1 1 6 440 2180 NJ 2180 NJ 2180 2440J 2040 3130J 2300 4040
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_write_adr 1 1 6 410 1790 940J 1940 NJ 1940 2460J 1950 3150J 2280 3940
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_read_adr 1 1 6 450 2190 NJ 2190 NJ 2190 2580J 2050 3120J 2310 4020
+preplace netloc mayo_sample_oil_space_0_o_hash_enable 1 1 3 460 2200 NJ 2200 1390
+preplace netloc mayo_sample_oil_space_0_o_hash_mlen 1 1 3 470 2210 NJ 2210 1380
+preplace netloc mayo_sample_oil_space_0_o_hash_olen 1 1 3 480 2220 NJ 2220 1370
+preplace netloc mayo_sample_oil_space_0_o_hash_write_adr 1 1 3 490 2230 NJ 2230 1360
+preplace netloc mayo_sample_oil_space_0_o_hash_read_adr 1 1 3 500 2240 NJ 2240 1350
+preplace netloc mayo_hash_arbiter_0_o_key_done 1 2 4 910J 1960 NJ 1960 NJ 1960 3240
+preplace netloc mayo_hash_arbiter_0_o_key_dyn_done 1 2 4 890J 1970 NJ 1970 NJ 1970 3260
+preplace netloc mayo_hash_arbiter_0_o_sam_done 1 2 1 900 1440n
+preplace netloc mayo_hash_arbiter_0_o_sam_dyn_done 1 2 1 920 1460n
+preplace netloc mayo_linear_combinat_0_o_control1a 1 5 1 3200 1770n
+preplace netloc mayo_linear_combinat_0_o_mem1a_din 1 5 1 3290 1630n
+preplace netloc mayo_linear_combinat_0_o_mem1a_addr 1 5 1 3270 1650n
+preplace netloc mayo_linear_combinat_0_o_mem1a_en 1 5 1 3250 1670n
+preplace netloc mayo_linear_combinat_0_o_mem1a_rst 1 5 1 3220 1690n
+preplace netloc mayo_linear_combinat_0_o_mem1a_we 1 5 1 3210 1710n
+preplace netloc arbit_brama1_BRAM_lin_dout 1 4 3 2610 1910 3190J 2260 3780
+preplace netloc arbit_brama1_BRAM_hash_dout 1 1 6 510 2250 NJ 2250 NJ 2250 2600J 2060 3110J 2320 3790
+preplace netloc MAYO_SHAKE_1_BRAMA_en 1 2 4 850J 2010 NJ 2010 NJ 2010 N
+preplace netloc MAYO_SHAKE_1_BRAMA_din 1 2 4 860J 2000 NJ 2000 NJ 2000 3340
+preplace netloc MAYO_SHAKE_1_BRAMA_addr 1 2 4 870J 1990 NJ 1990 NJ 1990 N
+preplace netloc MAYO_SHAKE_1_BRAMA_we 1 2 4 880J 1980 NJ 1980 NJ 1980 3180
+preplace netloc Ground0_dout 1 3 3 1410 2330 2440J 2370 3280
+preplace netloc Ground32_dout 1 3 3 1730 1880 NJ 1880 3320J
+preplace netloc arbit_brama1_BRAM_key_dout 1 5 2 3390 1630 3840
+preplace netloc Ground4_dout 1 3 3 1740 2340 2430J 2380 3400J
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem1a_din 1 5 2 3350 1640 3830
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem1a_addr 1 5 2 3360 1650 3820
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem1a_en 1 5 2 3370 1660 3810
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem1a_rst 1 5 2 3380 1670 3800
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem1a_we 1 5 2 3390 1680 3790
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem1a_control 1 5 2 3400 1690 3780
+preplace netloc arbit_brama0_BRAM_neg_dout 1 2 3 950 300 1530J 160 2450
+preplace netloc mayo_reduce_0_o_web 1 3 1 1660 820n
+preplace netloc mayo_reduce_0_o_rstb 1 3 1 1600 800n
+preplace netloc mayo_reduce_0_o_control 1 3 1 1580 880n
+preplace netloc arbit_brama0_BRAM_red_dout 1 2 3 950 940 1570J 220 2440
+preplace netloc mayo_reduce_0_o_addrb 1 3 1 N 760
+preplace netloc mayo_reduce_0_o_dinb 1 3 1 1400 740n
+preplace netloc mayo_reduce_0_o_enb 1 3 1 1580 780n
+preplace netloc mayo_negate_0_o_web 1 3 1 1480 180n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_control 1 3 4 1910 280 NJ 280 NJ 280 4120
+preplace netloc mayo_negate_0_o_control 1 3 1 1470 220n
+preplace netloc mayo_negate_0_o_addrb 1 3 1 1800 100n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0b_control 1 3 4 1960 300 NJ 300 NJ 300 4080
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0b_we 1 3 4 1810 320 NJ 320 NJ 320 3950
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0b_rst 1 3 4 1980 340 NJ 340 NJ 340 3900
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0b_en 1 3 4 1970 330 NJ 330 NJ 330 3910
+preplace netloc mayo_add_vectors_0_o_memb_we 1 3 1 1610 570n
+preplace netloc mayo_bram_arbiter_1_BRAM_add_dout 1 2 3 900 1210 1480J 1730 2430
+preplace netloc mayo_linear_combinat_0_o_mem0b_din 1 3 3 2010 1900 NJ 1900 3060
+preplace netloc mayo_linear_combinat_0_o_mem0b_addr 1 3 3 2000 1890 NJ 1890 3010
+preplace netloc mayo_add_vectors_0_o_memb_din 1 3 1 1650 490n
+preplace netloc mayo_add_vectors_0_o_memb_addr 1 3 1 1640 510n
+preplace netloc mayo_add_vectors_0_o_memb_en 1 3 1 1630 530n
+preplace netloc mayo_add_vectors_0_o_memb_rst 1 3 1 1620 550n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0b_din 1 3 4 1920 310 NJ 310 NJ 310 3920
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0b_addr 1 3 4 1840 290 NJ 290 NJ 290 3960
+preplace netloc arbit_bramb0_BRAM_key_dout 1 4 2 2470J 770 3340
+preplace netloc mayo_sample_oil_space_0_o_memb_din 1 3 1 1700 1280n
+preplace netloc mayo_linear_combinat_0_o_mem0b_en 1 3 3 1960 2300 2470J 2340 3100
+preplace netloc mayo_linear_combinat_0_o_mem0b_rst 1 3 3 1840 2310 2460J 2350 3090
+preplace netloc mayo_linear_combinat_0_o_mem0b_we 1 3 3 1800 2320 2450J 2360 3080
+preplace netloc mayo_bram_arbiter_1_BRAM_lin_dout 1 4 1 2540 1090n
+preplace netloc arbit_bramb0_BRAM_sam_dout 1 2 3 950 1240 1420J 1800 2450
+preplace netloc mayo_add_vectors_0_o_controlb 1 3 1 1590 610n
+preplace netloc mayo_linear_combinat_0_o_control0b 1 3 3 1830 1920 2580J 1930 2990
+preplace netloc mayo_sample_oil_space_0_o_controlb 1 3 1 1710 1140n
+preplace netloc mayo_sample_oil_space_0_o_memb_addr 1 3 1 1520 1260n
+preplace netloc mayo_sample_oil_space_0_o_memb_en 1 3 1 1510 1240n
+preplace netloc mayo_sample_oil_space_0_o_memb_rst 1 3 1 1500 1220n
+preplace netloc mayo_sample_oil_space_0_o_memb_we 1 3 1 1470 1200n
+preplace netloc mayo_sample_oil_space_0_o_controla 1 3 1 1400 1060n
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_en 1 3 4 1880 250 NJ 250 NJ 250 3990
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_addr 1 3 4 1870 240 NJ 240 NJ 240 4000
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_we 1 3 4 1900 270 NJ 270 NJ 270 3970
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_rst 1 3 4 1890 260 NJ 260 NJ 260 3980
+preplace netloc arbit_brama0_BRAM_key_dout 1 4 2 2460J 540 3390
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_din 1 3 4 1860 230 NJ 230 NJ 230 4010
+preplace netloc mayo_negate_0_o_enb 1 3 1 1500 140n
+preplace netloc mayo_negate_0_o_dinb 1 3 1 1790 120n
+preplace netloc arbit_brama0_BRAM_lin_dout 1 4 1 2550 970n
+preplace netloc mayo_linear_combinat_0_o_mem0a_we 1 3 3 1950 1870 NJ 1870 3030
+preplace netloc mayo_linear_combinat_0_o_mem0a_en 1 3 3 1930 1850 NJ 1850 3050
+preplace netloc mayo_linear_combinat_0_o_mem0a_addr 1 3 3 1990 1830 NJ 1830 3020
+preplace netloc mayo_linear_combinat_0_o_mem0a_din 1 3 3 1850 1840 NJ 1840 3070
+preplace netloc arbit_brama0_BRAM_add_dout 1 2 3 950 670 1550J 180 2430
+preplace netloc mayo_add_vectors_0_o_mema_we 1 3 1 1710 470n
+preplace netloc mayo_add_vectors_0_o_mema_rst 1 3 1 1730 450n
+preplace netloc mayo_add_vectors_0_o_mema_en 1 3 1 1740 430n
+preplace netloc mayo_linear_combinat_0_o_control0a 1 3 3 1820 1910 2600J 1920 3000
+preplace netloc mayo_add_vectors_0_o_controla 1 3 1 1680 590n
+preplace netloc mayo_add_vectors_0_o_mema_din 1 3 1 1780 390n
+preplace netloc mayo_add_vectors_0_o_mema_addr 1 3 1 1770 410n
+preplace netloc mayo_linear_combinat_0_o_mem0a_rst 1 3 3 1940 1860 NJ 1860 3040
+preplace netloc mayo_negate_0_o_rstb 1 3 1 1490 160n
+preplace netloc hash_BRAM0_din 1 2 2 NJ 2020 1750
+preplace netloc hash_BRAM0_addr 1 2 2 NJ 2040 1760
+preplace netloc hash_BRAM0_en 1 2 2 NJ 2060 1770
+preplace netloc hash_BRAM0_we 1 2 2 NJ 2080 1780
+preplace netloc BRAM0_dout_1 1 1 4 420 1800 930J 1950 NJ 1950 2440
+preplace netloc hash_control_1 1 2 4 NJ 2100 NJ 2100 2550J 2020 3160
+preplace netloc hash_BRAM0_control 1 2 2 NJ 2120 1790
+preplace netloc ps7_0_axi_periph_M01_AXI 1 5 1 3330 1770n
+preplace netloc processing_system7_0_FIXED_IO 1 4 3 NJ 2420 NJ 2420 NJ
+preplace netloc ps7_0_axi_periph_M00_AXI 1 5 1 3230 940n
+preplace netloc processing_system7_0_M_AXI_GP0 1 4 1 2610 2120n
+preplace netloc processing_system7_0_DDR 1 4 3 NJ 2400 NJ 2400 NJ
+levelinfo -pg 1 0 200 680 1150 2220 2800 3590 4150
+pagesize -pg 1 -db -bbox -sgen 0 0 4270 2630
 "
 }
 {

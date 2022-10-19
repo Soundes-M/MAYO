@@ -2,33 +2,16 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="Mayo_keygen" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1666042640"/>
-    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1666042640"/>
-    <Generation Name="SIMULATION" State="STALE" Timestamp="1666042640"/>
-    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1666042635"/>
+    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1666195171"/>
+    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1666195171"/>
+    <Generation Name="SIMULATION" State="STALE" Timestamp="1666195171"/>
+    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1666195171"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
-      <File Name="synth/Mayo_keygen.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-      </File>
-      <File Name="sim/Mayo_keygen.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="Mayo_keygen.bmm" Type="BMM">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="Mayo_keygen_ooc.xdc" Type="XDC">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+      <File Name="Mayo_keygen.dcp" Type="DCP">
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1666185250" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="OUT_OF_CONTEXT"/>
       </File>
     </FileCollection>
   </CompositeFile>

@@ -43,24 +43,27 @@ begin
 
 	KEY_PR : process(rst,i_key_en,i_sam_en,i_done) is
 	begin
-			if (rst = '1') then
-				key_en <= '0';
+		if (rst = '1') then
+			key_en <= '0';
+			sam_en <= '0';
+		else
+			if (i_key_en = '1') then
+				key_en <= '1';
 				sam_en <= '0';
-			else
-				if (i_key_en = '1') then
-					key_en <= '1';
-					sam_en <= '0';
-				elsif(i_sam_en = '1') then
-					sam_en <= '1';
+			elsif(i_sam_en = '1') then
+				sam_en <= '1';
+				key_en <= '0';
+			end if;
+			if (falling_edge(i_done)) then
+				if (key_en ='1') then
 					key_en <= '0';
-				end if;
-
-				if (falling_edge(i_done) and key_en ='1') then
-					key_en <= '0';
-				elsif (falling_edge(i_done) and sam_en = '1') then
+				elsif (sam_en = '1') then
 					sam_en <= '0';
+				else
+					null;
 				end if;
 			end if;
+		end if;
 	end process;
 
 	o_en           <= '1'             when ((i_key_en = '1') or (i_sam_en ='1')) else '0';

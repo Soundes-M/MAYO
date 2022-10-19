@@ -1,0 +1,18 @@
+verilog xil_defaultlib --include "/tools/Xilinx/Vivado/2020.2/data/xilinx_vip/include" --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/ec67/hdl" --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/34f8/hdl" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_processing_system7_0_0/sim/Mayo_keygen_processing_system7_0_0.v" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_xbar_0/sim/Mayo_keygen_xbar_0.v" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_TRNG_0_0/sources_1/ip/fifo_generator_0/sim/fifo_generator_0.v" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_xlconstant_0_0/sim/Mayo_keygen_xlconstant_0_0.v" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_Ground0_0/sim/Mayo_keygen_Ground0_0.v" \
+"../../../bd/Mayo_keygen/ipshared/43b5/src/SHA_SHAKE_wrapper.v" \
+"../../../bd/Mayo_keygen/ipshared/43b5/src/MAYO_SHAKE.v" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_MAYO_SHAKE_1_0/sim/Mayo_keygen_MAYO_SHAKE_1_0.v" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_blk_mem_gen_0_0/sim/Mayo_keygen_blk_mem_gen_0_0.v" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_blk_mem_gen_0_1/sim/Mayo_keygen_blk_mem_gen_0_1.v" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_Ground0_1/sim/Mayo_keygen_Ground0_1.v" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_auto_pc_1/sim/Mayo_keygen_auto_pc_1.v" \
+"../../../bd/Mayo_keygen/ip/Mayo_keygen_auto_pc_0/sim/Mayo_keygen_auto_pc_0.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

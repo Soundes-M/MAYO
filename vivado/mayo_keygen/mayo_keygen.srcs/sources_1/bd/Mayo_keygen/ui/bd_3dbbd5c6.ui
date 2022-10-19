@@ -4,7 +4,7 @@
    "Color Coded_ScaleFactor":"0.430804",
    "Color Coded_TopLeft":"-332,0",
    "Default View_ScaleFactor":"0.804372",
-   "Default View_TopLeft":"0,1047",
+   "Default View_TopLeft":"0,-50",
    "Display-PortTypeClock":"true",
    "Display-PortTypeOthers":"true",
    "Display-PortTypeReset":"true",
@@ -88,15 +88,15 @@ preplace inst blk_mem_gen_1 -pg 1 -lvl 1 -x 210 -y 1780 -defaultsOSRD
 preplace inst MAYO_SHAKE_0 -pg 1 -lvl 3 -x 1210 -y 1750 -defaultsOSRD
 preplace inst processing_system7_0 -pg 1 -lvl 3 -x 1210 -y 2180 -swap {0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 67 68 70 69 66 71} -defaultsOSRD
 preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 210 -y 1630 -defaultsOSRD
+preplace inst MAYO_KEYGEN_0 -pg 1 -lvl 4 -x 1850 -y 510 -defaultsOSRD
 preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1210 -y 450 -defaultsOSRD
 preplace inst mayo_linear_combinat_0 -pg 1 -lvl 3 -x 1210 -y 850 -defaultsOSRD
-preplace inst MAYO_KEYGEN_0 -pg 1 -lvl 4 -x 1850 -y 510 -defaultsOSRD
 preplace inst mayo_sample_oil_space_0 -pg 1 -lvl 2 -x 640 -y 1720 -defaultsOSRD
 preplace inst mayo_negate_0 -pg 1 -lvl 3 -x 1210 -y 1270 -defaultsOSRD
 preplace inst mayo_reduce_0 -pg 1 -lvl 3 -x 1210 -y 1510 -defaultsOSRD
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 4 20 1850 390 1480 870 250 1440
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 4 20 1850 400 1540 870 250 1440
 preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 4 30 2330 NJ 2330 NJ 2330 1420
-preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 3 400 1490 880 260 1570J
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 3 390 1530 880 260 1570J
 preplace netloc MAYO_KEYGEN_0_o_trng_r 1 2 3 970 1140 NJ 1140 2240
 preplace netloc MAYO_KEYGEN_0_o_trng_w 1 2 3 980 1150 NJ 1150 2230
 preplace netloc MAYO_KEYGEN_0_o_trng_data 1 2 3 940 1130 NJ 1130 2220
@@ -125,14 +125,14 @@ preplace netloc mayo_negate_0_o_done 1 3 1 1550 630n
 preplace netloc MAYO_KEYGEN_0_o_lin_bram_halt 1 2 3 920 -10 NJ -10 2150
 preplace netloc MAYO_KEYGEN_0_o_sam_enable 1 1 4 410 170 NJ 170 1580J 1070 2170
 preplace netloc MAYO_KEYGEN_0_o_sam_oil_addr 1 1 4 420 180 NJ 180 1530J 1080 2160
-preplace netloc mayo_sample_oil_space_0_o_done 1 2 2 840J 190 1620
-preplace netloc mayo_sample_oil_space_0_o_hash_mlen 1 2 1 890 1590n
-preplace netloc mayo_sample_oil_space_0_o_hash_olen 1 2 1 860 1610n
-preplace netloc mayo_sample_oil_space_0_o_hash_enable 1 2 1 900 1570n
+preplace netloc mayo_sample_oil_space_0_o_done 1 2 2 850J 190 1620
+preplace netloc mayo_sample_oil_space_0_o_hash_mlen 1 2 1 890 1640n
+preplace netloc mayo_sample_oil_space_0_o_hash_olen 1 2 1 860 1660n
+preplace netloc mayo_sample_oil_space_0_o_hash_enable 1 2 1 900 1620n
 preplace netloc MAYO_SHAKE_0_done 1 1 3 440 2320 NJ 2320 1590
 preplace netloc MAYO_SHAKE_0_dyn_done 1 1 3 430 1390 NJ 1390 1510
-preplace netloc mayo_sample_oil_space_0_o_hash_write_adr 1 2 1 850 1630n
-preplace netloc mayo_sample_oil_space_0_o_hash_read_adr 1 2 1 840 1650n
+preplace netloc mayo_sample_oil_space_0_o_hash_write_adr 1 2 1 850 1680n
+preplace netloc mayo_sample_oil_space_0_o_hash_read_adr 1 2 1 840 1700n
 preplace netloc MAYO_SHAKE_0_BRAMA_we 1 3 1 1430 1740n
 preplace netloc processing_system7_0_FIXED_IO 1 3 2 NJ 2120 NJ
 preplace netloc processing_system7_0_DDR 1 3 2 NJ 2100 NJ
