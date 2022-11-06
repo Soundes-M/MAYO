@@ -86,7 +86,7 @@ PACKAGE MAYO_COMMON IS
 
   -- SK Components
   CONSTANT Sk_PRIVATE_SEED_ADR : positive := SK_BASE_ADR + SEED_BYTES;
-  CONSTANT SK_PUBLIC_SEED_ADR  : positive := SK_BASE_ADR;
+  CONSTANT SK_PUBLIC_SEED_ADR  : natural := SK_BASE_ADR;
 
   -- Sample_oil_space
   CONSTANT RANDOMNESS_BASE_ADR : positive := SK_HIGH_ADR + 4;
@@ -111,6 +111,7 @@ PACKAGE MAYO_COMMON IS
   -- Address Mapping (In BRAM II) (BIG DATA)
   ------------------------------------------------------------------------------
   CONSTANT BRAM_II_SIZE : natural  := 31;
+  
   CONSTANT P1_BASE_ADR  : natural  := 16#0#;
   CONSTANT P1_RANGE     : positive := P1_BYTES ;
   CONSTANT P1_HIGH_ADR  : positive := P1_BASE_ADR + P1_RANGE - 4;
@@ -125,7 +126,7 @@ PACKAGE MAYO_COMMON IS
   CONSTANT TEMPT_HIGH_ADR : positive := TEMPT_BASE_ADR + TEMPT_RANGE - 4;
 
   -- Address Mapping DDR MAPPING 
-  CONSTANT DDR_BASE_ADR : positive := 16#0#;       -- TODO CHANGE THIS
+  CONSTANT DDR_BASE_ADR : natural := 16#0#;       -- TODO CHANGE THIS
   CONSTANT DDR_RANGE    : positive := 536_870_912; -- Zedboard --> 512MB DRAM TODO: Chnage this!
   CONSTANT DDR_HIGH_ADR : positive := DDR_BASE_ADR + DDR_RANGE - 4;
 

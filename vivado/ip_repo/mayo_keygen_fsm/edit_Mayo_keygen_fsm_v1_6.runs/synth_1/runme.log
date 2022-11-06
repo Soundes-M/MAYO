@@ -1,0 +1,55 @@
+
+*** Running vivado
+    with args -log Mayo_keygen_fsm_v1_6_S00_AXI.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_keygen_fsm_v1_6_S00_AXI.tcl
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source Mayo_keygen_fsm_v1_6_S00_AXI.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo'.
+WARNING: [IP_Flow 19-3656] If you move the project, the path for repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo' may become invalid. A better location for the repository would be in a path adjacent to the project. (Current project location is '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/edit_Mayo_keygen_fsm_v1_6.runs/synth_1'.)
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.2/data/ip'.
+Command: synth_design -top Mayo_keygen_fsm_v1_6_S00_AXI -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 542920
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2324.520 ; gain = 0.000 ; free physical = 15474 ; free virtual = 26513
+---------------------------------------------------------------------------------
+ERROR: [Synth 8-4169] error in use clause: package 'mayo_common' not found in library 'work' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:5]
+ERROR: [Synth 8-4169] error in use clause: package 'utils_common' not found in library 'work' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:6]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:53]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:54]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:55]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:56]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:58]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:59]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:60]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:64]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:66]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:67]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:68]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:72]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:73]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:74]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:78]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:79]
+ERROR: [Synth 8-1031] port_width is not declared [/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6/hdl/Mayo_keygen_fsm_v1_6_S00_AXI.vhd:80]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2324.520 ; gain = 0.000 ; free physical = 15408 ; free virtual = 26446
+---------------------------------------------------------------------------------
+synthesize failed
+INFO: [Common 17-83] Releasing license: Synthesis
+9 Infos, 2 Warnings, 0 Critical Warnings and 20 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Vivado Synthesis failed
+INFO: [Common 17-206] Exiting Vivado at Wed Oct 19 21:39:32 2022...

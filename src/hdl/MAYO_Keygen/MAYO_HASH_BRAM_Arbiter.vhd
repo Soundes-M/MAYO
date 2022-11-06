@@ -42,14 +42,13 @@ architecture Behavioral of mayo_hash_bram_arbiter is
 begin
 
 	BRAM0_din     <= hash_din     when bram_sel = '0' else ZERO_32;
-	BRAM0_addr    <= hash_din     when bram_sel = '0' else ZERO_32;
+	BRAM0_addr    <= hash_addr    when bram_sel = '0' else ZERO_32;
 	BRAM0_en      <= hash_en      when bram_sel = '0' else '0';
-	BRAM0_rst     <= hash_rst     when bram_sel = '0' else '0';
 	BRAM0_we      <= hash_we      when bram_sel = '0' else "0000";
 	BRAM0_control <= hash_control when bram_sel = '0' else '0';
 
 	BRAM1_din     <= hash_din     when bram_sel = '1' else ZERO_32;
-	BRAM1_addr    <= hash_din     when bram_sel = '1' else ZERO_32;
+	BRAM1_addr    <= hash_addr    when bram_sel = '1' else ZERO_32;
 	BRAM1_en      <= hash_en      when bram_sel = '1' else '0';
 	BRAM1_we      <= hash_we      when bram_sel = '1' else "0000";
 	BRAM1_control <= hash_control when bram_sel = '1' else '0';

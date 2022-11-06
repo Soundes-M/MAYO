@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Oct 19 21:39:24 2022
+# Process ID: 542756
+# Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/edit_Mayo_keygen_fsm_v1_6.runs/synth_1
+# Command line: vivado -log Mayo_keygen_fsm_v1_6_S00_AXI.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_keygen_fsm_v1_6_S00_AXI.tcl
+# Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/edit_Mayo_keygen_fsm_v1_6.runs/synth_1/Mayo_keygen_fsm_v1_6_S00_AXI.vds
+# Journal file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/edit_Mayo_keygen_fsm_v1_6.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source Mayo_keygen_fsm_v1_6_S00_AXI.tcl -notrace

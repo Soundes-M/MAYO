@@ -1,0 +1,1 @@
+-wto "0581711c69ec4b3fbd8ca72b3365f34d" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "fifo_generator_v13_2_5" -L "work" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "TRNG_tb_behav" "work.TRNG_tb" "work.glbl" -log "elaborate.log" 

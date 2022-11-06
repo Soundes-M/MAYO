@@ -1,8 +1,8 @@
 Vivado Simulator 2020.2
 Time resolution is 1 ps
-Block Memory Generator module MAYO_SHAKE_tb.BR.inst.\native_mem_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module MAYO_SHAKE_tb.BR.inst.\native_mem_mapped_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 ------ BRAM ------
-BRAM : Read 0x0 from 0x0!
+BRAM : Read 0x15a05fe0 from 0x0!
 BRAM : Read 0xd808ee98 from 0x4!
 BRAM : Read 0x38520eba from 0x8!
 ------ BRAM ------
@@ -22,24 +22,12 @@ SHAKE : Read 0xe8528969 from 0x18!
 SHAKE : read_desc_adr :  2, c0 : 1
 SHAKE : Read 0xa84f7d23 from 0x1c!
 SHAKE : read_desc_adr :  3, c0 : 0
-SHAKE : Write 0x111b4d6c to 0x20!
-SHAKE : write_desc_adr :  0, c0 : 0
-SHAKE : Write 0xa99c0f31 to 0x24!
-SHAKE : write_desc_adr :  0, c0 : 1
-SHAKE : Write 0x942229ad to 0x28!
-SHAKE : write_desc_adr :  1, c0 : 0
-SHAKE : Write 0xf2712de to 0x2c!
-SHAKE : write_desc_adr :  1, c0 : 1
-SHAKE : Write 0x6f574529 to 0x30!
-SHAKE : write_desc_adr :  2, c0 : 0
-SHAKE : Write 0xfc00d895 to 0x34!
-SHAKE : write_desc_adr :  2, c0 : 1
 SHAKE: done!
-SHAKE : Write 0xcdaae59d to 0x38!
-SHAKE : write_desc_adr :  3, c0 : 0
-SHAKE : Write 0xb7e55631 to 0x3c!
-SHAKE : write_desc_adr :  3, c0 : 1
 Done tb!
-SHAKE : Write 0x0 to 0x40!
-SHAKE : write_desc_adr :  4, c0 : 0
+------ BRAM ------
 SHAKE: Write Done
+BRAM : Read 0xa84f7d23 from 0x20!
+BRAM : Read 0x942229ad from 0x24!
+BRAM : Read 0xf2712de from 0x28!
+------ BRAM ------
+$finish called at time : 349415 ns

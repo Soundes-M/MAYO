@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Wed Oct 19 18:11:17 2022
+-- Last update : Fri Nov  4 19:52:32 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -60,10 +60,11 @@ ENTITY MAYO_KEYGEN_FSM IS
     o_hash_memsel : out std_logic;
 
     --REDUCE CORE
-    o_red_enable : out std_logic;
-    o_red_len    : out std_logic_vector (31 downto 0);
-    o_red_adr    : out std_logic_vector (31 downto 0);
-    i_red_done   : in  std_logic;
+    o_red_enable   : out std_logic;
+    o_red_len      : out std_logic_vector (31 downto 0);
+    o_red_adr      : out std_logic_vector (31 downto 0);
+    o_red_bram_sel : out std_logic;
+    i_red_done     : in  std_logic;
 
     -- SAMPLE OIL SPACE
     o_sam_enable   : out std_logic;
@@ -124,7 +125,7 @@ ENTITY MAYO_KEYGEN_FSM IS
 END ENTITY MAYO_KEYGEN_FSM;
 
 ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
-  TYPE STATES IS (idle, rand0, rand1, rand2, rand3, rand4, rand5, expand0, expand1, expand2, reduce0, reduce1, reduce2, transpose0, transpose1, transpose2,
+  TYPE STATES IS (idle, rand0, rand1, rand2, rand3, rand4, rand5, rand6, expand0, expand1, expand2, reduce0, reduce1, reduce2, transpose0, transpose1, transpose2,
       transpose3, transpose4, transpose5, transpose6, negate0, negate1, negate2, sample0, sample1, sample2,
       compute0, compute1, compute2, compute3, compute4, compute5, compute6, compute7, compute8, compute9, compute10, compute11,
       compute12, compute13, compute14, compute15, compute16, compute17, compute18, compute19, compute20, compute21, compute22, compute23,
@@ -144,7 +145,8 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
   signal s_read_bram                      : std_logic_vector(31 downto 0) := ZERO_32;
   signal s_p2_index                       : integer                       := 0;
   signal s_tempt_index,s_oil_space2_index : integer                       := 0;
-  signal s_hash_mem_sel                   : std_logic                     := '0';
+  signal s_hash_mem_sel                   : std_logic                     := '1';
+  signal s_tmp                            : std_logic_vector(31 downto 0) := ZERO_32;
 
   ------------------------------------------------------------------------------
   -- Reg Space (AXI-LITE)
@@ -171,10 +173,9 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
 
 BEGIN
 
-  o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5) else '0';
-  o_mem0b_control <= '1' when (state = rand2 or state = rand3 or state = rand4 or state = rand5) else '0';
-  o_mem1a_control <= '1' when (state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = transpose3 or state = transpose4 or state = transpose5) else '0';
-
+  o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
+  o_mem0b_control <= '1' when (state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
+  o_mem1a_control <= '1' when (state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = transpose3 or state = transpose4 or state = transpose5) else '0';
 
   -- sync compute!
   KEYGEN : PROCESS (CLK) IS
@@ -201,6 +202,8 @@ BEGIN
         s_p2_index         <= 0;
         s_tempt_index      <= 0;
         s_oil_space2_index <= 0;
+        s_hash_mem_sel     <= '1';
+        o_red_bram_sel     <= '0';
 
       else
         case (state) is
@@ -220,79 +223,60 @@ BEGIN
             -- (1) SK : |PK_SEED|SK_SEED|
             -- (2) PK : |PK_SEED|
             --------------------------------------------------------------------#
-            trng.o.w        <= '1';
-            trng.o.r        <= '0';
-            trng.o.data     <= std_logic_vector(to_unsigned(SEED_BYTES*2,PORT_WIDTH));
-            bram0a.o.o_addr <= std_logic_vector(to_unsigned(SK_BASE_ADR,PORT_WIDTH));
-            state           <= rand1;
+            trng.o.w      <= '1';
+            trng.o.r      <= '0';
+            trng.o.data   <= std_logic_vector(to_unsigned(SEED_BYTES*2,PORT_WIDTH));
+            bram0b.o.o_we <= "1111";
+            bram1a.o.o_we <= "1111";
+            bram0a.o.o_we <= "1111";
+            state         <= rand2;
+
+          when rand2 =>
+            trng.o.w <= '0';
+            trng.o.r <= '0';
+            state    <= rand1;
 
           when rand1 =>
             trng.o.w <= '0';
             trng.o.r <= '1';
 
-            if ( trng.i.valid = '1') then
-              bram0a.o.o_we   <= "1111";
+            if (trng.i.valid = '1') then
               bram0a.o.o_din  <= i_trng_data;
               bram0a.o.o_en   <= '1';
-              bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) + 4) ; -- TODO : Check 
+              bram0a.o.o_addr <= std_logic_vector(to_unsigned(SK_BASE_ADR+index,PORT_WIDTH)) ; -- TODO : Check
+              index           <= index + 4;
+
+              if (index < 16) then
+                bram0b.o.o_en   <= '1';
+                bram1a.o.o_en   <= '1';
+                bram0b.o.o_addr <= std_logic_vector(to_unsigned(PK_BASE_ADR+index,PORT_WIDTH));
+                bram1a.o.o_addr <= std_logic_vector(to_unsigned(P1_BASE_ADR+index,PORT_WIDTH));
+              end if ;
             else
               bram0a.o.o_en <= '0';
+              bram0b.o.o_en <= '0';
+              bram1a.o.o_en <= '0';
               bram0a.o.o_we <= "0000";
             end if;
 
             if (trng.i.done = '1') then
-              state <= rand2;
+              state <= rand6;
             end if;
 
-          when rand2 => -- copy to PK (brama-> bramb) && (bram0 to bram1) 
-            bram0a.o.o_addr <= std_logic_vector(to_unsigned(SK_BASE_ADR,PORT_WIDTH));
-            bram0b.o.o_addr <= std_logic_vector(to_unsigned(PK_BASE_ADR,PORT_WIDTH));
-            bram1a.o.o_addr <= std_logic_vector(to_unsigned(P1_BASE_ADR,PORT_WIDTH));
+          when rand6 => -- copy pk seed to big bram (will be overwritten)
+            trng.o.r <= '0';
 
-            bram0a.o.o_en  <= '0';
-            bram0a.o.o_we  <= "0000";
-            bram0a.o.o_din <= ZERO_32;
-
-            bram0b.o.o_en  <= '0';
-            bram0b.o.o_we  <= "1111";
-            bram0b.o.o_din <= ZERO_32;
-
-            bram1a.o.o_en  <= '0';
-            bram1a.o.o_we  <= "1111";
-            bram1a.o.o_din <= ZERO_32;
-            state          <= rand3;
-
-          when rand3 => -- read
-            bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) + 4) ;
-            bram0a.o.o_en   <= '1';
-            bram0b.o.o_en   <= '0';
-            bram1a.o.o_en   <= '0';
-            state           <= rand4;
-
-          when rand4 =>
-            bram0b.o.o_addr <= std_logic_vector(unsigned(bram0b.o.o_addr) + 4) ;
-            bram0b.o.o_en   <= '1';
-            bram0b.o.o_din  <= i_mem0a_dout;
-
-            bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) + 4) ;
-            bram1a.o.o_en   <= '1';
-            bram1a.o.o_din  <= i_mem0a_dout;
-
-            if (index >= 4) then
-              state <= rand5;
-            else
-              index <= index +1 ;
-              state <= rand3;
-            end if;
-
-          when rand5 => -- copy pk seed to big bram (will be overwritten)
             bram0a.o.o_en <= '0';
             bram0b.o.o_en <= '0';
+            bram1a.o.o_en <= '0';
             bram0b.o.o_we <= "0000";
+            bram1a.o.o_we <= "0000";
+            index         <= 0;
             state         <= expand0;
 
           --------------------------------------------------------------------
           -- EXPAND PK  BEGIN
+          -- Hash using big BRAM
           --------------------------------------------------------------------
           when expand0 =>
             o_hash_mlen      <= std_logic_vector(to_unsigned(SEED_BYTES,PORT_WIDTH));
@@ -312,7 +296,8 @@ BEGIN
 
           when expand2 =>
             if (i_hash_done = '1') then
-              state <= reduce0;
+              state          <= reduce0;
+              o_red_bram_sel <= '1';
             end if;
 
           when reduce0 =>
@@ -328,7 +313,7 @@ BEGIN
           when reduce2 =>
             if (i_red_done = '1') then
               state          <= sample0;
-              s_hash_mem_sel <= '0'; -- Hash using smal bram
+              s_hash_mem_sel <= '0'; -- Hash using small bram
             end if;
           --------------------------------------------------------------------
           -- EXPAND PK END
@@ -344,7 +329,8 @@ BEGIN
 
           when sample2 =>
             if (i_sam_done = '1') then
-              state <= compute0;
+              state          <= compute0;
+              s_hash_mem_sel <= '1';
             end if ;
 
             --------------------------------------------------------------------

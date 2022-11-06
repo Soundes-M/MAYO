@@ -23,30 +23,30 @@
         "m01_couplers": {}
       },
       "rst_ps7_0_100M": "",
-      "TRNG_0": "",
       "Ground0": "",
-      "mayo_linear_combinat_0": "",
-      "mayo_negate_0": "",
-      "mayo_reduce_0": "",
       "Ground32": "",
       "hash": {
-        "MAYO_SHAKE_1": "",
         "mayo_hash_arbiter_0": "",
-        "mayo_hash_bram_arbit_0": ""
+        "mayo_hash_bram_arbit_0": "",
+        "MAYO_SHAKE_1": ""
       },
       "BRAM_big": {
         "axi_bram_ctrl_0": "",
         "BIG_BRAM512K": "",
         "arbit_brama1": ""
       },
-      "mayo_add_vectors_0": "",
       "Ground4": "",
-      "mayo_sample_oil_space_0": "",
       "BRAM_small": {
         "Small_BRAM8k": "",
         "arbit_brama0": "",
         "arbit_bramb0": ""
-      }
+      },
+      "mayo_add_vectors_0": "",
+      "mayo_negate_0": "",
+      "mayo_sample_oil_space_0": "",
+      "mayo_linear_combinat_0": "",
+      "TRNG_0": "",
+      "mayo_reduce_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1182,16 +1182,16 @@
               }
             },
             "interface_nets": {
-              "auto_pc_to_s00_couplers": {
-                "interface_ports": [
-                  "M_AXI",
-                  "auto_pc/M_AXI"
-                ]
-              },
               "s00_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
                   "auto_pc/S_AXI"
+                ]
+              },
+              "auto_pc_to_s00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
                 ]
               }
             },
@@ -1280,16 +1280,16 @@
               }
             },
             "interface_nets": {
-              "auto_pc_to_m00_couplers": {
-                "interface_ports": [
-                  "M_AXI",
-                  "auto_pc/M_AXI"
-                ]
-              },
               "m00_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
                   "auto_pc/S_AXI"
+                ]
+              },
+              "auto_pc_to_m00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
                 ]
               }
             },
@@ -1364,6 +1364,30 @@
           }
         },
         "interface_nets": {
+          "ps7_0_axi_periph_to_s00_couplers": {
+            "interface_ports": [
+              "S00_AXI",
+              "s00_couplers/S_AXI"
+            ]
+          },
+          "xbar_to_m00_couplers": {
+            "interface_ports": [
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
+            ]
+          },
+          "m01_couplers_to_ps7_0_axi_periph": {
+            "interface_ports": [
+              "M01_AXI",
+              "m01_couplers/M_AXI"
+            ]
+          },
+          "m00_couplers_to_ps7_0_axi_periph": {
+            "interface_ports": [
+              "M00_AXI",
+              "m00_couplers/M_AXI"
+            ]
+          },
           "xbar_to_m01_couplers": {
             "interface_ports": [
               "xbar/M01_AXI",
@@ -1374,30 +1398,6 @@
             "interface_ports": [
               "s00_couplers/M_AXI",
               "xbar/S00_AXI"
-            ]
-          },
-          "ps7_0_axi_periph_to_s00_couplers": {
-            "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
-            ]
-          },
-          "m00_couplers_to_ps7_0_axi_periph": {
-            "interface_ports": [
-              "M00_AXI",
-              "m00_couplers/M_AXI"
-            ]
-          },
-          "m01_couplers_to_ps7_0_axi_periph": {
-            "interface_ports": [
-              "M01_AXI",
-              "m01_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m00_couplers": {
-            "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
             ]
           }
         },
@@ -1434,17 +1434,6 @@
         "xci_path": "ip/Mayo_keygen_rst_ps7_0_100M_0/Mayo_keygen_rst_ps7_0_100M_0.xci",
         "inst_hier_path": "rst_ps7_0_100M"
       },
-      "TRNG_0": {
-        "vlnv": "user.org:user:TRNG:1.5",
-        "xci_name": "Mayo_keygen_TRNG_0_0",
-        "xci_path": "ip/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0.xci",
-        "inst_hier_path": "TRNG_0",
-        "parameters": {
-          "IS_SIM": {
-            "value": "true"
-          }
-        }
-      },
       "Ground0": {
         "vlnv": "xilinx.com:ip:xlconstant:1.1",
         "xci_name": "Mayo_keygen_xlconstant_0_0",
@@ -1453,343 +1442,6 @@
         "parameters": {
           "CONST_VAL": {
             "value": "0"
-          }
-        }
-      },
-      "mayo_linear_combinat_0": {
-        "vlnv": "xilinx.com:module_ref:mayo_linear_combination:1.0",
-        "xci_name": "Mayo_keygen_mayo_linear_combinat_0_0",
-        "xci_path": "ip/Mayo_keygen_mayo_linear_combinat_0_0/Mayo_keygen_mayo_linear_combinat_0_0.xci",
-        "inst_hier_path": "mayo_linear_combinat_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mayo_linear_combination",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "Mayo_keygen_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "const_prop"
-              }
-            }
-          },
-          "i_enable": {
-            "direction": "I"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "i_bram_halt": {
-            "direction": "I"
-          },
-          "i_vec_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_coeffs_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_out_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_len": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_mem0a_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_en": {
-            "direction": "O"
-          },
-          "o_mem0a_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem0a_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "i_mem0b_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_en": {
-            "direction": "O"
-          },
-          "o_mem0b_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem0b_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "i_mem1a_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_en": {
-            "direction": "O"
-          },
-          "o_mem1a_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem1a_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_control0a": {
-            "direction": "O"
-          },
-          "o_control0b": {
-            "direction": "O"
-          },
-          "o_control1a": {
-            "direction": "O"
-          }
-        }
-      },
-      "mayo_negate_0": {
-        "vlnv": "xilinx.com:module_ref:mayo_negate:1.0",
-        "xci_name": "Mayo_keygen_mayo_negate_0_0",
-        "xci_path": "ip/Mayo_keygen_mayo_negate_0_0/Mayo_keygen_mayo_negate_0_0.xci",
-        "inst_hier_path": "mayo_negate_0",
-        "parameters": {
-          "BRAM_SIZE": {
-            "value": "32"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mayo_negate",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "Mayo_keygen_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "const_prop"
-              }
-            }
-          },
-          "i_enable": {
-            "direction": "I"
-          },
-          "i_len": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_adr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_doutb": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_addrb": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_dinb": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_enb": {
-            "direction": "O"
-          },
-          "o_rstb": {
-            "direction": "O"
-          },
-          "o_web": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "o_control": {
-            "direction": "O"
-          }
-        }
-      },
-      "mayo_reduce_0": {
-        "vlnv": "xilinx.com:module_ref:mayo_reduce:1.0",
-        "xci_name": "Mayo_keygen_mayo_reduce_0_0",
-        "xci_path": "ip/Mayo_keygen_mayo_reduce_0_0/Mayo_keygen_mayo_reduce_0_0.xci",
-        "inst_hier_path": "mayo_reduce_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mayo_reduce",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "Mayo_keygen_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "const_prop"
-              }
-            }
-          },
-          "i_enable": {
-            "direction": "I"
-          },
-          "i_len": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_doutb": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_adr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_addrb": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_dinb": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_enb": {
-            "direction": "O"
-          },
-          "o_rstb": {
-            "direction": "O"
-          },
-          "o_web": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "o_control": {
-            "direction": "O"
           }
         }
       },
@@ -1929,12 +1581,6 @@
           }
         },
         "components": {
-          "MAYO_SHAKE_1": {
-            "vlnv": "user.org:user:MAYO_SHAKE:1.0",
-            "xci_name": "Mayo_keygen_MAYO_SHAKE_1_0",
-            "xci_path": "ip/Mayo_keygen_MAYO_SHAKE_1_0/Mayo_keygen_MAYO_SHAKE_1_0.xci",
-            "inst_hier_path": "hash/MAYO_SHAKE_1"
-          },
           "mayo_hash_arbiter_0": {
             "vlnv": "xilinx.com:module_ref:mayo_hash_arbiter:1.0",
             "xci_name": "Mayo_keygen_mayo_hash_arbiter_0_0",
@@ -2132,6 +1778,20 @@
                 "direction": "O"
               }
             }
+          },
+          "MAYO_SHAKE_1": {
+            "vlnv": "user.org:user:MAYO_SHAKE:1.2",
+            "xci_name": "Mayo_keygen_MAYO_SHAKE_1_0",
+            "xci_path": "ip/Mayo_keygen_MAYO_SHAKE_1_0/Mayo_keygen_MAYO_SHAKE_1_0.xci",
+            "inst_hier_path": "hash/MAYO_SHAKE_1",
+            "parameters": {
+              "C_READ_DESC_SIZE": {
+                "value": "8"
+              },
+              "C_WRITE_DESC_SIZE": {
+                "value": "16"
+              }
+            }
           }
         },
         "nets": {
@@ -2186,8 +1846,8 @@
           "rst_ps7_0_100M_peripheral_aresetn": {
             "ports": [
               "rst",
-              "MAYO_SHAKE_1/rst",
-              "mayo_hash_arbiter_0/rst"
+              "mayo_hash_arbiter_0/rst",
+              "MAYO_SHAKE_1/rst"
             ]
           },
           "AXI_LITE_Mayo_Keygen_0_o_hash_en": {
@@ -2562,13 +2222,7 @@
             "ports": {
               "rst": {
                 "type": "rst",
-                "direction": "I",
-                "parameters": {
-                  "POLARITY": {
-                    "value": "ACTIVE_LOW",
-                    "value_src": "const_prop"
-                  }
-                }
+                "direction": "I"
               },
               "BRAM_add_din": {
                 "direction": "I",
@@ -2871,8 +2525,8 @@
           "rst_ps7_0_100M_peripheral_aresetn": {
             "ports": [
               "rst",
-              "arbit_brama1/rst",
-              "axi_bram_ctrl_0/s_axi_aresetn"
+              "axi_bram_ctrl_0/s_axi_aresetn",
+              "arbit_brama1/rst"
             ]
           },
           "mayo_linear_combinat_0_o_mem1a_din": {
@@ -3019,143 +2673,21 @@
               "arbit_brama1/BRAM_red_rst",
               "arbit_brama1/BRAM_sam_en",
               "arbit_brama1/BRAM_sam_rst",
-              "arbit_brama1/neg_control",
+              "arbit_brama1/BRAM_hash_rst",
               "arbit_brama1/add_control",
+              "arbit_brama1/neg_control",
               "arbit_brama1/red_control",
-              "arbit_brama1/sam_control",
-              "arbit_brama1/BRAM_hash_rst"
+              "arbit_brama1/sam_control"
             ]
           },
           "BRAM_add_we_1": {
             "ports": [
               "BRAM_add_we",
               "arbit_brama1/BRAM_add_we",
-              "arbit_brama1/BRAM_sam_we",
+              "arbit_brama1/BRAM_neg_we",
               "arbit_brama1/BRAM_red_we",
-              "arbit_brama1/BRAM_neg_we"
+              "arbit_brama1/BRAM_sam_we"
             ]
-          }
-        }
-      },
-      "mayo_add_vectors_0": {
-        "vlnv": "xilinx.com:module_ref:mayo_add_vectors:1.0",
-        "xci_name": "Mayo_keygen_mayo_add_vectors_0_0",
-        "xci_path": "ip/Mayo_keygen_mayo_add_vectors_0_0/Mayo_keygen_mayo_add_vectors_0_0.xci",
-        "inst_hier_path": "mayo_add_vectors_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mayo_add_vectors",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "Mayo_keygen_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "const_prop"
-              }
-            }
-          },
-          "i_enable": {
-            "direction": "I"
-          },
-          "i_v1_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_v2_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_out_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "i_mema_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mema_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mema_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mema_en": {
-            "direction": "O"
-          },
-          "o_mema_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mema_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "i_memb_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_en": {
-            "direction": "O"
-          },
-          "o_memb_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_memb_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_controla": {
-            "direction": "O"
-          },
-          "o_controlb": {
-            "direction": "O"
           }
         }
       },
@@ -3170,106 +2702,6 @@
           },
           "CONST_WIDTH": {
             "value": "4"
-          }
-        }
-      },
-      "mayo_sample_oil_space_0": {
-        "vlnv": "xilinx.com:module_ref:mayo_sample_oil_space:1.0",
-        "xci_name": "Mayo_keygen_mayo_sample_oil_space_0_0",
-        "xci_path": "ip/Mayo_keygen_mayo_sample_oil_space_0_0/Mayo_keygen_mayo_sample_oil_space_0_0.xci",
-        "inst_hier_path": "mayo_sample_oil_space_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mayo_sample_oil_space",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "i_enable": {
-            "direction": "I"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "i_oil_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_hash_done": {
-            "direction": "I"
-          },
-          "i_hash_dyn_done": {
-            "direction": "I"
-          },
-          "o_hash_enable": {
-            "direction": "O"
-          },
-          "o_hash_mlen": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_hash_olen": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_hash_write_adr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_hash_read_adr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "i_memb_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_en": {
-            "direction": "O"
-          },
-          "o_memb_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_memb_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_controla": {
-            "direction": "O"
-          },
-          "o_controlb": {
-            "direction": "O"
           }
         }
       },
@@ -3667,13 +3099,7 @@
             "ports": {
               "rst": {
                 "type": "rst",
-                "direction": "I",
-                "parameters": {
-                  "POLARITY": {
-                    "value": "ACTIVE_LOW",
-                    "value_src": "const_prop"
-                  }
-                }
+                "direction": "I"
               },
               "BRAM_add_din": {
                 "direction": "I",
@@ -3927,13 +3353,7 @@
             "ports": {
               "rst": {
                 "type": "rst",
-                "direction": "I",
-                "parameters": {
-                  "POLARITY": {
-                    "value": "ACTIVE_LOW",
-                    "value_src": "const_prop"
-                  }
-                }
+                "direction": "I"
               },
               "BRAM_add_din": {
                 "direction": "I",
@@ -4694,6 +4114,7 @@
               "BRAM_hash_rst",
               "arbit_brama0/BRAM_sam_en",
               "arbit_brama0/BRAM_sam_rst",
+              "arbit_brama0/BRAM_hash_rst",
               "arbit_bramb0/BRAM_neg_en",
               "arbit_bramb0/BRAM_neg_rst",
               "arbit_bramb0/BRAM_red_en",
@@ -4702,17 +4123,16 @@
               "arbit_bramb0/BRAM_hash_rst",
               "arbit_bramb0/neg_control",
               "arbit_bramb0/red_control",
-              "arbit_bramb0/hash_control",
-              "arbit_brama0/BRAM_hash_rst"
+              "arbit_bramb0/hash_control"
             ]
           },
           "BRAM_hash_we_1": {
             "ports": [
               "BRAM_hash_we",
+              "arbit_brama0/BRAM_sam_we",
               "arbit_bramb0/BRAM_neg_we",
               "arbit_bramb0/BRAM_red_we",
-              "arbit_bramb0/BRAM_hash_we",
-              "arbit_brama0/BRAM_sam_we"
+              "arbit_bramb0/BRAM_hash_we"
             ]
           },
           "hash_control_1": {
@@ -4720,6 +4140,552 @@
               "hash_control",
               "arbit_brama0/hash_control"
             ]
+          }
+        }
+      },
+      "mayo_add_vectors_0": {
+        "vlnv": "xilinx.com:module_ref:mayo_add_vectors:1.0",
+        "xci_name": "Mayo_keygen_mayo_add_vectors_0_0",
+        "xci_path": "ip/Mayo_keygen_mayo_add_vectors_0_0/Mayo_keygen_mayo_add_vectors_0_0.xci",
+        "inst_hier_path": "mayo_add_vectors_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mayo_add_vectors",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "i_enable": {
+            "direction": "I"
+          },
+          "i_v1_addr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_v2_addr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_out_addr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_done": {
+            "direction": "O"
+          },
+          "i_mema_dout": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mema_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mema_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mema_en": {
+            "direction": "O"
+          },
+          "o_mema_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "o_mema_we": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "i_memb_dout": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_memb_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_memb_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_memb_en": {
+            "direction": "O"
+          },
+          "o_memb_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "o_memb_we": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "o_controla": {
+            "direction": "O"
+          },
+          "o_controlb": {
+            "direction": "O"
+          }
+        }
+      },
+      "mayo_negate_0": {
+        "vlnv": "xilinx.com:module_ref:mayo_negate:1.0",
+        "xci_name": "Mayo_keygen_mayo_negate_0_0",
+        "xci_path": "ip/Mayo_keygen_mayo_negate_0_0/Mayo_keygen_mayo_negate_0_0.xci",
+        "inst_hier_path": "mayo_negate_0",
+        "parameters": {
+          "BRAM_SIZE": {
+            "value": "32"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mayo_negate",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "i_enable": {
+            "direction": "I"
+          },
+          "i_len": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_adr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_doutb": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_addrb": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_dinb": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_enb": {
+            "direction": "O"
+          },
+          "o_rstb": {
+            "direction": "O"
+          },
+          "o_web": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "o_done": {
+            "direction": "O"
+          },
+          "o_control": {
+            "direction": "O"
+          }
+        }
+      },
+      "mayo_sample_oil_space_0": {
+        "vlnv": "xilinx.com:module_ref:mayo_sample_oil_space:1.0",
+        "xci_name": "Mayo_keygen_mayo_sample_oil_space_0_0",
+        "xci_path": "ip/Mayo_keygen_mayo_sample_oil_space_0_0/Mayo_keygen_mayo_sample_oil_space_0_0.xci",
+        "inst_hier_path": "mayo_sample_oil_space_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mayo_sample_oil_space",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "i_enable": {
+            "direction": "I"
+          },
+          "o_done": {
+            "direction": "O"
+          },
+          "i_oil_addr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_hash_done": {
+            "direction": "I"
+          },
+          "i_hash_dyn_done": {
+            "direction": "I"
+          },
+          "o_hash_enable": {
+            "direction": "O"
+          },
+          "o_hash_mlen": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_hash_olen": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_hash_write_adr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_hash_read_adr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "i_memb_dout": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_memb_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_memb_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_memb_en": {
+            "direction": "O"
+          },
+          "o_memb_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "o_memb_we": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "o_controla": {
+            "direction": "O"
+          },
+          "o_controlb": {
+            "direction": "O"
+          }
+        }
+      },
+      "mayo_linear_combinat_0": {
+        "vlnv": "xilinx.com:module_ref:mayo_linear_combination:1.0",
+        "xci_name": "Mayo_keygen_mayo_linear_combinat_0_0",
+        "xci_path": "ip/Mayo_keygen_mayo_linear_combinat_0_0/Mayo_keygen_mayo_linear_combinat_0_0.xci",
+        "inst_hier_path": "mayo_linear_combinat_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mayo_linear_combination",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "i_enable": {
+            "direction": "I"
+          },
+          "o_done": {
+            "direction": "O"
+          },
+          "i_bram_halt": {
+            "direction": "I"
+          },
+          "i_vec_addr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_coeffs_addr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_out_addr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_len": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_mem0a_dout": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0a_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0a_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0a_en": {
+            "direction": "O"
+          },
+          "o_mem0a_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "o_mem0a_we": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "i_mem0b_dout": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0b_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0b_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0b_en": {
+            "direction": "O"
+          },
+          "o_mem0b_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "o_mem0b_we": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "i_mem1a_dout": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem1a_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem1a_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem1a_en": {
+            "direction": "O"
+          },
+          "o_mem1a_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "o_mem1a_we": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "o_control0a": {
+            "direction": "O"
+          },
+          "o_control0b": {
+            "direction": "O"
+          },
+          "o_control1a": {
+            "direction": "O"
+          }
+        }
+      },
+      "TRNG_0": {
+        "vlnv": "user.org:user:TRNG:1.6",
+        "xci_name": "Mayo_keygen_TRNG_0_0",
+        "xci_path": "ip/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0.xci",
+        "inst_hier_path": "TRNG_0",
+        "parameters": {
+          "IS_SIM": {
+            "value": "true"
+          }
+        }
+      },
+      "mayo_reduce_0": {
+        "vlnv": "xilinx.com:module_ref:mayo_reduce:1.0",
+        "xci_name": "Mayo_keygen_mayo_reduce_0_0",
+        "xci_path": "ip/Mayo_keygen_mayo_reduce_0_0/Mayo_keygen_mayo_reduce_0_0.xci",
+        "inst_hier_path": "mayo_reduce_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mayo_reduce",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "i_enable": {
+            "direction": "I"
+          },
+          "i_bram_sel": {
+            "direction": "I"
+          },
+          "i_len": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_adr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_dout0": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_addr0": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_din0": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_en0": {
+            "direction": "O"
+          },
+          "o_rst0": {
+            "direction": "O"
+          },
+          "o_we0": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "i_dout1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_addr1": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_din1": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_en1": {
+            "direction": "O"
+          },
+          "o_rst1": {
+            "direction": "O"
+          },
+          "o_we1": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "o_done": {
+            "direction": "O"
+          },
+          "o_control0": {
+            "direction": "O"
+          },
+          "o_control1": {
+            "direction": "O"
           }
         }
       }
@@ -4731,16 +4697,16 @@
           "BRAM_big/S_AXI"
         ]
       },
-      "processing_system7_0_FIXED_IO": {
-        "interface_ports": [
-          "FIXED_IO",
-          "processing_system7_0/FIXED_IO"
-        ]
-      },
       "ps7_0_axi_periph_M00_AXI": {
         "interface_ports": [
           "ps7_0_axi_periph/M00_AXI",
           "AXI_LITE_Mayo_Keygen_0/S00_AXI"
+        ]
+      },
+      "processing_system7_0_DDR": {
+        "interface_ports": [
+          "DDR",
+          "processing_system7_0/DDR"
         ]
       },
       "processing_system7_0_M_AXI_GP0": {
@@ -4749,10 +4715,10 @@
           "ps7_0_axi_periph/S00_AXI"
         ]
       },
-      "processing_system7_0_DDR": {
+      "processing_system7_0_FIXED_IO": {
         "interface_ports": [
-          "DDR",
-          "processing_system7_0/DDR"
+          "FIXED_IO",
+          "processing_system7_0/FIXED_IO"
         ]
       }
     },
@@ -4767,16 +4733,16 @@
           "AXI_LITE_Mayo_Keygen_0/s00_axi_aclk",
           "ps7_0_axi_periph/M00_ACLK",
           "ps7_0_axi_periph/ACLK",
-          "TRNG_0/CLK_I",
           "ps7_0_axi_periph/M01_ACLK",
-          "mayo_linear_combinat_0/i_clk",
-          "mayo_negate_0/i_clk",
-          "mayo_reduce_0/i_clk",
           "hash/clk",
           "BRAM_big/clka",
+          "BRAM_small/clkb",
           "mayo_add_vectors_0/i_clk",
+          "mayo_negate_0/i_clk",
           "mayo_sample_oil_space_0/i_clk",
-          "BRAM_small/clkb"
+          "mayo_linear_combinat_0/i_clk",
+          "TRNG_0/CLK_I",
+          "mayo_reduce_0/i_clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -4793,16 +4759,16 @@
           "ps7_0_axi_periph/M00_ARESETN",
           "ps7_0_axi_periph/ARESETN",
           "AXI_LITE_Mayo_Keygen_0/RESET",
-          "TRNG_0/RST",
           "ps7_0_axi_periph/M01_ARESETN",
-          "mayo_linear_combinat_0/rst",
-          "mayo_negate_0/rst",
-          "mayo_reduce_0/rst",
           "hash/rst",
           "BRAM_big/rst",
+          "BRAM_small/rst",
           "mayo_add_vectors_0/rst",
+          "mayo_negate_0/rst",
           "mayo_sample_oil_space_0/rst",
-          "BRAM_small/rst"
+          "mayo_linear_combinat_0/rst",
+          "TRNG_0/RST",
+          "mayo_reduce_0/rst"
         ]
       },
       "AXI_LITE_Mayo_Keygen_0_o_trng_r": {
@@ -5208,43 +5174,36 @@
       },
       "mayo_reduce_0_o_web": {
         "ports": [
-          "mayo_reduce_0/o_web",
           "BRAM_small/BRAM_red_we"
         ]
       },
       "mayo_reduce_0_o_rstb": {
         "ports": [
-          "mayo_reduce_0/o_rstb",
           "BRAM_small/BRAM_red_rst"
         ]
       },
       "mayo_reduce_0_o_control": {
         "ports": [
-          "mayo_reduce_0/o_control",
           "BRAM_small/red_control"
         ]
       },
       "arbit_brama0_BRAM_red_dout": {
         "ports": [
-          "BRAM_small/BRAM_red_dout",
-          "mayo_reduce_0/i_doutb"
+          "BRAM_small/BRAM_red_dout"
         ]
       },
       "mayo_reduce_0_o_addrb": {
         "ports": [
-          "mayo_reduce_0/o_addrb",
           "BRAM_small/BRAM_red_addr"
         ]
       },
       "mayo_reduce_0_o_dinb": {
         "ports": [
-          "mayo_reduce_0/o_dinb",
           "BRAM_small/BRAM_red_din"
         ]
       },
       "mayo_reduce_0_o_enb": {
         "ports": [
-          "mayo_reduce_0/o_enb",
           "BRAM_small/BRAM_red_en"
         ]
       },

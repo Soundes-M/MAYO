@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.tmp/TRNG_v1_5_project/TRNG_v1_5_project.gen/sources_1/ip/fifo_generator_0/sim/fifo_generator_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo_generator_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.sim/sim_1/behav/xsim/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl

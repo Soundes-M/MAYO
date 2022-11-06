@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Nov  2 01:33:38 2022
+# Process ID: 250968
+# Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.runs/fifo_generator_0_synth_1
+# Command line: vivado -log fifo_generator_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fifo_generator_0.tcl
+# Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.runs/fifo_generator_0_synth_1/fifo_generator_0.vds
+# Journal file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.runs/fifo_generator_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source fifo_generator_0.tcl -notrace

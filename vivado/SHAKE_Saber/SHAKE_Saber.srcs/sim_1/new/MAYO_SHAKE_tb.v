@@ -32,16 +32,16 @@ reg [31:0] write_adr, read_adr;
 
 wire [3:0] wea;
 wire ena;
-wire [13:0] addra;
+wire [31:0] addra;
 wire [31:0] dina,douta;
 wire [3:0] web;
 wire enb;
-wire [13:0] addrb;
+wire [31:0] addrb;
 wire [31:0] dinb,doutb;
 
 reg [3:0] wea_bram = 1'b0000;
 reg en_bram = 1'b0;
-reg [13:0] addr_bram = 0;
+reg [31:0] addr_bram = 0;
 reg [31:0] din_bram = 0;
 reg [31:0] dout_bram =0;
 
@@ -62,7 +62,7 @@ blk_mem_gen_0_1 BR (
   .doutb(doutb)  // output wire [31 : 0] doutb
 );
 
-MAYO_SHAKE #(.C_BRAMSIZE(13)) uut(
+MAYO_SHAKE #(.C_BRAMSIZE(31)) uut(
 .rst(rst), .clk(clk), .en(en),
 .mlen(mlen), .olen(olen),
 .write_adr(write_adr), .read_adr(read_adr),
@@ -116,7 +116,9 @@ $display("Starting tb...");
 @(posedge clk)
 en = 1;
 mlen = 32'd28;
-olen = 32'd32;
+olen = 32'd115920;
+//olen = 32'd4096;
+
 read_adr = 32'd0;
 write_adr = 32'd32;
 
@@ -130,6 +132,25 @@ read_adr = 32'd0;
 wait(done);
 @(posedge clk);
 $display("Done tb!"); 
+
+bram_control = 1;
+addr_bram = 32;
+@(posedge clk);
+$display("------ BRAM ------"); 
+@(posedge clk);
+en_bram = 1;
+@(posedge clk);
+$display("BRAM : Read 0x%0h from 0x%0h!", douta, addr_bram); // debug output
+addr_bram <= addr_bram +4;
+@(posedge clk);
+$display("BRAM : Read 0x%0h from 0x%0h!", douta, addr_bram); // debug output
+addr_bram <= addr_bram +4;
+@(posedge clk);
+$display("BRAM : Read 0x%0h from 0x%0h!", douta, addr_bram); // debug output
+@(posedge clk); wea_bram = 0; en_bram = 0; bram_control = 0;
+$display("------ BRAM ------"); 
+
+$finish(0);
 end 
 
 always #5 clk = ~clk;

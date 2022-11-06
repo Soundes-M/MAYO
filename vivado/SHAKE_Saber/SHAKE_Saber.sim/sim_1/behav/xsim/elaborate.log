@@ -4,6 +4,7 @@ Running: /tools/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto 2f43b2cf09
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 'rsta' is not connected on this instance [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sim_1/new/MAYO_SHAKE_tb.v:50]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
@@ -26,7 +27,7 @@ Compiling architecture rtl of entity xil_defaultlib.keccak_round_constants_gen [
 Compiling architecture rtl of entity xil_defaultlib.keccak_buffer [keccak_buffer_default]
 Compiling architecture rtl of entity xil_defaultlib.keccak [keccak_default]
 Compiling module xil_defaultlib.SHA_SHAKE_wrapper
-Compiling module xil_defaultlib.MAYO_SHAKE(C_BRAMSIZE=13)
+Compiling module xil_defaultlib.MAYO_SHAKE
 Compiling module xil_defaultlib.MAYO_SHAKE_tb
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot MAYO_SHAKE_tb_behav

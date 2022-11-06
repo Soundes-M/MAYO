@@ -1,22 +1,29 @@
 Vivado Simulator 2020.2
 Time resolution is 1 ps
 Warning: neoTRNG WARNING: Implementing simulation-only PRNG (LFSR)!
-Time: 0 ps  Iteration: 0  Process: /TRNG_tb/TRNG_inst/NEOTRNG_INST/\neoTRNG_cell_inst(2)\/neoTRNG_cell_inst_i/sim_rng/line__441  File: /home/osm/Documents/SECT-MAYO/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd
+Time: 0 ps  Iteration: 0  Process: /TRNG_tb/TRNG_inst/NEOTRNG_INST/\neoTRNG_cell_inst(2)\/neoTRNG_cell_inst_i/sim_rng/line__441  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd
 Warning: neoTRNG WARNING: Implementing simulation-only PRNG (LFSR)!
-Time: 0 ps  Iteration: 0  Process: /TRNG_tb/TRNG_inst/NEOTRNG_INST/\neoTRNG_cell_inst(1)\/neoTRNG_cell_inst_i/sim_rng/line__441  File: /home/osm/Documents/SECT-MAYO/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd
+Time: 0 ps  Iteration: 0  Process: /TRNG_tb/TRNG_inst/NEOTRNG_INST/\neoTRNG_cell_inst(1)\/neoTRNG_cell_inst_i/sim_rng/line__441  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd
 Warning: neoTRNG WARNING: Implementing simulation-only PRNG (LFSR)!
-Time: 0 ps  Iteration: 0  Process: /TRNG_tb/TRNG_inst/NEOTRNG_INST/\neoTRNG_cell_inst(0)\/neoTRNG_cell_inst_i/sim_rng/line__441  File: /home/osm/Documents/SECT-MAYO/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd
+Time: 0 ps  Iteration: 0  Process: /TRNG_tb/TRNG_inst/NEOTRNG_INST/\neoTRNG_cell_inst(0)\/neoTRNG_cell_inst_i/sim_rng/line__441  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd
 Warning: neoTRNG WARNING: Simulation mode (PRNG!) enabled!
-Time: 0 ps  Iteration: 0  Process: /TRNG_tb/TRNG_inst/NEOTRNG_INST/line__136  File: /home/osm/Documents/SECT-MAYO/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd
+Time: 0 ps  Iteration: 0  Process: /TRNG_tb/TRNG_inst/NEOTRNG_INST/line__136  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd
 Note: << neoTRNG V2 - A Tiny and Platform-Independent True Random Number Generator for any FPGA >>
-Time: 0 ps  Iteration: 0  Process: /TRNG_tb/TRNG_inst/NEOTRNG_INST/line__134  File: /home/osm/Documents/SECT-MAYO/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd
+Time: 0 ps  Iteration: 0  Process: /TRNG_tb/TRNG_inst/NEOTRNG_INST/line__134  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd
 Note: Starting..
-Time: 60 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
+Time: 60 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
 Note: Writing1
-Time: 500060 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
+Time: 500060 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
 Note: Reading1
-Time: 500100 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
+Time: 500100 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
+Note: TRNG: Done.
+Time: 501430 ns  Iteration: 0  Process: /TRNG_tb/TRNG_inst/RW_ACCESS  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sources_1/new/TRNG.vhd
 Note: Writing2
-Time: 500520 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
+Time: 501480 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
 Note: Reading2
-Time: 500560 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
+Time: 501520 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
+Note: TRNG: Done.
+Time: 502210 ns  Iteration: 0  Process: /TRNG_tb/TRNG_inst/RW_ACCESS  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sources_1/new/TRNG.vhd
+Failure: DONE
+Time: 502215 ns  Iteration: 0  Process: /TRNG_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd
+$finish called at time : 502215 ns : File "/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd" Line 125

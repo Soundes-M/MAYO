@@ -1,0 +1,7 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sources_1/new/TRNG.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'TRNG'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sources_1/imports/rtl/neoTRNG.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'neoTRNG'
+INFO: [VRFC 10-3107] analyzing entity 'neoTRNG_cell'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs/sim_1/new/TRNG_tb.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'TRNG_tb'

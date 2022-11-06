@@ -1,8 +1,27 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: /opt/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto ee0609dad2574a6bb453d9688122e31f --incr --debug typical --relax --mt 8 -L xil_defaultlib -L fifo_generator_v13_2_5 -L work -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot TRNG_tb_behav work.TRNG_tb work.glbl -log elaborate.log 
+Running: /tools/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto ee0609dad2574a6bb453d9688122e31f --incr --debug typical --relax --mt 8 -L xil_defaultlib -L fifo_generator_v13_2_5 -L work -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot TRNG_tb_behav work.TRNG_tb work.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package vl.vl_types
+Compiling module work.glbl
+Compiling module fifo_generator_v13_2_5.fifo_generator_v13_2_5_bhv_ver_s...
+Compiling module fifo_generator_v13_2_5.fifo_generator_v13_2_5_CONV_VER(...
+Compiling module fifo_generator_v13_2_5.fifo_generator_vlog_beh(C_COMMON...
+Compiling module xil_defaultlib.fifo_generator_0
+Compiling architecture neotrng_cell_rtl of entity work.neoTRNG_cell [\neoTRNG_cell(num_inv_s=5,num_in...]
+Compiling architecture neotrng_cell_rtl of entity work.neoTRNG_cell [\neoTRNG_cell(num_inv_s=7,num_in...]
+Compiling architecture neotrng_cell_rtl of entity work.neoTRNG_cell [\neoTRNG_cell(num_inv_s=9,num_in...]
+Compiling architecture neotrng_rtl of entity work.neoTRNG [\neoTRNG(num_cells=3,num_inv_sta...]
+Compiling architecture behavioral of entity work.TRNG [\TRNG(is_sim=true)\]
+Compiling architecture behavioral of entity work.trng_tb
+Built simulation snapshot TRNG_tb_behav

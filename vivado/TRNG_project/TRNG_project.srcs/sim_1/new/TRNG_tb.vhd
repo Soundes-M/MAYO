@@ -90,7 +90,7 @@ begin
    begin 
        wait until  rst_gen = '0';
       
-       TRNG_DATA_I <= std_logic_vector(to_unsigned(16,TRNG_DATA_I'length));
+       TRNG_DATA_I <= std_logic_vector(to_unsigned(64,TRNG_DATA_I'length));
        report "Starting..";
        wait for 500 us;
        
@@ -120,7 +120,7 @@ begin
        wait until TRNG_DONE_O = '1';
        wait for 2*clk_period;
        r_i <='0'; 
-       wait for 5 ms;
+       wait for 5 ns;
        
        report "DONE" severity failure;
    end process tb;

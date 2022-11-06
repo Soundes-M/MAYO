@@ -237,7 +237,7 @@ begin
 						else
 							i <= i +1 ;
 							--Coeffs
-							if (c > 3) then
+							if (c = 3) then
 								bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) + 4);
 								bram0a.o.o_en   <= '1';
 								c               <= 0;
@@ -333,7 +333,7 @@ begin
 		end if;
 	end process;
 
-	dspb <= s_coeffs((c-1)*8+7 downto (c-1)*8);
+	dspb <= s_coeffs(c*8+7 downto c*8);
 
 	--BRAM0-A
 	bram0a.i.i_dout <= i_mem0a_dout;

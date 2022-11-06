@@ -47,7 +47,7 @@ reg [31:0] dout_bram =0;
 
 reg bram_control = 0;
 
-blk_mem_gen_0_1 BR (
+blk_mem_gen_0 BR (
   .clka(clk),    // input wire clka
   .ena(ena),      // input wire ena
   .wea(wea),      // input wire [1 : 0] wea

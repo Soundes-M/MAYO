@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param ced.repoPaths /home/osm/.Xilinx/Vivado/2020.2/xhub/ced_store/Vivado_example_project
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
 
@@ -81,8 +80,9 @@ set_property webtalk.parent_dir /home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_
 set_property parent.project_path /home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part_repo_paths {/home/osm/.Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store} [current_project]
-set_property board_part avnet.com:zedboard:part0:1.4 [current_project]
+set_property board_part em.avnet.com:zed:part0:1.4 [current_project]
+set_property ip_repo_paths /home/osm/Documents/SECT-MAYO/MAYO [current_project]
+update_ip_catalog
 set_property ip_output_repo /home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }

@@ -8,9 +8,9 @@ module MAYO_SHAKE(rst, clk, en,
                     o_control,
                     BRAMA_we, BRAMA_addr, BRAMA_din, BRAMA_en, BRAMA_dout);
 
-  parameter C_BRAMSIZE = 32-1;
-  parameter C_WRITE_DESC_SIZE = 16;
-  parameter C_READ_DESC_SIZE = 8;
+  parameter C_BRAMSIZE = 31;
+  parameter C_WRITE_DESC_SIZE = 256;
+  parameter C_READ_DESC_SIZE = 16;
 
   input rst;
   input clk;
@@ -43,12 +43,13 @@ module MAYO_SHAKE(rst, clk, en,
   wire [31:0] mlen, olen;
 
   reg c0,c1;
-  reg [31:0] read_ctr = 0;
-  reg [31:0] write_ctr = 0;
+  reg [$clog2(C_READ_DESC_SIZE):0] read_ctr = 0;
+  reg [$clog2(C_WRITE_DESC_SIZE):0] write_ctr = 0;
   reg [5:0] state0 = 0;
   reg [5:0] state1 = 0;
   reg [31:0] write_adr_reg = 0; // Original write adr
   reg [31:0] read_adr_reg = 0; // Original read adr
+  reg done_sampling = 0;
 
   wire clear_sha, shake_intermediate_rst, shake_next_extract;
   wire [1:0] rate_type;
@@ -63,12 +64,21 @@ module MAYO_SHAKE(rst, clk, en,
   reg [63:0] read_desc [0:C_READ_DESC_SIZE-1];
   reg [$clog2(C_WRITE_DESC_SIZE):0] write_desc_adr = 0;
   reg [$clog2(C_READ_DESC_SIZE):0] read_desc_adr = 0;
+  
+  // Tagging
+  reg [2:0] write_desc_tag [0:C_WRITE_DESC_SIZE-1]; // Extra bit for tag
 
   // Control
   integer i;
   reg fill_read = 0;
   reg empty_write = 0;
   reg enabled = 0;
+  reg flip = 0; 
+  reg flop = 0;
+  reg  [31:0] x = 0 ;
+  wire cond_flip;
+  assign cond_flip = ( flip == flop ) ? (write_desc_adr < write_ctr) : (write_desc_adr > write_ctr) ;
+  
 
   // OPs
   assign INS = command_reg0[4:0];
@@ -83,18 +93,11 @@ module MAYO_SHAKE(rst, clk, en,
   assign shake_next_extract = (INS==5'd5) ? 1'b1 : 1'b0;
   assign rate_type = (INS==5'd1) ? 2'd1 : (INS==5'd2) ? 2'd0 : 2'd2;
 
+   
+  
+
   // IO SHAKE <-> descriptors
   assign din_shake = (enable_sha) ? read_desc[read_ctr] : 0 ;
-  always @(posedge clk)
-    begin
-      if (rst)
-        begin
-          for (i = 0; i <C_WRITE_DESC_SIZE; i = i+1)
-            write_desc[i] <= 64'b0;
-        end
-      else if (sample_dout)
-        write_desc[write_ctr] <= dout_shake;
-    end
 
   always @(posedge clk)
     begin
@@ -115,7 +118,10 @@ module MAYO_SHAKE(rst, clk, en,
       else if (en)
         olen_remaining <= olen;
       else if (empty_write)
+      begin
         olen_remaining <= olen_remaining - 32'd4; // - 4 bytes (32bits)
+        //$display("SHAKE : olen_remaining :  %0d", olen_remaining);
+      end
       else
         olen_remaining <= olen_remaining;
     end
@@ -221,18 +227,29 @@ module MAYO_SHAKE(rst, clk, en,
                     write_desc_adr <= 0 ;
                     c1 <= 1'b0;
                     empty_write <= 1'b1;
-                    state1 <= 6'd4;
+                    state1 <= 6'd7;
                   end
+              end
+
+            6'd7:
+              begin
+                bram_we <= 4'b1111;
+                bram_en <= 1'b1;
+                bram_din <= write_desc[write_desc_adr][c1*32 +: 32];
+                c1 <= !c1;
+                write_desc_adr <= write_desc_adr + c1;
+                state1 <= 6'd4;
               end
 
             6'd4: // WRITE TO BRAM (1 Round)
               begin
-                $display("SHAKE : Write 0x%0h to 0x%0h!", write_desc[write_desc_adr][c1*32 +: 32], bram_addr); // debug
-                $display("SHAKE : write_desc_adr :  %0d, c0 : %0d", write_desc_adr, c1);
+                //$display("SHAKE : Write 0x%0h to 0x%0h!", write_desc[write_desc_adr][c1*32 +: 32], bram_addr); // debug
+                //$display("SHAKE : write_desc_adr :  %0d, c0 : %0d", write_desc_adr, c1);
+                empty_write <= 1'b1;
                 bram_we <= 4'b1111;
                 bram_en <= 1'b1;
                 bram_din <= write_desc[write_desc_adr][c1*32 +: 32];
-                if (write_desc_adr < C_WRITE_DESC_SIZE-1 && oleng0)
+                if (write_desc_adr < C_WRITE_DESC_SIZE-1 && oleng0 && (cond_flip|| done_shake))
                   begin
                     c1 <= !c1;
                     bram_addr <= bram_addr + 4 ;
@@ -243,13 +260,30 @@ module MAYO_SHAKE(rst, clk, en,
                     state1 <= 6'd5;
                     empty_write <= 1'b0;
                   end
+                else if (!(cond_flip|| done_shake)) // Wait for Shake samples
+                begin
+                    empty_write <= 1'b0;
+                    bram_we <= 4'b0000;
+                    bram_en <= 1'b0;
+                end
                 else
-                  write_desc_adr <= 0;
+                  begin
+                    bram_addr <= bram_addr + 4 ;
+                    c1 <= !c1;
+                    if(c1 == 1)
+                      begin   
+                      write_desc_adr <= 0;
+                      flop <= !flop;
+                      end
+                    else 
+                      write_desc_adr <= write_desc_adr + c1;
+                  end
               end
             6'd5:
               begin
                 $display("SHAKE: Write Done");
                 bram_en <= 1'b0;
+                bram_we <= 4'b1111;
                 state1 <= 6'd0;
               end
 
@@ -322,7 +356,6 @@ module MAYO_SHAKE(rst, clk, en,
                 if (done_shake)
                   begin
                     state0 <= 6'd7;
-                    
                     $display("SHAKE: done!"); // debug output
                   end
               end
@@ -343,21 +376,25 @@ module MAYO_SHAKE(rst, clk, en,
 
   // counters (shake addr overdrive)
   // Cyclic
-  always @(wt_address_shake,rst)
+  always @(wt_address_shake,rst,done_shake)
     begin
       if (rst)
-        write_ctr <= 0 ;
-      else
         begin
-          if (sample_dout)
-            begin
-              if (write_ctr < C_WRITE_DESC_SIZE-1)
-                write_ctr <= write_ctr +1;
-              else
-                write_ctr <= 0;
-            end
+          for (i = 0; i <C_WRITE_DESC_SIZE; i = i+1)
+            write_desc[i] <= 64'b0;
+                  write_ctr <= 0 ;
+                  flip <= 0;
         end
-    end
+      else
+        begin 
+                write_desc[write_ctr] <= dout_shake;
+                write_ctr <= wt_address_shake % C_WRITE_DESC_SIZE;
+                if ( wt_address_shake % C_WRITE_DESC_SIZE == 0 && (sample_dout || done_shake))
+                begin
+                flip <= !flip;
+                end            
+        end
+    end    
 
   always @(rd_address_shake,rst)
     begin
@@ -374,7 +411,7 @@ module MAYO_SHAKE(rst, clk, en,
          end
         end
     end
-
+    
   assign BRAMA_we = bram_we;
   assign BRAMA_addr = bram_addr;
   assign BRAMA_din = bram_din;

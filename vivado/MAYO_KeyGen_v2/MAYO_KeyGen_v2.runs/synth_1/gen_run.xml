@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1666192944">
-  <File Type="VDS-TIMING-PB" Name="mayo_sample_oil_space_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="mayo_sample_oil_space_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="mayo_sample_oil_space.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="mayo_sample_oil_space_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="mayo_sample_oil_space_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="mayo_sample_oil_space_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="mayo_sample_oil_space.vds"/>
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1667588294">
   <File Type="REPORTS-TCL" Name="mayo_sample_oil_space_reports.tcl"/>
   <File Type="PA-TCL" Name="mayo_sample_oil_space.tcl"/>
+  <File Type="RDS-DCP" Name="mayo_sample_oil_space.dcp"/>
+  <File Type="RDS-RDS" Name="mayo_sample_oil_space.vds"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Common.vhd">
@@ -29,21 +24,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Keygen_FSM.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PGENDIR/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_HASH_Arbiter.vhd">
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_reduce.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -57,7 +38,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_negate.vhd">
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_HASH_Arbiter.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_HASH_BRAM_Arbiter.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -71,6 +59,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_negate.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_linear_combination.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -78,7 +73,29 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_reduce.vhd">
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Keygen_FSM.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/Mayo_keygen_no_zynq/Mayo_keygen_no_zynq.bd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/bd/Mayo_keygen_no_zynq/hdl/Mayo_keygen_no_zynq_wrapper.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -98,6 +115,9 @@
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../ip_repo/mayo_keygen_fsm/component.xml">
+      <FileInfo SFType="IPXACT"/>
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
@@ -123,4 +143,14 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_bramb0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_brama1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_add_vectors_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_hash_arbiter_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_negate_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_brama0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_linear_combinat_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_BIG_BRAM512K_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0"/>
 </GenRun>

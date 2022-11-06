@@ -1,0 +1,86 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.703453",
+   "Default View_TopLeft":"-60,-97",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port clk -pg 1 -lvl 0 -x -10 -y 70 -defaultsOSRD
+preplace port rst -pg 1 -lvl 0 -x -10 -y 290 -defaultsOSRD
+preplace port i_key_en -pg 1 -lvl 0 -x -10 -y 490 -defaultsOSRD
+preplace port o_key_done -pg 1 -lvl 4 -x 1220 -y 570 -defaultsOSRD
+preplace port o_key_dyn_done -pg 1 -lvl 4 -x 1220 -y 590 -defaultsOSRD
+preplace port i_sam_en -pg 1 -lvl 0 -x -10 -y 590 -defaultsOSRD
+preplace port o_sam_done -pg 1 -lvl 4 -x 1220 -y 610 -defaultsOSRD
+preplace port o_sam_dyn_done -pg 1 -lvl 4 -x 1220 -y 630 -defaultsOSRD
+preplace port BRAMA_en -pg 1 -lvl 4 -x 1220 -y 250 -defaultsOSRD
+preplace port BRAM0_en -pg 1 -lvl 4 -x 1220 -y 150 -defaultsOSRD
+preplace port BRAM1_control -pg 1 -lvl 4 -x 1220 -y 290 -defaultsOSRD
+preplace port BRAM0_control -pg 1 -lvl 4 -x 1220 -y 190 -defaultsOSRD
+preplace port bram_sel -pg 1 -lvl 0 -x -10 -y 730 -defaultsOSRD
+preplace portBus i_key_mlen -pg 1 -lvl 0 -x -10 -y 510 -defaultsOSRD
+preplace portBus i_key_olen -pg 1 -lvl 0 -x -10 -y 530 -defaultsOSRD
+preplace portBus i_key_write_adr -pg 1 -lvl 0 -x -10 -y 550 -defaultsOSRD
+preplace portBus i_key_read_adr -pg 1 -lvl 0 -x -10 -y 570 -defaultsOSRD
+preplace portBus i_sam_mlen -pg 1 -lvl 0 -x -10 -y 610 -defaultsOSRD
+preplace portBus i_sam_olen -pg 1 -lvl 0 -x -10 -y 630 -defaultsOSRD
+preplace portBus i_sam_write_adr -pg 1 -lvl 0 -x -10 -y 650 -defaultsOSRD
+preplace portBus i_sam_read_adr -pg 1 -lvl 0 -x -10 -y 670 -defaultsOSRD
+preplace portBus BRAMA_we -pg 1 -lvl 4 -x 1220 -y 270 -defaultsOSRD
+preplace portBus BRAMA_addr -pg 1 -lvl 4 -x 1220 -y 230 -defaultsOSRD
+preplace portBus BRAMA_din -pg 1 -lvl 4 -x 1220 -y 210 -defaultsOSRD
+preplace portBus BRAMA_dout -pg 1 -lvl 0 -x -10 -y 270 -defaultsOSRD
+preplace portBus BRAM0_din -pg 1 -lvl 4 -x 1220 -y 110 -defaultsOSRD
+preplace portBus BRAM0_addr -pg 1 -lvl 4 -x 1220 -y 130 -defaultsOSRD
+preplace portBus BRAM0_we -pg 1 -lvl 4 -x 1220 -y 170 -defaultsOSRD
+preplace portBus BRAM0_dout -pg 1 -lvl 0 -x -10 -y 250 -defaultsOSRD
+preplace inst mayo_hash_arbiter_0 -pg 1 -lvl 1 -x 220 -y 550 -defaultsOSRD
+preplace inst MAYO_SHAKE_1 -pg 1 -lvl 2 -x 620 -y 120 -defaultsOSRD
+preplace inst mayo_hash_bram_arbit_0 -pg 1 -lvl 3 -x 1020 -y 190 -defaultsOSRD
+preplace netloc mayo_hash_arbiter_0_o_en 1 1 1 400 90n
+preplace netloc mayo_hash_arbiter_0_o_mlen 1 1 1 410 110n
+preplace netloc mayo_hash_arbiter_0_o_olen 1 1 1 420 130n
+preplace netloc mayo_hash_arbiter_0_o_write_adr 1 1 1 430 150n
+preplace netloc mayo_hash_arbiter_0_o_read_adr 1 1 1 440 170n
+preplace netloc MAYO_SHAKE_1_done 1 0 3 20 360 NJ 360 770
+preplace netloc MAYO_SHAKE_1_dyn_done 1 0 3 30 370 NJ 370 780
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 2 NJ 70 NJ
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 0 2 10 50 NJ
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_en 1 0 1 NJ 490
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_mlen 1 0 1 NJ 510
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_olen 1 0 1 NJ 530
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_write_adr 1 0 1 NJ 550
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_hash_read_adr 1 0 1 NJ 570
+preplace netloc mayo_hash_arbiter_0_o_key_done 1 1 3 NJ 570 NJ 570 NJ
+preplace netloc mayo_hash_arbiter_0_o_key_dyn_done 1 1 3 NJ 590 NJ 590 NJ
+preplace netloc mayo_sample_oil_space_0_o_hash_enable 1 0 1 NJ 590
+preplace netloc mayo_sample_oil_space_0_o_hash_mlen 1 0 1 NJ 610
+preplace netloc mayo_sample_oil_space_0_o_hash_olen 1 0 1 NJ 630
+preplace netloc mayo_sample_oil_space_0_o_hash_write_adr 1 0 1 NJ 650
+preplace netloc mayo_sample_oil_space_0_o_hash_read_adr 1 0 1 NJ 670
+preplace netloc mayo_hash_arbiter_0_o_sam_done 1 1 3 NJ 610 NJ 610 NJ
+preplace netloc mayo_hash_arbiter_0_o_sam_dyn_done 1 1 3 NJ 630 NJ 630 NJ
+preplace netloc mayo_hash_bram_arbit_0_hash_dout 1 1 3 450 350 NJ 350 1180
+preplace netloc MAYO_SHAKE_1_BRAMA_din 1 2 1 810 140n
+preplace netloc MAYO_SHAKE_1_BRAMA_addr 1 2 1 800 140n
+preplace netloc MAYO_SHAKE_1_BRAMA_en 1 2 1 N 180
+preplace netloc MAYO_SHAKE_1_BRAMA_we 1 2 1 790 120n
+preplace netloc BRAMA_dout_1 1 0 3 30J 260 NJ 260 NJ
+preplace netloc mayo_hash_bram_arbit_0_BRAM1_we 1 3 1 NJ 270
+preplace netloc mayo_hash_bram_arbit_0_BRAM1_en 1 3 1 NJ 250
+preplace netloc mayo_hash_bram_arbit_0_BRAM1_addr 1 3 1 NJ 230
+preplace netloc mayo_hash_bram_arbit_0_BRAM1_din 1 3 1 NJ 210
+preplace netloc mayo_hash_bram_arbit_0_BRAM0_din 1 3 1 NJ 110
+preplace netloc mayo_hash_bram_arbit_0_BRAM0_addr 1 3 1 NJ 130
+preplace netloc mayo_hash_bram_arbit_0_BRAM0_en 1 3 1 NJ 150
+preplace netloc mayo_hash_bram_arbit_0_BRAM0_we 1 3 1 NJ 170
+preplace netloc BRAM0_dout_1 1 0 3 NJ 250 NJ 250 830J
+preplace netloc MAYO_SHAKE_1_o_control 1 2 1 830 100n
+preplace netloc mayo_hash_bram_arbit_0_BRAM1_control 1 3 1 NJ 290
+preplace netloc mayo_hash_bram_arbit_0_BRAM0_control 1 3 1 NJ 190
+preplace netloc bram_sel_1 1 0 3 NJ 730 NJ 730 820J
+levelinfo -pg 1 -10 220 620 1020 1220
+pagesize -pg 1 -db -bbox -sgen -210 -10 1390 750
+"
+}
+0
