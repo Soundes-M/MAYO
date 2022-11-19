@@ -1,9 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.gen/sources_1/ip/blk_mem_gen_0_1/sim/blk_mem_gen_0_1.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module blk_mem_gen_0_1
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module MAYO_SHAKE
-INFO: [VRFC 10-2458] undeclared symbol enable_sha, assumed default net type wire [/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sources_1/new/MAYO_SHAKE.v:91]
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/SABER_HW/Verilog_src/Keccak_Core/SHA_SHAKE_wrapper.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module SHA_SHAKE_wrapper
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sim_1/new/MAYO_SHAKE_tb.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module MAYO_SHAKE_tb

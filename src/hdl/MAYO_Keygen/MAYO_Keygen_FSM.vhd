@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Fri Nov  4 19:52:32 2022
+-- Last update : Sat Nov 12 15:22:16 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -174,8 +174,8 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
 BEGIN
 
   o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
-  o_mem0b_control <= '1' when (state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
-  o_mem1a_control <= '1' when (state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = transpose3 or state = transpose4 or state = transpose5) else '0';
+  o_mem0b_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
+  o_mem1a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = transpose3 or state = transpose4 or state = transpose5) else '0';
 
   -- sync compute!
   KEYGEN : PROCESS (CLK) IS
@@ -249,6 +249,10 @@ BEGIN
               if (index < 16) then
                 bram0b.o.o_en   <= '1';
                 bram1a.o.o_en   <= '1';
+
+                bram0b.o.o_din  <= i_trng_data;
+                bram1a.o.o_din  <= i_trng_data;
+
                 bram0b.o.o_addr <= std_logic_vector(to_unsigned(PK_BASE_ADR+index,PORT_WIDTH));
                 bram1a.o.o_addr <= std_logic_vector(to_unsigned(P1_BASE_ADR+index,PORT_WIDTH));
               end if ;
@@ -273,6 +277,7 @@ BEGIN
             bram1a.o.o_we <= "0000";
             index         <= 0;
             state         <= expand0;
+            s_hash_mem_sel <= '1';
 
           --------------------------------------------------------------------
           -- EXPAND PK  BEGIN
@@ -330,7 +335,6 @@ BEGIN
           when sample2 =>
             if (i_sam_done = '1') then
               state          <= compute0;
-              s_hash_mem_sel <= '1';
             end if ;
 
             --------------------------------------------------------------------

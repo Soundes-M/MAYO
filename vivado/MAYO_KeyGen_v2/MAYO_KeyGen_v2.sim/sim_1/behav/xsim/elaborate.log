@@ -57,6 +57,9 @@ Compiling architecture neotrng_cell_rtl of entity xil_defaultlib.neoTRNG_cell [\
 Compiling architecture neotrng_rtl of entity xil_defaultlib.neoTRNG [\neoTRNG(num_cells=3,num_inv_sta...]
 Compiling architecture behavioral of entity xil_defaultlib.TRNG [\TRNG(is_sim=true)\]
 Compiling architecture mayo_keygen_no_zynq_trng_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_TRNG_0_0 [mayo_keygen_no_zynq_trng_0_0_def...]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_trng_arbiter [mayo_trng_arbiter_default]
+Compiling architecture mayo_keygen_no_zynq_mayo_trng_arbiter_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0 [mayo_keygen_no_zynq_mayo_trng_ar...]
+Compiling architecture structure of entity xil_defaultlib.TRNG_imp_G7X2XE [trng_imp_g7x2xe_default]
 Compiling architecture rtl of entity xil_defaultlib.keccak_round [keccak_round_default]
 Compiling architecture rtl of entity xil_defaultlib.keccak_round_constants_gen [keccak_round_constants_gen_defau...]
 Compiling architecture rtl of entity xil_defaultlib.keccak_buffer [keccak_buffer_default]
@@ -64,8 +67,6 @@ Compiling architecture rtl of entity xil_defaultlib.keccak [keccak_default]
 Compiling module xil_defaultlib.SHA_SHAKE_wrapper
 Compiling module xil_defaultlib.MAYO_SHAKE
 Compiling module xil_defaultlib.Mayo_keygen_no_zynq_MAYO_SHAKE_1...
-Compiling architecture behavioral of entity xil_defaultlib.mayo_hash_arbiter [mayo_hash_arbiter_default]
-Compiling architecture mayo_keygen_no_zynq_mayo_hash_arbiter_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_mayo_hash_arbiter_0_0 [mayo_keygen_no_zynq_mayo_hash_ar...]
 Compiling architecture behavioral of entity xil_defaultlib.mayo_hash_bram_arbiter [mayo_hash_bram_arbiter_default]
 Compiling architecture mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0 [mayo_keygen_no_zynq_mayo_hash_br...]
 Compiling architecture structure of entity xil_defaultlib.hash_imp_EASPA4 [hash_imp_easpa4_default]

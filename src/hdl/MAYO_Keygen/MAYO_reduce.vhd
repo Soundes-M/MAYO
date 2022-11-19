@@ -65,12 +65,13 @@ end mayo_reduce;
 
 architecture Behavioral of mayo_reduce is
 
-	type state is (idle, read1, read2,read3, write1, write2, done);
+	type state is (idle, read1, read2, read3, read4, write1, write2, done);
 	signal t_state   : state := idle;
 	signal s_rstb    : std_logic;
 	signal s_enb     : std_logic;
 	signal s_web     : std_logic_vector(3 downto 0);                              -- enable port b (4 Cells)
 	signal s_addrb   : std_logic_vector(BRAM_SIZE-1 downto 0) := (others => '0'); -- Max Depth 8k 
+	signal s_dinb    : std_logic_vector(31 downto 0)          := ZERO_32;
 	signal s_data    : std_logic_vector(31 downto 0)          := (others => '0');
 	signal s_index   : natural                                := 0 ; --LOOP INDEX
 	signal s_max_len : natural                                := 0 ;
@@ -86,6 +87,7 @@ begin
 				s_addrb <= (others => '0');
 				s_enb   <= '0';
 				s_web   <= "0000";
+				s_dinb  <= ZERO_32;
 				o_done  <= '0';
 				t_state <= idle;
 				s_index <= 0;
@@ -96,9 +98,10 @@ begin
 						s_addrb    <= (others => '0');
 						s_enb      <= '0';
 						s_web      <= "0000";
+						s_dinb     <= ZERO_32;
 						o_done     <= '0';
 						o_control0 <= '0';
-						o_control1 <= '1';
+						o_control1 <= '0';
 
 						if(i_enable = '1') then -- START
 							t_state   <= read1;
@@ -117,12 +120,19 @@ begin
 
 					when read1 =>
 						s_addrb <= s_addr; -- Set READ ADR
+						s_index <= to_integer(unsigned(s_addr));
 						s_enb   <= '1';
 						s_rstb  <= '0';
 						s_web   <= "0000";
-						t_state <= read2;
+						t_state <= read3;
 
-					when read3 =>
+					when read4 =>
+						s_addrb <= std_logic_vector(to_unsigned(s_index,PORT_WIDTH)); -- Go to next ADR
+						s_enb   <= '1';
+						s_web   <= "0000";
+						t_state <= read3;
+
+					when read3 => -- Read Delay Clk to out BRAM
 						s_enb   <= '1';
 						s_rstb  <= '0';
 						s_web   <= "0000";
@@ -145,14 +155,14 @@ begin
 						t_state              <= write2;
 
 					when write2 =>
-						s_enb   <= '1';
-						s_web   <= "1111";                                  -- WRITE result back to ADR
-						s_addrb <= std_logic_vector(to_unsigned(s_index,PORT_WIDTH)); -- Go to next ADR
-						if (s_index > s_max_len) then
+						s_dinb <= s_data;
+						s_enb  <= '1';
+						s_web  <= "1111"; -- WRITE result back to ADR
+						if (s_index >= s_max_len - 4) then
 							t_state <= done;
 						else
 							s_index <= s_index +4;
-							t_state <= read3;
+							t_state <= read4;
 						end if;
 
 					when done =>
@@ -171,13 +181,13 @@ begin
 	end process;
 
 	o_addr0 <= s_addrb when i_bram_sel = '0' else ZERO_32; -- Default 32Bits
-	o_din0  <= s_data  when i_bram_sel = '0' else ZERO_32;
+	o_din0  <= s_dinb  when i_bram_sel = '0' else ZERO_32;
 	o_en0   <= s_enb   when i_bram_sel = '0' else '0';
 	o_rst0  <= s_rstb  when i_bram_sel = '0' else '0';
 	o_we0   <= s_web   when i_bram_sel = '0' else (others => '0');
 
 	o_addr1 <= s_addrb when i_bram_sel = '1' else ZERO_32; -- Default 32Bits
-	o_din1  <= s_data  when i_bram_sel = '1' else ZERO_32;
+	o_din1  <= s_dinb  when i_bram_sel = '1' else ZERO_32;
 	o_en1   <= s_enb   when i_bram_sel = '1' else '0';
 	o_rst1  <= s_rstb  when i_bram_sel = '1' else '0';
 	o_we1   <= s_web   when i_bram_sel = '1' else (others => '0');

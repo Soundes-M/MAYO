@@ -60,21 +60,20 @@ ENTITY Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0 IS
     i_enable : IN STD_LOGIC;
     o_done : OUT STD_LOGIC;
     i_oil_addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    i_hash_done : IN STD_LOGIC;
-    i_hash_dyn_done : IN STD_LOGIC;
-    o_hash_enable : OUT STD_LOGIC;
-    o_hash_mlen : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    o_hash_olen : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    o_hash_write_adr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    o_hash_read_adr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    o_trng_r : OUT STD_LOGIC;
+    o_trng_w : OUT STD_LOGIC;
+    o_trng_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    i_trng_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    i_trng_valid : IN STD_LOGIC;
+    i_trng_done : IN STD_LOGIC;
     i_memb_dout : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     o_memb_din : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     o_memb_addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     o_memb_en : OUT STD_LOGIC;
     o_memb_rst : OUT STD_LOGIC;
     o_memb_we : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-    o_controla : OUT STD_LOGIC;
-    o_controlb : OUT STD_LOGIC
+    o_controlb : OUT STD_LOGIC;
+    o_trng_sel : OUT STD_LOGIC
   );
 END Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0;
 
@@ -88,21 +87,20 @@ ARCHITECTURE Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0_arch OF Mayo_keygen_n
       i_enable : IN STD_LOGIC;
       o_done : OUT STD_LOGIC;
       i_oil_addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      i_hash_done : IN STD_LOGIC;
-      i_hash_dyn_done : IN STD_LOGIC;
-      o_hash_enable : OUT STD_LOGIC;
-      o_hash_mlen : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      o_hash_olen : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      o_hash_write_adr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      o_hash_read_adr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      o_trng_r : OUT STD_LOGIC;
+      o_trng_w : OUT STD_LOGIC;
+      o_trng_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      i_trng_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      i_trng_valid : IN STD_LOGIC;
+      i_trng_done : IN STD_LOGIC;
       i_memb_dout : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       o_memb_din : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       o_memb_addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       o_memb_en : OUT STD_LOGIC;
       o_memb_rst : OUT STD_LOGIC;
       o_memb_we : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-      o_controla : OUT STD_LOGIC;
-      o_controlb : OUT STD_LOGIC
+      o_controlb : OUT STD_LOGIC;
+      o_trng_sel : OUT STD_LOGIC
     );
   END COMPONENT mayo_sample_oil_space;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -123,20 +121,19 @@ BEGIN
       i_enable => i_enable,
       o_done => o_done,
       i_oil_addr => i_oil_addr,
-      i_hash_done => i_hash_done,
-      i_hash_dyn_done => i_hash_dyn_done,
-      o_hash_enable => o_hash_enable,
-      o_hash_mlen => o_hash_mlen,
-      o_hash_olen => o_hash_olen,
-      o_hash_write_adr => o_hash_write_adr,
-      o_hash_read_adr => o_hash_read_adr,
+      o_trng_r => o_trng_r,
+      o_trng_w => o_trng_w,
+      o_trng_data => o_trng_data,
+      i_trng_data => i_trng_data,
+      i_trng_valid => i_trng_valid,
+      i_trng_done => i_trng_done,
       i_memb_dout => i_memb_dout,
       o_memb_din => o_memb_din,
       o_memb_addr => o_memb_addr,
       o_memb_en => o_memb_en,
       o_memb_rst => o_memb_rst,
       o_memb_we => o_memb_we,
-      o_controla => o_controla,
-      o_controlb => o_controlb
+      o_controlb => o_controlb,
+      o_trng_sel => o_trng_sel
     );
 END Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0_arch;

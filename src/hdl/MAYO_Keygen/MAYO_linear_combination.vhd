@@ -108,7 +108,7 @@ entity mayo_linear_combination is
 end entity mayo_linear_combination;
 architecture Behavioral of mayo_linear_combination is
 
-	type state is (idle, read1, read2, done);
+	type state is (idle, read1, read2,read3, done);
 	signal t_state : state := idle;
 	type state1 is (idle, main1, write1, done);
 	signal t_state1 : state1 := idle;
@@ -126,7 +126,7 @@ architecture Behavioral of mayo_linear_combination is
 	signal s_acc_change : std_logic        := '0';
 	signal s_acc_flush  : std_logic        := '0';
 	signal s_main       : std_logic;
-	signal s_write      : std_logic;
+	signal first        : std_logic;
 	signal dspb         : std_logic_vector(7 downto 0) := (others => '0');
 
 	signal s_vecs_addr   : std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -201,11 +201,15 @@ begin
 							t_state       <= read1;
 							o_control0a   <= '1';
 							o_control1a   <= '1';
+							c             <= 0;
+							i             <= 0;
+							j             <= 0;
 						else
 							t_state     <= idle;
 							o_control0a <= '0';
 							o_control1a <= '0';
 						end if;
+
 					when read1 =>
 						-- Enable BRAMs and start reading
 						bram0a.o.o_addr <= s_coeffs_addr;
@@ -214,24 +218,32 @@ begin
 						bram1a.o.o_en   <= '1';
 						bram1a.o.o_rst  <= '0';
 						bram1a.o.o_we   <= "0000";
-						t_state         <= read2;
+						t_state         <= read3;
 
-					when read2 =>                         -- Also update ADR
-						s_coeffs      <= bram0a.i.i_dout; -- 32 Bits (1 Byte/clk)
-						bram0a.o.o_en <= '0';             -- Coeffs not needed anymore
-						s_vecs        <= bram1a.i.i_dout; -- 32 Bits (4 Byte/clk)
-						s_main        <= '1';             -- Start lin_comb
-						s_acc_change  <= '0';
+					when read3 => -- BRAM Extra Delay
+						t_state      <= read2;
+						s_main       <= '0'; -- DSPs should not take this data in ! 
+						s_acc_change <= '0';
+
+
+					when read2 =>                    -- Also update ADR
+						s_coeffs <= bram0a.i.i_dout; -- 32 Bits (1 Byte/clk)
+						if (c = 0) then
+							s_vecs <= bram1a.i.i_dout; -- 32 Bits (4 Byte/clk)
+						end if;
+						s_main <= '1'; -- Start lin_comb
+
 						if(i > (unsigned(s_len)-1)) then -- i Loop done --> Reset i
 							bram0a.o.o_addr <= s_coeffs_addr;
-							bram1a.o.o_addr <= s_vecs_addr;
+							bram1a.o.o_addr <= std_logic_vector(unsigned(s_vecs_addr)+j+4); -- [ j+4, loop is inverted and 4j based]
 							i               <= 0 ;
 							s_acc_change    <= '1'; -- Change acc buffer
 
 							if (j > (M -1)) then --j loop done
 								t_state <= done; -- END; no more input data
 							else
-								j <= j +4 ;
+								j       <= j +4 ;
+								t_state <= read3;
 							end if;
 
 						else
@@ -242,10 +254,12 @@ begin
 								bram0a.o.o_en   <= '1';
 								c               <= 0;
 							else
-								c <= c +1 ;
+								bram0a.o.o_en <= '0'; -- Coeffs not needed anymore
+								c             <= c +1 ;
 							end if;
 							-- Vecs 
-							bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) + (M / 4) + j); -- Next vecs (i is also used here)
+							bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) + (M / 4)); -- Next vecs (i is also used here) [i+1]
+							t_state         <= read3;
 						end if;
 
 					when done => -- Done reading
@@ -280,14 +294,15 @@ begin
 			if(rst = '1') then
 				s_out_ctr <= 0 ; -- This counter is the same as i but for safety measure it runs async to it.
 				o_done    <= '0';
-				s_write   <= '0';
 				t_state1  <= idle;
+				first     <= '0';
 			else
 				case (t_state1) is
 					when idle =>
 						o_done      <= '0';
 						o_control0b <= '0';
-						if (s_write= '1') then
+						s_acc_flush <= '0';
+						if (s_acc_change= '1') then
 							t_state1 <= main1;
 						end if;
 
@@ -304,28 +319,35 @@ begin
 								std_logic_vector(resize(unsigned(s_acc(5)) mod PRIME,8)) &
 								std_logic_vector(resize(unsigned(s_acc(4)) mod PRIME,8));
 						end if;
-						s_acc_flush <= '1';
 						o_control0b <= '1';
 						t_state1    <= write1;
 
 					when write1 =>
-						s_acc_flush     <= '0';
-						bram0b.o.o_en   <= '1';
-						bram0b.o.o_we   <= "1111";
-						bram0b.o.o_addr <= std_logic_vector(unsigned(bram0b.o.o_addr) + 4);
 
-						if (s_out_ctr > ((M/4) -1)) then
+						bram0b.o.o_en <= '1';
+						bram0b.o.o_we <= "1111";
+						if first = '0' then
+							bram0b.o.o_addr <= s_out_addr;
+							first           <= '1';
+						else
+							bram0b.o.o_addr <= std_logic_vector(unsigned(bram0b.o.o_addr) + 4);
+						end if;
+						s_acc_flush <= '1';
+						if (s_out_ctr > (M -1)) then
 							t_state1 <= done;
 						else
-							s_out_ctr <= s_out_ctr + 1;
+							s_out_ctr <= s_out_ctr + 4;
 							t_state1  <= idle;
 						end if;
-						s_write <= '0';
+
 
 					when done =>
+						s_acc_flush <= '0';
+						report "Linear Combination done";
 						o_done        <= '1';
 						bram0b.o.o_en <= '0';
 						bram0b.o.o_we <= "0000";
+						t_state       <= idle;
 					when others =>
 						null;
 				end case;
@@ -383,7 +405,7 @@ end DSP_Accum;
 
 architecture Behavioral of DSP_Accum is
 	signal acc               : array_32(0 to 7) := (others => ZERO_32);
-	attribute use_dsp        : string;
+	attribute use_dsp        : string; -- Force DSP usage
 	attribute use_dsp of acc : signal is "yes";
 begin
 	process(clk)

@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
--- Date        : Mon Oct 24 13:21:06 2022
+-- Date        : Mon Oct 24 13:21:04 2022
 -- Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
--- Command     : write_vhdl -force -mode synth_stub
---               /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_BIG_BRAM512K_0/Mayo_keygen_no_zynq_BIG_BRAM512K_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top Mayo_keygen_no_zynq_BIG_BRAM512K_0 -prefix
+--               Mayo_keygen_no_zynq_BIG_BRAM512K_0_ Mayo_keygen_no_zynq_BIG_BRAM512K_0_stub.vhdl
 -- Design      : Mayo_keygen_no_zynq_BIG_BRAM512K_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1

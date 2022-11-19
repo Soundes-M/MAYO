@@ -36,23 +36,21 @@ entity mayo_sample_oil_space is
 		-- CONTROL 
 		i_oil_addr : in std_logic_vector(31 downto 0);
 
-		-- SHAKE
-		i_hash_done      : in  std_logic;
-		i_hash_dyn_done  : in  std_logic;
-		o_hash_enable    : out std_logic;
-		o_hash_mlen      : out std_logic_vector(31 downto 0);
-		o_hash_olen      : out std_logic_vector(31 downto 0);
-		o_hash_write_adr : out std_logic_vector(31 downto 0);
-		o_hash_read_adr  : out std_logic_vector(31 downto 0);
+		o_trng_r     : out std_logic;
+		o_trng_w     : out std_logic;
+		o_trng_data  : out std_logic_vector(31 downto 0);
+		i_trng_data  : in  std_logic_vector(31 downto 0);
+		i_trng_valid : in  std_logic;
+		i_trng_done  : in  std_logic;
 
 		--BRAM-0
 		-- ONLY FOR KEYGEN! Using 1 BRAM port
---		i_mema_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
---		o_mema_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
---		o_mema_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
---		o_mema_en   : out std_logic;
---		o_mema_rst  : out std_logic;
---		o_mema_we   : out std_logic_vector (3 downto 0);
+		--		i_mema_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+		--		o_mema_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		--		o_mema_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		--		o_mema_en   : out std_logic;
+		--		o_mema_rst  : out std_logic;
+		--		o_mema_we   : out std_logic_vector (3 downto 0);
 
 		--BRAM-1
 		i_memb_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -61,191 +59,162 @@ entity mayo_sample_oil_space is
 		o_memb_en   : out std_logic;
 		o_memb_rst  : out std_logic;
 		o_memb_we   : out std_logic_vector (3 downto 0);
-
-		o_controla : out std_logic;
-		o_controlb : out std_logic
+		o_controlb  : out std_logic;
+		o_trng_sel  : out std_logic
 	);
 end entity mayo_sample_oil_space;
 
-
 architecture Behavioral of mayo_sample_oil_space is
 
-	type state is (idle, read_seed_1, read_seed_2, hash1, hash2, hash3, hash4, done);
-	type state_1 is (idle, main1, main2, main3, main4, main5, main6, done);
+	type state is (idle, rand0, rand1, rand2, rand3, main1, main2, main3, main4, main5, main6, main7, main8, done);
 
-	signal t_state   : state   := idle;
-	signal t_state_1 : state_1 := idle;
+	signal t_state : state := idle;
 
 	--signal s_seed : array_32 (0 to ((SEED_BYTES / 4)-1)); -- TODO Possibilty to make this outisde of this module (Not in BRAM either) (REMOVED SEED IS ONLY IN BRAM)
 
 	--signal s_seed_index : natural   := 0; -- BRAM counter 
-	signal i            : natural   := 0;
-	signal s_main_start : std_logic := '0'; -- Start the MAIN process 
 
 	signal s_rand      : std_logic_vector(31 downto 0);
 	signal s_oil_space : std_logic_vector(31 downto 0);
 	signal s_ctr       : natural := 0; -- BRAM Counter
 	signal s_oil_adr   : std_logic_vector(31 downto 0);
 	signal s_oil_index : natural := 0; -- BRAM counter 
-	
+	signal index       : natural := 0 ;
+
+	signal i   : integer := 0;
+	signal k   : integer := 0;
+	signal tmp : integer := 0 ;
+
+
 	--signal s_brama_addr : std_logic_vector(31 downto 0) := ZERO_32;
 
 begin
-    
+
 	IO : process (i_clk) is
+
 	begin
 		if (rising_edge (i_clk)) then
 			if (rst = '1') then
-				t_state      <= idle;
-				--s_seed_index <= 0;
-				i            <= 0;
-				s_main_start <= '0';
-				s_oil_adr    <= (others => '0');
-                --s_brama_addr <= ZERO_32;
-				o_hash_enable <= '0';
-				--o_mema_en     <= '0';
+				t_state     <= idle;
+				s_oil_adr   <= (others => '0');
+				index       <= 0;
+				o_trng_sel  <= '0';
+				o_controlb  <= '0';
+				i           <= 0 ;
+				k           <= 0 ;
+				o_memb_en   <= '0';
+				o_done      <= '0';
+				s_ctr       <= 0;
+				s_rand      <= ZERO_32;
+				o_trng_w    <= '0';
+				o_trng_r    <= '0';
+				o_memb_addr <= ZERO_32;
+				o_memb_we   <= "0000";
+				o_memb_din  <= ZERO_32;
+				s_oil_space <= ZERO_32;
+				tmp         <= 0;
 
 			else
 				case t_state is
 					when idle =>
 						--s_seed_index  <= 0;
-						s_main_start  <= '0';
-						s_oil_adr     <= (others => '0');
-						o_hash_enable <= '0';
-						o_controla <= '0';
-						if (i_enable = '1') then -- START
-							s_oil_adr <= i_oil_addr;
-							t_state   <= hash1;
-							--o_controla <= '1';
-						end if;
-
-					--------------------------------------------------------
-					-- SKIPPED (SEED STAYS IN BRAM)
-					--------------------------------------------------------
---					when read_seed_1 =>
---						o_mema_addr <= std_logic_vector(TO_UNSIGNED(SK_BASE_ADR + SEED_BYTES + s_seed_index,PORT_WIDTH));
---						o_mema_en   <= '1';
---						o_mema_rst  <= '0';
---						o_mema_we   <= "0000";
---						t_state     <= read_seed_2;
---					when read_seed_2 =>
---						s_seed(i) <= i_mema_dout;
---						if (unsigned(s_brama_addr) > SK_RANGE -1) then -- Done reading
---							o_mema_en <= '0';
---							t_state   <= hash1;
---							o_controla <= '0';
---						else
---							s_brama_addr <= std_logic_vector(unsigned(s_brama_addr)+4) ;
---							t_state     <= read_seed_2;
---							i           <= i +1;
---						end if;
-					---------------------------------------------------------
-
-					when hash1 => -- HASH with BRAMA!
-						o_hash_mlen      <= std_logic_vector(to_unsigned(SEED_BYTES,PORT_WIDTH));
-						o_hash_olen      <= std_logic_vector(to_unsigned(OIL_SPACE_BYTES*2,PORT_WIDTH));
-						o_hash_read_adr  <= std_logic_vector(to_unsigned(Sk_PRIVATE_SEED_ADR,PORT_WIDTH));
-						o_hash_write_adr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR,PORT_WIDTH));
-						o_hash_enable    <= '1';
-						t_state          <= hash3;
-
---					when hash2 => -- SKIPPED
---						o_hash_enable <= '0';
---						if (i_hash_dyn_done = '1') then -- GET RESULT 
---							t_state      <= hash3;
---							s_main_start <= '1';
---						-- Suppose that Randomness is being written 
---						-- While hash is exporting, you can start with the for loop in MAIN
---						-- Start once first 32 Bits arrived!
---						else
---							t_state <= hash2;
---						end if;
-
-					when hash3 =>
-						if (i_hash_done = '1') then -- HASH DONE
-							t_state <= done;
-							s_main_start <= '1';
-						else
-							t_state <= hash3;
-						end if;
-
-					when done =>
-						t_state <= idle;
-					when others =>
-						null;
-				end case;
-			end if;
-		end if;
-	end process;
-
-	MAIN       : process(i_clk) is
-		variable i : integer := 0;
-		variable k : integer := 0;
-	begin
-		if (rising_edge (i_clk)) then
-			if (rst = '1') then
-				-- ALL RESET WERTE
-				i         := 0 ;
-				k         := 0 ;
-				t_state_1 <= idle;
-				o_memb_en <= '0';
-				o_done <= '0';
-				s_ctr         <= 0;
-
-			else
-				case t_state_1 is
-					when idle =>
-						o_memb_en <= '0';
-						o_done <= '0';
-						-- Randomness available
+						s_oil_adr  <= (others => '0');
+						o_trng_sel <= '0';
 						o_controlb <= '0';
-						s_ctr         <= 0;
-						if (s_main_start = '1') then
-							t_state_1 <= main1;
+						if (i_enable = '1') then -- START
 							o_controlb <= '1';
+							s_oil_adr  <= i_oil_addr;
+							t_state    <= rand0;
+							o_trng_sel <= '1';
 						end if;
+
+					when rand0 =>
+						o_trng_w    <= '1';
+						o_trng_r    <= '0';
+						o_trng_data <= std_logic_vector(to_unsigned(OIL_SPACE_BYTES*2,PORT_WIDTH));
+						o_memb_we   <= "1111";
+						o_memb_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR,PORT_WIDTH));
+						t_state     <= rand1;
+
+					when rand1 =>
+						o_trng_w    <= '0';
+						o_trng_data <= ZERO_32;
+						t_state     <= rand2;
+
+					when rand2 =>
+						o_trng_r <= '1';
+						if ( i_trng_valid = '1') then
+							o_memb_en   <= '1';
+							o_memb_din  <= i_trng_data;
+							o_memb_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR+index,PORT_WIDTH)) ;
+							index       <= index + 4;
+							if (i_trng_done = '1') then
+								t_state <= rand3;
+							end if;
+
+						else
+							o_memb_en <= '0';
+						end if;
+
+					when rand3 =>
+						o_trng_r    <= '0';
+						o_memb_we   <= "0000";
+						o_memb_en   <= '0';
+						t_state     <= main1;
+						s_ctr       <= 0;
+						s_oil_index <= 0;
 
 					when main1 =>
 						-- USE BRAM PORT B 
+						o_trng_sel  <= '0';
 						o_memb_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR + s_ctr,PORT_WIDTH));
 						o_memb_en   <= '1';
 						o_memb_rst  <= '0';
 						o_memb_we   <= "0000";
-						t_state_1   <= main2;
+						t_state     <= main7;
 
-					when main2 => -- GET 4 Bytes of randomness
+					when main7 => -- ADD CLOCK DELAY HERE! 100ps delayBRAM
+						t_state <= main2;
+						i       <= 0 ;
+
+					when main2 => -- GET 4 Bytes of randomness  
 						s_rand    <= i_memb_dout;
 						o_memb_en <= '0';
-						t_state_1 <= main3;
-						i         := 0;
+						t_state   <= main8;
+
+					when main8 =>
+						tmp     <= to_integer(unsigned(s_rand(7+i*8 downto i*8))) mod 32; -- ARITH
+						t_state <= main3;
 
 					when main3 =>
+						--report integer'image(TO_INTEGER(unsigned(s_rand(7+i*8 downto i*8)))) & " mod 32  = " & integer'image(tmp) & "? 31" ;
 						-- 32 = (1<<PRIME_BITS)
-						if ((unsigned(s_rand(7+i*8 downto i*8)) mod 32) >= PRIME) then
+						if (tmp >= PRIME) then
 							if (i < 3) then
-								i := i +1;
+								i       <= i +1;
+								t_state <= main8;
 							else
-								s_ctr     <= s_ctr +4 ;
-								t_state_1 <= main1; -- Get next 32 Bits of randomness
+								s_ctr   <= s_ctr +4 ;
+								t_state <= main1; -- Get next 32 Bits of randomness
 							end if;
 						else
-							t_state_1 <= main4;
+							t_state <= main4;
 						end if;
 
 					when main4 => -- oil_space[i] = randomness[ctr]
 						s_oil_space(7+k*8 downto k*8) <= s_rand(7+i*8 downto i*8);
 						if (k < 3) then
-							k := k +1;
+							k <= k +1;
 							if (i <3) then
-								i         := i +1 ;
-								t_state_1 <= main3;
+								i       <= i +1 ;
+								t_state <= main8;
 							else
-								s_ctr     <= s_ctr + 4;
-								t_state_1 <= main1; -- Get next 32 Bits of randomness
+								s_ctr   <= s_ctr + 4;
+								t_state <= main1; -- Get next 32 Bits of randomness
 							end if;
 						else
-							k         := 0 ;
-							t_state_1 <= main5;
+							k       <= 0 ;
+							t_state <= main5;
 						end if;
 
 					when main5 => -- OIL_SPACE TO BRAM
@@ -254,24 +223,35 @@ begin
 						o_memb_en   <= '1';
 						o_memb_rst  <= '0';
 						o_memb_we   <= "1111"; -- WRITE FULLWORD in BRAM 
-						t_state_1   <= main6;
+						t_state     <= main6;
 
 					when main6 =>
-						if (s_oil_index > OIL_SPACE_RANGE -1) then
-							t_state_1 <= done;
-						else
+						o_memb_en <= '0';
+						o_memb_we <= "0000";
+						if (s_oil_index < OIL_SPACE_RANGE -4) then
 							s_oil_index <= s_oil_index +4 ;
-							t_state_1   <= main3;
+							if (i <3) then
+								i       <= i +1 ;
+								t_state <= main8;
+							else
+								s_ctr   <= s_ctr + 4;
+								t_state <= main1; -- Get next 32 Bits of randomness
+							end if;
+						else
+							t_state <= done;
 						end if;
 
 					when done =>
+						report "Sample Oil space done, ctr = " & integer'image(s_ctr);
 						o_done      <= '1';
 						s_oil_index <= 0;
+						i           <= 0;
+						k           <= 0;
+						s_ctr       <= 0;
 						o_memb_addr <= (others => '0');
 						o_memb_en   <= '0';
 						o_memb_we   <= "0000";
-						t_state_1   <= idle;
-
+						t_state     <= idle;
 
 					when others =>
 						null;
@@ -279,7 +259,4 @@ begin
 			end if;
 		end if;
 	end process;
-	
-	--o_mema_addr <= s_brama_addr;
-
 end architecture Behavioral;

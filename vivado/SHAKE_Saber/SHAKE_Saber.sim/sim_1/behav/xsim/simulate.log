@@ -22,12 +22,12 @@ SHAKE : Read 0xe8528969 from 0x18!
 SHAKE : read_desc_adr :  2, c0 : 1
 SHAKE : Read 0xa84f7d23 from 0x1c!
 SHAKE : read_desc_adr :  3, c0 : 0
-SHAKE: done!
 Done tb!
+SHAKE: disable
 ------ BRAM ------
 SHAKE: Write Done
 BRAM : Read 0xa84f7d23 from 0x20!
 BRAM : Read 0x942229ad from 0x24!
 BRAM : Read 0xf2712de from 0x28!
 ------ BRAM ------
-$finish called at time : 349415 ns
+$finish called at time : 292645 ns
