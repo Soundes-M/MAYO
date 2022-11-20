@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Mon Oct 17 21:25:31 2022
+-- Last update : Sat Nov 19 22:53:30 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -60,8 +60,8 @@ end entity mayo_add_vectors;
 
 
 architecture Behavioral of mayo_add_vectors is
-	type state is (idle, read1, read2, read3, waiting, done);
-	type state_1 is (idle, main, write1);
+	type state is (idle, read1, read2, read3, read4, read5, waiting, done);
+	type state_1 is (idle, main0, main1, write1);
 
 	signal s_state      : state     := idle;
 	signal s_state_1    : state_1   := idle;
@@ -71,10 +71,11 @@ architecture Behavioral of mayo_add_vectors is
 
 	constant INDEX : natural := M;
 
-	signal s_v1_addr  : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V1 ADR in BRAM
-	signal s_v2_addr  : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V2 ADR in BRAM
-	signal s_out_addr : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- OUT ADR in BRAM
-	signal s_out      : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
+	signal s_v1_addr         : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V1 ADR in BRAM
+	signal s_v2_addr         : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V2 ADR in BRAM
+	signal s_out_addr        : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- OUT ADR in BRAM
+	signal s_out             : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
+	signal o_memb_din_buffer : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
 
 	signal s_v1 : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
 	signal s_v2 : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
@@ -118,7 +119,10 @@ begin
 						o_mema_en   <= '1';
 						o_mema_rst  <= '0';
 						o_mema_we   <= "0000";
-						s_state     <= read2;
+						s_state     <= read4;
+
+					when read4 => -- BRAM Delay
+						s_state <= read2;
 
 					when read2 =>
 						s_v1 <= i_mema_dout;
@@ -127,14 +131,17 @@ begin
 						o_mema_en   <= '1';
 						o_mema_rst  <= '0';
 						o_mema_we   <= "0000";
-						s_state     <= read3;
+						s_state     <= read5;
+
+					when read5 => -- Bram Delay
+						s_state <= read3;
 
 					when read3 =>
 						s_v2         <= i_mema_dout;
 						o_mema_en    <= '0';
 						s_main_start <= '1';
 						o_controla   <= '0';
-						if (s_ctr > INDEX) then
+						if (s_ctr > INDEX-4) then -- i < M 
 							s_state <= done;
 						else
 							s_ctr   <= s_ctr + 4;
@@ -157,36 +164,46 @@ begin
 		end if;
 	end process;
 
+
 	MAIN_Pr : process(i_clk) is
 	begin
 		if (rising_edge (i_clk)) then
 			if (rst ='1') then
-				o_memb_din  <= (others => '0');
-				o_memb_en   <= '0';
-				o_memb_rst  <= '0';
-				o_memb_addr <= (others => '0');
-				o_memb_we   <= "0000";
-				s_state_1   <= idle;
-				s_io_read   <= '0';
-				o_controlb   <= '0';
+				o_memb_din_buffer <= (others => '0');
+				o_memb_en         <= '0';
+				o_memb_rst        <= '0';
+				o_memb_addr       <= (others => '0');
+				o_memb_we         <= "0000";
+				s_state_1         <= idle;
+				s_io_read         <= '0';
+				o_controlb        <= '0';
 			else
 				case (s_state_1) is
 					when idle =>
+						o_memb_en <= '0';
+						o_memb_we <= "0000"; 
 						if (s_main_start = '1') then
-							s_state_1 <= main;
+							s_state_1 <= main0;
 						end if;
 						o_controlb <= '0';
 
-					when main =>
-						o_controlb  <= '1';
-						for k in 0 to 3 loop -- ADDITION && MOD
-							o_memb_din(k*8+7 downto k*8) <= std_logic_vector(resize(unsigned(s_v1(k*8+7 downto k*8)) + unsigned(s_v2(k*8+7 downto k*8)),8) mod PRIME);
+					when main0 =>
+						for k in 0 to 3 loop -- ADDITION 
+							o_memb_din_buffer(k*8+7 downto k*8) <= std_logic_vector(resize(unsigned(s_v1(k*8+7 downto k*8)) + unsigned(s_v2(k*8+7 downto k*8)),8));
 						end loop;
 						s_io_read <= '1'; -- need next block
+						s_state_1 <= main1;
+
+					when main1 =>
+						s_io_read  <= '0';
+						o_controlb <= '1';
+						for k in 0 to 3 loop -- MOD
+							o_memb_din_buffer(k*8+7 downto k*8) <= std_logic_vector(unsigned(o_memb_din_buffer(k*8+7 downto k*8)) mod PRIME);
+						end loop;
+						--s_state_1 <= main1; TODO: CHeck this
 						s_state_1 <= write1;
-						
+
 					when write1 =>
-						s_io_read   <= '0';
 						o_memb_en   <= '1';
 						o_memb_we   <= "1111"; -- WRITE result back to ADR
 						o_memb_addr <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
@@ -199,5 +216,8 @@ begin
 			end if;
 		end if;
 	end process;
+
+	o_memb_din <= o_memb_din_buffer;
+
 
 end architecture Behavioral;

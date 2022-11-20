@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.265753",
-   "Default View_TopLeft":"-828,8",
+   "Default View_ScaleFactor":"0.259791",
+   "Default View_TopLeft":"-1578,115",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
@@ -15,13 +15,13 @@ preplace inst Ground0 -pg 1 -lvl 1 -x 320 -y 2320 -defaultsOSRD
 preplace inst Ground32 -pg 1 -lvl 1 -x 320 -y 2420 -defaultsOSRD
 preplace inst Ground4 -pg 1 -lvl 1 -x 320 -y 1530 -defaultsOSRD
 preplace inst hash -pg 1 -lvl 1 -x 320 -y 1740 -defaultsOSRD
-preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1590 -y 590 -defaultsOSRD
-preplace inst mayo_negate_0 -pg 1 -lvl 3 -x 1590 -y 290 -defaultsOSRD
 preplace inst TRNG -pg 1 -lvl 6 -x 3640 -y 1950 -defaultsOSRD
-preplace inst MAYO_KEYGEN_FSM_0 -pg 1 -lvl 7 -x 4190 -y 2110 -defaultsOSRD
 preplace inst mayo_reduce_0 -pg 1 -lvl 1 -x 320 -y 2060 -defaultsOSRD
 preplace inst mayo_sample_oil_space_0 -pg 1 -lvl 5 -x 3160 -y 1900 -defaultsOSRD
+preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1590 -y 590 -defaultsOSRD
+preplace inst MAYO_KEYGEN_FSM_0 -pg 1 -lvl 7 -x 4190 -y 2110 -defaultsOSRD
 preplace inst mayo_linear_combinat_0 -pg 1 -lvl 3 -x 1590 -y 1060 -defaultsOSRD
+preplace inst mayo_negate_0 -pg 1 -lvl 3 -x 1590 -y 290 -defaultsOSRD
 preplace netloc BRAM0_dout_1 1 0 5 90 2240 NJ 2240 NJ 2240 NJ 2240 2840
 preplace netloc Ground0_dout 1 1 6 660 1460 NJ 1460 2120 1460 NJ 1460 NJ 1460 3840J
 preplace netloc Ground32_dout 1 1 6 690 1470 NJ 1470 2110 1470 NJ 1470 NJ 1470 3820

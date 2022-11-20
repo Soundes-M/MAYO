@@ -113,7 +113,7 @@ begin
 						s_enb   <= '1';
 						s_web   <= "1111";                                  -- WRITE result back to ADR
 						s_addrb <= std_logic_vector(unsigned(s_addrb) + 4); -- Go to next ADR
-						if (s_index > s_max_len) then
+						if (s_index >= s_max_len-1) then
 							t_state <= done;
 						else
 							s_index <= s_index +1;

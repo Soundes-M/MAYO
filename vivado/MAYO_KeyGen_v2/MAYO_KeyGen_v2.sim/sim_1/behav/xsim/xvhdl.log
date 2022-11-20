@@ -1,6 +1,10 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_negate.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'mayo_negate'
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_linear_combination.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'mayo_linear_combination'
 INFO: [VRFC 10-3107] analyzing entity 'DSP_Accum'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.ip_user_files/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_negate_0_0/sim/Mayo_keygen_no_zynq_mayo_negate_0_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Mayo_keygen_no_zynq_mayo_negate_0_0'
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.ip_user_files/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0/sim/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'Mayo_keygen_no_zynq_mayo_linear_combinat_0_0'
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.ip_user_files/bd/Mayo_keygen_no_zynq/sim/Mayo_keygen_no_zynq.vhd" into library xil_defaultlib

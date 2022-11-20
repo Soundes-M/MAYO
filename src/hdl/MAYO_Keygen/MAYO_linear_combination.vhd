@@ -108,7 +108,7 @@ entity mayo_linear_combination is
 end entity mayo_linear_combination;
 architecture Behavioral of mayo_linear_combination is
 
-	type state is (idle, read1, read2,read3, done);
+	type state is (idle, read1, read2, read3, read4, done);
 	signal t_state : state := idle;
 	type state1 is (idle, main1, write1, done);
 	signal t_state1 : state1 := idle;
@@ -192,6 +192,9 @@ begin
 			else
 				case (t_state) is
 					when idle =>
+						c <= 0;
+						i <= 0;
+						j <= 0;
 						if (i_enable ='1') then
 							-- READ Params
 							s_vecs_addr   <= i_vec_addr;
@@ -201,9 +204,6 @@ begin
 							t_state       <= read1;
 							o_control0a   <= '1';
 							o_control1a   <= '1';
-							c             <= 0;
-							i             <= 0;
-							j             <= 0;
 						else
 							t_state     <= idle;
 							o_control0a <= '0';
@@ -221,25 +221,29 @@ begin
 						t_state         <= read3;
 
 					when read3 => -- BRAM Extra Delay
-						t_state      <= read2;
+						t_state      <= read4;
 						s_main       <= '0'; -- DSPs should not take this data in ! 
 						s_acc_change <= '0';
 
+					when read4 =>
+						t_state <= read2;
 
-					when read2 =>                    -- Also update ADR
-						s_coeffs <= bram0a.i.i_dout; -- 32 Bits (1 Byte/clk)
+					when read2 =>                  -- Also update ADR
+						s_vecs <= bram1a.i.i_dout; -- 32 Bits (4 Byte/clk)
+
 						if (c = 0) then
-							s_vecs <= bram1a.i.i_dout; -- 32 Bits (4 Byte/clk)
+							s_coeffs <= bram0a.i.i_dout; -- 32 Bits (1 Byte/clk)
 						end if;
+
 						s_main <= '1'; -- Start lin_comb
 
-						if(i > (unsigned(s_len)-1)) then -- i Loop done --> Reset i
+						if(i >= (unsigned(s_len)-1)) then -- i Loop done --> Reset i
 							bram0a.o.o_addr <= s_coeffs_addr;
 							bram1a.o.o_addr <= std_logic_vector(unsigned(s_vecs_addr)+j+4); -- [ j+4, loop is inverted and 4j based]
 							i               <= 0 ;
 							s_acc_change    <= '1'; -- Change acc buffer
 
-							if (j > (M -1)) then --j loop done
+							if (j >= (M -1)) then --j loop done
 								t_state <= done; -- END; no more input data
 							else
 								j       <= j +4 ;
@@ -263,6 +267,7 @@ begin
 						end if;
 
 					when done => -- Done reading
+						s_acc_change  <= '0';
 						s_main        <= '0';
 						bram0a.o.o_en <= '0';
 						bram1a.o.o_en <= '0';
@@ -347,7 +352,9 @@ begin
 						o_done        <= '1';
 						bram0b.o.o_en <= '0';
 						bram0b.o.o_we <= "0000";
-						t_state       <= idle;
+						s_out_ctr     <= 0;
+						first         <= '0';
+						t_state1      <= idle;
 					when others =>
 						null;
 				end case;

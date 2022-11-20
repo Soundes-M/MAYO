@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sat Nov 12 15:22:16 2022
+-- Last update : Sat Nov 19 22:12:08 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -247,11 +247,11 @@ BEGIN
               index           <= index + 4;
 
               if (index < 16) then
-                bram0b.o.o_en   <= '1';
-                bram1a.o.o_en   <= '1';
+                bram0b.o.o_en <= '1';
+                bram1a.o.o_en <= '1';
 
-                bram0b.o.o_din  <= i_trng_data;
-                bram1a.o.o_din  <= i_trng_data;
+                bram0b.o.o_din <= i_trng_data;
+                bram1a.o.o_din <= i_trng_data;
 
                 bram0b.o.o_addr <= std_logic_vector(to_unsigned(PK_BASE_ADR+index,PORT_WIDTH));
                 bram1a.o.o_addr <= std_logic_vector(to_unsigned(P1_BASE_ADR+index,PORT_WIDTH));
@@ -270,13 +270,13 @@ BEGIN
           when rand6 => -- copy pk seed to big bram (will be overwritten)
             trng.o.r <= '0';
 
-            bram0a.o.o_en <= '0';
-            bram0b.o.o_en <= '0';
-            bram1a.o.o_en <= '0';
-            bram0b.o.o_we <= "0000";
-            bram1a.o.o_we <= "0000";
-            index         <= 0;
-            state         <= expand0;
+            bram0a.o.o_en  <= '0';
+            bram0b.o.o_en  <= '0';
+            bram1a.o.o_en  <= '0';
+            bram0b.o.o_we  <= "0000";
+            bram1a.o.o_we  <= "0000";
+            index          <= 0;
+            state          <= expand0;
             s_hash_mem_sel <= '1';
 
           --------------------------------------------------------------------
@@ -334,7 +334,7 @@ BEGIN
 
           when sample2 =>
             if (i_sam_done = '1') then
-              state          <= compute0;
+              state <= compute0;
             end if ;
 
             --------------------------------------------------------------------
@@ -350,12 +350,14 @@ BEGIN
             -- Lin Combination
             s_p1_index        <= P1_BASE_ADR;        -- fix 
             s_oil_space_index <= OIL_SPACE_BASE_ADR; -- fix 
+            p1_counter        <= 0 ;
 
             -- Add vec
             s_v1_index <= TEMP_BASE_ADR;
             state      <= compute1 ;
 
-          when compute1 =>
+
+          when compute1 => ----------------------------------------------------- I CHECk
             if (i < N-O) then
               s_p1_index <= P1_BASE_ADR + p1_counter*M;
               state      <= compute2 ;
@@ -363,14 +365,14 @@ BEGIN
               state <= compute8;
             end if;
 
-          when compute2 =>
+          when compute2 => ----------------------------------------------------- J CHECK
             if (j < O) then
               state <= compute3;
             else
               state <= compute7;
             end if;
 
-          when compute3 =>
+          when compute3 => -- Start lin comb
             o_lin_vec_addr    <= std_logic_vector(to_unsigned(s_p1_index,PORT_WIDTH));
             o_lin_coeffs_addr <= std_logic_vector(to_unsigned(s_oil_space_index,PORT_WIDTH));
             o_lin_len         <= std_logic_vector(to_unsigned(N-O-i,PORT_WIDTH));
@@ -391,7 +393,7 @@ BEGIN
             o_add_enable   <= '1';
             state          <= compute6;
 
-          when compute6 =>
+          when compute6 => ----------------------------------------------------- END J 
             o_add_enable <= '0';
             if (i_add_done = '1') then
               j                 <= j+1;
@@ -400,7 +402,7 @@ BEGIN
               state             <= compute2;
             end if;
 
-          when compute7 =>
+          when compute7 => ----------------------------------------------------- END I
             p1_counter <= p1_counter + (N-O-i);
             -- update ctrs for next round
             s_oil_space_index <= OIL_SPACE_BASE_ADR + i+1;
