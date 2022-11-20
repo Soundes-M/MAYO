@@ -36,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log mayo_sample_oil_space.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_sample_oil_space.tcl
+EAStep vivado -log Mayo_keygen_no_zynq_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_keygen_no_zynq_wrapper.tcl

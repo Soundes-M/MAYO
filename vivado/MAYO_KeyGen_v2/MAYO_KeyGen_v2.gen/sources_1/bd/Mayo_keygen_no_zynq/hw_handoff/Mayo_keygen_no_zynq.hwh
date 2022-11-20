@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Nov 20 02:02:57 2022" VIVADOVERSION="2020.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Nov 20 17:28:28 2022" VIVADOVERSION="2020.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.4" DEVICE="7z020" NAME="Mayo_keygen_no_zynq" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -13,10 +13,10 @@
         <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="RST"/>
         <CONNECTION INSTANCE="mayo_reduce_0" PORT="rst"/>
         <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="rst"/>
-        <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="rst"/>
-        <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="RESET"/>
         <CONNECTION INSTANCE="mayo_linear_combinat_0" PORT="rst"/>
         <CONNECTION INSTANCE="mayo_negate_0" PORT="rst"/>
+        <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="rst"/>
+        <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="RESET"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="clk" SIGIS="undef" SIGNAME="External_Ports_clk">
@@ -28,10 +28,10 @@
         <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="CLK_I"/>
         <CONNECTION INSTANCE="mayo_reduce_0" PORT="i_clk"/>
         <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="i_clk"/>
-        <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="i_clk"/>
-        <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="CLK"/>
         <CONNECTION INSTANCE="mayo_linear_combinat_0" PORT="i_clk"/>
         <CONNECTION INSTANCE="mayo_negate_0" PORT="i_clk"/>
+        <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="i_clk"/>
+        <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="CLK"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="enable" SIGIS="undef" SIGNAME="External_Ports_enable">
@@ -269,32 +269,36 @@
             <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="BRAM_add_din" RIGHT="0" SIGIS="undef" SIGNAME="Ground32_dout">
+        <PORT DIR="I" LEFT="31" NAME="BRAM_add_din" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_din">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Ground32" PORT="dout"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM1_din"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="BRAM_add_addr" RIGHT="0" SIGIS="undef" SIGNAME="Ground32_dout">
+        <PORT DIR="I" LEFT="31" NAME="BRAM_add_addr" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Ground32" PORT="dout"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM1_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="BRAM_add_en" SIGIS="undef" SIGNAME="Ground0_dout">
+        <PORT DIR="I" NAME="BRAM_add_en" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Ground0" PORT="dout"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM1_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="BRAM_add_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Ground0_dout">
+        <PORT DIR="I" NAME="BRAM_add_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_rst">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Ground0" PORT="dout"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM1_rst"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="BRAM_add_we" RIGHT="0" SIGIS="undef" SIGNAME="Ground4_dout">
+        <PORT DIR="I" LEFT="3" NAME="BRAM_add_we" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Ground4" PORT="dout"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM1_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="BRAM_add_dout" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="BRAM_add_dout" RIGHT="0" SIGIS="undef" SIGNAME="BRAM_big_arbit_brama1_BRAM_add_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_BRAM1_dout"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="31" NAME="BRAM_lin_din" RIGHT="0" SIGIS="undef" SIGNAME="mayo_linear_combinat_0_o_mem1a_din">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mayo_linear_combinat_0" PORT="o_mem1a_din"/>
@@ -493,9 +497,9 @@
             <CONNECTION INSTANCE="BRAM_big_BIG_BRAM512K" PORT="douta"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="add_control" SIGIS="undef" SIGNAME="Ground0_dout">
+        <PORT DIR="I" NAME="add_control" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_control">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Ground0" PORT="dout"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM1_control"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="lin_control" SIGIS="undef" SIGNAME="mayo_linear_combinat_0_o_control1a">
@@ -808,34 +812,34 @@
             <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="BRAM_add_din" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_mema_din">
+        <PORT DIR="I" LEFT="31" NAME="BRAM_add_din" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_din">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_mema_din"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM0_din"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="BRAM_add_addr" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_mema_addr">
+        <PORT DIR="I" LEFT="31" NAME="BRAM_add_addr" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_mema_addr"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM0_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="BRAM_add_en" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_mema_en">
+        <PORT DIR="I" NAME="BRAM_add_en" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_mema_en"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM0_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="BRAM_add_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mayo_add_vectors_0_o_mema_rst">
+        <PORT DIR="I" NAME="BRAM_add_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_rst">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_mema_rst"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM0_rst"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="BRAM_add_we" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_mema_we">
+        <PORT DIR="I" LEFT="3" NAME="BRAM_add_we" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_mema_we"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM0_we"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="BRAM_add_dout" RIGHT="0" SIGIS="undef" SIGNAME="BRAM_small_arbit_brama0_BRAM_add_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="i_mema_dout"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_BRAM0_dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="BRAM_lin_din" RIGHT="0" SIGIS="undef" SIGNAME="mayo_linear_combinat_0_o_mem0a_din">
@@ -1044,9 +1048,9 @@
             <CONNECTION INSTANCE="BRAM_small_Small_BRAM8k" PORT="douta"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="add_control" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_controla">
+        <PORT DIR="I" NAME="add_control" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_control">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_controla"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_BRAM0_control"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="lin_control" SIGIS="undef" SIGNAME="mayo_linear_combinat_0_o_control0a">
@@ -1094,36 +1098,32 @@
             <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="BRAM_add_din" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_memb_din">
+        <PORT DIR="I" LEFT="31" NAME="BRAM_add_din" RIGHT="0" SIGIS="undef" SIGNAME="Ground32_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_memb_din"/>
+            <CONNECTION INSTANCE="Ground32" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="BRAM_add_addr" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_memb_addr">
+        <PORT DIR="I" LEFT="31" NAME="BRAM_add_addr" RIGHT="0" SIGIS="undef" SIGNAME="Ground32_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_memb_addr"/>
+            <CONNECTION INSTANCE="Ground32" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="BRAM_add_en" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_memb_en">
+        <PORT DIR="I" NAME="BRAM_add_en" SIGIS="undef" SIGNAME="Ground0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_memb_en"/>
+            <CONNECTION INSTANCE="Ground0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="BRAM_add_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mayo_add_vectors_0_o_memb_rst">
+        <PORT DIR="I" NAME="BRAM_add_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Ground0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_memb_rst"/>
+            <CONNECTION INSTANCE="Ground0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="BRAM_add_we" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_memb_we">
+        <PORT DIR="I" LEFT="3" NAME="BRAM_add_we" RIGHT="0" SIGIS="undef" SIGNAME="Ground4_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_memb_we"/>
+            <CONNECTION INSTANCE="Ground4" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="BRAM_add_dout" RIGHT="0" SIGIS="undef" SIGNAME="BRAM_small_arbit_bramb0_BRAM_add_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="i_memb_dout"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="BRAM_add_dout" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="I" LEFT="31" NAME="BRAM_lin_din" RIGHT="0" SIGIS="undef" SIGNAME="mayo_linear_combinat_0_o_mem0b_din">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mayo_linear_combinat_0" PORT="o_mem0b_din"/>
@@ -1322,9 +1322,9 @@
             <CONNECTION INSTANCE="BRAM_small_Small_BRAM8k" PORT="doutb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="add_control" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_controlb">
+        <PORT DIR="I" NAME="add_control" SIGIS="undef" SIGNAME="Ground0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_controlb"/>
+            <CONNECTION INSTANCE="Ground0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="lin_control" SIGIS="undef" SIGNAME="mayo_linear_combinat_0_o_control0b">
@@ -1371,14 +1371,11 @@
       <PORTS>
         <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="Ground0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_en"/>
-            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_rst"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_neg_en"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_neg_rst"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_sam_en"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_sam_rst"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_hash_rst"/>
-            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="add_control"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="neg_control"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="sam_control"/>
             <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_sam_en"/>
@@ -1394,6 +1391,9 @@
             <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="red_control"/>
             <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="hash_control"/>
             <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="sam_control"/>
+            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_en"/>
+            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_rst"/>
+            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="add_control"/>
             <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="i_debug"/>
           </CONNECTIONS>
         </PORT>
@@ -1411,8 +1411,6 @@
       <PORTS>
         <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="Ground32_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_din"/>
-            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_addr"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_neg_din"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_neg_addr"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_sam_din"/>
@@ -1425,6 +1423,8 @@
             <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_red_addr"/>
             <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_hash_din"/>
             <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_hash_addr"/>
+            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_din"/>
+            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_addr"/>
             <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="PUBLIC_KEY_ADDR_I"/>
             <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="SECRET_KEY_ADDR_I"/>
           </CONNECTIONS>
@@ -1443,13 +1443,13 @@
       <PORTS>
         <PORT DIR="O" LEFT="3" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="Ground4_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_sam_we"/>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_neg_we"/>
-            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_we"/>
+            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_sam_we"/>
             <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_sam_we"/>
             <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_neg_we"/>
             <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_red_we"/>
             <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_hash_we"/>
+            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_we"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1646,27 +1646,32 @@
         </PORT>
         <PORT DIR="O" NAME="o_add_enable" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_enable">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="i_enable"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="i_enable"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="o_add_v1_addr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_v1_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="i_v1_addr"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="i_v1_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="o_add_v2_addr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_v2_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="i_v2_addr"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="i_v2_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="o_add_out_addr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_out_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="i_out_addr"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="i_out_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="i_add_done" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_done">
+        <PORT DIR="I" NAME="i_add_done" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_done">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="o_done"/>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_done"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="o_add_bram_sel" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_bram_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="bram_sel"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="o_neg_enable" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_neg_enable">
@@ -1953,6 +1958,346 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/add_vectors/mayo_add_vectors_0" HWVERSION="1.0" INSTANCE="add_vectors_mayo_add_vectors_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mayo_add_vectors" VLNV="xilinx.com:module_ref:mayo_add_vectors:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="Mayo_keygen_no_zynq_mayo_add_vectors_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="i_clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_enable" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_enable">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_add_enable"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_v1_addr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_v1_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_add_v1_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_v2_addr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_v2_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_add_v2_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_out_addr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_out_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_add_out_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_done" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_done">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="i_add_done"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_mema_dout" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_mema_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_mema_dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_mema_din" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_mema_din">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_mema_din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_mema_addr" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_mema_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_mema_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_mema_en" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_mema_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_mema_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_mema_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="add_vectors_mayo_add_vectors_0_o_mema_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_mema_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="o_mema_we" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_mema_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_mema_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_memb_dout" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_memb_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_memb_dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_memb_din" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memb_din">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_memb_din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_memb_addr" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memb_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_memb_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_memb_en" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memb_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_memb_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_memb_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="add_vectors_mayo_add_vectors_0_o_memb_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_memb_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="o_memb_we" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memb_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_memb_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_memc_dout" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_memc_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="o_memc_dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_memc_din" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memc_din">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_memc_din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_memc_addr" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memc_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_memc_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_memc_en" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memc_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_memc_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_memc_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="add_vectors_mayo_add_vectors_0_o_memc_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_memc_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="o_memc_we" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memc_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_memc_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_controla" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_controla">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_controla"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_controlb" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_controlb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_controlb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_controlc" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_controlc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_arb_0" PORT="i_controlc"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/add_vectors/mayo_add_vectors_arb_0" HWVERSION="1.0" INSTANCE="add_vectors_mayo_add_vectors_arb_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mayo_add_vectors_arbiter" VLNV="xilinx.com:module_ref:mayo_add_vectors_arbiter:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="bram_sel" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_bram_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_add_bram_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_mema_dout" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_mema_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="i_mema_dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_mema_din" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_mema_din">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_mema_din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_mema_addr" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_mema_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_mema_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_mema_en" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_mema_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_mema_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_mema_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="add_vectors_mayo_add_vectors_0_o_mema_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_mema_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="i_mema_we" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_mema_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_mema_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_memb_dout" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_memb_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="i_memb_dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_memb_din" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memb_din">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_memb_din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_memb_addr" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memb_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_memb_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_memb_en" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memb_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_memb_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_memb_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="add_vectors_mayo_add_vectors_0_o_memb_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_memb_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="i_memb_we" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memb_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_memb_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_memc_dout" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_memc_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="i_memc_dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_memc_din" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memc_din">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_memc_din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_memc_addr" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memc_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_memc_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_memc_en" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memc_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_memc_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_memc_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="add_vectors_mayo_add_vectors_0_o_memc_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_memc_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="i_memc_we" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_memc_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_memc_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_controla" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_controla">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_controla"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_controlb" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_controlb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_controlb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="i_controlc" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_0_o_controlc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="o_controlc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_BRAM0_dout" RIGHT="0" SIGIS="undef" SIGNAME="BRAM_small_arbit_brama0_BRAM_add_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_BRAM0_din" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_din">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_BRAM0_addr" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_BRAM0_en" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_BRAM0_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="o_BRAM0_we" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_BRAM0_control" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM0_control">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="add_control"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_BRAM1_dout" RIGHT="0" SIGIS="undef" SIGNAME="BRAM_big_arbit_brama1_BRAM_add_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_BRAM1_din" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_din">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_BRAM1_addr" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_BRAM1_en" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_BRAM1_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="o_BRAM1_we" RIGHT="0" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="BRAM_add_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_BRAM1_control" SIGIS="undef" SIGNAME="add_vectors_mayo_add_vectors_arb_0_o_BRAM1_control">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="add_control"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="6" FULLNAME="/hash/MAYO_SHAKE_1" HWVERSION="1.5" INSTANCE="hash_MAYO_SHAKE_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="MAYO_SHAKE" VLNV="user.org:user:MAYO_SHAKE:1.5">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -2141,121 +2486,6 @@
         <PORT DIR="O" NAME="BRAM1_control" SIGIS="undef" SIGNAME="hash_mayo_hash_bram_arbit_0_BRAM1_control">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BRAM_big_arbit_brama1" PORT="hash_control"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/mayo_add_vectors_0" HWVERSION="1.0" INSTANCE="mayo_add_vectors_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mayo_add_vectors" VLNV="xilinx.com:module_ref:mayo_add_vectors:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="Mayo_keygen_no_zynq_mayo_add_vectors_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="i_clk" SIGIS="clk" SIGNAME="External_Ports_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_enable" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_enable">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_add_enable"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_v1_addr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_v1_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_add_v1_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_v2_addr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_v2_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_add_v2_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_out_addr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_add_out_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_add_out_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_done" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_done">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="i_add_done"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_mema_dout" RIGHT="0" SIGIS="undef" SIGNAME="BRAM_small_arbit_brama0_BRAM_add_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_mema_din" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_mema_din">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_din"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_mema_addr" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_mema_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_mema_en" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_mema_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_mema_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mayo_add_vectors_0_o_mema_rst">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_rst"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="o_mema_we" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_mema_we">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_add_we"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_memb_dout" RIGHT="0" SIGIS="undef" SIGNAME="BRAM_small_arbit_bramb0_BRAM_add_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_memb_din" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_memb_din">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_din"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_memb_addr" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_memb_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_memb_en" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_memb_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_memb_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="mayo_add_vectors_0_o_memb_rst">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_rst"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="o_memb_we" RIGHT="0" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_memb_we">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_add_we"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_controla" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_controla">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="add_control"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_controlb" SIGIS="undef" SIGNAME="mayo_add_vectors_0_o_controlb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="add_control"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

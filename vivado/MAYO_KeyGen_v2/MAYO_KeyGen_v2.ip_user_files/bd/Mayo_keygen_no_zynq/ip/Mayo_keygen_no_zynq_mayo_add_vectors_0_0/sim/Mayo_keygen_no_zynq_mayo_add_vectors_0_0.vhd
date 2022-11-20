@@ -74,8 +74,15 @@ ENTITY Mayo_keygen_no_zynq_mayo_add_vectors_0_0 IS
     o_memb_en : OUT STD_LOGIC;
     o_memb_rst : OUT STD_LOGIC;
     o_memb_we : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    i_memc_dout : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    o_memc_din : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    o_memc_addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    o_memc_en : OUT STD_LOGIC;
+    o_memc_rst : OUT STD_LOGIC;
+    o_memc_we : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
     o_controla : OUT STD_LOGIC;
-    o_controlb : OUT STD_LOGIC
+    o_controlb : OUT STD_LOGIC;
+    o_controlc : OUT STD_LOGIC
   );
 END Mayo_keygen_no_zynq_mayo_add_vectors_0_0;
 
@@ -103,14 +110,23 @@ ARCHITECTURE Mayo_keygen_no_zynq_mayo_add_vectors_0_0_arch OF Mayo_keygen_no_zyn
       o_memb_en : OUT STD_LOGIC;
       o_memb_rst : OUT STD_LOGIC;
       o_memb_we : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+      i_memc_dout : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      o_memc_din : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      o_memc_addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      o_memc_en : OUT STD_LOGIC;
+      o_memc_rst : OUT STD_LOGIC;
+      o_memc_we : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
       o_controla : OUT STD_LOGIC;
-      o_controlb : OUT STD_LOGIC
+      o_controlb : OUT STD_LOGIC;
+      o_controlc : OUT STD_LOGIC
     );
   END COMPONENT mayo_add_vectors;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF Mayo_keygen_no_zynq_mayo_add_vectors_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF o_memc_rst: SIGNAL IS "XIL_INTERFACENAME o_memc_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF o_memc_rst: SIGNAL IS "xilinx.com:signal:reset:1.0 o_memc_rst RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF o_memb_rst: SIGNAL IS "XIL_INTERFACENAME o_memb_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF o_memb_rst: SIGNAL IS "xilinx.com:signal:reset:1.0 o_memb_rst RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF o_mema_rst: SIGNAL IS "XIL_INTERFACENAME o_mema_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
@@ -141,7 +157,14 @@ BEGIN
       o_memb_en => o_memb_en,
       o_memb_rst => o_memb_rst,
       o_memb_we => o_memb_we,
+      i_memc_dout => i_memc_dout,
+      o_memc_din => o_memc_din,
+      o_memc_addr => o_memc_addr,
+      o_memc_en => o_memc_en,
+      o_memc_rst => o_memc_rst,
+      o_memc_we => o_memc_we,
       o_controla => o_controla,
-      o_controlb => o_controlb
+      o_controlb => o_controlb,
+      o_controlc => o_controlc
     );
 END Mayo_keygen_no_zynq_mayo_add_vectors_0_0_arch;

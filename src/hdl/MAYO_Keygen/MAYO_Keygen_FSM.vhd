@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sat Nov 19 22:12:08 2022
+-- Last update : Sun Nov 20 17:28:07 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -86,6 +86,7 @@ ENTITY MAYO_KEYGEN_FSM IS
     o_add_v2_addr  : out std_logic_vector(PORT_WIDTH-1 downto 0);
     o_add_out_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
     i_add_done     : in  std_logic;
+    o_add_bram_sel : out std_logic_vector(1 downto 0);
 
     -- NEGATE 
     o_neg_enable : out std_logic;
@@ -126,7 +127,7 @@ END ENTITY MAYO_KEYGEN_FSM;
 
 ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
   TYPE STATES IS (idle, rand0, rand1, rand2, rand3, rand4, rand5, rand6, expand0, expand1, expand2, reduce0, reduce1, reduce2, transpose0, transpose1, transpose2,
-      transpose3, transpose4, transpose5, transpose6, negate0, negate1, negate2, sample0, sample1, sample2,
+      transpose3, transpose4, transpose5, transpose6, transpose7, negate0, negate1, negate2, sample0, sample1, sample2,
       compute0, compute1, compute2, compute3, compute4, compute5, compute6, compute7, compute8, compute9, compute10, compute11,
       compute12, compute13, compute14, compute15, compute16, compute17, compute18, compute19, compute20, compute21, compute22, compute23,
       done, wait_clear);
@@ -175,7 +176,7 @@ BEGIN
 
   o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
   o_mem0b_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
-  o_mem1a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = transpose3 or state = transpose4 or state = transpose5) else '0';
+  o_mem1a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = transpose3 or state = transpose4 or state = transpose5 or state = transpose7) else '0';
 
   -- sync compute!
   KEYGEN : PROCESS (CLK) IS
@@ -204,6 +205,7 @@ BEGIN
         s_oil_space2_index <= 0;
         s_hash_mem_sel     <= '1';
         o_red_bram_sel     <= '0';
+        o_add_bram_sel     <= "00";
 
       else
         case (state) is
@@ -390,6 +392,7 @@ BEGIN
             o_add_v1_addr  <= std_logic_vector(to_unsigned(s_v1_index,PORT_WIDTH));
             o_add_v2_addr  <= std_logic_vector(to_unsigned(P2VEC_BASE_ADR,PORT_WIDTH));
             o_add_out_addr <= std_logic_vector(to_unsigned(s_v1_index,PORT_WIDTH));
+            o_add_bram_sel <= "00";
             o_add_enable   <= '1';
             state          <= compute6;
 
@@ -417,9 +420,10 @@ BEGIN
             j <= 0;
 
             -- Add vec
-            s_v1_index <= TEMP_BASE_ADR;
-            s_p1_index <= P1_BASE_ADR;
-            state      <= compute9 ;
+            s_v1_index     <= TEMP_BASE_ADR;
+            s_p1_index     <= P1_BASE_ADR;
+            o_add_bram_sel <= "01";
+            state          <= compute9 ;
 
           when compute9 =>
             if (i < N-O) then
@@ -490,7 +494,10 @@ BEGIN
             bram1a.o.o_addr <= std_logic_vector(to_unsigned(s_src_index + copy_index, PORT_WIDTH));
             bram1a.o.o_we   <= "0000";
             bram1a.o.o_en   <= '1';
-            state           <= transpose4;
+            state           <= transpose7;
+
+          when transpose7 =>
+            state <= transpose4;
 
           when transpose4 => -- writeback
             bram1a.o.o_addr <= std_logic_vector(to_unsigned(s_dest_index + copy_index,PORT_WIDTH));
@@ -499,9 +506,9 @@ BEGIN
             copy_index      <= copy_index +4;
             state           <= transpose5;
 
-          when transpose5 => --write 
-            if (copy_index < 60) then
-              state <= transpose3; -- keep copying
+          when transpose5 =>         --write 
+            if (copy_index < M) then -- keep copying copying M Bytes!
+              state <= transpose3;
             else
               bram1a.o.o_we <= "0000";
               bram1a.o.o_en <= '0';
@@ -522,6 +529,7 @@ BEGIN
             s_p1_index        <= TEMPT_BASE_ADR;
             s_oil_space_index <= OIL_SPACE_BASE_ADR;
             s_p2_index        <= PK_BASE_ADR + SEED_BYTES; -- PK_P2
+            o_add_bram_sel    <= "10";
             state             <= compute23;
 
           when compute23 =>

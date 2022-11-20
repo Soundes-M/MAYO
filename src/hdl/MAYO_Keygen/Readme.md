@@ -32,8 +32,12 @@ Out -> BRAM0B
 
 **Requires Configuration*
 
-0 : v1/2 Ports to BRAM0 (A && B)
+00 : v1 : BRAM1A, v2 : BRAM0A, out : BRAM1A _(Can be accelerated)_
 
-1 : Portv1: BRAM0A / Portv2: BRAM1A
+01 : v1 : BRAM1A, v2 : BRAM1A, out : BRAM1A
+
+10 : v1 : BRAM0A, v2 : BRAM0A, out : BRAM0A _(Can be accelerated)_
+
+11 : RESERVED
 
 

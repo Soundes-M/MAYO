@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
---Date        : Sun Nov 20 02:02:56 2022
+--Date        : Sun Nov 20 17:28:28 2022
 --Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 --Command     : generate_target Mayo_keygen_no_zynq.bd
 --Design      : Mayo_keygen_no_zynq
@@ -13,8 +13,14 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity BRAM_big_imp_13MOJ7Q is
   port (
+    BRAM_add_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_add_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_add_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_add_en : in STD_LOGIC;
     BRAM_add_rst : in STD_LOGIC;
+    BRAM_add_rst1 : in STD_LOGIC;
     BRAM_add_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_add_we1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     BRAM_hash_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -39,6 +45,7 @@ entity BRAM_big_imp_13MOJ7Q is
     BRAM_red_en : in STD_LOGIC;
     BRAM_red_rst : in STD_LOGIC;
     BRAM_red_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    add_control : in STD_LOGIC;
     bram_control : in STD_LOGIC;
     clka : in STD_LOGIC;
     hash_control : in STD_LOGIC;
@@ -122,7 +129,12 @@ architecture STRUCTURE of BRAM_big_imp_13MOJ7Q is
   );
   end component Mayo_keygen_no_zynq_arbit_brama1_0;
   signal BIG_BRAM512K_douta : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_add_addr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_add_din_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_add_en_1 : STD_LOGIC;
+  signal BRAM_add_rst1_1 : STD_LOGIC;
   signal BRAM_add_rst_1 : STD_LOGIC;
+  signal BRAM_add_we1_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal BRAM_add_we_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal BRAM_key_addr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_key_din_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -140,6 +152,8 @@ architecture STRUCTURE of BRAM_big_imp_13MOJ7Q is
   signal MAYO_SHAKE_1_BRAMA_en : STD_LOGIC;
   signal MAYO_SHAKE_1_BRAMA_we : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal MAYO_SHAKE_1_o_control : STD_LOGIC;
+  signal add_control_1 : STD_LOGIC;
+  signal arbit_brama1_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_din : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_en : STD_LOGIC;
@@ -160,11 +174,16 @@ architecture STRUCTURE of BRAM_big_imp_13MOJ7Q is
   signal rst_ps7_0_100M_peripheral_aresetn : STD_LOGIC;
   signal NLW_BIG_BRAM512K_rsta_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_arbit_brama1_BRAM_rst_UNCONNECTED : STD_LOGIC;
-  signal NLW_arbit_brama1_BRAM_add_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_arbit_brama1_BRAM_neg_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_arbit_brama1_BRAM_sam_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
 begin
+  BRAM_add_addr_1(31 downto 0) <= BRAM_add_addr(31 downto 0);
+  BRAM_add_din_1(31 downto 0) <= BRAM_add_din(31 downto 0);
+  BRAM_add_dout(31 downto 0) <= arbit_brama1_BRAM_add_dout(31 downto 0);
+  BRAM_add_en_1 <= BRAM_add_en;
+  BRAM_add_rst1_1 <= BRAM_add_rst1;
   BRAM_add_rst_1 <= BRAM_add_rst;
+  BRAM_add_we1_1(3 downto 0) <= BRAM_add_we1(3 downto 0);
   BRAM_add_we_1(3 downto 0) <= BRAM_add_we(3 downto 0);
   BRAM_hash_dout(31 downto 0) <= arbit_brama1_BRAM_hash_dout(31 downto 0);
   BRAM_key_addr_1(31 downto 0) <= BRAM_key_addr(31 downto 0);
@@ -186,6 +205,7 @@ begin
   MAYO_SHAKE_1_BRAMA_en <= BRAM_hash_en;
   MAYO_SHAKE_1_BRAMA_we(3 downto 0) <= BRAM_hash_we(3 downto 0);
   MAYO_SHAKE_1_o_control <= hash_control;
+  add_control_1 <= add_control;
   bram_control_1 <= bram_control;
   mayo_linear_combinat_0_o_control1a <= lin_control;
   mayo_linear_combinat_0_o_mem1a_addr(31 downto 0) <= BRAM_lin_addr(31 downto 0);
@@ -209,12 +229,12 @@ BIG_BRAM512K: component Mayo_keygen_no_zynq_BIG_BRAM512K_0
     );
 arbit_brama1: component Mayo_keygen_no_zynq_arbit_brama1_0
      port map (
-      BRAM_add_addr(31 downto 0) => BRAM_neg_din_1(31 downto 0),
-      BRAM_add_din(31 downto 0) => BRAM_neg_din_1(31 downto 0),
-      BRAM_add_dout(31 downto 0) => NLW_arbit_brama1_BRAM_add_dout_UNCONNECTED(31 downto 0),
-      BRAM_add_en => BRAM_add_rst_1,
-      BRAM_add_rst => BRAM_add_rst_1,
-      BRAM_add_we(3 downto 0) => BRAM_add_we_1(3 downto 0),
+      BRAM_add_addr(31 downto 0) => BRAM_add_addr_1(31 downto 0),
+      BRAM_add_din(31 downto 0) => BRAM_add_din_1(31 downto 0),
+      BRAM_add_dout(31 downto 0) => arbit_brama1_BRAM_add_dout(31 downto 0),
+      BRAM_add_en => BRAM_add_en_1,
+      BRAM_add_rst => BRAM_add_rst1_1,
+      BRAM_add_we(3 downto 0) => BRAM_add_we1_1(3 downto 0),
       BRAM_addr(31 downto 0) => arbit_brama1_BRAM_addr(31 downto 0),
       BRAM_din(31 downto 0) => arbit_brama1_BRAM_din(31 downto 0),
       BRAM_dout(31 downto 0) => BIG_BRAM512K_douta(31 downto 0),
@@ -257,7 +277,7 @@ arbit_brama1: component Mayo_keygen_no_zynq_arbit_brama1_0
       BRAM_sam_rst => BRAM_add_rst_1,
       BRAM_sam_we(3 downto 0) => BRAM_add_we_1(3 downto 0),
       BRAM_we(3 downto 0) => arbit_brama1_BRAM_we(3 downto 0),
-      add_control => BRAM_add_rst_1,
+      add_control => add_control_1,
       bram_control => bram_control_1,
       hash_control => MAYO_SHAKE_1_o_control,
       lin_control => mayo_linear_combinat_0_o_control1a,
@@ -274,17 +294,11 @@ use UNISIM.VCOMPONENTS.ALL;
 entity BRAM_small_imp_16BUBJ2 is
   port (
     BRAM_add_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_add_addr1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_add_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_add_din1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_add_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_add_dout1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_add_en : in STD_LOGIC;
-    BRAM_add_en1 : in STD_LOGIC;
     BRAM_add_rst : in STD_LOGIC;
-    BRAM_add_rst1 : in STD_LOGIC;
     BRAM_add_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    BRAM_add_we1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     BRAM_hash_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -336,7 +350,6 @@ entity BRAM_small_imp_16BUBJ2 is
     Zero_32 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     Zero_4 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     add_control : in STD_LOGIC;
-    add_control1 : in STD_LOGIC;
     bram_control : in STD_LOGIC;
     bram_control1 : in STD_LOGIC;
     clkb : in STD_LOGIC;
@@ -532,18 +545,11 @@ architecture STRUCTURE of BRAM_small_imp_16BUBJ2 is
   signal bram_control1_1 : STD_LOGIC;
   signal hash_control_1 : STD_LOGIC;
   signal mayo_add_vectors_0_o_controla : STD_LOGIC;
-  signal mayo_add_vectors_0_o_controlb : STD_LOGIC;
   signal mayo_add_vectors_0_o_mema_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_add_vectors_0_o_mema_din : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_add_vectors_0_o_mema_en : STD_LOGIC;
   signal mayo_add_vectors_0_o_mema_rst : STD_LOGIC;
   signal mayo_add_vectors_0_o_mema_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal mayo_add_vectors_0_o_memb_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_add_vectors_0_o_memb_din : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_add_vectors_0_o_memb_en : STD_LOGIC;
-  signal mayo_add_vectors_0_o_memb_rst : STD_LOGIC;
-  signal mayo_add_vectors_0_o_memb_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal mayo_bram_arbiter_1_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_bram_arbiter_1_BRAM_lin_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_linear_combinat_0_o_control0a : STD_LOGIC;
   signal mayo_linear_combinat_0_o_control0b : STD_LOGIC;
@@ -580,6 +586,7 @@ architecture STRUCTURE of BRAM_small_imp_16BUBJ2 is
   signal NLW_Small_BRAM8k_rsta_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_Small_BRAM8k_rstb_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_arbit_brama0_BRAM_sam_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_arbit_bramb0_BRAM_add_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_arbit_bramb0_BRAM_hash_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_arbit_bramb0_BRAM_neg_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_arbit_bramb0_BRAM_red_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -591,7 +598,6 @@ begin
   AXI_LITE_Mayo_Keygen_0_o_mem0a_rst <= BRAM_key_rst;
   AXI_LITE_Mayo_Keygen_0_o_mem0a_we(3 downto 0) <= BRAM_key_we(3 downto 0);
   BRAM_add_dout(31 downto 0) <= arbit_brama0_BRAM_add_dout(31 downto 0);
-  BRAM_add_dout1(31 downto 0) <= mayo_bram_arbiter_1_BRAM_add_dout(31 downto 0);
   BRAM_hash_addr_1(31 downto 0) <= BRAM_hash_addr(31 downto 0);
   BRAM_hash_din_1(31 downto 0) <= BRAM_hash_din(31 downto 0);
   BRAM_hash_dout(31 downto 0) <= arbit_brama0_BRAM_hash_dout(31 downto 0);
@@ -615,17 +621,11 @@ begin
   bram_control1_1 <= bram_control1;
   hash_control_1 <= hash_control;
   mayo_add_vectors_0_o_controla <= add_control;
-  mayo_add_vectors_0_o_controlb <= add_control1;
   mayo_add_vectors_0_o_mema_addr(31 downto 0) <= BRAM_add_addr(31 downto 0);
   mayo_add_vectors_0_o_mema_din(31 downto 0) <= BRAM_add_din(31 downto 0);
   mayo_add_vectors_0_o_mema_en <= BRAM_add_en;
   mayo_add_vectors_0_o_mema_rst <= BRAM_add_rst;
   mayo_add_vectors_0_o_mema_we(3 downto 0) <= BRAM_add_we(3 downto 0);
-  mayo_add_vectors_0_o_memb_addr(31 downto 0) <= BRAM_add_addr1(31 downto 0);
-  mayo_add_vectors_0_o_memb_din(31 downto 0) <= BRAM_add_din1(31 downto 0);
-  mayo_add_vectors_0_o_memb_en <= BRAM_add_en1;
-  mayo_add_vectors_0_o_memb_rst <= BRAM_add_rst1;
-  mayo_add_vectors_0_o_memb_we(3 downto 0) <= BRAM_add_we1(3 downto 0);
   mayo_linear_combinat_0_o_control0a <= lin_control;
   mayo_linear_combinat_0_o_control0b <= lin_control1;
   mayo_linear_combinat_0_o_mem0a_addr(31 downto 0) <= BRAM_lin_addr(31 downto 0);
@@ -738,12 +738,12 @@ arbit_brama0: component Mayo_keygen_no_zynq_arbit_brama0_0
     );
 arbit_bramb0: component Mayo_keygen_no_zynq_arbit_bramb0_0
      port map (
-      BRAM_add_addr(31 downto 0) => mayo_add_vectors_0_o_memb_addr(31 downto 0),
-      BRAM_add_din(31 downto 0) => mayo_add_vectors_0_o_memb_din(31 downto 0),
-      BRAM_add_dout(31 downto 0) => mayo_bram_arbiter_1_BRAM_add_dout(31 downto 0),
-      BRAM_add_en => mayo_add_vectors_0_o_memb_en,
-      BRAM_add_rst => mayo_add_vectors_0_o_memb_rst,
-      BRAM_add_we(3 downto 0) => mayo_add_vectors_0_o_memb_we(3 downto 0),
+      BRAM_add_addr(31 downto 0) => BRAM_neg_din1_1(31 downto 0),
+      BRAM_add_din(31 downto 0) => BRAM_neg_din1_1(31 downto 0),
+      BRAM_add_dout(31 downto 0) => NLW_arbit_bramb0_BRAM_add_dout_UNCONNECTED(31 downto 0),
+      BRAM_add_en => BRAM_hash_rst_1,
+      BRAM_add_rst => BRAM_hash_rst_1,
+      BRAM_add_we(3 downto 0) => BRAM_hash_we_1(3 downto 0),
       BRAM_addr(31 downto 0) => arbit_bramb0_BRAM_addr(31 downto 0),
       BRAM_din(31 downto 0) => arbit_bramb0_BRAM_din(31 downto 0),
       BRAM_dout(31 downto 0) => Small_BRAM8k_doutb(31 downto 0),
@@ -786,7 +786,7 @@ arbit_bramb0: component Mayo_keygen_no_zynq_arbit_bramb0_0
       BRAM_sam_rst => mayo_sample_oil_space_0_o_memb_rst,
       BRAM_sam_we(3 downto 0) => mayo_sample_oil_space_0_o_memb_we(3 downto 0),
       BRAM_we(3 downto 0) => arbit_bramb0_BRAM_we(3 downto 0),
-      add_control => mayo_add_vectors_0_o_controlb,
+      add_control => BRAM_hash_rst_1,
       bram_control => bram_control1_1,
       hash_control => BRAM_hash_rst_1,
       lin_control => mayo_linear_combinat_0_o_control0b,
@@ -925,6 +925,247 @@ mayo_trng_arbiter_0: component Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0
       o_trng_data(31 downto 0) => mayo_trng_arbiter_0_o_trng_data(31 downto 0),
       o_trng_r => mayo_trng_arbiter_0_o_trng_r,
       o_trng_w => mayo_trng_arbiter_0_o_trng_w
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity add_vectors_imp_1DVEBRB is
+  port (
+    bram_sel : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    clk : in STD_LOGIC;
+    i_BRAM0_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_BRAM1_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_enable : in STD_LOGIC;
+    i_out_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_v1_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_v2_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM0_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM0_control : out STD_LOGIC;
+    o_BRAM0_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM0_en : out STD_LOGIC;
+    o_BRAM0_rst : out STD_LOGIC;
+    o_BRAM0_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_BRAM1_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM1_control : out STD_LOGIC;
+    o_BRAM1_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM1_en : out STD_LOGIC;
+    o_BRAM1_rst : out STD_LOGIC;
+    o_BRAM1_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_done : out STD_LOGIC;
+    rst : in STD_LOGIC
+  );
+end add_vectors_imp_1DVEBRB;
+
+architecture STRUCTURE of add_vectors_imp_1DVEBRB is
+  component Mayo_keygen_no_zynq_mayo_add_vectors_0_0 is
+  port (
+    i_clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    i_enable : in STD_LOGIC;
+    i_v1_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_v2_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_out_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_done : out STD_LOGIC;
+    i_mema_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mema_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mema_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mema_en : out STD_LOGIC;
+    o_mema_rst : out STD_LOGIC;
+    o_mema_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_memb_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memb_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memb_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memb_en : out STD_LOGIC;
+    o_memb_rst : out STD_LOGIC;
+    o_memb_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_memc_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memc_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memc_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memc_en : out STD_LOGIC;
+    o_memc_rst : out STD_LOGIC;
+    o_memc_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_controla : out STD_LOGIC;
+    o_controlb : out STD_LOGIC;
+    o_controlc : out STD_LOGIC
+  );
+  end component Mayo_keygen_no_zynq_mayo_add_vectors_0_0;
+  component Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0 is
+  port (
+    bram_sel : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    o_mema_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_mema_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_mema_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_mema_en : in STD_LOGIC;
+    i_mema_rst : in STD_LOGIC;
+    i_mema_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_memb_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_memb_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_memb_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_memb_en : in STD_LOGIC;
+    i_memb_rst : in STD_LOGIC;
+    i_memb_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_memc_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_memc_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_memc_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_memc_en : in STD_LOGIC;
+    i_memc_rst : in STD_LOGIC;
+    i_memc_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_controla : in STD_LOGIC;
+    i_controlb : in STD_LOGIC;
+    i_controlc : in STD_LOGIC;
+    i_BRAM0_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM0_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM0_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM0_en : out STD_LOGIC;
+    o_BRAM0_rst : out STD_LOGIC;
+    o_BRAM0_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_BRAM0_control : out STD_LOGIC;
+    i_BRAM1_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM1_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM1_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_BRAM1_en : out STD_LOGIC;
+    o_BRAM1_rst : out STD_LOGIC;
+    o_BRAM1_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_BRAM1_control : out STD_LOGIC
+  );
+  end component Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0;
+  signal BRAM_add_en_1 : STD_LOGIC;
+  signal BRAM_add_rst_1 : STD_LOGIC;
+  signal BRAM_big_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_small_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_add_bram_sel : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_add_enable : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_add_out_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_add_v1_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_add_v2_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal add_control_1 : STD_LOGIC;
+  signal clk_1 : STD_LOGIC;
+  signal mayo_add_vectors_0_o_controla : STD_LOGIC;
+  signal mayo_add_vectors_0_o_controlb : STD_LOGIC;
+  signal mayo_add_vectors_0_o_controlc : STD_LOGIC;
+  signal mayo_add_vectors_0_o_done : STD_LOGIC;
+  signal mayo_add_vectors_0_o_mema_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_0_o_mema_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_0_o_mema_en : STD_LOGIC;
+  signal mayo_add_vectors_0_o_mema_rst : STD_LOGIC;
+  signal mayo_add_vectors_0_o_mema_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal mayo_add_vectors_0_o_memb_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_0_o_memb_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_0_o_memb_en : STD_LOGIC;
+  signal mayo_add_vectors_0_o_memb_rst : STD_LOGIC;
+  signal mayo_add_vectors_0_o_memb_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal mayo_add_vectors_0_o_memc_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_0_o_memc_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_0_o_memc_en : STD_LOGIC;
+  signal mayo_add_vectors_0_o_memc_rst : STD_LOGIC;
+  signal mayo_add_vectors_0_o_memc_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM0_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM0_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM0_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM1_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM1_control : STD_LOGIC;
+  signal mayo_add_vectors_arb_0_o_BRAM1_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM1_en : STD_LOGIC;
+  signal mayo_add_vectors_arb_0_o_BRAM1_rst : STD_LOGIC;
+  signal mayo_add_vectors_arb_0_o_BRAM1_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal mayo_add_vectors_arb_0_o_mema_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_memb_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_memc_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal rst_1 : STD_LOGIC;
+begin
+  BRAM_big_BRAM_add_dout(31 downto 0) <= i_BRAM1_dout(31 downto 0);
+  BRAM_small_BRAM_add_dout(31 downto 0) <= i_BRAM0_dout(31 downto 0);
+  MAYO_KEYGEN_FSM_0_o_add_bram_sel(1 downto 0) <= bram_sel(1 downto 0);
+  MAYO_KEYGEN_FSM_0_o_add_enable <= i_enable;
+  MAYO_KEYGEN_FSM_0_o_add_out_addr(31 downto 0) <= i_out_addr(31 downto 0);
+  MAYO_KEYGEN_FSM_0_o_add_v1_addr(31 downto 0) <= i_v1_addr(31 downto 0);
+  MAYO_KEYGEN_FSM_0_o_add_v2_addr(31 downto 0) <= i_v2_addr(31 downto 0);
+  clk_1 <= clk;
+  o_BRAM0_addr(31 downto 0) <= mayo_add_vectors_arb_0_o_BRAM0_addr(31 downto 0);
+  o_BRAM0_control <= add_control_1;
+  o_BRAM0_din(31 downto 0) <= mayo_add_vectors_arb_0_o_BRAM0_din(31 downto 0);
+  o_BRAM0_en <= BRAM_add_en_1;
+  o_BRAM0_rst <= BRAM_add_rst_1;
+  o_BRAM0_we(3 downto 0) <= mayo_add_vectors_arb_0_o_BRAM0_we(3 downto 0);
+  o_BRAM1_addr(31 downto 0) <= mayo_add_vectors_arb_0_o_BRAM1_addr(31 downto 0);
+  o_BRAM1_control <= mayo_add_vectors_arb_0_o_BRAM1_control;
+  o_BRAM1_din(31 downto 0) <= mayo_add_vectors_arb_0_o_BRAM1_din(31 downto 0);
+  o_BRAM1_en <= mayo_add_vectors_arb_0_o_BRAM1_en;
+  o_BRAM1_rst <= mayo_add_vectors_arb_0_o_BRAM1_rst;
+  o_BRAM1_we(3 downto 0) <= mayo_add_vectors_arb_0_o_BRAM1_we(3 downto 0);
+  o_done <= mayo_add_vectors_0_o_done;
+  rst_1 <= rst;
+mayo_add_vectors_0: component Mayo_keygen_no_zynq_mayo_add_vectors_0_0
+     port map (
+      i_clk => clk_1,
+      i_enable => MAYO_KEYGEN_FSM_0_o_add_enable,
+      i_mema_dout(31 downto 0) => mayo_add_vectors_arb_0_o_mema_dout(31 downto 0),
+      i_memb_dout(31 downto 0) => mayo_add_vectors_arb_0_o_memb_dout(31 downto 0),
+      i_memc_dout(31 downto 0) => mayo_add_vectors_arb_0_o_memc_dout(31 downto 0),
+      i_out_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_out_addr(31 downto 0),
+      i_v1_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v1_addr(31 downto 0),
+      i_v2_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v2_addr(31 downto 0),
+      o_controla => mayo_add_vectors_0_o_controla,
+      o_controlb => mayo_add_vectors_0_o_controlb,
+      o_controlc => mayo_add_vectors_0_o_controlc,
+      o_done => mayo_add_vectors_0_o_done,
+      o_mema_addr(31 downto 0) => mayo_add_vectors_0_o_mema_addr(31 downto 0),
+      o_mema_din(31 downto 0) => mayo_add_vectors_0_o_mema_din(31 downto 0),
+      o_mema_en => mayo_add_vectors_0_o_mema_en,
+      o_mema_rst => mayo_add_vectors_0_o_mema_rst,
+      o_mema_we(3 downto 0) => mayo_add_vectors_0_o_mema_we(3 downto 0),
+      o_memb_addr(31 downto 0) => mayo_add_vectors_0_o_memb_addr(31 downto 0),
+      o_memb_din(31 downto 0) => mayo_add_vectors_0_o_memb_din(31 downto 0),
+      o_memb_en => mayo_add_vectors_0_o_memb_en,
+      o_memb_rst => mayo_add_vectors_0_o_memb_rst,
+      o_memb_we(3 downto 0) => mayo_add_vectors_0_o_memb_we(3 downto 0),
+      o_memc_addr(31 downto 0) => mayo_add_vectors_0_o_memc_addr(31 downto 0),
+      o_memc_din(31 downto 0) => mayo_add_vectors_0_o_memc_din(31 downto 0),
+      o_memc_en => mayo_add_vectors_0_o_memc_en,
+      o_memc_rst => mayo_add_vectors_0_o_memc_rst,
+      o_memc_we(3 downto 0) => mayo_add_vectors_0_o_memc_we(3 downto 0),
+      rst => rst_1
+    );
+mayo_add_vectors_arb_0: component Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0
+     port map (
+      bram_sel(1 downto 0) => MAYO_KEYGEN_FSM_0_o_add_bram_sel(1 downto 0),
+      i_BRAM0_dout(31 downto 0) => BRAM_small_BRAM_add_dout(31 downto 0),
+      i_BRAM1_dout(31 downto 0) => BRAM_big_BRAM_add_dout(31 downto 0),
+      i_controla => mayo_add_vectors_0_o_controla,
+      i_controlb => mayo_add_vectors_0_o_controlb,
+      i_controlc => mayo_add_vectors_0_o_controlc,
+      i_mema_addr(31 downto 0) => mayo_add_vectors_0_o_mema_addr(31 downto 0),
+      i_mema_din(31 downto 0) => mayo_add_vectors_0_o_mema_din(31 downto 0),
+      i_mema_en => mayo_add_vectors_0_o_mema_en,
+      i_mema_rst => mayo_add_vectors_0_o_mema_rst,
+      i_mema_we(3 downto 0) => mayo_add_vectors_0_o_mema_we(3 downto 0),
+      i_memb_addr(31 downto 0) => mayo_add_vectors_0_o_memb_addr(31 downto 0),
+      i_memb_din(31 downto 0) => mayo_add_vectors_0_o_memb_din(31 downto 0),
+      i_memb_en => mayo_add_vectors_0_o_memb_en,
+      i_memb_rst => mayo_add_vectors_0_o_memb_rst,
+      i_memb_we(3 downto 0) => mayo_add_vectors_0_o_memb_we(3 downto 0),
+      i_memc_addr(31 downto 0) => mayo_add_vectors_0_o_memc_addr(31 downto 0),
+      i_memc_din(31 downto 0) => mayo_add_vectors_0_o_memc_din(31 downto 0),
+      i_memc_en => mayo_add_vectors_0_o_memc_en,
+      i_memc_rst => mayo_add_vectors_0_o_memc_rst,
+      i_memc_we(3 downto 0) => mayo_add_vectors_0_o_memc_we(3 downto 0),
+      o_BRAM0_addr(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM0_addr(31 downto 0),
+      o_BRAM0_control => add_control_1,
+      o_BRAM0_din(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM0_din(31 downto 0),
+      o_BRAM0_en => BRAM_add_en_1,
+      o_BRAM0_rst => BRAM_add_rst_1,
+      o_BRAM0_we(3 downto 0) => mayo_add_vectors_arb_0_o_BRAM0_we(3 downto 0),
+      o_BRAM1_addr(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM1_addr(31 downto 0),
+      o_BRAM1_control => mayo_add_vectors_arb_0_o_BRAM1_control,
+      o_BRAM1_din(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM1_din(31 downto 0),
+      o_BRAM1_en => mayo_add_vectors_arb_0_o_BRAM1_en,
+      o_BRAM1_rst => mayo_add_vectors_arb_0_o_BRAM1_rst,
+      o_BRAM1_we(3 downto 0) => mayo_add_vectors_arb_0_o_BRAM1_we(3 downto 0),
+      o_mema_dout(31 downto 0) => mayo_add_vectors_arb_0_o_mema_dout(31 downto 0),
+      o_memb_dout(31 downto 0) => mayo_add_vectors_arb_0_o_memb_dout(31 downto 0),
+      o_memc_dout(31 downto 0) => mayo_add_vectors_arb_0_o_memc_dout(31 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -1104,10 +1345,10 @@ entity Mayo_keygen_no_zynq is
     enable : in STD_LOGIC;
     rst : in STD_LOGIC
   );
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of Mayo_keygen_no_zynq : entity is "Mayo_keygen_no_zynq,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Mayo_keygen_no_zynq,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=22,numReposBlks=18,numNonXlnxBlks=2,numHierBlks=4,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=11,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=2,synth_mode=OOC_per_IP}";
-  attribute HW_HANDOFF : string;
-  attribute HW_HANDOFF of Mayo_keygen_no_zynq : entity is "Mayo_keygen_no_zynq.hwdef";
+  attribute core_generation_info : string;
+  attribute core_generation_info of Mayo_keygen_no_zynq : entity is "Mayo_keygen_no_zynq,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Mayo_keygen_no_zynq,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=24,numReposBlks=19,numNonXlnxBlks=2,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=12,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=2,synth_mode=OOC_per_IP}";
+  attribute hw_handoff : string;
+  attribute hw_handoff of Mayo_keygen_no_zynq : entity is "Mayo_keygen_no_zynq.hwdef";
 end Mayo_keygen_no_zynq;
 
 architecture STRUCTURE of Mayo_keygen_no_zynq is
@@ -1174,101 +1415,6 @@ architecture STRUCTURE of Mayo_keygen_no_zynq is
     o_trng_sel : out STD_LOGIC
   );
   end component Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0;
-  component Mayo_keygen_no_zynq_mayo_add_vectors_0_0 is
-  port (
-    i_clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    i_enable : in STD_LOGIC;
-    i_v1_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_v2_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_out_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_done : out STD_LOGIC;
-    i_mema_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mema_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mema_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mema_en : out STD_LOGIC;
-    o_mema_rst : out STD_LOGIC;
-    o_mema_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_memb_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memb_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memb_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memb_en : out STD_LOGIC;
-    o_memb_rst : out STD_LOGIC;
-    o_memb_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    o_controla : out STD_LOGIC;
-    o_controlb : out STD_LOGIC
-  );
-  end component Mayo_keygen_no_zynq_mayo_add_vectors_0_0;
-  component Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0 is
-  port (
-    CLK : in STD_LOGIC;
-    ENABLE : in STD_LOGIC;
-    RESET : in STD_LOGIC;
-    PUBLIC_KEY_ADDR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    SECRET_KEY_ADDR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_done : out STD_LOGIC;
-    i_debug : in STD_LOGIC;
-    o_trng_r : out STD_LOGIC;
-    o_trng_w : out STD_LOGIC;
-    o_trng_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_trng_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_trng_valid : in STD_LOGIC;
-    i_trng_done : in STD_LOGIC;
-    o_hash_en : out STD_LOGIC;
-    o_hash_mlen : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_hash_olen : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_hash_write_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_hash_read_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_hash_done : in STD_LOGIC;
-    i_hash_dyn_done : in STD_LOGIC;
-    o_hash_memsel : out STD_LOGIC;
-    o_red_enable : out STD_LOGIC;
-    o_red_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_red_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_red_bram_sel : out STD_LOGIC;
-    i_red_done : in STD_LOGIC;
-    o_sam_enable : out STD_LOGIC;
-    i_sam_done : in STD_LOGIC;
-    o_sam_oil_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_lin_enable : out STD_LOGIC;
-    i_lin_done : in STD_LOGIC;
-    o_lin_bram_halt : out STD_LOGIC;
-    o_lin_vec_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_lin_coeffs_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_lin_out_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_lin_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_add_enable : out STD_LOGIC;
-    o_add_v1_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_add_v2_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_add_out_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_add_done : in STD_LOGIC;
-    o_neg_enable : out STD_LOGIC;
-    o_neg_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_neg_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_neg_done : in STD_LOGIC;
-    i_mem0a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0a_en : out STD_LOGIC;
-    o_mem0a_rst : out STD_LOGIC;
-    o_mem0a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_mem0b_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0b_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0b_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0b_en : out STD_LOGIC;
-    o_mem0b_rst : out STD_LOGIC;
-    o_mem0b_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_mem1a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem1a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem1a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem1a_en : out STD_LOGIC;
-    o_mem1a_rst : out STD_LOGIC;
-    o_mem1a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    o_mem0a_control : out STD_LOGIC;
-    o_mem0b_control : out STD_LOGIC;
-    o_mem1a_control : out STD_LOGIC
-  );
-  end component Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0;
   component Mayo_keygen_no_zynq_mayo_linear_combinat_0_0 is
   port (
     i_clk : in STD_LOGIC;
@@ -1320,16 +1466,92 @@ architecture STRUCTURE of Mayo_keygen_no_zynq is
     o_control : out STD_LOGIC
   );
   end component Mayo_keygen_no_zynq_mayo_negate_0_0;
+  component Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0 is
+  port (
+    CLK : in STD_LOGIC;
+    ENABLE : in STD_LOGIC;
+    RESET : in STD_LOGIC;
+    PUBLIC_KEY_ADDR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    SECRET_KEY_ADDR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_done : out STD_LOGIC;
+    i_debug : in STD_LOGIC;
+    o_trng_r : out STD_LOGIC;
+    o_trng_w : out STD_LOGIC;
+    o_trng_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_trng_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_trng_valid : in STD_LOGIC;
+    i_trng_done : in STD_LOGIC;
+    o_hash_en : out STD_LOGIC;
+    o_hash_mlen : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_hash_olen : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_hash_write_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_hash_read_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_hash_done : in STD_LOGIC;
+    i_hash_dyn_done : in STD_LOGIC;
+    o_hash_memsel : out STD_LOGIC;
+    o_red_enable : out STD_LOGIC;
+    o_red_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_red_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_red_bram_sel : out STD_LOGIC;
+    i_red_done : in STD_LOGIC;
+    o_sam_enable : out STD_LOGIC;
+    i_sam_done : in STD_LOGIC;
+    o_sam_oil_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_lin_enable : out STD_LOGIC;
+    i_lin_done : in STD_LOGIC;
+    o_lin_bram_halt : out STD_LOGIC;
+    o_lin_vec_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_lin_coeffs_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_lin_out_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_lin_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_add_enable : out STD_LOGIC;
+    o_add_v1_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_add_v2_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_add_out_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_add_done : in STD_LOGIC;
+    o_add_bram_sel : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    o_neg_enable : out STD_LOGIC;
+    o_neg_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_neg_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_neg_done : in STD_LOGIC;
+    i_mem0a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0a_en : out STD_LOGIC;
+    o_mem0a_rst : out STD_LOGIC;
+    o_mem0a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_mem0b_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0b_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0b_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0b_en : out STD_LOGIC;
+    o_mem0b_rst : out STD_LOGIC;
+    o_mem0b_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_mem1a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem1a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem1a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem1a_en : out STD_LOGIC;
+    o_mem1a_rst : out STD_LOGIC;
+    o_mem1a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_mem0a_control : out STD_LOGIC;
+    o_mem0b_control : out STD_LOGIC;
+    o_mem1a_control : out STD_LOGIC
+  );
+  end component Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0;
   signal BRAM0_dout_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_add_en_1 : STD_LOGIC;
+  signal BRAM_add_rst_1 : STD_LOGIC;
+  signal BRAM_big_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_big_BRAM_red_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_key_addr1_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_key_addr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_key_rst1_1 : STD_LOGIC;
   signal BRAM_key_rst_1 : STD_LOGIC;
   signal BRAM_key_we_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal BRAM_small_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal Ground0_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal Ground32_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal Ground4_dout : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_add_bram_sel : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_add_enable : STD_LOGIC;
   signal MAYO_KEYGEN_FSM_0_o_add_out_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_add_v1_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1380,7 +1602,7 @@ architecture STRUCTURE of Mayo_keygen_no_zynq is
   signal TRNG_o_trng1_data : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TRNG_o_trng1_done : STD_LOGIC;
   signal TRNG_o_trng1_valid : STD_LOGIC;
-  signal arbit_brama0_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal add_control_1 : STD_LOGIC;
   signal arbit_brama0_BRAM_key_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama0_BRAM_lin_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama0_BRAM_neg_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1400,20 +1622,16 @@ architecture STRUCTURE of Mayo_keygen_no_zynq is
   signal hash_BRAM0_en : STD_LOGIC;
   signal hash_BRAM0_we : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal hash_control_1 : STD_LOGIC;
-  signal mayo_add_vectors_0_o_controla : STD_LOGIC;
-  signal mayo_add_vectors_0_o_controlb : STD_LOGIC;
   signal mayo_add_vectors_0_o_done : STD_LOGIC;
-  signal mayo_add_vectors_0_o_mema_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_add_vectors_0_o_mema_din : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_add_vectors_0_o_mema_en : STD_LOGIC;
-  signal mayo_add_vectors_0_o_mema_rst : STD_LOGIC;
-  signal mayo_add_vectors_0_o_mema_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal mayo_add_vectors_0_o_memb_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_add_vectors_0_o_memb_din : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_add_vectors_0_o_memb_en : STD_LOGIC;
-  signal mayo_add_vectors_0_o_memb_rst : STD_LOGIC;
-  signal mayo_add_vectors_0_o_memb_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal mayo_bram_arbiter_1_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM0_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM0_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM0_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM1_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM1_control : STD_LOGIC;
+  signal mayo_add_vectors_arb_0_o_BRAM1_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_arb_0_o_BRAM1_en : STD_LOGIC;
+  signal mayo_add_vectors_arb_0_o_BRAM1_rst : STD_LOGIC;
+  signal mayo_add_vectors_arb_0_o_BRAM1_we : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal mayo_bram_arbiter_1_BRAM_lin_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_hash_arbiter_0_o_key_done : STD_LOGIC;
   signal mayo_hash_arbiter_0_o_key_dyn_done : STD_LOGIC;
@@ -1475,8 +1693,14 @@ begin
   rst_1 <= rst;
 BRAM_big: entity work.BRAM_big_imp_13MOJ7Q
      port map (
+      BRAM_add_addr(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM1_addr(31 downto 0),
+      BRAM_add_din(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM1_din(31 downto 0),
+      BRAM_add_dout(31 downto 0) => BRAM_big_BRAM_add_dout(31 downto 0),
+      BRAM_add_en => mayo_add_vectors_arb_0_o_BRAM1_en,
       BRAM_add_rst => Ground0_dout(0),
+      BRAM_add_rst1 => mayo_add_vectors_arb_0_o_BRAM1_rst,
       BRAM_add_we(3 downto 0) => Ground4_dout(3 downto 0),
+      BRAM_add_we1(3 downto 0) => mayo_add_vectors_arb_0_o_BRAM1_we(3 downto 0),
       BRAM_hash_addr(31 downto 0) => MAYO_SHAKE_1_BRAMA_addr(31 downto 0),
       BRAM_hash_din(31 downto 0) => MAYO_SHAKE_1_BRAMA_din(31 downto 0),
       BRAM_hash_dout(31 downto 0) => arbit_brama1_BRAM_hash_dout(31 downto 0),
@@ -1501,6 +1725,7 @@ BRAM_big: entity work.BRAM_big_imp_13MOJ7Q
       BRAM_red_en => mayo_reduce_0_o_en1,
       BRAM_red_rst => mayo_reduce_0_o_rst1,
       BRAM_red_we(3 downto 0) => mayo_reduce_0_o_we1(3 downto 0),
+      add_control => mayo_add_vectors_arb_0_o_BRAM1_control,
       bram_control => bram_control_1,
       clka => clk_1,
       hash_control => hash_control_1,
@@ -1510,18 +1735,12 @@ BRAM_big: entity work.BRAM_big_imp_13MOJ7Q
     );
 BRAM_small: entity work.BRAM_small_imp_16BUBJ2
      port map (
-      BRAM_add_addr(31 downto 0) => mayo_add_vectors_0_o_mema_addr(31 downto 0),
-      BRAM_add_addr1(31 downto 0) => mayo_add_vectors_0_o_memb_addr(31 downto 0),
-      BRAM_add_din(31 downto 0) => mayo_add_vectors_0_o_mema_din(31 downto 0),
-      BRAM_add_din1(31 downto 0) => mayo_add_vectors_0_o_memb_din(31 downto 0),
-      BRAM_add_dout(31 downto 0) => arbit_brama0_BRAM_add_dout(31 downto 0),
-      BRAM_add_dout1(31 downto 0) => mayo_bram_arbiter_1_BRAM_add_dout(31 downto 0),
-      BRAM_add_en => mayo_add_vectors_0_o_mema_en,
-      BRAM_add_en1 => mayo_add_vectors_0_o_memb_en,
-      BRAM_add_rst => mayo_add_vectors_0_o_mema_rst,
-      BRAM_add_rst1 => mayo_add_vectors_0_o_memb_rst,
-      BRAM_add_we(3 downto 0) => mayo_add_vectors_0_o_mema_we(3 downto 0),
-      BRAM_add_we1(3 downto 0) => mayo_add_vectors_0_o_memb_we(3 downto 0),
+      BRAM_add_addr(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM0_addr(31 downto 0),
+      BRAM_add_din(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM0_din(31 downto 0),
+      BRAM_add_dout(31 downto 0) => BRAM_small_BRAM_add_dout(31 downto 0),
+      BRAM_add_en => BRAM_add_en_1,
+      BRAM_add_rst => BRAM_add_rst_1,
+      BRAM_add_we(3 downto 0) => mayo_add_vectors_arb_0_o_BRAM0_we(3 downto 0),
       BRAM_hash_addr(31 downto 0) => hash_BRAM0_addr(31 downto 0),
       BRAM_hash_din(31 downto 0) => hash_BRAM0_din(31 downto 0),
       BRAM_hash_dout(31 downto 0) => BRAM0_dout_1(31 downto 0),
@@ -1572,8 +1791,7 @@ BRAM_small: entity work.BRAM_small_imp_16BUBJ2
       Zero0 => Ground0_dout(0),
       Zero_32(31 downto 0) => Ground32_dout(31 downto 0),
       Zero_4(3 downto 0) => Ground4_dout(3 downto 0),
-      add_control => mayo_add_vectors_0_o_controla,
-      add_control1 => mayo_add_vectors_0_o_controlb,
+      add_control => add_control_1,
       bram_control => bram_control_2,
       bram_control1 => MAYO_KEYGEN_FSM_0_o_mem0b_control,
       clkb => clk_1,
@@ -1618,6 +1836,7 @@ MAYO_KEYGEN_FSM_0: component Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0
       i_trng_data(31 downto 0) => TRNG_o_trng0_data(31 downto 0),
       i_trng_done => TRNG_o_trng0_done,
       i_trng_valid => TRNG_o_trng0_valid,
+      o_add_bram_sel(1 downto 0) => MAYO_KEYGEN_FSM_0_o_add_bram_sel(1 downto 0),
       o_add_enable => MAYO_KEYGEN_FSM_0_o_add_enable,
       o_add_out_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_out_addr(31 downto 0),
       o_add_v1_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v1_addr(31 downto 0),
@@ -1684,6 +1903,31 @@ TRNG: entity work.TRNG_imp_G7X2XE
       o_trng1_valid => TRNG_o_trng1_valid,
       rst => rst_1
     );
+add_vectors: entity work.add_vectors_imp_1DVEBRB
+     port map (
+      bram_sel(1 downto 0) => MAYO_KEYGEN_FSM_0_o_add_bram_sel(1 downto 0),
+      clk => clk_1,
+      i_BRAM0_dout(31 downto 0) => BRAM_small_BRAM_add_dout(31 downto 0),
+      i_BRAM1_dout(31 downto 0) => BRAM_big_BRAM_add_dout(31 downto 0),
+      i_enable => MAYO_KEYGEN_FSM_0_o_add_enable,
+      i_out_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_out_addr(31 downto 0),
+      i_v1_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v1_addr(31 downto 0),
+      i_v2_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v2_addr(31 downto 0),
+      o_BRAM0_addr(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM0_addr(31 downto 0),
+      o_BRAM0_control => add_control_1,
+      o_BRAM0_din(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM0_din(31 downto 0),
+      o_BRAM0_en => BRAM_add_en_1,
+      o_BRAM0_rst => BRAM_add_rst_1,
+      o_BRAM0_we(3 downto 0) => mayo_add_vectors_arb_0_o_BRAM0_we(3 downto 0),
+      o_BRAM1_addr(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM1_addr(31 downto 0),
+      o_BRAM1_control => mayo_add_vectors_arb_0_o_BRAM1_control,
+      o_BRAM1_din(31 downto 0) => mayo_add_vectors_arb_0_o_BRAM1_din(31 downto 0),
+      o_BRAM1_en => mayo_add_vectors_arb_0_o_BRAM1_en,
+      o_BRAM1_rst => mayo_add_vectors_arb_0_o_BRAM1_rst,
+      o_BRAM1_we(3 downto 0) => mayo_add_vectors_arb_0_o_BRAM1_we(3 downto 0),
+      o_done => mayo_add_vectors_0_o_done,
+      rst => rst_1
+    );
 hash: entity work.hash_imp_EASPA4
      port map (
       BRAM0_addr(31 downto 0) => hash_BRAM0_addr(31 downto 0),
@@ -1707,30 +1951,6 @@ hash: entity work.hash_imp_EASPA4
       i_key_write_adr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_hash_write_adr(31 downto 0),
       o_key_done => mayo_hash_arbiter_0_o_key_done,
       o_key_dyn_done => mayo_hash_arbiter_0_o_key_dyn_done,
-      rst => rst_1
-    );
-mayo_add_vectors_0: component Mayo_keygen_no_zynq_mayo_add_vectors_0_0
-     port map (
-      i_clk => clk_1,
-      i_enable => MAYO_KEYGEN_FSM_0_o_add_enable,
-      i_mema_dout(31 downto 0) => arbit_brama0_BRAM_add_dout(31 downto 0),
-      i_memb_dout(31 downto 0) => mayo_bram_arbiter_1_BRAM_add_dout(31 downto 0),
-      i_out_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_out_addr(31 downto 0),
-      i_v1_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v1_addr(31 downto 0),
-      i_v2_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v2_addr(31 downto 0),
-      o_controla => mayo_add_vectors_0_o_controla,
-      o_controlb => mayo_add_vectors_0_o_controlb,
-      o_done => mayo_add_vectors_0_o_done,
-      o_mema_addr(31 downto 0) => mayo_add_vectors_0_o_mema_addr(31 downto 0),
-      o_mema_din(31 downto 0) => mayo_add_vectors_0_o_mema_din(31 downto 0),
-      o_mema_en => mayo_add_vectors_0_o_mema_en,
-      o_mema_rst => mayo_add_vectors_0_o_mema_rst,
-      o_mema_we(3 downto 0) => mayo_add_vectors_0_o_mema_we(3 downto 0),
-      o_memb_addr(31 downto 0) => mayo_add_vectors_0_o_memb_addr(31 downto 0),
-      o_memb_din(31 downto 0) => mayo_add_vectors_0_o_memb_din(31 downto 0),
-      o_memb_en => mayo_add_vectors_0_o_memb_en,
-      o_memb_rst => mayo_add_vectors_0_o_memb_rst,
-      o_memb_we(3 downto 0) => mayo_add_vectors_0_o_memb_we(3 downto 0),
       rst => rst_1
     );
 mayo_linear_combinat_0: component Mayo_keygen_no_zynq_mayo_linear_combinat_0_0

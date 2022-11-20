@@ -1,0 +1,1113 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
+| Date         : Sun Nov 20 14:12:44 2022
+| Host         : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
+| Command      : report_drc -file Mayo_keygen_no_zynq_wrapper_drc_routed.rpt -pb Mayo_keygen_no_zynq_wrapper_drc_routed.pb -rpx Mayo_keygen_no_zynq_wrapper_drc_routed.rpx
+| Design       : Mayo_keygen_no_zynq_wrapper
+| Device       : xc7z020clg484-1
+| Speed File   : -1
+| Design State : Fully Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 214
++-----------+------------------+----------------------------+------------+
+| Rule      | Severity         | Description                | Violations |
++-----------+------------------+----------------------------+------------+
+| NSTD-1    | Critical Warning | Unspecified I/O Standard   | 1          |
+| UCIO-1    | Critical Warning | Unconstrained Logical Port | 1          |
+| DPIP-1    | Warning          | Input pipelining           | 8          |
+| DPOP-1    | Warning          | PREG Output pipelining     | 4          |
+| DPOP-2    | Warning          | MREG Output pipelining     | 8          |
+| PDRC-153  | Warning          | Gated clock check          | 190        |
+| RTSTAT-10 | Warning          | No routable loads          | 1          |
+| ZPS7-1    | Warning          | PS7 block required         | 1          |
++-----------+------------------+----------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+NSTD-1#1 Critical Warning
+Unspecified I/O Standard  
+4 out of 4 logical ports use I/O standard (IOSTANDARD) value 'DEFAULT', instead of a user assigned specific value. This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all I/O standards. This design will fail to generate a bitstream unless all logical ports have a user specified I/O standard value defined. To allow bitstream creation with unspecified I/O standard values (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks NSTD-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run. Problem ports: clk, done, enable, rst.
+Related violations: <none>
+
+UCIO-1#1 Critical Warning
+Unconstrained Logical Port  
+4 out of 4 logical ports have no user assigned specific location constraint (LOC). This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all pin locations. This design will fail to generate a bitstream unless all logical ports have a user specified site LOC constraint defined.  To allow bitstream creation with unspecified pin locations (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks UCIO-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run.  Problem ports: clk, done, enable, rst.
+Related violations: <none>
+
+DPIP-1#1 Warning
+Input pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[4]0 input Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[4]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#2 Warning
+Input pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[5]0 input Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[5]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#3 Warning
+Input pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[6]0 input Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[6]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#4 Warning
+Input pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[7]0 input Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[7]0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#5 Warning
+Input pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[0] input Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[0]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#6 Warning
+Input pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[1] input Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[1]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#7 Warning
+Input pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[2] input Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[2]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#8 Warning
+Input pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[3] input Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[3]/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPOP-1#1 Warning
+PREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[4]0 output Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[4]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#2 Warning
+PREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[5]0 output Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[5]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#3 Warning
+PREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[6]0 output Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[6]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-1#4 Warning
+PREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[7]0 output Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[7]0/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-2#1 Warning
+MREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[4]0 multiplier stage Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[4]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#2 Warning
+MREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[5]0 multiplier stage Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[5]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#3 Warning
+MREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[6]0 multiplier stage Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[6]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#4 Warning
+MREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[7]0 multiplier stage Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc[7]0/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#5 Warning
+MREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[0] multiplier stage Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[0]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#6 Warning
+MREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[1] multiplier stage Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[1]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#7 Warning
+MREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[2] multiplier stage Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[2]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+DPOP-2#8 Warning
+MREG Output pipelining  
+DSP Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[3] multiplier stage Mayo_keygen_no_zynq_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_reg[3]/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+PDRC-153#1 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/KECCAK/buffer_in/flip0 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/KECCAK/buffer_in/flip_reg_i_2/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/KECCAK/buffer_in/flip_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#2 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_18[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[193][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[193][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#3 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_19[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[131][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[131][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#4 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_20[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[130][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[130][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#5 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_21[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[129][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[129][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#6 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_22[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[128][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[128][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#7 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_23[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[0][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[0][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#8 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_24[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[1][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[1][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#9 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_25[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[2][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[2][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#10 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_26[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[3][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[3][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#11 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_27[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[64][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[64][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#12 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_28[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[65][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[65][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#13 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_29[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[66][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[66][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#14 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_2[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[196][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[196][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#15 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_30[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[67][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[67][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#16 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_3[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[135][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[135][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#17 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_4[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[134][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[134][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#18 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_5[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[133][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[133][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#19 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_6[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[132][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[132][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#20 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_7[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[4][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[4][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#21 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_8[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[5][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[5][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#22 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_9[0] is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[6][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/write_desc_reg[6][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#23 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[100]_65 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[100][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[100][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#24 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[101]_66 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[101][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[101][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#25 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[102]_67 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[102][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[102][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#26 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[103]_68 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[103][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[103][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#27 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[104]_148 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[104][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[104][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#28 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[105]_112 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[105][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[105][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#29 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[106]_157 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[106][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[106][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#30 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[107]_121 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[107][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[107][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#31 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[108]_149 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[108][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[108][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#32 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[109]_113 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[109][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[109][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#33 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[10]_164 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[10][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[10][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#34 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[110]_158 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[110][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[110][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#35 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[111]_122 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[111][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[111][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#36 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[112]_150 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[112][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[112][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#37 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[113]_114 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[113][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[113][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#38 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[114]_159 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[114][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[114][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#39 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[115]_123 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[115][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[115][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#40 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[116]_151 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[116][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[116][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#41 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[117]_115 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[117][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[117][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#42 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[118]_160 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[118][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[118][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#43 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[119]_124 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[119][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[119][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#44 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[11]_163 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[11][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[11][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#45 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[120]_152 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[120][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[120][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#46 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[121]_116 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[121][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[121][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#47 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[122]_161 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[122][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[122][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#48 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[123]_125 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[123][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[123][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#49 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[124]_153 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[124][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[124][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#50 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[125]_117 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[125][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[125][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#51 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[126]_162 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[126][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[126][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#52 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[127]_126 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[127][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[127][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#53 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[12]_80 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[12][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[12][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#54 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[136]_167 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[136][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[136][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#55 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[137]_168 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[137][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[137][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#56 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[138]_127 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[138][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[138][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#57 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[139]_136 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[139][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[139][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#58 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[13]_79 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[13][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[13][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#59 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[140]_81 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[140][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[140][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#60 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[141]_82 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[141][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[141][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#61 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[142]_83 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[142][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[142][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#62 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[143]_84 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[143][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[143][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#63 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[144]_173 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[144][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[144][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#64 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[145]_174 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[145][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[145][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#65 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[146]_128 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[146][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[146][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#66 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[147]_137 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[147][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[147][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#67 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[148]_93 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[148][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[148][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#68 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[149]_94 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[149][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[149][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#69 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[14]_78 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[14][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[14][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#70 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[150]_95 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[150][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[150][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#71 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[151]_96 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[151][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[151][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#72 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[152]_179 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[152][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[152][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#73 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[153]_180 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[153][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[153][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#74 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[154]_129 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[154][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[154][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#75 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[155]_138 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[155][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[155][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#76 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[156]_105 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[156][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[156][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#77 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[157]_106 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[157][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[157][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#78 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[158]_107 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[158][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[158][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#79 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[159]_108 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[159][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[159][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#80 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[15]_77 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[15][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[15][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#81 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[160]_57 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[160][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[160][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#82 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[161]_58 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[161][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[161][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#83 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[162]_59 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[162][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[162][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#84 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[163]_60 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[163][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[163][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#85 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[164]_69 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[164][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[164][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#86 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[165]_70 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[165][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[165][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#87 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[166]_71 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[166][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[166][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#88 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[167]_72 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[167][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[167][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#89 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[168]_181 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[168][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[168][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#90 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[169]_187 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[169][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[169][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#91 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[16]_172 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[16][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[16][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#92 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[170]_130 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[170][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[170][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#93 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[171]_139 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[171][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[171][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#94 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[172]_182 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[172][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[172][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#95 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[173]_188 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[173][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[173][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#96 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[174]_131 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[174][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[174][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#97 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[175]_140 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[175][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[175][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#98 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[176]_183 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[176][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[176][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#99 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[177]_189 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[177][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[177][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#100 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[178]_132 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[178][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[178][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#101 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[179]_141 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[179][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[179][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#102 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[17]_171 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[17][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[17][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#103 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[180]_184 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[180][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[180][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#104 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[181]_190 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[181][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[181][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#105 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[182]_133 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[182][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[182][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#106 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[183]_142 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[183][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[183][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#107 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[184]_185 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[184][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[184][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#108 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[185]_191 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[185][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[185][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#109 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[186]_134 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[186][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[186][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#110 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[187]_143 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[187][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[187][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#111 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[188]_186 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[188][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[188][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#112 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[189]_192 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[189][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[189][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#113 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[18]_170 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[18][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[18][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#114 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[190]_135 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[190][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[190][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#115 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[191]_144 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[191][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[191][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#116 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[19]_169 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[19][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[19][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#117 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[20]_92 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[20][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[20][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#118 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[21]_91 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[21][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[21][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#119 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[22]_90 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[22][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[22][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#120 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[23]_89 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[23][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[23][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#121 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[24]_178 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[24][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[24][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#122 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[25]_177 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[25][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[25][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#123 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[26]_176 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[26][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[26][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#124 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[27]_175 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[27][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[27][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#125 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[28]_104 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[28][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[28][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#126 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[29]_103 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[29][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[29][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#127 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[30]_102 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[30][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[30][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#128 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[31]_101 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[31][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[31][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#129 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[32]_52 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[32][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[32][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#130 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[33]_51 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[33][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[33][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#131 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[34]_50 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[34][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[34][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#132 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[35]_49 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[35][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[35][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#133 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[36]_64 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[36][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[36][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#134 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[37]_63 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[37][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[37][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#135 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[38]_62 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[38][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[38][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#136 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[39]_61 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[39][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[39][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#137 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[40]_216 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[40][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[40][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#138 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[41]_204 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[41][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[41][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#139 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[42]_214 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[42][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[42][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#140 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[43]_198 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[43][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[43][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#141 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[44]_210 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[44][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[44][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#142 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[45]_203 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[45][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[45][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#143 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[46]_209 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[46][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[46][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#144 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[47]_197 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[47][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[47][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#145 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[48]_215 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[48][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[48][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#146 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[49]_202 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[49][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[49][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#147 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[50]_213 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[50][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[50][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#148 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[51]_196 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[51][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[51][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#149 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[52]_212 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[52][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[52][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#150 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[53]_201 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[53][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[53][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#151 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[54]_211 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[54][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[54][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#152 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[55]_195 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[55][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[55][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#153 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[56]_206 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[56][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[56][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#154 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[57]_200 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[57][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[57][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#155 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[58]_205 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[58][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[58][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#156 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[59]_194 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[59][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[59][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#157 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[60]_208 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[60][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[60][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#158 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[61]_199 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[61][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[61][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#159 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[62]_207 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[62][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[62][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#160 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[63]_193 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[63][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[63][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#161 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[72]_147 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[72][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[72][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#162 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[73]_111 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[73][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[73][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#163 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[74]_156 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[74][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[74][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#164 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[75]_120 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[75][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[75][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#165 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[76]_76 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[76][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[76][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#166 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[77]_75 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[77][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[77][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#167 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[78]_74 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[78][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[78][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#168 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[79]_73 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[79][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[79][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#169 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[80]_146 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[80][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[80][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#170 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[81]_110 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[81][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[81][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#171 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[82]_155 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[82][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[82][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#172 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[83]_119 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[83][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[83][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#173 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[84]_88 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[84][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[84][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#174 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[85]_87 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[85][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[85][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#175 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[86]_86 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[86][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[86][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#176 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[87]_85 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[87][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[87][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#177 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[88]_145 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[88][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[88][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#178 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[89]_109 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[89][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[89][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#179 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[8]_166 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[8][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[8][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#180 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[90]_154 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[90][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[90][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#181 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[91]_118 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[91][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[91][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#182 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[92]_100 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[92][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[92][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#183 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[93]_99 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[93][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[93][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#184 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[94]_98 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[94][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[94][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#185 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[95]_97 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[95][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[95][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#186 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[96]_53 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[96][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[96][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#187 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[97]_54 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[97][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[97][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#188 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[98]_55 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[98][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[98][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#189 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[99]_56 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[99][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[99][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#190 Warning
+Gated clock check  
+Net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[9]_165 is a gated clock net sourced by a combinational pin Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[9][63]_i_1/O, cell Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/write_desc_reg[9][63]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+RTSTAT-10#1 Warning
+No routable loads  
+1 net(s) have no routable loads. The problem bus(es) and/or net(s) are Mayo_keygen_no_zynq_i/TRNG/TRNG_0/U0/fifo_inst/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb.
+Related violations: <none>
+
+ZPS7-1#1 Warning
+PS7 block required  
+The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
+Related violations: <none>
+
+

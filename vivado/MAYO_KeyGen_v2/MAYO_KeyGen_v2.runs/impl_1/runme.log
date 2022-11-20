@@ -1,0 +1,571 @@
+
+*** Running vivado
+    with args -log Mayo_keygen_no_zynq_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Mayo_keygen_no_zynq_wrapper.tcl -notrace
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source Mayo_keygen_no_zynq_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+WARNING: [IP_Flow 19-3685] Ignored loading user repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_keygen_fsm/Mayo_keygen_fsm_1.6'. The path is contained within another repository.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.2/data/ip'.
+Command: link_design -top Mayo_keygen_no_zynq_wrapper -part xc7z020clg484-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/MAYO_KEYGEN_FSM_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_add_vectors_0_0/Mayo_keygen_no_zynq_mayo_add_vectors_0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/mayo_add_vectors_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/mayo_linear_combinat_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_negate_0_0/Mayo_keygen_no_zynq_mayo_negate_0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/mayo_negate_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_reduce_0_0/Mayo_keygen_no_zynq_mayo_reduce_0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/mayo_reduce_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/mayo_sample_oil_space_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_BIG_BRAM512K_0/Mayo_keygen_no_zynq_BIG_BRAM512K_0.dcp' for cell 'Mayo_keygen_no_zynq_i/BRAM_big/BIG_BRAM512K'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_arbit_brama1_0/Mayo_keygen_no_zynq_arbit_brama1_0.dcp' for cell 'Mayo_keygen_no_zynq_i/BRAM_big/arbit_brama1'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Small_BRAM8k_0/Mayo_keygen_no_zynq_Small_BRAM8k_0.dcp' for cell 'Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_arbit_brama0_0/Mayo_keygen_no_zynq_arbit_brama0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/BRAM_small/arbit_brama0'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_arbit_bramb0_0/Mayo_keygen_no_zynq_arbit_bramb0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_TRNG_0_0/Mayo_keygen_no_zynq_TRNG_0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/TRNG/TRNG_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0/Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/TRNG/mayo_trng_arbiter_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_MAYO_SHAKE_1_0/Mayo_keygen_no_zynq_MAYO_SHAKE_1_0.dcp' for cell 'Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1'
+INFO: [Project 1-454] Reading design checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0/Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0.dcp' for cell 'Mayo_keygen_no_zynq_i/hash/mayo_hash_bram_arbit_0'
+Netlist sorting complete. Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.13 . Memory (MB): peak = 2597.617 ; gain = 0.000 ; free physical = 20578 ; free virtual = 28445
+INFO: [Netlist 29-17] Analyzing 3842 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_TRNG_0_0/sources_1/ip/fifo_generator_0/fifo_generator_0.xdc] for cell 'Mayo_keygen_no_zynq_i/TRNG/TRNG_0/U0/fifo_inst/U0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_TRNG_0_0/sources_1/ip/fifo_generator_0/fifo_generator_0.xdc] for cell 'Mayo_keygen_no_zynq_i/TRNG/TRNG_0/U0/fifo_inst/U0'
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2597.617 ; gain = 0.000 ; free physical = 20460 ; free virtual = 28334
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 64 instances were transformed.
+  RAM64M => RAM64M (RAMD64E(x4)): 32 instances
+  RAM64X1D => RAM64X1D (RAMD64E(x2)): 32 instances
+
+26 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2597.617 ; gain = 0.000 ; free physical = 20460 ; free virtual = 28334
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.59 . Memory (MB): peak = 2597.617 ; gain = 0.000 ; free physical = 20447 ; free virtual = 28322
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 111c6a50b
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2651.496 ; gain = 53.879 ; free physical = 20029 ; free virtual = 27927
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: 13c5d0f59
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.82 . Memory (MB): peak = 2825.434 ; gain = 0.000 ; free physical = 19877 ; free virtual = 27779
+INFO: [Opt 31-389] Phase Retarget created 789 cells and removed 932 cells
+INFO: [Opt 31-1021] In phase Retarget, 1 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: 12b4273b6
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2825.434 ; gain = 0.000 ; free physical = 19877 ; free virtual = 27779
+INFO: [Opt 31-389] Phase Constant propagation created 263 cells and removed 927 cells
+INFO: [Opt 31-1021] In phase Constant propagation, 1 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: d1e3d334
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2825.434 ; gain = 0.000 ; free physical = 19876 ; free virtual = 27780
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 1623 cells
+INFO: [Opt 31-1021] In phase Sweep, 11 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 4 BUFG optimization
+INFO: [Opt 31-194] Inserted BUFG clk_IBUF_BUFG_inst to drive 8589 load(s) on clock net clk_IBUF_BUFG
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/E[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/E_BUFG[0]
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_0[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_0_BUFG[0]
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_1[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_1_BUFG[0]
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_10[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_10_BUFG[0]
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_11[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_11_BUFG[0]
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_12[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_12_BUFG[0]
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_13[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_13_BUFG[0]
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_14[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_14_BUFG[0]
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_15[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_15_BUFG[0]
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_16[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_16_BUFG[0]
+INFO: [Opt 31-194] Inserted BUFG Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_17[0]_BUFG_inst to drive 64 load(s) on clock net Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_1/inst/SH/rst_17_BUFG[0]
+INFO: [Opt 31-193] Inserted 12 BUFG(s) on clock nets
+Phase 4 BUFG optimization | Checksum: 135eb97cb
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2825.434 ; gain = 0.000 ; free physical = 19876 ; free virtual = 27779
+INFO: [Opt 31-662] Phase BUFG optimization created 12 cells of which 12 are BUFGs and removed 0 cells.
+
+Phase 5 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 5 Shift Register Optimization | Checksum: 135eb97cb
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2825.434 ; gain = 0.000 ; free physical = 19876 ; free virtual = 27779
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: 135eb97cb
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2825.434 ; gain = 0.000 ; free physical = 19875 ; free virtual = 27779
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+INFO: [Opt 31-1021] In phase Post Processing Netlist, 1 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |             789  |             932  |                                              1  |
+|  Constant propagation         |             263  |             927  |                                              1  |
+|  Sweep                        |               0  |            1623  |                                             11  |
+|  BUFG optimization            |              12  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              1  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2825.434 ; gain = 0.000 ; free physical = 19875 ; free virtual = 27779
+Ending Logic Optimization Task | Checksum: 142e77a81
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 2825.434 ; gain = 0.000 ; free physical = 19874 ; free virtual = 27779
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+WARNING: [Power 33-232] No user defined clocks were found in the design! Power estimation will be inaccurate until this is corrected.
+Resolution: Please specify clocks using create_clock/create_generated_clock for sequential elements. For pure combinatorial circuits, please specify a virtual clock, otherwise the vectorless estimation might be inaccurate
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 136 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 0 newly gated: 0 Total Ports: 272
+Ending PowerOpt Patch Enables Task | Checksum: 142e77a81
+
+Time (s): cpu = 00:00:00.34 ; elapsed = 00:00:00.34 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19772 ; free virtual = 27691
+Ending Power Optimization Task | Checksum: 142e77a81
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:07 . Memory (MB): peak = 3258.699 ; gain = 433.266 ; free physical = 19815 ; free virtual = 27734
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 142e77a81
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19815 ; free virtual = 27734
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19815 ; free virtual = 27734
+Ending Netlist Obfuscation Task | Checksum: 142e77a81
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19815 ; free virtual = 27734
+INFO: [Common 17-83] Releasing license: Implementation
+65 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:16 . Memory (MB): peak = 3258.699 ; gain = 661.082 ; free physical = 19815 ; free virtual = 27734
+INFO: [Timing 38-480] Writing timing data to binary archive.
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/impl_1/Mayo_keygen_no_zynq_wrapper_opt.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file Mayo_keygen_no_zynq_wrapper_drc_opted.rpt -pb Mayo_keygen_no_zynq_wrapper_drc_opted.pb -rpx Mayo_keygen_no_zynq_wrapper_drc_opted.rpx
+Command: report_drc -file Mayo_keygen_no_zynq_wrapper_drc_opted.rpt -pb Mayo_keygen_no_zynq_wrapper_drc_opted.pb -rpx Mayo_keygen_no_zynq_wrapper_drc_opted.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Coretcl 2-168] The results of DRC are in file /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/impl_1/Mayo_keygen_no_zynq_wrapper_drc_opted.rpt.
+report_drc completed successfully
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 8 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19672 ; free virtual = 27605
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: dd780231
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19672 ; free virtual = 27605
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19672 ; free virtual = 27605
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 1c3721b1d
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.95 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19679 ; free virtual = 27657
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 1e9070f8c
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19685 ; free virtual = 27644
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 1e9070f8c
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19684 ; free virtual = 27643
+Phase 1 Placer Initialization | Checksum: 1e9070f8c
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19681 ; free virtual = 27640
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 1e9070f8c
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19674 ; free virtual = 27633
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 1e9070f8c
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19674 ; free virtual = 27633
+
+Phase 2.3 Global Placement Core
+WARNING: [Place 46-29] place_design is not in timing mode. Skip physical synthesis in placer
+Phase 2.3 Global Placement Core | Checksum: 288a05932
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:12 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19426 ; free virtual = 27377
+Phase 2 Global Placement | Checksum: 288a05932
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:12 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19432 ; free virtual = 27384
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 288a05932
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:12 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19433 ; free virtual = 27384
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1c91fcb59
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:13 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19433 ; free virtual = 27384
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 11fcdd2c3
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:13 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19433 ; free virtual = 27384
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 18b8e10c2
+
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:13 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19432 ; free virtual = 27384
+
+Phase 3.5 Small Shape Detail Placement
+Phase 3.5 Small Shape Detail Placement | Checksum: 19064f4fc
+
+Time (s): cpu = 00:00:46 ; elapsed = 00:00:20 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19410 ; free virtual = 27372
+
+Phase 3.6 Re-assign LUT pins
+Phase 3.6 Re-assign LUT pins | Checksum: 19064f4fc
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:21 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19406 ; free virtual = 27369
+
+Phase 3.7 Pipeline Register Optimization
+Phase 3.7 Pipeline Register Optimization | Checksum: 19064f4fc
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:21 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19401 ; free virtual = 27365
+Phase 3 Detail Placement | Checksum: 19064f4fc
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:21 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19398 ; free virtual = 27362
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+Phase 4.1 Post Commit Optimization | Checksum: 19064f4fc
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:21 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19399 ; free virtual = 27363
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 19064f4fc
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:22 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19400 ; free virtual = 27365
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ____________________________________________________
+|           | Global Congestion | Short Congestion  |
+| Direction | Region Size       | Region Size       |
+|___________|___________________|___________________|
+|      North|                4x4|                2x2|
+|___________|___________________|___________________|
+|      South|                1x1|                2x2|
+|___________|___________________|___________________|
+|       East|                4x4|                4x4|
+|___________|___________________|___________________|
+|       West|                1x1|                1x1|
+|___________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 19064f4fc
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:22 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19400 ; free virtual = 27365
+Phase 4.3 Placer Reporting | Checksum: 19064f4fc
+
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:22 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19400 ; free virtual = 27366
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19399 ; free virtual = 27366
+
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:22 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19399 ; free virtual = 27366
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1bd07f127
+
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:22 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19402 ; free virtual = 27368
+Ending Placer Task | Checksum: 167f5f8bb
+
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:22 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19401 ; free virtual = 27368
+INFO: [Common 17-83] Releasing license: Implementation
+82 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:00:51 ; elapsed = 00:00:23 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19453 ; free virtual = 27420
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:04 ; elapsed = 00:00:01 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19361 ; free virtual = 27388
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/impl_1/Mayo_keygen_no_zynq_wrapper_placed.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_io -file Mayo_keygen_no_zynq_wrapper_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.12 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19404 ; free virtual = 27402
+INFO: [runtcl-4] Executing : report_utilization -file Mayo_keygen_no_zynq_wrapper_utilization_placed.rpt -pb Mayo_keygen_no_zynq_wrapper_utilization_placed.pb
+INFO: [runtcl-4] Executing : report_control_sets -verbose -file Mayo_keygen_no_zynq_wrapper_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00.10 ; elapsed = 00:00:00.15 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19410 ; free virtual = 27410
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Vivado_Tcl 4-235] No timing constraint found. The netlist was not modified.
+INFO: [Common 17-83] Releasing license: Implementation
+90 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:05 ; elapsed = 00:00:01 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19229 ; free virtual = 27294
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/impl_1/Mayo_keygen_no_zynq_wrapper_physopt.dcp' has been generated.
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
+Checksum: PlaceDB: 6b166525 ConstDB: 0 ShapeSum: fcdf9396 RouteDB: 0
+
+Phase 1 Build RT Design
+Phase 1 Build RT Design | Checksum: 10bd6f0c9
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19088 ; free virtual = 27142
+Post Restoration Checksum: NetGraph: 976b0078 NumContArr: 746bf051 Constraints: 0 Timing: 0
+
+Phase 2 Router Initialization
+INFO: [Route 35-64] No timing constraints were detected. The router will operate in resource-optimization mode.
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 10bd6f0c9
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19051 ; free virtual = 27106
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 10bd6f0c9
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 3258.699 ; gain = 0.000 ; free physical = 19051 ; free virtual = 27107
+ Number of Nodes with overlaps = 0
+Phase 2 Router Initialization | Checksum: 1632834c2
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:11 . Memory (MB): peak = 3261.711 ; gain = 3.012 ; free physical = 19034 ; free virtual = 27093
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0 %
+  Global Horizontal Routing Utilization  = 0 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 32420
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 32420
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+
+Phase 3 Initial Routing
+
+Phase 3.1 Global Routing
+Phase 3.1 Global Routing | Checksum: 1632834c2
+
+Time (s): cpu = 00:00:17 ; elapsed = 00:00:11 . Memory (MB): peak = 3261.711 ; gain = 3.012 ; free physical = 19036 ; free virtual = 27094
+Phase 3 Initial Routing | Checksum: 1ca52da93
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:14 . Memory (MB): peak = 3333.500 ; gain = 74.801 ; free physical = 19030 ; free virtual = 27089
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 2412
+ Number of Nodes with overlaps = 6
+ Number of Nodes with overlaps = 0
+Phase 4.1 Global Iteration 0 | Checksum: 55a54769
+
+Time (s): cpu = 00:00:41 ; elapsed = 00:00:20 . Memory (MB): peak = 3333.500 ; gain = 74.801 ; free physical = 19010 ; free virtual = 27075
+Phase 4 Rip-up And Reroute | Checksum: 55a54769
+
+Time (s): cpu = 00:00:41 ; elapsed = 00:00:20 . Memory (MB): peak = 3333.500 ; gain = 74.801 ; free physical = 19010 ; free virtual = 27075
+
+Phase 5 Delay and Skew Optimization
+Phase 5 Delay and Skew Optimization | Checksum: 55a54769
+
+Time (s): cpu = 00:00:41 ; elapsed = 00:00:20 . Memory (MB): peak = 3333.500 ; gain = 74.801 ; free physical = 19010 ; free virtual = 27075
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+Phase 6.1 Hold Fix Iter | Checksum: 55a54769
+
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:20 . Memory (MB): peak = 3333.500 ; gain = 74.801 ; free physical = 19010 ; free virtual = 27075
+Phase 6 Post Hold Fix | Checksum: 55a54769
+
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:20 . Memory (MB): peak = 3333.500 ; gain = 74.801 ; free physical = 19009 ; free virtual = 27075
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 11.604 %
+  Global Horizontal Routing Utilization  = 13.9364 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Congestion Report
+North Dir 1x1 Area, Max Cong = 62.1622%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 72.0721%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 86.7647%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_L_X48Y41 -> INT_L_X48Y41
+   INT_R_X43Y37 -> INT_R_X43Y37
+West Dir 1x1 Area, Max Cong = 85.2941%, Congestion bounded by tiles (Lower Left Tile -> Upper Right Tile):
+   INT_R_X25Y12 -> INT_R_X25Y12
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: South
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: East
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 1
+Direction: West
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 1
+
+Phase 7 Route finalize | Checksum: 55a54769
+
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:20 . Memory (MB): peak = 3333.500 ; gain = 74.801 ; free physical = 19008 ; free virtual = 27074
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 55a54769
+
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:21 . Memory (MB): peak = 3333.500 ; gain = 74.801 ; free physical = 19005 ; free virtual = 27071
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: aff0f572
+
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:22 . Memory (MB): peak = 3365.516 ; gain = 106.816 ; free physical = 19018 ; free virtual = 27086
+INFO: [Route 35-16] Router Completed Successfully
+
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:22 . Memory (MB): peak = 3365.516 ; gain = 106.816 ; free physical = 19061 ; free virtual = 27129
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+100 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:47 ; elapsed = 00:00:23 . Memory (MB): peak = 3365.516 ; gain = 106.816 ; free physical = 19061 ; free virtual = 27129
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 3365.516 ; gain = 0.000 ; free physical = 18986 ; free virtual = 27119
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/impl_1/Mayo_keygen_no_zynq_wrapper_routed.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file Mayo_keygen_no_zynq_wrapper_drc_routed.rpt -pb Mayo_keygen_no_zynq_wrapper_drc_routed.pb -rpx Mayo_keygen_no_zynq_wrapper_drc_routed.rpx
+Command: report_drc -file Mayo_keygen_no_zynq_wrapper_drc_routed.rpt -pb Mayo_keygen_no_zynq_wrapper_drc_routed.pb -rpx Mayo_keygen_no_zynq_wrapper_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Coretcl 2-168] The results of DRC are in file /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/impl_1/Mayo_keygen_no_zynq_wrapper_drc_routed.rpt.
+report_drc completed successfully
+INFO: [runtcl-4] Executing : report_methodology -file Mayo_keygen_no_zynq_wrapper_methodology_drc_routed.rpt -pb Mayo_keygen_no_zynq_wrapper_methodology_drc_routed.pb -rpx Mayo_keygen_no_zynq_wrapper_methodology_drc_routed.rpx
+Command: report_methodology -file Mayo_keygen_no_zynq_wrapper_methodology_drc_routed.rpt -pb Mayo_keygen_no_zynq_wrapper_methodology_drc_routed.pb -rpx Mayo_keygen_no_zynq_wrapper_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 8 threads
+INFO: [Coretcl 2-1520] The results of Report Methodology are in file /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/impl_1/Mayo_keygen_no_zynq_wrapper_methodology_drc_routed.rpt.
+report_methodology completed successfully
+INFO: [runtcl-4] Executing : report_power -file Mayo_keygen_no_zynq_wrapper_power_routed.rpt -pb Mayo_keygen_no_zynq_wrapper_power_summary_routed.pb -rpx Mayo_keygen_no_zynq_wrapper_power_routed.rpx
+Command: report_power -file Mayo_keygen_no_zynq_wrapper_power_routed.rpt -pb Mayo_keygen_no_zynq_wrapper_power_summary_routed.pb -rpx Mayo_keygen_no_zynq_wrapper_power_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+WARNING: [Power 33-232] No user defined clocks were found in the design! Power estimation will be inaccurate until this is corrected.
+Resolution: Please specify clocks using create_clock/create_generated_clock for sequential elements. For pure combinatorial circuits, please specify a virtual clock, otherwise the vectorless estimation might be inaccurate
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+112 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [runtcl-4] Executing : report_route_status -file Mayo_keygen_no_zynq_wrapper_route_status.rpt -pb Mayo_keygen_no_zynq_wrapper_route_status.pb
+INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -file Mayo_keygen_no_zynq_wrapper_timing_summary_routed.rpt -pb Mayo_keygen_no_zynq_wrapper_timing_summary_routed.pb -rpx Mayo_keygen_no_zynq_wrapper_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+INFO: [runtcl-4] Executing : report_incremental_reuse -file Mayo_keygen_no_zynq_wrapper_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [runtcl-4] Executing : report_clock_utilization -file Mayo_keygen_no_zynq_wrapper_clock_utilization_routed.rpt
+INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file Mayo_keygen_no_zynq_wrapper_bus_skew_routed.rpt -pb Mayo_keygen_no_zynq_wrapper_bus_skew_routed.pb -rpx Mayo_keygen_no_zynq_wrapper_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 20 14:12:53 2022...

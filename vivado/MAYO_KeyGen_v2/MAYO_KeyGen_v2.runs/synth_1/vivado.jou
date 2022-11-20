@@ -2,11 +2,11 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Thu Nov 17 19:31:12 2022
-# Process ID: 796367
+# Start of session at: Sun Nov 20 14:10:09 2022
+# Process ID: 72584
 # Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1
-# Command line: vivado -log mayo_sample_oil_space.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_sample_oil_space.tcl
-# Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/mayo_sample_oil_space.vds
+# Command line: vivado -log Mayo_keygen_no_zynq_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_keygen_no_zynq_wrapper.tcl
+# Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/Mayo_keygen_no_zynq_wrapper.vds
 # Journal file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
-source mayo_sample_oil_space.tcl -notrace
+source Mayo_keygen_no_zynq_wrapper.tcl -notrace

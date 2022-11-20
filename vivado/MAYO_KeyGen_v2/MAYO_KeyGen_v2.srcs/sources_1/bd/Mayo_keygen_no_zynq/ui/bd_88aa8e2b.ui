@@ -1,175 +1,161 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.52477",
-   "Default View_TopLeft":"-328,1482",
+   "Default View_ScaleFactor":"0.569697",
+   "Default View_TopLeft":"-1515,0",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
 preplace port clkb -pg 1 -lvl 0 -x 0 -y 980 -defaultsOSRD
 preplace port rst -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
-preplace port BRAM_add_en -pg 1 -lvl 0 -x 0 -y 1120 -defaultsOSRD
-preplace port BRAM_add_rst -pg 1 -lvl 0 -x 0 -y 1140 -defaultsOSRD
-preplace port BRAM_lin_en -pg 1 -lvl 0 -x 0 -y 1220 -defaultsOSRD
-preplace port BRAM_lin_rst -pg 1 -lvl 0 -x 0 -y 1240 -defaultsOSRD
-preplace port BRAM_neg_en -pg 1 -lvl 0 -x 0 -y 1320 -defaultsOSRD
-preplace port BRAM_neg_rst -pg 1 -lvl 0 -x 0 -y 1340 -defaultsOSRD
-preplace port BRAM_red_en -pg 1 -lvl 0 -x 0 -y 1420 -defaultsOSRD
-preplace port BRAM_red_rst -pg 1 -lvl 0 -x 0 -y 1440 -defaultsOSRD
-preplace port BRAM_key_en -pg 1 -lvl 0 -x 0 -y 1520 -defaultsOSRD
-preplace port BRAM_key_rst -pg 1 -lvl 0 -x 0 -y 1540 -defaultsOSRD
-preplace port Zero0 -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
-preplace port add_control -pg 1 -lvl 0 -x 0 -y 1800 -defaultsOSRD
-preplace port lin_control -pg 1 -lvl 0 -x 0 -y 1820 -defaultsOSRD
-preplace port neg_control -pg 1 -lvl 0 -x 0 -y 1840 -defaultsOSRD
-preplace port red_control -pg 1 -lvl 0 -x 0 -y 1860 -defaultsOSRD
-preplace port bram_control -pg 1 -lvl 0 -x 0 -y 1920 -defaultsOSRD
-preplace port bram_control1 -pg 1 -lvl 0 -x 0 -y 920 -defaultsOSRD
-preplace port sam_control1 -pg 1 -lvl 0 -x 0 -y 880 -defaultsOSRD
-preplace port lin_control1 -pg 1 -lvl 0 -x 0 -y 820 -defaultsOSRD
-preplace port add_control1 -pg 1 -lvl 0 -x 0 -y 800 -defaultsOSRD
-preplace port BRAM_sam_rst1 -pg 1 -lvl 0 -x 0 -y 640 -defaultsOSRD
-preplace port BRAM_sam_en1 -pg 1 -lvl 0 -x 0 -y 620 -defaultsOSRD
-preplace port BRAM_lin_rst1 -pg 1 -lvl 0 -x 0 -y 240 -defaultsOSRD
-preplace port BRAM_lin_en1 -pg 1 -lvl 0 -x 0 -y 220 -defaultsOSRD
-preplace port BRAM_add_rst1 -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
-preplace port BRAM_add_en1 -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
-preplace port BRAM_key_en1 -pg 1 -lvl 0 -x 0 -y 520 -defaultsOSRD
-preplace port BRAM_key_rst1 -pg 1 -lvl 0 -x 0 -y 540 -defaultsOSRD
-preplace port BRAM_hash_en -pg 1 -lvl 0 -x 0 -y 1720 -defaultsOSRD
-preplace port hash_control -pg 1 -lvl 0 -x 0 -y 1900 -defaultsOSRD
-preplace portBus BRAM_add_din -pg 1 -lvl 0 -x 0 -y 1080 -defaultsOSRD
-preplace portBus BRAM_add_addr -pg 1 -lvl 0 -x 0 -y 1100 -defaultsOSRD
-preplace portBus BRAM_add_we -pg 1 -lvl 0 -x 0 -y 1160 -defaultsOSRD
-preplace portBus BRAM_add_dout -pg 1 -lvl 3 -x 880 -y 1380 -defaultsOSRD
-preplace portBus BRAM_lin_din -pg 1 -lvl 0 -x 0 -y 1180 -defaultsOSRD
-preplace portBus BRAM_lin_addr -pg 1 -lvl 0 -x 0 -y 1200 -defaultsOSRD
-preplace portBus BRAM_lin_we -pg 1 -lvl 0 -x 0 -y 1260 -defaultsOSRD
-preplace portBus BRAM_lin_dout -pg 1 -lvl 3 -x 880 -y 1400 -defaultsOSRD
-preplace portBus BRAM_neg_din -pg 1 -lvl 0 -x 0 -y 1280 -defaultsOSRD
-preplace portBus BRAM_neg_addr -pg 1 -lvl 0 -x 0 -y 1300 -defaultsOSRD
-preplace portBus BRAM_neg_we -pg 1 -lvl 0 -x 0 -y 1360 -defaultsOSRD
-preplace portBus BRAM_neg_dout -pg 1 -lvl 3 -x 880 -y 1420 -defaultsOSRD
-preplace portBus BRAM_red_din -pg 1 -lvl 0 -x 0 -y 1380 -defaultsOSRD
-preplace portBus BRAM_red_addr -pg 1 -lvl 0 -x 0 -y 1400 -defaultsOSRD
-preplace portBus BRAM_red_we -pg 1 -lvl 0 -x 0 -y 1460 -defaultsOSRD
-preplace portBus BRAM_red_dout -pg 1 -lvl 3 -x 880 -y 1440 -defaultsOSRD
-preplace portBus BRAM_key_din -pg 1 -lvl 0 -x 0 -y 1480 -defaultsOSRD
-preplace portBus BRAM_key_addr -pg 1 -lvl 0 -x 0 -y 1500 -defaultsOSRD
-preplace portBus BRAM_key_we -pg 1 -lvl 0 -x 0 -y 1560 -defaultsOSRD
-preplace portBus BRAM_key_dout -pg 1 -lvl 3 -x 880 -y 1460 -defaultsOSRD
-preplace portBus Zero_32 -pg 1 -lvl 0 -x 0 -y 280 -defaultsOSRD
-preplace portBus Zero_4 -pg 1 -lvl 0 -x 0 -y 360 -defaultsOSRD
-preplace portBus BRAM_sam_dout1 -pg 1 -lvl 3 -x 880 -y 480 -defaultsOSRD
-preplace portBus BRAM_sam_we1 -pg 1 -lvl 0 -x 0 -y 660 -defaultsOSRD
-preplace portBus BRAM_sam_addr1 -pg 1 -lvl 0 -x 0 -y 600 -defaultsOSRD
-preplace portBus BRAM_sam_din1 -pg 1 -lvl 0 -x 0 -y 580 -defaultsOSRD
-preplace portBus BRAM_key_dout1 -pg 1 -lvl 3 -x 880 -y 460 -defaultsOSRD
-preplace portBus BRAM_key_addr1 -pg 1 -lvl 0 -x 0 -y 500 -defaultsOSRD
-preplace portBus BRAM_key_din1 -pg 1 -lvl 0 -x 0 -y 480 -defaultsOSRD
-preplace portBus BRAM_lin_dout1 -pg 1 -lvl 3 -x 880 -y 400 -defaultsOSRD
-preplace portBus BRAM_lin_we1 -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
-preplace portBus BRAM_lin_addr1 -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD
-preplace portBus BRAM_lin_din1 -pg 1 -lvl 0 -x 0 -y 180 -defaultsOSRD
-preplace portBus BRAM_add_dout1 -pg 1 -lvl 3 -x 880 -y 380 -defaultsOSRD
-preplace portBus BRAM_add_we1 -pg 1 -lvl 0 -x 0 -y 160 -defaultsOSRD
-preplace portBus BRAM_add_addr1 -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
-preplace portBus BRAM_add_din1 -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
-preplace portBus BRAM_key_we1 -pg 1 -lvl 0 -x 0 -y 560 -defaultsOSRD
-preplace portBus BRAM_hash_din -pg 1 -lvl 0 -x 0 -y 1680 -defaultsOSRD
-preplace portBus BRAM_hash_addr -pg 1 -lvl 0 -x 0 -y 1700 -defaultsOSRD
-preplace portBus BRAM_hash_we1 -pg 1 -lvl 0 -x 0 -y 1760 -defaultsOSRD
-preplace portBus BRAM_hash_dout -pg 1 -lvl 3 -x 880 -y 1500 -defaultsOSRD
-preplace inst Small_BRAM8k -pg 1 -lvl 2 -x 730 -y 1060 -defaultsOSRD
-preplace inst arbit_brama0 -pg 1 -lvl 1 -x 280 -y 1490 -defaultsOSRD
-preplace inst arbit_bramb0 -pg 1 -lvl 1 -x 280 -y 490 -defaultsOSRD
-preplace netloc arbit_brama0_BRAM_rst 1 1 1 560 1030n
-preplace netloc arbit_brama0_BRAM_en 1 1 1 550 1010n
-preplace netloc arbit_brama0_BRAM_we 1 1 1 590 1050n
-preplace netloc arbit_brama0_BRAM_addr 1 1 1 500 930n
-preplace netloc arbit_brama0_BRAM_din 1 1 1 530 970n
-preplace netloc Small_BRAM8k_douta 1 0 2 70 990 NJ
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 2 NJ 980 600
+preplace port BRAM_add_en -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port BRAM_add_rst -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace port BRAM_lin_en -pg 1 -lvl 0 -x 0 -y 220 -defaultsOSRD
+preplace port BRAM_lin_rst -pg 1 -lvl 0 -x 0 -y 240 -defaultsOSRD
+preplace port BRAM_neg_en -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
+preplace port BRAM_neg_rst -pg 1 -lvl 0 -x 0 -y 340 -defaultsOSRD
+preplace port BRAM_red_en -pg 1 -lvl 0 -x 0 -y 420 -defaultsOSRD
+preplace port BRAM_red_rst -pg 1 -lvl 0 -x 0 -y 440 -defaultsOSRD
+preplace port BRAM_key_en -pg 1 -lvl 0 -x 0 -y 520 -defaultsOSRD
+preplace port BRAM_key_rst -pg 1 -lvl 0 -x 0 -y 540 -defaultsOSRD
+preplace port Zero0 -pg 1 -lvl 0 -x 0 -y 620 -defaultsOSRD
+preplace port add_control -pg 1 -lvl 0 -x 0 -y 800 -defaultsOSRD
+preplace port lin_control -pg 1 -lvl 0 -x 0 -y 820 -defaultsOSRD
+preplace port neg_control -pg 1 -lvl 0 -x 0 -y 840 -defaultsOSRD
+preplace port red_control -pg 1 -lvl 0 -x 0 -y 860 -defaultsOSRD
+preplace port bram_control -pg 1 -lvl 0 -x 0 -y 920 -defaultsOSRD
+preplace port bram_control1 -pg 1 -lvl 0 -x 0 -y 1920 -defaultsOSRD
+preplace port sam_control1 -pg 1 -lvl 0 -x 0 -y 1880 -defaultsOSRD
+preplace port lin_control1 -pg 1 -lvl 0 -x 0 -y 1820 -defaultsOSRD
+preplace port BRAM_sam_rst1 -pg 1 -lvl 0 -x 0 -y 1640 -defaultsOSRD
+preplace port BRAM_sam_en1 -pg 1 -lvl 0 -x 0 -y 1620 -defaultsOSRD
+preplace port BRAM_lin_rst1 -pg 1 -lvl 0 -x 0 -y 1240 -defaultsOSRD
+preplace port BRAM_lin_en1 -pg 1 -lvl 0 -x 0 -y 1220 -defaultsOSRD
+preplace port BRAM_key_en1 -pg 1 -lvl 0 -x 0 -y 1520 -defaultsOSRD
+preplace port BRAM_key_rst1 -pg 1 -lvl 0 -x 0 -y 1540 -defaultsOSRD
+preplace port BRAM_hash_en -pg 1 -lvl 0 -x 0 -y 720 -defaultsOSRD
+preplace port hash_control -pg 1 -lvl 0 -x 0 -y 900 -defaultsOSRD
+preplace portBus BRAM_add_din -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace portBus BRAM_add_addr -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace portBus BRAM_add_we -pg 1 -lvl 0 -x 0 -y 160 -defaultsOSRD
+preplace portBus BRAM_add_dout -pg 1 -lvl 3 -x 810 -y 380 -defaultsOSRD
+preplace portBus BRAM_lin_din -pg 1 -lvl 0 -x 0 -y 180 -defaultsOSRD
+preplace portBus BRAM_lin_addr -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD
+preplace portBus BRAM_lin_we -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
+preplace portBus BRAM_lin_dout -pg 1 -lvl 3 -x 810 -y 400 -defaultsOSRD
+preplace portBus BRAM_neg_din -pg 1 -lvl 0 -x 0 -y 280 -defaultsOSRD
+preplace portBus BRAM_neg_addr -pg 1 -lvl 0 -x 0 -y 300 -defaultsOSRD
+preplace portBus BRAM_neg_we -pg 1 -lvl 0 -x 0 -y 360 -defaultsOSRD
+preplace portBus BRAM_neg_dout -pg 1 -lvl 3 -x 810 -y 420 -defaultsOSRD
+preplace portBus BRAM_red_din -pg 1 -lvl 0 -x 0 -y 380 -defaultsOSRD
+preplace portBus BRAM_red_addr -pg 1 -lvl 0 -x 0 -y 400 -defaultsOSRD
+preplace portBus BRAM_red_we -pg 1 -lvl 0 -x 0 -y 460 -defaultsOSRD
+preplace portBus BRAM_red_dout -pg 1 -lvl 3 -x 810 -y 440 -defaultsOSRD
+preplace portBus BRAM_key_din -pg 1 -lvl 0 -x 0 -y 480 -defaultsOSRD
+preplace portBus BRAM_key_addr -pg 1 -lvl 0 -x 0 -y 500 -defaultsOSRD
+preplace portBus BRAM_key_we -pg 1 -lvl 0 -x 0 -y 560 -defaultsOSRD
+preplace portBus BRAM_key_dout -pg 1 -lvl 3 -x 810 -y 460 -defaultsOSRD
+preplace portBus Zero_32 -pg 1 -lvl 0 -x 0 -y 580 -defaultsOSRD
+preplace portBus Zero_4 -pg 1 -lvl 0 -x 0 -y 660 -defaultsOSRD
+preplace portBus BRAM_sam_dout1 -pg 1 -lvl 3 -x 810 -y 1480 -defaultsOSRD
+preplace portBus BRAM_sam_we1 -pg 1 -lvl 0 -x 0 -y 1660 -defaultsOSRD
+preplace portBus BRAM_sam_addr1 -pg 1 -lvl 0 -x 0 -y 1600 -defaultsOSRD
+preplace portBus BRAM_sam_din1 -pg 1 -lvl 0 -x 0 -y 1580 -defaultsOSRD
+preplace portBus BRAM_key_dout1 -pg 1 -lvl 3 -x 810 -y 1460 -defaultsOSRD
+preplace portBus BRAM_key_addr1 -pg 1 -lvl 0 -x 0 -y 1500 -defaultsOSRD
+preplace portBus BRAM_key_din1 -pg 1 -lvl 0 -x 0 -y 1480 -defaultsOSRD
+preplace portBus BRAM_lin_dout1 -pg 1 -lvl 3 -x 810 -y 1400 -defaultsOSRD
+preplace portBus BRAM_lin_we1 -pg 1 -lvl 0 -x 0 -y 1260 -defaultsOSRD
+preplace portBus BRAM_lin_addr1 -pg 1 -lvl 0 -x 0 -y 1200 -defaultsOSRD
+preplace portBus BRAM_lin_din1 -pg 1 -lvl 0 -x 0 -y 1180 -defaultsOSRD
+preplace portBus BRAM_key_we1 -pg 1 -lvl 0 -x 0 -y 1560 -defaultsOSRD
+preplace portBus BRAM_hash_din -pg 1 -lvl 0 -x 0 -y 680 -defaultsOSRD
+preplace portBus BRAM_hash_addr -pg 1 -lvl 0 -x 0 -y 700 -defaultsOSRD
+preplace portBus BRAM_hash_we1 -pg 1 -lvl 0 -x 0 -y 760 -defaultsOSRD
+preplace portBus BRAM_hash_dout -pg 1 -lvl 3 -x 810 -y 500 -defaultsOSRD
+preplace inst Small_BRAM8k -pg 1 -lvl 2 -x 660 -y 1060 -defaultsOSRD
+preplace inst arbit_brama0 -pg 1 -lvl 1 -x 270 -y 490 -defaultsOSRD
+preplace inst arbit_bramb0 -pg 1 -lvl 1 -x 270 -y 1490 -defaultsOSRD
+preplace netloc arbit_brama0_BRAM_rst 1 1 1 500 580n
+preplace netloc arbit_brama0_BRAM_en 1 1 1 510 560n
+preplace netloc arbit_brama0_BRAM_we 1 1 1 490 600n
+preplace netloc arbit_brama0_BRAM_addr 1 1 1 520 540n
+preplace netloc arbit_brama0_BRAM_din 1 1 1 530 520n
+preplace netloc Small_BRAM8k_douta 1 0 2 60 990 NJ
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 2 NJ 980 520
 preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 0 1 50 60n
-preplace netloc mayo_add_vectors_0_o_mema_din 1 0 1 NJ 1080
-preplace netloc mayo_add_vectors_0_o_mema_addr 1 0 1 NJ 1100
-preplace netloc mayo_add_vectors_0_o_mema_en 1 0 1 NJ 1120
-preplace netloc mayo_add_vectors_0_o_mema_rst 1 0 1 NJ 1140
-preplace netloc mayo_add_vectors_0_o_mema_we 1 0 1 NJ 1160
-preplace netloc arbit_brama0_BRAM_add_dout 1 1 2 NJ 1380 NJ
-preplace netloc mayo_linear_combinat_0_o_mem0a_din 1 0 1 NJ 1180
-preplace netloc mayo_linear_combinat_0_o_mem0a_addr 1 0 1 NJ 1200
-preplace netloc mayo_linear_combinat_0_o_mem0a_en 1 0 1 NJ 1220
-preplace netloc mayo_linear_combinat_0_o_mem0a_rst 1 0 1 NJ 1240
-preplace netloc mayo_linear_combinat_0_o_mem0a_we 1 0 1 NJ 1260
-preplace netloc arbit_brama0_BRAM_lin_dout 1 1 2 NJ 1400 NJ
-preplace netloc mayo_negate_0_o_dinb 1 0 1 NJ 1280
-preplace netloc mayo_negate_0_o_addrb 1 0 1 NJ 1300
-preplace netloc mayo_negate_0_o_enb 1 0 1 NJ 1320
-preplace netloc mayo_negate_0_o_rstb 1 0 1 NJ 1340
-preplace netloc mayo_negate_0_o_web 1 0 1 NJ 1360
-preplace netloc arbit_brama0_BRAM_neg_dout 1 1 2 NJ 1420 NJ
-preplace netloc mayo_reduce_0_o_dinb 1 0 1 NJ 1380
-preplace netloc mayo_reduce_0_o_addrb 1 0 1 NJ 1400
-preplace netloc mayo_reduce_0_o_enb 1 0 1 NJ 1420
-preplace netloc mayo_reduce_0_o_rstb 1 0 1 NJ 1440
-preplace netloc mayo_reduce_0_o_web 1 0 1 NJ 1460
-preplace netloc arbit_brama0_BRAM_red_dout 1 1 2 NJ 1440 NJ
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_din 1 0 1 NJ 1480
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_addr 1 0 1 NJ 1500
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_en 1 0 1 NJ 1520
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_rst 1 0 1 NJ 1540
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_we 1 0 1 NJ 1560
-preplace netloc arbit_brama0_BRAM_key_dout 1 1 2 NJ 1460 NJ
-preplace netloc mayo_add_vectors_0_o_controla 1 0 1 NJ 1800
-preplace netloc mayo_linear_combinat_0_o_control0a 1 0 1 NJ 1820
-preplace netloc mayo_negate_0_o_control 1 0 1 NJ 1840
-preplace netloc mayo_reduce_0_o_control 1 0 1 NJ 1860
-preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_control 1 0 1 NJ 1920
-preplace netloc bram_control1_1 1 0 1 NJ 920
-preplace netloc sam_control1_1 1 0 1 NJ 880
-preplace netloc mayo_linear_combinat_0_o_control0b 1 0 1 NJ 820
-preplace netloc mayo_add_vectors_0_o_controlb 1 0 1 NJ 800
-preplace netloc Small_BRAM8k_doutb 1 0 2 60 1000 510J
-preplace netloc arbit_bramb0_BRAM_we 1 1 1 490 600n
-preplace netloc arbit_bramb0_BRAM_rst 1 1 1 520 580n
-preplace netloc arbit_bramb0_BRAM_en 1 1 1 540 560n
-preplace netloc arbit_bramb0_BRAM_addr 1 1 1 580 540n
-preplace netloc arbit_bramb0_BRAM_din 1 1 1 570 520n
-preplace netloc arbit_bramb0_BRAM_sam_dout 1 1 2 NJ 480 NJ
-preplace netloc mayo_sample_oil_space_0_o_memb_we 1 0 1 NJ 660
-preplace netloc mayo_sample_oil_space_0_o_memb_rst 1 0 1 NJ 640
-preplace netloc mayo_sample_oil_space_0_o_memb_en 1 0 1 NJ 620
-preplace netloc mayo_sample_oil_space_0_o_memb_addr 1 0 1 NJ 600
-preplace netloc mayo_sample_oil_space_0_o_memb_din 1 0 1 NJ 580
-preplace netloc arbit_bramb0_BRAM_key_dout 1 1 2 NJ 460 NJ
-preplace netloc BRAM_key_addr1_1 1 0 1 NJ 500
-preplace netloc BRAM_key_din1_1 1 0 1 NJ 480
-preplace netloc mayo_bram_arbiter_1_BRAM_lin_dout 1 1 2 NJ 400 NJ
-preplace netloc mayo_linear_combinat_0_o_mem0b_we 1 0 1 NJ 260
-preplace netloc mayo_linear_combinat_0_o_mem0b_rst 1 0 1 NJ 240
-preplace netloc mayo_linear_combinat_0_o_mem0b_en 1 0 1 NJ 220
-preplace netloc mayo_linear_combinat_0_o_mem0b_addr 1 0 1 NJ 200
-preplace netloc mayo_linear_combinat_0_o_mem0b_din 1 0 1 NJ 180
-preplace netloc mayo_bram_arbiter_1_BRAM_add_dout 1 1 2 NJ 380 NJ
-preplace netloc mayo_add_vectors_0_o_memb_we 1 0 1 NJ 160
-preplace netloc mayo_add_vectors_0_o_memb_rst 1 0 1 NJ 140
-preplace netloc mayo_add_vectors_0_o_memb_en 1 0 1 NJ 120
-preplace netloc mayo_add_vectors_0_o_memb_addr 1 0 1 NJ 100
-preplace netloc mayo_add_vectors_0_o_memb_din 1 0 1 NJ 80
-preplace netloc BRAM_key_en1_1 1 0 1 NJ 520
-preplace netloc BRAM_key_rst1_1 1 0 1 NJ 540
-preplace netloc BRAM_key_we1_1 1 0 1 NJ 560
-preplace netloc BRAM_hash_din_1 1 0 1 NJ 1680
-preplace netloc BRAM_hash_addr_1 1 0 1 NJ 1700
-preplace netloc BRAM_hash_en_1 1 0 1 NJ 1720
-preplace netloc BRAM_hash_we1_1 1 0 1 NJ 1760
-preplace netloc arbit_brama0_BRAM_hash_dout 1 1 2 NJ 1500 NJ
-preplace netloc BRAM_neg_din1_1 1 0 1 40 280n
-preplace netloc BRAM_hash_rst_1 1 0 1 30 320n
-preplace netloc BRAM_hash_we_1 1 0 1 20 360n
-preplace netloc hash_control_1 1 0 1 NJ 1900
-levelinfo -pg 1 0 280 730 880
-pagesize -pg 1 -db -bbox -sgen -230 0 1110 1980
+preplace netloc mayo_add_vectors_0_o_mema_din 1 0 1 NJ 80
+preplace netloc mayo_add_vectors_0_o_mema_addr 1 0 1 NJ 100
+preplace netloc mayo_add_vectors_0_o_mema_en 1 0 1 NJ 120
+preplace netloc mayo_add_vectors_0_o_mema_rst 1 0 1 NJ 140
+preplace netloc mayo_add_vectors_0_o_mema_we 1 0 1 NJ 160
+preplace netloc arbit_brama0_BRAM_add_dout 1 1 2 NJ 380 NJ
+preplace netloc mayo_linear_combinat_0_o_mem0a_din 1 0 1 NJ 180
+preplace netloc mayo_linear_combinat_0_o_mem0a_addr 1 0 1 NJ 200
+preplace netloc mayo_linear_combinat_0_o_mem0a_en 1 0 1 NJ 220
+preplace netloc mayo_linear_combinat_0_o_mem0a_rst 1 0 1 NJ 240
+preplace netloc mayo_linear_combinat_0_o_mem0a_we 1 0 1 NJ 260
+preplace netloc arbit_brama0_BRAM_lin_dout 1 1 2 NJ 400 NJ
+preplace netloc mayo_negate_0_o_dinb 1 0 1 NJ 280
+preplace netloc mayo_negate_0_o_addrb 1 0 1 NJ 300
+preplace netloc mayo_negate_0_o_enb 1 0 1 NJ 320
+preplace netloc mayo_negate_0_o_rstb 1 0 1 NJ 340
+preplace netloc mayo_negate_0_o_web 1 0 1 NJ 360
+preplace netloc arbit_brama0_BRAM_neg_dout 1 1 2 NJ 420 NJ
+preplace netloc mayo_reduce_0_o_dinb 1 0 1 NJ 380
+preplace netloc mayo_reduce_0_o_addrb 1 0 1 NJ 400
+preplace netloc mayo_reduce_0_o_enb 1 0 1 NJ 420
+preplace netloc mayo_reduce_0_o_rstb 1 0 1 NJ 440
+preplace netloc mayo_reduce_0_o_web 1 0 1 NJ 460
+preplace netloc arbit_brama0_BRAM_red_dout 1 1 2 NJ 440 NJ
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_din 1 0 1 NJ 480
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_addr 1 0 1 NJ 500
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_en 1 0 1 NJ 520
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_rst 1 0 1 NJ 540
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_we 1 0 1 NJ 560
+preplace netloc arbit_brama0_BRAM_key_dout 1 1 2 NJ 460 NJ
+preplace netloc mayo_add_vectors_0_o_controla 1 0 1 NJ 800
+preplace netloc mayo_linear_combinat_0_o_control0a 1 0 1 NJ 820
+preplace netloc mayo_negate_0_o_control 1 0 1 NJ 840
+preplace netloc mayo_reduce_0_o_control 1 0 1 NJ 860
+preplace netloc AXI_LITE_Mayo_Keygen_0_o_mem0a_control 1 0 1 NJ 920
+preplace netloc bram_control1_1 1 0 1 NJ 1920
+preplace netloc sam_control1_1 1 0 1 NJ 1880
+preplace netloc mayo_linear_combinat_0_o_control0b 1 0 1 NJ 1820
+preplace netloc Small_BRAM8k_doutb 1 0 2 60 1000 480J
+preplace netloc arbit_bramb0_BRAM_we 1 1 1 530 1210n
+preplace netloc arbit_bramb0_BRAM_rst 1 1 1 520 1190n
+preplace netloc arbit_bramb0_BRAM_en 1 1 1 510 1170n
+preplace netloc arbit_bramb0_BRAM_addr 1 1 1 490 1090n
+preplace netloc arbit_bramb0_BRAM_din 1 1 1 500 1130n
+preplace netloc arbit_bramb0_BRAM_sam_dout 1 1 2 NJ 1480 NJ
+preplace netloc mayo_sample_oil_space_0_o_memb_we 1 0 1 NJ 1660
+preplace netloc mayo_sample_oil_space_0_o_memb_rst 1 0 1 NJ 1640
+preplace netloc mayo_sample_oil_space_0_o_memb_en 1 0 1 NJ 1620
+preplace netloc mayo_sample_oil_space_0_o_memb_addr 1 0 1 NJ 1600
+preplace netloc mayo_sample_oil_space_0_o_memb_din 1 0 1 NJ 1580
+preplace netloc arbit_bramb0_BRAM_key_dout 1 1 2 NJ 1460 NJ
+preplace netloc BRAM_key_addr1_1 1 0 1 NJ 1500
+preplace netloc BRAM_key_din1_1 1 0 1 NJ 1480
+preplace netloc mayo_bram_arbiter_1_BRAM_lin_dout 1 1 2 NJ 1400 NJ
+preplace netloc mayo_linear_combinat_0_o_mem0b_we 1 0 1 NJ 1260
+preplace netloc mayo_linear_combinat_0_o_mem0b_rst 1 0 1 NJ 1240
+preplace netloc mayo_linear_combinat_0_o_mem0b_en 1 0 1 NJ 1220
+preplace netloc mayo_linear_combinat_0_o_mem0b_addr 1 0 1 NJ 1200
+preplace netloc mayo_linear_combinat_0_o_mem0b_din 1 0 1 NJ 1180
+preplace netloc BRAM_key_en1_1 1 0 1 NJ 1520
+preplace netloc BRAM_key_rst1_1 1 0 1 NJ 1540
+preplace netloc BRAM_key_we1_1 1 0 1 NJ 1560
+preplace netloc BRAM_hash_din_1 1 0 1 NJ 680
+preplace netloc BRAM_hash_addr_1 1 0 1 NJ 700
+preplace netloc BRAM_hash_en_1 1 0 1 NJ 720
+preplace netloc BRAM_hash_we1_1 1 0 1 NJ 760
+preplace netloc arbit_brama0_BRAM_hash_dout 1 1 2 NJ 500 NJ
+preplace netloc BRAM_neg_din1_1 1 0 1 40 580n
+preplace netloc BRAM_hash_rst_1 1 0 1 30 620n
+preplace netloc BRAM_hash_we_1 1 0 1 20 660n
+preplace netloc hash_control_1 1 0 1 NJ 900
+levelinfo -pg 1 0 270 660 810
+pagesize -pg 1 -db -bbox -sgen -230 0 1040 1980
 "
 }
 0

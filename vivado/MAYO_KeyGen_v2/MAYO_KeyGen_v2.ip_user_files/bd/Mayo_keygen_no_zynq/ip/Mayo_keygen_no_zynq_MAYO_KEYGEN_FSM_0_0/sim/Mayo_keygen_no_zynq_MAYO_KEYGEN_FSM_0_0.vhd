@@ -96,6 +96,7 @@ ENTITY Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0 IS
     o_add_v2_addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     o_add_out_addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     i_add_done : IN STD_LOGIC;
+    o_add_bram_sel : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     o_neg_enable : OUT STD_LOGIC;
     o_neg_len : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     o_neg_adr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -174,6 +175,7 @@ ARCHITECTURE Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0_arch OF Mayo_keygen_no_zynq
       o_add_v2_addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       o_add_out_addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       i_add_done : IN STD_LOGIC;
+      o_add_bram_sel : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       o_neg_enable : OUT STD_LOGIC;
       o_neg_len : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       o_neg_adr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -263,6 +265,7 @@ BEGIN
       o_add_v2_addr => o_add_v2_addr,
       o_add_out_addr => o_add_out_addr,
       i_add_done => i_add_done,
+      o_add_bram_sel => o_add_bram_sel,
       o_neg_enable => o_neg_enable,
       o_neg_len => o_neg_len,
       o_neg_adr => o_neg_adr,
