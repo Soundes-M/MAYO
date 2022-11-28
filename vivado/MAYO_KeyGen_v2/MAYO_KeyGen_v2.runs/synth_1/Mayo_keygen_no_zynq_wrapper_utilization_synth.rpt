@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Sun Nov 20 14:10:41 2022
+| Date         : Thu Nov 24 23:44:25 2022
 | Host         : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 | Command      : report_utilization -file Mayo_keygen_no_zynq_wrapper_utilization_synth.rpt -pb Mayo_keygen_no_zynq_wrapper_utilization_synth.pb
 | Design       : Mayo_keygen_no_zynq_wrapper
@@ -163,6 +163,7 @@ Table of Contents
 | Mayo_keygen_no_zynq_mayo_negate_0_0           |    1 |
 | Mayo_keygen_no_zynq_mayo_linear_combinat_0_0  |    1 |
 | Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0  |    1 |
+| Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0  |    1 |
 | Mayo_keygen_no_zynq_mayo_add_vectors_0_0      |    1 |
 | Mayo_keygen_no_zynq_arbit_bramb0_0            |    1 |
 | Mayo_keygen_no_zynq_arbit_brama1_0            |    1 |

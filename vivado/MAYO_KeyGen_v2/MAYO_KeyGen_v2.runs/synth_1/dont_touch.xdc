@@ -46,16 +46,19 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen
 # IP: bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0 || ORIG_REF_NAME==Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0} -quiet] -quiet
 
-# IP: bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_add_vectors_0_0/Mayo_keygen_no_zynq_mayo_add_vectors_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_no_zynq_mayo_add_vectors_0_0 || ORIG_REF_NAME==Mayo_keygen_no_zynq_mayo_add_vectors_0_0} -quiet] -quiet
-
-# IP: bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0 || ORIG_REF_NAME==Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0} -quiet] -quiet
-
 # IP: bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_no_zynq_mayo_linear_combinat_0_0 || ORIG_REF_NAME==Mayo_keygen_no_zynq_mayo_linear_combinat_0_0} -quiet] -quiet
 
 # IP: bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_negate_0_0/Mayo_keygen_no_zynq_mayo_negate_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_no_zynq_mayo_negate_0_0 || ORIG_REF_NAME==Mayo_keygen_no_zynq_mayo_negate_0_0} -quiet] -quiet
+
+# IP: bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_add_vectors_0_0/Mayo_keygen_no_zynq_mayo_add_vectors_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_no_zynq_mayo_add_vectors_0_0 || ORIG_REF_NAME==Mayo_keygen_no_zynq_mayo_add_vectors_0_0} -quiet] -quiet
+
+# IP: bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0/Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0 || ORIG_REF_NAME==Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0} -quiet] -quiet
+
+# IP: bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0 || ORIG_REF_NAME==Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0} -quiet] -quiet
 
 # XDC: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/Mayo_keygen_no_zynq_ooc.xdc

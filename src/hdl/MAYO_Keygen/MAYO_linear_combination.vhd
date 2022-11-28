@@ -188,6 +188,7 @@ begin
 				s_coeffs      <= ZERO_32;
 				s_main        <= '0';
 				t_state       <= idle;
+				dspb          <= (others => '0');
 
 			else
 				case (t_state) is
@@ -214,53 +215,57 @@ begin
 						-- Enable BRAMs and start reading
 						bram0a.o.o_addr <= s_coeffs_addr;
 						bram0a.o.o_en   <= '1';
+						bram0a.o.o_we   <= "0000";
 						bram1a.o.o_addr <= s_vecs_addr;
 						bram1a.o.o_en   <= '1';
-						bram1a.o.o_rst  <= '0';
 						bram1a.o.o_we   <= "0000";
 						t_state         <= read3;
 
-					when read3 => -- BRAM Extra Delay
-						t_state      <= read4;
+					when read3 =>            -- BRAM Extra Delay
 						s_main       <= '0'; -- DSPs should not take this data in ! 
 						s_acc_change <= '0';
+						t_state      <= read4;
 
-					when read4 =>
+					when read4 => -- BRAM Extra Delay
 						t_state <= read2;
 
-					when read2 =>                  -- Also update ADR
+					when read2 =>                  -- Read Vecs and Coefs, start DSPs and check lood conditions
 						s_vecs <= bram1a.i.i_dout; -- 32 Bits (4 Byte/clk)
-
 						if (c = 0) then
 							s_coeffs <= bram0a.i.i_dout; -- 32 Bits (1 Byte/clk)
+							dspb     <= bram0a.i.i_dout(7 downto 0);
+						else
+							dspb <= s_coeffs(c*8+7 downto c*8);
 						end if;
 
 						s_main <= '1'; -- Start lin_comb
 
-						if(i >= (unsigned(s_len)-1)) then -- i Loop done --> Reset i
+						if(i >= (unsigned(s_len)-1)) then -- i Loop done --> Reset i [Last DSP Round]
 							bram0a.o.o_addr <= s_coeffs_addr;
 							bram1a.o.o_addr <= std_logic_vector(unsigned(s_vecs_addr)+j+4); -- [ j+4, loop is inverted and 4j based]
 							i               <= 0 ;
 							s_acc_change    <= '1'; -- Change acc buffer
 
-							if (j >= (M -1)) then --j loop done
+							if (j >= (M-1)) then --j loop done
 								t_state <= done; -- END; no more input data
 							else
 								j       <= j +4 ;
+								c       <= 0;
 								t_state <= read3;
+
 							end if;
 
 						else
 							i <= i +1 ;
+
 							--Coeffs
-							if (c = 3) then
+							if (c >= 3) then
 								bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) + 4);
-								bram0a.o.o_en   <= '1';
 								c               <= 0;
 							else
-								bram0a.o.o_en <= '0'; -- Coeffs not needed anymore
-								c             <= c +1 ;
+								c <= c +1 ;
 							end if;
+
 							-- Vecs 
 							bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) + (M / 4)); -- Next vecs (i is also used here) [i+1]
 							t_state         <= read3;
@@ -304,11 +309,14 @@ begin
 			else
 				case (t_state1) is
 					when idle =>
-						o_done      <= '0';
-						o_control0b <= '0';
-						s_acc_flush <= '0';
+						o_done        <= '0';
+						o_control0b   <= '0';
+						s_acc_flush   <= '0';
+						bram0b.o.o_en <= '0';
+						bram0b.o.o_we <= "0000";
 						if (s_acc_change= '1') then
-							t_state1 <= main1;
+							t_state1    <= main1;
+							o_control0b <= '1';
 						end if;
 
 					when main1 =>
@@ -324,21 +332,20 @@ begin
 								std_logic_vector(resize(unsigned(s_acc(5)) mod PRIME,8)) &
 								std_logic_vector(resize(unsigned(s_acc(4)) mod PRIME,8));
 						end if;
-						o_control0b <= '1';
-						t_state1    <= write1;
-
-					when write1 =>
+						t_state1 <= idle;
 
 						bram0b.o.o_en <= '1';
 						bram0b.o.o_we <= "1111";
+
 						if first = '0' then
 							bram0b.o.o_addr <= s_out_addr;
 							first           <= '1';
 						else
 							bram0b.o.o_addr <= std_logic_vector(unsigned(bram0b.o.o_addr) + 4);
 						end if;
+
 						s_acc_flush <= '1';
-						if (s_out_ctr > (M -1)) then
+						if (s_out_ctr >= (M -1)) then
 							t_state1 <= done;
 						else
 							s_out_ctr <= s_out_ctr + 4;
@@ -362,7 +369,6 @@ begin
 		end if;
 	end process;
 
-	dspb <= s_coeffs(c*8+7 downto c*8);
 
 	--BRAM0-A
 	bram0a.i.i_dout <= i_mem0a_dout;

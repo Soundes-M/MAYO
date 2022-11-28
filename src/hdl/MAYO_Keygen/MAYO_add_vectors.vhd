@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sun Nov 20 16:35:51 2022
+-- Last update : Sat Nov 26 22:12:54 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -81,10 +81,10 @@ architecture Behavioral of mayo_add_vectors is
 
 	constant INDEX : natural := M;
 
-	signal s_v1_addr         : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V1 ADR in BRAM
-	signal s_v2_addr         : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V2 ADR in BRAM
-	signal s_out_addr        : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- OUT ADR in BRAM
-	signal s_out             : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
+	signal s_v1_addr  : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V1 ADR in BRAM
+	signal s_v2_addr  : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V2 ADR in BRAM
+	signal s_out_addr : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- OUT ADR in BRAM
+	                                                                                --signal s_out             : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
 	signal o_memc_din_buffer : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
 
 	signal s_v1 : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
@@ -126,13 +126,14 @@ begin
 							s_v2_addr  <= i_v2_addr;
 							s_out_addr <= i_out_addr;
 							o_controla <= '1';
-						end if;
-					when read1 => --READ BLOCK from v1 and v2 at a time to avoid collision with all configs
+							o_controlb <= '1';
 
-						-- V1 BRAM A
+						end if;
+
+					when read1 => --READ BLOCK from v1 and v2 at a time to avoid collision with all configs
+						          -- V1 BRAM A
 						o_mema_addr <= std_logic_vector(unsigned(s_v1_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
 						o_mema_en   <= '1';
-						o_mema_rst  <= '0';
 						o_mema_we   <= "0000";
 						s_state     <= read4;
 
@@ -140,13 +141,11 @@ begin
 						s_state <= read2;
 
 					when read2 =>
-						s_v1       <= i_mema_dout;
-						o_controla <= '0';
+						o_mema_en <= '0';
+						s_v1      <= i_mema_dout;
 						-- V2 BRAM B
-						o_controlb  <= '1';
 						o_memb_addr <= std_logic_vector(unsigned(s_v2_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
 						o_memb_en   <= '1';
-						o_memb_rst  <= '0';
 						o_memb_we   <= "0000";
 						s_state     <= read5;
 
@@ -154,10 +153,10 @@ begin
 						s_state <= read3;
 
 					when read3 =>
-						s_v2         <= i_memb_dout;
-						o_memb_en    <= '0';
+						s_v2      <= i_memb_dout;
+						o_memb_en <= '0';
+
 						s_main_start <= '1';
-						o_controlb   <= '0';
 						if (s_ctr >= INDEX-4) then -- i < M 
 							s_state <= done;
 						else
@@ -168,10 +167,11 @@ begin
 					when waiting => -- Another BLOCK is needed .. waiting
 						s_main_start <= '0';
 						if (s_io_read = '1') then
-							o_controla <= '1';
-							s_state    <= read1;
+							s_state <= read1;
 						end if;
 					when done =>
+						o_controla   <= '0';
+						o_controlb   <= '0';
 						o_done       <= '1';
 						s_main_start <= '0';
 						s_state      <= idle;
@@ -201,7 +201,8 @@ begin
 						o_memc_en <= '0';
 						o_memc_we <= "0000";
 						if (s_main_start = '1') then
-							s_state_1 <= main0;
+							s_state_1  <= main0;
+							o_controlc <= '1';
 						end if;
 						o_controlc <= '0';
 
@@ -214,7 +215,6 @@ begin
 					when main1 =>
 						s_io_read <= '1'; -- need next block
 
-						o_controlc <= '1';
 						for k in 0 to 3 loop -- MOD
 							o_memc_din_buffer(k*8+7 downto k*8) <= std_logic_vector(unsigned(o_memc_din_buffer(k*8+7 downto k*8)) mod PRIME);
 						end loop;

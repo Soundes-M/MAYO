@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.46506",
-   "Default View_TopLeft":"-126,0",
+   "Default View_ScaleFactor":"1.25",
+   "Default View_TopLeft":"-301,-49",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
@@ -28,14 +28,10 @@ preplace portBus BRAM0_addr -pg 1 -lvl 3 -x 760 -y 270 -defaultsOSRD
 preplace portBus BRAM0_we -pg 1 -lvl 3 -x 760 -y 310 -defaultsOSRD
 preplace portBus BRAM0_dout -pg 1 -lvl 0 -x 0 -y 380 -defaultsOSRD
 preplace inst mayo_hash_bram_arbit_0 -pg 1 -lvl 2 -x 560 -y 330 -defaultsOSRD
-preplace inst MAYO_SHAKE_1 -pg 1 -lvl 1 -x 180 -y 130 -defaultsOSRD
+preplace inst MAYO_SHAKE_0 -pg 1 -lvl 1 -x 180 -y 130 -defaultsOSRD
 preplace netloc processing_system7_0_FCLK_CLK0 1 0 1 NJ 80
 preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 0 1 NJ 60
 preplace netloc mayo_hash_bram_arbit_0_hash_dout 1 0 3 20 490 NJ 490 740
-preplace netloc MAYO_SHAKE_1_BRAMA_din 1 1 1 360 170n
-preplace netloc MAYO_SHAKE_1_BRAMA_addr 1 1 1 370 150n
-preplace netloc MAYO_SHAKE_1_BRAMA_en 1 1 1 340 190n
-preplace netloc MAYO_SHAKE_1_BRAMA_we 1 1 1 350 130n
 preplace netloc BRAMA_dout_1 1 0 2 NJ 400 NJ
 preplace netloc mayo_hash_bram_arbit_0_BRAM1_we 1 2 1 NJ 410
 preplace netloc mayo_hash_bram_arbit_0_BRAM1_en 1 2 1 NJ 390
@@ -46,7 +42,6 @@ preplace netloc mayo_hash_bram_arbit_0_BRAM0_addr 1 2 1 NJ 270
 preplace netloc mayo_hash_bram_arbit_0_BRAM0_en 1 2 1 NJ 290
 preplace netloc mayo_hash_bram_arbit_0_BRAM0_we 1 2 1 NJ 310
 preplace netloc BRAM0_dout_1 1 0 2 NJ 380 NJ
-preplace netloc MAYO_SHAKE_1_o_control 1 1 1 380 110n
 preplace netloc mayo_hash_bram_arbit_0_BRAM1_control 1 2 1 NJ 430
 preplace netloc mayo_hash_bram_arbit_0_BRAM0_control 1 2 1 NJ 330
 preplace netloc bram_sel_1 1 0 2 NJ 260 NJ
@@ -55,8 +50,13 @@ preplace netloc i_key_mlen_1 1 0 1 NJ 120
 preplace netloc i_key_olen_1 1 0 1 NJ 140
 preplace netloc i_key_write_adr_1 1 0 1 NJ 160
 preplace netloc i_key_read_adr_1 1 0 1 NJ 180
-preplace netloc MAYO_SHAKE_1_dyn_done 1 1 2 NJ 70 NJ
-preplace netloc MAYO_SHAKE_1_done 1 1 2 NJ 90 NJ
+preplace netloc MAYO_SHAKE_0_BRAMA_din 1 1 1 360 170n
+preplace netloc MAYO_SHAKE_0_BRAMA_en 1 1 1 340 190n
+preplace netloc MAYO_SHAKE_0_BRAMA_addr 1 1 1 370 150n
+preplace netloc MAYO_SHAKE_0_o_control 1 1 1 380 110n
+preplace netloc MAYO_SHAKE_0_BRAMA_we 1 1 1 350 130n
+preplace netloc MAYO_SHAKE_0_dyn_done 1 1 2 NJ 70 NJ
+preplace netloc MAYO_SHAKE_0_done 1 1 2 NJ 90 NJ
 levelinfo -pg 1 0 180 560 760
 pagesize -pg 1 -db -bbox -sgen -210 0 950 500
 "

@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sun Nov 20 17:28:07 2022
+-- Last update : Sat Nov 26 21:30:09 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -22,6 +22,8 @@
 LIBRARY IEEE;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
+use STD.textio.all;
+use ieee.std_logic_textio.all;
 
 use work.MAYO_COMMON.all;
 use work.UTILS_COMMON.all;
@@ -130,7 +132,7 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
       transpose3, transpose4, transpose5, transpose6, transpose7, negate0, negate1, negate2, sample0, sample1, sample2,
       compute0, compute1, compute2, compute3, compute4, compute5, compute6, compute7, compute8, compute9, compute10, compute11,
       compute12, compute13, compute14, compute15, compute16, compute17, compute18, compute19, compute20, compute21, compute22, compute23,
-      done, wait_clear);
+      done, wait_clear,fill_sk0,fill_sk1,fill_sk2,fill_sk3,fill_sk4);
   SIGNAL STATE : STATES := idle; -- default to reset;
 
   signal trng : trng_t := DEFAULT_TRNG;
@@ -172,14 +174,27 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
   signal bram0b : bram_t := DEFAULT_BRAM;
   signal bram1a : bram_t := DEFAULT_BRAM;
 
+  ------------------------------------------------------------------------------
+  -- DEBUG
+  ------------------------------------------------------------------------------
+  constant C_DEBUG : std_logic := '1';
+  signal s_sk      : std_logic_vector((SK_BYTES*8)-1 downto 0);
+  signal s_pk      : std_logic_vector((PK_BYTES*8)-1 downto 0);
+  signal s_oil     : std_logic_vector((OIL_SPACE_BYTES*8)-1 downto 0);
+  file file_sk     : text;
+  file file_pk     : text;
+  file file_oil    : text;
 BEGIN
 
-  o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
+  o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = fill_sk0 or state = fill_sk1 or state = fill_sk2 or state = fill_sk3 or state = fill_sk4) else '0';
   o_mem0b_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
   o_mem1a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = transpose3 or state = transpose4 or state = transpose5 or state = transpose7) else '0';
 
   -- sync compute!
-  KEYGEN : PROCESS (CLK) IS
+  KEYGEN            : PROCESS (CLK) IS
+    variable v_oline0 : line;
+    variable v_oline1 : line;
+    variable v_oline2 : line;
   BEGIN
     if (rising_edge(clk)) then
       if (RESET = '1') then
@@ -610,10 +625,47 @@ BEGIN
 
           when negate1 =>
             if (i_neg_done = '1') then
-              state <= done;
+              if C_DEBUG = '1' then
+                state <= fill_sk0;
+                i     <= 0 ;
+              else
+                state <= done;
+              end if;
             end if;
 
+          ----------------------------------------------------------------------
+          -- DEBUG
+          ----------------------------------------------------------------------
+          when fill_sk0 =>
+            bram0a.o.o_addr <= std_logic_vector(to_unsigned(PK_BASE_ADR,PORT_WIDTH));
+            bram0a.o.o_en   <= '1';
+            bram0a.o.o_we   <= "0000";
+            state           <= fill_sk1;
+
+          when fill_sk1 =>
+            state <= fill_sk2;
+
+          when fill_sk2 =>
+            state <= fill_sk3;
+
+          when fill_sk3 =>
+            if (i*4 <= PK_BYTES -1) then
+              s_pk(i*32+31 downto i*32) <= bram0a.i.i_dout;
+              i                         <= i+1;
+              bram0a.o.o_addr           <= std_logic_vector(unsigned(bram0a.o.o_addr) +4 );
+              state                     <= fill_sk1;
+            else
+              state <= fill_sk4;
+            end if;
+
+          when fill_sk4 =>
+            file_open(file_sk, "pk.txt", write_mode);
+            hwrite(v_oline0, s_pk); -- hex write 
+            writeline(file_sk, v_oline0);
+            state <= done;
+
           when done =>
+            file_close(file_sk);
             o_done <= '1';
             irq    <= '1';
             state  <= wait_clear;

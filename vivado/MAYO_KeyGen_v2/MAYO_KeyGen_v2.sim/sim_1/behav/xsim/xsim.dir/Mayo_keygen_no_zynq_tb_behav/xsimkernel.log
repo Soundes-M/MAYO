@@ -1,7 +1,7 @@
-Running: xsim.dir/Mayo_keygen_no_zynq_tb_behav/xsimk -simmode gui -wdb Mayo_keygen_no_zynq_tb_behav.wdb -simrunnum 0 -socket 45789
+Running: xsim.dir/Mayo_keygen_no_zynq_tb_behav/xsimk -simmode gui -wdb Mayo_keygen_no_zynq_tb_behav.wdb -simrunnum 0 -socket 43835
 Design successfully loaded
-Design Loading Memory Usage: 45552 KB (Peak: 45552 KB)
-Design Loading CPU Usage: 50 ms
+Design Loading Memory Usage: 45596 KB (Peak: 45596 KB)
+Design Loading CPU Usage: 40 ms
 Simulation completed
-Simulation Memory Usage: 139028 KB (Peak: 184820 KB)
-Simulation CPU Usage: 168860 ms
+Simulation Memory Usage: 139080 KB (Peak: 184864 KB)
+Simulation CPU Usage: 184070 ms

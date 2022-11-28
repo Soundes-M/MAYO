@@ -26,7 +26,7 @@ use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;
 
 use work.MAYO_COMMON.all;
-
+use work.UTILS_COMMON.all;
 
 entity mayo_negate is
 	generic (
@@ -51,15 +51,15 @@ end mayo_negate;
 
 architecture Behavioral of mayo_negate is
 
-	type state is (idle, read1, read2, write1, write2, done);
+	type state is (idle, read1, read2,read3, write1, write2, done);
 	signal t_state   : state := idle;
 	signal s_rstb    : std_logic;
 	signal s_enb     : std_logic;
 	signal s_web     : std_logic_vector(3 downto 0);                              -- enable port b (4 Cells)
 	signal s_addrb   : std_logic_vector(BRAM_SIZE-1 downto 0) := (others => '0'); -- Max Depth 8k 
 	signal s_data    : std_logic_vector(31 downto 0)          := (others => '0');
-	signal s_index   : natural := 0 ; --LOOP INDEX
-	signal s_max_len : natural := 0 ;
+	signal s_index   : natural                                := 0 ; --LOOP INDEX
+	signal s_max_len : natural                                := 0 ;
 begin
 
 	process(i_clk) is
@@ -83,18 +83,25 @@ begin
 						o_control <= '0';
 						if(i_enable = '1') then -- START
 							t_state   <= read1;
-							s_max_len <= to_integer(unsigned(i_len) srl 2); -- Div 4
+							s_max_len <= to_integer(unsigned(i_len)); -- Div 4
 							s_addrb   <= i_adr;
 							o_control <= '1';
+							s_index   <= 0 ;
 						else
 							t_state <= idle;
 						end if;
 
 					when read1 =>
-						s_addrb <= s_addrb; -- Set READ ADR
+						--s_addrb <= std_logic_vector(unsigned(s_addrb) + to_unsigned(s_index,PORT_WIDTH)); -- Set READ ADR
+						if (s_index /= 0) then 
+						  s_addrb <= std_logic_vector(unsigned(s_addrb) + 4);
+						end if;
 						s_enb   <= '1';
 						s_rstb  <= '0';
 						s_web   <= "0000";
+						t_state <= read3;
+
+					when read3 => -- BRAM delay
 						t_state <= read2;
 
 					when read2 =>
@@ -110,13 +117,12 @@ begin
 						t_state              <= write2;
 
 					when write2 =>
-						s_enb   <= '1';
-						s_web   <= "1111";                                  -- WRITE result back to ADR
-						s_addrb <= std_logic_vector(unsigned(s_addrb) + 4); -- Go to next ADR
-						if (s_index >= s_max_len-1) then
+						s_enb <= '1';
+						s_web <= "1111"; -- WRITE result back to ADR
+						if (s_index >= s_max_len-4) then
 							t_state <= done;
 						else
-							s_index <= s_index +1;
+							s_index <= s_index +4;
 							t_state <= read1;
 						end if;
 

@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
---Date        : Sun Nov 20 17:28:28 2022
+--Date        : Sat Nov 26 23:27:23 2022
 --Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 --Command     : generate_target Mayo_keygen_no_zynq.bd
 --Design      : Mayo_keygen_no_zynq
@@ -959,38 +959,6 @@ entity add_vectors_imp_1DVEBRB is
 end add_vectors_imp_1DVEBRB;
 
 architecture STRUCTURE of add_vectors_imp_1DVEBRB is
-  component Mayo_keygen_no_zynq_mayo_add_vectors_0_0 is
-  port (
-    i_clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    i_enable : in STD_LOGIC;
-    i_v1_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_v2_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_out_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_done : out STD_LOGIC;
-    i_mema_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mema_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mema_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mema_en : out STD_LOGIC;
-    o_mema_rst : out STD_LOGIC;
-    o_mema_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_memb_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memb_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memb_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memb_en : out STD_LOGIC;
-    o_memb_rst : out STD_LOGIC;
-    o_memb_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_memc_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memc_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memc_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memc_en : out STD_LOGIC;
-    o_memc_rst : out STD_LOGIC;
-    o_memc_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    o_controla : out STD_LOGIC;
-    o_controlb : out STD_LOGIC;
-    o_controlc : out STD_LOGIC
-  );
-  end component Mayo_keygen_no_zynq_mayo_add_vectors_0_0;
   component Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0 is
   port (
     bram_sel : in STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -1031,6 +999,38 @@ architecture STRUCTURE of add_vectors_imp_1DVEBRB is
     o_BRAM1_control : out STD_LOGIC
   );
   end component Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0;
+  component Mayo_keygen_no_zynq_mayo_add_vectors_0_0 is
+  port (
+    i_clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    i_enable : in STD_LOGIC;
+    i_v1_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_v2_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_out_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_done : out STD_LOGIC;
+    i_mema_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mema_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mema_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mema_en : out STD_LOGIC;
+    o_mema_rst : out STD_LOGIC;
+    o_mema_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_memb_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memb_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memb_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memb_en : out STD_LOGIC;
+    o_memb_rst : out STD_LOGIC;
+    o_memb_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_memc_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memc_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memc_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memc_en : out STD_LOGIC;
+    o_memc_rst : out STD_LOGIC;
+    o_memc_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_controla : out STD_LOGIC;
+    o_controlb : out STD_LOGIC;
+    o_controlc : out STD_LOGIC
+  );
+  end component Mayo_keygen_no_zynq_mayo_add_vectors_0_0;
   signal BRAM_add_en_1 : STD_LOGIC;
   signal BRAM_add_rst_1 : STD_LOGIC;
   signal BRAM_big_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1223,7 +1223,7 @@ architecture STRUCTURE of hash_imp_EASPA4 is
     BRAM1_control : out STD_LOGIC
   );
   end component Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0;
-  component Mayo_keygen_no_zynq_MAYO_SHAKE_1_0 is
+  component Mayo_keygen_no_zynq_MAYO_SHAKE_0_0 is
   port (
     rst : in STD_LOGIC;
     clk : in STD_LOGIC;
@@ -1241,16 +1241,16 @@ architecture STRUCTURE of hash_imp_EASPA4 is
     BRAMA_en : out STD_LOGIC;
     BRAMA_dout : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component Mayo_keygen_no_zynq_MAYO_SHAKE_1_0;
+  end component Mayo_keygen_no_zynq_MAYO_SHAKE_0_0;
   signal BRAM0_dout_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAMA_dout_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal MAYO_SHAKE_1_BRAMA_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal MAYO_SHAKE_1_BRAMA_din : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal MAYO_SHAKE_1_BRAMA_en : STD_LOGIC;
-  signal MAYO_SHAKE_1_BRAMA_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal MAYO_SHAKE_1_done : STD_LOGIC;
-  signal MAYO_SHAKE_1_dyn_done : STD_LOGIC;
-  signal MAYO_SHAKE_1_o_control : STD_LOGIC;
+  signal MAYO_SHAKE_0_BRAMA_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_SHAKE_0_BRAMA_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_SHAKE_0_BRAMA_en : STD_LOGIC;
+  signal MAYO_SHAKE_0_BRAMA_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal MAYO_SHAKE_0_done : STD_LOGIC;
+  signal MAYO_SHAKE_0_dyn_done : STD_LOGIC;
+  signal MAYO_SHAKE_0_o_control : STD_LOGIC;
   signal bram_sel_1 : STD_LOGIC;
   signal i_key_en_1 : STD_LOGIC;
   signal i_key_mlen_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1289,23 +1289,23 @@ begin
   i_key_olen_1(31 downto 0) <= i_key_olen(31 downto 0);
   i_key_read_adr_1(31 downto 0) <= i_key_read_adr(31 downto 0);
   i_key_write_adr_1(31 downto 0) <= i_key_write_adr(31 downto 0);
-  o_key_done <= MAYO_SHAKE_1_done;
-  o_key_dyn_done <= MAYO_SHAKE_1_dyn_done;
+  o_key_done <= MAYO_SHAKE_0_done;
+  o_key_dyn_done <= MAYO_SHAKE_0_dyn_done;
   processing_system7_0_FCLK_CLK0 <= clk;
   rst_ps7_0_100M_peripheral_aresetn <= rst;
-MAYO_SHAKE_1: component Mayo_keygen_no_zynq_MAYO_SHAKE_1_0
+MAYO_SHAKE_0: component Mayo_keygen_no_zynq_MAYO_SHAKE_0_0
      port map (
-      BRAMA_addr(31 downto 0) => MAYO_SHAKE_1_BRAMA_addr(31 downto 0),
-      BRAMA_din(31 downto 0) => MAYO_SHAKE_1_BRAMA_din(31 downto 0),
+      BRAMA_addr(31 downto 0) => MAYO_SHAKE_0_BRAMA_addr(31 downto 0),
+      BRAMA_din(31 downto 0) => MAYO_SHAKE_0_BRAMA_din(31 downto 0),
       BRAMA_dout(31 downto 0) => mayo_hash_bram_arbit_0_hash_dout(31 downto 0),
-      BRAMA_en => MAYO_SHAKE_1_BRAMA_en,
-      BRAMA_we(3 downto 0) => MAYO_SHAKE_1_BRAMA_we(3 downto 0),
+      BRAMA_en => MAYO_SHAKE_0_BRAMA_en,
+      BRAMA_we(3 downto 0) => MAYO_SHAKE_0_BRAMA_we(3 downto 0),
       clk => processing_system7_0_FCLK_CLK0,
-      done => MAYO_SHAKE_1_done,
-      dyn_done => MAYO_SHAKE_1_dyn_done,
+      done => MAYO_SHAKE_0_done,
+      dyn_done => MAYO_SHAKE_0_dyn_done,
       en => i_key_en_1,
       mlen(31 downto 0) => i_key_mlen_1(31 downto 0),
-      o_control => MAYO_SHAKE_1_o_control,
+      o_control => MAYO_SHAKE_0_o_control,
       olen(31 downto 0) => i_key_olen_1(31 downto 0),
       read_adr(31 downto 0) => i_key_read_adr_1(31 downto 0),
       rst => rst_ps7_0_100M_peripheral_aresetn,
@@ -1326,12 +1326,12 @@ mayo_hash_bram_arbit_0: component Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0
       BRAM1_en => mayo_hash_bram_arbit_0_BRAM1_en,
       BRAM1_we(3 downto 0) => mayo_hash_bram_arbit_0_BRAM1_we(3 downto 0),
       bram_sel => bram_sel_1,
-      hash_addr(31 downto 0) => MAYO_SHAKE_1_BRAMA_addr(31 downto 0),
-      hash_control => MAYO_SHAKE_1_o_control,
-      hash_din(31 downto 0) => MAYO_SHAKE_1_BRAMA_din(31 downto 0),
+      hash_addr(31 downto 0) => MAYO_SHAKE_0_BRAMA_addr(31 downto 0),
+      hash_control => MAYO_SHAKE_0_o_control,
+      hash_din(31 downto 0) => MAYO_SHAKE_0_BRAMA_din(31 downto 0),
       hash_dout(31 downto 0) => mayo_hash_bram_arbit_0_hash_dout(31 downto 0),
-      hash_en => MAYO_SHAKE_1_BRAMA_en,
-      hash_we(3 downto 0) => MAYO_SHAKE_1_BRAMA_we(3 downto 0)
+      hash_en => MAYO_SHAKE_0_BRAMA_en,
+      hash_we(3 downto 0) => MAYO_SHAKE_0_BRAMA_we(3 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -1345,10 +1345,10 @@ entity Mayo_keygen_no_zynq is
     enable : in STD_LOGIC;
     rst : in STD_LOGIC
   );
-  attribute core_generation_info : string;
-  attribute core_generation_info of Mayo_keygen_no_zynq : entity is "Mayo_keygen_no_zynq,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Mayo_keygen_no_zynq,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=24,numReposBlks=19,numNonXlnxBlks=2,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=12,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=2,synth_mode=OOC_per_IP}";
-  attribute hw_handoff : string;
-  attribute hw_handoff of Mayo_keygen_no_zynq : entity is "Mayo_keygen_no_zynq.hwdef";
+  attribute CORE_GENERATION_INFO : string;
+  attribute CORE_GENERATION_INFO of Mayo_keygen_no_zynq : entity is "Mayo_keygen_no_zynq,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Mayo_keygen_no_zynq,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=24,numReposBlks=19,numNonXlnxBlks=2,numHierBlks=5,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=12,numPkgbdBlks=0,bdsource=USER,da_clkrst_cnt=2,synth_mode=OOC_per_IP}";
+  attribute HW_HANDOFF : string;
+  attribute HW_HANDOFF of Mayo_keygen_no_zynq : entity is "Mayo_keygen_no_zynq.hwdef";
 end Mayo_keygen_no_zynq;
 
 architecture STRUCTURE of Mayo_keygen_no_zynq is
@@ -1449,23 +1449,6 @@ architecture STRUCTURE of Mayo_keygen_no_zynq is
     o_control1a : out STD_LOGIC
   );
   end component Mayo_keygen_no_zynq_mayo_linear_combinat_0_0;
-  component Mayo_keygen_no_zynq_mayo_negate_0_0 is
-  port (
-    i_clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    i_enable : in STD_LOGIC;
-    i_len : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_doutb : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_addrb : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_dinb : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_enb : out STD_LOGIC;
-    o_rstb : out STD_LOGIC;
-    o_web : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    o_done : out STD_LOGIC;
-    o_control : out STD_LOGIC
-  );
-  end component Mayo_keygen_no_zynq_mayo_negate_0_0;
   component Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0 is
   port (
     CLK : in STD_LOGIC;
@@ -1537,6 +1520,23 @@ architecture STRUCTURE of Mayo_keygen_no_zynq is
     o_mem1a_control : out STD_LOGIC
   );
   end component Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0;
+  component Mayo_keygen_no_zynq_mayo_negate_0_0 is
+  port (
+    i_clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    i_enable : in STD_LOGIC;
+    i_len : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_doutb : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_addrb : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_dinb : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_enb : out STD_LOGIC;
+    o_rstb : out STD_LOGIC;
+    o_web : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_done : out STD_LOGIC;
+    o_control : out STD_LOGIC
+  );
+  end component Mayo_keygen_no_zynq_mayo_negate_0_0;
   signal BRAM0_dout_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_add_en_1 : STD_LOGIC;
   signal BRAM_add_rst_1 : STD_LOGIC;
