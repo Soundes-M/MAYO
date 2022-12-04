@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sat Nov 26 22:12:54 2022
+-- Last update : Sun Dec  4 15:32:06 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -35,7 +35,8 @@ entity mayo_add_vectors is
 		i_v1_addr  : in  std_logic_vector(PORT_WIDTH-1 downto 0); -- V1 ADR in BRAM
 		i_v2_addr  : in  std_logic_vector(PORT_WIDTH-1 downto 0); -- V2 ADR in BRAM
 		i_out_addr : in  std_logic_vector(PORT_WIDTH-1 downto 0); -- OUT ADR in BRAM
-		o_done     : out std_logic;                               -- DONE
+		i_bram_sel : in  std_logic_vector(1 downto 0);
+		o_done     : out std_logic; -- DONE
 
 		--BRAM-A(V1)
 		i_mema_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -70,111 +71,290 @@ end entity mayo_add_vectors;
 
 
 architecture Behavioral of mayo_add_vectors is
-	type state is (idle, read1, read2, read3, read4, read5, waiting, done);
-	type state_1 is (idle, main0, main1, write1);
+	type state is (idle, read0, read1, read2, read3, read4, read5, read6, read7, read8, read9, read10, read11, read12, read13, read14, read15,
+			read16, read17, read18, read19, write0, write1, write2, write3, write4, done0, done1, done2);
+	type state_1 is (idle, main0, main1, main2);
 
-	signal s_state      : state     := idle;
-	signal s_state_1    : state_1   := idle;
-	signal s_ctr        : natural   := 0;
+	signal s_state   : state   := idle;
+	signal s_state_1 : state_1 := idle;
+	signal s_ctr     : natural := 0;
+
 	signal s_main_start : std_logic := '0';
-	signal s_io_read    : std_logic := '0';
-
-	constant INDEX : natural := M;
+	signal s_main_en    : std_logic := '0';
 
 	signal s_v1_addr  : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V1 ADR in BRAM
 	signal s_v2_addr  : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- V2 ADR in BRAM
 	signal s_out_addr : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0'); -- OUT ADR in BRAM
-	                                                                                --signal s_out             : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
-	signal o_memc_din_buffer : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
+	signal s_v1       : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
+	signal s_v2       : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
+	signal s_finish   : std_logic                               := '0';
 
-	signal s_v1 : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
-	signal s_v2 : std_logic_vector(PORT_WIDTH-1 downto 0) := (others => '0');
+	signal tmp0,tmp1,tmp2 : std_logic_vector(PORT_WIDTH-1 downto 0) := ZERO_32;
+
+	------------------------------------------------------------------------------
+	-- BRAM
+	------------------------------------------------------------------------------
+	signal bram0a    : bram_t    := DEFAULT_BRAM;
+	signal bram0b    : bram_t    := DEFAULT_BRAM;
+	signal bram1a    : bram_t    := DEFAULT_BRAM;
+	signal control0a : std_logic := '0';
+	signal control0b : std_logic := '0';
+	signal control1a : std_logic := '0';
+
 begin
-	IO_READ : process(i_clk) is
+	IO_Process : process(i_clk) is
 	begin
 		if (rising_edge (i_clk)) then
 			if (rst = '1') then
-				o_done       <= '0';
 				s_v1_addr    <= (others => '0');
 				s_v2_addr    <= (others => '0');
 				s_out_addr   <= (others => '0');
 				s_ctr        <= 0;
 				s_main_start <= '0';
 				s_state      <= idle;
-				o_mema_din   <= (others => '0');
-				o_memb_din   <= (others => '0');
-				o_mema_en    <= '0';
-				o_memb_en    <= '0';
-				o_mema_rst   <= '0';
-				o_memb_rst   <= '0';
-				o_mema_addr  <= (others => '0');
-				o_memb_addr  <= (others => '0');
-				o_mema_we    <= "0000";
-				o_memb_we    <= "0000";
-				o_controla   <= '0';
+				bram0a.o     <= DEFAULT_OUT_BRAM;
+				bram0b.o     <= DEFAULT_OUT_BRAM;
+				bram1a.o     <= DEFAULT_OUT_BRAM;
+				control1a    <= '0';
+				control0a    <= '0';
+				s_finish     <= '0';
 			else
 				case (s_state) is
 					when idle =>
-						o_done     <= '0';
-						s_v1_addr  <= (others => '0');
-						s_v2_addr  <= (others => '0');
-						s_out_addr <= (others => '0');
-						s_ctr      <= 0;
+						s_finish      <= '0';
+						s_ctr         <= 0;
+						control1a     <= '0';
+						control0a     <= '0';
+						control0b     <= '0';
+						bram1a.o.o_we <= "0000";
+						bram0a.o.o_we <= "0000";
+						bram1a.o.o_en <= '0';
+						bram0a.o.o_en <= '0';
 						if (i_enable = '1') then
-							s_state    <= read1;
 							s_v1_addr  <= i_v1_addr;
 							s_v2_addr  <= i_v2_addr;
 							s_out_addr <= i_out_addr;
-							o_controla <= '1';
-							o_controlb <= '1';
 
+							if (i_bram_sel = "00") then -- V1 and V2 Parallel [Dual port]
+								control1a <= '1';
+								control0a <= '1';
+								s_state   <= read0;
+							elsif (i_bram_sel = "01") then -- read -> read ->  write [Same port]
+								control1a <= '1';
+								s_state   <= read7;
+							elsif(i_bram_sel = "10" ) then
+								control0a <= '1';
+								control0b <= '1';
+								s_state   <= read13;
+							end if;
 						end if;
 
-					when read1 => --READ BLOCK from v1 and v2 at a time to avoid collision with all configs
-						          -- V1 BRAM A
-						o_mema_addr <= std_logic_vector(unsigned(s_v1_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
-						o_mema_en   <= '1';
-						o_mema_we   <= "0000";
-						s_state     <= read4;
+					--------------------------------------------------------------------------------
+					-- BRAM SEL 00
+					--------------------------------------------------------------------------------
+					when read0 =>
+						--v1 bram1a
+						bram1a.o.o_addr <= std_logic_vector(unsigned(s_v1_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+						bram1a.o.o_en   <= '1';
+						bram1a.o.o_we   <= "0000";
+						--v2 bram0a
+						bram0a.o.o_addr <= std_logic_vector(unsigned(s_v2_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+						bram0a.o.o_en   <= '1';
+						bram0a.o.o_we   <= "0000";
+						s_main_start    <= '1' ;
+						s_state         <= read1;
 
-					when read4 => -- BRAM Delay
-						s_state <= read2;
+					when read1 => -- BRAM Delay
+						s_main_start <= '0' ;
+						s_ctr        <= s_ctr +4 ;
+						s_main_en    <= '1';
+						s_state      <= read2;
 
 					when read2 =>
-						o_mema_en <= '0';
-						s_v1      <= i_mema_dout;
-						-- V2 BRAM B
-						o_memb_addr <= std_logic_vector(unsigned(s_v2_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
-						o_memb_en   <= '1';
-						o_memb_we   <= "0000";
-						s_state     <= read5;
-
-					when read5 => -- Bram Delay
-						s_state <= read3;
+						s_v1            <= bram1a.i.i_dout;
+						s_v2            <= bram0a.i.i_dout;
+						bram1a.o.o_addr <= std_logic_vector(unsigned(s_v1_addr) + TO_UNSIGNED(s_ctr ,PORT_WIDTH));
+						bram0a.o.o_addr <= std_logic_vector(unsigned(s_v2_addr) + TO_UNSIGNED(s_ctr ,PORT_WIDTH));
+						s_state         <= read3;
 
 					when read3 =>
-						s_v2      <= i_memb_dout;
-						o_memb_en <= '0';
+						s_ctr   <= s_ctr +4 ;
+						s_state <= write0;
 
-						s_main_start <= '1';
-						if (s_ctr >= INDEX-4) then -- i < M 
-							s_state <= done;
+					when write0 => -- write 
+						s_v1            <= bram1a.i.i_dout;
+						s_v2            <= bram0a.i.i_dout;
+						bram1a.o.o_din  <= tmp1;
+						bram1a.o.o_addr <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr-8,PORT_WIDTH));
+						bram1a.o.o_we   <= "1111";
+						s_state         <= read4;
+
+					when read4 =>
+						bram1a.o.o_we <= "0000";
+						if (s_ctr <= M - 4) then
+							bram1a.o.o_addr <= std_logic_vector(unsigned(s_v1_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+							bram0a.o.o_addr <= std_logic_vector(unsigned(s_v2_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+							s_state         <= read5;
 						else
-							s_ctr   <= s_ctr + 4;
-							s_state <= waiting;
+							s_state <= write1;
 						end if;
 
-					when waiting => -- Another BLOCK is needed .. waiting
-						s_main_start <= '0';
-						if (s_io_read = '1') then
-							s_state <= read1;
+					when read5 =>
+						s_state <= read6;
+
+					when read6 =>
+						s_v1            <= bram1a.i.i_dout;
+						s_v2            <= bram0a.i.i_dout;
+						bram1a.o.o_din  <= tmp2;
+						bram1a.o.o_addr <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr-4,PORT_WIDTH));
+						bram1a.o.o_we   <= "1111";
+						s_ctr           <= s_ctr + 4;
+						s_state         <= read4;
+
+					when write1 => -- last write and done
+						bram1a.o.o_din  <= tmp1;
+						bram1a.o.o_addr <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr-4,PORT_WIDTH));
+						bram1a.o.o_we   <= "1111";
+						s_main_en       <= '0';
+						s_state         <= done0;
+
+					when done0 =>
+						bram1a.o.o_we <= "0000";
+						bram0a.o.o_we <= "0000";
+						bram1a.o.o_en <= '0';
+						bram0a.o.o_en <= '0';
+						s_finish      <= '1' ;
+						s_state       <= idle;
+
+					--------------------------------------------------------------------------------
+					-- BRAM SEL 01
+					--------------------------------------------------------------------------------
+					when read7 =>
+						bram1a.o.o_addr <= std_logic_vector(unsigned(s_v1_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+						bram1a.o.o_en   <= '1';
+						bram1a.o.o_we   <= "0000";
+						s_state         <= read8;
+						s_main_start    <= '1' ;
+
+					when read8 =>
+						s_main_start <= '0' ;
+						s_main_en    <= '1';
+						s_state      <= read9;
+
+					when read9 =>
+						s_v1            <= bram1a.i.i_dout;
+						bram1a.o.o_addr <= std_logic_vector(unsigned(s_v2_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+						s_state         <= read10;
+
+					when read10 =>
+						s_state <= read11;
+
+					when read11 =>
+						s_v2          <= bram0a.i.i_dout;
+						bram1a.o.o_en <= '0';
+						s_state       <= read12;
+
+					when read12 =>
+						s_state <= write2;
+
+					when write2 =>
+						s_ctr           <= s_ctr + 4;
+						bram1a.o.o_din  <= tmp1;
+						bram1a.o.o_en   <= '1';
+						bram1a.o.o_addr <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+						bram1a.o.o_we   <= "1111";
+						if (s_ctr +4 <= M - 4) then
+							s_state <= read7;
+						else
+							s_main_en <= '0';
+							s_state   <= done1;
 						end if;
-					when done =>
-						o_controla   <= '0';
-						o_controlb   <= '0';
-						o_done       <= '1';
-						s_main_start <= '0';
-						s_state      <= idle;
+
+					when done1 =>
+						bram1a.o.o_we <= "0000";
+						bram1a.o.o_en <= '0';
+						s_finish      <= '1';
+						s_state       <= idle;
+
+					--------------------------------------------------------------------------------
+					-- BRAM SEL 10
+					--------------------------------------------------------------------------------
+					when read13 =>
+						--v1 bram0a
+						bram0a.o.o_addr <= std_logic_vector(unsigned(s_v1_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+						bram0a.o.o_en   <= '1';
+						bram0a.o.o_we   <= "0000";
+						--v2 bram0b
+						bram0b.o.o_addr <= std_logic_vector(unsigned(s_v2_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+						bram0b.o.o_en   <= '1';
+						bram0b.o.o_we   <= "0000";
+						s_main_start    <= '1' ;
+						s_state         <= read14;
+
+					when read14 => -- BRAM Delay
+						s_main_start <= '0' ;
+						s_ctr        <= s_ctr +4 ;
+						s_main_en    <= '1';
+						s_state      <= read15;
+
+					when read15 =>
+						s_v1            <= bram0a.i.i_dout;
+						s_v2            <= bram0b.i.i_dout;
+						bram0a.o.o_addr <= std_logic_vector(unsigned(s_v1_addr) + TO_UNSIGNED(s_ctr ,PORT_WIDTH));
+						bram0b.o.o_addr <= std_logic_vector(unsigned(s_v2_addr) + TO_UNSIGNED(s_ctr ,PORT_WIDTH));
+						s_state         <= read16;
+
+					when read16 =>
+						s_ctr   <= s_ctr +4 ;
+						s_state <= write3;
+
+					when write3 => -- write 
+						s_v1            <= bram0a.i.i_dout;
+						s_v2            <= bram0b.i.i_dout;
+						bram0a.o.o_din  <= tmp1;
+						bram0a.o.o_addr <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr-8,PORT_WIDTH));
+						bram0a.o.o_we   <= "1111";
+						s_state         <= read17;
+
+					when read17 =>
+						bram0a.o.o_we <= "0000";
+						if (s_ctr <= M - 4) then
+							bram0a.o.o_addr <= std_logic_vector(unsigned(s_v1_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+							bram0b.o.o_addr <= std_logic_vector(unsigned(s_v2_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
+							s_state         <= read18;
+						else
+							s_state <= write4;
+						end if;
+
+					when read18 =>
+						s_state <= read19;
+
+					when read19 =>
+						s_v1            <= bram0a.i.i_dout;
+						s_v2            <= bram0b.i.i_dout;
+						bram0a.o.o_din  <= tmp2;
+						bram0a.o.o_addr <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr-4,PORT_WIDTH));
+						bram0a.o.o_we   <= "1111";
+						s_ctr           <= s_ctr + 4;
+						s_state         <= read17;
+
+					when write4 => -- last write and done
+						bram0a.o.o_din  <= tmp1;
+						bram0a.o.o_addr <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr-4,PORT_WIDTH));
+						bram0a.o.o_we   <= "1111";
+						s_main_en       <= '0';
+						s_state         <= done2;
+
+					when done2 =>
+						bram0a.o.o_we <= "0000";
+						bram0b.o.o_we <= "0000";
+						bram0a.o.o_en <= '0';
+						bram0b.o.o_en <= '0';
+						s_finish      <= '1' ;
+						s_state       <= idle;
+					--------------------------------------------------------------------------------
+					-- BRAM SEL 11 RESERVED
+					--------------------------------------------------------------------------------
 					when others =>
 						null;
 				end case;
@@ -183,60 +363,107 @@ begin
 	end process;
 
 
-	MAIN_Pr : process(i_clk) is
+	MAIN_Process : process(i_clk) is
 	begin
 		if (rising_edge (i_clk)) then
 			if (rst ='1') then
-				o_memc_din_buffer <= (others => '0');
-				o_memc_en         <= '0';
-				o_memc_rst        <= '0';
-				o_memc_addr       <= (others => '0');
-				o_memc_we         <= "0000";
-				s_state_1         <= idle;
-				s_io_read         <= '0';
-				o_controlc        <= '0';
+				s_state_1 <= idle;
+				tmp0      <= ZERO_32;
+				tmp1      <= ZERO_32;
+				tmp2      <= ZERO_32;
 			else
 				case (s_state_1) is
 					when idle =>
-						o_memc_en <= '0';
-						o_memc_we <= "0000";
 						if (s_main_start = '1') then
-							s_state_1  <= main0;
-							o_controlc <= '1';
+							if (i_bram_sel = "00") then
+								s_state_1 <= main0;
+							elsif (i_bram_sel = "01") then
+								s_state_1 <= main1;
+							elsif (i_bram_sel = "10") then
+								s_state_1 <= main2;
+							end if;
 						end if;
-						o_controlc <= '0';
 
-					when main0 =>
-						for k in 0 to 3 loop -- ADDITION 
-							o_memc_din_buffer(k*8+7 downto k*8) <= std_logic_vector(resize(unsigned(s_v1(k*8+7 downto k*8)) + unsigned(s_v2(k*8+7 downto k*8)),8));
-						end loop;
-						s_state_1 <= main1;
+					--------------------------------------------------------------------------------
+					-- BRAM SEL 00
+					--------------------------------------------------------------------------------
+					when main0 => -- [2 ~ 3 Clk Delay]
+						if (s_main_en = '1') then
+							for k in 0 to 3 loop -- ADDITION 
+								tmp0(k*8+7 downto k*8) <= std_logic_vector(resize(unsigned(bram1a.i.i_dout(k*8+7 downto k*8)) + unsigned(bram0a.i.i_dout(k*8+7 downto k*8)),8));
+							end loop;
+							for k in 0 to 3 loop -- MOD
+								tmp1(k*8+7 downto k*8) <= std_logic_vector(unsigned(tmp0(k*8+7 downto k*8)) mod PRIME);
+							end loop;
+							tmp2 <= tmp1; -- extra delay in pipeline
+						else
+							s_state_1 <= idle;
+						end if ;
 
-					when main1 =>
-						s_io_read <= '1'; -- need next block
+					--------------------------------------------------------------------------------
+					-- BRAM SEL 01
+					--------------------------------------------------------------------------------
+					when main1 => -- [2~ Clk Delay]
+						if (s_main_en = '1') then
+							for k in 0 to 3 loop -- ADDITION 
+								tmp0(k*8+7 downto k*8) <= std_logic_vector(resize(unsigned(s_v1(k*8+7 downto k*8)) + unsigned(bram1a.i.i_dout(k*8+7 downto k*8)),8));
+							end loop;
+							for k in 0 to 3 loop -- MOD
+								tmp1(k*8+7 downto k*8) <= std_logic_vector(unsigned(tmp0(k*8+7 downto k*8)) mod PRIME);
+							end loop;
+						else
+							s_state_1 <= idle;
+						end if;
 
-						for k in 0 to 3 loop -- MOD
-							o_memc_din_buffer(k*8+7 downto k*8) <= std_logic_vector(unsigned(o_memc_din_buffer(k*8+7 downto k*8)) mod PRIME);
-						end loop;
-						s_state_1 <= write1;
-
-					when write1 =>
-						s_io_read <= '0';
-
-						o_memc_en   <= '1';
-						o_memc_we   <= "1111"; -- WRITE result back to ADR
-						o_memc_addr <= std_logic_vector(unsigned(s_out_addr) + TO_UNSIGNED(s_ctr -4 ,PORT_WIDTH));
-						s_state_1   <= idle;
+					--------------------------------------------------------------------------------
+					-- BRAM SEL 01
+					--------------------------------------------------------------------------------
+					when main2 => -- [2 ~ 3 Clk Delay]
+						if (s_main_en = '1') then
+							for k in 0 to 3 loop -- ADDITION 
+								tmp0(k*8+7 downto k*8) <= std_logic_vector(resize(unsigned(bram0a.i.i_dout(k*8+7 downto k*8)) + unsigned(bram0b.i.i_dout(k*8+7 downto k*8)),8));
+							end loop;
+							for k in 0 to 3 loop -- MOD
+								tmp1(k*8+7 downto k*8) <= std_logic_vector(unsigned(tmp0(k*8+7 downto k*8)) mod PRIME);
+							end loop;
+							tmp2 <= tmp1; -- extra delay in pipeline
+						else
+							s_state_1 <= idle;
+						end if ;
 					when others =>
 						null;
-
 				end case;
-
 			end if;
 		end if;
 	end process;
 
-	o_memc_din <= o_memc_din_buffer;
+	o_done <= s_finish;
+	--BRAM0-A
+	bram0a.i.i_dout <= i_mema_dout;
+	o_mema_din      <= bram0a.o.o_din;
+	o_mema_addr     <= bram0a.o.o_addr;
+	o_mema_en       <= bram0a.o.o_en;
+	o_mema_rst      <= bram0a.o.o_rst;
+	o_mema_we       <= bram0a.o.o_we;
+	o_controla      <= control0a;
+
+	--BRAM0-B
+	bram0b.i.i_dout <= i_memb_dout;
+	o_memb_din      <= bram0b.o.o_din;
+	o_memb_addr     <= bram0b.o.o_addr;
+	o_memb_en       <= bram0b.o.o_en;
+	o_memb_rst      <= bram0b.o.o_rst;
+	o_memb_we       <= bram0b.o.o_we;
+	o_controlb      <= control0b;
+
+	--BRAM1-A
+	bram1a.i.i_dout <= i_memc_dout;
+	o_memc_din      <= bram1a.o.o_din;
+	o_memc_addr     <= bram1a.o.o_addr;
+	o_memc_en       <= bram1a.o.o_en;
+	o_memc_rst      <= bram1a.o.o_rst;
+	o_memc_we       <= bram1a.o.o_we;
+	o_controlc      <= control1a;
 
 
 end architecture Behavioral;

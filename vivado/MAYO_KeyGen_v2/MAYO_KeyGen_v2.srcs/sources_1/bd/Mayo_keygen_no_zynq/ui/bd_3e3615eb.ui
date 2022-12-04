@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"1.25",
-   "Default View_TopLeft":"-447,-166",
+   "Default View_TopLeft":"-290,-50",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
@@ -27,8 +27,8 @@ preplace portBus i_BRAM1_dout -pg 1 -lvl 0 -x 0 -y 520 -defaultsOSRD
 preplace portBus o_BRAM1_din -pg 1 -lvl 3 -x 850 -y 320 -defaultsOSRD
 preplace portBus o_BRAM1_addr -pg 1 -lvl 3 -x 850 -y 340 -defaultsOSRD
 preplace portBus o_BRAM1_we -pg 1 -lvl 3 -x 850 -y 400 -defaultsOSRD
-preplace inst mayo_add_vectors_0 -pg 1 -lvl 1 -x 230 -y 260 -defaultsOSRD
 preplace inst mayo_add_vectors_arb_0 -pg 1 -lvl 2 -x 620 -y 280 -defaultsOSRD
+preplace inst mayo_add_vectors_0 -pg 1 -lvl 1 -x 230 -y 260 -defaultsOSRD
 preplace netloc mayo_add_vectors_arb_0_o_mema_dout 1 0 3 20 540 NJ 540 830
 preplace netloc mayo_add_vectors_0_o_mema_din 1 1 1 N 100
 preplace netloc mayo_add_vectors_0_o_mema_addr 1 1 1 N 120
@@ -50,12 +50,12 @@ preplace netloc mayo_add_vectors_0_o_memc_we 1 1 1 N 380
 preplace netloc mayo_add_vectors_0_o_controla 1 1 1 N 400
 preplace netloc mayo_add_vectors_0_o_controlb 1 1 1 N 420
 preplace netloc mayo_add_vectors_0_o_controlc 1 1 1 N 440
-preplace netloc clk_1 1 0 1 NJ 180
-preplace netloc rst_1 1 0 1 NJ 200
-preplace netloc MAYO_KEYGEN_FSM_0_o_add_enable 1 0 1 NJ 220
-preplace netloc MAYO_KEYGEN_FSM_0_o_add_v1_addr 1 0 1 NJ 240
-preplace netloc MAYO_KEYGEN_FSM_0_o_add_v2_addr 1 0 1 NJ 260
-preplace netloc MAYO_KEYGEN_FSM_0_o_add_out_addr 1 0 1 NJ 280
+preplace netloc clk_1 1 0 1 20J 170n
+preplace netloc rst_1 1 0 1 20J 190n
+preplace netloc MAYO_KEYGEN_FSM_0_o_add_enable 1 0 1 20J 210n
+preplace netloc MAYO_KEYGEN_FSM_0_o_add_v1_addr 1 0 1 20J 230n
+preplace netloc MAYO_KEYGEN_FSM_0_o_add_v2_addr 1 0 1 20J 250n
+preplace netloc MAYO_KEYGEN_FSM_0_o_add_out_addr 1 0 1 20J 270n
 preplace netloc mayo_add_vectors_0_o_done 1 1 2 430J 20 NJ
 preplace netloc MAYO_KEYGEN_FSM_0_o_add_bram_sel 1 0 2 NJ 20 420J
 preplace netloc BRAM_small_BRAM_add_dout 1 0 2 NJ 500 420J
@@ -76,4 +76,4 @@ levelinfo -pg 1 0 230 620 850
 pagesize -pg 1 -db -bbox -sgen -200 0 1050 570
 "
 }
-
+0

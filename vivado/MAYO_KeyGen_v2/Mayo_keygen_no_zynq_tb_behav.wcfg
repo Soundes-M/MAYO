@@ -13,15 +13,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="103300fs"></ZoomStartTime>
-      <ZoomEndTime time="210101fs"></ZoomEndTime>
-      <Cursor1Time time="121100fs"></Cursor1Time>
+      <ZoomStartTime time="672634fs"></ZoomStartTime>
+      <ZoomEndTime time="1034835fs"></ZoomEndTime>
+      <Cursor1Time time="848034fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="294"></NameColumnWidth>
-      <ValueColumnWidth column_width="79"></ValueColumnWidth>
+      <NameColumnWidth column_width="254"></NameColumnWidth>
+      <ValueColumnWidth column_width="87"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="26" />
+   <WVObjectSize size="51" />
    <wvobject fp_name="divider12" type="divider">
       <obj_property name="label">TRNG</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -86,30 +86,9 @@
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/core_env_tb/addra">
-      <obj_property name="ElementShortName">addra[31:0]</obj_property>
-      <obj_property name="ObjectShortName">addra[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
    <wvobject type="logic" fp_name="/core_env_tb/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/core_env_tb/dina">
-      <obj_property name="ElementShortName">dina[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/core_env_tb/douta">
-      <obj_property name="ElementShortName">douta[31:0]</obj_property>
-      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/core_env_tb/wea">
-      <obj_property name="ElementShortName">wea[3:0]</obj_property>
-      <obj_property name="ObjectShortName">wea[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/core_env_tb/ena">
-      <obj_property name="ElementShortName">ena</obj_property>
-      <obj_property name="ObjectShortName">ena</obj_property>
    </wvobject>
    <wvobject type="other" fp_name="/core_env_tb/i">
       <obj_property name="ElementShortName">i</obj_property>
@@ -120,25 +99,149 @@
       <obj_property name="ObjectShortName">len[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/core_env_tb/addrb">
-      <obj_property name="ElementShortName">addrb[31:0]</obj_property>
-      <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="logic" fp_name="/core_env_tb/enable">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/core_env_tb/doutb">
-      <obj_property name="ElementShortName">doutb[31:0]</obj_property>
-      <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
+   <wvobject type="logic" fp_name="/core_env_tb/done">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/core_env_tb/dinb">
-      <obj_property name="ElementShortName">dinb[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
+   <wvobject type="logic" fp_name="/core_env_tb/uut/o_controla">
+      <obj_property name="ElementShortName">o_controla</obj_property>
+      <obj_property name="ObjectShortName">o_controla</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/core_env_tb/web">
-      <obj_property name="ElementShortName">web[3:0]</obj_property>
-      <obj_property name="ObjectShortName">web[3:0]</obj_property>
+   <wvobject type="logic" fp_name="/core_env_tb/uut/o_done">
+      <obj_property name="ElementShortName">o_done</obj_property>
+      <obj_property name="ObjectShortName">o_done</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/core_env_tb/uut/o_controlb">
+      <obj_property name="ElementShortName">o_controlb</obj_property>
+      <obj_property name="ObjectShortName">o_controlb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/core_env_tb/uut/o_controlc">
+      <obj_property name="ElementShortName">o_controlc</obj_property>
+      <obj_property name="ObjectShortName">o_controlc</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/core_env_tb/bram1/ena">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/bram1/wea">
+      <obj_property name="ElementShortName">wea[3:0]</obj_property>
+      <obj_property name="ObjectShortName">wea[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/bram1/addra">
+      <obj_property name="ElementShortName">addra[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/bram1/dina">
+      <obj_property name="ElementShortName">dina[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/bram1/douta">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
    </wvobject>
    <wvobject type="other" fp_name="/core_env_tb/bytes">
       <obj_property name="ElementShortName">bytes</obj_property>
       <obj_property name="ObjectShortName">bytes</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/core_env_tb/bram1/enb">
+      <obj_property name="ElementShortName">enb</obj_property>
+      <obj_property name="ObjectShortName">enb</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/bram1/addrb">
+      <obj_property name="ElementShortName">addrb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/bram1/web">
+      <obj_property name="ElementShortName">web[3:0]</obj_property>
+      <obj_property name="ObjectShortName">web[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/bram1/dinb">
+      <obj_property name="ElementShortName">dinb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/bram1/doutb">
+      <obj_property name="ElementShortName">doutb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/core_env_tb/bram_mine0">
+      <obj_property name="ElementShortName">bram_mine0</obj_property>
+      <obj_property name="ObjectShortName">bram_mine0</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/core_env_tb/user_ena0">
+      <obj_property name="ElementShortName">user_ena0</obj_property>
+      <obj_property name="ObjectShortName">user_ena0</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/user_addra0">
+      <obj_property name="ElementShortName">user_addra0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">user_addra0[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/user_dina0">
+      <obj_property name="ElementShortName">user_dina0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">user_dina0[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/user_wea0">
+      <obj_property name="ElementShortName">user_wea0[3:0]</obj_property>
+      <obj_property name="ObjectShortName">user_wea0[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/core_env_tb/std_ena0">
+      <obj_property name="ElementShortName">std_ena0</obj_property>
+      <obj_property name="ObjectShortName">std_ena0</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/std_addra0">
+      <obj_property name="ElementShortName">std_addra0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">std_addra0[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/std_dina0">
+      <obj_property name="ElementShortName">std_dina0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">std_dina0[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/std_wea0">
+      <obj_property name="ElementShortName">std_wea0[3:0]</obj_property>
+      <obj_property name="ObjectShortName">std_wea0[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/uut/tmp0">
+      <obj_property name="ElementShortName">tmp0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp0[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/uut/tmp1">
+      <obj_property name="ElementShortName">tmp1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/uut/tmp2">
+      <obj_property name="ElementShortName">tmp2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_env_tb/uut/o_memc_addr">
+      <obj_property name="ElementShortName">o_memc_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_memc_addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/core_env_tb/uut/s_ctr">
+      <obj_property name="ElementShortName">s_ctr</obj_property>
+      <obj_property name="ObjectShortName">s_ctr</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/core_env_tb/uut/s_main_start">
+      <obj_property name="ElementShortName">s_main_start</obj_property>
+      <obj_property name="ObjectShortName">s_main_start</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/core_env_tb/uut/s_main_en">
+      <obj_property name="ElementShortName">s_main_en</obj_property>
+      <obj_property name="ObjectShortName">s_main_en</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/core_env_tb/uut/s_state">
+      <obj_property name="ElementShortName">s_state</obj_property>
+      <obj_property name="ObjectShortName">s_state</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/core_env_tb/uut/s_state_1">
+      <obj_property name="ElementShortName">s_state_1</obj_property>
+      <obj_property name="ObjectShortName">s_state_1</obj_property>
    </wvobject>
 </wave_config>

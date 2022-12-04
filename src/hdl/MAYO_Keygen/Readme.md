@@ -38,6 +38,14 @@ Out -> BRAM0B
 
 10 : v1 : BRAM0A, v2 : BRAM0A, out : BRAM0A _(Can be accelerated)_
 
+New Config 
+
+00 : v1 : BRAM1A, v2 : BRAM0A, out : BRAM1A _(v1 and v2 parallel read)_
+
+01 : v1 : BRAM1A, v2 : BRAM1A, out : BRAM1A (Slowest all is seperate)
+
+10 : v1 : BRAM0A, v2 : BRAM0B, out : BRAM0A (Chane ports for read and write seperate 0a 0a 0b)
+
 11 : RESERVED
 
 

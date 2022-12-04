@@ -41,24 +41,44 @@ end core_env_tb;
 architecture Behavioral of core_env_tb is
 
   -- UUT
-  component mayo_negate is
-    generic (
-      BRAM_SIZE : natural := 32 -- 2^13 = 8K
-    );
+  component mayo_add_vectors is
     port (
-      i_clk     : in  std_logic;                      -- CLK
-      rst       : in  std_logic;                      -- RST
-      i_enable  : in  std_logic;                      -- ENABLE
-      i_len     : in  std_logic_vector (31 downto 0); -- BYTE LEN
-      i_adr     : in  std_logic_vector(BRAM_SIZE-1 downto 0);
-      i_doutb   : in  std_logic_vector (31 downto 0); -- dout port bram
-      o_addrb   : out std_logic_vector (31 downto 0); -- address port bram
-      o_dinb    : out std_logic_vector (31 downto 0); -- din port bram
-      o_enb     : out std_logic;                      -- enable read, write, reset operations port b  
-      o_rstb    : out std_logic;                      -- reset port b 
-      o_web     : out std_logic_vector (3 downto 0);  -- write enable port b   
-      o_done    : out std_logic;
-      o_control : out std_logic
+      i_clk      : in  std_logic;                               -- CLK
+      rst        : in  std_logic;                               -- RST
+      i_enable   : in  std_logic;                               -- ENABLE
+      i_v1_addr  : in  std_logic_vector(PORT_WIDTH-1 downto 0); -- V1 ADR in BRAM
+      i_v2_addr  : in  std_logic_vector(PORT_WIDTH-1 downto 0); -- V2 ADR in BRAM
+      i_out_addr : in  std_logic_vector(PORT_WIDTH-1 downto 0); -- OUT ADR in BRAM
+      		i_bram_sel : in  std_logic_vector(1 downto 0);
+      o_done     : out std_logic;                               -- DONE
+
+      --BRAM-A(V1)
+      i_mema_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+      o_mema_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+      o_mema_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+      o_mema_en   : out std_logic;
+      o_mema_rst  : out std_logic;
+      o_mema_we   : out std_logic_vector (3 downto 0);
+
+      --BRAM-B(V2)
+      i_memb_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+      o_memb_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+      o_memb_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+      o_memb_en   : out std_logic;
+      o_memb_rst  : out std_logic;
+      o_memb_we   : out std_logic_vector (3 downto 0);
+
+      --BRAM-C(OUT)
+      i_memc_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+      o_memc_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+      o_memc_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+      o_memc_en   : out std_logic;
+      o_memc_rst  : out std_logic;
+      o_memc_we   : out std_logic_vector (3 downto 0);
+
+      o_controla : out std_logic;
+      o_controlb : out std_logic;
+      o_controlc : out std_logic
     );
   end component;
 
@@ -82,91 +102,191 @@ architecture Behavioral of core_env_tb is
       rstb_busy : OUT STD_LOGIC
     );
   END COMPONENT;
+  ------------------------------------------------------------------------------
+  -- TB Signals 0 for BRAM0 and 1 for BRAM1. If BRAM_Mine for BRAM0 is 0 then directly ported to core. Otherwise user has control
+  ------------------------------------------------------------------------------
 
-  constant clk_period                                           : time      := 10 ns;
-  signal reset                                                  : std_logic := '0';
-  signal clk                                                    : std_logic := '0';
-  signal clka, rsta, ena, clkb, rstb, enb, rsta_busy, rstb_busy : std_logic;
-  signal addra, dina, douta, addrb, dinb, doutb                 : std_logic_vector(31 downto 0);
-  signal wea, web                                               : std_logic_vector(3 downto 0);
-  signal enable, control, done                                  : std_logic := '0' ;
-  signal len, address                                           : std_logic_vector(31 downto 0);
-  signal i,bytes                                                      : integer := 0;
+  constant clk_period                                                   : time      := 10 ns;
+  signal reset                                                          : std_logic := '0';
+  signal clk                                                            : std_logic := '0';
+  signal clka0, rsta0, ena0, clkb0, rstb0, enb0, rsta_busy0, rstb_busy0 : std_logic;
+  signal addra0, dina0, douta0, addrb0, dinb0, doutb0                   : std_logic_vector(31 downto 0);
+  signal wea0, web0                                                     : std_logic_vector(3 downto 0);
+
+  signal bram_mine0              : std_logic := '0';
+  signal user_ena0               : std_logic := '0';
+  signal user_addra0, user_dina0 : std_logic_vector(31 downto 0) := ZERO_32;
+  signal user_wea0               : std_logic_vector(3 downto 0) := "0000";
+  
+  signal std_ena0               : std_logic := '0';
+  signal std_addra0, std_dina0 : std_logic_vector(31 downto 0) := ZERO_32;
+  signal std_wea0               : std_logic_vector(3 downto 0) := "0000";
+
+  signal clka1, rsta1, ena1, clkb1, rstb1, enb1, rsta_busy1, rstb_busy1 : std_logic;
+  signal addra1, dina1, douta1, addrb1, dinb1, doutb1                   : std_logic_vector(31 downto 0);
+  signal wea1, web1                                                     : std_logic_vector(3 downto 0);
+
+  signal enable, controla, controlb, controlc, done : std_logic                     := '0' ;
+  signal len, v1_addr, v2_addr, out_addr            : std_logic_vector(31 downto 0) := ZERO_32;
+  signal i,bytes                                    : integer                       := 0;
+  signal addraa, dinaa, doutaa                      : std_logic_vector(31 downto 0);
+  signal control                                    : std_logic := '0';
+  signal bram_sel :std_logic_vector(1 downto 0);
 
 begin
 
   clk   <= not clk after clk_period / 2 ;
   reset <= '1', '0' after 100 ns;
 
-  clka <= clk;
-  clkb <= clk;
+  clka0 <= clk;
+  clkb0 <= clk;
+  clka1 <= clk;
+  clkb1 <= clk;
+
+  -- BRAM multiplexing
+  ena0   <= std_ena0   when bram_mine0 = '0' else user_ena0;
+  addra0 <= std_addra0 when bram_mine0 = '0' else user_addra0;
+  dina0  <= std_dina0  when bram_mine0 = '0' else user_dina0;
+  wea0   <= std_wea0   when bram_mine0 = '0' else user_wea0;
 
   bram0 : Test_BRAM0
     PORT MAP (
-      clka      => clka,
-      rsta      => rsta,
-      ena       => ena,
-      wea       => wea,
-      addra     => addra,
-      dina      => dina,
-      douta     => douta,
-      clkb      => clkb,
-      rstb      => rstb,
-      enb       => enb,
-      web       => web,
-      addrb     => addrb,
-      dinb      => dinb,
-      doutb     => doutb,
-      rsta_busy => rsta_busy,
-      rstb_busy => rstb_busy
+      clka      => clka0,
+      rsta      => rsta0,
+      ena       => ena0,
+      wea       => wea0,
+      addra     => addra0,
+      dina      => dina0,
+      douta     => douta0,
+      clkb      => clkb0,
+      rstb      => rstb0,
+      enb       => enb0,
+      web       => web0,
+      addrb     => addrb0,
+      dinb      => dinb0,
+      doutb     => doutb0,
+      rsta_busy => rsta_busy0,
+      rstb_busy => rstb_busy0
     );
 
-  uut : mayo_negate
+  bram1 : Test_BRAM0
+    PORT MAP (
+      clka      => clka1,
+      rsta      => rsta1,
+      ena       => ena1,
+      wea       => wea1,
+      addra     => addra1,
+      dina      => dina1,
+      douta     => douta1,
+      clkb      => clkb1,
+      rstb      => rstb1,
+      enb       => enb1,
+      web       => web1,
+      addrb     => addrb1,
+      dinb      => dinb1,
+      doutb     => doutb1,
+      rsta_busy => rsta_busy1,
+      rstb_busy => rstb_busy1
+    );
+
+  uut : mayo_add_vectors
     port map (
-      i_clk     => clk,
-      rst       => reset,
-      i_enable  => enable,
-      i_len     => len ,
-      i_adr     => address,
-      i_doutb   => doutb,
-      o_addrb   => addrb,
-      o_dinb    => dinb,
-      o_enb     => enb,
-      o_rstb    => rstb,
-      o_web     => web ,
-      o_done    => done,
-      o_control => control
+      i_clk      => clk,
+      rst        => reset,
+      i_enable   => enable,
+      i_v1_addr  => v1_addr,
+      i_v2_addr  => v2_addr,
+      i_out_addr => out_addr,
+      i_bram_sel => bram_sel, 
+      o_done     => done,
+
+      i_mema_dout => douta0,
+      o_mema_din  => std_dina0,
+      o_mema_addr => std_addra0,
+      o_mema_en   => std_ena0,
+      o_mema_rst  => rsta0,
+      o_mema_we   => std_wea0,
+
+      i_memb_dout => doutb0,
+      o_memb_din  => dinb0,
+      o_memb_addr => addrb0,
+      o_memb_en   => enb0,
+      o_memb_rst  => rstb0,
+      o_memb_we   => web0,
+
+      i_memc_dout => douta1,
+      o_memc_din  => dina1,
+      o_memc_addr => addra1,
+      o_memc_en   => ena1,
+      o_memc_rst  => rsta1,
+      o_memc_we   => wea1,
+
+      o_controla => controla,
+      o_controlb => controlb,
+      o_controlc => controlc
     );
 
   tb : process
   begin
+    bram_mine0 <= '0';
+    addrb1 <= ZERO_32;
+    dinb1 <= ZERO_32;
+    enb1 <= '0';
+    web1 <= "0000";
+    rstb1 <= '0';
+    
     wait for 110 ns ;
-    enable    <= '0';
-    len       <= std_logic_vector(to_unsigned(1024,32));
-    rsta_busy <= '0';
-    rstb_busy <= '0';
+    enable     <= '0';
+    len        <= std_logic_vector(to_unsigned(1024,32)); -- not used
+    v1_addr    <= std_logic_vector(to_unsigned(0,32));
+    v2_addr    <= std_logic_vector(to_unsigned(60,32));
+    out_addr   <= std_logic_vector(to_unsigned(120,32));
+    bram_sel <= "10";
+        
+    rsta_busy0 <= '0';
+    rstb_busy0 <= '0';
+    rsta_busy1 <= '0';
+    rstb_busy1 <= '0';
+    
+    wait for clk_period;
+    
+    -- Fill BRAM v1
+    for i in 0 to (15-1) loop --15 -1 == M / 4 -1 
+      addrb1 <= std_logic_vector(to_unsigned(i*4,32));
+      enb1   <= '1';
+      web1   <= "1111";
+      dinb1  <= std_logic_vector(to_unsigned(i+1,8)) & std_logic_vector(to_unsigned(i+1,8)) & std_logic_vector(to_unsigned(i+1,8)) & std_logic_vector(to_unsigned(i+1,8)); -- 30 30 30 30 
+      wait for clk_period;
+      bytes <= bytes +4 ;
+    end loop;
+    
+    enb1 <= '0';
+    web1 <= "0000";
+    dinb1 <= ZERO_32;
 
+    bram_mine0 <= '1'; -- Take control over BRAM Port 
     wait for clk_period;
 
-    -- Fill BRAM
-    for i in 0 to to_integer(unsigned(len) / 4 -1) loop
-      addra <= std_logic_vector(to_unsigned(i*4,32));
-      ena   <= '1';
-      wea   <= "1111";
-      dina  <= X"1E1E1E1E"; -- 30 30 30 30 
+    -- Fill BRAM v2
+    for i in 0 to (30-1) loop --15 -1 == M / 4 -1  + addr offset
+      user_addra0 <= std_logic_vector(to_unsigned(i*4,32));
+      user_ena0   <= '1';
+      user_wea0   <= "1111";
+      user_dina0  <= std_logic_vector(to_unsigned(i+1,8)) & std_logic_vector(to_unsigned(i+1,8)) & std_logic_vector(to_unsigned(i+1,8)) & std_logic_vector(to_unsigned(i+1,8)); -- 30 30 30 30 
       wait for clk_period;
       bytes <= bytes +4 ;
     end loop;
 
-    ena  <= '0';
-    wea  <= "0000";
-    dina <= ZERO_32;
+    user_ena0  <= '0';
+    user_wea0  <= "0000";
+    useR_dina0 <= ZERO_32;
+    wait for clk_period;
+    bram_mine0 <= '0';
     wait for clk_period;
 
     ----------------------------------------------------------------------------
     -- Start UUT
-    address <= ZERO_32;
-    enable  <= '1';
+    enable <= '1';
 
     wait for clk_period;
 
@@ -174,14 +294,16 @@ begin
 
     wait until done = '1';
     
-    -- Read BRAM
-    for i in 0 to to_integer(unsigned(len) / 4 -1) loop
-      addra <= std_logic_vector(to_unsigned(i*4,32));
-      ena   <= '1';
+    wait for 2*clk_period;
+    -- Read BRAM (EXPECTED 1d1d1d1d) (30 + 30) mod 31 
+    web1 <= "0000";
+    dinb1 <= ZERO_32; 
+    rstb1 <= '0';
+    for i in 0 to 15 loop --15 -1 == M / 4 -1  + addr offset [Last Read to check overflow, should expect 0] 
+      addrb1 <= std_logic_vector(to_unsigned(i*4 +120,32));
+      enb1   <= '1';
       wait for clk_period * 2 ;
-      report "Data : " & integer'image(to_integer(unsigned(douta)));
     end loop;
-
 
     report "Done" severity failure;
 

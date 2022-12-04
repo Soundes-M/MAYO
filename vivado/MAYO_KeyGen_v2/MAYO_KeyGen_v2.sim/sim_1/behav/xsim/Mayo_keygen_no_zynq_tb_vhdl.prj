@@ -8,7 +8,6 @@ vhdl xil_defaultlib  \
 "../../../../../../src/hdl/MAYO_Keygen/MAYO_reduce.vhd" \
 "../../../../../../src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd" \
 "../../../../../../src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd" \
-"../../../../../../src/hdl/MAYO_Keygen/MAYO_Add_vectors_Arbiter.vhd" \
 "../../../../../../src/hdl/MAYO_Keygen/MAYO_linear_combination.vhd" \
 "../../../../../../src/hdl/MAYO_Keygen/MAYO_Keygen_FSM.vhd" \
 "../../../../../../src/hdl/MAYO_Keygen/MAYO_negate.vhd" \
@@ -28,7 +27,6 @@ vhdl xil_defaultlib  \
 "../../../../MAYO_KeyGen_v2.ip_user_files/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_reduce_0_0/sim/Mayo_keygen_no_zynq_mayo_reduce_0_0.vhd" \
 "../../../../MAYO_KeyGen_v2.ip_user_files/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0/sim/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0.vhd" \
 "../../../../MAYO_KeyGen_v2.ip_user_files/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_add_vectors_0_0/sim/Mayo_keygen_no_zynq_mayo_add_vectors_0_0.vhd" \
-"../../../../MAYO_KeyGen_v2.ip_user_files/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0/sim/Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0.vhd" \
 "../../../../MAYO_KeyGen_v2.ip_user_files/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0/sim/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0.vhd" \
 "../../../../MAYO_KeyGen_v2.ip_user_files/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0/sim/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0.vhd" \
 "../../../../MAYO_KeyGen_v2.ip_user_files/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_negate_0_0/sim/Mayo_keygen_no_zynq_mayo_negate_0_0.vhd" \

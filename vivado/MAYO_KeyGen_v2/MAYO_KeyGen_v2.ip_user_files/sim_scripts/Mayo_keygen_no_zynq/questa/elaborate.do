@@ -1,0 +1,1 @@
+vopt -64 +acc=npr -l elaborate.log -L xilinx_vip -L xpm -L blk_mem_gen_v8_4_4 -L xil_defaultlib -L xlconstant_v1_1_7 -L fifo_generator_v13_2_5 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -work xil_defaultlib xil_defaultlib.Mayo_keygen_no_zynq xil_defaultlib.glbl -o Mayo_keygen_no_zynq_opt
