@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1670164776">
-  <File Type="VDS-TIMING-PB" Name="mayo_add_vectors_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="mayo_add_vectors_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="mayo_add_vectors.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="mayo_add_vectors_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="mayo_add_vectors_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="mayo_add_vectors_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="mayo_add_vectors.vds"/>
   <File Type="REPORTS-TCL" Name="mayo_add_vectors_reports.tcl"/>
   <File Type="PA-TCL" Name="mayo_add_vectors.tcl"/>
+  <File Type="RDS-DCP" Name="mayo_add_vectors.dcp"/>
+  <File Type="RDS-RDS" Name="mayo_add_vectors.vds"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Common.vhd">
@@ -170,13 +165,13 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_bram_arbiter_2_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_reduce_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_bram_arbiter_2_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_bramb0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_brama0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_brama1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_bramb0_0"/>
 </GenRun>

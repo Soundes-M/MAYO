@@ -267,7 +267,7 @@ begin
 							end if;
 
 							-- Vecs 
-							bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) + (M / 4)); -- Next vecs (i is also used here) [i+1]
+							bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) + M); -- Next vecs (i is also used here) [i+1]
 							t_state         <= read3;
 						end if;
 
@@ -345,7 +345,7 @@ begin
 						end if;
 
 						s_acc_flush <= '1';
-						if (s_out_ctr >= (M -1)) then
+						if (s_out_ctr >= (M -4)) then
 							t_state1 <= done;
 						else
 							s_out_ctr <= s_out_ctr + 4;
