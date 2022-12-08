@@ -110,10 +110,10 @@ begin
 						t_state <= write1;
 
 					when write1 =>
-						s_data(7 downto 0)   <= std_logic_vector((to_unsigned(PRIME,8) - unsigned(s_data(7 downto 0))) mod PRIME);
-						s_data(15 downto 8)  <= std_logic_vector((to_unsigned(PRIME,8) - unsigned(s_data(15 downto 8))) mod PRIME);
-						s_data(23 downto 16) <= std_logic_vector((to_unsigned(PRIME,8) - unsigned(s_data(23 downto 16))) mod PRIME);
-						s_data(31 downto 24) <= std_logic_vector((to_unsigned(PRIME,8) - unsigned(s_data(31 downto 24))) mod PRIME);
+						s_data(7 downto 0)   <= std_logic_vector((to_signed(PRIME,8) - signed(s_data(7 downto 0))) mod PRIME);
+						s_data(15 downto 8)  <= std_logic_vector((to_signed(PRIME,8) - signed(s_data(15 downto 8))) mod PRIME);
+						s_data(23 downto 16) <= std_logic_vector((to_signed(PRIME,8) - signed(s_data(23 downto 16))) mod PRIME);
+						s_data(31 downto 24) <= std_logic_vector((to_signed(PRIME,8) - signed(s_data(31 downto 24))) mod PRIME);
 						t_state              <= write2;
 
 					when write2 =>

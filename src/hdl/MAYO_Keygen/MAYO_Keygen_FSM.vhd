@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sat Nov 26 21:30:09 2022
+-- Last update : Wed Dec  7 22:13:38 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -540,16 +540,25 @@ BEGIN
             ------------------------------------------------------------------
 
           when compute14 =>
-            counter           <= 0;
-            s_p1_index        <= TEMPT_BASE_ADR;
-            s_oil_space_index <= OIL_SPACE_BASE_ADR;
-            s_p2_index        <= PK_BASE_ADR + SEED_BYTES; -- PK_P2
-            o_add_bram_sel    <= "10";
-            state             <= compute23;
+            counter       <= 0;
+            s_p1_index    <= TEMPT_BASE_ADR;
+            s_tempt_index <= TEMPT_BASE_ADR;
+
+            s_oil_space_index  <= OIL_SPACE_BASE_ADR;
+            s_oil_space2_index <= OIL_SPACE_BASE_ADR;
+
+            s_p2_index     <= PK_BASE_ADR + SEED_BYTES; -- PK_P2
+            s_v1_index     <= PK_BASE_ADR + SEED_BYTES;
+            o_add_bram_sel <= "10";
+
+            i     <= 0;
+            j     <= 0;
+            state <= compute23;
 
           when compute23 =>
             if (i < O) then
               state <= compute15 ;
+              j     <= i;
             else
               state <= negate0;
             end if;
@@ -558,8 +567,11 @@ BEGIN
             if (j < O) then
               state <= compute16;
             else
-              i     <= i+1;
-              state <= compute23;
+              i <= i+1;
+              -- update indices
+              s_oil_space_index <= s_oil_space_index + N-O;
+              s_tempt_index     <= s_tempt_index + (N-O)*M;
+              state             <= compute23;
             end if;
 
           when compute16 =>
@@ -568,7 +580,7 @@ BEGIN
             o_lin_len         <= std_logic_vector(to_unsigned(N-O, PORT_WIDTH));
             o_lin_out_addr    <= std_logic_vector(to_unsigned(s_p2_index, PORT_WIDTH)); -- P2
             o_lin_enable      <= '1';
-            state             <= compute4;
+            state             <= compute17;
 
           when compute17 =>
             o_lin_enable <= '0';
@@ -615,7 +627,7 @@ BEGIN
             s_p2_index         <= s_p2_index + M;
             s_oil_space2_index <= s_oil_space2_index + (N-O);
             s_v1_index         <= s_v1_index + M;
-            state              <= compute23;
+            state              <= compute15;
 
           when negate0 => -- P2 = -P2
             o_neg_enable <= '1';

@@ -165,13 +165,13 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_reduce_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_bram_arbiter_2_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_add_vectors_arb_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_brama0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_brama1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_bramb0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_brama0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_bram_arbiter_2_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_reduce_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0"/>
 </GenRun>

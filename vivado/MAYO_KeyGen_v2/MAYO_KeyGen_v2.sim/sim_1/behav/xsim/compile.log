@@ -1,3 +1,0 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_linear_combination.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'mayo_linear_combination'
-INFO: [VRFC 10-3107] analyzing entity 'DSP_Accum'

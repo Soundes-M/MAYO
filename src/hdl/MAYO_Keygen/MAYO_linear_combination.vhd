@@ -246,7 +246,7 @@ begin
 							i               <= 0 ;
 							s_acc_change    <= '1'; -- Change acc buffer
 
-							if (j >= (M-1)) then --j loop done
+							if (j >= (M-4)) then --j loop done
 								t_state <= done; -- END; no more input data
 							else
 								j       <= j +4 ;

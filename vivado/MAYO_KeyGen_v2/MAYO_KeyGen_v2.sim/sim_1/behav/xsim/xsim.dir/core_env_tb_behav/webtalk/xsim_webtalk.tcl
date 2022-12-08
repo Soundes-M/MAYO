@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/core_env_tb_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Sun Dec  4 15:38:58 2022" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Thu Dec  8 15:56:39 2022" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2020.2 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "3064766" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "LIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "0017a263-6901-4064-ac79-8448e06a752c" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "c288448962fe4364bad66aba55020fde" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "116" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "122" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Ubuntu" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "Ubuntu 20.04.5 LTS" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "11th Gen Intel(R) Core(TM) i7-11850H @ 2.50GHz" -context "user_environment"
@@ -25,9 +25,9 @@ webtalk_register_client -client xsim
 webtalk_add_data -client xsim -key runall -value "true" -context "xsim\\command_line_options"
 webtalk_add_data -client xsim -key Command -value "xsim" -context "xsim\\command_line_options"
 webtalk_add_data -client xsim -key trace_waveform -value "true" -context "xsim\\usage"
-webtalk_add_data -client xsim -key runtime -value "1415 ns" -context "xsim\\usage"
+webtalk_add_data -client xsim -key runtime -value "25385 ns" -context "xsim\\usage"
 webtalk_add_data -client xsim -key iteration -value "0" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Time -value "0.08_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Memory -value "126132_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 1839635149 -regid "212242419_0_0_662" -xml /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/core_env_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/core_env_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/core_env_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Simulation_Time -value "0.10_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Simulation_Memory -value "126108_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 3824664203 -regid "212242419_0_0_662" -xml /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/core_env_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/core_env_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/core_env_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate
