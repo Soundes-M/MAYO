@@ -35,8 +35,8 @@
       "mayo_sample_oil_space_0": "",
       "mayo_add_vectors_0": "",
       "mayo_linear_combinat_0": "",
-      "MAYO_KEYGEN_FSM_0": "",
-      "mayo_negate_0": ""
+      "mayo_negate_0": "",
+      "MAYO_KEYGEN_FSM_0": ""
     },
     "ports": {
       "rst": {
@@ -3401,6 +3401,83 @@
           }
         }
       },
+      "mayo_negate_0": {
+        "vlnv": "xilinx.com:module_ref:mayo_negate:1.0",
+        "xci_name": "Mayo_keygen_no_zynq_mayo_negate_0_0",
+        "xci_path": "ip/Mayo_keygen_no_zynq_mayo_negate_0_0/Mayo_keygen_no_zynq_mayo_negate_0_0.xci",
+        "inst_hier_path": "mayo_negate_0",
+        "parameters": {
+          "BRAM_SIZE": {
+            "value": "32"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mayo_negate",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "i_enable": {
+            "direction": "I"
+          },
+          "i_len": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_adr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_doutb": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_addrb": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_dinb": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_enb": {
+            "direction": "O"
+          },
+          "o_rstb": {
+            "direction": "O"
+          },
+          "o_web": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "o_done": {
+            "direction": "O"
+          },
+          "o_control": {
+            "direction": "O"
+          }
+        }
+      },
       "MAYO_KEYGEN_FSM_0": {
         "vlnv": "xilinx.com:module_ref:MAYO_KEYGEN_FSM:1.0",
         "xci_name": "Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0",
@@ -3688,83 +3765,6 @@
             "direction": "O"
           },
           "o_mem1a_control": {
-            "direction": "O"
-          }
-        }
-      },
-      "mayo_negate_0": {
-        "vlnv": "xilinx.com:module_ref:mayo_negate:1.0",
-        "xci_name": "Mayo_keygen_no_zynq_mayo_negate_0_0",
-        "xci_path": "ip/Mayo_keygen_no_zynq_mayo_negate_0_0/Mayo_keygen_no_zynq_mayo_negate_0_0.xci",
-        "inst_hier_path": "mayo_negate_0",
-        "parameters": {
-          "BRAM_SIZE": {
-            "value": "32"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mayo_negate",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "i_enable": {
-            "direction": "I"
-          },
-          "i_len": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_adr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_doutb": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_addrb": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_dinb": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_enb": {
-            "direction": "O"
-          },
-          "o_rstb": {
-            "direction": "O"
-          },
-          "o_web": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "o_control": {
             "direction": "O"
           }
         }
@@ -4190,8 +4190,8 @@
           "mayo_sample_oil_space_0/i_clk",
           "mayo_add_vectors_0/i_clk",
           "mayo_linear_combinat_0/i_clk",
-          "MAYO_KEYGEN_FSM_0/CLK",
-          "mayo_negate_0/i_clk"
+          "mayo_negate_0/i_clk",
+          "MAYO_KEYGEN_FSM_0/CLK"
         ]
       },
       "rst_1": {
@@ -4205,8 +4205,8 @@
           "mayo_sample_oil_space_0/rst",
           "mayo_add_vectors_0/rst",
           "mayo_linear_combinat_0/rst",
-          "MAYO_KEYGEN_FSM_0/RESET",
-          "mayo_negate_0/rst"
+          "mayo_negate_0/rst",
+          "MAYO_KEYGEN_FSM_0/RESET"
         ]
       },
       "MAYO_KEYGEN_FSM_0_o_hash_en": {

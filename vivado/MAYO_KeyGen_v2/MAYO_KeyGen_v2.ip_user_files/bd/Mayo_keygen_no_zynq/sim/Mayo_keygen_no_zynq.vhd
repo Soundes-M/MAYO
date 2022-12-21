@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
---Date        : Wed Dec  7 22:29:02 2022
+--Date        : Fri Dec  9 20:10:46 2022
 --Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 --Command     : generate_target Mayo_keygen_no_zynq.bd
 --Design      : Mayo_keygen_no_zynq
@@ -1261,6 +1261,23 @@ architecture STRUCTURE of Mayo_keygen_no_zynq is
     o_control1a : out STD_LOGIC
   );
   end component Mayo_keygen_no_zynq_mayo_linear_combinat_0_0;
+  component Mayo_keygen_no_zynq_mayo_negate_0_0 is
+  port (
+    i_clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    i_enable : in STD_LOGIC;
+    i_len : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_doutb : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_addrb : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_dinb : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_enb : out STD_LOGIC;
+    o_rstb : out STD_LOGIC;
+    o_web : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_done : out STD_LOGIC;
+    o_control : out STD_LOGIC
+  );
+  end component Mayo_keygen_no_zynq_mayo_negate_0_0;
   component Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0 is
   port (
     CLK : in STD_LOGIC;
@@ -1332,23 +1349,6 @@ architecture STRUCTURE of Mayo_keygen_no_zynq is
     o_mem1a_control : out STD_LOGIC
   );
   end component Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0;
-  component Mayo_keygen_no_zynq_mayo_negate_0_0 is
-  port (
-    i_clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    i_enable : in STD_LOGIC;
-    i_len : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_doutb : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_addrb : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_dinb : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_enb : out STD_LOGIC;
-    o_rstb : out STD_LOGIC;
-    o_web : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    o_done : out STD_LOGIC;
-    o_control : out STD_LOGIC
-  );
-  end component Mayo_keygen_no_zynq_mayo_negate_0_0;
   signal BRAM0_dout_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_big_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_big_BRAM_red_dout : STD_LOGIC_VECTOR ( 31 downto 0 );

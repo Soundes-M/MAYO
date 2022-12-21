@@ -1,6 +1,6 @@
 
 *** Running vivado
-    with args -log mayo_add_vectors.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_add_vectors.tcl
+    with args -log Mayo_keygen_no_zynq_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_keygen_no_zynq_wrapper.tcl
 
 
 ****** Vivado v2020.2 (64-bit)
@@ -8,115 +8,186 @@
   **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
     ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 
-source mayo_add_vectors.tcl -notrace
+source Mayo_keygen_no_zynq_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo'.
 INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs'.
 INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/shake_ip_repo'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.2/data/ip'.
-Command: synth_design -top mayo_add_vectors -part xc7z020clg484-1
+add_files: Time (s): cpu = 00:00:14 ; elapsed = 00:00:06 . Memory (MB): peak = 2516.574 ; gain = 192.094 ; free physical = 5182 ; free virtual = 21931
+Command: synth_design -top Mayo_keygen_no_zynq_wrapper -part xc7z020clg484-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 422877
+INFO: [Synth 8-7075] Helper process launched with PID 195529
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2324.598 ; gain = 0.000 ; free physical = 16095 ; free virtual = 27513
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4073 ; free virtual = 20749
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'mayo_add_vectors' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd:73]
-INFO: [Synth 8-226] default block is never used [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd:375]
-INFO: [Synth 8-256] done synthesizing module 'mayo_add_vectors' (1#1) [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd:73]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_wrapper' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/hdl/Mayo_keygen_no_zynq_wrapper.vhd:23]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1120' bound to instance 'Mayo_keygen_no_zynq_i' of component 'Mayo_keygen_no_zynq' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/hdl/Mayo_keygen_no_zynq_wrapper.vhd:33]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1133]
+INFO: [Synth 8-638] synthesizing module 'BRAM_big_imp_13MOJ7Q' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:58]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_BIG_BRAM512K_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_BIG_BRAM512K_0_stub.vhdl:5' bound to instance 'BIG_BRAM512K' of component 'Mayo_keygen_no_zynq_BIG_BRAM512K_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:219]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_BIG_BRAM512K_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_BIG_BRAM512K_0_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_arbit_brama1_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_arbit_brama1_0_stub.vhdl:5' bound to instance 'arbit_brama1' of component 'Mayo_keygen_no_zynq_arbit_brama1_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:230]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_arbit_brama1_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_arbit_brama1_0_stub.vhdl:67]
+INFO: [Synth 8-256] done synthesizing module 'BRAM_big_imp_13MOJ7Q' (1#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:58]
+INFO: [Synth 8-638] synthesizing module 'BRAM_small_imp_16BUBJ2' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:373]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_Small_BRAM8k_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_Small_BRAM8k_0_stub.vhdl:5' bound to instance 'Small_BRAM8k' of component 'Mayo_keygen_no_zynq_Small_BRAM8k_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:681]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_Small_BRAM8k_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_Small_BRAM8k_0_stub.vhdl:27]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_arbit_brama0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_arbit_brama0_0_stub.vhdl:5' bound to instance 'arbit_brama0' of component 'Mayo_keygen_no_zynq_arbit_brama0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:700]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_arbit_brama0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_arbit_brama0_0_stub.vhdl:67]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_arbit_bramb0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_arbit_bramb0_0_stub.vhdl:5' bound to instance 'arbit_bramb0' of component 'Mayo_keygen_no_zynq_arbit_bramb0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:759]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_arbit_bramb0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_arbit_bramb0_0_stub.vhdl:67]
+INFO: [Synth 8-256] done synthesizing module 'BRAM_small_imp_16BUBJ2' (2#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:373]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_Ground0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Ground0_0/synth/Mayo_keygen_no_zynq_Ground0_0.v:57' bound to instance 'Ground0' of component 'Mayo_keygen_no_zynq_Ground0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1632]
+INFO: [Synth 8-6157] synthesizing module 'Mayo_keygen_no_zynq_Ground0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Ground0_0/synth/Mayo_keygen_no_zynq_Ground0_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+	Parameter CONST_VAL bound to: 1'b0 
+	Parameter CONST_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant' (3#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Mayo_keygen_no_zynq_Ground0_0' (4#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Ground0_0/synth/Mayo_keygen_no_zynq_Ground0_0.v:57]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_Ground32_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Ground32_0/synth/Mayo_keygen_no_zynq_Ground32_0.v:57' bound to instance 'Ground32' of component 'Mayo_keygen_no_zynq_Ground32_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1636]
+INFO: [Synth 8-6157] synthesizing module 'Mayo_keygen_no_zynq_Ground32_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Ground32_0/synth/Mayo_keygen_no_zynq_Ground32_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+	Parameter CONST_VAL bound to: 0 - type: integer 
+	Parameter CONST_WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized0' (4#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Mayo_keygen_no_zynq_Ground32_0' (5#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Ground32_0/synth/Mayo_keygen_no_zynq_Ground32_0.v:57]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_Ground4_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Ground4_0/synth/Mayo_keygen_no_zynq_Ground4_0.v:57' bound to instance 'Ground4' of component 'Mayo_keygen_no_zynq_Ground4_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1640]
+INFO: [Synth 8-6157] synthesizing module 'Mayo_keygen_no_zynq_Ground4_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Ground4_0/synth/Mayo_keygen_no_zynq_Ground4_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized1' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+	Parameter CONST_VAL bound to: 4'b0000 
+	Parameter CONST_WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized1' (5#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Mayo_keygen_no_zynq_Ground4_0' (6#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Ground4_0/synth/Mayo_keygen_no_zynq_Ground4_0.v:57]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0_stub.vhdl:5' bound to instance 'MAYO_KEYGEN_FSM_0' of component 'Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1644]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0_stub.vhdl:78]
+INFO: [Synth 8-638] synthesizing module 'TRNG_imp_G7X2XE' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:843]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_TRNG_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_TRNG_0_0_stub.vhdl:5' bound to instance 'TRNG_0' of component 'Mayo_keygen_no_zynq_TRNG_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:916]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_TRNG_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_TRNG_0_0_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0_stub.vhdl:5' bound to instance 'mayo_trng_arbiter_0' of component 'Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:927]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0_stub.vhdl:30]
+INFO: [Synth 8-256] done synthesizing module 'TRNG_imp_G7X2XE' (7#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:843]
+INFO: [Synth 8-638] synthesizing module 'hash_imp_EASPA4' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:981]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_MAYO_SHAKE_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_MAYO_SHAKE_0_0_stub.vhdl:5' bound to instance 'MAYO_SHAKE_0' of component 'Mayo_keygen_no_zynq_MAYO_SHAKE_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1075]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_MAYO_SHAKE_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_MAYO_SHAKE_0_0_stub.vhdl:26]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0_stub.vhdl:5' bound to instance 'mayo_hash_bram_arbit_0' of component 'Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1093]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0_stub.vhdl:30]
+INFO: [Synth 8-256] done synthesizing module 'hash_imp_EASPA4' (8#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:981]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_mayo_add_vectors_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_add_vectors_0_0_stub.vhdl:5' bound to instance 'mayo_add_vectors_0' of component 'Mayo_keygen_no_zynq_mayo_add_vectors_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1757]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_mayo_add_vectors_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_add_vectors_0_0_stub.vhdl:40]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_mayo_linear_combinat_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0_stub.vhdl:5' bound to instance 'mayo_linear_combinat_0' of component 'Mayo_keygen_no_zynq_mayo_linear_combinat_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1789]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_mayo_linear_combinat_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0_stub.vhdl:41]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_mayo_negate_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_negate_0_0_stub.vhdl:5' bound to instance 'mayo_negate_0' of component 'Mayo_keygen_no_zynq_mayo_negate_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1822]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_mayo_negate_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_negate_0_0_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_mayo_reduce_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_reduce_0_0_stub.vhdl:5' bound to instance 'mayo_reduce_0' of component 'Mayo_keygen_no_zynq_mayo_reduce_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1838]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_mayo_reduce_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_reduce_0_0_stub.vhdl:32]
+INFO: [Synth 8-3491] module 'Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0_stub.vhdl:5' bound to instance 'mayo_sample_oil_space_0' of component 'Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1862]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-194782-osm-hzb/realtime/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0_stub.vhdl:30]
+INFO: [Synth 8-256] done synthesizing module 'Mayo_keygen_no_zynq' (9#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/synth/Mayo_keygen_no_zynq.vhd:1133]
+INFO: [Synth 8-256] done synthesizing module 'Mayo_keygen_no_zynq_wrapper' (10#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/hdl/Mayo_keygen_no_zynq_wrapper.vhd:23]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2324.598 ; gain = 0.000 ; free physical = 15984 ; free virtual = 27409
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 3991 ; free virtual = 20665
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2324.598 ; gain = 0.000 ; free physical = 16701 ; free virtual = 28137
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4665 ; free virtual = 21351
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4665 ; free virtual = 21351
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4694 ; free virtual = 21378
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_BIG_BRAM512K_0/Mayo_keygen_no_zynq_BIG_BRAM512K_0/Mayo_keygen_no_zynq_BIG_BRAM512K_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/BRAM_big/BIG_BRAM512K'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_BIG_BRAM512K_0/Mayo_keygen_no_zynq_BIG_BRAM512K_0/Mayo_keygen_no_zynq_BIG_BRAM512K_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/BRAM_big/BIG_BRAM512K'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_arbit_brama1_0/Mayo_keygen_no_zynq_arbit_brama1_0/Mayo_keygen_no_zynq_arbit_brama1_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/BRAM_big/arbit_brama1'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_arbit_brama1_0/Mayo_keygen_no_zynq_arbit_brama1_0/Mayo_keygen_no_zynq_arbit_brama1_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/BRAM_big/arbit_brama1'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Small_BRAM8k_0/Mayo_keygen_no_zynq_Small_BRAM8k_0/Mayo_keygen_blk_mem_gen_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_Small_BRAM8k_0/Mayo_keygen_no_zynq_Small_BRAM8k_0/Mayo_keygen_blk_mem_gen_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_arbit_brama0_0/Mayo_keygen_no_zynq_arbit_brama0_0/Mayo_keygen_no_zynq_arbit_brama0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/BRAM_small/arbit_brama0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_arbit_brama0_0/Mayo_keygen_no_zynq_arbit_brama0_0/Mayo_keygen_no_zynq_arbit_brama0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/BRAM_small/arbit_brama0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_arbit_bramb0_0/Mayo_keygen_no_zynq_arbit_bramb0_0/Mayo_keygen_no_zynq_arbit_bramb0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_arbit_bramb0_0/Mayo_keygen_no_zynq_arbit_bramb0_0/Mayo_keygen_no_zynq_arbit_bramb0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0/Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0/Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/hash/mayo_hash_bram_arbit_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0/Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0/Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/hash/mayo_hash_bram_arbit_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_MAYO_SHAKE_0_0/Mayo_keygen_no_zynq_MAYO_SHAKE_0_0/Mayo_keygen_no_zynq_MAYO_SHAKE_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_MAYO_SHAKE_0_0/Mayo_keygen_no_zynq_MAYO_SHAKE_0_0/Mayo_keygen_no_zynq_MAYO_SHAKE_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_TRNG_0_0/Mayo_keygen_no_zynq_TRNG_0_0/Mayo_keygen_no_zynq_TRNG_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/TRNG/TRNG_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_TRNG_0_0/Mayo_keygen_no_zynq_TRNG_0_0/Mayo_keygen_no_zynq_TRNG_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/TRNG/TRNG_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0/Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0/Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/TRNG/mayo_trng_arbiter_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0/Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0/Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/TRNG/mayo_trng_arbiter_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_reduce_0_0/Mayo_keygen_no_zynq_mayo_reduce_0_0/Mayo_keygen_no_zynq_mayo_reduce_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/mayo_reduce_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_reduce_0_0/Mayo_keygen_no_zynq_mayo_reduce_0_0/Mayo_keygen_no_zynq_mayo_reduce_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/mayo_reduce_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/mayo_sample_oil_space_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/mayo_sample_oil_space_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_add_vectors_0_0/Mayo_keygen_no_zynq_mayo_add_vectors_0_0/Mayo_keygen_no_zynq_mayo_add_vectors_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/mayo_add_vectors_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_add_vectors_0_0/Mayo_keygen_no_zynq_mayo_add_vectors_0_0/Mayo_keygen_no_zynq_mayo_add_vectors_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/mayo_add_vectors_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/mayo_linear_combinat_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/mayo_linear_combinat_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_negate_0_0/Mayo_keygen_no_zynq_mayo_negate_0_0/Mayo_keygen_no_zynq_mayo_negate_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/mayo_negate_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_mayo_negate_0_0/Mayo_keygen_no_zynq_mayo_negate_0_0/Mayo_keygen_no_zynq_mayo_negate_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/mayo_negate_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/MAYO_KEYGEN_FSM_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/ip/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0_in_context.xdc] for cell 'Mayo_keygen_no_zynq_i/MAYO_KEYGEN_FSM_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4649 ; free virtual = 21317
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4649 ; free virtual = 21317
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4712 ; free virtual = 21383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16697 ; free virtual = 28133
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4712 ; free virtual = 21383
 ---------------------------------------------------------------------------------
-INFO: [Device 21-403] Loading part xc7z020clg484-1
-INFO: [Synth 8-802] inferred FSM for state register 's_state_reg' in module 'mayo_add_vectors'
-INFO: [Synth 8-802] inferred FSM for state register 's_state_1_reg' in module 'mayo_add_vectors'
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                    idle |                               00 |                               00
-                   main0 |                               01 |                               01
-                   main1 |                               10 |                               10
-                   main2 |                               11 |                               11
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 's_state_1_reg' using encoding 'sequential' in module 'mayo_add_vectors'
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                    idle |                            00000 |                            00000
-                   read0 |                            00001 |                            00001
-                   read1 |                            00010 |                            00010
-                   read2 |                            00011 |                            00011
-                   read3 |                            00100 |                            00100
-                  write0 |                            00101 |                            10101
-                   read4 |                            00110 |                            00101
-                   read5 |                            00111 |                            00110
-                   read6 |                            01000 |                            00111
-                  write1 |                            01001 |                            10110
-                   done0 |                            01010 |                            11010
-                   read7 |                            01011 |                            01000
-                   read8 |                            01100 |                            01001
-                   read9 |                            01101 |                            01010
-                  read10 |                            01110 |                            01011
-                  read11 |                            01111 |                            01100
-                  read12 |                            10000 |                            01101
-                  write2 |                            10001 |                            10111
-                   done1 |                            10010 |                            11011
-                  read13 |                            10011 |                            01110
-                  read14 |                            10100 |                            01111
-                  read15 |                            10101 |                            10000
-                  read16 |                            10110 |                            10001
-                  write3 |                            10111 |                            11000
-                  read17 |                            11000 |                            10010
-                  read18 |                            11001 |                            10011
-                  read19 |                            11010 |                            10100
-                  write4 |                            11011 |                            11001
-                   done2 |                            11100 |                            11100
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 's_state_reg' using encoding 'sequential' in module 'mayo_add_vectors'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16602 ; free virtual = 28065
+Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-No constraint files found.
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/BRAM_big/BIG_BRAM512K. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/BRAM_big/arbit_brama1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/BRAM_small/arbit_brama0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/Ground0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/Ground32. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/Ground4. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/hash/mayo_hash_bram_arbit_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/hash/MAYO_SHAKE_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/TRNG/TRNG_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/TRNG/mayo_trng_arbiter_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/mayo_reduce_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/mayo_sample_oil_space_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/mayo_add_vectors_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/mayo_linear_combinat_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/mayo_negate_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_no_zynq_i/MAYO_KEYGEN_FSM_0. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4712 ; free virtual = 21383
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4715 ; free virtual = 21387
+---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input   32 Bit       Adders := 3     
-	   3 Input   32 Bit       Adders := 2     
-	   2 Input   31 Bit       Adders := 1     
-	   2 Input    8 Bit       Adders := 12    
-+---Registers : 
-	               32 Bit    Registers := 13    
-	               31 Bit    Registers := 1     
-	                4 Bit    Registers := 3     
-	                1 Bit    Registers := 10    
-+---Muxes : 
-	   4 Input   32 Bit        Muxes := 1     
-	  29 Input   32 Bit        Muxes := 5     
-	  29 Input   31 Bit        Muxes := 1     
-	  29 Input    5 Bit        Muxes := 1     
-	   3 Input    5 Bit        Muxes := 1     
-	   2 Input    5 Bit        Muxes := 3     
-	  29 Input    4 Bit        Muxes := 2     
-	   4 Input    2 Bit        Muxes := 1     
-	   3 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 11    
-	   4 Input    1 Bit        Muxes := 3     
-	  29 Input    1 Bit        Muxes := 24    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -129,25 +200,29 @@ BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-No constraint files found.
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16386 ; free virtual = 27868
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4694 ; free virtual = 21384
 ---------------------------------------------------------------------------------
-No constraint files found.
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4575 ; free virtual = 21252
+---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16383 ; free virtual = 27865
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4575 ; free virtual = 21251
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16379 ; free virtual = 27861
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4569 ; free virtual = 21246
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -165,92 +240,103 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16377 ; free virtual = 27859
+Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4558 ; free virtual = 21233
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16377 ; free virtual = 27859
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4558 ; free virtual = 21233
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16377 ; free virtual = 27859
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4557 ; free virtual = 21232
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16377 ; free virtual = 27859
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4557 ; free virtual = 21232
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16377 ; free virtual = 27859
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4557 ; free virtual = 21232
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16377 ; free virtual = 27859
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4557 ; free virtual = 21232
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 Report BlackBoxes: 
-+-+--------------+----------+
-| |BlackBox name |Instances |
-+-+--------------+----------+
-+-+--------------+----------+
++------+----------------------------------------------+----------+
+|      |BlackBox name                                 |Instances |
++------+----------------------------------------------+----------+
+|1     |Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0       |         1|
+|2     |Mayo_keygen_no_zynq_mayo_add_vectors_0_0      |         1|
+|3     |Mayo_keygen_no_zynq_mayo_linear_combinat_0_0  |         1|
+|4     |Mayo_keygen_no_zynq_mayo_negate_0_0           |         1|
+|5     |Mayo_keygen_no_zynq_mayo_reduce_0_0           |         1|
+|6     |Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0 |         1|
+|7     |Mayo_keygen_no_zynq_BIG_BRAM512K_0            |         1|
+|8     |Mayo_keygen_no_zynq_arbit_brama1_0            |         1|
+|9     |Mayo_keygen_no_zynq_Small_BRAM8k_0            |         1|
+|10    |Mayo_keygen_no_zynq_arbit_brama0_0            |         1|
+|11    |Mayo_keygen_no_zynq_arbit_bramb0_0            |         1|
+|12    |Mayo_keygen_no_zynq_TRNG_0_0                  |         1|
+|13    |Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0     |         1|
+|14    |Mayo_keygen_no_zynq_MAYO_SHAKE_0_0            |         1|
+|15    |Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0  |         1|
++------+----------------------------------------------+----------+
 
 Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |BUFG   |     1|
-|2     |CARRY4 |    88|
-|3     |LUT1   |     2|
-|4     |LUT2   |   283|
-|5     |LUT3   |    96|
-|6     |LUT4   |    87|
-|7     |LUT5   |   110|
-|8     |LUT6   |   138|
-|9     |FDRE   |   384|
-|10    |IBUF   |   197|
-|11    |OBUF   |   214|
-+------+-------+------+
-
-Report Instance Areas: 
-+------+---------+-------+------+
-|      |Instance |Module |Cells |
-+------+---------+-------+------+
-|1     |top      |       |  1600|
-+------+---------+-------+------+
++------+---------------------------------------------------+------+
+|      |Cell                                               |Count |
++------+---------------------------------------------------+------+
+|1     |Mayo_keygen_no_zynq_BIG_BRAM512K_0_bbox            |     1|
+|2     |Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0_bbox       |     1|
+|3     |Mayo_keygen_no_zynq_MAYO_SHAKE_0_0_bbox            |     1|
+|4     |Mayo_keygen_no_zynq_Small_BRAM8k_0_bbox            |     1|
+|5     |Mayo_keygen_no_zynq_TRNG_0_0_bbox                  |     1|
+|6     |Mayo_keygen_no_zynq_arbit_brama0_0_bbox            |     1|
+|7     |Mayo_keygen_no_zynq_arbit_brama1_0_bbox            |     1|
+|8     |Mayo_keygen_no_zynq_arbit_bramb0_0_bbox            |     1|
+|9     |Mayo_keygen_no_zynq_mayo_add_vectors_0_0_bbox      |     1|
+|10    |Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0_bbox  |     1|
+|11    |Mayo_keygen_no_zynq_mayo_linear_combinat_0_0_bbox  |     1|
+|12    |Mayo_keygen_no_zynq_mayo_negate_0_0_bbox           |     1|
+|13    |Mayo_keygen_no_zynq_mayo_reduce_0_0_bbox           |     1|
+|14    |Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0_bbox |     1|
+|15    |Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0_bbox     |     1|
+|16    |IBUF                                               |     3|
+|17    |OBUF                                               |     1|
++------+---------------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16377 ; free virtual = 27859
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4557 ; free virtual = 21232
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2332.484 ; gain = 7.887 ; free physical = 16384 ; free virtual = 27866
-Synthesis Optimization Complete : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2332.492 ; gain = 7.887 ; free physical = 16384 ; free virtual = 27866
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4615 ; free virtual = 21290
+Synthesis Optimization Complete : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4615 ; free virtual = 21290
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2332.492 ; gain = 0.000 ; free physical = 16457 ; free virtual = 27943
-INFO: [Netlist 29-17] Analyzing 88 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-WARNING: [Netlist 29-101] Netlist 'mayo_add_vectors' is not ideal for floorplanning, since the cellview 'mayo_add_vectors' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4699 ; free virtual = 21374
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2388.512 ; gain = 0.000 ; free physical = 16368 ; free virtual = 27866
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4645 ; free virtual = 21319
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-24 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+75 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:11 . Memory (MB): peak = 2388.512 ; gain = 64.031 ; free physical = 16523 ; free virtual = 28010
-INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/mayo_add_vectors.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file mayo_add_vectors_utilization_synth.rpt -pb mayo_add_vectors_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Dec  4 15:39:55 2022...
+synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:17 . Memory (MB): peak = 2516.574 ; gain = 0.000 ; free physical = 4776 ; free virtual = 21450
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/Mayo_keygen_no_zynq_wrapper.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Mayo_keygen_no_zynq_wrapper_utilization_synth.rpt -pb Mayo_keygen_no_zynq_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Dec 20 21:53:29 2022...

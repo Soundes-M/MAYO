@@ -27,7 +27,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log mayo_add_vectors.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_add_vectors.tcl" );
+         "-log Mayo_keygen_no_zynq_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_keygen_no_zynq_wrapper.tcl" );
 
 
 

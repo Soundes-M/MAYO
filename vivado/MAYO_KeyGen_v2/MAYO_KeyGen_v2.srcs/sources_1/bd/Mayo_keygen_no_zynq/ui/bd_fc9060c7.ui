@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.642882",
-   "Default View_TopLeft":"51,1534",
+   "Default View_ScaleFactor":"0.232787",
+   "Default View_TopLeft":"-1031,0",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
@@ -20,8 +20,8 @@ preplace inst mayo_reduce_0 -pg 1 -lvl 1 -x 390 -y 1850 -defaultsOSRD
 preplace inst mayo_sample_oil_space_0 -pg 1 -lvl 5 -x 3380 -y 1720 -defaultsOSRD
 preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1900 -y 1320 -defaultsOSRD
 preplace inst mayo_linear_combinat_0 -pg 1 -lvl 1 -x 390 -y 2300 -defaultsOSRD
-preplace inst MAYO_KEYGEN_FSM_0 -pg 1 -lvl 7 -x 4500 -y 1920 -defaultsOSRD
 preplace inst mayo_negate_0 -pg 1 -lvl 3 -x 1900 -y 120 -defaultsOSRD
+preplace inst MAYO_KEYGEN_FSM_0 -pg 1 -lvl 7 -x 4500 -y 1920 -defaultsOSRD
 preplace netloc BRAM0_dout_1 1 0 5 40 950 NJ 950 NJ 950 2260J 1430 3020
 preplace netloc Ground0_dout 1 1 6 860 1570 1560J 1580 2400 1880 NJ 1880 3640J 1840 NJ
 preplace netloc Ground32_dout 1 1 6 870 1560 NJ 1560 2370 1530 NJ 1530 3680J 1800 4200

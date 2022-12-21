@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Wed Dec  7 22:13:38 2022
+-- Last update : Tue Dec 20 21:51:41 2022
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -132,7 +132,8 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
       transpose3, transpose4, transpose5, transpose6, transpose7, negate0, negate1, negate2, sample0, sample1, sample2,
       compute0, compute1, compute2, compute3, compute4, compute5, compute6, compute7, compute8, compute9, compute10, compute11,
       compute12, compute13, compute14, compute15, compute16, compute17, compute18, compute19, compute20, compute21, compute22, compute23,
-      done, wait_clear,fill_sk0,fill_sk1,fill_sk2,fill_sk3,fill_sk4);
+      done, wait_clear,fill_sk0,fill_sk1,fill_sk2,fill_sk3,fill_sk4, debug0, debug1, debug2, debug3, debug4, debug5, debug6, debug7, debug9, debug10, debug11, debug12
+      ,debug13,debug14,debug15,debug16, debug20, debug21, debug22, debug23);
   SIGNAL STATE : STATES := idle; -- default to reset;
 
   signal trng : trng_t := DEFAULT_TRNG;
@@ -178,23 +179,16 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
   -- DEBUG
   ------------------------------------------------------------------------------
   constant C_DEBUG : std_logic := '1';
-  signal s_sk      : std_logic_vector((SK_BYTES*8)-1 downto 0);
-  signal s_pk      : std_logic_vector((PK_BYTES*8)-1 downto 0);
-  signal s_oil     : std_logic_vector((OIL_SPACE_BYTES*8)-1 downto 0);
-  file file_sk     : text;
-  file file_pk     : text;
-  file file_oil    : text;
+  file myFile      : text;
 BEGIN
 
-  o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = fill_sk0 or state = fill_sk1 or state = fill_sk2 or state = fill_sk3 or state = fill_sk4) else '0';
+  o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = fill_sk0 or state = fill_sk1 or state = fill_sk2 or state = fill_sk3 or state = fill_sk4 or state = debug4 or state = debug5 or state = debug6 or state = debug7) else '0';
   o_mem0b_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
-  o_mem1a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = transpose3 or state = transpose4 or state = transpose5 or state = transpose7) else '0';
+  o_mem1a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = transpose3 or state = transpose4 or state = transpose5 or state = transpose7 or state = debug0 or state = debug1 or state = debug2 or state = debug3 or state = debug9 or state = debug10 or state = debug11 or state = debug12 or state = debug13 or state = debug14 or state = debug15 or state = debug16 or state = debug20 or state = debug21 or state = debug22 or state = debug23) else '0';
 
   -- sync compute!
   KEYGEN            : PROCESS (CLK) IS
-    variable v_oline0 : line;
-    variable v_oline1 : line;
-    variable v_oline2 : line;
+    variable v_myLine : line;
   BEGIN
     if (rising_edge(clk)) then
       if (RESET = '1') then
@@ -351,7 +345,11 @@ BEGIN
 
           when sample2 =>
             if (i_sam_done = '1') then
-              state <= compute0;
+              if (C_DEBUG = '1') then
+                state <= debug0; -- [DEBUG ON]
+              else
+                state <= compute0; --[DEBUG OFF]
+              end if;
             end if ;
 
             --------------------------------------------------------------------
@@ -360,8 +358,72 @@ BEGIN
             -- Temp = P1*O^t + P1'
             --------------------------------------------------------------------
 
+          --------------------------------------------------------------------
+          -- DEBUG START
+          --------------------------------------------------------------------
+          when debug0 =>
+            report "Writing P1";
+            file_open(myFile, "P1.txt", write_mode);
+            i               <= 0;
+            bram1a.o.o_addr <= std_logic_vector(to_unsigned(P1_BASE_ADR,PORT_WIDTH));
+            bram1a.o.o_we   <= "0000";
+            bram1a.o.o_en   <= '1';
+            state           <= debug1;
+
+          when debug1 => --bram delay
+            state <= debug2;
+
+          when debug2 =>
+            hwrite(v_myLine, bram1a.i.i_dout); -- hex write 
+            writeline(myFile, v_myLine);
+            bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) +4);
+            if (i <= P1_BYTES -1 ) then
+              i     <= i+4;
+              state <= debug1;
+            else
+              state <= debug3;
+            end if;
+
+          when debug3 =>
+            bram1a.o.o_en <= '0';
+            file_close(myFile);
+            state <= debug4;
+
+          when debug4 =>
+            report "Writing Oil Space";
+            file_open(myFile, "Oilspace.txt", write_mode);
+            i               <= 0;
+            bram0a.o.o_addr <= std_logic_vector(to_unsigned(OIL_SPACE_BASE_ADR,PORT_WIDTH));
+            bram0a.o.o_we   <= "0000";
+            bram0a.o.o_en   <= '1';
+            state           <= debug5;
+
+          when debug5 => --bram delay
+            state <= debug6;
+
+          when debug6 =>
+            hwrite(v_myLine, bram0a.i.i_dout); -- hex write 
+            writeline(myFile, v_myLine);
+            bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
+            if (i <= OIL_SPACE_BYTES -1 ) then
+              i     <= i+4;
+              state <= debug5;
+            else
+              state <= debug7;
+            end if;
+
+          when debug7 =>
+            bram0a.o.o_en <= '0';
+            file_close(myFile);
+            state <= compute0;
+
+            --------------------------------------------------------------------
+            -- DEBUG END
+            --------------------------------------------------------------------
+
           -- PART 1
           when compute0 =>
+            file_close(myFile);
             i <= 0;
             j <= 0;
             -- Lin Combination
@@ -379,7 +441,11 @@ BEGIN
               s_p1_index <= P1_BASE_ADR + p1_counter*M;
               state      <= compute2 ;
             else
-              state <= compute8;
+              if (C_DEBUG = '1') then
+                state <= debug9;
+              else
+                state <= compute8; --[DEBUG OFF]
+              end if;
             end if;
 
           when compute2 => ----------------------------------------------------- J CHECK
@@ -429,6 +495,42 @@ BEGIN
             j                 <= 0;
             state             <= compute1;
 
+            --------------------------------------------------------------------
+            -- DEBUG START
+            --------------------------------------------------------------------
+
+          when debug9 =>
+            report "Writing Temp";
+            file_open(myFile, "Temp1.txt", write_mode);
+            i               <= 0;
+            bram1a.o.o_addr <= std_logic_vector(to_unsigned(TEMP_BASE_ADR,PORT_WIDTH));
+            bram1a.o.o_we   <= "0000";
+            bram1a.o.o_en   <= '1';
+            state           <= debug10;
+
+          when debug10 => --bram delay
+            state <= debug11;
+
+          when debug11 =>
+            hwrite(v_myLine, bram1a.i.i_dout); -- hex write 
+            writeline(myFile, v_myLine);
+            bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) +4);
+            if (i <= TEMP_RANGE -1 ) then
+              i     <= i+4;
+              state <= debug10;
+            else
+              state <= debug12;
+            end if;
+
+          when debug12 =>
+            bram1a.o.o_en <= '0';
+            file_close(myFile);
+            state <= compute8;
+
+            --------------------------------------------------------------------
+            -- DEBUG END
+            --------------------------------------------------------------------
+
           -- PART 2
           when compute8 =>
             i <= 0;
@@ -444,7 +546,12 @@ BEGIN
             if (i < N-O) then
               state <= compute10;
             else
-              state <= transpose0;
+              if (C_DEBUG = '1') then
+                state <= debug20;
+              else
+                state <= transpose0; -- [DEBUG OFF]
+              end if;
+
             end if;
 
           when compute10 =>
@@ -477,6 +584,42 @@ BEGIN
             j          <= 0;
             state      <= compute9;
 
+            --------------------------------------------------------------------
+            -- DEBUG START
+            --------------------------------------------------------------------
+
+          when debug20 =>
+            report "Writing Temp Pre T";
+            file_open(myFile, "Temp2.txt", write_mode);
+            i               <= 0;
+            bram1a.o.o_addr <= std_logic_vector(to_unsigned(TEMP_BASE_ADR,PORT_WIDTH));
+            bram1a.o.o_we   <= "0000";
+            bram1a.o.o_en   <= '1';
+            state           <= debug21;
+
+          when debug21 => --bram delay
+            state <= debug22;
+
+          when debug22 =>
+            hwrite(v_myLine, bram1a.i.i_dout); -- hex write 
+            writeline(myFile, v_myLine);
+            bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) +4);
+            if (i <= TEMP_RANGE -1 ) then
+              i     <= i+4;
+              state <= debug21;
+            else
+              state <= debug23;
+            end if;
+
+          when debug23 =>
+            bram1a.o.o_en <= '0';
+            file_close(myFile);
+            state <= transpose0;
+
+            --------------------------------------------------------------------
+            -- DEBUG END
+            --------------------------------------------------------------------
+
           ------------------------------------------------------------------
           -- BEGIN TRANSPOSE TEMP -> TEMPT
           ------------------------------------------------------------------
@@ -491,7 +634,11 @@ BEGIN
             if (i < O) then
               state <= transpose2;
             else
-              state <= compute14;
+              if (C_DEBUG ='1') then
+                state <= debug13;
+              else
+                state <= compute14; --DEBUG OFF
+              end if;
             end if;
 
           when transpose2 =>
@@ -499,8 +646,8 @@ BEGIN
               state <= transpose3;
             else
               j            <= 0 ;
-              s_src_index  <= (i+1)*(N-O);
-              s_dest_index <= (i+1)*M;
+              s_src_index  <= TEMP_BASE_ADR + (i+1)*M;
+              s_dest_index <= TEMPT_BASE_ADR + (i+1)*(N-O)*M;
               i            <= i+1;
               state        <= transpose1;
             end if;
@@ -531,6 +678,7 @@ BEGIN
             end if;
 
           when transpose6 =>
+            copy_index   <= 0;
             j            <= j+1;
             s_dest_index <= s_dest_index + M;
             s_src_index  <= s_src_index + O*M;
@@ -538,6 +686,40 @@ BEGIN
             ------------------------------------------------------------------
             -- END TRANSPOSE TEMP -> TEMPT
             ------------------------------------------------------------------
+
+          --------------------------------------------------------------------
+          -- DEBUG START
+          --------------------------------------------------------------------
+          when debug13 =>
+            report "Writing Tempt!";
+            file_open(myFile, "Tempt1.txt", write_mode);
+            i               <= 0;
+            bram1a.o.o_addr <= std_logic_vector(to_unsigned(TEMPT_BASE_ADR,PORT_WIDTH));
+            bram1a.o.o_we   <= "0000";
+            bram1a.o.o_en   <= '1';
+            state           <= debug14;
+
+          when debug14 => --bram delay
+            state <= debug15;
+
+          when debug15 =>
+            hwrite(v_myLine, bram1a.i.i_dout); -- hex write 
+            writeline(myFile, v_myLine);
+            bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) +4);
+            if (i <= TEMPT_RANGE -1 ) then
+              i     <= i+4;
+              state <= debug14;
+            else
+              state <= debug16;
+            end if;
+
+          when debug16 =>
+            bram1a.o.o_en <= '0';
+            file_close(myFile);
+            state <= compute14;
+            --------------------------------------------------------------------
+            -- DEBUG END
+            --------------------------------------------------------------------
 
           when compute14 =>
             counter       <= 0;
@@ -557,8 +739,11 @@ BEGIN
 
           when compute23 =>
             if (i < O) then
-              state <= compute15 ;
-              j     <= i;
+              -- update indices
+              j                  <= i;
+              s_oil_space2_index <= OIL_SPACE_BASE_ADR + i *(N-O);
+              s_p1_index         <= TEMPT_BASE_ADR + i*(N-O)*M;
+              state              <= compute15 ;
             else
               state <= negate0;
             end if;
@@ -641,7 +826,7 @@ BEGIN
                 state <= fill_sk0;
                 i     <= 0 ;
               else
-                state <= done;
+                state <= done; -- DEBUG OFF
               end if;
             end if;
 
@@ -649,35 +834,35 @@ BEGIN
           -- DEBUG
           ----------------------------------------------------------------------
           when fill_sk0 =>
+            report "Writing Pk!";
+            file_open(myFile, "PK.txt", write_mode);
+            i               <= 0;
             bram0a.o.o_addr <= std_logic_vector(to_unsigned(PK_BASE_ADR,PORT_WIDTH));
-            bram0a.o.o_en   <= '1';
             bram0a.o.o_we   <= "0000";
+            bram0a.o.o_en   <= '1';
             state           <= fill_sk1;
 
-          when fill_sk1 =>
+          when fill_sk1 => --bram delay
             state <= fill_sk2;
 
           when fill_sk2 =>
-            state <= fill_sk3;
-
-          when fill_sk3 =>
-            if (i*4 <= PK_BYTES -1) then
-              s_pk(i*32+31 downto i*32) <= bram0a.i.i_dout;
-              i                         <= i+1;
-              bram0a.o.o_addr           <= std_logic_vector(unsigned(bram0a.o.o_addr) +4 );
-              state                     <= fill_sk1;
+            hwrite(v_myLine, bram0a.i.i_dout); -- hex write 
+            writeline(myFile, v_myLine);
+            bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
+            if (i <= PK_BYTES -1) then
+              i     <= i+4;
+              state <= fill_sk1;
             else
-              state <= fill_sk4;
+              state <= fill_sk3;
             end if;
 
-          when fill_sk4 =>
-            file_open(file_sk, "pk.txt", write_mode);
-            hwrite(v_oline0, s_pk); -- hex write 
-            writeline(file_sk, v_oline0);
+          when fill_sk3 =>
+            bram0a.o.o_en <= '0';
+            file_close(myFile);
             state <= done;
 
           when done =>
-            file_close(file_sk);
+            --file_close(file_sk);
             o_done <= '1';
             irq    <= '1';
             state  <= wait_clear;
