@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun Jan  8 01:13:07 2023
+# Process ID: 340971
+# Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/Mayo_keygen_processing_system7_0_0_synth_1
+# Command line: vivado -log Mayo_keygen_processing_system7_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_keygen_processing_system7_0_0.tcl
+# Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/Mayo_keygen_processing_system7_0_0_synth_1/Mayo_keygen_processing_system7_0_0.vds
+# Journal file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/Mayo_keygen_processing_system7_0_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source Mayo_keygen_processing_system7_0_0.tcl -notrace

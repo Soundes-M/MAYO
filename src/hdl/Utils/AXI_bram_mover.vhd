@@ -5,7 +5,7 @@
 -- File        : AXI_bram_mover.vhd
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
--- Last update : Mon Sep  5 12:38:21 2022
+-- Last update : Sun Jan  8 13:33:56 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -287,7 +287,7 @@ begin
 		else
 			case (t_main) is
 				when idle =>
-					if ((unsigned(i_bram_adr) >= to_unsigned((BRAM_II_SIZE / 4) - DMA_PRE_LOAD_DELAY,PORT_WIDTH)) and (i_bram_en = '1')) then -- Almost full BRAM--> FLUSH
+					if ((unsigned(i_bram_adr) >= to_unsigned((BRAM_II_PORT_WIDTH / 4) - DMA_PRE_LOAD_DELAY,PORT_WIDTH)) and (i_bram_en = '1')) then -- Almost full BRAM--> FLUSH
 						halt   <= '1';
 						t_main <= main0;
 					else
@@ -349,7 +349,7 @@ begin
 				when main5 => -- BTT And START
 					axi_write <= '0';
 					if (axi_write_done = '1' and axi_error = '0') then
-						axi_wdata  <= std_logic_vector(to_unsigned(BRAM_II_SIZE,PORT_WIDTH));
+						axi_wdata  <= std_logic_vector(to_unsigned(BRAM_II_PORT_WIDTH,PORT_WIDTH));
 						axi_awaddr <= std_logic_vector(to_unsigned(BTT,PORT_WIDTH));
 						-- M_AXI_LITE_WSTRB <= "1111";
 						axi_write <= '1';
@@ -390,7 +390,7 @@ begin
 				when main10 => -- SOURCE ADDR
 					axi_write <= '0';
 					if (axi_write_done = '1' and axi_error = '0') then
-						axi_wdata  <= std_logic_vector(unsigned(C_DDR_BASE_ADDR)+ to_unsigned(BRAM_II_SIZE,C_DDR_BASE_ADDR'length)); -- TODO: Fix this is more than 1 copy is needed
+						axi_wdata  <= std_logic_vector(unsigned(C_DDR_BASE_ADDR)+ to_unsigned(BRAM_II_PORT_WIDTH,C_DDR_BASE_ADDR'length)); -- TODO: Fix this is more than 1 copy is needed
 						axi_awaddr <= std_logic_vector(to_unsigned(SA,PORT_WIDTH));
 						-- M_AXI_LITE_WSTRB <= "1111";
 						axi_write <= '1';
@@ -409,7 +409,7 @@ begin
 				when main12 => -- BTT And START
 					axi_write <= '0';
 					if (axi_write_done = '1' and axi_error = '0') then
-						axi_wdata  <= std_logic_vector(to_unsigned(BRAM_II_SIZE,PORT_WIDTH));
+						axi_wdata  <= std_logic_vector(to_unsigned(BRAM_II_PORT_WIDTH,PORT_WIDTH));
 						axi_awaddr <= std_logic_vector(to_unsigned(BTT,PORT_WIDTH));
 						-- M_AXI_LITE_WSTRB <= "1111";
 						axi_write <= '1';

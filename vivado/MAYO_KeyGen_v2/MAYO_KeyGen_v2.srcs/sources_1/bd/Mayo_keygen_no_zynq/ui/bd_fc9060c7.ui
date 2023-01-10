@@ -1,14 +1,14 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.232787",
-   "Default View_TopLeft":"-1031,0",
+   "Default View_ScaleFactor":"0.805549",
+   "Default View_TopLeft":"-128,1245",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port rst -pg 1 -lvl 0 -x -10 -y 1380 -defaultsOSRD
-preplace port clk -pg 1 -lvl 0 -x -10 -y 1360 -defaultsOSRD
-preplace port enable -pg 1 -lvl 0 -x -10 -y 2930 -defaultsOSRD
-preplace port done -pg 1 -lvl 8 -x 5170 -y 1450 -defaultsOSRD
+preplace port rst -pg 1 -lvl 0 -x -30 -y 1380 -defaultsOSRD
+preplace port clk -pg 1 -lvl 0 -x -30 -y 1360 -defaultsOSRD
+preplace port enable -pg 1 -lvl 0 -x -30 -y 2930 -defaultsOSRD
+preplace port done -pg 1 -lvl 8 -x 5200 -y 1450 -defaultsOSRD
 preplace inst BRAM_big -pg 1 -lvl 2 -x 1370 -y 2040 -defaultsOSRD
 preplace inst BRAM_small -pg 1 -lvl 4 -x 2810 -y 730 -defaultsOSRD
 preplace inst Ground0 -pg 1 -lvl 1 -x 390 -y 1530 -defaultsOSRD
@@ -16,170 +16,170 @@ preplace inst Ground32 -pg 1 -lvl 1 -x 390 -y 1430 -defaultsOSRD
 preplace inst Ground4 -pg 1 -lvl 1 -x 390 -y 1630 -defaultsOSRD
 preplace inst hash -pg 1 -lvl 1 -x 390 -y 2770 -defaultsOSRD
 preplace inst TRNG -pg 1 -lvl 6 -x 3900 -y 1630 -defaultsOSRD
+preplace inst MAYO_KEYGEN_FSM_0 -pg 1 -lvl 7 -x 4500 -y 1920 -defaultsOSRD
+preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1920 -y 1320 -defaultsOSRD
+preplace inst mayo_linear_combinat_0 -pg 1 -lvl 1 -x 390 -y 2300 -defaultsOSRD
+preplace inst mayo_negate_0 -pg 1 -lvl 3 -x 1920 -y 120 -defaultsOSRD
 preplace inst mayo_reduce_0 -pg 1 -lvl 1 -x 390 -y 1850 -defaultsOSRD
 preplace inst mayo_sample_oil_space_0 -pg 1 -lvl 5 -x 3380 -y 1720 -defaultsOSRD
-preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1900 -y 1320 -defaultsOSRD
-preplace inst mayo_linear_combinat_0 -pg 1 -lvl 1 -x 390 -y 2300 -defaultsOSRD
-preplace inst mayo_negate_0 -pg 1 -lvl 3 -x 1900 -y 120 -defaultsOSRD
-preplace inst MAYO_KEYGEN_FSM_0 -pg 1 -lvl 7 -x 4500 -y 1920 -defaultsOSRD
-preplace netloc BRAM0_dout_1 1 0 5 40 950 NJ 950 NJ 950 2260J 1430 3020
-preplace netloc Ground0_dout 1 1 6 860 1570 1560J 1580 2400 1880 NJ 1880 3640J 1840 NJ
-preplace netloc Ground32_dout 1 1 6 870 1560 NJ 1560 2370 1530 NJ 1530 3680J 1800 4200
-preplace netloc Ground4_dout 1 1 3 730 880 NJ 880 2280J
-preplace netloc MAYO_SHAKE_1_BRAMA_addr 1 1 1 1020 1910n
-preplace netloc MAYO_SHAKE_1_BRAMA_din 1 1 1 1010 1890n
-preplace netloc MAYO_SHAKE_1_BRAMA_en 1 1 1 1050 1930n
-preplace netloc MAYO_SHAKE_1_BRAMA_we 1 1 1 1030 1950n
-preplace netloc arbit_brama0_BRAM_key_dout 1 4 3 3190 1420 NJ 1420 4150J
-preplace netloc arbit_brama0_BRAM_lin_dout 1 0 5 80 3020 NJ 3020 NJ 3020 NJ 3020 3070
-preplace netloc arbit_brama0_BRAM_neg_dout 1 2 3 1680 930 2220J 1480 3050
-preplace netloc arbit_brama0_BRAM_red_dout 1 0 5 180 2550 1060J 2540 NJ 2540 2150J 2560 3060
-preplace netloc arbit_brama1_BRAM_hash_dout 1 0 3 140 3030 NJ 3030 1560
-preplace netloc arbit_brama1_BRAM_key_dout 1 2 5 1590 2030 NJ 2030 NJ 2030 NJ 2030 4070J
-preplace netloc arbit_brama1_BRAM_lin_dout 1 0 3 90 3040 NJ 3040 1580
-preplace netloc arbit_bramb0_BRAM_key_dout 1 4 3 3180 1430 NJ 1430 4130J
-preplace netloc arbit_bramb0_BRAM_sam_dout 1 4 1 3120 740n
-preplace netloc hash_BRAM0_addr 1 1 3 890J 960 NJ 960 2360
-preplace netloc hash_BRAM0_control 1 1 3 930 970 NJ 970 2310J
-preplace netloc hash_BRAM0_din 1 1 3 900 980 NJ 980 2350J
-preplace netloc hash_BRAM0_en 1 1 3 920 990 NJ 990 2290J
-preplace netloc hash_BRAM0_we 1 1 3 950J 1000 NJ 1000 2230
-preplace netloc hash_control_1 1 1 1 1070 1990n
-preplace netloc mayo_bram_arbiter_1_BRAM_lin_dout 1 0 5 200 2540 1040J 2530 NJ 2530 2110J 2520 3030
-preplace netloc mayo_hash_arbiter_0_o_key_done 1 1 6 980J 1640 1590J 1900 NJ 1900 NJ 1900 NJ 1900 4110
-preplace netloc mayo_hash_arbiter_0_o_key_dyn_done 1 1 6 NJ 2680 NJ 2680 2110J 2740 NJ 2740 NJ 2740 4200
-preplace netloc mayo_linear_combinat_0_o_control0a 1 1 3 720 700 NJ 700 NJ
-preplace netloc mayo_linear_combinat_0_o_control0b 1 1 3 840 940 NJ 940 2290J
-preplace netloc mayo_linear_combinat_0_o_control1a 1 1 1 1000 1970n
-preplace netloc mayo_linear_combinat_0_o_done 1 1 6 790J 1610 NJ 1610 NJ 1610 3100J 1970 NJ 1970 4090
-preplace netloc mayo_linear_combinat_0_o_mem0a_addr 1 1 3 640 260 NJ 260 NJ
-preplace netloc mayo_linear_combinat_0_o_mem0a_din 1 1 3 620 240 NJ 240 NJ
-preplace netloc mayo_linear_combinat_0_o_mem0a_en 1 1 3 650 280 NJ 280 NJ
-preplace netloc mayo_linear_combinat_0_o_mem0a_rst 1 1 3 670 300 NJ 300 NJ
-preplace netloc mayo_linear_combinat_0_o_mem0a_we 1 1 3 680 320 NJ 320 NJ
-preplace netloc mayo_linear_combinat_0_o_mem0b_addr 1 1 3 740 1010 NJ 1010 2340J
-preplace netloc mayo_linear_combinat_0_o_mem0b_din 1 1 3 820 1050 NJ 1050 2250J
-preplace netloc mayo_linear_combinat_0_o_mem0b_en 1 1 3 810 1030 NJ 1030 2330J
-preplace netloc mayo_linear_combinat_0_o_mem0b_rst 1 1 3 800 1020 NJ 1020 NJ
-preplace netloc mayo_linear_combinat_0_o_mem0b_we 1 1 3 850 1040 NJ 1040 2320J
-preplace netloc mayo_linear_combinat_0_o_mem1a_addr 1 1 1 940 1810n
-preplace netloc mayo_linear_combinat_0_o_mem1a_din 1 1 1 910 1790n
-preplace netloc mayo_linear_combinat_0_o_mem1a_en 1 1 1 960 1830n
-preplace netloc mayo_linear_combinat_0_o_mem1a_rst 1 1 1 970 1850n
-preplace netloc mayo_linear_combinat_0_o_mem1a_we 1 1 1 990 1870n
-preplace netloc mayo_negate_0_o_addrb 1 3 1 2520 60n
-preplace netloc mayo_negate_0_o_control 1 3 1 2130 180n
-preplace netloc mayo_negate_0_o_dinb 1 3 1 2480 80n
-preplace netloc mayo_negate_0_o_done 1 3 4 2200J 2040 NJ 2040 NJ 2040 N
-preplace netloc mayo_negate_0_o_enb 1 3 1 2370 100n
-preplace netloc mayo_negate_0_o_rstb 1 3 1 2270 120n
-preplace netloc mayo_negate_0_o_web 1 3 1 2170 140n
-preplace netloc mayo_reduce_0_o_addrb 1 1 3 590 460 NJ 460 NJ
-preplace netloc mayo_reduce_0_o_control 1 1 3 660 740 NJ 740 NJ
-preplace netloc mayo_reduce_0_o_done 1 1 6 760 1650 1580J 1950 NJ 1950 NJ 1950 NJ 1950 4110J
-preplace netloc mayo_reduce_0_o_enb 1 1 3 600 480 NJ 480 NJ
-preplace netloc mayo_reduce_0_o_rstb 1 1 3 610 500 NJ 500 NJ
-preplace netloc mayo_reduce_0_o_web 1 1 3 630 520 NJ 520 NJ
-preplace netloc mayo_sample_oil_space_0_o_controlb 1 3 3 2490 1920 NJ 1920 3570
-preplace netloc mayo_sample_oil_space_0_o_done 1 5 2 3630 1790 4120J
-preplace netloc mayo_sample_oil_space_0_o_memb_addr 1 3 3 2580 1470 NJ 1470 3600
-preplace netloc mayo_sample_oil_space_0_o_memb_din 1 3 3 2570 1500 NJ 1500 3570
-preplace netloc mayo_sample_oil_space_0_o_memb_en 1 3 3 2530 1510 NJ 1510 3590
-preplace netloc mayo_sample_oil_space_0_o_memb_rst 1 3 3 2500 1520 NJ 1520 3580
-preplace netloc mayo_sample_oil_space_0_o_memb_we 1 3 3 2520 1490 NJ 1490 3610
-preplace netloc enable_1 1 0 7 30J 2060 750J 1590 1610J 1600 NJ 1600 3100J 1560 3660J 1770 4160J
+preplace netloc BRAM0_dout_1 1 0 5 20 950 NJ 950 NJ 950 2280J 1430 3020
+preplace netloc Ground0_dout 1 1 6 890 1570 1640J 1620 2420 1880 NJ 1880 NJ 1880 4120J
+preplace netloc Ground32_dout 1 1 6 900 1560 NJ 1560 2390 1530 NJ 1530 3680J 1790 4220
+preplace netloc Ground4_dout 1 1 3 620 880 NJ 880 2300J
+preplace netloc MAYO_SHAKE_1_BRAMA_addr 1 1 1 1030 1900n
+preplace netloc MAYO_SHAKE_1_BRAMA_din 1 1 1 1020 1880n
+preplace netloc MAYO_SHAKE_1_BRAMA_en 1 1 1 1060 1920n
+preplace netloc MAYO_SHAKE_1_BRAMA_we 1 1 1 1050 1940n
+preplace netloc arbit_brama0_BRAM_key_dout 1 4 3 3150 1420 NJ 1420 4180J
+preplace netloc arbit_brama0_BRAM_lin_dout 1 0 5 160 2570 NJ 2570 NJ 2570 2190J 2580 3070
+preplace netloc arbit_brama0_BRAM_neg_dout 1 2 3 1700 930 2240J 1480 3050
+preplace netloc arbit_brama0_BRAM_red_dout 1 0 5 150 2560 NJ 2560 NJ 2560 NJ 2560 3040
+preplace netloc arbit_brama1_BRAM_hash_dout 1 0 3 110 3030 NJ 3030 1560
+preplace netloc arbit_brama1_BRAM_key_dout 1 2 5 1590 2030 NJ 2030 NJ 2030 NJ 2030 4100J
+preplace netloc arbit_brama1_BRAM_lin_dout 1 0 3 170 2540 NJ 2540 1570
+preplace netloc arbit_bramb0_BRAM_key_dout 1 4 3 3140 1430 NJ 1430 4160J
+preplace netloc arbit_bramb0_BRAM_sam_dout 1 4 1 3100 740n
+preplace netloc hash_BRAM0_addr 1 1 3 910J 960 NJ 960 2380
+preplace netloc hash_BRAM0_control 1 1 3 950 970 NJ 970 2330J
+preplace netloc hash_BRAM0_din 1 1 3 920 980 NJ 980 2370J
+preplace netloc hash_BRAM0_en 1 1 3 930 990 NJ 990 2310J
+preplace netloc hash_BRAM0_we 1 1 3 960J 1000 NJ 1000 2250
+preplace netloc hash_control_1 1 1 1 1070 1980n
+preplace netloc mayo_bram_arbiter_1_BRAM_lin_dout 1 0 5 60 3040 NJ 3040 NJ 3040 NJ 3040 3060
+preplace netloc mayo_hash_arbiter_0_o_key_done 1 1 6 990J 1650 1600J 1900 NJ 1900 NJ 1900 NJ 1900 4140
+preplace netloc mayo_hash_arbiter_0_o_key_dyn_done 1 1 6 NJ 2680 NJ 2680 2130J 2740 NJ 2740 NJ 2740 4170
+preplace netloc mayo_linear_combinat_0_o_control0a 1 1 3 800 700 NJ 700 NJ
+preplace netloc mayo_linear_combinat_0_o_control0b 1 1 3 860 940 NJ 940 2310J
+preplace netloc mayo_linear_combinat_0_o_control1a 1 1 1 1040 1960n
+preplace netloc mayo_linear_combinat_0_o_done 1 1 6 590J 1620 1630J 1630 NJ 1630 3080J 1960 NJ 1960 4130
+preplace netloc mayo_linear_combinat_0_o_mem0a_addr 1 1 3 670 260 NJ 260 NJ
+preplace netloc mayo_linear_combinat_0_o_mem0a_din 1 1 3 650 240 NJ 240 NJ
+preplace netloc mayo_linear_combinat_0_o_mem0a_en 1 1 3 680 280 NJ 280 NJ
+preplace netloc mayo_linear_combinat_0_o_mem0a_rst 1 1 3 700 300 NJ 300 NJ
+preplace netloc mayo_linear_combinat_0_o_mem0a_we 1 1 3 710 320 NJ 320 NJ
+preplace netloc mayo_linear_combinat_0_o_mem0b_addr 1 1 3 810 1010 NJ 1010 2360J
+preplace netloc mayo_linear_combinat_0_o_mem0b_din 1 1 3 600 1050 NJ 1050 2270J
+preplace netloc mayo_linear_combinat_0_o_mem0b_en 1 1 3 850 1030 NJ 1030 2350J
+preplace netloc mayo_linear_combinat_0_o_mem0b_rst 1 1 3 840 1020 NJ 1020 NJ
+preplace netloc mayo_linear_combinat_0_o_mem0b_we 1 1 3 880 1040 NJ 1040 2340J
+preplace netloc mayo_linear_combinat_0_o_mem1a_addr 1 1 1 970 1800n
+preplace netloc mayo_linear_combinat_0_o_mem1a_din 1 1 1 940 1780n
+preplace netloc mayo_linear_combinat_0_o_mem1a_en 1 1 1 980 1820n
+preplace netloc mayo_linear_combinat_0_o_mem1a_rst 1 1 1 1000 1840n
+preplace netloc mayo_linear_combinat_0_o_mem1a_we 1 1 1 1010 1860n
+preplace netloc mayo_negate_0_o_addrb 1 3 1 2550 60n
+preplace netloc mayo_negate_0_o_control 1 3 1 2140 180n
+preplace netloc mayo_negate_0_o_dinb 1 3 1 2490 80n
+preplace netloc mayo_negate_0_o_done 1 3 4 2220J 2050 NJ 2050 NJ 2050 N
+preplace netloc mayo_negate_0_o_enb 1 3 1 2390 100n
+preplace netloc mayo_negate_0_o_rstb 1 3 1 2290 120n
+preplace netloc mayo_negate_0_o_web 1 3 1 2190 140n
+preplace netloc mayo_reduce_0_o_addrb 1 1 3 610 460 NJ 460 NJ
+preplace netloc mayo_reduce_0_o_control 1 1 3 690 740 NJ 740 NJ
+preplace netloc mayo_reduce_0_o_done 1 1 6 780 1660 1590J 1950 NJ 1950 NJ 1950 NJ 1950 4140J
+preplace netloc mayo_reduce_0_o_enb 1 1 3 630 480 NJ 480 NJ
+preplace netloc mayo_reduce_0_o_rstb 1 1 3 640 500 NJ 500 NJ
+preplace netloc mayo_reduce_0_o_web 1 1 3 660 520 NJ 520 NJ
+preplace netloc mayo_sample_oil_space_0_o_controlb 1 3 3 2500 1920 NJ 1920 3570
+preplace netloc mayo_sample_oil_space_0_o_done 1 5 2 3620 1870 4150J
+preplace netloc mayo_sample_oil_space_0_o_memb_addr 1 3 3 2600 1470 NJ 1470 3600
+preplace netloc mayo_sample_oil_space_0_o_memb_din 1 3 3 2580 1500 NJ 1500 3570
+preplace netloc mayo_sample_oil_space_0_o_memb_en 1 3 3 2560 1510 NJ 1510 3590
+preplace netloc mayo_sample_oil_space_0_o_memb_rst 1 3 3 2520 1520 NJ 1520 3580
+preplace netloc mayo_sample_oil_space_0_o_memb_we 1 3 3 2550 1490 NJ 1490 3610
+preplace netloc enable_1 1 0 7 10J 2060 750J 1590 NJ 1590 NJ 1590 3130J 1560 3650J 1780 4150J
 preplace netloc MAYO_KEYGEN_FSM_0_o_done 1 7 1 N 1450
-preplace netloc clk_1 1 0 7 10 1360 1050 1230 1560 250 2380 1540 3190 1540 3700 1760 4140
-preplace netloc rst_1 1 0 7 20 1370 1090 1250 1600 390 2390 1550 3180 1550 3670 1780 NJ
-preplace netloc MAYO_KEYGEN_FSM_0_o_hash_en 1 0 8 160 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 5140
-preplace netloc MAYO_KEYGEN_FSM_0_o_hash_mlen 1 0 8 190 2930 NJ 2930 NJ 2930 NJ 2930 NJ 2930 NJ 2930 NJ 2930 5100
-preplace netloc MAYO_KEYGEN_FSM_0_o_hash_olen 1 0 8 170 2970 NJ 2970 NJ 2970 NJ 2970 NJ 2970 NJ 2970 NJ 2970 5130
-preplace netloc MAYO_KEYGEN_FSM_0_o_hash_write_adr 1 0 8 150 2990 NJ 2990 NJ 2990 NJ 2990 NJ 2990 NJ 2990 NJ 2990 5150
-preplace netloc MAYO_KEYGEN_FSM_0_o_hash_read_adr 1 0 8 180 2980 NJ 2980 NJ 2980 NJ 2980 NJ 2980 NJ 2980 NJ 2980 5120
-preplace netloc MAYO_KEYGEN_FSM_0_o_red_enable 1 0 8 70 2590 620J 2630 NJ 2630 NJ 2630 NJ 2630 NJ 2630 NJ 2630 5030
-preplace netloc MAYO_KEYGEN_FSM_0_o_red_len 1 0 8 120 2560 NJ 2560 NJ 2560 2100J 2650 NJ 2650 3650J 2470 NJ 2470 4890
-preplace netloc MAYO_KEYGEN_FSM_0_o_red_adr 1 0 8 110 2600 590J 2620 NJ 2620 NJ 2620 3140J 2600 NJ 2600 NJ 2600 5000
-preplace netloc MAYO_KEYGEN_FSM_0_o_neg_enable 1 2 6 1630 2590 NJ 2590 3120J 2570 NJ 2570 NJ 2570 4850
-preplace netloc MAYO_KEYGEN_FSM_0_o_neg_len 1 2 6 1640 2600 NJ 2600 3130J 2590 NJ 2590 NJ 2590 4870
-preplace netloc MAYO_KEYGEN_FSM_0_o_neg_adr 1 2 6 1670 870 2270J 1460 NJ 1460 NJ 1460 4080J 1370 4970
-preplace netloc MAYO_KEYGEN_FSM_0_o_sam_enable 1 4 4 3150 2620 3690J 2650 NJ 2650 5020
-preplace netloc MAYO_KEYGEN_FSM_0_o_sam_oil_addr 1 4 4 3160 2660 NJ 2660 NJ 2660 5010
-preplace netloc MAYO_KEYGEN_FSM_0_o_lin_enable 1 0 8 190 2040 770J 1630 1610J 1890 NJ 1890 NJ 1890 NJ 1890 4100J 2450 4820
-preplace netloc MAYO_KEYGEN_FSM_0_o_lin_bram_halt 1 0 8 190 2570 NJ 2570 NJ 2570 NJ 2570 3110J 2530 NJ 2530 NJ 2530 4880
-preplace netloc MAYO_KEYGEN_FSM_0_o_lin_vec_addr 1 0 8 200 2050 690J 1580 1570J 1570 NJ 1570 3110J 1960 NJ 1960 4080J 2460 4810
-preplace netloc MAYO_KEYGEN_FSM_0_o_lin_coeffs_addr 1 0 8 50 3000 NJ 3000 NJ 3000 NJ 3000 NJ 3000 NJ 3000 NJ 3000 5080
-preplace netloc MAYO_KEYGEN_FSM_0_o_lin_out_addr 1 0 8 60 3010 NJ 3010 NJ 3010 NJ 3010 NJ 3010 NJ 3010 NJ 3010 5070
-preplace netloc MAYO_KEYGEN_FSM_0_o_lin_len 1 0 8 130 2940 NJ 2940 NJ 2940 NJ 2940 NJ 2940 NJ 2940 NJ 2940 5040
-preplace netloc MAYO_KEYGEN_FSM_0_o_mem0a_din 1 3 5 2410 2670 NJ 2670 NJ 2670 NJ 2670 4940
-preplace netloc MAYO_KEYGEN_FSM_0_o_mem0a_addr 1 3 5 2480 1450 NJ 1450 NJ 1450 4090J 1390 4950
-preplace netloc MAYO_KEYGEN_FSM_0_o_mem0a_en 1 3 5 2420 2680 NJ 2680 NJ 2680 NJ 2680 4930
-preplace netloc MAYO_KEYGEN_FSM_0_o_mem0a_rst 1 3 5 2430 2690 NJ 2690 NJ 2690 NJ 2690 4920
-preplace netloc BRAM_key_we_1 1 3 5 2460 2510 NJ 2510 3570J 2520 NJ 2520 4800
-preplace netloc MAYO_KEYGEN_FSM_0_o_mem0b_din 1 3 5 2470 2710 NJ 2710 NJ 2710 NJ 2710 4910
-preplace netloc BRAM_key_addr1_1 1 3 5 2540 2480 NJ 2480 3620J 2490 NJ 2490 4760
-preplace netloc MAYO_KEYGEN_FSM_0_o_mem0b_en 1 3 5 2510 2530 3100J 2540 NJ 2540 NJ 2540 4790
-preplace netloc BRAM_key_rst1_1 1 3 5 2560 2500 NJ 2500 3580J 2510 NJ 2510 4750
-preplace netloc MAYO_KEYGEN_FSM_0_o_mem0b_we 1 3 5 2550 2540 3090J 2550 NJ 2550 NJ 2550 4780
-preplace netloc MAYO_KEYGEN_FSM_0_o_mem1a_din 1 1 7 1080 2550 NJ 2550 NJ 2550 3080J 2560 NJ 2560 NJ 2560 4770
-preplace netloc BRAM_key_addr_1 1 1 7 1090 2640 NJ 2640 NJ 2640 NJ 2640 3700J 2480 NJ 2480 4730
-preplace netloc MAYO_KEYGEN_FSM_0_o_mem1a_en 1 1 7 1100 2720 NJ 2720 NJ 2720 NJ 2720 NJ 2720 NJ 2720 4900
-preplace netloc BRAM_key_rst_1 1 1 7 1130 2490 NJ 2490 NJ 2490 NJ 2490 3600J 2500 NJ 2500 4720
+preplace netloc clk_1 1 0 7 -10 1360 1060 1230 1580 250 2400 1540 3150 1540 3700 1760 4120
+preplace netloc rst_1 1 0 7 0 1250 N 1250 1610 390 2410 1550 3140 1550 3670 1770 NJ
+preplace netloc MAYO_KEYGEN_FSM_0_o_hash_en 1 0 8 150 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 5150
+preplace netloc MAYO_KEYGEN_FSM_0_o_hash_mlen 1 0 8 130 2970 NJ 2970 NJ 2970 NJ 2970 NJ 2970 NJ 2970 NJ 2970 5170
+preplace netloc MAYO_KEYGEN_FSM_0_o_hash_olen 1 0 8 140 2980 NJ 2980 NJ 2980 NJ 2980 NJ 2980 NJ 2980 NJ 2980 5160
+preplace netloc MAYO_KEYGEN_FSM_0_o_hash_write_adr 1 0 8 120 3000 NJ 3000 NJ 3000 NJ 3000 NJ 3000 NJ 3000 NJ 3000 5180
+preplace netloc MAYO_KEYGEN_FSM_0_o_hash_read_adr 1 0 8 160 2990 NJ 2990 NJ 2990 NJ 2990 NJ 2990 NJ 2990 NJ 2990 5140
+preplace netloc MAYO_KEYGEN_FSM_0_o_red_enable 1 0 8 40 2600 NJ 2600 NJ 2600 2120J 2610 NJ 2610 NJ 2610 NJ 2610 5050
+preplace netloc MAYO_KEYGEN_FSM_0_o_red_len 1 0 8 80 2590 NJ 2590 1580J 2610 2110J 2640 NJ 2640 3690J 2620 NJ 2620 5040
+preplace netloc MAYO_KEYGEN_FSM_0_o_red_adr 1 0 8 140 2550 NJ 2550 NJ 2550 NJ 2550 NJ 2550 NJ 2550 4070J 2560 4930
+preplace netloc MAYO_KEYGEN_FSM_0_o_neg_enable 1 2 6 1650 2540 NJ 2540 NJ 2540 NJ 2540 4080J 2550 4830
+preplace netloc MAYO_KEYGEN_FSM_0_o_neg_len 1 2 6 1660 2590 NJ 2590 NJ 2590 NJ 2590 NJ 2590 4870
+preplace netloc MAYO_KEYGEN_FSM_0_o_neg_adr 1 2 6 1690 870 2290J 1460 NJ 1460 NJ 1460 4110J 1370 4940
+preplace netloc MAYO_KEYGEN_FSM_0_o_sam_enable 1 4 4 3110 2630 NJ 2630 NJ 2630 5020
+preplace netloc MAYO_KEYGEN_FSM_0_o_sam_oil_addr 1 4 4 3120 2650 NJ 2650 NJ 2650 5030
+preplace netloc MAYO_KEYGEN_FSM_0_o_lin_enable 1 0 8 160 2040 760J 1630 1620J 1890 NJ 1890 NJ 1890 NJ 1890 4120J 2510 4850
+preplace netloc MAYO_KEYGEN_FSM_0_o_lin_bram_halt 1 0 8 30 3010 NJ 3010 NJ 3010 NJ 3010 NJ 3010 NJ 3010 NJ 3010 5110
+preplace netloc MAYO_KEYGEN_FSM_0_o_lin_vec_addr 1 0 8 170 2050 730J 1580 NJ 1580 NJ 1580 3090J 2040 NJ 2040 4090J 2470 4800
+preplace netloc MAYO_KEYGEN_FSM_0_o_lin_coeffs_addr 1 0 8 90 2930 NJ 2930 NJ 2930 NJ 2930 NJ 2930 NJ 2930 NJ 2930 5070
+preplace netloc MAYO_KEYGEN_FSM_0_o_lin_out_addr 1 0 8 100 2940 NJ 2940 NJ 2940 NJ 2940 NJ 2940 NJ 2940 NJ 2940 5060
+preplace netloc MAYO_KEYGEN_FSM_0_o_lin_len 1 0 8 50 3020 NJ 3020 NJ 3020 NJ 3020 NJ 3020 NJ 3020 NJ 3020 5090
+preplace netloc MAYO_KEYGEN_FSM_0_o_mem0a_din 1 3 5 2430 2680 NJ 2680 NJ 2680 NJ 2680 4920
+preplace netloc MAYO_KEYGEN_FSM_0_o_mem0a_addr 1 3 5 2490 1450 NJ 1450 NJ 1450 4090J 1350 5000
+preplace netloc MAYO_KEYGEN_FSM_0_o_mem0a_en 1 3 5 2440 2690 NJ 2690 NJ 2690 NJ 2690 4910
+preplace netloc MAYO_KEYGEN_FSM_0_o_mem0a_rst 1 3 5 2450 2700 NJ 2700 NJ 2700 NJ 2700 4900
+preplace netloc BRAM_key_we_1 1 3 5 2480 2500 NJ 2500 NJ 2500 NJ 2500 4760
+preplace netloc MAYO_KEYGEN_FSM_0_o_mem0b_din 1 3 5 2530 2510 NJ 2510 NJ 2510 4110J 2520 4770
+preplace netloc BRAM_key_addr1_1 1 3 5 2510 2570 NJ 2570 NJ 2570 NJ 2570 4790
+preplace netloc MAYO_KEYGEN_FSM_0_o_mem0b_en 1 3 5 2540 2520 NJ 2520 NJ 2520 4100J 2530 4750
+preplace netloc BRAM_key_rst1_1 1 3 5 2590 2490 NJ 2490 NJ 2490 NJ 2490 4730
+preplace netloc MAYO_KEYGEN_FSM_0_o_mem0b_we 1 3 5 2570 2530 NJ 2530 NJ 2530 4090J 2540 4740
+preplace netloc MAYO_KEYGEN_FSM_0_o_mem1a_din 1 1 7 1080 2620 NJ 2620 NJ 2620 NJ 2620 3610J 2580 NJ 2580 4780
+preplace netloc BRAM_key_addr_1 1 1 7 1090 2670 NJ 2670 NJ 2670 NJ 2670 NJ 2670 NJ 2670 4820
+preplace netloc MAYO_KEYGEN_FSM_0_o_mem1a_en 1 1 7 1100 2720 NJ 2720 NJ 2720 NJ 2720 NJ 2720 NJ 2720 4880
+preplace netloc BRAM_key_rst_1 1 1 7 1140 2480 NJ 2480 NJ 2480 NJ 2480 NJ 2480 NJ 2480 4720
 preplace netloc MAYO_KEYGEN_FSM_0_o_mem1a_we 1 1 7 1110 2730 NJ 2730 NJ 2730 NJ 2730 NJ 2730 NJ 2730 4860
 preplace netloc bram_control_1 1 1 7 1120 2760 NJ 2760 NJ 2760 NJ 2760 NJ 2760 NJ 2760 4840
-preplace netloc bram_control_2 1 3 5 2450 2580 NJ 2580 NJ 2580 NJ 2580 4740
-preplace netloc MAYO_KEYGEN_FSM_0_o_mem0b_control 1 3 5 2440 2700 NJ 2700 NJ 2700 NJ 2700 4830
-preplace netloc MAYO_KEYGEN_FSM_0_o_hash_memsel 1 0 8 200 2960 NJ 2960 NJ 2960 NJ 2960 NJ 2960 NJ 2960 NJ 2960 5090
+preplace netloc bram_control_2 1 3 5 2460 2770 NJ 2770 NJ 2770 NJ 2770 4890
+preplace netloc MAYO_KEYGEN_FSM_0_o_mem0b_control 1 3 5 2470 2710 NJ 2710 NJ 2710 NJ 2710 4810
+preplace netloc MAYO_KEYGEN_FSM_0_o_hash_memsel 1 0 8 170 2960 NJ 2960 NJ 2960 NJ 2960 NJ 2960 NJ 2960 NJ 2960 5120
 preplace netloc mayo_reduce_0_o_din0 1 1 3 580 440 NJ 440 NJ
-preplace netloc mayo_reduce_0_o_addr1 1 1 1 880 1830n
-preplace netloc mayo_reduce_0_o_en1 1 1 1 860 1870n
-preplace netloc mayo_reduce_0_o_din1 1 1 1 870 1850n
-preplace netloc mayo_reduce_0_o_rst1 1 1 1 830 1890n
-preplace netloc mayo_reduce_0_o_we1 1 1 1 780 1910n
-preplace netloc mayo_reduce_0_o_control1 1 1 1 710 1970n
-preplace netloc BRAM_big_BRAM_red_dout 1 0 3 200 2030 700J 1620 1570
-preplace netloc MAYO_KEYGEN_FSM_0_o_red_bram_sel 1 0 8 100 2580 NJ 2580 NJ 2580 2090J 2610 NJ 2610 NJ 2610 NJ 2610 4990
-preplace netloc TRNG_o_trng0_data 1 6 1 4190 1580n
-preplace netloc TRNG_o_trng0_valid 1 6 1 4180 1600n
-preplace netloc TRNG_o_trng0_done 1 6 1 4170 1620n
-preplace netloc MAYO_KEYGEN_FSM_0_o_trng_r 1 5 3 3720 2620 NJ 2620 5060
-preplace netloc MAYO_KEYGEN_FSM_0_o_trng_w 1 5 3 3710 2750 NJ 2750 5110
-preplace netloc MAYO_KEYGEN_FSM_0_o_trng_data 1 5 3 3730 2640 NJ 2640 5050
-preplace netloc TRNG_o_trng1_data 1 4 3 3180 1910 NJ 1910 4080
-preplace netloc TRNG_o_trng1_valid 1 4 3 3170 1940 NJ 1940 4090
-preplace netloc TRNG_o_trng1_done 1 4 3 3190 1930 NJ 1930 4070
-preplace netloc mayo_sample_oil_space_0_o_trng_sel 1 5 1 3620 1650n
+preplace netloc mayo_reduce_0_o_addr1 1 1 1 870 1830n
+preplace netloc mayo_reduce_0_o_en1 1 1 1 820 1870n
+preplace netloc mayo_reduce_0_o_din1 1 1 1 830 1850n
+preplace netloc mayo_reduce_0_o_rst1 1 1 1 790 1890n
+preplace netloc mayo_reduce_0_o_we1 1 1 1 740 1910n
+preplace netloc mayo_reduce_0_o_control1 1 1 1 720 1970n
+preplace netloc BRAM_big_BRAM_red_dout 1 0 3 170 2030 770J 1640 1580
+preplace netloc MAYO_KEYGEN_FSM_0_o_red_bram_sel 1 0 8 70 2580 NJ 2580 NJ 2580 2130J 2600 NJ 2600 NJ 2600 NJ 2600 4990
+preplace netloc TRNG_o_trng0_data 1 6 1 4210 1580n
+preplace netloc TRNG_o_trng0_valid 1 6 1 4200 1600n
+preplace netloc TRNG_o_trng0_done 1 6 1 4190 1620n
+preplace netloc MAYO_KEYGEN_FSM_0_o_trng_r 1 5 3 3710 2660 NJ 2660 5100
+preplace netloc MAYO_KEYGEN_FSM_0_o_trng_w 1 5 3 3720 2750 NJ 2750 5130
+preplace netloc MAYO_KEYGEN_FSM_0_o_trng_data 1 5 3 3730 2640 NJ 2640 5080
+preplace netloc TRNG_o_trng1_data 1 4 3 3140 1910 NJ 1910 4100
+preplace netloc TRNG_o_trng1_valid 1 4 3 3130 1940 NJ 1940 4110
+preplace netloc TRNG_o_trng1_done 1 4 3 3150 1930 NJ 1930 4090
+preplace netloc mayo_sample_oil_space_0_o_trng_sel 1 5 1 3640 1650n
 preplace netloc mayo_sample_oil_space_0_o_trng_r 1 5 1 3690 1640n
-preplace netloc mayo_sample_oil_space_0_o_trng_w 1 5 1 3650 1660n
-preplace netloc mayo_sample_oil_space_0_o_trng_data 1 5 1 3640 1680n
-preplace netloc MAYO_KEYGEN_FSM_0_o_add_enable 1 2 6 1690 310 2090J 10 NJ 10 NJ 10 NJ 10 4960
-preplace netloc MAYO_KEYGEN_FSM_0_o_add_out_addr 1 2 6 1660 290 2150J 20 NJ 20 NJ 20 NJ 20 4980
-preplace netloc MAYO_KEYGEN_FSM_0_o_add_v2_addr 1 2 6 1650 270 2160J 40 NJ 40 NJ 40 NJ 40 4910
-preplace netloc MAYO_KEYGEN_FSM_0_o_add_v1_addr 1 2 6 1700 330 2180J 30 NJ 30 NJ 30 NJ 30 4940
-preplace netloc MAYO_KEYGEN_FSM_0_o_add_bram_sel 1 2 6 1710 1080 2160J 1440 NJ 1440 NJ 1440 4070J 1380 4900
-preplace netloc mayo_add_vectors_0_o_done 1 3 4 2150 2020 NJ 2020 NJ 2020 NJ
-preplace netloc BRAM_big_BRAM_add_dout 1 2 1 1600 1410n
-preplace netloc add_control_1 1 1 3 1180 2420 NJ 2420 2090
-preplace netloc mayo_add_vectors_0_o_memc_we 1 1 3 1170 2440 NJ 2440 2100
-preplace netloc mayo_add_vectors_0_o_memc_rst 1 1 3 1160 2450 NJ 2450 2120
-preplace netloc mayo_add_vectors_0_o_memc_en 1 1 3 1140 2460 NJ 2460 2140
-preplace netloc mayo_add_vectors_0_o_memc_addr 1 1 3 1150 2430 NJ 2430 2130
-preplace netloc mayo_add_vectors_0_o_memc_din 1 1 3 1150 1600 1620J 1590 2110
-preplace netloc mayo_add_vectors_0_o_controla 1 3 1 2090 680n
-preplace netloc mayo_add_vectors_0_o_mema_din 1 3 1 2190 140n
-preplace netloc mayo_add_vectors_0_o_mema_addr 1 3 1 2210 160n
-preplace netloc mayo_add_vectors_0_o_mema_en 1 3 1 2240 180n
-preplace netloc mayo_add_vectors_0_o_mema_rst 1 3 1 2110 200n
-preplace netloc mayo_add_vectors_0_o_mema_we 1 3 1 2300 220n
-preplace netloc BRAM_small_BRAM_add_dout 1 2 3 1670 1060 2180J 1410 3040
+preplace netloc mayo_sample_oil_space_0_o_trng_w 1 5 1 3660 1660n
+preplace netloc mayo_sample_oil_space_0_o_trng_data 1 5 1 3630 1680n
+preplace netloc MAYO_KEYGEN_FSM_0_o_add_enable 1 2 6 1710 310 2110J 10 NJ 10 NJ 10 NJ 10 4980
+preplace netloc MAYO_KEYGEN_FSM_0_o_add_out_addr 1 2 6 1680 290 2170J 20 NJ 20 NJ 20 NJ 20 5010
+preplace netloc MAYO_KEYGEN_FSM_0_o_add_v2_addr 1 2 6 1670 270 2180J 40 NJ 40 NJ 40 NJ 40 4960
+preplace netloc MAYO_KEYGEN_FSM_0_o_add_v1_addr 1 2 6 1720 330 2200J 30 NJ 30 NJ 30 NJ 30 4970
+preplace netloc MAYO_KEYGEN_FSM_0_o_add_bram_sel 1 2 6 1730 1080 2180J 1440 NJ 1440 NJ 1440 4100J 1360 4950
+preplace netloc mayo_add_vectors_0_o_done 1 3 4 2170 2020 NJ 2020 NJ 2020 4140J
+preplace netloc BRAM_big_BRAM_add_dout 1 2 1 1610 1410n
+preplace netloc add_control_1 1 1 3 1180 2430 NJ 2430 2110
+preplace netloc mayo_add_vectors_0_o_memc_we 1 1 3 1170 2420 NJ 2420 2120
+preplace netloc mayo_add_vectors_0_o_memc_rst 1 1 3 1160 2410 NJ 2410 2130
+preplace netloc mayo_add_vectors_0_o_memc_en 1 1 3 1150 2440 NJ 2440 2160
+preplace netloc mayo_add_vectors_0_o_memc_addr 1 1 3 1130 1600 NJ 1600 2140
+preplace netloc mayo_add_vectors_0_o_memc_din 1 1 3 1150 1610 NJ 1610 2150
+preplace netloc mayo_add_vectors_0_o_controla 1 3 1 2110 680n
+preplace netloc mayo_add_vectors_0_o_mema_din 1 3 1 2210 140n
+preplace netloc mayo_add_vectors_0_o_mema_addr 1 3 1 2230 160n
+preplace netloc mayo_add_vectors_0_o_mema_en 1 3 1 2260 180n
+preplace netloc mayo_add_vectors_0_o_mema_rst 1 3 1 2150 200n
+preplace netloc mayo_add_vectors_0_o_mema_we 1 3 1 2320 220n
+preplace netloc BRAM_small_BRAM_add_dout 1 2 3 1690 1060 2200J 1410 3030
 preplace netloc mayo_add_vectors_0_o_memb_din 1 3 1 N 1260
 preplace netloc mayo_add_vectors_0_o_memb_addr 1 3 1 N 1280
 preplace netloc mayo_add_vectors_0_o_memb_en 1 3 1 N 1300
 preplace netloc mayo_add_vectors_0_o_memb_rst 1 3 1 N 1320
 preplace netloc mayo_add_vectors_0_o_memb_we 1 3 1 N 1340
-preplace netloc BRAM_small_BRAM_add_dout1 1 2 3 1680 1070 2170J 1420 3010
-preplace netloc mayo_add_vectors_0_o_controlb 1 3 1 2190 1360n
-levelinfo -pg 1 -10 390 1370 1900 2810 3380 3900 4500 5170
-pagesize -pg 1 -db -bbox -sgen -110 0 5260 3050
+preplace netloc BRAM_small_BRAM_add_dout1 1 2 3 1700 1070 2190J 1420 3010
+preplace netloc mayo_add_vectors_0_o_controlb 1 3 1 2210 1360n
+levelinfo -pg 1 -30 390 1370 1920 2810 3380 3900 4500 5200
+pagesize -pg 1 -db -bbox -sgen -130 0 5290 3050
 "
 }
 {

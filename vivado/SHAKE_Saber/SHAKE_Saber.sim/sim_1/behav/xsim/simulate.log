@@ -23,14 +23,14 @@ SHAKE : read_desc_adr :  2, c0 : 1
 SHAKE : Read 0xa84f7d23 from 0x1c!
 SHAKE : read_desc_adr :  3, c0 : 0
 SHAKE: done!
+SHAKE: Write Done
 SHAKE: disable
 SHAKE: enabled : 1 
-SHAKE: Write Done
 SHAKE: enabled extra: 0 
 Done tb!
 ------ BRAM ------
 BRAM : Read 0xa84f7d23 from 0x20!
-BRAM : Read 0x942229ad from 0x24!
-BRAM : Read 0xf2712de from 0x28!
+BRAM : Read 0x111b4d6c from 0x24!
+BRAM : Read 0xa99c0f31 from 0x28!
 ------ BRAM ------
-$finish called at time : 339215 ns
+$finish called at time : 339705 ns

@@ -7,87 +7,8 @@
       "name": "design_1",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2020.2",
-      "validated": "true"
+      "tool_version": "2020.2"
     },
-    "design_tree": {
-      "BRAM64_1024": "",
-      "blk_mem_gen_1": ""
-    },
-    "components": {
-      "BRAM64_1024": {
-        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
-        "xci_name": "design_1_blk_mem_gen_0_0",
-        "xci_path": "ip/design_1_blk_mem_gen_0_0/design_1_blk_mem_gen_0_0.xci",
-        "inst_hier_path": "BRAM64_1024",
-        "parameters": {
-          "Enable_32bit_Address": {
-            "value": "false"
-          },
-          "Enable_B": {
-            "value": "Use_ENB_Pin"
-          },
-          "Memory_Type": {
-            "value": "Simple_Dual_Port_RAM"
-          },
-          "Operating_Mode_A": {
-            "value": "NO_CHANGE"
-          },
-          "Port_B_Clock": {
-            "value": "100"
-          },
-          "Port_B_Enable_Rate": {
-            "value": "100"
-          },
-          "Read_Width_B": {
-            "value": "32"
-          },
-          "Register_PortB_Output_of_Memory_Primitives": {
-            "value": "true"
-          },
-          "Use_Byte_Write_Enable": {
-            "value": "false"
-          },
-          "Write_Depth_A": {
-            "value": "131072"
-          },
-          "Write_Width_A": {
-            "value": "32"
-          },
-          "Write_Width_B": {
-            "value": "32"
-          },
-          "use_bram_block": {
-            "value": "Stand_Alone"
-          }
-        }
-      },
-      "blk_mem_gen_1": {
-        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
-        "xci_name": "design_1_blk_mem_gen_0_1",
-        "xci_path": "ip/design_1_blk_mem_gen_0_1/design_1_blk_mem_gen_0_1.xci",
-        "inst_hier_path": "blk_mem_gen_1",
-        "parameters": {
-          "Enable_32bit_Address": {
-            "value": "false"
-          },
-          "Register_PortA_Output_of_Memory_Primitives": {
-            "value": "true"
-          },
-          "Use_Byte_Write_Enable": {
-            "value": "false"
-          },
-          "Use_RSTA_Pin": {
-            "value": "false"
-          },
-          "Write_Depth_A": {
-            "value": "16384"
-          },
-          "use_bram_block": {
-            "value": "Stand_Alone"
-          }
-        }
-      }
-    }
+    "design_tree": {}
   }
 }

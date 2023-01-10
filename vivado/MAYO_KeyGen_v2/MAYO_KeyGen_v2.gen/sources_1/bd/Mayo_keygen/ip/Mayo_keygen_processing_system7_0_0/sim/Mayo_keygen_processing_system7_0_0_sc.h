@@ -1,7 +1,7 @@
 #ifndef IP_MAYO_KEYGEN_PROCESSING_SYSTEM7_0_0_SC_H_
 #define IP_MAYO_KEYGEN_PROCESSING_SYSTEM7_0_0_SC_H_
 
-// (c) Copyright 1995-2022 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2023 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and

@@ -110,7 +110,7 @@ architecture Behavioral of mayo_linear_combination is
 
 	type state is (idle, read1, read2, read3, read4, done);
 	signal t_state : state := idle;
-	type state1 is (idle, main1, write1, done);
+	type state1 is (idle, main1, main2, main3, done);
 	signal t_state1 : state1 := idle;
 
 	-- BRAM 0 reg for small data (Dual Channel R/W)
@@ -121,13 +121,21 @@ architecture Behavioral of mayo_linear_combination is
 	signal bram1a : bram_t := DEFAULT_BRAM;
 
 	-- Control Registers
-	signal s_acc        : array_32(0 to 7) := (others => ZERO_32); -- Buffer for accumulation, using double buffering for WAR Hazards 
-	signal s_acc_sel    : std_logic        := '0';
-	signal s_acc_change : std_logic        := '0';
-	signal s_acc_flush  : std_logic        := '0';
+	signal s_acc            : array_32(0 to 7) := (others => ZERO_32); -- Buffer for accumulation, using double buffering for WAR Hazards 
+	signal tmp              : array_32(0 to 7) := (others => ZERO_32);
+	attribute keep          : string; -- Force DSP usage
+	attribute keep of tmp   : signal is "true";
+	attribute keep of s_acc : signal is "true";
+
+	signal tmp_sel : std_logic := '0';
+
+	signal s_acc_sel    : std_logic := '0';
+	signal s_acc_change : std_logic := '0';
+	signal s_acc_flush  : std_logic := '0';
 	signal s_main       : std_logic;
 	signal first        : std_logic;
 	signal dspb         : std_logic_vector(7 downto 0) := (others => '0');
+	signal dsp_enable   : std_logic                    := '0';
 
 	signal s_vecs_addr   : std_logic_vector(PORT_WIDTH-1 downto 0);
 	signal s_coeffs_addr : std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -140,7 +148,7 @@ architecture Behavioral of mayo_linear_combination is
 
 	component DSP_Accum
 		port (clk : in std_logic;
-			i_en                                    : in  std_logic;
+			i_global_en,i_en                        : in  std_logic;
 			i_sel                                   : in  std_logic;
 			rst                                     : in  std_logic;
 			ain0,ain1,ain2,ain3,bin0                : in  std_logic_vector(7 downto 0);
@@ -153,25 +161,28 @@ begin
 
 	DSP_Inst :
 		DSP_Accum port map (
-			clk     => i_clk,
-			i_en    => s_main,
-			i_sel   => s_acc_sel,
-			rst     => rst,
-			ain0    => s_vecs(7 downto 0),
-			ain1    => s_vecs(15 downto 8),
-			ain2    => s_vecs(23 downto 16),
-			ain3    => s_vecs(31 downto 24),
-			bin0    => dspb,
-			i_flush => s_acc_flush,
-			res0    => s_acc(0),
-			res1    => s_acc(1),
-			res2    => s_acc(2),
-			res3    => s_acc(3),
-			res4    => s_acc(4),
-			res5    => s_acc(5),
-			res6    => s_acc(6),
-			res7    => s_acc(7)
+			clk         => i_clk,
+		    i_global_en => dsp_enable,
+			i_en        => s_main,
+			i_sel       => s_acc_sel,
+			rst         => rst,
+			ain0        => s_vecs(7 downto 0),
+			ain1        => s_vecs(15 downto 8),
+			ain2        => s_vecs(23 downto 16),
+			ain3        => s_vecs(31 downto 24),
+			bin0        => dspb,
+			i_flush     => s_acc_flush,
+			res0        => s_acc(0),
+			res1        => s_acc(1),
+			res2        => s_acc(2),
+			res3        => s_acc(3),
+			res4        => s_acc(4),
+			res5        => s_acc(5),
+			res6        => s_acc(6),
+			res7        => s_acc(7)
 		);
+
+	dsp_enable <= '1' when ( t_state /= idle or t_state1 /= idle) else '0';
 
 	INPUT_Pr : process(i_clk) is
 	begin
@@ -293,6 +304,8 @@ begin
 				-- Change to next buffer
 				if (s_acc_change = '1') then
 					s_acc_sel <= not s_acc_sel;
+				else
+					s_acc_sel <= s_acc_sel;
 				end if;
 			end if;
 		end if;
@@ -306,6 +319,10 @@ begin
 				o_done    <= '0';
 				t_state1  <= idle;
 				first     <= '0';
+				for k in 0 to 7 loop
+					tmp(k) <= ZERO_32;
+				end loop;
+				tmp_sel <= '0';
 			else
 				case (t_state1) is
 					when idle =>
@@ -314,30 +331,44 @@ begin
 						s_acc_flush   <= '0';
 						bram0b.o.o_en <= '0';
 						bram0b.o.o_we <= "0000";
+						tmp_sel       <= '0';
 						if (s_acc_change= '1') then
-							t_state1    <= main1;
+							t_state1    <= main2;
 							o_control0b <= '1';
 						end if;
 
-					when main1 =>
-						if (s_acc_sel = '1') then
-							bram0b.o.o_din <= std_logic_vector(resize(unsigned(s_acc(3)) mod PRIME,8)) &
-								std_logic_vector(resize(unsigned(s_acc(2)) mod PRIME,8)) &
-								std_logic_vector(resize(unsigned(s_acc(1)) mod PRIME,8)) &
-								std_logic_vector(resize(unsigned(s_acc(0)) mod PRIME,8));
+					when main2 =>
+						t_state1 <= main3;
 
+					when main3 =>
+						for k in 0 to 7 loop
+							tmp(k) <= s_acc(k);
+						end loop;
+
+						if (s_acc_sel = '1') then
+							tmp_sel <= '1';
 						else
-							bram0b.o.o_din <= std_logic_vector(resize(unsigned(s_acc(7)) mod PRIME,8)) &
-								std_logic_vector(resize(unsigned(s_acc(6)) mod PRIME,8)) &
-								std_logic_vector(resize(unsigned(s_acc(5)) mod PRIME,8)) &
-								std_logic_vector(resize(unsigned(s_acc(4)) mod PRIME,8));
+							tmp_sel <= '0';
 						end if;
-						t_state1 <= idle;
+						t_state1 <= main1;
+
+					when main1 =>
+						if (tmp_sel = '1') then
+							bram0b.o.o_din(31 downto 24) <= tmp(3)(7 downto 0);
+							bram0b.o.o_din(23 downto 16) <= tmp(2)(7 downto 0);
+							bram0b.o.o_din(15 downto 8)  <= tmp(1)(7 downto 0);
+							bram0b.o.o_din(7 downto 0)   <= tmp(0)(7 downto 0);
+						else
+							bram0b.o.o_din(31 downto 24) <= tmp(7)(7 downto 0);
+							bram0b.o.o_din(23 downto 16) <= tmp(6)(7 downto 0);
+							bram0b.o.o_din(15 downto 8)  <= tmp(5)(7 downto 0);
+							bram0b.o.o_din(7 downto 0)   <= tmp(4)(7 downto 0);
+						end if;
 
 						bram0b.o.o_en <= '1';
 						bram0b.o.o_we <= "1111";
 
-						if first = '0' then
+						if (first = '0') then
 							bram0b.o.o_addr <= s_out_addr;
 							first           <= '1';
 						else
@@ -354,8 +385,8 @@ begin
 
 
 					when done =>
-						s_acc_flush <= '0';
 						report "Linear Combination done";
+						s_acc_flush   <= '0';
 						o_done        <= '1';
 						bram0b.o.o_en <= '0';
 						bram0b.o.o_we <= "0000";
@@ -363,6 +394,7 @@ begin
 						first         <= '0';
 						t_state1      <= idle;
 					when others =>
+						t_state1 <= idle;
 						null;
 				end case;
 			end if;
@@ -397,71 +429,117 @@ begin
 end architecture Behavioral;
 
 --------------------------------------------------------------------------------
--- 8xDSP BOX (ACCUM) 
+-- 8xDSP BOX (MACC) 
 --------------------------------------------------------------------------------
 -- TODO: USe Schoolbook method to reduce DSPs amount
+
+-- RETURNS MOD! 
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use work.MAYO_COMMON.all;
 use work.UTILS_COMMON.all;
 
 entity DSP_Accum is
 	Port (clk : in std_logic;
+		i_global_en                             : in  std_logic;
 		i_en                                    : in  std_logic;
 		i_sel                                   : in  std_logic;
 		rst                                     : in  std_logic;
 		ain0,ain1,ain2,ain3,bin0                : in  std_logic_vector(7 downto 0);
 		i_flush                                 : in  std_logic;
 		res0,res1,res2,res3,res4,res5,res6,res7 : out std_logic_vector(PORT_WIDTH-1 downto 0));
+	attribute use_dsp : string; -- Force DSP usage
+
 end DSP_Accum;
 
 architecture Behavioral of DSP_Accum is
-	signal acc               : array_32(0 to 7) := (others => ZERO_32);
-	attribute use_dsp        : string; -- Force DSP usage
-	attribute use_dsp of acc : signal is "yes";
+	type uarray_16 is array(natural range <>) of unsigned(15 downto 0);
+	signal acc_a                    : uarray_16(0 to 3) := (others => (others => '0'));
+	signal mult_a                   : uarray_16(0 to 3) := (others => (others => '0'));
+	signal acc_b                    : uarray_16(0 to 3) := (others => (others => '0'));
+	signal mult_b                   : uarray_16(0 to 3) := (others => (others => '0'));
+	attribute use_dsp of Behavioral : architecture is "yes";
 begin
 	process(clk)
 	begin
 		if (rising_edge(clk)) then
 			if (rst = '1') then
-				for k in 0 to 7 loop
-					acc(k) <= (others => '0');
+				for k in 0 to 3 loop
+					acc_a(k)  <= (others => '0');
+					mult_a(k) <= (others => '0');
 				end loop;
 			else
-				if i_en = '1' then
-					if i_sel = '0' then
-						acc(0) <= std_logic_vector(unsigned(acc(0)) + (unsigned(ain0) * (unsigned(bin0))));
-						acc(1) <= std_logic_vector(unsigned(acc(1)) + (unsigned(ain1) * (unsigned(bin0))));
-						acc(2) <= std_logic_vector(unsigned(acc(2)) + (unsigned(ain2) * (unsigned(bin0))));
-						acc(3) <= std_logic_vector(unsigned(acc(3)) + (unsigned(ain3) * (unsigned(bin0))));
+				if i_global_en = '1' then
+					if (i_en = '1' and i_sel = '0') then
+						mult_a(0) <= unsigned(ain0) * unsigned(bin0);
+						mult_a(1) <= unsigned(ain1) * unsigned(bin0);
+						mult_a(2) <= unsigned(ain2) * unsigned(bin0);
+						mult_a(3) <= unsigned(ain3) * unsigned(bin0);
 					else
-						acc(4) <= std_logic_vector(unsigned(acc(4)) + (unsigned(ain0) * (unsigned(bin0))));
-						acc(5) <= std_logic_vector(unsigned(acc(5)) + (unsigned(ain1) * (unsigned(bin0))));
-						acc(6) <= std_logic_vector(unsigned(acc(6)) + (unsigned(ain2) * (unsigned(bin0))));
-						acc(7) <= std_logic_vector(unsigned(acc(7)) + (unsigned(ain3) * (unsigned(bin0))));
+						for k in 0 to 3 loop
+							mult_a(k) <= (others => '0');
+						end loop;
 					end if;
-				end if;
-				if i_flush = '1' then
-					for k in 0 to 3 loop
-						if i_sel = '1' then
-							acc(k) <= (others => '0');
-						else
-							acc(k+4) <= (others => '0');
-						end if;
-					end loop;
+
+					acc_a(0) <= acc_a(0) + mult_a(0);
+					acc_a(1) <= acc_a(1) + mult_a(1);
+					acc_a(2) <= acc_a(2) + mult_a(2);
+					acc_a(3) <= acc_a(3) + mult_a(3);
+					if (i_flush = '1' and i_sel = '1') then
+						for k in 0 to 3 loop
+							acc_a(k) <= (others => '0');
+						end loop;
+					end if;
 				end if;
 			end if;
 		end if;
 	end process;
 
-	res0 <= acc(0);
-	res1 <= acc(1);
-	res2 <= acc(2);
-	res3 <= acc(3);
-	res4 <= acc(4);
-	res5 <= acc(5);
-	res6 <= acc(6);
-	res7 <= acc(7);
+	process (clk)
+	begin
+		if (rising_edge(clk)) then
+			if (rst = '1') then
+				for k in 0 to 3 loop
+					acc_b(k)  <= (others => '0');
+					mult_b(k) <= (others => '0');
+				end loop;
+			else
+				if i_global_en = '1' then
+					if (i_en = '1' and i_sel = '1') then
+						mult_b(0) <= unsigned(ain0) * unsigned(bin0);
+						mult_b(1) <= unsigned(ain1) * unsigned(bin0);
+						mult_b(2) <= unsigned(ain2) * unsigned(bin0);
+						mult_b(3) <= unsigned(ain3) * unsigned(bin0);
+					else
+						for k in 0 to 3 loop
+							mult_b(k) <= (others => '0');
+						end loop;
+					end if;
+
+					acc_b(0) <= acc_b(0) + mult_b(0);
+					acc_b(1) <= acc_b(1) + mult_b(1);
+					acc_b(2) <= acc_b(2) + mult_b(2);
+					acc_b(3) <= acc_b(3) + mult_b(3);
+
+					if (i_flush = '1' and i_sel = '0') then
+						for k in 0 to 3 loop
+							acc_b(k) <= (others => '0');
+						end loop;
+					end if;
+				end if;
+			end if;
+		end if;
+	end process;
+
+	res0 <= X"0000" & std_logic_vector(acc_a(0) mod PRIME);
+	res1 <= X"0000" & std_logic_vector(acc_a(1) mod PRIME);
+	res2 <= X"0000" & std_logic_vector(acc_a(2) mod PRIME);
+	res3 <= X"0000" & std_logic_vector(acc_a(3) mod PRIME);
+	res4 <= X"0000" & std_logic_vector(acc_b(0) mod PRIME);
+	res5 <= X"0000" & std_logic_vector(acc_b(1) mod PRIME);
+	res6 <= X"0000" & std_logic_vector(acc_b(2) mod PRIME);
+	res7 <= X"0000" & std_logic_vector(acc_b(3) mod PRIME);
 
 end Behavioral;

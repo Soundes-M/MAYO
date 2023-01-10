@@ -3,26 +3,25 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="Mayo_keygen_no_zynq_tb_behav.wdb" id="1">
+      <db_ref path="lin_comb_tb_behav.wdb" id="1">
          <top_modules>
-            <top_module name="Mayo_keygen_no_zynq_tb" />
             <top_module name="glbl" />
-            <top_module name="keccak_globals" />
+            <top_module name="lin_comb_tb" />
             <top_module name="mayo_common" />
             <top_module name="utils_common" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2399493400fs"></ZoomStartTime>
-      <ZoomEndTime time="2400600401fs"></ZoomEndTime>
-      <Cursor1Time time="2399857400fs"></Cursor1Time>
+      <ZoomStartTime time="11001000fs"></ZoomStartTime>
+      <ZoomEndTime time="11218601fs"></ZoomEndTime>
+      <Cursor1Time time="11125200fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="269"></NameColumnWidth>
-      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+      <NameColumnWidth column_width="225"></NameColumnWidth>
+      <ValueColumnWidth column_width="128"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="8" />
+   <WVObjectSize size="42" />
    <wvobject fp_name="divider27" type="divider">
       <obj_property name="label">BRAM0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -35,80 +34,158 @@
          <obj_property name="label">A</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
-         <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k/ena">
-            <obj_property name="ElementShortName">ena</obj_property>
-            <obj_property name="ObjectShortName">ena</obj_property>
-         </wvobject>
-         <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k/wea">
-            <obj_property name="ElementShortName">wea[3:0]</obj_property>
-            <obj_property name="ObjectShortName">wea[3:0]</obj_property>
-         </wvobject>
-         <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k/addra">
-            <obj_property name="ElementShortName">addra[31:0]</obj_property>
-            <obj_property name="ObjectShortName">addra[31:0]</obj_property>
-         </wvobject>
-         <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k/dina">
-            <obj_property name="ElementShortName">dina[31:0]</obj_property>
-            <obj_property name="ObjectShortName">dina[31:0]</obj_property>
-         </wvobject>
-         <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k/douta">
-            <obj_property name="ElementShortName">douta[31:0]</obj_property>
-            <obj_property name="ObjectShortName">douta[31:0]</obj_property>
-         </wvobject>
       </wvobject>
       <wvobject type="group" fp_name="group55">
          <obj_property name="label">B</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
-         <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k/enb">
-            <obj_property name="ElementShortName">enb</obj_property>
-            <obj_property name="ObjectShortName">enb</obj_property>
-         </wvobject>
-         <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k/web">
-            <obj_property name="ElementShortName">web[3:0]</obj_property>
-            <obj_property name="ObjectShortName">web[3:0]</obj_property>
-         </wvobject>
-         <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k/addrb">
-            <obj_property name="ElementShortName">addrb[31:0]</obj_property>
-            <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
-         </wvobject>
-         <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k/dinb">
-            <obj_property name="ElementShortName">dinb[31:0]</obj_property>
-            <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
-         </wvobject>
-         <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/Small_BRAM8k/doutb">
-            <obj_property name="ElementShortName">doutb[31:0]</obj_property>
-            <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
-         </wvobject>
-         <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0/add_control">
-            <obj_property name="ElementShortName">add_control</obj_property>
-            <obj_property name="ObjectShortName">add_control</obj_property>
-         </wvobject>
-         <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0/lin_control">
-            <obj_property name="ElementShortName">lin_control</obj_property>
-            <obj_property name="ObjectShortName">lin_control</obj_property>
-         </wvobject>
-         <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0/neg_control">
-            <obj_property name="ElementShortName">neg_control</obj_property>
-            <obj_property name="ObjectShortName">neg_control</obj_property>
-         </wvobject>
-         <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0/red_control">
-            <obj_property name="ElementShortName">red_control</obj_property>
-            <obj_property name="ObjectShortName">red_control</obj_property>
-         </wvobject>
-         <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0/sam_control">
-            <obj_property name="ElementShortName">sam_control</obj_property>
-            <obj_property name="ObjectShortName">sam_control</obj_property>
-         </wvobject>
-         <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0/hash_control">
-            <obj_property name="ElementShortName">hash_control</obj_property>
-            <obj_property name="ObjectShortName">hash_control</obj_property>
-         </wvobject>
-         <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_small/arbit_bramb0/bram_control">
-            <obj_property name="ElementShortName">bram_control</obj_property>
-            <obj_property name="ObjectShortName">bram_control</obj_property>
-         </wvobject>
       </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/lin_comb_tb/bram0/clka">
+      <obj_property name="ElementShortName">clka</obj_property>
+      <obj_property name="ObjectShortName">clka</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/lin_comb_tb/uut/i_enable">
+      <obj_property name="ElementShortName">i_enable</obj_property>
+      <obj_property name="ObjectShortName">i_enable</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/lin_comb_tb/uut/o_done">
+      <obj_property name="ElementShortName">o_done</obj_property>
+      <obj_property name="ObjectShortName">o_done</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/lin_comb_tb/uut/tmp_sel">
+      <obj_property name="ElementShortName">tmp_sel</obj_property>
+      <obj_property name="ObjectShortName">tmp_sel</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/lin_comb_tb/uut/DSP_Inst/i_flush">
+      <obj_property name="ElementShortName">i_flush</obj_property>
+      <obj_property name="ObjectShortName">i_flush</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/lin_comb_tb/uut/DSP_Inst/i_en">
+      <obj_property name="ElementShortName">i_en</obj_property>
+      <obj_property name="ObjectShortName">i_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/lin_comb_tb/uut/DSP_Inst/i_sel">
+      <obj_property name="ElementShortName">i_sel</obj_property>
+      <obj_property name="ObjectShortName">i_sel</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/mult_a">
+      <obj_property name="ElementShortName">mult_a[0:3][15:0]</obj_property>
+      <obj_property name="ObjectShortName">mult_a[0:3][15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/acc_a">
+      <obj_property name="ElementShortName">acc_a[0:3][15:0]</obj_property>
+      <obj_property name="ObjectShortName">acc_a[0:3][15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/mult_b">
+      <obj_property name="ElementShortName">mult_b[0:3][15:0]</obj_property>
+      <obj_property name="ObjectShortName">mult_b[0:3][15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/acc_b">
+      <obj_property name="ElementShortName">acc_b[0:3][15:0]</obj_property>
+      <obj_property name="ObjectShortName">acc_b[0:3][15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/res0">
+      <obj_property name="ElementShortName">res0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res0[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/res1">
+      <obj_property name="ElementShortName">res1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/res2">
+      <obj_property name="ElementShortName">res2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/res3">
+      <obj_property name="ElementShortName">res3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res3[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/res4">
+      <obj_property name="ElementShortName">res4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res4[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/res5">
+      <obj_property name="ElementShortName">res5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res5[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/res6">
+      <obj_property name="ElementShortName">res6[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res6[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/DSP_Inst/res7">
+      <obj_property name="ElementShortName">res7[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res7[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/tmp">
+      <obj_property name="ElementShortName">tmp[0:7][31:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp[0:7][31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/s_coeffs">
+      <obj_property name="ElementShortName">s_coeffs[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_coeffs[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/s_vecs">
+      <obj_property name="ElementShortName">s_vecs[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_vecs[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/uut/s_acc">
+      <obj_property name="ElementShortName">s_acc[0:7][31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_acc[0:7][31:0]</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/lin_comb_tb/uut/i">
+      <obj_property name="ElementShortName">i</obj_property>
+      <obj_property name="ObjectShortName">i</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/lin_comb_tb/uut/j">
+      <obj_property name="ElementShortName">j</obj_property>
+      <obj_property name="ObjectShortName">j</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/lin_comb_tb/uut/t_state1">
+      <obj_property name="ElementShortName">t_state1</obj_property>
+      <obj_property name="ObjectShortName">t_state1</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/lin_comb_tb/bram0/ena">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/bram0/wea">
+      <obj_property name="ElementShortName">wea[3:0]</obj_property>
+      <obj_property name="ObjectShortName">wea[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/bram0/addra">
+      <obj_property name="ElementShortName">addra[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/bram0/dina">
+      <obj_property name="ElementShortName">dina[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/bram0/douta">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/lin_comb_tb/bram0/enb">
+      <obj_property name="ElementShortName">enb</obj_property>
+      <obj_property name="ObjectShortName">enb</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/bram0/web">
+      <obj_property name="ElementShortName">web[3:0]</obj_property>
+      <obj_property name="ObjectShortName">web[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/bram0/addrb">
+      <obj_property name="ElementShortName">addrb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/bram0/dinb">
+      <obj_property name="ElementShortName">dinb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/lin_comb_tb/bram0/doutb">
+      <obj_property name="ElementShortName">doutb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="divider33" type="divider">
       <obj_property name="label">BRAM1</obj_property>
@@ -118,26 +195,46 @@
       <obj_property name="label">1A</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_big/BIG_BRAM512K/ena">
+      <wvobject type="logic" fp_name="/lin_comb_tb/bram1/ena">
          <obj_property name="ElementShortName">ena</obj_property>
          <obj_property name="ObjectShortName">ena</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_big/BIG_BRAM512K/wea">
+      <wvobject type="array" fp_name="/lin_comb_tb/bram1/wea">
          <obj_property name="ElementShortName">wea[3:0]</obj_property>
          <obj_property name="ObjectShortName">wea[3:0]</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_big/BIG_BRAM512K/addra">
+      <wvobject type="array" fp_name="/lin_comb_tb/bram1/addra">
          <obj_property name="ElementShortName">addra[31:0]</obj_property>
          <obj_property name="ObjectShortName">addra[31:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_big/BIG_BRAM512K/dina">
+      <wvobject type="array" fp_name="/lin_comb_tb/bram1/dina">
          <obj_property name="ElementShortName">dina[31:0]</obj_property>
          <obj_property name="ObjectShortName">dina[31:0]</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/BRAM_big/BIG_BRAM512K/douta">
+      <wvobject type="array" fp_name="/lin_comb_tb/bram1/douta">
          <obj_property name="ElementShortName">douta[31:0]</obj_property>
          <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/lin_comb_tb/bram1/enb">
+         <obj_property name="ElementShortName">enb</obj_property>
+         <obj_property name="ObjectShortName">enb</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/lin_comb_tb/bram1/web">
+         <obj_property name="ElementShortName">web[3:0]</obj_property>
+         <obj_property name="ObjectShortName">web[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/lin_comb_tb/bram1/addrb">
+         <obj_property name="ElementShortName">addrb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/lin_comb_tb/bram1/dinb">
+         <obj_property name="ElementShortName">dinb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/lin_comb_tb/bram1/doutb">
+         <obj_property name="ElementShortName">doutb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="divider114" type="divider">
@@ -147,13 +244,5 @@
    <wvobject fp_name="divider39" type="divider">
       <obj_property name="label">Keygen</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/MAYO_KEYGEN_FSM_0/U0/CLK">
-      <obj_property name="ElementShortName">CLK</obj_property>
-      <obj_property name="ObjectShortName">CLK</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_keygen_no_zynq_tb/keygen/Mayo_keygen_no_zynq_i/MAYO_KEYGEN_FSM_0/U0/STATE">
-      <obj_property name="ElementShortName">STATE</obj_property>
-      <obj_property name="ObjectShortName">STATE</obj_property>
    </wvobject>
 </wave_config>

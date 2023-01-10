@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Wed Dec 21 13:52:18 2022
+# Process ID: 511956
+# Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.runs/BRAM64_synth_1
+# Command line: vivado -log BRAM64.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source BRAM64.tcl
+# Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.runs/BRAM64_synth_1/BRAM64.vds
+# Journal file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.runs/BRAM64_synth_1/vivado.jou
+#-----------------------------------------------------------
+source BRAM64.tcl -notrace

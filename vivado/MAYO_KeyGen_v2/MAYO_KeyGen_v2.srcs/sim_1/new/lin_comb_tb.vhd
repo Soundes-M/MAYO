@@ -235,8 +235,8 @@ begin
     );
 
   tb               : process
-    file filein1     : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500linear.txt";
-    file filein2     : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500solution.txt";
+    file filein1     : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500linear.dat";
+    file filein2     : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500solution.dat";
     variable v_line1 : line;
     variable v_line2 : line;
     variable v_tmp   : std_logic_vector(31 downto 0);
@@ -252,10 +252,10 @@ begin
     
     wait for 110 ns ;
     enable      <= '0';
-    len         <= std_logic_vector(to_unsigned(K*O,32));
+    len         <= std_logic_vector(to_unsigned(60,32));
     vec_addr    <= std_logic_vector(to_unsigned(0,32));  -- in bram1
     coeffs_addr <= std_logic_vector(to_unsigned(0,32));  -- in bram0
-    out_addr    <= std_logic_vector(to_unsigned(60,32)); -- in bram 0 
+    out_addr    <= std_logic_vector(to_unsigned(64,32)); -- in bram 0 
     bram_sel    <= "10";
 
     rsta_busy0 <= '0';
@@ -264,8 +264,8 @@ begin
     rstb_busy1 <= '0';
     i          <= 0;
     wait for clk_period;
-    FILE_OPEN(filein1,"/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500linear.txt",read_mode);
-    FILE_OPEN(filein2,"/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500solution.txt",read_mode);
+    FILE_OPEN(filein1,"/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500linear.dat",read_mode);
+    FILE_OPEN(filein2,"/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500solution.dat",read_mode);
     -- Fill BRAM Vecs
     while not endfile(filein1) loop
       readline(filein1, v_line1);
@@ -334,7 +334,7 @@ begin
     user_dina0 <= ZERO_32;
     rstb1      <= '0';
     for i in 0 to 15 loop --15 -1 == M / 4 -1  + addr offset [Last Read to check overflow, should expect 0] 
-      user_addra0 <= std_logic_vector(to_unsigned(i*4 + 60,32));
+      user_addra0 <= std_logic_vector(to_unsigned(i*4 + 64,32));
       user_ena0   <= '1';
       wait for clk_period * 2 ;
     end loop;

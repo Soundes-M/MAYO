@@ -1,0 +1,6 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Block Memory Generator module blk_mem_gen_0_1_tb.blk_mem_gen_0_1_exdes_inst.BMG_PORT.bmg0.inst.\native_mem_mapped_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Failure: Test Completed Successfully
+Time: 358100 ns  Iteration: 3  Process: /blk_mem_gen_0_1_tb/line__125  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/blk_mem_gen_0_1_ex/imports/blk_mem_gen_0_1_tb.vhd
+$finish called at time : 358100 ns : File "/home/osm/Documents/SECT-MAYO/MAYO/vivado/blk_mem_gen_0_1_ex/imports/blk_mem_gen_0_1_tb.vhd" Line 134

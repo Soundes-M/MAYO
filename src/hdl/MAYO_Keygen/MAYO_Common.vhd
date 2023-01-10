@@ -64,6 +64,13 @@ PACKAGE MAYO_COMMON IS
 
   CONSTANT OIL_SPACE_BYTES : positive := (O*(N-O));
 
+  CONSTANT SIG_BYTES     : positive := SEED_BYTES + (K*N);
+  CONSTANT MESSAGE_BYTES : positive := 100; -- Can be changed
+
+  CONSTANT SK_EXP_P1       : natural := 0; -- Can be changed
+  CONSTANT SK_EXP_OIL      : positive := SK_EXP_P1 + P1_BYTES;
+  CONSTANT SK_EXP_BILINEAR : positive := SK_EXP_OIL + OIL_SPACE_BYTES;
+  CONSTANT SK_EXP_BYTES    : positive := SK_EXP_BILINEAR + (M*(N-O)*O);
 
   ------------------------------------------------------------------------------
   -- ADDRESSE MAPPING EXPLAINED: (32 Bits Address space)
@@ -78,7 +85,9 @@ PACKAGE MAYO_COMMON IS
   ------------------------------------------------------------------------------
   -- Address Mapping (In BRAM I) (SMALL DATA)
   ------------------------------------------------------------------------------
-  CONSTANT BRAM_I_SIZE : natural := 31;
+  CONSTANT BRAM_I_PORT_WIDTH : natural := 31;
+  CONSTANT BRAM_I_SIZE       : natural := 8_192; -- Bytes
+
   -- SECRET KEY (SK)
   CONSTANT SK_BASE_ADR : natural  := 0;
   CONSTANT SK_RANGE    : positive := SK_BYTES ;
@@ -86,7 +95,7 @@ PACKAGE MAYO_COMMON IS
 
   -- SK Components
   CONSTANT Sk_PRIVATE_SEED_ADR : positive := SK_BASE_ADR + SEED_BYTES;
-  CONSTANT SK_PUBLIC_SEED_ADR  : natural := SK_BASE_ADR;
+  CONSTANT SK_PUBLIC_SEED_ADR  : natural  := SK_BASE_ADR;
 
   -- Sample_oil_space
   CONSTANT RANDOMNESS_BASE_ADR : positive := SK_HIGH_ADR + 4;
@@ -102,19 +111,26 @@ PACKAGE MAYO_COMMON IS
   CONSTANT PK_RANGE    : positive := PK_BYTES ;
   CONSTANT PK_HIGH_ADR : positive := PK_BASE_ADR + PK_RANGE - 4;
 
-  -- COMPUTE P2 VEC
+  -- COMPUTEP2 VEC
   CONSTANT P2VEC_BASE_ADR : positive := PK_HIGH_ADR + 4;
   CONSTANT P2VEC_RANGE    : positive := M;
   CONSTANT P2VEC_HIGH_ADR : positive := P2VEC_BASE_ADR + P2VEC_RANGE -4 ;
 
+  -- Signature (LOCAL)
+  CONSTANT SIG_BASE_ADR : positive := P2VEC_HIGH_ADR + 4;
+  CONSTANT SIG_RANGE    : positive := SIG_BYTES;
+  CONSTANT SIG_HIGH_ADR : positive := SIG_BASE_ADR + SIG_RANGE -4;
+
   ------------------------------------------------------------------------------
   -- Address Mapping (In BRAM II) (BIG DATA)
   ------------------------------------------------------------------------------
-  CONSTANT BRAM_II_SIZE : natural  := 31;
-  
-  CONSTANT P1_BASE_ADR  : natural  := 16#0#;
-  CONSTANT P1_RANGE     : positive := P1_BYTES ;
-  CONSTANT P1_HIGH_ADR  : positive := P1_BASE_ADR + P1_RANGE - 4;
+  CONSTANT BRAM_II_PORT_WIDTH : natural := 31;
+  CONSTANT BRAM_II_SIZE       : natural := 524_288; -- Bytes
+
+  -----------------KEYGEN MEMORY SPACE-----------------------------
+  CONSTANT P1_BASE_ADR : natural  := 16#0#;
+  CONSTANT P1_RANGE    : positive := P1_BYTES ;
+  CONSTANT P1_HIGH_ADR : positive := P1_BASE_ADR + P1_RANGE - 4;
 
   -- P1Temp = P1*O^t + P1'
   CONSTANT TEMP_BASE_ADR : positive := P1_HIGH_ADR + 4;
@@ -125,8 +141,48 @@ PACKAGE MAYO_COMMON IS
   CONSTANT TEMPT_RANGE    : positive := M*(N-O)*O;
   CONSTANT TEMPT_HIGH_ADR : positive := TEMPT_BASE_ADR + TEMPT_RANGE - 4;
 
-  -- Address Mapping DDR MAPPING 
-  CONSTANT DDR_BASE_ADR : natural := 16#0#;       -- TODO CHANGE THIS
+  -----------------SIGNING MEMORY SPACE-----------------------------
+  CONSTANT SK_EXP_BASE_ADR : natural  := 16#0#;
+  CONSTANT SK_EXP_RANGE    : positive := SK_EXP_BYTES;
+  CONSTANT SK_EXP_HIGH_ADR : positive := SK_EXP_BASE_ADR + SK_EXP_RANGE -4;
+
+  CONSTANT P1P1T_BASE_ADR : positive := SK_EXP_HIGH_ADR + 4 ;
+  CONSTANT P1P1T_RANGE    : positive := M * (N - O) * (N - O);
+  CONSTANT P1P1T_HIGH_ADR : positive := P1P1T_BASE_ADR + P1P1T_RANGE -4;
+
+  CONSTANT BILINEAR_TEMP_BASE_ADR : positive := P1P1T_HIGH_ADR + 4 ;
+  CONSTANT BILINEAR_TEMP_RANGE    : positive := M * (N - O) * O;
+  CONSTANT BILINEAR_TEMP_HIGH_ADR : positive := BILINEAR_TEMP_BASE_ADR + BILINEAR_TEMP_RANGE -4;
+
+
+  -- ADDRESS ZYNQ MEMORY SPACE [CPU SPACE]
+  -----------------------> COPY WHEN EXPOSE = 1! 
+  -- Read from, if CPU provides data
+  -- SK [LAST WORD]
+  CONSTANT CPU_SPACE_SK_HIGH_ADR  : positive := BRAM_II_SIZE;
+  CONSTANT CPU_SPACE_SK_RANGE_ADR : positive := SK_BYTES;
+  CONSTANT CPU_SPACE_SK_BASE_ADR  : positive := CPU_SPACE_SK_HIGH_ADR - CPU_SPACE_SK_RANGE_ADR +4;
+
+  -- PK
+  CONSTANT CPU_SPACE_PK_HIGH_ADR  : positive := CPU_SPACE_SK_BASE_ADR -4;
+  CONSTANT CPU_SPACE_PK_RANGE_ADR : positive := PK_BYTES;
+  CONSTANT CPU_SPACE_PK_BASE_ADR  : positive := CPU_SPACE_PK_HIGH_ADR - CPU_SPACE_PK_RANGE_ADR +4;
+
+  -- Message 
+  CONSTANT CPU_SPACE_MESSAGE_HIGH_ADR : positive := CPU_SPACE_PK_BASE_ADR -4;
+  CONSTANT CPU_SPACE_MESSAGE_RANGE    : positive := MESSAGE_BYTES;
+  CONSTANT CPU_SPACE_MESSAGE_BASE_ADR : positive := CPU_SPACE_MESSAGE_HIGH_ADR - CPU_SPACE_MESSAGE_RANGE +4;
+
+  -- Signature 
+  CONSTANT CPU_SPACE_SIG_HIGH_ADR : positive := CPU_SPACE_MESSAGE_BASE_ADR -4;
+  CONSTANT CPU_SPACE_SIG_RANGE    : positive := SIG_BYTES;
+  CONSTANT CPU_SPACE_SIG_BASE_ADR : positive := CPU_SPACE_SIG_HIGH_ADR - CPU_SPACE_SIG_RANGE+4;
+
+  ------------------------------------------------------------------------------
+  -- Address Mapping DDR MAPPING  [DISCARDED]
+  ------------------------------------------------------------------------------
+  -- Address Mapping 
+  CONSTANT DDR_BASE_ADR : natural  := 16#0#;       -- TODO CHANGE THIS
   CONSTANT DDR_RANGE    : positive := 536_870_912; -- Zedboard --> 512MB DRAM TODO: Chnage this!
   CONSTANT DDR_HIGH_ADR : positive := DDR_BASE_ADR + DDR_RANGE - 4;
 

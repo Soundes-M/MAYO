@@ -6,7 +6,7 @@
 -- Author      : User Name <user.email@user.company.com>
 -- Company     : User Company Name
 -- Created     : Mon Oct  3 12:33:18 2022
--- Last update : Mon Oct 17 16:06:29 2022
+-- Last update : Sun Jan  8 14:22:22 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -30,8 +30,6 @@ use work.UTILS_COMMON.all;
 
 entity mayo_bram_arbiter is
 	port (
-		rst : in std_logic;
-
 		BRAM_add_din  : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		BRAM_add_addr : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		BRAM_add_en   : in  std_logic;

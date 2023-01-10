@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2022 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2023 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -61,6 +61,7 @@ ENTITY Mayo_keygen_mayo_add_vectors_0_0 IS
     i_v1_addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     i_v2_addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     i_out_addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    i_bram_sel : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
     o_done : OUT STD_LOGIC;
     i_mema_dout : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     o_mema_din : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -97,6 +98,7 @@ ARCHITECTURE Mayo_keygen_mayo_add_vectors_0_0_arch OF Mayo_keygen_mayo_add_vecto
       i_v1_addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       i_v2_addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       i_out_addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      i_bram_sel : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
       o_done : OUT STD_LOGIC;
       i_mema_dout : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       o_mema_din : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -144,6 +146,7 @@ BEGIN
       i_v1_addr => i_v1_addr,
       i_v2_addr => i_v2_addr,
       i_out_addr => i_out_addr,
+      i_bram_sel => i_bram_sel,
       o_done => o_done,
       i_mema_dout => i_mema_dout,
       o_mema_din => o_mema_din,

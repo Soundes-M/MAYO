@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
---Date        : Mon Nov 28 12:43:23 2022
+--Date        : Sun Jan  8 01:26:11 2023
 --Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 --Command     : generate_target Mayo_keygen.bd
 --Design      : Mayo_keygen
@@ -11,10 +11,16 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity BRAM_big_imp_AWIIIO is
+entity BRAM_big1_imp_QBI0MO is
   port (
+    BRAM_add_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_add_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_add_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_add_en : in STD_LOGIC;
     BRAM_add_rst : in STD_LOGIC;
+    BRAM_add_rst1 : in STD_LOGIC;
     BRAM_add_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_add_we1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     BRAM_hash_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -33,6 +39,12 @@ entity BRAM_big_imp_AWIIIO is
     BRAM_lin_rst : in STD_LOGIC;
     BRAM_lin_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
     BRAM_neg_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_red_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_red_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_red_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_red_en : in STD_LOGIC;
+    BRAM_red_rst : in STD_LOGIC;
+    BRAM_red_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S_AXI_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     S_AXI_arburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
     S_AXI_arcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -68,16 +80,40 @@ entity BRAM_big_imp_AWIIIO is
     S_AXI_wready : out STD_LOGIC;
     S_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S_AXI_wvalid : in STD_LOGIC;
+    add_control : in STD_LOGIC;
     bram_control : in STD_LOGIC;
     clka : in STD_LOGIC;
     hash_control : in STD_LOGIC;
     lin_control : in STD_LOGIC;
-    rst : in STD_LOGIC
+    red_control : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    s_axi_aclk : in STD_LOGIC;
+    s_axi_aresetn : in STD_LOGIC
   );
-end BRAM_big_imp_AWIIIO;
+end BRAM_big1_imp_QBI0MO;
 
-architecture STRUCTURE of BRAM_big_imp_AWIIIO is
-  component Mayo_keygen_axi_bram_ctrl_0_0 is
+architecture STRUCTURE of BRAM_big1_imp_QBI0MO is
+  component Mayo_keygen_blk_mem_gen_0_2 is
+  port (
+    clka : in STD_LOGIC;
+    rsta : in STD_LOGIC;
+    ena : in STD_LOGIC;
+    wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    clkb : in STD_LOGIC;
+    rstb : in STD_LOGIC;
+    enb : in STD_LOGIC;
+    web : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    addrb : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dinb : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    doutb : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    rsta_busy : out STD_LOGIC;
+    rstb_busy : out STD_LOGIC
+  );
+  end component Mayo_keygen_blk_mem_gen_0_2;
+  component Mayo_keygen_axi_bram_ctrl_0_1 is
   port (
     s_axi_aclk : in STD_LOGIC;
     s_axi_aresetn : in STD_LOGIC;
@@ -124,28 +160,8 @@ architecture STRUCTURE of BRAM_big_imp_AWIIIO is
     bram_wrdata_a : out STD_LOGIC_VECTOR ( 31 downto 0 );
     bram_rddata_a : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component Mayo_keygen_axi_bram_ctrl_0_0;
-  component Mayo_keygen_blk_mem_gen_0_1 is
-  port (
-    clka : in STD_LOGIC;
-    rsta : in STD_LOGIC;
-    ena : in STD_LOGIC;
-    wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    addra : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    dina : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    douta : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    clkb : in STD_LOGIC;
-    rstb : in STD_LOGIC;
-    enb : in STD_LOGIC;
-    web : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    addrb : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    dinb : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    doutb : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    rsta_busy : out STD_LOGIC;
-    rstb_busy : out STD_LOGIC
-  );
-  end component Mayo_keygen_blk_mem_gen_0_1;
-  component Mayo_keygen_mayo_bram_arbiter_2_0 is
+  end component Mayo_keygen_axi_bram_ctrl_0_1;
+  component Mayo_keygen_arbit_brama1_0 is
   port (
     rst : in STD_LOGIC;
     BRAM_add_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -204,9 +220,14 @@ architecture STRUCTURE of BRAM_big_imp_AWIIIO is
     hash_control : in STD_LOGIC;
     bram_control : in STD_LOGIC
   );
-  end component Mayo_keygen_mayo_bram_arbiter_2_0;
-  signal BIG_BRAM512K_douta : STD_LOGIC_VECTOR ( 31 downto 0 );
+  end component Mayo_keygen_arbit_brama1_0;
+  signal BIG_BRAM512KDP_doutb : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_add_addr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_add_din_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_add_en_1 : STD_LOGIC;
+  signal BRAM_add_rst1_1 : STD_LOGIC;
   signal BRAM_add_rst_1 : STD_LOGIC;
+  signal BRAM_add_we1_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal BRAM_add_we_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal BRAM_key_addr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_key_din_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -214,18 +235,60 @@ architecture STRUCTURE of BRAM_big_imp_AWIIIO is
   signal BRAM_key_rst_1 : STD_LOGIC;
   signal BRAM_key_we_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal BRAM_neg_din_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_red_addr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_red_din_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_red_en_1 : STD_LOGIC;
+  signal BRAM_red_rst_1 : STD_LOGIC;
+  signal BRAM_red_we_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal Conn1_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal Conn1_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal Conn1_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal Conn1_ARID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal Conn1_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal Conn1_ARLOCK : STD_LOGIC;
+  signal Conn1_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal Conn1_ARREADY : STD_LOGIC;
+  signal Conn1_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal Conn1_ARVALID : STD_LOGIC;
+  signal Conn1_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal Conn1_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal Conn1_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal Conn1_AWID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal Conn1_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal Conn1_AWLOCK : STD_LOGIC;
+  signal Conn1_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal Conn1_AWREADY : STD_LOGIC;
+  signal Conn1_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal Conn1_AWVALID : STD_LOGIC;
+  signal Conn1_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal Conn1_BREADY : STD_LOGIC;
+  signal Conn1_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal Conn1_BVALID : STD_LOGIC;
+  signal Conn1_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal Conn1_RID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal Conn1_RLAST : STD_LOGIC;
+  signal Conn1_RREADY : STD_LOGIC;
+  signal Conn1_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal Conn1_RVALID : STD_LOGIC;
+  signal Conn1_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal Conn1_WLAST : STD_LOGIC;
+  signal Conn1_WREADY : STD_LOGIC;
+  signal Conn1_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal Conn1_WVALID : STD_LOGIC;
   signal MAYO_SHAKE_1_BRAMA_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_SHAKE_1_BRAMA_din : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_SHAKE_1_BRAMA_en : STD_LOGIC;
   signal MAYO_SHAKE_1_BRAMA_we : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal MAYO_SHAKE_1_o_control : STD_LOGIC;
+  signal add_control_1 : STD_LOGIC;
+  signal arbit_brama1_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_din : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_en : STD_LOGIC;
   signal arbit_brama1_BRAM_hash_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_key_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_lin_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal arbit_brama1_BRAM_rst : STD_LOGIC;
+  signal arbit_brama1_BRAM_red_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_we : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_bram_ctrl_0_BRAM_PORTA_ADDR : STD_LOGIC_VECTOR ( 18 downto 0 );
   signal axi_bram_ctrl_0_BRAM_PORTA_CLK : STD_LOGIC;
@@ -235,61 +298,34 @@ architecture STRUCTURE of BRAM_big_imp_AWIIIO is
   signal axi_bram_ctrl_0_BRAM_PORTA_RST : STD_LOGIC;
   signal axi_bram_ctrl_0_BRAM_PORTA_WE : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal bram_control_1 : STD_LOGIC;
+  signal clka_1 : STD_LOGIC;
   signal mayo_linear_combinat_0_o_control1a : STD_LOGIC;
   signal mayo_linear_combinat_0_o_mem1a_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_linear_combinat_0_o_mem1a_din : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_linear_combinat_0_o_mem1a_en : STD_LOGIC;
   signal mayo_linear_combinat_0_o_mem1a_rst : STD_LOGIC;
   signal mayo_linear_combinat_0_o_mem1a_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal processing_system7_0_FCLK_CLK0 : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARLOCK : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARREADY : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARVALID : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWLOCK : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWREADY : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWVALID : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_BREADY : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_BVALID : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_RID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_RLAST : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_RREADY : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_RVALID : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_WLAST : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_WREADY : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_WVALID : STD_LOGIC;
+  signal red_control_1 : STD_LOGIC;
   signal rst_ps7_0_100M_peripheral_aresetn : STD_LOGIC;
-  signal NLW_BIG_BRAM512K_rsta_busy_UNCONNECTED : STD_LOGIC;
-  signal NLW_BIG_BRAM512K_rstb_busy_UNCONNECTED : STD_LOGIC;
-  signal NLW_arbit_brama1_BRAM_add_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal s_axi_aclk_1 : STD_LOGIC;
+  signal s_axi_aresetn_1 : STD_LOGIC;
+  signal NLW_BIG_BRAM512KDP_rsta_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_BIG_BRAM512KDP_rstb_busy_UNCONNECTED : STD_LOGIC;
+  signal NLW_arbit_brama1_BRAM_rst_UNCONNECTED : STD_LOGIC;
   signal NLW_arbit_brama1_BRAM_neg_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_arbit_brama1_BRAM_red_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_arbit_brama1_BRAM_sam_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute BMM_INFO_ADDRESS_SPACE : string;
-  attribute BMM_INFO_ADDRESS_SPACE of axi_bram_ctrl_0 : label is "byte  0x40000000 32 > Mayo_keygen BRAM_big/BIG_BRAM512K";
+  attribute BMM_INFO_ADDRESS_SPACE of axi_bram_ctrl_0 : label is "byte  0x40000000 32 > Mayo_keygen BRAM_big1/BIG_BRAM512KDP";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of axi_bram_ctrl_0 : label is "yes";
 begin
+  BRAM_add_addr_1(31 downto 0) <= BRAM_add_addr(31 downto 0);
+  BRAM_add_din_1(31 downto 0) <= BRAM_add_din(31 downto 0);
+  BRAM_add_dout(31 downto 0) <= arbit_brama1_BRAM_add_dout(31 downto 0);
+  BRAM_add_en_1 <= BRAM_add_en;
+  BRAM_add_rst1_1 <= BRAM_add_rst1;
   BRAM_add_rst_1 <= BRAM_add_rst;
+  BRAM_add_we1_1(3 downto 0) <= BRAM_add_we1(3 downto 0);
   BRAM_add_we_1(3 downto 0) <= BRAM_add_we(3 downto 0);
   BRAM_hash_dout(31 downto 0) <= arbit_brama1_BRAM_hash_dout(31 downto 0);
   BRAM_key_addr_1(31 downto 0) <= BRAM_key_addr(31 downto 0);
@@ -300,86 +336,96 @@ begin
   BRAM_key_we_1(3 downto 0) <= BRAM_key_we(3 downto 0);
   BRAM_lin_dout(31 downto 0) <= arbit_brama1_BRAM_lin_dout(31 downto 0);
   BRAM_neg_din_1(31 downto 0) <= BRAM_neg_din(31 downto 0);
+  BRAM_red_addr_1(31 downto 0) <= BRAM_red_addr(31 downto 0);
+  BRAM_red_din_1(31 downto 0) <= BRAM_red_din(31 downto 0);
+  BRAM_red_dout(31 downto 0) <= arbit_brama1_BRAM_red_dout(31 downto 0);
+  BRAM_red_en_1 <= BRAM_red_en;
+  BRAM_red_rst_1 <= BRAM_red_rst;
+  BRAM_red_we_1(3 downto 0) <= BRAM_red_we(3 downto 0);
+  Conn1_ARADDR(31 downto 0) <= S_AXI_araddr(31 downto 0);
+  Conn1_ARBURST(1 downto 0) <= S_AXI_arburst(1 downto 0);
+  Conn1_ARCACHE(3 downto 0) <= S_AXI_arcache(3 downto 0);
+  Conn1_ARID(11 downto 0) <= S_AXI_arid(11 downto 0);
+  Conn1_ARLEN(7 downto 0) <= S_AXI_arlen(7 downto 0);
+  Conn1_ARLOCK <= S_AXI_arlock;
+  Conn1_ARPROT(2 downto 0) <= S_AXI_arprot(2 downto 0);
+  Conn1_ARSIZE(2 downto 0) <= S_AXI_arsize(2 downto 0);
+  Conn1_ARVALID <= S_AXI_arvalid;
+  Conn1_AWADDR(31 downto 0) <= S_AXI_awaddr(31 downto 0);
+  Conn1_AWBURST(1 downto 0) <= S_AXI_awburst(1 downto 0);
+  Conn1_AWCACHE(3 downto 0) <= S_AXI_awcache(3 downto 0);
+  Conn1_AWID(11 downto 0) <= S_AXI_awid(11 downto 0);
+  Conn1_AWLEN(7 downto 0) <= S_AXI_awlen(7 downto 0);
+  Conn1_AWLOCK <= S_AXI_awlock;
+  Conn1_AWPROT(2 downto 0) <= S_AXI_awprot(2 downto 0);
+  Conn1_AWSIZE(2 downto 0) <= S_AXI_awsize(2 downto 0);
+  Conn1_AWVALID <= S_AXI_awvalid;
+  Conn1_BREADY <= S_AXI_bready;
+  Conn1_RREADY <= S_AXI_rready;
+  Conn1_WDATA(31 downto 0) <= S_AXI_wdata(31 downto 0);
+  Conn1_WLAST <= S_AXI_wlast;
+  Conn1_WSTRB(3 downto 0) <= S_AXI_wstrb(3 downto 0);
+  Conn1_WVALID <= S_AXI_wvalid;
   MAYO_SHAKE_1_BRAMA_addr(31 downto 0) <= BRAM_hash_addr(31 downto 0);
   MAYO_SHAKE_1_BRAMA_din(31 downto 0) <= BRAM_hash_din(31 downto 0);
   MAYO_SHAKE_1_BRAMA_en <= BRAM_hash_en;
   MAYO_SHAKE_1_BRAMA_we(3 downto 0) <= BRAM_hash_we(3 downto 0);
   MAYO_SHAKE_1_o_control <= hash_control;
-  S_AXI_arready <= ps7_0_axi_periph_M01_AXI_ARREADY;
-  S_AXI_awready <= ps7_0_axi_periph_M01_AXI_AWREADY;
-  S_AXI_bid(11 downto 0) <= ps7_0_axi_periph_M01_AXI_BID(11 downto 0);
-  S_AXI_bresp(1 downto 0) <= ps7_0_axi_periph_M01_AXI_BRESP(1 downto 0);
-  S_AXI_bvalid <= ps7_0_axi_periph_M01_AXI_BVALID;
-  S_AXI_rdata(31 downto 0) <= ps7_0_axi_periph_M01_AXI_RDATA(31 downto 0);
-  S_AXI_rid(11 downto 0) <= ps7_0_axi_periph_M01_AXI_RID(11 downto 0);
-  S_AXI_rlast <= ps7_0_axi_periph_M01_AXI_RLAST;
-  S_AXI_rresp(1 downto 0) <= ps7_0_axi_periph_M01_AXI_RRESP(1 downto 0);
-  S_AXI_rvalid <= ps7_0_axi_periph_M01_AXI_RVALID;
-  S_AXI_wready <= ps7_0_axi_periph_M01_AXI_WREADY;
+  S_AXI_arready <= Conn1_ARREADY;
+  S_AXI_awready <= Conn1_AWREADY;
+  S_AXI_bid(11 downto 0) <= Conn1_BID(11 downto 0);
+  S_AXI_bresp(1 downto 0) <= Conn1_BRESP(1 downto 0);
+  S_AXI_bvalid <= Conn1_BVALID;
+  S_AXI_rdata(31 downto 0) <= Conn1_RDATA(31 downto 0);
+  S_AXI_rid(11 downto 0) <= Conn1_RID(11 downto 0);
+  S_AXI_rlast <= Conn1_RLAST;
+  S_AXI_rresp(1 downto 0) <= Conn1_RRESP(1 downto 0);
+  S_AXI_rvalid <= Conn1_RVALID;
+  S_AXI_wready <= Conn1_WREADY;
+  add_control_1 <= add_control;
   bram_control_1 <= bram_control;
+  clka_1 <= clka;
   mayo_linear_combinat_0_o_control1a <= lin_control;
   mayo_linear_combinat_0_o_mem1a_addr(31 downto 0) <= BRAM_lin_addr(31 downto 0);
   mayo_linear_combinat_0_o_mem1a_din(31 downto 0) <= BRAM_lin_din(31 downto 0);
   mayo_linear_combinat_0_o_mem1a_en <= BRAM_lin_en;
   mayo_linear_combinat_0_o_mem1a_rst <= BRAM_lin_rst;
   mayo_linear_combinat_0_o_mem1a_we(3 downto 0) <= BRAM_lin_we(3 downto 0);
-  processing_system7_0_FCLK_CLK0 <= clka;
-  ps7_0_axi_periph_M01_AXI_ARADDR(31 downto 0) <= S_AXI_araddr(31 downto 0);
-  ps7_0_axi_periph_M01_AXI_ARBURST(1 downto 0) <= S_AXI_arburst(1 downto 0);
-  ps7_0_axi_periph_M01_AXI_ARCACHE(3 downto 0) <= S_AXI_arcache(3 downto 0);
-  ps7_0_axi_periph_M01_AXI_ARID(11 downto 0) <= S_AXI_arid(11 downto 0);
-  ps7_0_axi_periph_M01_AXI_ARLEN(7 downto 0) <= S_AXI_arlen(7 downto 0);
-  ps7_0_axi_periph_M01_AXI_ARLOCK <= S_AXI_arlock;
-  ps7_0_axi_periph_M01_AXI_ARPROT(2 downto 0) <= S_AXI_arprot(2 downto 0);
-  ps7_0_axi_periph_M01_AXI_ARSIZE(2 downto 0) <= S_AXI_arsize(2 downto 0);
-  ps7_0_axi_periph_M01_AXI_ARVALID <= S_AXI_arvalid;
-  ps7_0_axi_periph_M01_AXI_AWADDR(31 downto 0) <= S_AXI_awaddr(31 downto 0);
-  ps7_0_axi_periph_M01_AXI_AWBURST(1 downto 0) <= S_AXI_awburst(1 downto 0);
-  ps7_0_axi_periph_M01_AXI_AWCACHE(3 downto 0) <= S_AXI_awcache(3 downto 0);
-  ps7_0_axi_periph_M01_AXI_AWID(11 downto 0) <= S_AXI_awid(11 downto 0);
-  ps7_0_axi_periph_M01_AXI_AWLEN(7 downto 0) <= S_AXI_awlen(7 downto 0);
-  ps7_0_axi_periph_M01_AXI_AWLOCK <= S_AXI_awlock;
-  ps7_0_axi_periph_M01_AXI_AWPROT(2 downto 0) <= S_AXI_awprot(2 downto 0);
-  ps7_0_axi_periph_M01_AXI_AWSIZE(2 downto 0) <= S_AXI_awsize(2 downto 0);
-  ps7_0_axi_periph_M01_AXI_AWVALID <= S_AXI_awvalid;
-  ps7_0_axi_periph_M01_AXI_BREADY <= S_AXI_bready;
-  ps7_0_axi_periph_M01_AXI_RREADY <= S_AXI_rready;
-  ps7_0_axi_periph_M01_AXI_WDATA(31 downto 0) <= S_AXI_wdata(31 downto 0);
-  ps7_0_axi_periph_M01_AXI_WLAST <= S_AXI_wlast;
-  ps7_0_axi_periph_M01_AXI_WSTRB(3 downto 0) <= S_AXI_wstrb(3 downto 0);
-  ps7_0_axi_periph_M01_AXI_WVALID <= S_AXI_wvalid;
+  red_control_1 <= red_control;
   rst_ps7_0_100M_peripheral_aresetn <= rst;
-BIG_BRAM512K: component Mayo_keygen_blk_mem_gen_0_1
+  s_axi_aclk_1 <= s_axi_aclk;
+  s_axi_aresetn_1 <= s_axi_aresetn;
+BIG_BRAM512KDP: component Mayo_keygen_blk_mem_gen_0_2
      port map (
-      addra(31 downto 0) => arbit_brama1_BRAM_addr(31 downto 0),
-      addrb(31 downto 19) => B"0000000000000",
-      addrb(18 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_ADDR(18 downto 0),
-      clka => processing_system7_0_FCLK_CLK0,
-      clkb => axi_bram_ctrl_0_BRAM_PORTA_CLK,
-      dina(31 downto 0) => arbit_brama1_BRAM_din(31 downto 0),
-      dinb(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_DIN(31 downto 0),
-      douta(31 downto 0) => BIG_BRAM512K_douta(31 downto 0),
-      doutb(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_DOUT(31 downto 0),
-      ena => arbit_brama1_BRAM_en,
-      enb => axi_bram_ctrl_0_BRAM_PORTA_EN,
-      rsta => arbit_brama1_BRAM_rst,
-      rsta_busy => NLW_BIG_BRAM512K_rsta_busy_UNCONNECTED,
-      rstb => axi_bram_ctrl_0_BRAM_PORTA_RST,
-      rstb_busy => NLW_BIG_BRAM512K_rstb_busy_UNCONNECTED,
-      wea(3 downto 0) => arbit_brama1_BRAM_we(3 downto 0),
-      web(3 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_WE(3 downto 0)
+      addra(31 downto 19) => B"0000000000000",
+      addra(18 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_ADDR(18 downto 0),
+      addrb(31 downto 0) => arbit_brama1_BRAM_addr(31 downto 0),
+      clka => axi_bram_ctrl_0_BRAM_PORTA_CLK,
+      clkb => clka_1,
+      dina(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_DIN(31 downto 0),
+      dinb(31 downto 0) => arbit_brama1_BRAM_din(31 downto 0),
+      douta(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_DOUT(31 downto 0),
+      doutb(31 downto 0) => BIG_BRAM512KDP_doutb(31 downto 0),
+      ena => axi_bram_ctrl_0_BRAM_PORTA_EN,
+      enb => arbit_brama1_BRAM_en,
+      rsta => axi_bram_ctrl_0_BRAM_PORTA_RST,
+      rsta_busy => NLW_BIG_BRAM512KDP_rsta_busy_UNCONNECTED,
+      rstb => '0',
+      rstb_busy => NLW_BIG_BRAM512KDP_rstb_busy_UNCONNECTED,
+      wea(3 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_WE(3 downto 0),
+      web(3 downto 0) => arbit_brama1_BRAM_we(3 downto 0)
     );
-arbit_brama1: component Mayo_keygen_mayo_bram_arbiter_2_0
+arbit_brama1: component Mayo_keygen_arbit_brama1_0
      port map (
-      BRAM_add_addr(31 downto 0) => BRAM_neg_din_1(31 downto 0),
-      BRAM_add_din(31 downto 0) => BRAM_neg_din_1(31 downto 0),
-      BRAM_add_dout(31 downto 0) => NLW_arbit_brama1_BRAM_add_dout_UNCONNECTED(31 downto 0),
-      BRAM_add_en => BRAM_add_rst_1,
-      BRAM_add_rst => BRAM_add_rst_1,
-      BRAM_add_we(3 downto 0) => BRAM_add_we_1(3 downto 0),
+      BRAM_add_addr(31 downto 0) => BRAM_add_addr_1(31 downto 0),
+      BRAM_add_din(31 downto 0) => BRAM_add_din_1(31 downto 0),
+      BRAM_add_dout(31 downto 0) => arbit_brama1_BRAM_add_dout(31 downto 0),
+      BRAM_add_en => BRAM_add_en_1,
+      BRAM_add_rst => BRAM_add_rst1_1,
+      BRAM_add_we(3 downto 0) => BRAM_add_we1_1(3 downto 0),
       BRAM_addr(31 downto 0) => arbit_brama1_BRAM_addr(31 downto 0),
       BRAM_din(31 downto 0) => arbit_brama1_BRAM_din(31 downto 0),
-      BRAM_dout(31 downto 0) => BIG_BRAM512K_douta(31 downto 0),
+      BRAM_dout(31 downto 0) => BIG_BRAM512KDP_doutb(31 downto 0),
       BRAM_en => arbit_brama1_BRAM_en,
       BRAM_hash_addr(31 downto 0) => MAYO_SHAKE_1_BRAMA_addr(31 downto 0),
       BRAM_hash_din(31 downto 0) => MAYO_SHAKE_1_BRAMA_din(31 downto 0),
@@ -405,13 +451,13 @@ arbit_brama1: component Mayo_keygen_mayo_bram_arbiter_2_0
       BRAM_neg_en => BRAM_add_rst_1,
       BRAM_neg_rst => BRAM_add_rst_1,
       BRAM_neg_we(3 downto 0) => BRAM_add_we_1(3 downto 0),
-      BRAM_red_addr(31 downto 0) => BRAM_neg_din_1(31 downto 0),
-      BRAM_red_din(31 downto 0) => BRAM_neg_din_1(31 downto 0),
-      BRAM_red_dout(31 downto 0) => NLW_arbit_brama1_BRAM_red_dout_UNCONNECTED(31 downto 0),
-      BRAM_red_en => BRAM_add_rst_1,
-      BRAM_red_rst => BRAM_add_rst_1,
-      BRAM_red_we(3 downto 0) => BRAM_add_we_1(3 downto 0),
-      BRAM_rst => arbit_brama1_BRAM_rst,
+      BRAM_red_addr(31 downto 0) => BRAM_red_addr_1(31 downto 0),
+      BRAM_red_din(31 downto 0) => BRAM_red_din_1(31 downto 0),
+      BRAM_red_dout(31 downto 0) => arbit_brama1_BRAM_red_dout(31 downto 0),
+      BRAM_red_en => BRAM_red_en_1,
+      BRAM_red_rst => BRAM_red_rst_1,
+      BRAM_red_we(3 downto 0) => BRAM_red_we_1(3 downto 0),
+      BRAM_rst => NLW_arbit_brama1_BRAM_rst_UNCONNECTED,
       BRAM_sam_addr(31 downto 0) => BRAM_neg_din_1(31 downto 0),
       BRAM_sam_din(31 downto 0) => BRAM_neg_din_1(31 downto 0),
       BRAM_sam_dout(31 downto 0) => NLW_arbit_brama1_BRAM_sam_dout_UNCONNECTED(31 downto 0),
@@ -419,16 +465,16 @@ arbit_brama1: component Mayo_keygen_mayo_bram_arbiter_2_0
       BRAM_sam_rst => BRAM_add_rst_1,
       BRAM_sam_we(3 downto 0) => BRAM_add_we_1(3 downto 0),
       BRAM_we(3 downto 0) => arbit_brama1_BRAM_we(3 downto 0),
-      add_control => BRAM_add_rst_1,
+      add_control => add_control_1,
       bram_control => bram_control_1,
       hash_control => MAYO_SHAKE_1_o_control,
       lin_control => mayo_linear_combinat_0_o_control1a,
       neg_control => BRAM_add_rst_1,
-      red_control => BRAM_add_rst_1,
+      red_control => red_control_1,
       rst => rst_ps7_0_100M_peripheral_aresetn,
       sam_control => BRAM_add_rst_1
     );
-axi_bram_ctrl_0: component Mayo_keygen_axi_bram_ctrl_0_0
+axi_bram_ctrl_0: component Mayo_keygen_axi_bram_ctrl_0_1
      port map (
       bram_addr_a(18 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_ADDR(18 downto 0),
       bram_clk_a => axi_bram_ctrl_0_BRAM_PORTA_CLK,
@@ -437,43 +483,43 @@ axi_bram_ctrl_0: component Mayo_keygen_axi_bram_ctrl_0_0
       bram_rst_a => axi_bram_ctrl_0_BRAM_PORTA_RST,
       bram_we_a(3 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_WE(3 downto 0),
       bram_wrdata_a(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_DIN(31 downto 0),
-      s_axi_aclk => processing_system7_0_FCLK_CLK0,
-      s_axi_araddr(18 downto 0) => ps7_0_axi_periph_M01_AXI_ARADDR(18 downto 0),
-      s_axi_arburst(1 downto 0) => ps7_0_axi_periph_M01_AXI_ARBURST(1 downto 0),
-      s_axi_arcache(3 downto 0) => ps7_0_axi_periph_M01_AXI_ARCACHE(3 downto 0),
-      s_axi_aresetn => rst_ps7_0_100M_peripheral_aresetn,
-      s_axi_arid(11 downto 0) => ps7_0_axi_periph_M01_AXI_ARID(11 downto 0),
-      s_axi_arlen(7 downto 0) => ps7_0_axi_periph_M01_AXI_ARLEN(7 downto 0),
-      s_axi_arlock => ps7_0_axi_periph_M01_AXI_ARLOCK,
-      s_axi_arprot(2 downto 0) => ps7_0_axi_periph_M01_AXI_ARPROT(2 downto 0),
-      s_axi_arready => ps7_0_axi_periph_M01_AXI_ARREADY,
-      s_axi_arsize(2 downto 0) => ps7_0_axi_periph_M01_AXI_ARSIZE(2 downto 0),
-      s_axi_arvalid => ps7_0_axi_periph_M01_AXI_ARVALID,
-      s_axi_awaddr(18 downto 0) => ps7_0_axi_periph_M01_AXI_AWADDR(18 downto 0),
-      s_axi_awburst(1 downto 0) => ps7_0_axi_periph_M01_AXI_AWBURST(1 downto 0),
-      s_axi_awcache(3 downto 0) => ps7_0_axi_periph_M01_AXI_AWCACHE(3 downto 0),
-      s_axi_awid(11 downto 0) => ps7_0_axi_periph_M01_AXI_AWID(11 downto 0),
-      s_axi_awlen(7 downto 0) => ps7_0_axi_periph_M01_AXI_AWLEN(7 downto 0),
-      s_axi_awlock => ps7_0_axi_periph_M01_AXI_AWLOCK,
-      s_axi_awprot(2 downto 0) => ps7_0_axi_periph_M01_AXI_AWPROT(2 downto 0),
-      s_axi_awready => ps7_0_axi_periph_M01_AXI_AWREADY,
-      s_axi_awsize(2 downto 0) => ps7_0_axi_periph_M01_AXI_AWSIZE(2 downto 0),
-      s_axi_awvalid => ps7_0_axi_periph_M01_AXI_AWVALID,
-      s_axi_bid(11 downto 0) => ps7_0_axi_periph_M01_AXI_BID(11 downto 0),
-      s_axi_bready => ps7_0_axi_periph_M01_AXI_BREADY,
-      s_axi_bresp(1 downto 0) => ps7_0_axi_periph_M01_AXI_BRESP(1 downto 0),
-      s_axi_bvalid => ps7_0_axi_periph_M01_AXI_BVALID,
-      s_axi_rdata(31 downto 0) => ps7_0_axi_periph_M01_AXI_RDATA(31 downto 0),
-      s_axi_rid(11 downto 0) => ps7_0_axi_periph_M01_AXI_RID(11 downto 0),
-      s_axi_rlast => ps7_0_axi_periph_M01_AXI_RLAST,
-      s_axi_rready => ps7_0_axi_periph_M01_AXI_RREADY,
-      s_axi_rresp(1 downto 0) => ps7_0_axi_periph_M01_AXI_RRESP(1 downto 0),
-      s_axi_rvalid => ps7_0_axi_periph_M01_AXI_RVALID,
-      s_axi_wdata(31 downto 0) => ps7_0_axi_periph_M01_AXI_WDATA(31 downto 0),
-      s_axi_wlast => ps7_0_axi_periph_M01_AXI_WLAST,
-      s_axi_wready => ps7_0_axi_periph_M01_AXI_WREADY,
-      s_axi_wstrb(3 downto 0) => ps7_0_axi_periph_M01_AXI_WSTRB(3 downto 0),
-      s_axi_wvalid => ps7_0_axi_periph_M01_AXI_WVALID
+      s_axi_aclk => s_axi_aclk_1,
+      s_axi_araddr(18 downto 0) => Conn1_ARADDR(18 downto 0),
+      s_axi_arburst(1 downto 0) => Conn1_ARBURST(1 downto 0),
+      s_axi_arcache(3 downto 0) => Conn1_ARCACHE(3 downto 0),
+      s_axi_aresetn => s_axi_aresetn_1,
+      s_axi_arid(11 downto 0) => Conn1_ARID(11 downto 0),
+      s_axi_arlen(7 downto 0) => Conn1_ARLEN(7 downto 0),
+      s_axi_arlock => Conn1_ARLOCK,
+      s_axi_arprot(2 downto 0) => Conn1_ARPROT(2 downto 0),
+      s_axi_arready => Conn1_ARREADY,
+      s_axi_arsize(2 downto 0) => Conn1_ARSIZE(2 downto 0),
+      s_axi_arvalid => Conn1_ARVALID,
+      s_axi_awaddr(18 downto 0) => Conn1_AWADDR(18 downto 0),
+      s_axi_awburst(1 downto 0) => Conn1_AWBURST(1 downto 0),
+      s_axi_awcache(3 downto 0) => Conn1_AWCACHE(3 downto 0),
+      s_axi_awid(11 downto 0) => Conn1_AWID(11 downto 0),
+      s_axi_awlen(7 downto 0) => Conn1_AWLEN(7 downto 0),
+      s_axi_awlock => Conn1_AWLOCK,
+      s_axi_awprot(2 downto 0) => Conn1_AWPROT(2 downto 0),
+      s_axi_awready => Conn1_AWREADY,
+      s_axi_awsize(2 downto 0) => Conn1_AWSIZE(2 downto 0),
+      s_axi_awvalid => Conn1_AWVALID,
+      s_axi_bid(11 downto 0) => Conn1_BID(11 downto 0),
+      s_axi_bready => Conn1_BREADY,
+      s_axi_bresp(1 downto 0) => Conn1_BRESP(1 downto 0),
+      s_axi_bvalid => Conn1_BVALID,
+      s_axi_rdata(31 downto 0) => Conn1_RDATA(31 downto 0),
+      s_axi_rid(11 downto 0) => Conn1_RID(11 downto 0),
+      s_axi_rlast => Conn1_RLAST,
+      s_axi_rready => Conn1_RREADY,
+      s_axi_rresp(1 downto 0) => Conn1_RRESP(1 downto 0),
+      s_axi_rvalid => Conn1_RVALID,
+      s_axi_wdata(31 downto 0) => Conn1_WDATA(31 downto 0),
+      s_axi_wlast => Conn1_WLAST,
+      s_axi_wready => Conn1_WREADY,
+      s_axi_wstrb(3 downto 0) => Conn1_WSTRB(3 downto 0),
+      s_axi_wvalid => Conn1_WVALID
     );
 end STRUCTURE;
 library IEEE;
@@ -498,8 +544,6 @@ entity BRAM_small_imp_EVICZV is
     BRAM_hash_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_en : in STD_LOGIC;
-    BRAM_hash_rst : in STD_LOGIC;
-    BRAM_hash_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
     BRAM_hash_we1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     BRAM_key_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_key_addr1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -527,7 +571,6 @@ entity BRAM_small_imp_EVICZV is
     BRAM_lin_we1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     BRAM_neg_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_neg_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_neg_din1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_neg_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_neg_en : in STD_LOGIC;
     BRAM_neg_rst : in STD_LOGIC;
@@ -544,6 +587,9 @@ entity BRAM_small_imp_EVICZV is
     BRAM_sam_en1 : in STD_LOGIC;
     BRAM_sam_rst1 : in STD_LOGIC;
     BRAM_sam_we1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    Zero0 : in STD_LOGIC;
+    Zero_32 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Zero_4 : in STD_LOGIC_VECTOR ( 3 downto 0 );
     add_control : in STD_LOGIC;
     add_control1 : in STD_LOGIC;
     bram_control : in STD_LOGIC;
@@ -555,13 +601,12 @@ entity BRAM_small_imp_EVICZV is
     neg_control : in STD_LOGIC;
     red_control : in STD_LOGIC;
     rst : in STD_LOGIC;
-    sam_control : in STD_LOGIC;
     sam_control1 : in STD_LOGIC
   );
 end BRAM_small_imp_EVICZV;
 
 architecture STRUCTURE of BRAM_small_imp_EVICZV is
-  component Mayo_keygen_blk_mem_gen_0_0 is
+  component Mayo_keygen_Small_BRAM8k_0 is
   port (
     clka : in STD_LOGIC;
     rsta : in STD_LOGIC;
@@ -580,8 +625,8 @@ architecture STRUCTURE of BRAM_small_imp_EVICZV is
     rsta_busy : out STD_LOGIC;
     rstb_busy : out STD_LOGIC
   );
-  end component Mayo_keygen_blk_mem_gen_0_0;
-  component Mayo_keygen_mayo_bram_arbiter_0_0 is
+  end component Mayo_keygen_Small_BRAM8k_0;
+  component Mayo_keygen_arbit_brama0_0 is
   port (
     rst : in STD_LOGIC;
     BRAM_add_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -640,8 +685,8 @@ architecture STRUCTURE of BRAM_small_imp_EVICZV is
     hash_control : in STD_LOGIC;
     bram_control : in STD_LOGIC
   );
-  end component Mayo_keygen_mayo_bram_arbiter_0_0;
-  component Mayo_keygen_mayo_bram_arbiter_1_0 is
+  end component Mayo_keygen_arbit_brama0_0;
+  component Mayo_keygen_arbit_bramb0_0 is
   port (
     rst : in STD_LOGIC;
     BRAM_add_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -700,27 +745,33 @@ architecture STRUCTURE of BRAM_small_imp_EVICZV is
     hash_control : in STD_LOGIC;
     bram_control : in STD_LOGIC
   );
-  end component Mayo_keygen_mayo_bram_arbiter_1_0;
+  end component Mayo_keygen_arbit_bramb0_0;
   signal AXI_LITE_Mayo_Keygen_0_o_mem0a_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal AXI_LITE_Mayo_Keygen_0_o_mem0a_control : STD_LOGIC;
   signal AXI_LITE_Mayo_Keygen_0_o_mem0a_din : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal AXI_LITE_Mayo_Keygen_0_o_mem0a_en : STD_LOGIC;
   signal AXI_LITE_Mayo_Keygen_0_o_mem0a_rst : STD_LOGIC;
   signal AXI_LITE_Mayo_Keygen_0_o_mem0a_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal BRAM_add_addr1_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_add_din1_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_add_en1_1 : STD_LOGIC;
+  signal BRAM_add_rst1_1 : STD_LOGIC;
+  signal BRAM_add_we1_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal BRAM_hash_addr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_hash_din_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_hash_en_1 : STD_LOGIC;
-  signal BRAM_hash_rst_1 : STD_LOGIC;
   signal BRAM_hash_we1_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal BRAM_hash_we_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal BRAM_key_addr1_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_key_din1_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_key_en1_1 : STD_LOGIC;
   signal BRAM_key_rst1_1 : STD_LOGIC;
   signal BRAM_key_we1_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal BRAM_neg_din1_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal Small_BRAM8k_douta : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal Small_BRAM8k_doutb : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal Zero0_1 : STD_LOGIC;
+  signal Zero_32_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal Zero_4_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal add_control1_1 : STD_LOGIC;
   signal arbit_brama0_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama0_BRAM_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama0_BRAM_din : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -732,6 +783,7 @@ architecture STRUCTURE of BRAM_small_imp_EVICZV is
   signal arbit_brama0_BRAM_red_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama0_BRAM_rst : STD_LOGIC;
   signal arbit_brama0_BRAM_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal arbit_bramb0_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_bramb0_BRAM_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_bramb0_BRAM_din : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_bramb0_BRAM_en : STD_LOGIC;
@@ -742,18 +794,11 @@ architecture STRUCTURE of BRAM_small_imp_EVICZV is
   signal bram_control1_1 : STD_LOGIC;
   signal hash_control_1 : STD_LOGIC;
   signal mayo_add_vectors_0_o_controla : STD_LOGIC;
-  signal mayo_add_vectors_0_o_controlb : STD_LOGIC;
   signal mayo_add_vectors_0_o_mema_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_add_vectors_0_o_mema_din : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_add_vectors_0_o_mema_en : STD_LOGIC;
   signal mayo_add_vectors_0_o_mema_rst : STD_LOGIC;
   signal mayo_add_vectors_0_o_mema_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal mayo_add_vectors_0_o_memb_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_add_vectors_0_o_memb_din : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_add_vectors_0_o_memb_en : STD_LOGIC;
-  signal mayo_add_vectors_0_o_memb_rst : STD_LOGIC;
-  signal mayo_add_vectors_0_o_memb_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal mayo_bram_arbiter_1_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_bram_arbiter_1_BRAM_lin_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_linear_combinat_0_o_control0a : STD_LOGIC;
   signal mayo_linear_combinat_0_o_control0b : STD_LOGIC;
@@ -779,7 +824,6 @@ architecture STRUCTURE of BRAM_small_imp_EVICZV is
   signal mayo_reduce_0_o_enb : STD_LOGIC;
   signal mayo_reduce_0_o_rstb : STD_LOGIC;
   signal mayo_reduce_0_o_web : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal mayo_sample_oil_space_0_o_controla : STD_LOGIC;
   signal mayo_sample_oil_space_0_o_memb_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_sample_oil_space_0_o_memb_din : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_sample_oil_space_0_o_memb_en : STD_LOGIC;
@@ -801,15 +845,18 @@ begin
   AXI_LITE_Mayo_Keygen_0_o_mem0a_en <= BRAM_key_en;
   AXI_LITE_Mayo_Keygen_0_o_mem0a_rst <= BRAM_key_rst;
   AXI_LITE_Mayo_Keygen_0_o_mem0a_we(3 downto 0) <= BRAM_key_we(3 downto 0);
+  BRAM_add_addr1_1(31 downto 0) <= BRAM_add_addr1(31 downto 0);
+  BRAM_add_din1_1(31 downto 0) <= BRAM_add_din1(31 downto 0);
   BRAM_add_dout(31 downto 0) <= arbit_brama0_BRAM_add_dout(31 downto 0);
-  BRAM_add_dout1(31 downto 0) <= mayo_bram_arbiter_1_BRAM_add_dout(31 downto 0);
+  BRAM_add_dout1(31 downto 0) <= arbit_bramb0_BRAM_add_dout(31 downto 0);
+  BRAM_add_en1_1 <= BRAM_add_en1;
+  BRAM_add_rst1_1 <= BRAM_add_rst1;
+  BRAM_add_we1_1(3 downto 0) <= BRAM_add_we1(3 downto 0);
   BRAM_hash_addr_1(31 downto 0) <= BRAM_hash_addr(31 downto 0);
   BRAM_hash_din_1(31 downto 0) <= BRAM_hash_din(31 downto 0);
   BRAM_hash_dout(31 downto 0) <= arbit_brama0_BRAM_hash_dout(31 downto 0);
   BRAM_hash_en_1 <= BRAM_hash_en;
-  BRAM_hash_rst_1 <= BRAM_hash_rst;
   BRAM_hash_we1_1(3 downto 0) <= BRAM_hash_we1(3 downto 0);
-  BRAM_hash_we_1(3 downto 0) <= BRAM_hash_we(3 downto 0);
   BRAM_key_addr1_1(31 downto 0) <= BRAM_key_addr1(31 downto 0);
   BRAM_key_din1_1(31 downto 0) <= BRAM_key_din1(31 downto 0);
   BRAM_key_dout(31 downto 0) <= arbit_brama0_BRAM_key_dout(31 downto 0);
@@ -819,24 +866,21 @@ begin
   BRAM_key_we1_1(3 downto 0) <= BRAM_key_we1(3 downto 0);
   BRAM_lin_dout(31 downto 0) <= arbit_brama0_BRAM_lin_dout(31 downto 0);
   BRAM_lin_dout1(31 downto 0) <= mayo_bram_arbiter_1_BRAM_lin_dout(31 downto 0);
-  BRAM_neg_din1_1(31 downto 0) <= BRAM_neg_din1(31 downto 0);
   BRAM_neg_dout(31 downto 0) <= arbit_brama0_BRAM_neg_dout(31 downto 0);
   BRAM_red_dout(31 downto 0) <= arbit_brama0_BRAM_red_dout(31 downto 0);
   BRAM_sam_dout1(31 downto 0) <= arbit_bramb0_BRAM_sam_dout(31 downto 0);
+  Zero0_1 <= Zero0;
+  Zero_32_1(31 downto 0) <= Zero_32(31 downto 0);
+  Zero_4_1(3 downto 0) <= Zero_4(3 downto 0);
+  add_control1_1 <= add_control1;
   bram_control1_1 <= bram_control1;
   hash_control_1 <= hash_control;
   mayo_add_vectors_0_o_controla <= add_control;
-  mayo_add_vectors_0_o_controlb <= add_control1;
   mayo_add_vectors_0_o_mema_addr(31 downto 0) <= BRAM_add_addr(31 downto 0);
   mayo_add_vectors_0_o_mema_din(31 downto 0) <= BRAM_add_din(31 downto 0);
   mayo_add_vectors_0_o_mema_en <= BRAM_add_en;
   mayo_add_vectors_0_o_mema_rst <= BRAM_add_rst;
   mayo_add_vectors_0_o_mema_we(3 downto 0) <= BRAM_add_we(3 downto 0);
-  mayo_add_vectors_0_o_memb_addr(31 downto 0) <= BRAM_add_addr1(31 downto 0);
-  mayo_add_vectors_0_o_memb_din(31 downto 0) <= BRAM_add_din1(31 downto 0);
-  mayo_add_vectors_0_o_memb_en <= BRAM_add_en1;
-  mayo_add_vectors_0_o_memb_rst <= BRAM_add_rst1;
-  mayo_add_vectors_0_o_memb_we(3 downto 0) <= BRAM_add_we1(3 downto 0);
   mayo_linear_combinat_0_o_control0a <= lin_control;
   mayo_linear_combinat_0_o_control0b <= lin_control1;
   mayo_linear_combinat_0_o_mem0a_addr(31 downto 0) <= BRAM_lin_addr(31 downto 0);
@@ -861,7 +905,6 @@ begin
   mayo_reduce_0_o_enb <= BRAM_red_en;
   mayo_reduce_0_o_rstb <= BRAM_red_rst;
   mayo_reduce_0_o_web(3 downto 0) <= BRAM_red_we(3 downto 0);
-  mayo_sample_oil_space_0_o_controla <= sam_control;
   mayo_sample_oil_space_0_o_memb_addr(31 downto 0) <= BRAM_sam_addr1(31 downto 0);
   mayo_sample_oil_space_0_o_memb_din(31 downto 0) <= BRAM_sam_din1(31 downto 0);
   mayo_sample_oil_space_0_o_memb_en <= BRAM_sam_en1;
@@ -870,7 +913,7 @@ begin
   processing_system7_0_FCLK_CLK0 <= clkb;
   rst_ps7_0_100M_peripheral_aresetn <= rst;
   sam_control1_1 <= sam_control1;
-Small_BRAM8k: component Mayo_keygen_blk_mem_gen_0_0
+Small_BRAM8k: component Mayo_keygen_Small_BRAM8k_0
      port map (
       addra(31 downto 0) => arbit_brama0_BRAM_addr(31 downto 0),
       addrb(31 downto 0) => arbit_bramb0_BRAM_addr(31 downto 0),
@@ -889,7 +932,7 @@ Small_BRAM8k: component Mayo_keygen_blk_mem_gen_0_0
       wea(3 downto 0) => arbit_brama0_BRAM_we(3 downto 0),
       web(3 downto 0) => arbit_bramb0_BRAM_we(3 downto 0)
     );
-arbit_brama0: component Mayo_keygen_mayo_bram_arbiter_0_0
+arbit_brama0: component Mayo_keygen_arbit_brama0_0
      port map (
       BRAM_add_addr(31 downto 0) => mayo_add_vectors_0_o_mema_addr(31 downto 0),
       BRAM_add_din(31 downto 0) => mayo_add_vectors_0_o_mema_din(31 downto 0),
@@ -905,7 +948,7 @@ arbit_brama0: component Mayo_keygen_mayo_bram_arbiter_0_0
       BRAM_hash_din(31 downto 0) => BRAM_hash_din_1(31 downto 0),
       BRAM_hash_dout(31 downto 0) => arbit_brama0_BRAM_hash_dout(31 downto 0),
       BRAM_hash_en => BRAM_hash_en_1,
-      BRAM_hash_rst => BRAM_hash_rst_1,
+      BRAM_hash_rst => Zero0_1,
       BRAM_hash_we(3 downto 0) => BRAM_hash_we1_1(3 downto 0),
       BRAM_key_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0a_addr(31 downto 0),
       BRAM_key_din(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0a_din(31 downto 0),
@@ -932,12 +975,12 @@ arbit_brama0: component Mayo_keygen_mayo_bram_arbiter_0_0
       BRAM_red_rst => mayo_reduce_0_o_rstb,
       BRAM_red_we(3 downto 0) => mayo_reduce_0_o_web(3 downto 0),
       BRAM_rst => arbit_brama0_BRAM_rst,
-      BRAM_sam_addr(31 downto 0) => BRAM_neg_din1_1(31 downto 0),
-      BRAM_sam_din(31 downto 0) => BRAM_neg_din1_1(31 downto 0),
+      BRAM_sam_addr(31 downto 0) => Zero_32_1(31 downto 0),
+      BRAM_sam_din(31 downto 0) => Zero_32_1(31 downto 0),
       BRAM_sam_dout(31 downto 0) => NLW_arbit_brama0_BRAM_sam_dout_UNCONNECTED(31 downto 0),
-      BRAM_sam_en => BRAM_hash_rst_1,
-      BRAM_sam_rst => BRAM_hash_rst_1,
-      BRAM_sam_we(3 downto 0) => BRAM_hash_we_1(3 downto 0),
+      BRAM_sam_en => Zero0_1,
+      BRAM_sam_rst => Zero0_1,
+      BRAM_sam_we(3 downto 0) => Zero_4_1(3 downto 0),
       BRAM_we(3 downto 0) => arbit_brama0_BRAM_we(3 downto 0),
       add_control => mayo_add_vectors_0_o_controla,
       bram_control => AXI_LITE_Mayo_Keygen_0_o_mem0a_control,
@@ -946,26 +989,26 @@ arbit_brama0: component Mayo_keygen_mayo_bram_arbiter_0_0
       neg_control => mayo_negate_0_o_control,
       red_control => mayo_reduce_0_o_control,
       rst => rst_ps7_0_100M_peripheral_aresetn,
-      sam_control => mayo_sample_oil_space_0_o_controla
+      sam_control => Zero0_1
     );
-arbit_bramb0: component Mayo_keygen_mayo_bram_arbiter_1_0
+arbit_bramb0: component Mayo_keygen_arbit_bramb0_0
      port map (
-      BRAM_add_addr(31 downto 0) => mayo_add_vectors_0_o_memb_addr(31 downto 0),
-      BRAM_add_din(31 downto 0) => mayo_add_vectors_0_o_memb_din(31 downto 0),
-      BRAM_add_dout(31 downto 0) => mayo_bram_arbiter_1_BRAM_add_dout(31 downto 0),
-      BRAM_add_en => mayo_add_vectors_0_o_memb_en,
-      BRAM_add_rst => mayo_add_vectors_0_o_memb_rst,
-      BRAM_add_we(3 downto 0) => mayo_add_vectors_0_o_memb_we(3 downto 0),
+      BRAM_add_addr(31 downto 0) => BRAM_add_addr1_1(31 downto 0),
+      BRAM_add_din(31 downto 0) => BRAM_add_din1_1(31 downto 0),
+      BRAM_add_dout(31 downto 0) => arbit_bramb0_BRAM_add_dout(31 downto 0),
+      BRAM_add_en => BRAM_add_en1_1,
+      BRAM_add_rst => BRAM_add_rst1_1,
+      BRAM_add_we(3 downto 0) => BRAM_add_we1_1(3 downto 0),
       BRAM_addr(31 downto 0) => arbit_bramb0_BRAM_addr(31 downto 0),
       BRAM_din(31 downto 0) => arbit_bramb0_BRAM_din(31 downto 0),
       BRAM_dout(31 downto 0) => Small_BRAM8k_doutb(31 downto 0),
       BRAM_en => arbit_bramb0_BRAM_en,
-      BRAM_hash_addr(31 downto 0) => BRAM_neg_din1_1(31 downto 0),
-      BRAM_hash_din(31 downto 0) => BRAM_neg_din1_1(31 downto 0),
+      BRAM_hash_addr(31 downto 0) => Zero_32_1(31 downto 0),
+      BRAM_hash_din(31 downto 0) => Zero_32_1(31 downto 0),
       BRAM_hash_dout(31 downto 0) => NLW_arbit_bramb0_BRAM_hash_dout_UNCONNECTED(31 downto 0),
-      BRAM_hash_en => BRAM_hash_rst_1,
-      BRAM_hash_rst => BRAM_hash_rst_1,
-      BRAM_hash_we(3 downto 0) => BRAM_hash_we_1(3 downto 0),
+      BRAM_hash_en => Zero0_1,
+      BRAM_hash_rst => Zero0_1,
+      BRAM_hash_we(3 downto 0) => Zero_4_1(3 downto 0),
       BRAM_key_addr(31 downto 0) => BRAM_key_addr1_1(31 downto 0),
       BRAM_key_din(31 downto 0) => BRAM_key_din1_1(31 downto 0),
       BRAM_key_dout(31 downto 0) => arbit_bramb0_BRAM_key_dout(31 downto 0),
@@ -978,18 +1021,18 @@ arbit_bramb0: component Mayo_keygen_mayo_bram_arbiter_1_0
       BRAM_lin_en => mayo_linear_combinat_0_o_mem0b_en,
       BRAM_lin_rst => mayo_linear_combinat_0_o_mem0b_rst,
       BRAM_lin_we(3 downto 0) => mayo_linear_combinat_0_o_mem0b_we(3 downto 0),
-      BRAM_neg_addr(31 downto 0) => BRAM_neg_din1_1(31 downto 0),
-      BRAM_neg_din(31 downto 0) => BRAM_neg_din1_1(31 downto 0),
+      BRAM_neg_addr(31 downto 0) => Zero_32_1(31 downto 0),
+      BRAM_neg_din(31 downto 0) => Zero_32_1(31 downto 0),
       BRAM_neg_dout(31 downto 0) => NLW_arbit_bramb0_BRAM_neg_dout_UNCONNECTED(31 downto 0),
-      BRAM_neg_en => BRAM_hash_rst_1,
-      BRAM_neg_rst => BRAM_hash_rst_1,
-      BRAM_neg_we(3 downto 0) => BRAM_hash_we_1(3 downto 0),
-      BRAM_red_addr(31 downto 0) => BRAM_neg_din1_1(31 downto 0),
-      BRAM_red_din(31 downto 0) => BRAM_neg_din1_1(31 downto 0),
+      BRAM_neg_en => Zero0_1,
+      BRAM_neg_rst => Zero0_1,
+      BRAM_neg_we(3 downto 0) => Zero_4_1(3 downto 0),
+      BRAM_red_addr(31 downto 0) => Zero_32_1(31 downto 0),
+      BRAM_red_din(31 downto 0) => Zero_32_1(31 downto 0),
       BRAM_red_dout(31 downto 0) => NLW_arbit_bramb0_BRAM_red_dout_UNCONNECTED(31 downto 0),
-      BRAM_red_en => BRAM_hash_rst_1,
-      BRAM_red_rst => BRAM_hash_rst_1,
-      BRAM_red_we(3 downto 0) => BRAM_hash_we_1(3 downto 0),
+      BRAM_red_en => Zero0_1,
+      BRAM_red_rst => Zero0_1,
+      BRAM_red_we(3 downto 0) => Zero_4_1(3 downto 0),
       BRAM_rst => arbit_bramb0_BRAM_rst,
       BRAM_sam_addr(31 downto 0) => mayo_sample_oil_space_0_o_memb_addr(31 downto 0),
       BRAM_sam_din(31 downto 0) => mayo_sample_oil_space_0_o_memb_din(31 downto 0),
@@ -998,14 +1041,145 @@ arbit_bramb0: component Mayo_keygen_mayo_bram_arbiter_1_0
       BRAM_sam_rst => mayo_sample_oil_space_0_o_memb_rst,
       BRAM_sam_we(3 downto 0) => mayo_sample_oil_space_0_o_memb_we(3 downto 0),
       BRAM_we(3 downto 0) => arbit_bramb0_BRAM_we(3 downto 0),
-      add_control => mayo_add_vectors_0_o_controlb,
+      add_control => add_control1_1,
       bram_control => bram_control1_1,
-      hash_control => BRAM_hash_rst_1,
+      hash_control => Zero0_1,
       lin_control => mayo_linear_combinat_0_o_control0b,
-      neg_control => BRAM_hash_rst_1,
-      red_control => BRAM_hash_rst_1,
+      neg_control => Zero0_1,
+      red_control => Zero0_1,
       rst => rst_ps7_0_100M_peripheral_aresetn,
       sam_control => sam_control1_1
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity TRNG_imp_1KWX5GC is
+  port (
+    clk : in STD_LOGIC;
+    i_trng0_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_trng0_r : in STD_LOGIC;
+    i_trng0_w : in STD_LOGIC;
+    i_trng1_data1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_trng1_r : in STD_LOGIC;
+    i_trng1_w : in STD_LOGIC;
+    i_trng_sel : in STD_LOGIC;
+    o_trng0_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_trng0_done : out STD_LOGIC;
+    o_trng0_valid : out STD_LOGIC;
+    o_trng1_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_trng1_done : out STD_LOGIC;
+    o_trng1_valid : out STD_LOGIC;
+    rst : in STD_LOGIC
+  );
+end TRNG_imp_1KWX5GC;
+
+architecture STRUCTURE of TRNG_imp_1KWX5GC is
+  component Mayo_keygen_TRNG_0_0 is
+  port (
+    CLK_I : in STD_LOGIC;
+    RST : in STD_LOGIC;
+    R_I : in STD_LOGIC;
+    W_I : in STD_LOGIC;
+    TRNG_DATA_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRNG_DATA_O : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    TRNG_VALID_O : out STD_LOGIC;
+    TRNG_DONE_O : out STD_LOGIC
+  );
+  end component Mayo_keygen_TRNG_0_0;
+  component Mayo_keygen_mayo_trng_arbiter_0_0 is
+  port (
+    i_trng_sel : in STD_LOGIC;
+    o_trng_r : out STD_LOGIC;
+    o_trng_w : out STD_LOGIC;
+    o_trng_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_trng_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_trng_valid : in STD_LOGIC;
+    i_trng_done : in STD_LOGIC;
+    i_trng0_r : in STD_LOGIC;
+    i_trng0_w : in STD_LOGIC;
+    i_trng0_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_trng0_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_trng0_valid : out STD_LOGIC;
+    o_trng0_done : out STD_LOGIC;
+    i_trng1_r : in STD_LOGIC;
+    i_trng1_w : in STD_LOGIC;
+    i_trng1_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_trng1_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_trng1_valid : out STD_LOGIC;
+    o_trng1_done : out STD_LOGIC
+  );
+  end component Mayo_keygen_mayo_trng_arbiter_0_0;
+  signal TRNG_0_TRNG_DATA_O : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal TRNG_0_TRNG_DONE_O : STD_LOGIC;
+  signal TRNG_0_TRNG_VALID_O : STD_LOGIC;
+  signal clk_1 : STD_LOGIC;
+  signal i_trng0_data_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal i_trng0_r_1 : STD_LOGIC;
+  signal i_trng0_w_1 : STD_LOGIC;
+  signal i_trng1_data1_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal i_trng1_r_1 : STD_LOGIC;
+  signal i_trng1_w_1 : STD_LOGIC;
+  signal i_trng_sel_1 : STD_LOGIC;
+  signal mayo_trng_arbiter_0_o_trng0_data : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_trng_arbiter_0_o_trng0_done : STD_LOGIC;
+  signal mayo_trng_arbiter_0_o_trng0_valid : STD_LOGIC;
+  signal mayo_trng_arbiter_0_o_trng1_data : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_trng_arbiter_0_o_trng1_done : STD_LOGIC;
+  signal mayo_trng_arbiter_0_o_trng1_valid : STD_LOGIC;
+  signal mayo_trng_arbiter_0_o_trng_data : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_trng_arbiter_0_o_trng_r : STD_LOGIC;
+  signal mayo_trng_arbiter_0_o_trng_w : STD_LOGIC;
+  signal rst_1 : STD_LOGIC;
+begin
+  clk_1 <= clk;
+  i_trng0_data_1(31 downto 0) <= i_trng0_data(31 downto 0);
+  i_trng0_r_1 <= i_trng0_r;
+  i_trng0_w_1 <= i_trng0_w;
+  i_trng1_data1_1(31 downto 0) <= i_trng1_data1(31 downto 0);
+  i_trng1_r_1 <= i_trng1_r;
+  i_trng1_w_1 <= i_trng1_w;
+  i_trng_sel_1 <= i_trng_sel;
+  o_trng0_data(31 downto 0) <= mayo_trng_arbiter_0_o_trng0_data(31 downto 0);
+  o_trng0_done <= mayo_trng_arbiter_0_o_trng0_done;
+  o_trng0_valid <= mayo_trng_arbiter_0_o_trng0_valid;
+  o_trng1_data(31 downto 0) <= mayo_trng_arbiter_0_o_trng1_data(31 downto 0);
+  o_trng1_done <= mayo_trng_arbiter_0_o_trng1_done;
+  o_trng1_valid <= mayo_trng_arbiter_0_o_trng1_valid;
+  rst_1 <= rst;
+TRNG_0: component Mayo_keygen_TRNG_0_0
+     port map (
+      CLK_I => clk_1,
+      RST => rst_1,
+      R_I => mayo_trng_arbiter_0_o_trng_r,
+      TRNG_DATA_I(31 downto 0) => mayo_trng_arbiter_0_o_trng_data(31 downto 0),
+      TRNG_DATA_O(31 downto 0) => TRNG_0_TRNG_DATA_O(31 downto 0),
+      TRNG_DONE_O => TRNG_0_TRNG_DONE_O,
+      TRNG_VALID_O => TRNG_0_TRNG_VALID_O,
+      W_I => mayo_trng_arbiter_0_o_trng_w
+    );
+mayo_trng_arbiter_0: component Mayo_keygen_mayo_trng_arbiter_0_0
+     port map (
+      i_trng0_data(31 downto 0) => i_trng0_data_1(31 downto 0),
+      i_trng0_r => i_trng0_r_1,
+      i_trng0_w => i_trng0_w_1,
+      i_trng1_data(31 downto 0) => i_trng1_data1_1(31 downto 0),
+      i_trng1_r => i_trng1_r_1,
+      i_trng1_w => i_trng1_w_1,
+      i_trng_data(31 downto 0) => TRNG_0_TRNG_DATA_O(31 downto 0),
+      i_trng_done => TRNG_0_TRNG_DONE_O,
+      i_trng_sel => i_trng_sel_1,
+      i_trng_valid => TRNG_0_TRNG_VALID_O,
+      o_trng0_data(31 downto 0) => mayo_trng_arbiter_0_o_trng0_data(31 downto 0),
+      o_trng0_done => mayo_trng_arbiter_0_o_trng0_done,
+      o_trng0_valid => mayo_trng_arbiter_0_o_trng0_valid,
+      o_trng1_data(31 downto 0) => mayo_trng_arbiter_0_o_trng1_data(31 downto 0),
+      o_trng1_done => mayo_trng_arbiter_0_o_trng1_done,
+      o_trng1_valid => mayo_trng_arbiter_0_o_trng1_valid,
+      o_trng_data(31 downto 0) => mayo_trng_arbiter_0_o_trng_data(31 downto 0),
+      o_trng_r => mayo_trng_arbiter_0_o_trng_r,
+      o_trng_w => mayo_trng_arbiter_0_o_trng_w
     );
 end STRUCTURE;
 library IEEE;
@@ -1026,52 +1200,39 @@ entity hash_imp_1FCB8TA is
     BRAMA_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAMA_en : out STD_LOGIC;
     BRAMA_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    bram_sel : in STD_LOGIC;
     clk : in STD_LOGIC;
     i_key_en : in STD_LOGIC;
     i_key_mlen : in STD_LOGIC_VECTOR ( 31 downto 0 );
     i_key_olen : in STD_LOGIC_VECTOR ( 31 downto 0 );
     i_key_read_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     i_key_write_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_sam_en : in STD_LOGIC;
-    i_sam_mlen : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_sam_olen : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_sam_read_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_sam_write_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     o_key_done : out STD_LOGIC;
     o_key_dyn_done : out STD_LOGIC;
-    o_sam_done : out STD_LOGIC;
-    o_sam_dyn_done : out STD_LOGIC;
     rst : in STD_LOGIC
   );
 end hash_imp_1FCB8TA;
 
 architecture STRUCTURE of hash_imp_1FCB8TA is
-  component Mayo_keygen_mayo_hash_arbiter_0_0 is
+  component Mayo_keygen_MAYO_SHAKE_1_0 is
   port (
     rst : in STD_LOGIC;
-    o_en : out STD_LOGIC;
-    o_mlen : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_olen : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_write_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_read_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_done : in STD_LOGIC;
-    i_dyn_done : in STD_LOGIC;
-    i_key_en : in STD_LOGIC;
-    i_key_mlen : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_key_olen : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_key_write_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_key_read_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_key_done : out STD_LOGIC;
-    o_key_dyn_done : out STD_LOGIC;
-    i_sam_en : in STD_LOGIC;
-    i_sam_mlen : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_sam_olen : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_sam_write_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_sam_read_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_sam_done : out STD_LOGIC;
-    o_sam_dyn_done : out STD_LOGIC
+    clk : in STD_LOGIC;
+    en : in STD_LOGIC;
+    mlen : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    olen : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    write_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    read_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dyn_done : out STD_LOGIC;
+    done : out STD_LOGIC;
+    o_control : out STD_LOGIC;
+    BRAMA_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAMA_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAMA_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAMA_en : out STD_LOGIC;
+    BRAMA_dout : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component Mayo_keygen_mayo_hash_arbiter_0_0;
+  end component Mayo_keygen_MAYO_SHAKE_1_0;
   component Mayo_keygen_mayo_hash_bram_arbit_0_0 is
   port (
     bram_sel : in STD_LOGIC;
@@ -1095,30 +1256,6 @@ architecture STRUCTURE of hash_imp_1FCB8TA is
     BRAM1_control : out STD_LOGIC
   );
   end component Mayo_keygen_mayo_hash_bram_arbit_0_0;
-  component Mayo_keygen_MAYO_SHAKE_1_0 is
-  port (
-    rst : in STD_LOGIC;
-    clk : in STD_LOGIC;
-    en : in STD_LOGIC;
-    mlen : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    olen : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    write_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    read_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    dyn_done : out STD_LOGIC;
-    done : out STD_LOGIC;
-    o_control : out STD_LOGIC;
-    BRAMA_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    BRAMA_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAMA_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAMA_en : out STD_LOGIC;
-    BRAMA_dout : in STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component Mayo_keygen_MAYO_SHAKE_1_0;
-  signal AXI_LITE_Mayo_Keygen_0_o_hash_en : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_hash_mlen : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_hash_olen : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_hash_read_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_hash_write_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM0_dout_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAMA_dout_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_SHAKE_1_BRAMA_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1128,15 +1265,12 @@ architecture STRUCTURE of hash_imp_1FCB8TA is
   signal MAYO_SHAKE_1_done : STD_LOGIC;
   signal MAYO_SHAKE_1_dyn_done : STD_LOGIC;
   signal MAYO_SHAKE_1_o_control : STD_LOGIC;
-  signal mayo_hash_arbiter_0_o_en : STD_LOGIC;
-  signal mayo_hash_arbiter_0_o_key_done : STD_LOGIC;
-  signal mayo_hash_arbiter_0_o_key_dyn_done : STD_LOGIC;
-  signal mayo_hash_arbiter_0_o_mlen : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_hash_arbiter_0_o_olen : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_hash_arbiter_0_o_read_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_hash_arbiter_0_o_sam_done : STD_LOGIC;
-  signal mayo_hash_arbiter_0_o_sam_dyn_done : STD_LOGIC;
-  signal mayo_hash_arbiter_0_o_write_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal bram_sel_1 : STD_LOGIC;
+  signal i_key_en_1 : STD_LOGIC;
+  signal i_key_mlen_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal i_key_olen_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal i_key_read_adr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal i_key_write_adr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_hash_bram_arbit_0_BRAM0_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_hash_bram_arbit_0_BRAM0_control : STD_LOGIC;
   signal mayo_hash_bram_arbit_0_BRAM0_din : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -1148,19 +1282,9 @@ architecture STRUCTURE of hash_imp_1FCB8TA is
   signal mayo_hash_bram_arbit_0_BRAM1_en : STD_LOGIC;
   signal mayo_hash_bram_arbit_0_BRAM1_we : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal mayo_hash_bram_arbit_0_hash_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_sample_oil_space_0_o_hash_enable : STD_LOGIC;
-  signal mayo_sample_oil_space_0_o_hash_mlen : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_sample_oil_space_0_o_hash_olen : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_sample_oil_space_0_o_hash_read_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal mayo_sample_oil_space_0_o_hash_write_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal processing_system7_0_FCLK_CLK0 : STD_LOGIC;
   signal rst_ps7_0_100M_peripheral_aresetn : STD_LOGIC;
 begin
-  AXI_LITE_Mayo_Keygen_0_o_hash_en <= i_key_en;
-  AXI_LITE_Mayo_Keygen_0_o_hash_mlen(31 downto 0) <= i_key_mlen(31 downto 0);
-  AXI_LITE_Mayo_Keygen_0_o_hash_olen(31 downto 0) <= i_key_olen(31 downto 0);
-  AXI_LITE_Mayo_Keygen_0_o_hash_read_adr(31 downto 0) <= i_key_read_adr(31 downto 0);
-  AXI_LITE_Mayo_Keygen_0_o_hash_write_adr(31 downto 0) <= i_key_write_adr(31 downto 0);
   BRAM0_addr(31 downto 0) <= mayo_hash_bram_arbit_0_BRAM0_addr(31 downto 0);
   BRAM0_control <= mayo_hash_bram_arbit_0_BRAM0_control;
   BRAM0_din(31 downto 0) <= mayo_hash_bram_arbit_0_BRAM0_din(31 downto 0);
@@ -1173,15 +1297,14 @@ begin
   BRAMA_dout_1(31 downto 0) <= BRAMA_dout(31 downto 0);
   BRAMA_en <= mayo_hash_bram_arbit_0_BRAM1_en;
   BRAMA_we(3 downto 0) <= mayo_hash_bram_arbit_0_BRAM1_we(3 downto 0);
-  mayo_sample_oil_space_0_o_hash_enable <= i_sam_en;
-  mayo_sample_oil_space_0_o_hash_mlen(31 downto 0) <= i_sam_mlen(31 downto 0);
-  mayo_sample_oil_space_0_o_hash_olen(31 downto 0) <= i_sam_olen(31 downto 0);
-  mayo_sample_oil_space_0_o_hash_read_adr(31 downto 0) <= i_sam_read_adr(31 downto 0);
-  mayo_sample_oil_space_0_o_hash_write_adr(31 downto 0) <= i_sam_write_adr(31 downto 0);
-  o_key_done <= mayo_hash_arbiter_0_o_key_done;
-  o_key_dyn_done <= mayo_hash_arbiter_0_o_key_dyn_done;
-  o_sam_done <= mayo_hash_arbiter_0_o_sam_done;
-  o_sam_dyn_done <= mayo_hash_arbiter_0_o_sam_dyn_done;
+  bram_sel_1 <= bram_sel;
+  i_key_en_1 <= i_key_en;
+  i_key_mlen_1(31 downto 0) <= i_key_mlen(31 downto 0);
+  i_key_olen_1(31 downto 0) <= i_key_olen(31 downto 0);
+  i_key_read_adr_1(31 downto 0) <= i_key_read_adr(31 downto 0);
+  i_key_write_adr_1(31 downto 0) <= i_key_write_adr(31 downto 0);
+  o_key_done <= MAYO_SHAKE_1_done;
+  o_key_dyn_done <= MAYO_SHAKE_1_dyn_done;
   processing_system7_0_FCLK_CLK0 <= clk;
   rst_ps7_0_100M_peripheral_aresetn <= rst;
 MAYO_SHAKE_1: component Mayo_keygen_MAYO_SHAKE_1_0
@@ -1194,38 +1317,13 @@ MAYO_SHAKE_1: component Mayo_keygen_MAYO_SHAKE_1_0
       clk => processing_system7_0_FCLK_CLK0,
       done => MAYO_SHAKE_1_done,
       dyn_done => MAYO_SHAKE_1_dyn_done,
-      en => mayo_hash_arbiter_0_o_en,
-      mlen(31 downto 0) => mayo_hash_arbiter_0_o_mlen(31 downto 0),
+      en => i_key_en_1,
+      mlen(31 downto 0) => i_key_mlen_1(31 downto 0),
       o_control => MAYO_SHAKE_1_o_control,
-      olen(31 downto 0) => mayo_hash_arbiter_0_o_olen(31 downto 0),
-      read_adr(31 downto 0) => mayo_hash_arbiter_0_o_read_adr(31 downto 0),
+      olen(31 downto 0) => i_key_olen_1(31 downto 0),
+      read_adr(31 downto 0) => i_key_read_adr_1(31 downto 0),
       rst => rst_ps7_0_100M_peripheral_aresetn,
-      write_adr(31 downto 0) => mayo_hash_arbiter_0_o_write_adr(31 downto 0)
-    );
-mayo_hash_arbiter_0: component Mayo_keygen_mayo_hash_arbiter_0_0
-     port map (
-      i_done => MAYO_SHAKE_1_done,
-      i_dyn_done => MAYO_SHAKE_1_dyn_done,
-      i_key_en => AXI_LITE_Mayo_Keygen_0_o_hash_en,
-      i_key_mlen(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_mlen(31 downto 0),
-      i_key_olen(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_olen(31 downto 0),
-      i_key_read_adr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_read_adr(31 downto 0),
-      i_key_write_adr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_write_adr(31 downto 0),
-      i_sam_en => mayo_sample_oil_space_0_o_hash_enable,
-      i_sam_mlen(31 downto 0) => mayo_sample_oil_space_0_o_hash_mlen(31 downto 0),
-      i_sam_olen(31 downto 0) => mayo_sample_oil_space_0_o_hash_olen(31 downto 0),
-      i_sam_read_adr(31 downto 0) => mayo_sample_oil_space_0_o_hash_read_adr(31 downto 0),
-      i_sam_write_adr(31 downto 0) => mayo_sample_oil_space_0_o_hash_write_adr(31 downto 0),
-      o_en => mayo_hash_arbiter_0_o_en,
-      o_key_done => mayo_hash_arbiter_0_o_key_done,
-      o_key_dyn_done => mayo_hash_arbiter_0_o_key_dyn_done,
-      o_mlen(31 downto 0) => mayo_hash_arbiter_0_o_mlen(31 downto 0),
-      o_olen(31 downto 0) => mayo_hash_arbiter_0_o_olen(31 downto 0),
-      o_read_adr(31 downto 0) => mayo_hash_arbiter_0_o_read_adr(31 downto 0),
-      o_sam_done => mayo_hash_arbiter_0_o_sam_done,
-      o_sam_dyn_done => mayo_hash_arbiter_0_o_sam_dyn_done,
-      o_write_adr(31 downto 0) => mayo_hash_arbiter_0_o_write_adr(31 downto 0),
-      rst => rst_ps7_0_100M_peripheral_aresetn
+      write_adr(31 downto 0) => i_key_write_adr_1(31 downto 0)
     );
 mayo_hash_bram_arbit_0: component Mayo_keygen_mayo_hash_bram_arbit_0_0
      port map (
@@ -1241,7 +1339,7 @@ mayo_hash_bram_arbit_0: component Mayo_keygen_mayo_hash_bram_arbit_0_0
       BRAM1_dout(31 downto 0) => BRAMA_dout_1(31 downto 0),
       BRAM1_en => mayo_hash_bram_arbit_0_BRAM1_en,
       BRAM1_we(3 downto 0) => mayo_hash_bram_arbit_0_BRAM1_we(3 downto 0),
-      bram_sel => '0',
+      bram_sel => bram_sel_1,
       hash_addr(31 downto 0) => MAYO_SHAKE_1_BRAMA_addr(31 downto 0),
       hash_control => MAYO_SHAKE_1_o_control,
       hash_din(31 downto 0) => MAYO_SHAKE_1_BRAMA_din(31 downto 0),
@@ -1255,327 +1353,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity m00_couplers_imp_FZLD13 is
-  port (
-    M_ACLK : in STD_LOGIC;
-    M_ARESETN : in STD_LOGIC;
-    M_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    M_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    M_AXI_arready : in STD_LOGIC;
-    M_AXI_arvalid : out STD_LOGIC;
-    M_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    M_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    M_AXI_awready : in STD_LOGIC;
-    M_AXI_awvalid : out STD_LOGIC;
-    M_AXI_bready : out STD_LOGIC;
-    M_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    M_AXI_bvalid : in STD_LOGIC;
-    M_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    M_AXI_rready : out STD_LOGIC;
-    M_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    M_AXI_rvalid : in STD_LOGIC;
-    M_AXI_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    M_AXI_wready : in STD_LOGIC;
-    M_AXI_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    M_AXI_wvalid : out STD_LOGIC;
-    S_ACLK : in STD_LOGIC;
-    S_ARESETN : in STD_LOGIC;
-    S_AXI_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    S_AXI_arburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    S_AXI_arcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S_AXI_arid : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    S_AXI_arlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    S_AXI_arlock : in STD_LOGIC_VECTOR ( 0 to 0 );
-    S_AXI_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    S_AXI_arqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S_AXI_arready : out STD_LOGIC;
-    S_AXI_arregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S_AXI_arsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    S_AXI_arvalid : in STD_LOGIC;
-    S_AXI_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    S_AXI_awburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    S_AXI_awcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S_AXI_awid : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    S_AXI_awlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    S_AXI_awlock : in STD_LOGIC_VECTOR ( 0 to 0 );
-    S_AXI_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    S_AXI_awqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S_AXI_awready : out STD_LOGIC;
-    S_AXI_awregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S_AXI_awsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    S_AXI_awvalid : in STD_LOGIC;
-    S_AXI_bid : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    S_AXI_bready : in STD_LOGIC;
-    S_AXI_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    S_AXI_bvalid : out STD_LOGIC;
-    S_AXI_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    S_AXI_rid : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    S_AXI_rlast : out STD_LOGIC;
-    S_AXI_rready : in STD_LOGIC;
-    S_AXI_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    S_AXI_rvalid : out STD_LOGIC;
-    S_AXI_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    S_AXI_wlast : in STD_LOGIC;
-    S_AXI_wready : out STD_LOGIC;
-    S_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    S_AXI_wvalid : in STD_LOGIC
-  );
-end m00_couplers_imp_FZLD13;
-
-architecture STRUCTURE of m00_couplers_imp_FZLD13 is
-  component Mayo_keygen_auto_pc_0 is
-  port (
-    aclk : in STD_LOGIC;
-    aresetn : in STD_LOGIC;
-    s_axi_awid : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    s_axi_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_awlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    s_axi_awsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s_axi_awburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_awlock : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axi_awcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s_axi_awregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_awqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_awvalid : in STD_LOGIC;
-    s_axi_awready : out STD_LOGIC;
-    s_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_wlast : in STD_LOGIC;
-    s_axi_wvalid : in STD_LOGIC;
-    s_axi_wready : out STD_LOGIC;
-    s_axi_bid : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    s_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_bvalid : out STD_LOGIC;
-    s_axi_bready : in STD_LOGIC;
-    s_axi_arid : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    s_axi_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_arlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    s_axi_arsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s_axi_arburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_arlock : in STD_LOGIC_VECTOR ( 0 to 0 );
-    s_axi_arcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s_axi_arregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_arqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_arvalid : in STD_LOGIC;
-    s_axi_arready : out STD_LOGIC;
-    s_axi_rid : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    s_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_rlast : out STD_LOGIC;
-    s_axi_rvalid : out STD_LOGIC;
-    s_axi_rready : in STD_LOGIC;
-    m_axi_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    m_axi_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    m_axi_awvalid : out STD_LOGIC;
-    m_axi_awready : in STD_LOGIC;
-    m_axi_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    m_axi_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    m_axi_wvalid : out STD_LOGIC;
-    m_axi_wready : in STD_LOGIC;
-    m_axi_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    m_axi_bvalid : in STD_LOGIC;
-    m_axi_bready : out STD_LOGIC;
-    m_axi_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    m_axi_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    m_axi_arvalid : out STD_LOGIC;
-    m_axi_arready : in STD_LOGIC;
-    m_axi_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    m_axi_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    m_axi_rvalid : in STD_LOGIC;
-    m_axi_rready : out STD_LOGIC
-  );
-  end component Mayo_keygen_auto_pc_0;
-  signal S_ACLK_1 : STD_LOGIC;
-  signal S_ARESETN_1 : STD_LOGIC;
-  signal auto_pc_to_m00_couplers_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal auto_pc_to_m00_couplers_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal auto_pc_to_m00_couplers_ARREADY : STD_LOGIC;
-  signal auto_pc_to_m00_couplers_ARVALID : STD_LOGIC;
-  signal auto_pc_to_m00_couplers_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal auto_pc_to_m00_couplers_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal auto_pc_to_m00_couplers_AWREADY : STD_LOGIC;
-  signal auto_pc_to_m00_couplers_AWVALID : STD_LOGIC;
-  signal auto_pc_to_m00_couplers_BREADY : STD_LOGIC;
-  signal auto_pc_to_m00_couplers_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal auto_pc_to_m00_couplers_BVALID : STD_LOGIC;
-  signal auto_pc_to_m00_couplers_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal auto_pc_to_m00_couplers_RREADY : STD_LOGIC;
-  signal auto_pc_to_m00_couplers_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal auto_pc_to_m00_couplers_RVALID : STD_LOGIC;
-  signal auto_pc_to_m00_couplers_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal auto_pc_to_m00_couplers_WREADY : STD_LOGIC;
-  signal auto_pc_to_m00_couplers_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal auto_pc_to_m00_couplers_WVALID : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m00_couplers_to_auto_pc_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal m00_couplers_to_auto_pc_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m00_couplers_to_auto_pc_ARID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m00_couplers_to_auto_pc_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal m00_couplers_to_auto_pc_ARLOCK : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal m00_couplers_to_auto_pc_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal m00_couplers_to_auto_pc_ARQOS : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m00_couplers_to_auto_pc_ARREADY : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_ARREGION : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m00_couplers_to_auto_pc_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal m00_couplers_to_auto_pc_ARVALID : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m00_couplers_to_auto_pc_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal m00_couplers_to_auto_pc_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m00_couplers_to_auto_pc_AWID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m00_couplers_to_auto_pc_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal m00_couplers_to_auto_pc_AWLOCK : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal m00_couplers_to_auto_pc_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal m00_couplers_to_auto_pc_AWQOS : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m00_couplers_to_auto_pc_AWREADY : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_AWREGION : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m00_couplers_to_auto_pc_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal m00_couplers_to_auto_pc_AWVALID : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m00_couplers_to_auto_pc_BREADY : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal m00_couplers_to_auto_pc_BVALID : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m00_couplers_to_auto_pc_RID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m00_couplers_to_auto_pc_RLAST : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_RREADY : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal m00_couplers_to_auto_pc_RVALID : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m00_couplers_to_auto_pc_WLAST : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_WREADY : STD_LOGIC;
-  signal m00_couplers_to_auto_pc_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m00_couplers_to_auto_pc_WVALID : STD_LOGIC;
-begin
-  M_AXI_araddr(31 downto 0) <= auto_pc_to_m00_couplers_ARADDR(31 downto 0);
-  M_AXI_arprot(2 downto 0) <= auto_pc_to_m00_couplers_ARPROT(2 downto 0);
-  M_AXI_arvalid <= auto_pc_to_m00_couplers_ARVALID;
-  M_AXI_awaddr(31 downto 0) <= auto_pc_to_m00_couplers_AWADDR(31 downto 0);
-  M_AXI_awprot(2 downto 0) <= auto_pc_to_m00_couplers_AWPROT(2 downto 0);
-  M_AXI_awvalid <= auto_pc_to_m00_couplers_AWVALID;
-  M_AXI_bready <= auto_pc_to_m00_couplers_BREADY;
-  M_AXI_rready <= auto_pc_to_m00_couplers_RREADY;
-  M_AXI_wdata(31 downto 0) <= auto_pc_to_m00_couplers_WDATA(31 downto 0);
-  M_AXI_wstrb(3 downto 0) <= auto_pc_to_m00_couplers_WSTRB(3 downto 0);
-  M_AXI_wvalid <= auto_pc_to_m00_couplers_WVALID;
-  S_ACLK_1 <= S_ACLK;
-  S_ARESETN_1 <= S_ARESETN;
-  S_AXI_arready <= m00_couplers_to_auto_pc_ARREADY;
-  S_AXI_awready <= m00_couplers_to_auto_pc_AWREADY;
-  S_AXI_bid(11 downto 0) <= m00_couplers_to_auto_pc_BID(11 downto 0);
-  S_AXI_bresp(1 downto 0) <= m00_couplers_to_auto_pc_BRESP(1 downto 0);
-  S_AXI_bvalid <= m00_couplers_to_auto_pc_BVALID;
-  S_AXI_rdata(31 downto 0) <= m00_couplers_to_auto_pc_RDATA(31 downto 0);
-  S_AXI_rid(11 downto 0) <= m00_couplers_to_auto_pc_RID(11 downto 0);
-  S_AXI_rlast <= m00_couplers_to_auto_pc_RLAST;
-  S_AXI_rresp(1 downto 0) <= m00_couplers_to_auto_pc_RRESP(1 downto 0);
-  S_AXI_rvalid <= m00_couplers_to_auto_pc_RVALID;
-  S_AXI_wready <= m00_couplers_to_auto_pc_WREADY;
-  auto_pc_to_m00_couplers_ARREADY <= M_AXI_arready;
-  auto_pc_to_m00_couplers_AWREADY <= M_AXI_awready;
-  auto_pc_to_m00_couplers_BRESP(1 downto 0) <= M_AXI_bresp(1 downto 0);
-  auto_pc_to_m00_couplers_BVALID <= M_AXI_bvalid;
-  auto_pc_to_m00_couplers_RDATA(31 downto 0) <= M_AXI_rdata(31 downto 0);
-  auto_pc_to_m00_couplers_RRESP(1 downto 0) <= M_AXI_rresp(1 downto 0);
-  auto_pc_to_m00_couplers_RVALID <= M_AXI_rvalid;
-  auto_pc_to_m00_couplers_WREADY <= M_AXI_wready;
-  m00_couplers_to_auto_pc_ARADDR(31 downto 0) <= S_AXI_araddr(31 downto 0);
-  m00_couplers_to_auto_pc_ARBURST(1 downto 0) <= S_AXI_arburst(1 downto 0);
-  m00_couplers_to_auto_pc_ARCACHE(3 downto 0) <= S_AXI_arcache(3 downto 0);
-  m00_couplers_to_auto_pc_ARID(11 downto 0) <= S_AXI_arid(11 downto 0);
-  m00_couplers_to_auto_pc_ARLEN(7 downto 0) <= S_AXI_arlen(7 downto 0);
-  m00_couplers_to_auto_pc_ARLOCK(0) <= S_AXI_arlock(0);
-  m00_couplers_to_auto_pc_ARPROT(2 downto 0) <= S_AXI_arprot(2 downto 0);
-  m00_couplers_to_auto_pc_ARQOS(3 downto 0) <= S_AXI_arqos(3 downto 0);
-  m00_couplers_to_auto_pc_ARREGION(3 downto 0) <= S_AXI_arregion(3 downto 0);
-  m00_couplers_to_auto_pc_ARSIZE(2 downto 0) <= S_AXI_arsize(2 downto 0);
-  m00_couplers_to_auto_pc_ARVALID <= S_AXI_arvalid;
-  m00_couplers_to_auto_pc_AWADDR(31 downto 0) <= S_AXI_awaddr(31 downto 0);
-  m00_couplers_to_auto_pc_AWBURST(1 downto 0) <= S_AXI_awburst(1 downto 0);
-  m00_couplers_to_auto_pc_AWCACHE(3 downto 0) <= S_AXI_awcache(3 downto 0);
-  m00_couplers_to_auto_pc_AWID(11 downto 0) <= S_AXI_awid(11 downto 0);
-  m00_couplers_to_auto_pc_AWLEN(7 downto 0) <= S_AXI_awlen(7 downto 0);
-  m00_couplers_to_auto_pc_AWLOCK(0) <= S_AXI_awlock(0);
-  m00_couplers_to_auto_pc_AWPROT(2 downto 0) <= S_AXI_awprot(2 downto 0);
-  m00_couplers_to_auto_pc_AWQOS(3 downto 0) <= S_AXI_awqos(3 downto 0);
-  m00_couplers_to_auto_pc_AWREGION(3 downto 0) <= S_AXI_awregion(3 downto 0);
-  m00_couplers_to_auto_pc_AWSIZE(2 downto 0) <= S_AXI_awsize(2 downto 0);
-  m00_couplers_to_auto_pc_AWVALID <= S_AXI_awvalid;
-  m00_couplers_to_auto_pc_BREADY <= S_AXI_bready;
-  m00_couplers_to_auto_pc_RREADY <= S_AXI_rready;
-  m00_couplers_to_auto_pc_WDATA(31 downto 0) <= S_AXI_wdata(31 downto 0);
-  m00_couplers_to_auto_pc_WLAST <= S_AXI_wlast;
-  m00_couplers_to_auto_pc_WSTRB(3 downto 0) <= S_AXI_wstrb(3 downto 0);
-  m00_couplers_to_auto_pc_WVALID <= S_AXI_wvalid;
-auto_pc: component Mayo_keygen_auto_pc_0
-     port map (
-      aclk => S_ACLK_1,
-      aresetn => S_ARESETN_1,
-      m_axi_araddr(31 downto 0) => auto_pc_to_m00_couplers_ARADDR(31 downto 0),
-      m_axi_arprot(2 downto 0) => auto_pc_to_m00_couplers_ARPROT(2 downto 0),
-      m_axi_arready => auto_pc_to_m00_couplers_ARREADY,
-      m_axi_arvalid => auto_pc_to_m00_couplers_ARVALID,
-      m_axi_awaddr(31 downto 0) => auto_pc_to_m00_couplers_AWADDR(31 downto 0),
-      m_axi_awprot(2 downto 0) => auto_pc_to_m00_couplers_AWPROT(2 downto 0),
-      m_axi_awready => auto_pc_to_m00_couplers_AWREADY,
-      m_axi_awvalid => auto_pc_to_m00_couplers_AWVALID,
-      m_axi_bready => auto_pc_to_m00_couplers_BREADY,
-      m_axi_bresp(1 downto 0) => auto_pc_to_m00_couplers_BRESP(1 downto 0),
-      m_axi_bvalid => auto_pc_to_m00_couplers_BVALID,
-      m_axi_rdata(31 downto 0) => auto_pc_to_m00_couplers_RDATA(31 downto 0),
-      m_axi_rready => auto_pc_to_m00_couplers_RREADY,
-      m_axi_rresp(1 downto 0) => auto_pc_to_m00_couplers_RRESP(1 downto 0),
-      m_axi_rvalid => auto_pc_to_m00_couplers_RVALID,
-      m_axi_wdata(31 downto 0) => auto_pc_to_m00_couplers_WDATA(31 downto 0),
-      m_axi_wready => auto_pc_to_m00_couplers_WREADY,
-      m_axi_wstrb(3 downto 0) => auto_pc_to_m00_couplers_WSTRB(3 downto 0),
-      m_axi_wvalid => auto_pc_to_m00_couplers_WVALID,
-      s_axi_araddr(31 downto 0) => m00_couplers_to_auto_pc_ARADDR(31 downto 0),
-      s_axi_arburst(1 downto 0) => m00_couplers_to_auto_pc_ARBURST(1 downto 0),
-      s_axi_arcache(3 downto 0) => m00_couplers_to_auto_pc_ARCACHE(3 downto 0),
-      s_axi_arid(11 downto 0) => m00_couplers_to_auto_pc_ARID(11 downto 0),
-      s_axi_arlen(7 downto 0) => m00_couplers_to_auto_pc_ARLEN(7 downto 0),
-      s_axi_arlock(0) => m00_couplers_to_auto_pc_ARLOCK(0),
-      s_axi_arprot(2 downto 0) => m00_couplers_to_auto_pc_ARPROT(2 downto 0),
-      s_axi_arqos(3 downto 0) => m00_couplers_to_auto_pc_ARQOS(3 downto 0),
-      s_axi_arready => m00_couplers_to_auto_pc_ARREADY,
-      s_axi_arregion(3 downto 0) => m00_couplers_to_auto_pc_ARREGION(3 downto 0),
-      s_axi_arsize(2 downto 0) => m00_couplers_to_auto_pc_ARSIZE(2 downto 0),
-      s_axi_arvalid => m00_couplers_to_auto_pc_ARVALID,
-      s_axi_awaddr(31 downto 0) => m00_couplers_to_auto_pc_AWADDR(31 downto 0),
-      s_axi_awburst(1 downto 0) => m00_couplers_to_auto_pc_AWBURST(1 downto 0),
-      s_axi_awcache(3 downto 0) => m00_couplers_to_auto_pc_AWCACHE(3 downto 0),
-      s_axi_awid(11 downto 0) => m00_couplers_to_auto_pc_AWID(11 downto 0),
-      s_axi_awlen(7 downto 0) => m00_couplers_to_auto_pc_AWLEN(7 downto 0),
-      s_axi_awlock(0) => m00_couplers_to_auto_pc_AWLOCK(0),
-      s_axi_awprot(2 downto 0) => m00_couplers_to_auto_pc_AWPROT(2 downto 0),
-      s_axi_awqos(3 downto 0) => m00_couplers_to_auto_pc_AWQOS(3 downto 0),
-      s_axi_awready => m00_couplers_to_auto_pc_AWREADY,
-      s_axi_awregion(3 downto 0) => m00_couplers_to_auto_pc_AWREGION(3 downto 0),
-      s_axi_awsize(2 downto 0) => m00_couplers_to_auto_pc_AWSIZE(2 downto 0),
-      s_axi_awvalid => m00_couplers_to_auto_pc_AWVALID,
-      s_axi_bid(11 downto 0) => m00_couplers_to_auto_pc_BID(11 downto 0),
-      s_axi_bready => m00_couplers_to_auto_pc_BREADY,
-      s_axi_bresp(1 downto 0) => m00_couplers_to_auto_pc_BRESP(1 downto 0),
-      s_axi_bvalid => m00_couplers_to_auto_pc_BVALID,
-      s_axi_rdata(31 downto 0) => m00_couplers_to_auto_pc_RDATA(31 downto 0),
-      s_axi_rid(11 downto 0) => m00_couplers_to_auto_pc_RID(11 downto 0),
-      s_axi_rlast => m00_couplers_to_auto_pc_RLAST,
-      s_axi_rready => m00_couplers_to_auto_pc_RREADY,
-      s_axi_rresp(1 downto 0) => m00_couplers_to_auto_pc_RRESP(1 downto 0),
-      s_axi_rvalid => m00_couplers_to_auto_pc_RVALID,
-      s_axi_wdata(31 downto 0) => m00_couplers_to_auto_pc_WDATA(31 downto 0),
-      s_axi_wlast => m00_couplers_to_auto_pc_WLAST,
-      s_axi_wready => m00_couplers_to_auto_pc_WREADY,
-      s_axi_wstrb(3 downto 0) => m00_couplers_to_auto_pc_WSTRB(3 downto 0),
-      s_axi_wvalid => m00_couplers_to_auto_pc_WVALID
-    );
-end STRUCTURE;
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-library UNISIM;
-use UNISIM.VCOMPONENTS.ALL;
-entity m01_couplers_imp_1A4U015 is
   port (
     M_ACLK : in STD_LOGIC;
     M_ARESETN : in STD_LOGIC;
@@ -1652,115 +1429,436 @@ entity m01_couplers_imp_1A4U015 is
     S_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
     S_AXI_wvalid : in STD_LOGIC
   );
+end m00_couplers_imp_FZLD13;
+
+architecture STRUCTURE of m00_couplers_imp_FZLD13 is
+  signal m00_couplers_to_m00_couplers_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m00_couplers_to_m00_couplers_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal m00_couplers_to_m00_couplers_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m00_couplers_to_m00_couplers_ARID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m00_couplers_to_m00_couplers_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal m00_couplers_to_m00_couplers_ARLOCK : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal m00_couplers_to_m00_couplers_ARREADY : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal m00_couplers_to_m00_couplers_ARVALID : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m00_couplers_to_m00_couplers_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal m00_couplers_to_m00_couplers_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m00_couplers_to_m00_couplers_AWID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m00_couplers_to_m00_couplers_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal m00_couplers_to_m00_couplers_AWLOCK : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal m00_couplers_to_m00_couplers_AWREADY : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal m00_couplers_to_m00_couplers_AWVALID : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m00_couplers_to_m00_couplers_BREADY : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal m00_couplers_to_m00_couplers_BVALID : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m00_couplers_to_m00_couplers_RID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m00_couplers_to_m00_couplers_RLAST : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_RREADY : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal m00_couplers_to_m00_couplers_RVALID : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m00_couplers_to_m00_couplers_WLAST : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_WREADY : STD_LOGIC;
+  signal m00_couplers_to_m00_couplers_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m00_couplers_to_m00_couplers_WVALID : STD_LOGIC;
+begin
+  M_AXI_araddr(31 downto 0) <= m00_couplers_to_m00_couplers_ARADDR(31 downto 0);
+  M_AXI_arburst(1 downto 0) <= m00_couplers_to_m00_couplers_ARBURST(1 downto 0);
+  M_AXI_arcache(3 downto 0) <= m00_couplers_to_m00_couplers_ARCACHE(3 downto 0);
+  M_AXI_arid(11 downto 0) <= m00_couplers_to_m00_couplers_ARID(11 downto 0);
+  M_AXI_arlen(7 downto 0) <= m00_couplers_to_m00_couplers_ARLEN(7 downto 0);
+  M_AXI_arlock <= m00_couplers_to_m00_couplers_ARLOCK;
+  M_AXI_arprot(2 downto 0) <= m00_couplers_to_m00_couplers_ARPROT(2 downto 0);
+  M_AXI_arsize(2 downto 0) <= m00_couplers_to_m00_couplers_ARSIZE(2 downto 0);
+  M_AXI_arvalid <= m00_couplers_to_m00_couplers_ARVALID;
+  M_AXI_awaddr(31 downto 0) <= m00_couplers_to_m00_couplers_AWADDR(31 downto 0);
+  M_AXI_awburst(1 downto 0) <= m00_couplers_to_m00_couplers_AWBURST(1 downto 0);
+  M_AXI_awcache(3 downto 0) <= m00_couplers_to_m00_couplers_AWCACHE(3 downto 0);
+  M_AXI_awid(11 downto 0) <= m00_couplers_to_m00_couplers_AWID(11 downto 0);
+  M_AXI_awlen(7 downto 0) <= m00_couplers_to_m00_couplers_AWLEN(7 downto 0);
+  M_AXI_awlock <= m00_couplers_to_m00_couplers_AWLOCK;
+  M_AXI_awprot(2 downto 0) <= m00_couplers_to_m00_couplers_AWPROT(2 downto 0);
+  M_AXI_awsize(2 downto 0) <= m00_couplers_to_m00_couplers_AWSIZE(2 downto 0);
+  M_AXI_awvalid <= m00_couplers_to_m00_couplers_AWVALID;
+  M_AXI_bready <= m00_couplers_to_m00_couplers_BREADY;
+  M_AXI_rready <= m00_couplers_to_m00_couplers_RREADY;
+  M_AXI_wdata(31 downto 0) <= m00_couplers_to_m00_couplers_WDATA(31 downto 0);
+  M_AXI_wlast <= m00_couplers_to_m00_couplers_WLAST;
+  M_AXI_wstrb(3 downto 0) <= m00_couplers_to_m00_couplers_WSTRB(3 downto 0);
+  M_AXI_wvalid <= m00_couplers_to_m00_couplers_WVALID;
+  S_AXI_arready <= m00_couplers_to_m00_couplers_ARREADY;
+  S_AXI_awready <= m00_couplers_to_m00_couplers_AWREADY;
+  S_AXI_bid(11 downto 0) <= m00_couplers_to_m00_couplers_BID(11 downto 0);
+  S_AXI_bresp(1 downto 0) <= m00_couplers_to_m00_couplers_BRESP(1 downto 0);
+  S_AXI_bvalid <= m00_couplers_to_m00_couplers_BVALID;
+  S_AXI_rdata(31 downto 0) <= m00_couplers_to_m00_couplers_RDATA(31 downto 0);
+  S_AXI_rid(11 downto 0) <= m00_couplers_to_m00_couplers_RID(11 downto 0);
+  S_AXI_rlast <= m00_couplers_to_m00_couplers_RLAST;
+  S_AXI_rresp(1 downto 0) <= m00_couplers_to_m00_couplers_RRESP(1 downto 0);
+  S_AXI_rvalid <= m00_couplers_to_m00_couplers_RVALID;
+  S_AXI_wready <= m00_couplers_to_m00_couplers_WREADY;
+  m00_couplers_to_m00_couplers_ARADDR(31 downto 0) <= S_AXI_araddr(31 downto 0);
+  m00_couplers_to_m00_couplers_ARBURST(1 downto 0) <= S_AXI_arburst(1 downto 0);
+  m00_couplers_to_m00_couplers_ARCACHE(3 downto 0) <= S_AXI_arcache(3 downto 0);
+  m00_couplers_to_m00_couplers_ARID(11 downto 0) <= S_AXI_arid(11 downto 0);
+  m00_couplers_to_m00_couplers_ARLEN(7 downto 0) <= S_AXI_arlen(7 downto 0);
+  m00_couplers_to_m00_couplers_ARLOCK <= S_AXI_arlock;
+  m00_couplers_to_m00_couplers_ARPROT(2 downto 0) <= S_AXI_arprot(2 downto 0);
+  m00_couplers_to_m00_couplers_ARREADY <= M_AXI_arready;
+  m00_couplers_to_m00_couplers_ARSIZE(2 downto 0) <= S_AXI_arsize(2 downto 0);
+  m00_couplers_to_m00_couplers_ARVALID <= S_AXI_arvalid;
+  m00_couplers_to_m00_couplers_AWADDR(31 downto 0) <= S_AXI_awaddr(31 downto 0);
+  m00_couplers_to_m00_couplers_AWBURST(1 downto 0) <= S_AXI_awburst(1 downto 0);
+  m00_couplers_to_m00_couplers_AWCACHE(3 downto 0) <= S_AXI_awcache(3 downto 0);
+  m00_couplers_to_m00_couplers_AWID(11 downto 0) <= S_AXI_awid(11 downto 0);
+  m00_couplers_to_m00_couplers_AWLEN(7 downto 0) <= S_AXI_awlen(7 downto 0);
+  m00_couplers_to_m00_couplers_AWLOCK <= S_AXI_awlock;
+  m00_couplers_to_m00_couplers_AWPROT(2 downto 0) <= S_AXI_awprot(2 downto 0);
+  m00_couplers_to_m00_couplers_AWREADY <= M_AXI_awready;
+  m00_couplers_to_m00_couplers_AWSIZE(2 downto 0) <= S_AXI_awsize(2 downto 0);
+  m00_couplers_to_m00_couplers_AWVALID <= S_AXI_awvalid;
+  m00_couplers_to_m00_couplers_BID(11 downto 0) <= M_AXI_bid(11 downto 0);
+  m00_couplers_to_m00_couplers_BREADY <= S_AXI_bready;
+  m00_couplers_to_m00_couplers_BRESP(1 downto 0) <= M_AXI_bresp(1 downto 0);
+  m00_couplers_to_m00_couplers_BVALID <= M_AXI_bvalid;
+  m00_couplers_to_m00_couplers_RDATA(31 downto 0) <= M_AXI_rdata(31 downto 0);
+  m00_couplers_to_m00_couplers_RID(11 downto 0) <= M_AXI_rid(11 downto 0);
+  m00_couplers_to_m00_couplers_RLAST <= M_AXI_rlast;
+  m00_couplers_to_m00_couplers_RREADY <= S_AXI_rready;
+  m00_couplers_to_m00_couplers_RRESP(1 downto 0) <= M_AXI_rresp(1 downto 0);
+  m00_couplers_to_m00_couplers_RVALID <= M_AXI_rvalid;
+  m00_couplers_to_m00_couplers_WDATA(31 downto 0) <= S_AXI_wdata(31 downto 0);
+  m00_couplers_to_m00_couplers_WLAST <= S_AXI_wlast;
+  m00_couplers_to_m00_couplers_WREADY <= M_AXI_wready;
+  m00_couplers_to_m00_couplers_WSTRB(3 downto 0) <= S_AXI_wstrb(3 downto 0);
+  m00_couplers_to_m00_couplers_WVALID <= S_AXI_wvalid;
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity m01_couplers_imp_1A4U015 is
+  port (
+    M_ACLK : in STD_LOGIC;
+    M_ARESETN : in STD_LOGIC;
+    M_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    M_AXI_arready : in STD_LOGIC;
+    M_AXI_arvalid : out STD_LOGIC;
+    M_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    M_AXI_awready : in STD_LOGIC;
+    M_AXI_awvalid : out STD_LOGIC;
+    M_AXI_bready : out STD_LOGIC;
+    M_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    M_AXI_bvalid : in STD_LOGIC;
+    M_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    M_AXI_rready : out STD_LOGIC;
+    M_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    M_AXI_rvalid : in STD_LOGIC;
+    M_AXI_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M_AXI_wready : in STD_LOGIC;
+    M_AXI_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    M_AXI_wvalid : out STD_LOGIC;
+    S_ACLK : in STD_LOGIC;
+    S_ARESETN : in STD_LOGIC;
+    S_AXI_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S_AXI_arburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    S_AXI_arcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_arid : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    S_AXI_arlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    S_AXI_arlock : in STD_LOGIC_VECTOR ( 0 to 0 );
+    S_AXI_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S_AXI_arqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_arready : out STD_LOGIC;
+    S_AXI_arregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_arsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S_AXI_arvalid : in STD_LOGIC;
+    S_AXI_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S_AXI_awburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    S_AXI_awcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_awid : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    S_AXI_awlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    S_AXI_awlock : in STD_LOGIC_VECTOR ( 0 to 0 );
+    S_AXI_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S_AXI_awqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_awready : out STD_LOGIC;
+    S_AXI_awregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_awsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    S_AXI_awvalid : in STD_LOGIC;
+    S_AXI_bid : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    S_AXI_bready : in STD_LOGIC;
+    S_AXI_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S_AXI_bvalid : out STD_LOGIC;
+    S_AXI_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    S_AXI_rid : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    S_AXI_rlast : out STD_LOGIC;
+    S_AXI_rready : in STD_LOGIC;
+    S_AXI_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    S_AXI_rvalid : out STD_LOGIC;
+    S_AXI_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    S_AXI_wlast : in STD_LOGIC;
+    S_AXI_wready : out STD_LOGIC;
+    S_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    S_AXI_wvalid : in STD_LOGIC
+  );
 end m01_couplers_imp_1A4U015;
 
 architecture STRUCTURE of m01_couplers_imp_1A4U015 is
-  signal m01_couplers_to_m01_couplers_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m01_couplers_to_m01_couplers_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal m01_couplers_to_m01_couplers_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m01_couplers_to_m01_couplers_ARID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m01_couplers_to_m01_couplers_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal m01_couplers_to_m01_couplers_ARLOCK : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal m01_couplers_to_m01_couplers_ARREADY : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal m01_couplers_to_m01_couplers_ARVALID : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m01_couplers_to_m01_couplers_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal m01_couplers_to_m01_couplers_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m01_couplers_to_m01_couplers_AWID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m01_couplers_to_m01_couplers_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal m01_couplers_to_m01_couplers_AWLOCK : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal m01_couplers_to_m01_couplers_AWREADY : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal m01_couplers_to_m01_couplers_AWVALID : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m01_couplers_to_m01_couplers_BREADY : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal m01_couplers_to_m01_couplers_BVALID : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m01_couplers_to_m01_couplers_RID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m01_couplers_to_m01_couplers_RLAST : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_RREADY : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal m01_couplers_to_m01_couplers_RVALID : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m01_couplers_to_m01_couplers_WLAST : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_WREADY : STD_LOGIC;
-  signal m01_couplers_to_m01_couplers_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m01_couplers_to_m01_couplers_WVALID : STD_LOGIC;
+  component Mayo_keygen_auto_pc_0 is
+  port (
+    aclk : in STD_LOGIC;
+    aresetn : in STD_LOGIC;
+    s_axi_awid : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    s_axi_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_awlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    s_axi_awsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s_axi_awburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_awlock : in STD_LOGIC_VECTOR ( 0 to 0 );
+    s_axi_awcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s_axi_awregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_awqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_awvalid : in STD_LOGIC;
+    s_axi_awready : out STD_LOGIC;
+    s_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_wlast : in STD_LOGIC;
+    s_axi_wvalid : in STD_LOGIC;
+    s_axi_wready : out STD_LOGIC;
+    s_axi_bid : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    s_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_bvalid : out STD_LOGIC;
+    s_axi_bready : in STD_LOGIC;
+    s_axi_arid : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    s_axi_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_arlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    s_axi_arsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s_axi_arburst : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_arlock : in STD_LOGIC_VECTOR ( 0 to 0 );
+    s_axi_arcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s_axi_arregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_arqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_arvalid : in STD_LOGIC;
+    s_axi_arready : out STD_LOGIC;
+    s_axi_rid : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    s_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_rlast : out STD_LOGIC;
+    s_axi_rvalid : out STD_LOGIC;
+    s_axi_rready : in STD_LOGIC;
+    m_axi_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    m_axi_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    m_axi_awvalid : out STD_LOGIC;
+    m_axi_awready : in STD_LOGIC;
+    m_axi_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    m_axi_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    m_axi_wvalid : out STD_LOGIC;
+    m_axi_wready : in STD_LOGIC;
+    m_axi_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    m_axi_bvalid : in STD_LOGIC;
+    m_axi_bready : out STD_LOGIC;
+    m_axi_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    m_axi_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    m_axi_arvalid : out STD_LOGIC;
+    m_axi_arready : in STD_LOGIC;
+    m_axi_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    m_axi_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    m_axi_rvalid : in STD_LOGIC;
+    m_axi_rready : out STD_LOGIC
+  );
+  end component Mayo_keygen_auto_pc_0;
+  signal S_ACLK_1 : STD_LOGIC;
+  signal S_ARESETN_1 : STD_LOGIC;
+  signal auto_pc_to_m01_couplers_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal auto_pc_to_m01_couplers_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal auto_pc_to_m01_couplers_ARREADY : STD_LOGIC;
+  signal auto_pc_to_m01_couplers_ARVALID : STD_LOGIC;
+  signal auto_pc_to_m01_couplers_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal auto_pc_to_m01_couplers_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal auto_pc_to_m01_couplers_AWREADY : STD_LOGIC;
+  signal auto_pc_to_m01_couplers_AWVALID : STD_LOGIC;
+  signal auto_pc_to_m01_couplers_BREADY : STD_LOGIC;
+  signal auto_pc_to_m01_couplers_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal auto_pc_to_m01_couplers_BVALID : STD_LOGIC;
+  signal auto_pc_to_m01_couplers_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal auto_pc_to_m01_couplers_RREADY : STD_LOGIC;
+  signal auto_pc_to_m01_couplers_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal auto_pc_to_m01_couplers_RVALID : STD_LOGIC;
+  signal auto_pc_to_m01_couplers_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal auto_pc_to_m01_couplers_WREADY : STD_LOGIC;
+  signal auto_pc_to_m01_couplers_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal auto_pc_to_m01_couplers_WVALID : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m01_couplers_to_auto_pc_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal m01_couplers_to_auto_pc_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m01_couplers_to_auto_pc_ARID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m01_couplers_to_auto_pc_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal m01_couplers_to_auto_pc_ARLOCK : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal m01_couplers_to_auto_pc_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal m01_couplers_to_auto_pc_ARQOS : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m01_couplers_to_auto_pc_ARREADY : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_ARREGION : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m01_couplers_to_auto_pc_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal m01_couplers_to_auto_pc_ARVALID : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m01_couplers_to_auto_pc_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal m01_couplers_to_auto_pc_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m01_couplers_to_auto_pc_AWID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m01_couplers_to_auto_pc_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal m01_couplers_to_auto_pc_AWLOCK : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal m01_couplers_to_auto_pc_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal m01_couplers_to_auto_pc_AWQOS : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m01_couplers_to_auto_pc_AWREADY : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_AWREGION : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m01_couplers_to_auto_pc_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
+  signal m01_couplers_to_auto_pc_AWVALID : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m01_couplers_to_auto_pc_BREADY : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal m01_couplers_to_auto_pc_BVALID : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m01_couplers_to_auto_pc_RID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m01_couplers_to_auto_pc_RLAST : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_RREADY : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal m01_couplers_to_auto_pc_RVALID : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m01_couplers_to_auto_pc_WLAST : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_WREADY : STD_LOGIC;
+  signal m01_couplers_to_auto_pc_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m01_couplers_to_auto_pc_WVALID : STD_LOGIC;
 begin
-  M_AXI_araddr(31 downto 0) <= m01_couplers_to_m01_couplers_ARADDR(31 downto 0);
-  M_AXI_arburst(1 downto 0) <= m01_couplers_to_m01_couplers_ARBURST(1 downto 0);
-  M_AXI_arcache(3 downto 0) <= m01_couplers_to_m01_couplers_ARCACHE(3 downto 0);
-  M_AXI_arid(11 downto 0) <= m01_couplers_to_m01_couplers_ARID(11 downto 0);
-  M_AXI_arlen(7 downto 0) <= m01_couplers_to_m01_couplers_ARLEN(7 downto 0);
-  M_AXI_arlock <= m01_couplers_to_m01_couplers_ARLOCK;
-  M_AXI_arprot(2 downto 0) <= m01_couplers_to_m01_couplers_ARPROT(2 downto 0);
-  M_AXI_arsize(2 downto 0) <= m01_couplers_to_m01_couplers_ARSIZE(2 downto 0);
-  M_AXI_arvalid <= m01_couplers_to_m01_couplers_ARVALID;
-  M_AXI_awaddr(31 downto 0) <= m01_couplers_to_m01_couplers_AWADDR(31 downto 0);
-  M_AXI_awburst(1 downto 0) <= m01_couplers_to_m01_couplers_AWBURST(1 downto 0);
-  M_AXI_awcache(3 downto 0) <= m01_couplers_to_m01_couplers_AWCACHE(3 downto 0);
-  M_AXI_awid(11 downto 0) <= m01_couplers_to_m01_couplers_AWID(11 downto 0);
-  M_AXI_awlen(7 downto 0) <= m01_couplers_to_m01_couplers_AWLEN(7 downto 0);
-  M_AXI_awlock <= m01_couplers_to_m01_couplers_AWLOCK;
-  M_AXI_awprot(2 downto 0) <= m01_couplers_to_m01_couplers_AWPROT(2 downto 0);
-  M_AXI_awsize(2 downto 0) <= m01_couplers_to_m01_couplers_AWSIZE(2 downto 0);
-  M_AXI_awvalid <= m01_couplers_to_m01_couplers_AWVALID;
-  M_AXI_bready <= m01_couplers_to_m01_couplers_BREADY;
-  M_AXI_rready <= m01_couplers_to_m01_couplers_RREADY;
-  M_AXI_wdata(31 downto 0) <= m01_couplers_to_m01_couplers_WDATA(31 downto 0);
-  M_AXI_wlast <= m01_couplers_to_m01_couplers_WLAST;
-  M_AXI_wstrb(3 downto 0) <= m01_couplers_to_m01_couplers_WSTRB(3 downto 0);
-  M_AXI_wvalid <= m01_couplers_to_m01_couplers_WVALID;
-  S_AXI_arready <= m01_couplers_to_m01_couplers_ARREADY;
-  S_AXI_awready <= m01_couplers_to_m01_couplers_AWREADY;
-  S_AXI_bid(11 downto 0) <= m01_couplers_to_m01_couplers_BID(11 downto 0);
-  S_AXI_bresp(1 downto 0) <= m01_couplers_to_m01_couplers_BRESP(1 downto 0);
-  S_AXI_bvalid <= m01_couplers_to_m01_couplers_BVALID;
-  S_AXI_rdata(31 downto 0) <= m01_couplers_to_m01_couplers_RDATA(31 downto 0);
-  S_AXI_rid(11 downto 0) <= m01_couplers_to_m01_couplers_RID(11 downto 0);
-  S_AXI_rlast <= m01_couplers_to_m01_couplers_RLAST;
-  S_AXI_rresp(1 downto 0) <= m01_couplers_to_m01_couplers_RRESP(1 downto 0);
-  S_AXI_rvalid <= m01_couplers_to_m01_couplers_RVALID;
-  S_AXI_wready <= m01_couplers_to_m01_couplers_WREADY;
-  m01_couplers_to_m01_couplers_ARADDR(31 downto 0) <= S_AXI_araddr(31 downto 0);
-  m01_couplers_to_m01_couplers_ARBURST(1 downto 0) <= S_AXI_arburst(1 downto 0);
-  m01_couplers_to_m01_couplers_ARCACHE(3 downto 0) <= S_AXI_arcache(3 downto 0);
-  m01_couplers_to_m01_couplers_ARID(11 downto 0) <= S_AXI_arid(11 downto 0);
-  m01_couplers_to_m01_couplers_ARLEN(7 downto 0) <= S_AXI_arlen(7 downto 0);
-  m01_couplers_to_m01_couplers_ARLOCK <= S_AXI_arlock;
-  m01_couplers_to_m01_couplers_ARPROT(2 downto 0) <= S_AXI_arprot(2 downto 0);
-  m01_couplers_to_m01_couplers_ARREADY <= M_AXI_arready;
-  m01_couplers_to_m01_couplers_ARSIZE(2 downto 0) <= S_AXI_arsize(2 downto 0);
-  m01_couplers_to_m01_couplers_ARVALID <= S_AXI_arvalid;
-  m01_couplers_to_m01_couplers_AWADDR(31 downto 0) <= S_AXI_awaddr(31 downto 0);
-  m01_couplers_to_m01_couplers_AWBURST(1 downto 0) <= S_AXI_awburst(1 downto 0);
-  m01_couplers_to_m01_couplers_AWCACHE(3 downto 0) <= S_AXI_awcache(3 downto 0);
-  m01_couplers_to_m01_couplers_AWID(11 downto 0) <= S_AXI_awid(11 downto 0);
-  m01_couplers_to_m01_couplers_AWLEN(7 downto 0) <= S_AXI_awlen(7 downto 0);
-  m01_couplers_to_m01_couplers_AWLOCK <= S_AXI_awlock;
-  m01_couplers_to_m01_couplers_AWPROT(2 downto 0) <= S_AXI_awprot(2 downto 0);
-  m01_couplers_to_m01_couplers_AWREADY <= M_AXI_awready;
-  m01_couplers_to_m01_couplers_AWSIZE(2 downto 0) <= S_AXI_awsize(2 downto 0);
-  m01_couplers_to_m01_couplers_AWVALID <= S_AXI_awvalid;
-  m01_couplers_to_m01_couplers_BID(11 downto 0) <= M_AXI_bid(11 downto 0);
-  m01_couplers_to_m01_couplers_BREADY <= S_AXI_bready;
-  m01_couplers_to_m01_couplers_BRESP(1 downto 0) <= M_AXI_bresp(1 downto 0);
-  m01_couplers_to_m01_couplers_BVALID <= M_AXI_bvalid;
-  m01_couplers_to_m01_couplers_RDATA(31 downto 0) <= M_AXI_rdata(31 downto 0);
-  m01_couplers_to_m01_couplers_RID(11 downto 0) <= M_AXI_rid(11 downto 0);
-  m01_couplers_to_m01_couplers_RLAST <= M_AXI_rlast;
-  m01_couplers_to_m01_couplers_RREADY <= S_AXI_rready;
-  m01_couplers_to_m01_couplers_RRESP(1 downto 0) <= M_AXI_rresp(1 downto 0);
-  m01_couplers_to_m01_couplers_RVALID <= M_AXI_rvalid;
-  m01_couplers_to_m01_couplers_WDATA(31 downto 0) <= S_AXI_wdata(31 downto 0);
-  m01_couplers_to_m01_couplers_WLAST <= S_AXI_wlast;
-  m01_couplers_to_m01_couplers_WREADY <= M_AXI_wready;
-  m01_couplers_to_m01_couplers_WSTRB(3 downto 0) <= S_AXI_wstrb(3 downto 0);
-  m01_couplers_to_m01_couplers_WVALID <= S_AXI_wvalid;
+  M_AXI_araddr(31 downto 0) <= auto_pc_to_m01_couplers_ARADDR(31 downto 0);
+  M_AXI_arprot(2 downto 0) <= auto_pc_to_m01_couplers_ARPROT(2 downto 0);
+  M_AXI_arvalid <= auto_pc_to_m01_couplers_ARVALID;
+  M_AXI_awaddr(31 downto 0) <= auto_pc_to_m01_couplers_AWADDR(31 downto 0);
+  M_AXI_awprot(2 downto 0) <= auto_pc_to_m01_couplers_AWPROT(2 downto 0);
+  M_AXI_awvalid <= auto_pc_to_m01_couplers_AWVALID;
+  M_AXI_bready <= auto_pc_to_m01_couplers_BREADY;
+  M_AXI_rready <= auto_pc_to_m01_couplers_RREADY;
+  M_AXI_wdata(31 downto 0) <= auto_pc_to_m01_couplers_WDATA(31 downto 0);
+  M_AXI_wstrb(3 downto 0) <= auto_pc_to_m01_couplers_WSTRB(3 downto 0);
+  M_AXI_wvalid <= auto_pc_to_m01_couplers_WVALID;
+  S_ACLK_1 <= S_ACLK;
+  S_ARESETN_1 <= S_ARESETN;
+  S_AXI_arready <= m01_couplers_to_auto_pc_ARREADY;
+  S_AXI_awready <= m01_couplers_to_auto_pc_AWREADY;
+  S_AXI_bid(11 downto 0) <= m01_couplers_to_auto_pc_BID(11 downto 0);
+  S_AXI_bresp(1 downto 0) <= m01_couplers_to_auto_pc_BRESP(1 downto 0);
+  S_AXI_bvalid <= m01_couplers_to_auto_pc_BVALID;
+  S_AXI_rdata(31 downto 0) <= m01_couplers_to_auto_pc_RDATA(31 downto 0);
+  S_AXI_rid(11 downto 0) <= m01_couplers_to_auto_pc_RID(11 downto 0);
+  S_AXI_rlast <= m01_couplers_to_auto_pc_RLAST;
+  S_AXI_rresp(1 downto 0) <= m01_couplers_to_auto_pc_RRESP(1 downto 0);
+  S_AXI_rvalid <= m01_couplers_to_auto_pc_RVALID;
+  S_AXI_wready <= m01_couplers_to_auto_pc_WREADY;
+  auto_pc_to_m01_couplers_ARREADY <= M_AXI_arready;
+  auto_pc_to_m01_couplers_AWREADY <= M_AXI_awready;
+  auto_pc_to_m01_couplers_BRESP(1 downto 0) <= M_AXI_bresp(1 downto 0);
+  auto_pc_to_m01_couplers_BVALID <= M_AXI_bvalid;
+  auto_pc_to_m01_couplers_RDATA(31 downto 0) <= M_AXI_rdata(31 downto 0);
+  auto_pc_to_m01_couplers_RRESP(1 downto 0) <= M_AXI_rresp(1 downto 0);
+  auto_pc_to_m01_couplers_RVALID <= M_AXI_rvalid;
+  auto_pc_to_m01_couplers_WREADY <= M_AXI_wready;
+  m01_couplers_to_auto_pc_ARADDR(31 downto 0) <= S_AXI_araddr(31 downto 0);
+  m01_couplers_to_auto_pc_ARBURST(1 downto 0) <= S_AXI_arburst(1 downto 0);
+  m01_couplers_to_auto_pc_ARCACHE(3 downto 0) <= S_AXI_arcache(3 downto 0);
+  m01_couplers_to_auto_pc_ARID(11 downto 0) <= S_AXI_arid(11 downto 0);
+  m01_couplers_to_auto_pc_ARLEN(7 downto 0) <= S_AXI_arlen(7 downto 0);
+  m01_couplers_to_auto_pc_ARLOCK(0) <= S_AXI_arlock(0);
+  m01_couplers_to_auto_pc_ARPROT(2 downto 0) <= S_AXI_arprot(2 downto 0);
+  m01_couplers_to_auto_pc_ARQOS(3 downto 0) <= S_AXI_arqos(3 downto 0);
+  m01_couplers_to_auto_pc_ARREGION(3 downto 0) <= S_AXI_arregion(3 downto 0);
+  m01_couplers_to_auto_pc_ARSIZE(2 downto 0) <= S_AXI_arsize(2 downto 0);
+  m01_couplers_to_auto_pc_ARVALID <= S_AXI_arvalid;
+  m01_couplers_to_auto_pc_AWADDR(31 downto 0) <= S_AXI_awaddr(31 downto 0);
+  m01_couplers_to_auto_pc_AWBURST(1 downto 0) <= S_AXI_awburst(1 downto 0);
+  m01_couplers_to_auto_pc_AWCACHE(3 downto 0) <= S_AXI_awcache(3 downto 0);
+  m01_couplers_to_auto_pc_AWID(11 downto 0) <= S_AXI_awid(11 downto 0);
+  m01_couplers_to_auto_pc_AWLEN(7 downto 0) <= S_AXI_awlen(7 downto 0);
+  m01_couplers_to_auto_pc_AWLOCK(0) <= S_AXI_awlock(0);
+  m01_couplers_to_auto_pc_AWPROT(2 downto 0) <= S_AXI_awprot(2 downto 0);
+  m01_couplers_to_auto_pc_AWQOS(3 downto 0) <= S_AXI_awqos(3 downto 0);
+  m01_couplers_to_auto_pc_AWREGION(3 downto 0) <= S_AXI_awregion(3 downto 0);
+  m01_couplers_to_auto_pc_AWSIZE(2 downto 0) <= S_AXI_awsize(2 downto 0);
+  m01_couplers_to_auto_pc_AWVALID <= S_AXI_awvalid;
+  m01_couplers_to_auto_pc_BREADY <= S_AXI_bready;
+  m01_couplers_to_auto_pc_RREADY <= S_AXI_rready;
+  m01_couplers_to_auto_pc_WDATA(31 downto 0) <= S_AXI_wdata(31 downto 0);
+  m01_couplers_to_auto_pc_WLAST <= S_AXI_wlast;
+  m01_couplers_to_auto_pc_WSTRB(3 downto 0) <= S_AXI_wstrb(3 downto 0);
+  m01_couplers_to_auto_pc_WVALID <= S_AXI_wvalid;
+auto_pc: component Mayo_keygen_auto_pc_0
+     port map (
+      aclk => S_ACLK_1,
+      aresetn => S_ARESETN_1,
+      m_axi_araddr(31 downto 0) => auto_pc_to_m01_couplers_ARADDR(31 downto 0),
+      m_axi_arprot(2 downto 0) => auto_pc_to_m01_couplers_ARPROT(2 downto 0),
+      m_axi_arready => auto_pc_to_m01_couplers_ARREADY,
+      m_axi_arvalid => auto_pc_to_m01_couplers_ARVALID,
+      m_axi_awaddr(31 downto 0) => auto_pc_to_m01_couplers_AWADDR(31 downto 0),
+      m_axi_awprot(2 downto 0) => auto_pc_to_m01_couplers_AWPROT(2 downto 0),
+      m_axi_awready => auto_pc_to_m01_couplers_AWREADY,
+      m_axi_awvalid => auto_pc_to_m01_couplers_AWVALID,
+      m_axi_bready => auto_pc_to_m01_couplers_BREADY,
+      m_axi_bresp(1 downto 0) => auto_pc_to_m01_couplers_BRESP(1 downto 0),
+      m_axi_bvalid => auto_pc_to_m01_couplers_BVALID,
+      m_axi_rdata(31 downto 0) => auto_pc_to_m01_couplers_RDATA(31 downto 0),
+      m_axi_rready => auto_pc_to_m01_couplers_RREADY,
+      m_axi_rresp(1 downto 0) => auto_pc_to_m01_couplers_RRESP(1 downto 0),
+      m_axi_rvalid => auto_pc_to_m01_couplers_RVALID,
+      m_axi_wdata(31 downto 0) => auto_pc_to_m01_couplers_WDATA(31 downto 0),
+      m_axi_wready => auto_pc_to_m01_couplers_WREADY,
+      m_axi_wstrb(3 downto 0) => auto_pc_to_m01_couplers_WSTRB(3 downto 0),
+      m_axi_wvalid => auto_pc_to_m01_couplers_WVALID,
+      s_axi_araddr(31 downto 0) => m01_couplers_to_auto_pc_ARADDR(31 downto 0),
+      s_axi_arburst(1 downto 0) => m01_couplers_to_auto_pc_ARBURST(1 downto 0),
+      s_axi_arcache(3 downto 0) => m01_couplers_to_auto_pc_ARCACHE(3 downto 0),
+      s_axi_arid(11 downto 0) => m01_couplers_to_auto_pc_ARID(11 downto 0),
+      s_axi_arlen(7 downto 0) => m01_couplers_to_auto_pc_ARLEN(7 downto 0),
+      s_axi_arlock(0) => m01_couplers_to_auto_pc_ARLOCK(0),
+      s_axi_arprot(2 downto 0) => m01_couplers_to_auto_pc_ARPROT(2 downto 0),
+      s_axi_arqos(3 downto 0) => m01_couplers_to_auto_pc_ARQOS(3 downto 0),
+      s_axi_arready => m01_couplers_to_auto_pc_ARREADY,
+      s_axi_arregion(3 downto 0) => m01_couplers_to_auto_pc_ARREGION(3 downto 0),
+      s_axi_arsize(2 downto 0) => m01_couplers_to_auto_pc_ARSIZE(2 downto 0),
+      s_axi_arvalid => m01_couplers_to_auto_pc_ARVALID,
+      s_axi_awaddr(31 downto 0) => m01_couplers_to_auto_pc_AWADDR(31 downto 0),
+      s_axi_awburst(1 downto 0) => m01_couplers_to_auto_pc_AWBURST(1 downto 0),
+      s_axi_awcache(3 downto 0) => m01_couplers_to_auto_pc_AWCACHE(3 downto 0),
+      s_axi_awid(11 downto 0) => m01_couplers_to_auto_pc_AWID(11 downto 0),
+      s_axi_awlen(7 downto 0) => m01_couplers_to_auto_pc_AWLEN(7 downto 0),
+      s_axi_awlock(0) => m01_couplers_to_auto_pc_AWLOCK(0),
+      s_axi_awprot(2 downto 0) => m01_couplers_to_auto_pc_AWPROT(2 downto 0),
+      s_axi_awqos(3 downto 0) => m01_couplers_to_auto_pc_AWQOS(3 downto 0),
+      s_axi_awready => m01_couplers_to_auto_pc_AWREADY,
+      s_axi_awregion(3 downto 0) => m01_couplers_to_auto_pc_AWREGION(3 downto 0),
+      s_axi_awsize(2 downto 0) => m01_couplers_to_auto_pc_AWSIZE(2 downto 0),
+      s_axi_awvalid => m01_couplers_to_auto_pc_AWVALID,
+      s_axi_bid(11 downto 0) => m01_couplers_to_auto_pc_BID(11 downto 0),
+      s_axi_bready => m01_couplers_to_auto_pc_BREADY,
+      s_axi_bresp(1 downto 0) => m01_couplers_to_auto_pc_BRESP(1 downto 0),
+      s_axi_bvalid => m01_couplers_to_auto_pc_BVALID,
+      s_axi_rdata(31 downto 0) => m01_couplers_to_auto_pc_RDATA(31 downto 0),
+      s_axi_rid(11 downto 0) => m01_couplers_to_auto_pc_RID(11 downto 0),
+      s_axi_rlast => m01_couplers_to_auto_pc_RLAST,
+      s_axi_rready => m01_couplers_to_auto_pc_RREADY,
+      s_axi_rresp(1 downto 0) => m01_couplers_to_auto_pc_RRESP(1 downto 0),
+      s_axi_rvalid => m01_couplers_to_auto_pc_RVALID,
+      s_axi_wdata(31 downto 0) => m01_couplers_to_auto_pc_WDATA(31 downto 0),
+      s_axi_wlast => m01_couplers_to_auto_pc_WLAST,
+      s_axi_wready => m01_couplers_to_auto_pc_WREADY,
+      s_axi_wstrb(3 downto 0) => m01_couplers_to_auto_pc_WSTRB(3 downto 0),
+      s_axi_wvalid => m01_couplers_to_auto_pc_WVALID
+    );
 end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -2185,58 +2283,58 @@ entity Mayo_keygen_ps7_0_axi_periph_0 is
     M00_ACLK : in STD_LOGIC;
     M00_ARESETN : in STD_LOGIC;
     M00_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M00_AXI_arburst : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    M00_AXI_arcache : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    M00_AXI_arid : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    M00_AXI_arlen : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    M00_AXI_arlock : out STD_LOGIC;
     M00_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M00_AXI_arready : in STD_LOGIC;
+    M00_AXI_arsize : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M00_AXI_arvalid : out STD_LOGIC;
     M00_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M00_AXI_awburst : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    M00_AXI_awcache : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    M00_AXI_awid : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    M00_AXI_awlen : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    M00_AXI_awlock : out STD_LOGIC;
     M00_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M00_AXI_awready : in STD_LOGIC;
+    M00_AXI_awsize : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M00_AXI_awvalid : out STD_LOGIC;
+    M00_AXI_bid : in STD_LOGIC_VECTOR ( 11 downto 0 );
     M00_AXI_bready : out STD_LOGIC;
     M00_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M00_AXI_bvalid : in STD_LOGIC;
     M00_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    M00_AXI_rid : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    M00_AXI_rlast : in STD_LOGIC;
     M00_AXI_rready : out STD_LOGIC;
     M00_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M00_AXI_rvalid : in STD_LOGIC;
     M00_AXI_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    M00_AXI_wlast : out STD_LOGIC;
     M00_AXI_wready : in STD_LOGIC;
     M00_AXI_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
     M00_AXI_wvalid : out STD_LOGIC;
     M01_ACLK : in STD_LOGIC;
     M01_ARESETN : in STD_LOGIC;
     M01_AXI_araddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    M01_AXI_arburst : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    M01_AXI_arcache : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    M01_AXI_arid : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    M01_AXI_arlen : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    M01_AXI_arlock : out STD_LOGIC;
     M01_AXI_arprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M01_AXI_arready : in STD_LOGIC;
-    M01_AXI_arsize : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M01_AXI_arvalid : out STD_LOGIC;
     M01_AXI_awaddr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    M01_AXI_awburst : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    M01_AXI_awcache : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    M01_AXI_awid : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    M01_AXI_awlen : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    M01_AXI_awlock : out STD_LOGIC;
     M01_AXI_awprot : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M01_AXI_awready : in STD_LOGIC;
-    M01_AXI_awsize : out STD_LOGIC_VECTOR ( 2 downto 0 );
     M01_AXI_awvalid : out STD_LOGIC;
-    M01_AXI_bid : in STD_LOGIC_VECTOR ( 11 downto 0 );
     M01_AXI_bready : out STD_LOGIC;
     M01_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M01_AXI_bvalid : in STD_LOGIC;
     M01_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    M01_AXI_rid : in STD_LOGIC_VECTOR ( 11 downto 0 );
-    M01_AXI_rlast : in STD_LOGIC;
     M01_AXI_rready : out STD_LOGIC;
     M01_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M01_AXI_rvalid : in STD_LOGIC;
     M01_AXI_wdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    M01_AXI_wlast : out STD_LOGIC;
     M01_AXI_wready : in STD_LOGIC;
     M01_AXI_wstrb : out STD_LOGIC_VECTOR ( 3 downto 0 );
     M01_AXI_wvalid : out STD_LOGIC;
@@ -2367,56 +2465,56 @@ architecture STRUCTURE of Mayo_keygen_ps7_0_axi_periph_0 is
   );
   end component Mayo_keygen_xbar_0;
   signal m00_couplers_to_ps7_0_axi_periph_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_ARID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_ARLOCK : STD_LOGIC;
   signal m00_couplers_to_ps7_0_axi_periph_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m00_couplers_to_ps7_0_axi_periph_ARREADY : STD_LOGIC;
+  signal m00_couplers_to_ps7_0_axi_periph_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m00_couplers_to_ps7_0_axi_periph_ARVALID : STD_LOGIC;
   signal m00_couplers_to_ps7_0_axi_periph_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_AWID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_AWLOCK : STD_LOGIC;
   signal m00_couplers_to_ps7_0_axi_periph_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m00_couplers_to_ps7_0_axi_periph_AWREADY : STD_LOGIC;
+  signal m00_couplers_to_ps7_0_axi_periph_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m00_couplers_to_ps7_0_axi_periph_AWVALID : STD_LOGIC;
+  signal m00_couplers_to_ps7_0_axi_periph_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal m00_couplers_to_ps7_0_axi_periph_BREADY : STD_LOGIC;
   signal m00_couplers_to_ps7_0_axi_periph_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal m00_couplers_to_ps7_0_axi_periph_BVALID : STD_LOGIC;
   signal m00_couplers_to_ps7_0_axi_periph_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_RID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_RLAST : STD_LOGIC;
   signal m00_couplers_to_ps7_0_axi_periph_RREADY : STD_LOGIC;
   signal m00_couplers_to_ps7_0_axi_periph_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal m00_couplers_to_ps7_0_axi_periph_RVALID : STD_LOGIC;
   signal m00_couplers_to_ps7_0_axi_periph_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal m00_couplers_to_ps7_0_axi_periph_WLAST : STD_LOGIC;
   signal m00_couplers_to_ps7_0_axi_periph_WREADY : STD_LOGIC;
   signal m00_couplers_to_ps7_0_axi_periph_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal m00_couplers_to_ps7_0_axi_periph_WVALID : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_ARID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_ARLOCK : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m01_couplers_to_ps7_0_axi_periph_ARREADY : STD_LOGIC;
-  signal m01_couplers_to_ps7_0_axi_periph_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m01_couplers_to_ps7_0_axi_periph_ARVALID : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_AWID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_AWLOCK : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m01_couplers_to_ps7_0_axi_periph_AWREADY : STD_LOGIC;
-  signal m01_couplers_to_ps7_0_axi_periph_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal m01_couplers_to_ps7_0_axi_periph_AWVALID : STD_LOGIC;
-  signal m01_couplers_to_ps7_0_axi_periph_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal m01_couplers_to_ps7_0_axi_periph_BREADY : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal m01_couplers_to_ps7_0_axi_periph_BVALID : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_RID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_RLAST : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_RREADY : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal m01_couplers_to_ps7_0_axi_periph_RVALID : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal m01_couplers_to_ps7_0_axi_periph_WLAST : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_WREADY : STD_LOGIC;
   signal m01_couplers_to_ps7_0_axi_periph_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal m01_couplers_to_ps7_0_axi_periph_WVALID : STD_LOGIC;
@@ -2504,9 +2602,7 @@ architecture STRUCTURE of Mayo_keygen_ps7_0_axi_periph_0 is
   signal xbar_to_m00_couplers_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal xbar_to_m00_couplers_ARLOCK : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xbar_to_m00_couplers_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal xbar_to_m00_couplers_ARQOS : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal xbar_to_m00_couplers_ARREADY : STD_LOGIC;
-  signal xbar_to_m00_couplers_ARREGION : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal xbar_to_m00_couplers_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal xbar_to_m00_couplers_ARVALID : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xbar_to_m00_couplers_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -2516,9 +2612,7 @@ architecture STRUCTURE of Mayo_keygen_ps7_0_axi_periph_0 is
   signal xbar_to_m00_couplers_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal xbar_to_m00_couplers_AWLOCK : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xbar_to_m00_couplers_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
-  signal xbar_to_m00_couplers_AWQOS : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal xbar_to_m00_couplers_AWREADY : STD_LOGIC;
-  signal xbar_to_m00_couplers_AWREGION : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal xbar_to_m00_couplers_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal xbar_to_m00_couplers_AWVALID : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xbar_to_m00_couplers_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
@@ -2543,7 +2637,9 @@ architecture STRUCTURE of Mayo_keygen_ps7_0_axi_periph_0 is
   signal xbar_to_m01_couplers_ARLEN : STD_LOGIC_VECTOR ( 15 downto 8 );
   signal xbar_to_m01_couplers_ARLOCK : STD_LOGIC_VECTOR ( 1 to 1 );
   signal xbar_to_m01_couplers_ARPROT : STD_LOGIC_VECTOR ( 5 downto 3 );
+  signal xbar_to_m01_couplers_ARQOS : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal xbar_to_m01_couplers_ARREADY : STD_LOGIC;
+  signal xbar_to_m01_couplers_ARREGION : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal xbar_to_m01_couplers_ARSIZE : STD_LOGIC_VECTOR ( 5 downto 3 );
   signal xbar_to_m01_couplers_ARVALID : STD_LOGIC_VECTOR ( 1 to 1 );
   signal xbar_to_m01_couplers_AWADDR : STD_LOGIC_VECTOR ( 63 downto 32 );
@@ -2553,7 +2649,9 @@ architecture STRUCTURE of Mayo_keygen_ps7_0_axi_periph_0 is
   signal xbar_to_m01_couplers_AWLEN : STD_LOGIC_VECTOR ( 15 downto 8 );
   signal xbar_to_m01_couplers_AWLOCK : STD_LOGIC_VECTOR ( 1 to 1 );
   signal xbar_to_m01_couplers_AWPROT : STD_LOGIC_VECTOR ( 5 downto 3 );
+  signal xbar_to_m01_couplers_AWQOS : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal xbar_to_m01_couplers_AWREADY : STD_LOGIC;
+  signal xbar_to_m01_couplers_AWREGION : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal xbar_to_m01_couplers_AWSIZE : STD_LOGIC_VECTOR ( 5 downto 3 );
   signal xbar_to_m01_couplers_AWVALID : STD_LOGIC_VECTOR ( 1 to 1 );
   signal xbar_to_m01_couplers_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
@@ -2571,44 +2669,44 @@ architecture STRUCTURE of Mayo_keygen_ps7_0_axi_periph_0 is
   signal xbar_to_m01_couplers_WREADY : STD_LOGIC;
   signal xbar_to_m01_couplers_WSTRB : STD_LOGIC_VECTOR ( 7 downto 4 );
   signal xbar_to_m01_couplers_WVALID : STD_LOGIC_VECTOR ( 1 to 1 );
-  signal NLW_xbar_m_axi_arqos_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal NLW_xbar_m_axi_arregion_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal NLW_xbar_m_axi_awqos_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 4 );
-  signal NLW_xbar_m_axi_awregion_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 4 );
+  signal NLW_xbar_m_axi_arqos_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_xbar_m_axi_arregion_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_xbar_m_axi_awqos_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_xbar_m_axi_awregion_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
 begin
   M00_AXI_araddr(31 downto 0) <= m00_couplers_to_ps7_0_axi_periph_ARADDR(31 downto 0);
+  M00_AXI_arburst(1 downto 0) <= m00_couplers_to_ps7_0_axi_periph_ARBURST(1 downto 0);
+  M00_AXI_arcache(3 downto 0) <= m00_couplers_to_ps7_0_axi_periph_ARCACHE(3 downto 0);
+  M00_AXI_arid(11 downto 0) <= m00_couplers_to_ps7_0_axi_periph_ARID(11 downto 0);
+  M00_AXI_arlen(7 downto 0) <= m00_couplers_to_ps7_0_axi_periph_ARLEN(7 downto 0);
+  M00_AXI_arlock <= m00_couplers_to_ps7_0_axi_periph_ARLOCK;
   M00_AXI_arprot(2 downto 0) <= m00_couplers_to_ps7_0_axi_periph_ARPROT(2 downto 0);
+  M00_AXI_arsize(2 downto 0) <= m00_couplers_to_ps7_0_axi_periph_ARSIZE(2 downto 0);
   M00_AXI_arvalid <= m00_couplers_to_ps7_0_axi_periph_ARVALID;
   M00_AXI_awaddr(31 downto 0) <= m00_couplers_to_ps7_0_axi_periph_AWADDR(31 downto 0);
+  M00_AXI_awburst(1 downto 0) <= m00_couplers_to_ps7_0_axi_periph_AWBURST(1 downto 0);
+  M00_AXI_awcache(3 downto 0) <= m00_couplers_to_ps7_0_axi_periph_AWCACHE(3 downto 0);
+  M00_AXI_awid(11 downto 0) <= m00_couplers_to_ps7_0_axi_periph_AWID(11 downto 0);
+  M00_AXI_awlen(7 downto 0) <= m00_couplers_to_ps7_0_axi_periph_AWLEN(7 downto 0);
+  M00_AXI_awlock <= m00_couplers_to_ps7_0_axi_periph_AWLOCK;
   M00_AXI_awprot(2 downto 0) <= m00_couplers_to_ps7_0_axi_periph_AWPROT(2 downto 0);
+  M00_AXI_awsize(2 downto 0) <= m00_couplers_to_ps7_0_axi_periph_AWSIZE(2 downto 0);
   M00_AXI_awvalid <= m00_couplers_to_ps7_0_axi_periph_AWVALID;
   M00_AXI_bready <= m00_couplers_to_ps7_0_axi_periph_BREADY;
   M00_AXI_rready <= m00_couplers_to_ps7_0_axi_periph_RREADY;
   M00_AXI_wdata(31 downto 0) <= m00_couplers_to_ps7_0_axi_periph_WDATA(31 downto 0);
+  M00_AXI_wlast <= m00_couplers_to_ps7_0_axi_periph_WLAST;
   M00_AXI_wstrb(3 downto 0) <= m00_couplers_to_ps7_0_axi_periph_WSTRB(3 downto 0);
   M00_AXI_wvalid <= m00_couplers_to_ps7_0_axi_periph_WVALID;
   M01_AXI_araddr(31 downto 0) <= m01_couplers_to_ps7_0_axi_periph_ARADDR(31 downto 0);
-  M01_AXI_arburst(1 downto 0) <= m01_couplers_to_ps7_0_axi_periph_ARBURST(1 downto 0);
-  M01_AXI_arcache(3 downto 0) <= m01_couplers_to_ps7_0_axi_periph_ARCACHE(3 downto 0);
-  M01_AXI_arid(11 downto 0) <= m01_couplers_to_ps7_0_axi_periph_ARID(11 downto 0);
-  M01_AXI_arlen(7 downto 0) <= m01_couplers_to_ps7_0_axi_periph_ARLEN(7 downto 0);
-  M01_AXI_arlock <= m01_couplers_to_ps7_0_axi_periph_ARLOCK;
   M01_AXI_arprot(2 downto 0) <= m01_couplers_to_ps7_0_axi_periph_ARPROT(2 downto 0);
-  M01_AXI_arsize(2 downto 0) <= m01_couplers_to_ps7_0_axi_periph_ARSIZE(2 downto 0);
   M01_AXI_arvalid <= m01_couplers_to_ps7_0_axi_periph_ARVALID;
   M01_AXI_awaddr(31 downto 0) <= m01_couplers_to_ps7_0_axi_periph_AWADDR(31 downto 0);
-  M01_AXI_awburst(1 downto 0) <= m01_couplers_to_ps7_0_axi_periph_AWBURST(1 downto 0);
-  M01_AXI_awcache(3 downto 0) <= m01_couplers_to_ps7_0_axi_periph_AWCACHE(3 downto 0);
-  M01_AXI_awid(11 downto 0) <= m01_couplers_to_ps7_0_axi_periph_AWID(11 downto 0);
-  M01_AXI_awlen(7 downto 0) <= m01_couplers_to_ps7_0_axi_periph_AWLEN(7 downto 0);
-  M01_AXI_awlock <= m01_couplers_to_ps7_0_axi_periph_AWLOCK;
   M01_AXI_awprot(2 downto 0) <= m01_couplers_to_ps7_0_axi_periph_AWPROT(2 downto 0);
-  M01_AXI_awsize(2 downto 0) <= m01_couplers_to_ps7_0_axi_periph_AWSIZE(2 downto 0);
   M01_AXI_awvalid <= m01_couplers_to_ps7_0_axi_periph_AWVALID;
   M01_AXI_bready <= m01_couplers_to_ps7_0_axi_periph_BREADY;
   M01_AXI_rready <= m01_couplers_to_ps7_0_axi_periph_RREADY;
   M01_AXI_wdata(31 downto 0) <= m01_couplers_to_ps7_0_axi_periph_WDATA(31 downto 0);
-  M01_AXI_wlast <= m01_couplers_to_ps7_0_axi_periph_WLAST;
   M01_AXI_wstrb(3 downto 0) <= m01_couplers_to_ps7_0_axi_periph_WSTRB(3 downto 0);
   M01_AXI_wvalid <= m01_couplers_to_ps7_0_axi_periph_WVALID;
   S00_AXI_arready <= ps7_0_axi_periph_to_s00_couplers_ARREADY;
@@ -2624,20 +2722,20 @@ begin
   S00_AXI_wready <= ps7_0_axi_periph_to_s00_couplers_WREADY;
   m00_couplers_to_ps7_0_axi_periph_ARREADY <= M00_AXI_arready;
   m00_couplers_to_ps7_0_axi_periph_AWREADY <= M00_AXI_awready;
+  m00_couplers_to_ps7_0_axi_periph_BID(11 downto 0) <= M00_AXI_bid(11 downto 0);
   m00_couplers_to_ps7_0_axi_periph_BRESP(1 downto 0) <= M00_AXI_bresp(1 downto 0);
   m00_couplers_to_ps7_0_axi_periph_BVALID <= M00_AXI_bvalid;
   m00_couplers_to_ps7_0_axi_periph_RDATA(31 downto 0) <= M00_AXI_rdata(31 downto 0);
+  m00_couplers_to_ps7_0_axi_periph_RID(11 downto 0) <= M00_AXI_rid(11 downto 0);
+  m00_couplers_to_ps7_0_axi_periph_RLAST <= M00_AXI_rlast;
   m00_couplers_to_ps7_0_axi_periph_RRESP(1 downto 0) <= M00_AXI_rresp(1 downto 0);
   m00_couplers_to_ps7_0_axi_periph_RVALID <= M00_AXI_rvalid;
   m00_couplers_to_ps7_0_axi_periph_WREADY <= M00_AXI_wready;
   m01_couplers_to_ps7_0_axi_periph_ARREADY <= M01_AXI_arready;
   m01_couplers_to_ps7_0_axi_periph_AWREADY <= M01_AXI_awready;
-  m01_couplers_to_ps7_0_axi_periph_BID(11 downto 0) <= M01_AXI_bid(11 downto 0);
   m01_couplers_to_ps7_0_axi_periph_BRESP(1 downto 0) <= M01_AXI_bresp(1 downto 0);
   m01_couplers_to_ps7_0_axi_periph_BVALID <= M01_AXI_bvalid;
   m01_couplers_to_ps7_0_axi_periph_RDATA(31 downto 0) <= M01_AXI_rdata(31 downto 0);
-  m01_couplers_to_ps7_0_axi_periph_RID(11 downto 0) <= M01_AXI_rid(11 downto 0);
-  m01_couplers_to_ps7_0_axi_periph_RLAST <= M01_AXI_rlast;
   m01_couplers_to_ps7_0_axi_periph_RRESP(1 downto 0) <= M01_AXI_rresp(1 downto 0);
   m01_couplers_to_ps7_0_axi_periph_RVALID <= M01_AXI_rvalid;
   m01_couplers_to_ps7_0_axi_periph_WREADY <= M01_AXI_wready;
@@ -2675,21 +2773,37 @@ m00_couplers: entity work.m00_couplers_imp_FZLD13
       M_ACLK => ps7_0_axi_periph_ACLK_net,
       M_ARESETN => ps7_0_axi_periph_ARESETN_net,
       M_AXI_araddr(31 downto 0) => m00_couplers_to_ps7_0_axi_periph_ARADDR(31 downto 0),
+      M_AXI_arburst(1 downto 0) => m00_couplers_to_ps7_0_axi_periph_ARBURST(1 downto 0),
+      M_AXI_arcache(3 downto 0) => m00_couplers_to_ps7_0_axi_periph_ARCACHE(3 downto 0),
+      M_AXI_arid(11 downto 0) => m00_couplers_to_ps7_0_axi_periph_ARID(11 downto 0),
+      M_AXI_arlen(7 downto 0) => m00_couplers_to_ps7_0_axi_periph_ARLEN(7 downto 0),
+      M_AXI_arlock => m00_couplers_to_ps7_0_axi_periph_ARLOCK,
       M_AXI_arprot(2 downto 0) => m00_couplers_to_ps7_0_axi_periph_ARPROT(2 downto 0),
       M_AXI_arready => m00_couplers_to_ps7_0_axi_periph_ARREADY,
+      M_AXI_arsize(2 downto 0) => m00_couplers_to_ps7_0_axi_periph_ARSIZE(2 downto 0),
       M_AXI_arvalid => m00_couplers_to_ps7_0_axi_periph_ARVALID,
       M_AXI_awaddr(31 downto 0) => m00_couplers_to_ps7_0_axi_periph_AWADDR(31 downto 0),
+      M_AXI_awburst(1 downto 0) => m00_couplers_to_ps7_0_axi_periph_AWBURST(1 downto 0),
+      M_AXI_awcache(3 downto 0) => m00_couplers_to_ps7_0_axi_periph_AWCACHE(3 downto 0),
+      M_AXI_awid(11 downto 0) => m00_couplers_to_ps7_0_axi_periph_AWID(11 downto 0),
+      M_AXI_awlen(7 downto 0) => m00_couplers_to_ps7_0_axi_periph_AWLEN(7 downto 0),
+      M_AXI_awlock => m00_couplers_to_ps7_0_axi_periph_AWLOCK,
       M_AXI_awprot(2 downto 0) => m00_couplers_to_ps7_0_axi_periph_AWPROT(2 downto 0),
       M_AXI_awready => m00_couplers_to_ps7_0_axi_periph_AWREADY,
+      M_AXI_awsize(2 downto 0) => m00_couplers_to_ps7_0_axi_periph_AWSIZE(2 downto 0),
       M_AXI_awvalid => m00_couplers_to_ps7_0_axi_periph_AWVALID,
+      M_AXI_bid(11 downto 0) => m00_couplers_to_ps7_0_axi_periph_BID(11 downto 0),
       M_AXI_bready => m00_couplers_to_ps7_0_axi_periph_BREADY,
       M_AXI_bresp(1 downto 0) => m00_couplers_to_ps7_0_axi_periph_BRESP(1 downto 0),
       M_AXI_bvalid => m00_couplers_to_ps7_0_axi_periph_BVALID,
       M_AXI_rdata(31 downto 0) => m00_couplers_to_ps7_0_axi_periph_RDATA(31 downto 0),
+      M_AXI_rid(11 downto 0) => m00_couplers_to_ps7_0_axi_periph_RID(11 downto 0),
+      M_AXI_rlast => m00_couplers_to_ps7_0_axi_periph_RLAST,
       M_AXI_rready => m00_couplers_to_ps7_0_axi_periph_RREADY,
       M_AXI_rresp(1 downto 0) => m00_couplers_to_ps7_0_axi_periph_RRESP(1 downto 0),
       M_AXI_rvalid => m00_couplers_to_ps7_0_axi_periph_RVALID,
       M_AXI_wdata(31 downto 0) => m00_couplers_to_ps7_0_axi_periph_WDATA(31 downto 0),
+      M_AXI_wlast => m00_couplers_to_ps7_0_axi_periph_WLAST,
       M_AXI_wready => m00_couplers_to_ps7_0_axi_periph_WREADY,
       M_AXI_wstrb(3 downto 0) => m00_couplers_to_ps7_0_axi_periph_WSTRB(3 downto 0),
       M_AXI_wvalid => m00_couplers_to_ps7_0_axi_periph_WVALID,
@@ -2700,11 +2814,9 @@ m00_couplers: entity work.m00_couplers_imp_FZLD13
       S_AXI_arcache(3 downto 0) => xbar_to_m00_couplers_ARCACHE(3 downto 0),
       S_AXI_arid(11 downto 0) => xbar_to_m00_couplers_ARID(11 downto 0),
       S_AXI_arlen(7 downto 0) => xbar_to_m00_couplers_ARLEN(7 downto 0),
-      S_AXI_arlock(0) => xbar_to_m00_couplers_ARLOCK(0),
+      S_AXI_arlock => xbar_to_m00_couplers_ARLOCK(0),
       S_AXI_arprot(2 downto 0) => xbar_to_m00_couplers_ARPROT(2 downto 0),
-      S_AXI_arqos(3 downto 0) => xbar_to_m00_couplers_ARQOS(3 downto 0),
       S_AXI_arready => xbar_to_m00_couplers_ARREADY,
-      S_AXI_arregion(3 downto 0) => xbar_to_m00_couplers_ARREGION(3 downto 0),
       S_AXI_arsize(2 downto 0) => xbar_to_m00_couplers_ARSIZE(2 downto 0),
       S_AXI_arvalid => xbar_to_m00_couplers_ARVALID(0),
       S_AXI_awaddr(31 downto 0) => xbar_to_m00_couplers_AWADDR(31 downto 0),
@@ -2712,11 +2824,9 @@ m00_couplers: entity work.m00_couplers_imp_FZLD13
       S_AXI_awcache(3 downto 0) => xbar_to_m00_couplers_AWCACHE(3 downto 0),
       S_AXI_awid(11 downto 0) => xbar_to_m00_couplers_AWID(11 downto 0),
       S_AXI_awlen(7 downto 0) => xbar_to_m00_couplers_AWLEN(7 downto 0),
-      S_AXI_awlock(0) => xbar_to_m00_couplers_AWLOCK(0),
+      S_AXI_awlock => xbar_to_m00_couplers_AWLOCK(0),
       S_AXI_awprot(2 downto 0) => xbar_to_m00_couplers_AWPROT(2 downto 0),
-      S_AXI_awqos(3 downto 0) => xbar_to_m00_couplers_AWQOS(3 downto 0),
       S_AXI_awready => xbar_to_m00_couplers_AWREADY,
-      S_AXI_awregion(3 downto 0) => xbar_to_m00_couplers_AWREGION(3 downto 0),
       S_AXI_awsize(2 downto 0) => xbar_to_m00_couplers_AWSIZE(2 downto 0),
       S_AXI_awvalid => xbar_to_m00_couplers_AWVALID(0),
       S_AXI_bid(11 downto 0) => xbar_to_m00_couplers_BID(11 downto 0),
@@ -2740,37 +2850,21 @@ m01_couplers: entity work.m01_couplers_imp_1A4U015
       M_ACLK => ps7_0_axi_periph_ACLK_net,
       M_ARESETN => ps7_0_axi_periph_ARESETN_net,
       M_AXI_araddr(31 downto 0) => m01_couplers_to_ps7_0_axi_periph_ARADDR(31 downto 0),
-      M_AXI_arburst(1 downto 0) => m01_couplers_to_ps7_0_axi_periph_ARBURST(1 downto 0),
-      M_AXI_arcache(3 downto 0) => m01_couplers_to_ps7_0_axi_periph_ARCACHE(3 downto 0),
-      M_AXI_arid(11 downto 0) => m01_couplers_to_ps7_0_axi_periph_ARID(11 downto 0),
-      M_AXI_arlen(7 downto 0) => m01_couplers_to_ps7_0_axi_periph_ARLEN(7 downto 0),
-      M_AXI_arlock => m01_couplers_to_ps7_0_axi_periph_ARLOCK,
       M_AXI_arprot(2 downto 0) => m01_couplers_to_ps7_0_axi_periph_ARPROT(2 downto 0),
       M_AXI_arready => m01_couplers_to_ps7_0_axi_periph_ARREADY,
-      M_AXI_arsize(2 downto 0) => m01_couplers_to_ps7_0_axi_periph_ARSIZE(2 downto 0),
       M_AXI_arvalid => m01_couplers_to_ps7_0_axi_periph_ARVALID,
       M_AXI_awaddr(31 downto 0) => m01_couplers_to_ps7_0_axi_periph_AWADDR(31 downto 0),
-      M_AXI_awburst(1 downto 0) => m01_couplers_to_ps7_0_axi_periph_AWBURST(1 downto 0),
-      M_AXI_awcache(3 downto 0) => m01_couplers_to_ps7_0_axi_periph_AWCACHE(3 downto 0),
-      M_AXI_awid(11 downto 0) => m01_couplers_to_ps7_0_axi_periph_AWID(11 downto 0),
-      M_AXI_awlen(7 downto 0) => m01_couplers_to_ps7_0_axi_periph_AWLEN(7 downto 0),
-      M_AXI_awlock => m01_couplers_to_ps7_0_axi_periph_AWLOCK,
       M_AXI_awprot(2 downto 0) => m01_couplers_to_ps7_0_axi_periph_AWPROT(2 downto 0),
       M_AXI_awready => m01_couplers_to_ps7_0_axi_periph_AWREADY,
-      M_AXI_awsize(2 downto 0) => m01_couplers_to_ps7_0_axi_periph_AWSIZE(2 downto 0),
       M_AXI_awvalid => m01_couplers_to_ps7_0_axi_periph_AWVALID,
-      M_AXI_bid(11 downto 0) => m01_couplers_to_ps7_0_axi_periph_BID(11 downto 0),
       M_AXI_bready => m01_couplers_to_ps7_0_axi_periph_BREADY,
       M_AXI_bresp(1 downto 0) => m01_couplers_to_ps7_0_axi_periph_BRESP(1 downto 0),
       M_AXI_bvalid => m01_couplers_to_ps7_0_axi_periph_BVALID,
       M_AXI_rdata(31 downto 0) => m01_couplers_to_ps7_0_axi_periph_RDATA(31 downto 0),
-      M_AXI_rid(11 downto 0) => m01_couplers_to_ps7_0_axi_periph_RID(11 downto 0),
-      M_AXI_rlast => m01_couplers_to_ps7_0_axi_periph_RLAST,
       M_AXI_rready => m01_couplers_to_ps7_0_axi_periph_RREADY,
       M_AXI_rresp(1 downto 0) => m01_couplers_to_ps7_0_axi_periph_RRESP(1 downto 0),
       M_AXI_rvalid => m01_couplers_to_ps7_0_axi_periph_RVALID,
       M_AXI_wdata(31 downto 0) => m01_couplers_to_ps7_0_axi_periph_WDATA(31 downto 0),
-      M_AXI_wlast => m01_couplers_to_ps7_0_axi_periph_WLAST,
       M_AXI_wready => m01_couplers_to_ps7_0_axi_periph_WREADY,
       M_AXI_wstrb(3 downto 0) => m01_couplers_to_ps7_0_axi_periph_WSTRB(3 downto 0),
       M_AXI_wvalid => m01_couplers_to_ps7_0_axi_periph_WVALID,
@@ -2781,9 +2875,11 @@ m01_couplers: entity work.m01_couplers_imp_1A4U015
       S_AXI_arcache(3 downto 0) => xbar_to_m01_couplers_ARCACHE(7 downto 4),
       S_AXI_arid(11 downto 0) => xbar_to_m01_couplers_ARID(23 downto 12),
       S_AXI_arlen(7 downto 0) => xbar_to_m01_couplers_ARLEN(15 downto 8),
-      S_AXI_arlock => xbar_to_m01_couplers_ARLOCK(1),
+      S_AXI_arlock(0) => xbar_to_m01_couplers_ARLOCK(1),
       S_AXI_arprot(2 downto 0) => xbar_to_m01_couplers_ARPROT(5 downto 3),
+      S_AXI_arqos(3 downto 0) => xbar_to_m01_couplers_ARQOS(7 downto 4),
       S_AXI_arready => xbar_to_m01_couplers_ARREADY,
+      S_AXI_arregion(3 downto 0) => xbar_to_m01_couplers_ARREGION(7 downto 4),
       S_AXI_arsize(2 downto 0) => xbar_to_m01_couplers_ARSIZE(5 downto 3),
       S_AXI_arvalid => xbar_to_m01_couplers_ARVALID(1),
       S_AXI_awaddr(31 downto 0) => xbar_to_m01_couplers_AWADDR(63 downto 32),
@@ -2791,9 +2887,11 @@ m01_couplers: entity work.m01_couplers_imp_1A4U015
       S_AXI_awcache(3 downto 0) => xbar_to_m01_couplers_AWCACHE(7 downto 4),
       S_AXI_awid(11 downto 0) => xbar_to_m01_couplers_AWID(23 downto 12),
       S_AXI_awlen(7 downto 0) => xbar_to_m01_couplers_AWLEN(15 downto 8),
-      S_AXI_awlock => xbar_to_m01_couplers_AWLOCK(1),
+      S_AXI_awlock(0) => xbar_to_m01_couplers_AWLOCK(1),
       S_AXI_awprot(2 downto 0) => xbar_to_m01_couplers_AWPROT(5 downto 3),
+      S_AXI_awqos(3 downto 0) => xbar_to_m01_couplers_AWQOS(7 downto 4),
       S_AXI_awready => xbar_to_m01_couplers_AWREADY,
+      S_AXI_awregion(3 downto 0) => xbar_to_m01_couplers_AWREGION(7 downto 4),
       S_AXI_awsize(2 downto 0) => xbar_to_m01_couplers_AWSIZE(5 downto 3),
       S_AXI_awvalid => xbar_to_m01_couplers_AWVALID(1),
       S_AXI_bid(11 downto 0) => xbar_to_m01_couplers_BID(11 downto 0),
@@ -2912,12 +3010,12 @@ xbar: component Mayo_keygen_xbar_0
       m_axi_arlock(0) => xbar_to_m00_couplers_ARLOCK(0),
       m_axi_arprot(5 downto 3) => xbar_to_m01_couplers_ARPROT(5 downto 3),
       m_axi_arprot(2 downto 0) => xbar_to_m00_couplers_ARPROT(2 downto 0),
-      m_axi_arqos(7 downto 4) => NLW_xbar_m_axi_arqos_UNCONNECTED(7 downto 4),
-      m_axi_arqos(3 downto 0) => xbar_to_m00_couplers_ARQOS(3 downto 0),
+      m_axi_arqos(7 downto 4) => xbar_to_m01_couplers_ARQOS(7 downto 4),
+      m_axi_arqos(3 downto 0) => NLW_xbar_m_axi_arqos_UNCONNECTED(3 downto 0),
       m_axi_arready(1) => xbar_to_m01_couplers_ARREADY,
       m_axi_arready(0) => xbar_to_m00_couplers_ARREADY,
-      m_axi_arregion(7 downto 4) => NLW_xbar_m_axi_arregion_UNCONNECTED(7 downto 4),
-      m_axi_arregion(3 downto 0) => xbar_to_m00_couplers_ARREGION(3 downto 0),
+      m_axi_arregion(7 downto 4) => xbar_to_m01_couplers_ARREGION(7 downto 4),
+      m_axi_arregion(3 downto 0) => NLW_xbar_m_axi_arregion_UNCONNECTED(3 downto 0),
       m_axi_arsize(5 downto 3) => xbar_to_m01_couplers_ARSIZE(5 downto 3),
       m_axi_arsize(2 downto 0) => xbar_to_m00_couplers_ARSIZE(2 downto 0),
       m_axi_arvalid(1) => xbar_to_m01_couplers_ARVALID(1),
@@ -2936,12 +3034,12 @@ xbar: component Mayo_keygen_xbar_0
       m_axi_awlock(0) => xbar_to_m00_couplers_AWLOCK(0),
       m_axi_awprot(5 downto 3) => xbar_to_m01_couplers_AWPROT(5 downto 3),
       m_axi_awprot(2 downto 0) => xbar_to_m00_couplers_AWPROT(2 downto 0),
-      m_axi_awqos(7 downto 4) => NLW_xbar_m_axi_awqos_UNCONNECTED(7 downto 4),
-      m_axi_awqos(3 downto 0) => xbar_to_m00_couplers_AWQOS(3 downto 0),
+      m_axi_awqos(7 downto 4) => xbar_to_m01_couplers_AWQOS(7 downto 4),
+      m_axi_awqos(3 downto 0) => NLW_xbar_m_axi_awqos_UNCONNECTED(3 downto 0),
       m_axi_awready(1) => xbar_to_m01_couplers_AWREADY,
       m_axi_awready(0) => xbar_to_m00_couplers_AWREADY,
-      m_axi_awregion(7 downto 4) => NLW_xbar_m_axi_awregion_UNCONNECTED(7 downto 4),
-      m_axi_awregion(3 downto 0) => xbar_to_m00_couplers_AWREGION(3 downto 0),
+      m_axi_awregion(7 downto 4) => xbar_to_m01_couplers_AWREGION(7 downto 4),
+      m_axi_awregion(3 downto 0) => NLW_xbar_m_axi_awregion_UNCONNECTED(3 downto 0),
       m_axi_awsize(5 downto 3) => xbar_to_m01_couplers_AWSIZE(5 downto 3),
       m_axi_awsize(2 downto 0) => xbar_to_m00_couplers_AWSIZE(2 downto 0),
       m_axi_awvalid(1) => xbar_to_m01_couplers_AWVALID(1),
@@ -3044,99 +3142,12 @@ entity Mayo_keygen is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of Mayo_keygen : entity is "Mayo_keygen,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Mayo_keygen,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=31,numReposBlks=24,numNonXlnxBlks=3,numHierBlks=7,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=10,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_clkrst_cnt=8,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of Mayo_keygen : entity is "Mayo_keygen,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Mayo_keygen,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=34,numReposBlks=26,numNonXlnxBlks=3,numHierBlks=8,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=11,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=9,da_bram_cntlr_cnt=2,da_clkrst_cnt=14,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of Mayo_keygen : entity is "Mayo_keygen.hwdef";
 end Mayo_keygen;
 
 architecture STRUCTURE of Mayo_keygen is
-  component Mayo_keygen_AXI_LITE_Mayo_Keygen_0_0 is
-  port (
-    CLK : in STD_LOGIC;
-    ENABLE : in STD_LOGIC;
-    RESET : in STD_LOGIC;
-    o_done : out STD_LOGIC;
-    i_debug : in STD_LOGIC;
-    o_trng_r : out STD_LOGIC;
-    o_trng_w : out STD_LOGIC;
-    o_trng_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_trng_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_trng_valid : in STD_LOGIC;
-    i_trng_done : in STD_LOGIC;
-    o_hash_en : out STD_LOGIC;
-    o_hash_mlen : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_hash_olen : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_hash_write_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_hash_read_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_hash_done : in STD_LOGIC;
-    i_hash_dyn_done : in STD_LOGIC;
-    o_red_enable : out STD_LOGIC;
-    o_red_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_red_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_red_done : in STD_LOGIC;
-    o_sam_enable : out STD_LOGIC;
-    i_sam_done : in STD_LOGIC;
-    o_sam_oil_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_lin_enable : out STD_LOGIC;
-    i_lin_done : in STD_LOGIC;
-    o_lin_bram_halt : out STD_LOGIC;
-    o_lin_vec_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_lin_coeffs_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_lin_out_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_lin_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_add_enable : out STD_LOGIC;
-    o_add_v1_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_add_v2_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_add_out_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_add_done : in STD_LOGIC;
-    o_neg_enable : out STD_LOGIC;
-    o_neg_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_neg_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_neg_done : in STD_LOGIC;
-    i_mem0a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0a_en : out STD_LOGIC;
-    o_mem0a_rst : out STD_LOGIC;
-    o_mem0a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_mem0b_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0b_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0b_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0b_en : out STD_LOGIC;
-    o_mem0b_rst : out STD_LOGIC;
-    o_mem0b_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_mem1a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem1a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem1a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem1a_en : out STD_LOGIC;
-    o_mem1a_rst : out STD_LOGIC;
-    o_mem1a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    o_mem0a_control : out STD_LOGIC;
-    o_mem0b_control : out STD_LOGIC;
-    o_mem1a_control : out STD_LOGIC;
-    s00_axi_aclk : in STD_LOGIC;
-    s00_axi_aresetn : in STD_LOGIC;
-    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_awvalid : in STD_LOGIC;
-    s00_axi_awready : out STD_LOGIC;
-    s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s00_axi_wvalid : in STD_LOGIC;
-    s00_axi_wready : out STD_LOGIC;
-    s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s00_axi_bvalid : out STD_LOGIC;
-    s00_axi_bready : in STD_LOGIC;
-    s00_axi_araddr : in STD_LOGIC_VECTOR ( 4 downto 0 );
-    s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    s00_axi_arvalid : in STD_LOGIC;
-    s00_axi_arready : out STD_LOGIC;
-    s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s00_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s00_axi_rvalid : out STD_LOGIC;
-    s00_axi_rready : in STD_LOGIC
-  );
-  end component Mayo_keygen_AXI_LITE_Mayo_Keygen_0_0;
   component Mayo_keygen_processing_system7_0_0 is
   port (
     TTC0_WAVE0_OUT : out STD_LOGIC;
@@ -3184,6 +3195,7 @@ architecture STRUCTURE of Mayo_keygen is
     M_AXI_GP0_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M_AXI_GP0_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
     M_AXI_GP0_RDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    IRQ_F2P : in STD_LOGIC_VECTOR ( 0 to 0 );
     FCLK_CLK0 : out STD_LOGIC;
     FCLK_RESET0_N : out STD_LOGIC;
     MIO : inout STD_LOGIC_VECTOR ( 53 downto 0 );
@@ -3223,81 +3235,137 @@ architecture STRUCTURE of Mayo_keygen is
     peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component Mayo_keygen_rst_ps7_0_100M_0;
-  component Mayo_keygen_xlconstant_0_0 is
+  component Mayo_keygen_Ground0_2 is
   port (
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  end component Mayo_keygen_xlconstant_0_0;
-  component Mayo_keygen_Ground0_0 is
+  end component Mayo_keygen_Ground0_2;
+  component Mayo_keygen_Ground32_0 is
   port (
     dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component Mayo_keygen_Ground0_0;
-  component Mayo_keygen_Ground0_1 is
+  end component Mayo_keygen_Ground32_0;
+  component Mayo_keygen_Ground4_0 is
   port (
     dout : out STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  end component Mayo_keygen_Ground0_1;
-  component Mayo_keygen_TRNG_0_0 is
+  end component Mayo_keygen_Ground4_0;
+  component Mayo_keygen_xlconcat_0_0 is
   port (
-    CLK_I : in STD_LOGIC;
-    RST : in STD_LOGIC;
-    R_I : in STD_LOGIC;
-    W_I : in STD_LOGIC;
-    TRNG_DATA_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRNG_DATA_O : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    TRNG_VALID_O : out STD_LOGIC;
-    TRNG_DONE_O : out STD_LOGIC
+    In0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  end component Mayo_keygen_TRNG_0_0;
-  component Mayo_keygen_mayo_reduce_0_0 is
+  end component Mayo_keygen_xlconcat_0_0;
+  component Mayo_keygen_MAYO_KEYGEN_FSM_0_0 is
   port (
-    i_clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    i_enable : in STD_LOGIC;
-    i_bram_sel : in STD_LOGIC;
-    i_len : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_dout0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_addr0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_din0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_en0 : out STD_LOGIC;
-    o_rst0 : out STD_LOGIC;
-    o_we0 : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_dout1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_addr1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_din1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_en1 : out STD_LOGIC;
-    o_rst1 : out STD_LOGIC;
-    o_we1 : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    CLK : in STD_LOGIC;
+    ENABLE : in STD_LOGIC;
+    RESET : in STD_LOGIC;
+    PUBLIC_KEY_ADDR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    SECRET_KEY_ADDR_I : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_busy : out STD_LOGIC;
     o_done : out STD_LOGIC;
-    o_control0 : out STD_LOGIC;
-    o_control1 : out STD_LOGIC
-  );
-  end component Mayo_keygen_mayo_reduce_0_0;
-  component Mayo_keygen_mayo_sample_oil_space_0_0 is
-  port (
-    i_clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    i_enable : in STD_LOGIC;
-    o_done : out STD_LOGIC;
-    i_oil_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_expose : in STD_LOGIC;
+    i_debug : in STD_LOGIC;
+    o_err : out STD_LOGIC_VECTOR ( 1 downto 0 );
     o_trng_r : out STD_LOGIC;
     o_trng_w : out STD_LOGIC;
     o_trng_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
     i_trng_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
     i_trng_valid : in STD_LOGIC;
     i_trng_done : in STD_LOGIC;
+    o_hash_en : out STD_LOGIC;
+    o_hash_mlen : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_hash_olen : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_hash_write_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_hash_read_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_hash_done : in STD_LOGIC;
+    i_hash_dyn_done : in STD_LOGIC;
+    o_hash_memsel : out STD_LOGIC;
+    o_red_enable : out STD_LOGIC;
+    o_red_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_red_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_red_bram_sel : out STD_LOGIC;
+    i_red_done : in STD_LOGIC;
+    o_sam_enable : out STD_LOGIC;
+    i_sam_done : in STD_LOGIC;
+    o_sam_oil_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_lin_enable : out STD_LOGIC;
+    i_lin_done : in STD_LOGIC;
+    o_lin_bram_halt : out STD_LOGIC;
+    o_lin_vec_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_lin_coeffs_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_lin_out_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_lin_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_add_enable : out STD_LOGIC;
+    o_add_v1_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_add_v2_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_add_out_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_add_done : in STD_LOGIC;
+    o_add_bram_sel : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    o_neg_enable : out STD_LOGIC;
+    o_neg_len : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_neg_adr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_neg_done : in STD_LOGIC;
+    i_mem0a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0a_en : out STD_LOGIC;
+    o_mem0a_rst : out STD_LOGIC;
+    o_mem0a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_mem0b_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0b_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0b_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0b_en : out STD_LOGIC;
+    o_mem0b_rst : out STD_LOGIC;
+    o_mem0b_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_mem1a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem1a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem1a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem1a_en : out STD_LOGIC;
+    o_mem1a_rst : out STD_LOGIC;
+    o_mem1a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_mem0a_control : out STD_LOGIC;
+    o_mem0b_control : out STD_LOGIC;
+    o_mem1a_control : out STD_LOGIC
+  );
+  end component Mayo_keygen_MAYO_KEYGEN_FSM_0_0;
+  component Mayo_keygen_mayo_add_vectors_0_0 is
+  port (
+    i_clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    i_enable : in STD_LOGIC;
+    i_v1_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_v2_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_out_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_bram_sel : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    o_done : out STD_LOGIC;
+    i_mema_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mema_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mema_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mema_en : out STD_LOGIC;
+    o_mema_rst : out STD_LOGIC;
+    o_mema_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
     i_memb_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
     o_memb_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
     o_memb_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
     o_memb_en : out STD_LOGIC;
     o_memb_rst : out STD_LOGIC;
     o_memb_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_memc_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memc_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memc_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_memc_en : out STD_LOGIC;
+    o_memc_rst : out STD_LOGIC;
+    o_memc_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_controla : out STD_LOGIC;
     o_controlb : out STD_LOGIC;
-    o_trng_sel : out STD_LOGIC
+    o_controlc : out STD_LOGIC
   );
-  end component Mayo_keygen_mayo_sample_oil_space_0_0;
+  end component Mayo_keygen_mayo_add_vectors_0_0;
   component Mayo_keygen_mayo_linear_combinat_0_0 is
   port (
     i_clk : in STD_LOGIC;
@@ -3349,103 +3417,171 @@ architecture STRUCTURE of Mayo_keygen is
     o_control : out STD_LOGIC
   );
   end component Mayo_keygen_mayo_negate_0_0;
-  component Mayo_keygen_mayo_add_vectors_0_0 is
+  component Mayo_keygen_mayo_reduce_0_0 is
   port (
     i_clk : in STD_LOGIC;
     rst : in STD_LOGIC;
     i_enable : in STD_LOGIC;
-    i_v1_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_v2_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_out_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_bram_sel : in STD_LOGIC;
+    i_len : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_adr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_dout0 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_addr0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_din0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_en0 : out STD_LOGIC;
+    o_rst0 : out STD_LOGIC;
+    o_we0 : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_dout1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_addr1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_din1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_en1 : out STD_LOGIC;
+    o_rst1 : out STD_LOGIC;
+    o_we1 : out STD_LOGIC_VECTOR ( 3 downto 0 );
     o_done : out STD_LOGIC;
-    i_mema_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mema_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mema_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mema_en : out STD_LOGIC;
-    o_mema_rst : out STD_LOGIC;
-    o_mema_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_control0 : out STD_LOGIC;
+    o_control1 : out STD_LOGIC
+  );
+  end component Mayo_keygen_mayo_reduce_0_0;
+  component Mayo_keygen_mayo_sample_oil_space_0_0 is
+  port (
+    i_clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    i_enable : in STD_LOGIC;
+    o_done : out STD_LOGIC;
+    i_oil_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_trng_r : out STD_LOGIC;
+    o_trng_w : out STD_LOGIC;
+    o_trng_data : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_trng_data : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_trng_valid : in STD_LOGIC;
+    i_trng_done : in STD_LOGIC;
     i_memb_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
     o_memb_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
     o_memb_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
     o_memb_en : out STD_LOGIC;
     o_memb_rst : out STD_LOGIC;
     o_memb_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_memc_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memc_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memc_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_memc_en : out STD_LOGIC;
-    o_memc_rst : out STD_LOGIC;
-    o_memc_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    o_controla : out STD_LOGIC;
     o_controlb : out STD_LOGIC;
-    o_controlc : out STD_LOGIC
+    o_trng_sel : out STD_LOGIC
   );
-  end component Mayo_keygen_mayo_add_vectors_0_0;
-  signal AXI_LITE_Mayo_Keygen_0_o_add_enable : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_add_out_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_add_v1_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_add_v2_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_hash_en : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_hash_mlen : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_hash_olen : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_hash_read_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_hash_write_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_lin_bram_halt : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_lin_coeffs_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_lin_enable : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_lin_len : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_lin_out_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_lin_vec_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0a_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0a_control : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0a_din : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0a_en : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0a_rst : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0a_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0b_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0b_control : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0b_din : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0b_en : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0b_rst : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_mem0b_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_mem1a_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_mem1a_control : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_mem1a_din : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_mem1a_en : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_mem1a_rst : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_mem1a_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_neg_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_neg_enable : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_neg_len : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_red_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_red_enable : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_red_len : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_sam_enable : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_sam_oil_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_trng_data : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal AXI_LITE_Mayo_Keygen_0_o_trng_r : STD_LOGIC;
-  signal AXI_LITE_Mayo_Keygen_0_o_trng_w : STD_LOGIC;
+  end component Mayo_keygen_mayo_sample_oil_space_0_0;
+  component Mayo_keygen_mayo_axi_litev3_0_0 is
+  port (
+    o_Keygen_en : out STD_LOGIC;
+    o_Signing_en : out STD_LOGIC;
+    o_Verification_en : out STD_LOGIC;
+    o_Debug : out STD_LOGIC;
+    o_Expose : out STD_LOGIC;
+    o_irq_en : out STD_LOGIC;
+    i_Keygen_done : in STD_LOGIC;
+    i_Signing_done : in STD_LOGIC;
+    i_Verification_done : in STD_LOGIC;
+    i_Keygen_busy : in STD_LOGIC;
+    i_Signing_busy : in STD_LOGIC;
+    i_Verification_busy : in STD_LOGIC;
+    i_error : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    o_interrupt : out STD_LOGIC;
+    s00_axi_aclk : in STD_LOGIC;
+    s00_axi_aresetn : in STD_LOGIC;
+    s00_axi_awaddr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s00_axi_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s00_axi_awvalid : in STD_LOGIC;
+    s00_axi_awready : out STD_LOGIC;
+    s00_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s00_axi_wvalid : in STD_LOGIC;
+    s00_axi_wready : out STD_LOGIC;
+    s00_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_axi_bvalid : out STD_LOGIC;
+    s00_axi_bready : in STD_LOGIC;
+    s00_axi_araddr : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    s00_axi_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    s00_axi_arvalid : in STD_LOGIC;
+    s00_axi_arready : out STD_LOGIC;
+    s00_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s00_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s00_axi_rvalid : out STD_LOGIC;
+    s00_axi_rready : in STD_LOGIC
+  );
+  end component Mayo_keygen_mayo_axi_litev3_0_0;
   signal BRAM0_dout_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal Ground0_dout : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal Ground32_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal Ground4_dout : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal BRAM_big_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_big_BRAM_red_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_key_addr1_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_key_addr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_key_rst1_1 : STD_LOGIC;
+  signal BRAM_key_rst_1 : STD_LOGIC;
+  signal BRAM_key_we_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal BRAM_small_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_small_BRAM_add_dout1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal Ground1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal Ground32_dout1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal Ground4_dout1 : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_add_bram_sel : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_add_enable : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_add_out_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_add_v1_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_add_v2_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_busy : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_done : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_err : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_hash_en : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_hash_memsel : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_hash_mlen : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_hash_olen : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_hash_read_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_hash_write_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_lin_bram_halt : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_lin_coeffs_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_lin_enable : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_lin_len : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_lin_out_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_lin_vec_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_mem0a_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_mem0a_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_mem0a_en : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_mem0a_rst : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_mem0b_control : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_mem0b_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_mem0b_en : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_mem0b_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_mem1a_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_mem1a_en : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_mem1a_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_neg_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_neg_enable : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_neg_len : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_red_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_red_bram_sel : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_red_enable : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_red_len : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_sam_enable : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_sam_oil_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_trng_data : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal MAYO_KEYGEN_FSM_0_o_trng_r : STD_LOGIC;
+  signal MAYO_KEYGEN_FSM_0_o_trng_w : STD_LOGIC;
   signal MAYO_SHAKE_1_BRAMA_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_SHAKE_1_BRAMA_din : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_SHAKE_1_BRAMA_en : STD_LOGIC;
   signal MAYO_SHAKE_1_BRAMA_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal TRNG_0_TRNG_DATA_O : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal TRNG_0_TRNG_DONE_O : STD_LOGIC;
-  signal TRNG_0_TRNG_VALID_O : STD_LOGIC;
-  signal arbit_brama0_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal TRNG_o_trng0_data : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal TRNG_o_trng0_done : STD_LOGIC;
+  signal TRNG_o_trng0_valid : STD_LOGIC;
+  signal TRNG_o_trng1_data : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal TRNG_o_trng1_done : STD_LOGIC;
+  signal TRNG_o_trng1_valid : STD_LOGIC;
+  signal add_control_1 : STD_LOGIC;
   signal arbit_brama0_BRAM_key_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama0_BRAM_lin_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama0_BRAM_neg_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama0_BRAM_red_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_hash_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal arbit_brama1_BRAM_key_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal arbit_brama1_BRAM_key_dout1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_brama1_BRAM_lin_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_bramb0_BRAM_key_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_bramb0_BRAM_sam_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal bram_control_1 : STD_LOGIC;
+  signal bram_control_2 : STD_LOGIC;
   signal hash_BRAM0_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal hash_BRAM0_control : STD_LOGIC;
   signal hash_BRAM0_din : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3465,12 +3601,18 @@ architecture STRUCTURE of Mayo_keygen is
   signal mayo_add_vectors_0_o_memb_en : STD_LOGIC;
   signal mayo_add_vectors_0_o_memb_rst : STD_LOGIC;
   signal mayo_add_vectors_0_o_memb_we : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal mayo_bram_arbiter_1_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_0_o_memc_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_0_o_memc_din : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_add_vectors_0_o_memc_en : STD_LOGIC;
+  signal mayo_add_vectors_0_o_memc_rst : STD_LOGIC;
+  signal mayo_add_vectors_0_o_memc_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal mayo_axi_litev3_0_o_Debug : STD_LOGIC;
+  signal mayo_axi_litev3_0_o_Expose : STD_LOGIC;
+  signal mayo_axi_litev3_0_o_Keygen_en : STD_LOGIC;
+  signal mayo_axi_litev3_0_o_interrupt : STD_LOGIC;
   signal mayo_bram_arbiter_1_BRAM_lin_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_hash_arbiter_0_o_key_done : STD_LOGIC;
   signal mayo_hash_arbiter_0_o_key_dyn_done : STD_LOGIC;
-  signal mayo_hash_arbiter_0_o_sam_done : STD_LOGIC;
-  signal mayo_hash_arbiter_0_o_sam_dyn_done : STD_LOGIC;
   signal mayo_linear_combinat_0_o_control0a : STD_LOGIC;
   signal mayo_linear_combinat_0_o_control0b : STD_LOGIC;
   signal mayo_linear_combinat_0_o_control1a : STD_LOGIC;
@@ -3497,7 +3639,19 @@ architecture STRUCTURE of Mayo_keygen is
   signal mayo_negate_0_o_enb : STD_LOGIC;
   signal mayo_negate_0_o_rstb : STD_LOGIC;
   signal mayo_negate_0_o_web : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal mayo_reduce_0_o_addr1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_reduce_0_o_addrb : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_reduce_0_o_control : STD_LOGIC;
+  signal mayo_reduce_0_o_control1 : STD_LOGIC;
+  signal mayo_reduce_0_o_din0 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_reduce_0_o_din1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_reduce_0_o_done : STD_LOGIC;
+  signal mayo_reduce_0_o_en1 : STD_LOGIC;
+  signal mayo_reduce_0_o_enb : STD_LOGIC;
+  signal mayo_reduce_0_o_rst1 : STD_LOGIC;
+  signal mayo_reduce_0_o_rstb : STD_LOGIC;
+  signal mayo_reduce_0_o_we1 : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal mayo_reduce_0_o_web : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal mayo_sample_oil_space_0_o_controlb : STD_LOGIC;
   signal mayo_sample_oil_space_0_o_done : STD_LOGIC;
   signal mayo_sample_oil_space_0_o_memb_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3505,6 +3659,10 @@ architecture STRUCTURE of Mayo_keygen is
   signal mayo_sample_oil_space_0_o_memb_en : STD_LOGIC;
   signal mayo_sample_oil_space_0_o_memb_rst : STD_LOGIC;
   signal mayo_sample_oil_space_0_o_memb_we : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal mayo_sample_oil_space_0_o_trng_data : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal mayo_sample_oil_space_0_o_trng_r : STD_LOGIC;
+  signal mayo_sample_oil_space_0_o_trng_sel : STD_LOGIC;
+  signal mayo_sample_oil_space_0_o_trng_w : STD_LOGIC;
   signal processing_system7_0_DDR_ADDR : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal processing_system7_0_DDR_BA : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal processing_system7_0_DDR_CAS_N : STD_LOGIC;
@@ -3567,95 +3725,64 @@ architecture STRUCTURE of Mayo_keygen is
   signal processing_system7_0_M_AXI_GP0_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal processing_system7_0_M_AXI_GP0_WVALID : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_ARID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_ARLOCK : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ps7_0_axi_periph_M00_AXI_ARREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M00_AXI_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ps7_0_axi_periph_M00_AXI_ARVALID : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_AWID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_AWLOCK : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ps7_0_axi_periph_M00_AXI_AWREADY : STD_LOGIC;
+  signal ps7_0_axi_periph_M00_AXI_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ps7_0_axi_periph_M00_AXI_AWVALID : STD_LOGIC;
+  signal ps7_0_axi_periph_M00_AXI_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal ps7_0_axi_periph_M00_AXI_BREADY : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ps7_0_axi_periph_M00_AXI_BVALID : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_RID : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_RLAST : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_RREADY : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ps7_0_axi_periph_M00_AXI_RVALID : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ps7_0_axi_periph_M00_AXI_WLAST : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_WREADY : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal ps7_0_axi_periph_M00_AXI_WVALID : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_ARLOCK : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ps7_0_axi_periph_M01_AXI_ARREADY : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ps7_0_axi_periph_M01_AXI_ARVALID : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_AWLOCK : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ps7_0_axi_periph_M01_AXI_AWREADY : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal ps7_0_axi_periph_M01_AXI_AWVALID : STD_LOGIC;
-  signal ps7_0_axi_periph_M01_AXI_BID : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal ps7_0_axi_periph_M01_AXI_BREADY : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ps7_0_axi_periph_M01_AXI_BVALID : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_RID : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_RLAST : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_RREADY : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal ps7_0_axi_periph_M01_AXI_RVALID : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal ps7_0_axi_periph_M01_AXI_WLAST : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_WREADY : STD_LOGIC;
   signal ps7_0_axi_periph_M01_AXI_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal ps7_0_axi_periph_M01_AXI_WVALID : STD_LOGIC;
   signal rst_ps7_0_100M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_AXI_LITE_Mayo_Keygen_0_o_done_UNCONNECTED : STD_LOGIC;
-  signal NLW_BRAM_small_BRAM_red_en_UNCONNECTED : STD_LOGIC;
-  signal NLW_BRAM_small_BRAM_red_rst_UNCONNECTED : STD_LOGIC;
-  signal NLW_BRAM_small_red_control_UNCONNECTED : STD_LOGIC;
-  signal NLW_BRAM_small_sam_control_UNCONNECTED : STD_LOGIC;
-  signal NLW_BRAM_small_BRAM_red_addr_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_BRAM_small_BRAM_red_din_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_BRAM_small_BRAM_red_we_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_hash_i_sam_en_UNCONNECTED : STD_LOGIC;
-  signal NLW_hash_i_sam_mlen_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_hash_i_sam_olen_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_hash_i_sam_read_adr_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_hash_i_sam_write_adr_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_mayo_add_vectors_0_o_controlc_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_add_vectors_0_o_memc_en_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_add_vectors_0_o_memc_rst_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_add_vectors_0_o_memc_addr_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_mayo_add_vectors_0_o_memc_din_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_mayo_add_vectors_0_o_memc_we_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_mayo_reduce_0_o_control0_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_reduce_0_o_control1_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_reduce_0_o_en0_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_reduce_0_o_en1_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_reduce_0_o_rst0_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_reduce_0_o_rst1_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_reduce_0_o_addr0_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_mayo_reduce_0_o_addr1_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_mayo_reduce_0_o_din0_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_mayo_reduce_0_o_din1_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_mayo_reduce_0_o_we0_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_mayo_reduce_0_o_we1_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_mayo_sample_oil_space_0_o_trng_r_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_sample_oil_space_0_o_trng_sel_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_sample_oil_space_0_o_trng_w_UNCONNECTED : STD_LOGIC;
-  signal NLW_mayo_sample_oil_space_0_o_trng_data_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal NLW_mayo_axi_litev3_0_o_Signing_en_UNCONNECTED : STD_LOGIC;
+  signal NLW_mayo_axi_litev3_0_o_Verification_en_UNCONNECTED : STD_LOGIC;
+  signal NLW_mayo_axi_litev3_0_o_irq_en_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_TTC0_WAVE0_OUT_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_TTC0_WAVE1_OUT_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_TTC0_WAVE2_OUT_UNCONNECTED : STD_LOGIC;
@@ -3666,7 +3793,7 @@ architecture STRUCTURE of Mayo_keygen is
   signal NLW_rst_ps7_0_100M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_ps7_0_100M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   attribute BMM_INFO_PROCESSOR : string;
-  attribute BMM_INFO_PROCESSOR of processing_system7_0 : label is "arm > Mayo_keygen BRAM_big/axi_bram_ctrl_0";
+  attribute BMM_INFO_PROCESSOR of processing_system7_0 : label is "arm > Mayo_keygen BRAM_big1/axi_bram_ctrl_0";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of processing_system7_0 : label is "yes";
   attribute X_INTERFACE_INFO : string;
@@ -3695,154 +3822,84 @@ architecture STRUCTURE of Mayo_keygen is
   attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
-AXI_LITE_Mayo_Keygen_0: component Mayo_keygen_AXI_LITE_Mayo_Keygen_0_0
+BRAM_big1: entity work.BRAM_big1_imp_QBI0MO
      port map (
-      CLK => processing_system7_0_FCLK_CLK0,
-      ENABLE => Ground0_dout(0),
-      RESET => rst_ps7_0_100M_peripheral_aresetn(0),
-      i_add_done => mayo_add_vectors_0_o_done,
-      i_debug => Ground0_dout(0),
-      i_hash_done => mayo_hash_arbiter_0_o_key_done,
-      i_hash_dyn_done => mayo_hash_arbiter_0_o_key_dyn_done,
-      i_lin_done => mayo_linear_combinat_0_o_done,
-      i_mem0a_dout(31 downto 0) => arbit_brama0_BRAM_key_dout(31 downto 0),
-      i_mem0b_dout(31 downto 0) => arbit_bramb0_BRAM_key_dout(31 downto 0),
-      i_mem1a_dout(31 downto 0) => arbit_brama1_BRAM_key_dout(31 downto 0),
-      i_neg_done => mayo_negate_0_o_done,
-      i_red_done => mayo_reduce_0_o_done,
-      i_sam_done => mayo_sample_oil_space_0_o_done,
-      i_trng_data(31 downto 0) => TRNG_0_TRNG_DATA_O(31 downto 0),
-      i_trng_done => TRNG_0_TRNG_DONE_O,
-      i_trng_valid => TRNG_0_TRNG_VALID_O,
-      o_add_enable => AXI_LITE_Mayo_Keygen_0_o_add_enable,
-      o_add_out_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_add_out_addr(31 downto 0),
-      o_add_v1_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_add_v1_addr(31 downto 0),
-      o_add_v2_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_add_v2_addr(31 downto 0),
-      o_done => NLW_AXI_LITE_Mayo_Keygen_0_o_done_UNCONNECTED,
-      o_hash_en => AXI_LITE_Mayo_Keygen_0_o_hash_en,
-      o_hash_mlen(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_mlen(31 downto 0),
-      o_hash_olen(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_olen(31 downto 0),
-      o_hash_read_adr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_read_adr(31 downto 0),
-      o_hash_write_adr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_write_adr(31 downto 0),
-      o_lin_bram_halt => AXI_LITE_Mayo_Keygen_0_o_lin_bram_halt,
-      o_lin_coeffs_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_lin_coeffs_addr(31 downto 0),
-      o_lin_enable => AXI_LITE_Mayo_Keygen_0_o_lin_enable,
-      o_lin_len(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_lin_len(31 downto 0),
-      o_lin_out_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_lin_out_addr(31 downto 0),
-      o_lin_vec_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_lin_vec_addr(31 downto 0),
-      o_mem0a_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0a_addr(31 downto 0),
-      o_mem0a_control => AXI_LITE_Mayo_Keygen_0_o_mem0a_control,
-      o_mem0a_din(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0a_din(31 downto 0),
-      o_mem0a_en => AXI_LITE_Mayo_Keygen_0_o_mem0a_en,
-      o_mem0a_rst => AXI_LITE_Mayo_Keygen_0_o_mem0a_rst,
-      o_mem0a_we(3 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0a_we(3 downto 0),
-      o_mem0b_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0b_addr(31 downto 0),
-      o_mem0b_control => AXI_LITE_Mayo_Keygen_0_o_mem0b_control,
-      o_mem0b_din(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0b_din(31 downto 0),
-      o_mem0b_en => AXI_LITE_Mayo_Keygen_0_o_mem0b_en,
-      o_mem0b_rst => AXI_LITE_Mayo_Keygen_0_o_mem0b_rst,
-      o_mem0b_we(3 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0b_we(3 downto 0),
-      o_mem1a_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem1a_addr(31 downto 0),
-      o_mem1a_control => AXI_LITE_Mayo_Keygen_0_o_mem1a_control,
-      o_mem1a_din(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem1a_din(31 downto 0),
-      o_mem1a_en => AXI_LITE_Mayo_Keygen_0_o_mem1a_en,
-      o_mem1a_rst => AXI_LITE_Mayo_Keygen_0_o_mem1a_rst,
-      o_mem1a_we(3 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem1a_we(3 downto 0),
-      o_neg_adr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_neg_adr(31 downto 0),
-      o_neg_enable => AXI_LITE_Mayo_Keygen_0_o_neg_enable,
-      o_neg_len(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_neg_len(31 downto 0),
-      o_red_adr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_red_adr(31 downto 0),
-      o_red_enable => AXI_LITE_Mayo_Keygen_0_o_red_enable,
-      o_red_len(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_red_len(31 downto 0),
-      o_sam_enable => AXI_LITE_Mayo_Keygen_0_o_sam_enable,
-      o_sam_oil_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_sam_oil_addr(31 downto 0),
-      o_trng_data(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_trng_data(31 downto 0),
-      o_trng_r => AXI_LITE_Mayo_Keygen_0_o_trng_r,
-      o_trng_w => AXI_LITE_Mayo_Keygen_0_o_trng_w,
-      s00_axi_aclk => processing_system7_0_FCLK_CLK0,
-      s00_axi_araddr(4 downto 0) => ps7_0_axi_periph_M00_AXI_ARADDR(4 downto 0),
-      s00_axi_aresetn => rst_ps7_0_100M_peripheral_aresetn(0),
-      s00_axi_arprot(2 downto 0) => ps7_0_axi_periph_M00_AXI_ARPROT(2 downto 0),
-      s00_axi_arready => ps7_0_axi_periph_M00_AXI_ARREADY,
-      s00_axi_arvalid => ps7_0_axi_periph_M00_AXI_ARVALID,
-      s00_axi_awaddr(4 downto 0) => ps7_0_axi_periph_M00_AXI_AWADDR(4 downto 0),
-      s00_axi_awprot(2 downto 0) => ps7_0_axi_periph_M00_AXI_AWPROT(2 downto 0),
-      s00_axi_awready => ps7_0_axi_periph_M00_AXI_AWREADY,
-      s00_axi_awvalid => ps7_0_axi_periph_M00_AXI_AWVALID,
-      s00_axi_bready => ps7_0_axi_periph_M00_AXI_BREADY,
-      s00_axi_bresp(1 downto 0) => ps7_0_axi_periph_M00_AXI_BRESP(1 downto 0),
-      s00_axi_bvalid => ps7_0_axi_periph_M00_AXI_BVALID,
-      s00_axi_rdata(31 downto 0) => ps7_0_axi_periph_M00_AXI_RDATA(31 downto 0),
-      s00_axi_rready => ps7_0_axi_periph_M00_AXI_RREADY,
-      s00_axi_rresp(1 downto 0) => ps7_0_axi_periph_M00_AXI_RRESP(1 downto 0),
-      s00_axi_rvalid => ps7_0_axi_periph_M00_AXI_RVALID,
-      s00_axi_wdata(31 downto 0) => ps7_0_axi_periph_M00_AXI_WDATA(31 downto 0),
-      s00_axi_wready => ps7_0_axi_periph_M00_AXI_WREADY,
-      s00_axi_wstrb(3 downto 0) => ps7_0_axi_periph_M00_AXI_WSTRB(3 downto 0),
-      s00_axi_wvalid => ps7_0_axi_periph_M00_AXI_WVALID
-    );
-BRAM_big: entity work.BRAM_big_imp_AWIIIO
-     port map (
-      BRAM_add_rst => Ground0_dout(0),
-      BRAM_add_we(3 downto 0) => Ground4_dout(3 downto 0),
+      BRAM_add_addr(31 downto 0) => mayo_add_vectors_0_o_memc_addr(31 downto 0),
+      BRAM_add_din(31 downto 0) => mayo_add_vectors_0_o_memc_din(31 downto 0),
+      BRAM_add_dout(31 downto 0) => BRAM_big_BRAM_add_dout(31 downto 0),
+      BRAM_add_en => mayo_add_vectors_0_o_memc_en,
+      BRAM_add_rst => Ground1_dout(0),
+      BRAM_add_rst1 => mayo_add_vectors_0_o_memc_rst,
+      BRAM_add_we(3 downto 0) => Ground4_dout1(3 downto 0),
+      BRAM_add_we1(3 downto 0) => mayo_add_vectors_0_o_memc_we(3 downto 0),
       BRAM_hash_addr(31 downto 0) => MAYO_SHAKE_1_BRAMA_addr(31 downto 0),
       BRAM_hash_din(31 downto 0) => MAYO_SHAKE_1_BRAMA_din(31 downto 0),
       BRAM_hash_dout(31 downto 0) => arbit_brama1_BRAM_hash_dout(31 downto 0),
       BRAM_hash_en => MAYO_SHAKE_1_BRAMA_en,
       BRAM_hash_we(3 downto 0) => MAYO_SHAKE_1_BRAMA_we(3 downto 0),
-      BRAM_key_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem1a_addr(31 downto 0),
-      BRAM_key_din(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem1a_din(31 downto 0),
-      BRAM_key_dout(31 downto 0) => arbit_brama1_BRAM_key_dout(31 downto 0),
-      BRAM_key_en => AXI_LITE_Mayo_Keygen_0_o_mem1a_en,
-      BRAM_key_rst => AXI_LITE_Mayo_Keygen_0_o_mem1a_rst,
-      BRAM_key_we(3 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem1a_we(3 downto 0),
+      BRAM_key_addr(31 downto 0) => BRAM_key_addr_1(31 downto 0),
+      BRAM_key_din(31 downto 0) => MAYO_KEYGEN_FSM_0_o_mem1a_din(31 downto 0),
+      BRAM_key_dout(31 downto 0) => arbit_brama1_BRAM_key_dout1(31 downto 0),
+      BRAM_key_en => MAYO_KEYGEN_FSM_0_o_mem1a_en,
+      BRAM_key_rst => BRAM_key_rst_1,
+      BRAM_key_we(3 downto 0) => MAYO_KEYGEN_FSM_0_o_mem1a_we(3 downto 0),
       BRAM_lin_addr(31 downto 0) => mayo_linear_combinat_0_o_mem1a_addr(31 downto 0),
       BRAM_lin_din(31 downto 0) => mayo_linear_combinat_0_o_mem1a_din(31 downto 0),
       BRAM_lin_dout(31 downto 0) => arbit_brama1_BRAM_lin_dout(31 downto 0),
       BRAM_lin_en => mayo_linear_combinat_0_o_mem1a_en,
       BRAM_lin_rst => mayo_linear_combinat_0_o_mem1a_rst,
       BRAM_lin_we(3 downto 0) => mayo_linear_combinat_0_o_mem1a_we(3 downto 0),
-      BRAM_neg_din(31 downto 0) => Ground32_dout(31 downto 0),
-      S_AXI_araddr(31 downto 0) => ps7_0_axi_periph_M01_AXI_ARADDR(31 downto 0),
-      S_AXI_arburst(1 downto 0) => ps7_0_axi_periph_M01_AXI_ARBURST(1 downto 0),
-      S_AXI_arcache(3 downto 0) => ps7_0_axi_periph_M01_AXI_ARCACHE(3 downto 0),
-      S_AXI_arid(11 downto 0) => ps7_0_axi_periph_M01_AXI_ARID(11 downto 0),
-      S_AXI_arlen(7 downto 0) => ps7_0_axi_periph_M01_AXI_ARLEN(7 downto 0),
-      S_AXI_arlock => ps7_0_axi_periph_M01_AXI_ARLOCK,
-      S_AXI_arprot(2 downto 0) => ps7_0_axi_periph_M01_AXI_ARPROT(2 downto 0),
-      S_AXI_arready => ps7_0_axi_periph_M01_AXI_ARREADY,
-      S_AXI_arsize(2 downto 0) => ps7_0_axi_periph_M01_AXI_ARSIZE(2 downto 0),
-      S_AXI_arvalid => ps7_0_axi_periph_M01_AXI_ARVALID,
-      S_AXI_awaddr(31 downto 0) => ps7_0_axi_periph_M01_AXI_AWADDR(31 downto 0),
-      S_AXI_awburst(1 downto 0) => ps7_0_axi_periph_M01_AXI_AWBURST(1 downto 0),
-      S_AXI_awcache(3 downto 0) => ps7_0_axi_periph_M01_AXI_AWCACHE(3 downto 0),
-      S_AXI_awid(11 downto 0) => ps7_0_axi_periph_M01_AXI_AWID(11 downto 0),
-      S_AXI_awlen(7 downto 0) => ps7_0_axi_periph_M01_AXI_AWLEN(7 downto 0),
-      S_AXI_awlock => ps7_0_axi_periph_M01_AXI_AWLOCK,
-      S_AXI_awprot(2 downto 0) => ps7_0_axi_periph_M01_AXI_AWPROT(2 downto 0),
-      S_AXI_awready => ps7_0_axi_periph_M01_AXI_AWREADY,
-      S_AXI_awsize(2 downto 0) => ps7_0_axi_periph_M01_AXI_AWSIZE(2 downto 0),
-      S_AXI_awvalid => ps7_0_axi_periph_M01_AXI_AWVALID,
-      S_AXI_bid(11 downto 0) => ps7_0_axi_periph_M01_AXI_BID(11 downto 0),
-      S_AXI_bready => ps7_0_axi_periph_M01_AXI_BREADY,
-      S_AXI_bresp(1 downto 0) => ps7_0_axi_periph_M01_AXI_BRESP(1 downto 0),
-      S_AXI_bvalid => ps7_0_axi_periph_M01_AXI_BVALID,
-      S_AXI_rdata(31 downto 0) => ps7_0_axi_periph_M01_AXI_RDATA(31 downto 0),
-      S_AXI_rid(11 downto 0) => ps7_0_axi_periph_M01_AXI_RID(11 downto 0),
-      S_AXI_rlast => ps7_0_axi_periph_M01_AXI_RLAST,
-      S_AXI_rready => ps7_0_axi_periph_M01_AXI_RREADY,
-      S_AXI_rresp(1 downto 0) => ps7_0_axi_periph_M01_AXI_RRESP(1 downto 0),
-      S_AXI_rvalid => ps7_0_axi_periph_M01_AXI_RVALID,
-      S_AXI_wdata(31 downto 0) => ps7_0_axi_periph_M01_AXI_WDATA(31 downto 0),
-      S_AXI_wlast => ps7_0_axi_periph_M01_AXI_WLAST,
-      S_AXI_wready => ps7_0_axi_periph_M01_AXI_WREADY,
-      S_AXI_wstrb(3 downto 0) => ps7_0_axi_periph_M01_AXI_WSTRB(3 downto 0),
-      S_AXI_wvalid => ps7_0_axi_periph_M01_AXI_WVALID,
-      bram_control => AXI_LITE_Mayo_Keygen_0_o_mem1a_control,
+      BRAM_neg_din(31 downto 0) => Ground32_dout1(31 downto 0),
+      BRAM_red_addr(31 downto 0) => mayo_reduce_0_o_addr1(31 downto 0),
+      BRAM_red_din(31 downto 0) => mayo_reduce_0_o_din1(31 downto 0),
+      BRAM_red_dout(31 downto 0) => BRAM_big_BRAM_red_dout(31 downto 0),
+      BRAM_red_en => mayo_reduce_0_o_en1,
+      BRAM_red_rst => mayo_reduce_0_o_rst1,
+      BRAM_red_we(3 downto 0) => mayo_reduce_0_o_we1(3 downto 0),
+      S_AXI_araddr(31 downto 0) => ps7_0_axi_periph_M00_AXI_ARADDR(31 downto 0),
+      S_AXI_arburst(1 downto 0) => ps7_0_axi_periph_M00_AXI_ARBURST(1 downto 0),
+      S_AXI_arcache(3 downto 0) => ps7_0_axi_periph_M00_AXI_ARCACHE(3 downto 0),
+      S_AXI_arid(11 downto 0) => ps7_0_axi_periph_M00_AXI_ARID(11 downto 0),
+      S_AXI_arlen(7 downto 0) => ps7_0_axi_periph_M00_AXI_ARLEN(7 downto 0),
+      S_AXI_arlock => ps7_0_axi_periph_M00_AXI_ARLOCK,
+      S_AXI_arprot(2 downto 0) => ps7_0_axi_periph_M00_AXI_ARPROT(2 downto 0),
+      S_AXI_arready => ps7_0_axi_periph_M00_AXI_ARREADY,
+      S_AXI_arsize(2 downto 0) => ps7_0_axi_periph_M00_AXI_ARSIZE(2 downto 0),
+      S_AXI_arvalid => ps7_0_axi_periph_M00_AXI_ARVALID,
+      S_AXI_awaddr(31 downto 0) => ps7_0_axi_periph_M00_AXI_AWADDR(31 downto 0),
+      S_AXI_awburst(1 downto 0) => ps7_0_axi_periph_M00_AXI_AWBURST(1 downto 0),
+      S_AXI_awcache(3 downto 0) => ps7_0_axi_periph_M00_AXI_AWCACHE(3 downto 0),
+      S_AXI_awid(11 downto 0) => ps7_0_axi_periph_M00_AXI_AWID(11 downto 0),
+      S_AXI_awlen(7 downto 0) => ps7_0_axi_periph_M00_AXI_AWLEN(7 downto 0),
+      S_AXI_awlock => ps7_0_axi_periph_M00_AXI_AWLOCK,
+      S_AXI_awprot(2 downto 0) => ps7_0_axi_periph_M00_AXI_AWPROT(2 downto 0),
+      S_AXI_awready => ps7_0_axi_periph_M00_AXI_AWREADY,
+      S_AXI_awsize(2 downto 0) => ps7_0_axi_periph_M00_AXI_AWSIZE(2 downto 0),
+      S_AXI_awvalid => ps7_0_axi_periph_M00_AXI_AWVALID,
+      S_AXI_bid(11 downto 0) => ps7_0_axi_periph_M00_AXI_BID(11 downto 0),
+      S_AXI_bready => ps7_0_axi_periph_M00_AXI_BREADY,
+      S_AXI_bresp(1 downto 0) => ps7_0_axi_periph_M00_AXI_BRESP(1 downto 0),
+      S_AXI_bvalid => ps7_0_axi_periph_M00_AXI_BVALID,
+      S_AXI_rdata(31 downto 0) => ps7_0_axi_periph_M00_AXI_RDATA(31 downto 0),
+      S_AXI_rid(11 downto 0) => ps7_0_axi_periph_M00_AXI_RID(11 downto 0),
+      S_AXI_rlast => ps7_0_axi_periph_M00_AXI_RLAST,
+      S_AXI_rready => ps7_0_axi_periph_M00_AXI_RREADY,
+      S_AXI_rresp(1 downto 0) => ps7_0_axi_periph_M00_AXI_RRESP(1 downto 0),
+      S_AXI_rvalid => ps7_0_axi_periph_M00_AXI_RVALID,
+      S_AXI_wdata(31 downto 0) => ps7_0_axi_periph_M00_AXI_WDATA(31 downto 0),
+      S_AXI_wlast => ps7_0_axi_periph_M00_AXI_WLAST,
+      S_AXI_wready => ps7_0_axi_periph_M00_AXI_WREADY,
+      S_AXI_wstrb(3 downto 0) => ps7_0_axi_periph_M00_AXI_WSTRB(3 downto 0),
+      S_AXI_wvalid => ps7_0_axi_periph_M00_AXI_WVALID,
+      add_control => add_control_1,
+      bram_control => bram_control_1,
       clka => processing_system7_0_FCLK_CLK0,
       hash_control => hash_control_1,
       lin_control => mayo_linear_combinat_0_o_control1a,
-      rst => rst_ps7_0_100M_peripheral_aresetn(0)
+      red_control => mayo_reduce_0_o_control1,
+      rst => rst_ps7_0_100M_peripheral_aresetn(0),
+      s_axi_aclk => processing_system7_0_FCLK_CLK0,
+      s_axi_aresetn => rst_ps7_0_100M_peripheral_aresetn(0)
     );
 BRAM_small: entity work.BRAM_small_imp_EVICZV
      port map (
@@ -3850,8 +3907,8 @@ BRAM_small: entity work.BRAM_small_imp_EVICZV
       BRAM_add_addr1(31 downto 0) => mayo_add_vectors_0_o_memb_addr(31 downto 0),
       BRAM_add_din(31 downto 0) => mayo_add_vectors_0_o_mema_din(31 downto 0),
       BRAM_add_din1(31 downto 0) => mayo_add_vectors_0_o_memb_din(31 downto 0),
-      BRAM_add_dout(31 downto 0) => arbit_brama0_BRAM_add_dout(31 downto 0),
-      BRAM_add_dout1(31 downto 0) => mayo_bram_arbiter_1_BRAM_add_dout(31 downto 0),
+      BRAM_add_dout(31 downto 0) => BRAM_small_BRAM_add_dout(31 downto 0),
+      BRAM_add_dout1(31 downto 0) => BRAM_small_BRAM_add_dout1(31 downto 0),
       BRAM_add_en => mayo_add_vectors_0_o_mema_en,
       BRAM_add_en1 => mayo_add_vectors_0_o_memb_en,
       BRAM_add_rst => mayo_add_vectors_0_o_mema_rst,
@@ -3862,21 +3919,19 @@ BRAM_small: entity work.BRAM_small_imp_EVICZV
       BRAM_hash_din(31 downto 0) => hash_BRAM0_din(31 downto 0),
       BRAM_hash_dout(31 downto 0) => BRAM0_dout_1(31 downto 0),
       BRAM_hash_en => hash_BRAM0_en,
-      BRAM_hash_rst => Ground0_dout(0),
-      BRAM_hash_we(3 downto 0) => Ground4_dout(3 downto 0),
       BRAM_hash_we1(3 downto 0) => hash_BRAM0_we(3 downto 0),
-      BRAM_key_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0a_addr(31 downto 0),
-      BRAM_key_addr1(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0b_addr(31 downto 0),
-      BRAM_key_din(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0a_din(31 downto 0),
-      BRAM_key_din1(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0b_din(31 downto 0),
+      BRAM_key_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_mem0a_addr(31 downto 0),
+      BRAM_key_addr1(31 downto 0) => BRAM_key_addr1_1(31 downto 0),
+      BRAM_key_din(31 downto 0) => MAYO_KEYGEN_FSM_0_o_mem0a_din(31 downto 0),
+      BRAM_key_din1(31 downto 0) => MAYO_KEYGEN_FSM_0_o_mem0b_din(31 downto 0),
       BRAM_key_dout(31 downto 0) => arbit_brama0_BRAM_key_dout(31 downto 0),
       BRAM_key_dout1(31 downto 0) => arbit_bramb0_BRAM_key_dout(31 downto 0),
-      BRAM_key_en => AXI_LITE_Mayo_Keygen_0_o_mem0a_en,
-      BRAM_key_en1 => AXI_LITE_Mayo_Keygen_0_o_mem0b_en,
-      BRAM_key_rst => AXI_LITE_Mayo_Keygen_0_o_mem0a_rst,
-      BRAM_key_rst1 => AXI_LITE_Mayo_Keygen_0_o_mem0b_rst,
-      BRAM_key_we(3 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0a_we(3 downto 0),
-      BRAM_key_we1(3 downto 0) => AXI_LITE_Mayo_Keygen_0_o_mem0b_we(3 downto 0),
+      BRAM_key_en => MAYO_KEYGEN_FSM_0_o_mem0a_en,
+      BRAM_key_en1 => MAYO_KEYGEN_FSM_0_o_mem0b_en,
+      BRAM_key_rst => MAYO_KEYGEN_FSM_0_o_mem0a_rst,
+      BRAM_key_rst1 => BRAM_key_rst1_1,
+      BRAM_key_we(3 downto 0) => BRAM_key_we_1(3 downto 0),
+      BRAM_key_we1(3 downto 0) => MAYO_KEYGEN_FSM_0_o_mem0b_we(3 downto 0),
       BRAM_lin_addr(31 downto 0) => mayo_linear_combinat_0_o_mem0a_addr(31 downto 0),
       BRAM_lin_addr1(31 downto 0) => mayo_linear_combinat_0_o_mem0b_addr(31 downto 0),
       BRAM_lin_din(31 downto 0) => mayo_linear_combinat_0_o_mem0a_din(31 downto 0),
@@ -3891,59 +3946,140 @@ BRAM_small: entity work.BRAM_small_imp_EVICZV
       BRAM_lin_we1(3 downto 0) => mayo_linear_combinat_0_o_mem0b_we(3 downto 0),
       BRAM_neg_addr(31 downto 0) => mayo_negate_0_o_addrb(31 downto 0),
       BRAM_neg_din(31 downto 0) => mayo_negate_0_o_dinb(31 downto 0),
-      BRAM_neg_din1(31 downto 0) => Ground32_dout(31 downto 0),
       BRAM_neg_dout(31 downto 0) => arbit_brama0_BRAM_neg_dout(31 downto 0),
       BRAM_neg_en => mayo_negate_0_o_enb,
       BRAM_neg_rst => mayo_negate_0_o_rstb,
       BRAM_neg_we(3 downto 0) => mayo_negate_0_o_web(3 downto 0),
-      BRAM_red_addr(31 downto 0) => NLW_BRAM_small_BRAM_red_addr_UNCONNECTED(31 downto 0),
-      BRAM_red_din(31 downto 0) => NLW_BRAM_small_BRAM_red_din_UNCONNECTED(31 downto 0),
+      BRAM_red_addr(31 downto 0) => mayo_reduce_0_o_addrb(31 downto 0),
+      BRAM_red_din(31 downto 0) => mayo_reduce_0_o_din0(31 downto 0),
       BRAM_red_dout(31 downto 0) => arbit_brama0_BRAM_red_dout(31 downto 0),
-      BRAM_red_en => NLW_BRAM_small_BRAM_red_en_UNCONNECTED,
-      BRAM_red_rst => NLW_BRAM_small_BRAM_red_rst_UNCONNECTED,
-      BRAM_red_we(3 downto 0) => NLW_BRAM_small_BRAM_red_we_UNCONNECTED(3 downto 0),
+      BRAM_red_en => mayo_reduce_0_o_enb,
+      BRAM_red_rst => mayo_reduce_0_o_rstb,
+      BRAM_red_we(3 downto 0) => mayo_reduce_0_o_web(3 downto 0),
       BRAM_sam_addr1(31 downto 0) => mayo_sample_oil_space_0_o_memb_addr(31 downto 0),
       BRAM_sam_din1(31 downto 0) => mayo_sample_oil_space_0_o_memb_din(31 downto 0),
       BRAM_sam_dout1(31 downto 0) => arbit_bramb0_BRAM_sam_dout(31 downto 0),
       BRAM_sam_en1 => mayo_sample_oil_space_0_o_memb_en,
       BRAM_sam_rst1 => mayo_sample_oil_space_0_o_memb_rst,
       BRAM_sam_we1(3 downto 0) => mayo_sample_oil_space_0_o_memb_we(3 downto 0),
+      Zero0 => Ground1_dout(0),
+      Zero_32(31 downto 0) => Ground32_dout1(31 downto 0),
+      Zero_4(3 downto 0) => Ground4_dout1(3 downto 0),
       add_control => mayo_add_vectors_0_o_controla,
       add_control1 => mayo_add_vectors_0_o_controlb,
-      bram_control => AXI_LITE_Mayo_Keygen_0_o_mem0a_control,
-      bram_control1 => AXI_LITE_Mayo_Keygen_0_o_mem0b_control,
+      bram_control => bram_control_2,
+      bram_control1 => MAYO_KEYGEN_FSM_0_o_mem0b_control,
       clkb => processing_system7_0_FCLK_CLK0,
       hash_control => hash_BRAM0_control,
       lin_control => mayo_linear_combinat_0_o_control0a,
       lin_control1 => mayo_linear_combinat_0_o_control0b,
       neg_control => mayo_negate_0_o_control,
-      red_control => NLW_BRAM_small_red_control_UNCONNECTED,
+      red_control => mayo_reduce_0_o_control,
       rst => rst_ps7_0_100M_peripheral_aresetn(0),
-      sam_control => NLW_BRAM_small_sam_control_UNCONNECTED,
       sam_control1 => mayo_sample_oil_space_0_o_controlb
     );
-Ground0: component Mayo_keygen_xlconstant_0_0
+Ground1: component Mayo_keygen_Ground0_2
      port map (
-      dout(0) => Ground0_dout(0)
+      dout(0) => Ground1_dout(0)
     );
-Ground32: component Mayo_keygen_Ground0_0
+Ground33: component Mayo_keygen_Ground32_0
      port map (
-      dout(31 downto 0) => Ground32_dout(31 downto 0)
+      dout(31 downto 0) => Ground32_dout1(31 downto 0)
     );
-Ground4: component Mayo_keygen_Ground0_1
+Ground5: component Mayo_keygen_Ground4_0
      port map (
-      dout(3 downto 0) => Ground4_dout(3 downto 0)
+      dout(3 downto 0) => Ground4_dout1(3 downto 0)
     );
-TRNG_0: component Mayo_keygen_TRNG_0_0
+MAYO_KEYGEN_FSM_0: component Mayo_keygen_MAYO_KEYGEN_FSM_0_0
      port map (
-      CLK_I => processing_system7_0_FCLK_CLK0,
-      RST => rst_ps7_0_100M_peripheral_aresetn(0),
-      R_I => AXI_LITE_Mayo_Keygen_0_o_trng_r,
-      TRNG_DATA_I(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_trng_data(31 downto 0),
-      TRNG_DATA_O(31 downto 0) => TRNG_0_TRNG_DATA_O(31 downto 0),
-      TRNG_DONE_O => TRNG_0_TRNG_DONE_O,
-      TRNG_VALID_O => TRNG_0_TRNG_VALID_O,
-      W_I => AXI_LITE_Mayo_Keygen_0_o_trng_w
+      CLK => processing_system7_0_FCLK_CLK0,
+      ENABLE => mayo_axi_litev3_0_o_Keygen_en,
+      PUBLIC_KEY_ADDR_I(31 downto 0) => Ground32_dout1(31 downto 0),
+      RESET => rst_ps7_0_100M_peripheral_aresetn(0),
+      SECRET_KEY_ADDR_I(31 downto 0) => Ground32_dout1(31 downto 0),
+      i_add_done => mayo_add_vectors_0_o_done,
+      i_debug => mayo_axi_litev3_0_o_Debug,
+      i_expose => mayo_axi_litev3_0_o_Expose,
+      i_hash_done => mayo_hash_arbiter_0_o_key_done,
+      i_hash_dyn_done => mayo_hash_arbiter_0_o_key_dyn_done,
+      i_lin_done => mayo_linear_combinat_0_o_done,
+      i_mem0a_dout(31 downto 0) => arbit_brama0_BRAM_key_dout(31 downto 0),
+      i_mem0b_dout(31 downto 0) => arbit_bramb0_BRAM_key_dout(31 downto 0),
+      i_mem1a_dout(31 downto 0) => arbit_brama1_BRAM_key_dout1(31 downto 0),
+      i_neg_done => mayo_negate_0_o_done,
+      i_red_done => mayo_reduce_0_o_done,
+      i_sam_done => mayo_sample_oil_space_0_o_done,
+      i_trng_data(31 downto 0) => TRNG_o_trng0_data(31 downto 0),
+      i_trng_done => TRNG_o_trng0_done,
+      i_trng_valid => TRNG_o_trng0_valid,
+      o_add_bram_sel(1 downto 0) => MAYO_KEYGEN_FSM_0_o_add_bram_sel(1 downto 0),
+      o_add_enable => MAYO_KEYGEN_FSM_0_o_add_enable,
+      o_add_out_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_out_addr(31 downto 0),
+      o_add_v1_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v1_addr(31 downto 0),
+      o_add_v2_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v2_addr(31 downto 0),
+      o_busy => MAYO_KEYGEN_FSM_0_o_busy,
+      o_done => MAYO_KEYGEN_FSM_0_o_done,
+      o_err(1 downto 0) => MAYO_KEYGEN_FSM_0_o_err(1 downto 0),
+      o_hash_en => MAYO_KEYGEN_FSM_0_o_hash_en,
+      o_hash_memsel => MAYO_KEYGEN_FSM_0_o_hash_memsel,
+      o_hash_mlen(31 downto 0) => MAYO_KEYGEN_FSM_0_o_hash_mlen(31 downto 0),
+      o_hash_olen(31 downto 0) => MAYO_KEYGEN_FSM_0_o_hash_olen(31 downto 0),
+      o_hash_read_adr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_hash_read_adr(31 downto 0),
+      o_hash_write_adr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_hash_write_adr(31 downto 0),
+      o_lin_bram_halt => MAYO_KEYGEN_FSM_0_o_lin_bram_halt,
+      o_lin_coeffs_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_lin_coeffs_addr(31 downto 0),
+      o_lin_enable => MAYO_KEYGEN_FSM_0_o_lin_enable,
+      o_lin_len(31 downto 0) => MAYO_KEYGEN_FSM_0_o_lin_len(31 downto 0),
+      o_lin_out_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_lin_out_addr(31 downto 0),
+      o_lin_vec_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_lin_vec_addr(31 downto 0),
+      o_mem0a_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_mem0a_addr(31 downto 0),
+      o_mem0a_control => bram_control_2,
+      o_mem0a_din(31 downto 0) => MAYO_KEYGEN_FSM_0_o_mem0a_din(31 downto 0),
+      o_mem0a_en => MAYO_KEYGEN_FSM_0_o_mem0a_en,
+      o_mem0a_rst => MAYO_KEYGEN_FSM_0_o_mem0a_rst,
+      o_mem0a_we(3 downto 0) => BRAM_key_we_1(3 downto 0),
+      o_mem0b_addr(31 downto 0) => BRAM_key_addr1_1(31 downto 0),
+      o_mem0b_control => MAYO_KEYGEN_FSM_0_o_mem0b_control,
+      o_mem0b_din(31 downto 0) => MAYO_KEYGEN_FSM_0_o_mem0b_din(31 downto 0),
+      o_mem0b_en => MAYO_KEYGEN_FSM_0_o_mem0b_en,
+      o_mem0b_rst => BRAM_key_rst1_1,
+      o_mem0b_we(3 downto 0) => MAYO_KEYGEN_FSM_0_o_mem0b_we(3 downto 0),
+      o_mem1a_addr(31 downto 0) => BRAM_key_addr_1(31 downto 0),
+      o_mem1a_control => bram_control_1,
+      o_mem1a_din(31 downto 0) => MAYO_KEYGEN_FSM_0_o_mem1a_din(31 downto 0),
+      o_mem1a_en => MAYO_KEYGEN_FSM_0_o_mem1a_en,
+      o_mem1a_rst => BRAM_key_rst_1,
+      o_mem1a_we(3 downto 0) => MAYO_KEYGEN_FSM_0_o_mem1a_we(3 downto 0),
+      o_neg_adr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_neg_adr(31 downto 0),
+      o_neg_enable => MAYO_KEYGEN_FSM_0_o_neg_enable,
+      o_neg_len(31 downto 0) => MAYO_KEYGEN_FSM_0_o_neg_len(31 downto 0),
+      o_red_adr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_red_adr(31 downto 0),
+      o_red_bram_sel => MAYO_KEYGEN_FSM_0_o_red_bram_sel,
+      o_red_enable => MAYO_KEYGEN_FSM_0_o_red_enable,
+      o_red_len(31 downto 0) => MAYO_KEYGEN_FSM_0_o_red_len(31 downto 0),
+      o_sam_enable => MAYO_KEYGEN_FSM_0_o_sam_enable,
+      o_sam_oil_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_sam_oil_addr(31 downto 0),
+      o_trng_data(31 downto 0) => MAYO_KEYGEN_FSM_0_o_trng_data(31 downto 0),
+      o_trng_r => MAYO_KEYGEN_FSM_0_o_trng_r,
+      o_trng_w => MAYO_KEYGEN_FSM_0_o_trng_w
+    );
+TRNG: entity work.TRNG_imp_1KWX5GC
+     port map (
+      clk => processing_system7_0_FCLK_CLK0,
+      i_trng0_data(31 downto 0) => MAYO_KEYGEN_FSM_0_o_trng_data(31 downto 0),
+      i_trng0_r => MAYO_KEYGEN_FSM_0_o_trng_r,
+      i_trng0_w => MAYO_KEYGEN_FSM_0_o_trng_w,
+      i_trng1_data1(31 downto 0) => mayo_sample_oil_space_0_o_trng_data(31 downto 0),
+      i_trng1_r => mayo_sample_oil_space_0_o_trng_r,
+      i_trng1_w => mayo_sample_oil_space_0_o_trng_w,
+      i_trng_sel => mayo_sample_oil_space_0_o_trng_sel,
+      o_trng0_data(31 downto 0) => TRNG_o_trng0_data(31 downto 0),
+      o_trng0_done => TRNG_o_trng0_done,
+      o_trng0_valid => TRNG_o_trng0_valid,
+      o_trng1_data(31 downto 0) => TRNG_o_trng1_data(31 downto 0),
+      o_trng1_done => TRNG_o_trng1_done,
+      o_trng1_valid => TRNG_o_trng1_valid,
+      rst => rst_ps7_0_100M_peripheral_aresetn(0)
     );
 hash: entity work.hash_imp_1FCB8TA
      port map (
@@ -3959,36 +4095,31 @@ hash: entity work.hash_imp_1FCB8TA
       BRAMA_dout(31 downto 0) => arbit_brama1_BRAM_hash_dout(31 downto 0),
       BRAMA_en => MAYO_SHAKE_1_BRAMA_en,
       BRAMA_we(3 downto 0) => MAYO_SHAKE_1_BRAMA_we(3 downto 0),
+      bram_sel => MAYO_KEYGEN_FSM_0_o_hash_memsel,
       clk => processing_system7_0_FCLK_CLK0,
-      i_key_en => AXI_LITE_Mayo_Keygen_0_o_hash_en,
-      i_key_mlen(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_mlen(31 downto 0),
-      i_key_olen(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_olen(31 downto 0),
-      i_key_read_adr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_read_adr(31 downto 0),
-      i_key_write_adr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_hash_write_adr(31 downto 0),
-      i_sam_en => NLW_hash_i_sam_en_UNCONNECTED,
-      i_sam_mlen(31 downto 0) => NLW_hash_i_sam_mlen_UNCONNECTED(31 downto 0),
-      i_sam_olen(31 downto 0) => NLW_hash_i_sam_olen_UNCONNECTED(31 downto 0),
-      i_sam_read_adr(31 downto 0) => NLW_hash_i_sam_read_adr_UNCONNECTED(31 downto 0),
-      i_sam_write_adr(31 downto 0) => NLW_hash_i_sam_write_adr_UNCONNECTED(31 downto 0),
+      i_key_en => MAYO_KEYGEN_FSM_0_o_hash_en,
+      i_key_mlen(31 downto 0) => MAYO_KEYGEN_FSM_0_o_hash_mlen(31 downto 0),
+      i_key_olen(31 downto 0) => MAYO_KEYGEN_FSM_0_o_hash_olen(31 downto 0),
+      i_key_read_adr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_hash_read_adr(31 downto 0),
+      i_key_write_adr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_hash_write_adr(31 downto 0),
       o_key_done => mayo_hash_arbiter_0_o_key_done,
       o_key_dyn_done => mayo_hash_arbiter_0_o_key_dyn_done,
-      o_sam_done => mayo_hash_arbiter_0_o_sam_done,
-      o_sam_dyn_done => mayo_hash_arbiter_0_o_sam_dyn_done,
       rst => rst_ps7_0_100M_peripheral_aresetn(0)
     );
 mayo_add_vectors_0: component Mayo_keygen_mayo_add_vectors_0_0
      port map (
+      i_bram_sel(1 downto 0) => MAYO_KEYGEN_FSM_0_o_add_bram_sel(1 downto 0),
       i_clk => processing_system7_0_FCLK_CLK0,
-      i_enable => AXI_LITE_Mayo_Keygen_0_o_add_enable,
-      i_mema_dout(31 downto 0) => arbit_brama0_BRAM_add_dout(31 downto 0),
-      i_memb_dout(31 downto 0) => mayo_bram_arbiter_1_BRAM_add_dout(31 downto 0),
-      i_memc_dout(31 downto 0) => B"00000000000000000000000000000000",
-      i_out_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_add_out_addr(31 downto 0),
-      i_v1_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_add_v1_addr(31 downto 0),
-      i_v2_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_add_v2_addr(31 downto 0),
+      i_enable => MAYO_KEYGEN_FSM_0_o_add_enable,
+      i_mema_dout(31 downto 0) => BRAM_small_BRAM_add_dout(31 downto 0),
+      i_memb_dout(31 downto 0) => BRAM_small_BRAM_add_dout1(31 downto 0),
+      i_memc_dout(31 downto 0) => BRAM_big_BRAM_add_dout(31 downto 0),
+      i_out_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_out_addr(31 downto 0),
+      i_v1_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v1_addr(31 downto 0),
+      i_v2_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_add_v2_addr(31 downto 0),
       o_controla => mayo_add_vectors_0_o_controla,
       o_controlb => mayo_add_vectors_0_o_controlb,
-      o_controlc => NLW_mayo_add_vectors_0_o_controlc_UNCONNECTED,
+      o_controlc => add_control_1,
       o_done => mayo_add_vectors_0_o_done,
       o_mema_addr(31 downto 0) => mayo_add_vectors_0_o_mema_addr(31 downto 0),
       o_mema_din(31 downto 0) => mayo_add_vectors_0_o_mema_din(31 downto 0),
@@ -4000,25 +4131,63 @@ mayo_add_vectors_0: component Mayo_keygen_mayo_add_vectors_0_0
       o_memb_en => mayo_add_vectors_0_o_memb_en,
       o_memb_rst => mayo_add_vectors_0_o_memb_rst,
       o_memb_we(3 downto 0) => mayo_add_vectors_0_o_memb_we(3 downto 0),
-      o_memc_addr(31 downto 0) => NLW_mayo_add_vectors_0_o_memc_addr_UNCONNECTED(31 downto 0),
-      o_memc_din(31 downto 0) => NLW_mayo_add_vectors_0_o_memc_din_UNCONNECTED(31 downto 0),
-      o_memc_en => NLW_mayo_add_vectors_0_o_memc_en_UNCONNECTED,
-      o_memc_rst => NLW_mayo_add_vectors_0_o_memc_rst_UNCONNECTED,
-      o_memc_we(3 downto 0) => NLW_mayo_add_vectors_0_o_memc_we_UNCONNECTED(3 downto 0),
+      o_memc_addr(31 downto 0) => mayo_add_vectors_0_o_memc_addr(31 downto 0),
+      o_memc_din(31 downto 0) => mayo_add_vectors_0_o_memc_din(31 downto 0),
+      o_memc_en => mayo_add_vectors_0_o_memc_en,
+      o_memc_rst => mayo_add_vectors_0_o_memc_rst,
+      o_memc_we(3 downto 0) => mayo_add_vectors_0_o_memc_we(3 downto 0),
       rst => rst_ps7_0_100M_peripheral_aresetn(0)
+    );
+mayo_axi_litev3_0: component Mayo_keygen_mayo_axi_litev3_0_0
+     port map (
+      i_Keygen_busy => MAYO_KEYGEN_FSM_0_o_busy,
+      i_Keygen_done => MAYO_KEYGEN_FSM_0_o_done,
+      i_Signing_busy => Ground1_dout(0),
+      i_Signing_done => Ground1_dout(0),
+      i_Verification_busy => Ground1_dout(0),
+      i_Verification_done => Ground1_dout(0),
+      i_error(7 downto 0) => xlconcat_0_dout(7 downto 0),
+      o_Debug => mayo_axi_litev3_0_o_Debug,
+      o_Expose => mayo_axi_litev3_0_o_Expose,
+      o_Keygen_en => mayo_axi_litev3_0_o_Keygen_en,
+      o_Signing_en => NLW_mayo_axi_litev3_0_o_Signing_en_UNCONNECTED,
+      o_Verification_en => NLW_mayo_axi_litev3_0_o_Verification_en_UNCONNECTED,
+      o_interrupt => mayo_axi_litev3_0_o_interrupt,
+      o_irq_en => NLW_mayo_axi_litev3_0_o_irq_en_UNCONNECTED,
+      s00_axi_aclk => processing_system7_0_FCLK_CLK0,
+      s00_axi_araddr(4 downto 0) => ps7_0_axi_periph_M01_AXI_ARADDR(4 downto 0),
+      s00_axi_aresetn => rst_ps7_0_100M_peripheral_aresetn(0),
+      s00_axi_arprot(2 downto 0) => ps7_0_axi_periph_M01_AXI_ARPROT(2 downto 0),
+      s00_axi_arready => ps7_0_axi_periph_M01_AXI_ARREADY,
+      s00_axi_arvalid => ps7_0_axi_periph_M01_AXI_ARVALID,
+      s00_axi_awaddr(4 downto 0) => ps7_0_axi_periph_M01_AXI_AWADDR(4 downto 0),
+      s00_axi_awprot(2 downto 0) => ps7_0_axi_periph_M01_AXI_AWPROT(2 downto 0),
+      s00_axi_awready => ps7_0_axi_periph_M01_AXI_AWREADY,
+      s00_axi_awvalid => ps7_0_axi_periph_M01_AXI_AWVALID,
+      s00_axi_bready => ps7_0_axi_periph_M01_AXI_BREADY,
+      s00_axi_bresp(1 downto 0) => ps7_0_axi_periph_M01_AXI_BRESP(1 downto 0),
+      s00_axi_bvalid => ps7_0_axi_periph_M01_AXI_BVALID,
+      s00_axi_rdata(31 downto 0) => ps7_0_axi_periph_M01_AXI_RDATA(31 downto 0),
+      s00_axi_rready => ps7_0_axi_periph_M01_AXI_RREADY,
+      s00_axi_rresp(1 downto 0) => ps7_0_axi_periph_M01_AXI_RRESP(1 downto 0),
+      s00_axi_rvalid => ps7_0_axi_periph_M01_AXI_RVALID,
+      s00_axi_wdata(31 downto 0) => ps7_0_axi_periph_M01_AXI_WDATA(31 downto 0),
+      s00_axi_wready => ps7_0_axi_periph_M01_AXI_WREADY,
+      s00_axi_wstrb(3 downto 0) => ps7_0_axi_periph_M01_AXI_WSTRB(3 downto 0),
+      s00_axi_wvalid => ps7_0_axi_periph_M01_AXI_WVALID
     );
 mayo_linear_combinat_0: component Mayo_keygen_mayo_linear_combinat_0_0
      port map (
-      i_bram_halt => AXI_LITE_Mayo_Keygen_0_o_lin_bram_halt,
+      i_bram_halt => MAYO_KEYGEN_FSM_0_o_lin_bram_halt,
       i_clk => processing_system7_0_FCLK_CLK0,
-      i_coeffs_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_lin_coeffs_addr(31 downto 0),
-      i_enable => AXI_LITE_Mayo_Keygen_0_o_lin_enable,
-      i_len(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_lin_len(31 downto 0),
+      i_coeffs_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_lin_coeffs_addr(31 downto 0),
+      i_enable => MAYO_KEYGEN_FSM_0_o_lin_enable,
+      i_len(31 downto 0) => MAYO_KEYGEN_FSM_0_o_lin_len(31 downto 0),
       i_mem0a_dout(31 downto 0) => arbit_brama0_BRAM_lin_dout(31 downto 0),
       i_mem0b_dout(31 downto 0) => mayo_bram_arbiter_1_BRAM_lin_dout(31 downto 0),
       i_mem1a_dout(31 downto 0) => arbit_brama1_BRAM_lin_dout(31 downto 0),
-      i_out_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_lin_out_addr(31 downto 0),
-      i_vec_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_lin_vec_addr(31 downto 0),
+      i_out_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_lin_out_addr(31 downto 0),
+      i_vec_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_lin_vec_addr(31 downto 0),
       o_control0a => mayo_linear_combinat_0_o_control0a,
       o_control0b => mayo_linear_combinat_0_o_control0b,
       o_control1a => mayo_linear_combinat_0_o_control1a,
@@ -4042,11 +4211,11 @@ mayo_linear_combinat_0: component Mayo_keygen_mayo_linear_combinat_0_0
     );
 mayo_negate_0: component Mayo_keygen_mayo_negate_0_0
      port map (
-      i_adr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_neg_adr(31 downto 0),
+      i_adr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_neg_adr(31 downto 0),
       i_clk => processing_system7_0_FCLK_CLK0,
       i_doutb(31 downto 0) => arbit_brama0_BRAM_neg_dout(31 downto 0),
-      i_enable => AXI_LITE_Mayo_Keygen_0_o_neg_enable,
-      i_len(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_neg_len(31 downto 0),
+      i_enable => MAYO_KEYGEN_FSM_0_o_neg_enable,
+      i_len(31 downto 0) => MAYO_KEYGEN_FSM_0_o_neg_len(31 downto 0),
       o_addrb(31 downto 0) => mayo_negate_0_o_addrb(31 downto 0),
       o_control => mayo_negate_0_o_control,
       o_dinb(31 downto 0) => mayo_negate_0_o_dinb(31 downto 0),
@@ -4058,37 +4227,37 @@ mayo_negate_0: component Mayo_keygen_mayo_negate_0_0
     );
 mayo_reduce_0: component Mayo_keygen_mayo_reduce_0_0
      port map (
-      i_adr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_red_adr(31 downto 0),
-      i_bram_sel => '0',
+      i_adr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_red_adr(31 downto 0),
+      i_bram_sel => MAYO_KEYGEN_FSM_0_o_red_bram_sel,
       i_clk => processing_system7_0_FCLK_CLK0,
-      i_dout0(31 downto 0) => B"00000000000000000000000000000000",
-      i_dout1(31 downto 0) => B"00000000000000000000000000000000",
-      i_enable => AXI_LITE_Mayo_Keygen_0_o_red_enable,
-      i_len(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_red_len(31 downto 0),
-      o_addr0(31 downto 0) => NLW_mayo_reduce_0_o_addr0_UNCONNECTED(31 downto 0),
-      o_addr1(31 downto 0) => NLW_mayo_reduce_0_o_addr1_UNCONNECTED(31 downto 0),
-      o_control0 => NLW_mayo_reduce_0_o_control0_UNCONNECTED,
-      o_control1 => NLW_mayo_reduce_0_o_control1_UNCONNECTED,
-      o_din0(31 downto 0) => NLW_mayo_reduce_0_o_din0_UNCONNECTED(31 downto 0),
-      o_din1(31 downto 0) => NLW_mayo_reduce_0_o_din1_UNCONNECTED(31 downto 0),
+      i_dout0(31 downto 0) => arbit_brama0_BRAM_red_dout(31 downto 0),
+      i_dout1(31 downto 0) => BRAM_big_BRAM_red_dout(31 downto 0),
+      i_enable => MAYO_KEYGEN_FSM_0_o_red_enable,
+      i_len(31 downto 0) => MAYO_KEYGEN_FSM_0_o_red_len(31 downto 0),
+      o_addr0(31 downto 0) => mayo_reduce_0_o_addrb(31 downto 0),
+      o_addr1(31 downto 0) => mayo_reduce_0_o_addr1(31 downto 0),
+      o_control0 => mayo_reduce_0_o_control,
+      o_control1 => mayo_reduce_0_o_control1,
+      o_din0(31 downto 0) => mayo_reduce_0_o_din0(31 downto 0),
+      o_din1(31 downto 0) => mayo_reduce_0_o_din1(31 downto 0),
       o_done => mayo_reduce_0_o_done,
-      o_en0 => NLW_mayo_reduce_0_o_en0_UNCONNECTED,
-      o_en1 => NLW_mayo_reduce_0_o_en1_UNCONNECTED,
-      o_rst0 => NLW_mayo_reduce_0_o_rst0_UNCONNECTED,
-      o_rst1 => NLW_mayo_reduce_0_o_rst1_UNCONNECTED,
-      o_we0(3 downto 0) => NLW_mayo_reduce_0_o_we0_UNCONNECTED(3 downto 0),
-      o_we1(3 downto 0) => NLW_mayo_reduce_0_o_we1_UNCONNECTED(3 downto 0),
+      o_en0 => mayo_reduce_0_o_enb,
+      o_en1 => mayo_reduce_0_o_en1,
+      o_rst0 => mayo_reduce_0_o_rstb,
+      o_rst1 => mayo_reduce_0_o_rst1,
+      o_we0(3 downto 0) => mayo_reduce_0_o_web(3 downto 0),
+      o_we1(3 downto 0) => mayo_reduce_0_o_we1(3 downto 0),
       rst => rst_ps7_0_100M_peripheral_aresetn(0)
     );
 mayo_sample_oil_space_0: component Mayo_keygen_mayo_sample_oil_space_0_0
      port map (
       i_clk => processing_system7_0_FCLK_CLK0,
-      i_enable => AXI_LITE_Mayo_Keygen_0_o_sam_enable,
+      i_enable => MAYO_KEYGEN_FSM_0_o_sam_enable,
       i_memb_dout(31 downto 0) => arbit_bramb0_BRAM_sam_dout(31 downto 0),
-      i_oil_addr(31 downto 0) => AXI_LITE_Mayo_Keygen_0_o_sam_oil_addr(31 downto 0),
-      i_trng_data(31 downto 0) => B"00000000000000000000000000000000",
-      i_trng_done => '0',
-      i_trng_valid => '0',
+      i_oil_addr(31 downto 0) => MAYO_KEYGEN_FSM_0_o_sam_oil_addr(31 downto 0),
+      i_trng_data(31 downto 0) => TRNG_o_trng1_data(31 downto 0),
+      i_trng_done => TRNG_o_trng1_done,
+      i_trng_valid => TRNG_o_trng1_valid,
       o_controlb => mayo_sample_oil_space_0_o_controlb,
       o_done => mayo_sample_oil_space_0_o_done,
       o_memb_addr(31 downto 0) => mayo_sample_oil_space_0_o_memb_addr(31 downto 0),
@@ -4096,10 +4265,10 @@ mayo_sample_oil_space_0: component Mayo_keygen_mayo_sample_oil_space_0_0
       o_memb_en => mayo_sample_oil_space_0_o_memb_en,
       o_memb_rst => mayo_sample_oil_space_0_o_memb_rst,
       o_memb_we(3 downto 0) => mayo_sample_oil_space_0_o_memb_we(3 downto 0),
-      o_trng_data(31 downto 0) => NLW_mayo_sample_oil_space_0_o_trng_data_UNCONNECTED(31 downto 0),
-      o_trng_r => NLW_mayo_sample_oil_space_0_o_trng_r_UNCONNECTED,
-      o_trng_sel => NLW_mayo_sample_oil_space_0_o_trng_sel_UNCONNECTED,
-      o_trng_w => NLW_mayo_sample_oil_space_0_o_trng_w_UNCONNECTED,
+      o_trng_data(31 downto 0) => mayo_sample_oil_space_0_o_trng_data(31 downto 0),
+      o_trng_r => mayo_sample_oil_space_0_o_trng_r,
+      o_trng_sel => mayo_sample_oil_space_0_o_trng_sel,
+      o_trng_w => mayo_sample_oil_space_0_o_trng_w,
       rst => rst_ps7_0_100M_peripheral_aresetn(0)
     );
 processing_system7_0: component Mayo_keygen_processing_system7_0_0
@@ -4123,6 +4292,7 @@ processing_system7_0: component Mayo_keygen_processing_system7_0_0
       DDR_WEB => DDR_we_n,
       FCLK_CLK0 => processing_system7_0_FCLK_CLK0,
       FCLK_RESET0_N => processing_system7_0_FCLK_RESET0_N,
+      IRQ_F2P(0) => mayo_axi_litev3_0_o_interrupt,
       MIO(53 downto 0) => FIXED_IO_mio(53 downto 0),
       M_AXI_GP0_ACLK => processing_system7_0_FCLK_CLK0,
       M_AXI_GP0_ARADDR(31 downto 0) => processing_system7_0_M_AXI_GP0_ARADDR(31 downto 0),
@@ -4180,58 +4350,58 @@ ps7_0_axi_periph: entity work.Mayo_keygen_ps7_0_axi_periph_0
       M00_ACLK => processing_system7_0_FCLK_CLK0,
       M00_ARESETN => rst_ps7_0_100M_peripheral_aresetn(0),
       M00_AXI_araddr(31 downto 0) => ps7_0_axi_periph_M00_AXI_ARADDR(31 downto 0),
+      M00_AXI_arburst(1 downto 0) => ps7_0_axi_periph_M00_AXI_ARBURST(1 downto 0),
+      M00_AXI_arcache(3 downto 0) => ps7_0_axi_periph_M00_AXI_ARCACHE(3 downto 0),
+      M00_AXI_arid(11 downto 0) => ps7_0_axi_periph_M00_AXI_ARID(11 downto 0),
+      M00_AXI_arlen(7 downto 0) => ps7_0_axi_periph_M00_AXI_ARLEN(7 downto 0),
+      M00_AXI_arlock => ps7_0_axi_periph_M00_AXI_ARLOCK,
       M00_AXI_arprot(2 downto 0) => ps7_0_axi_periph_M00_AXI_ARPROT(2 downto 0),
       M00_AXI_arready => ps7_0_axi_periph_M00_AXI_ARREADY,
+      M00_AXI_arsize(2 downto 0) => ps7_0_axi_periph_M00_AXI_ARSIZE(2 downto 0),
       M00_AXI_arvalid => ps7_0_axi_periph_M00_AXI_ARVALID,
       M00_AXI_awaddr(31 downto 0) => ps7_0_axi_periph_M00_AXI_AWADDR(31 downto 0),
+      M00_AXI_awburst(1 downto 0) => ps7_0_axi_periph_M00_AXI_AWBURST(1 downto 0),
+      M00_AXI_awcache(3 downto 0) => ps7_0_axi_periph_M00_AXI_AWCACHE(3 downto 0),
+      M00_AXI_awid(11 downto 0) => ps7_0_axi_periph_M00_AXI_AWID(11 downto 0),
+      M00_AXI_awlen(7 downto 0) => ps7_0_axi_periph_M00_AXI_AWLEN(7 downto 0),
+      M00_AXI_awlock => ps7_0_axi_periph_M00_AXI_AWLOCK,
       M00_AXI_awprot(2 downto 0) => ps7_0_axi_periph_M00_AXI_AWPROT(2 downto 0),
       M00_AXI_awready => ps7_0_axi_periph_M00_AXI_AWREADY,
+      M00_AXI_awsize(2 downto 0) => ps7_0_axi_periph_M00_AXI_AWSIZE(2 downto 0),
       M00_AXI_awvalid => ps7_0_axi_periph_M00_AXI_AWVALID,
+      M00_AXI_bid(11 downto 0) => ps7_0_axi_periph_M00_AXI_BID(11 downto 0),
       M00_AXI_bready => ps7_0_axi_periph_M00_AXI_BREADY,
       M00_AXI_bresp(1 downto 0) => ps7_0_axi_periph_M00_AXI_BRESP(1 downto 0),
       M00_AXI_bvalid => ps7_0_axi_periph_M00_AXI_BVALID,
       M00_AXI_rdata(31 downto 0) => ps7_0_axi_periph_M00_AXI_RDATA(31 downto 0),
+      M00_AXI_rid(11 downto 0) => ps7_0_axi_periph_M00_AXI_RID(11 downto 0),
+      M00_AXI_rlast => ps7_0_axi_periph_M00_AXI_RLAST,
       M00_AXI_rready => ps7_0_axi_periph_M00_AXI_RREADY,
       M00_AXI_rresp(1 downto 0) => ps7_0_axi_periph_M00_AXI_RRESP(1 downto 0),
       M00_AXI_rvalid => ps7_0_axi_periph_M00_AXI_RVALID,
       M00_AXI_wdata(31 downto 0) => ps7_0_axi_periph_M00_AXI_WDATA(31 downto 0),
+      M00_AXI_wlast => ps7_0_axi_periph_M00_AXI_WLAST,
       M00_AXI_wready => ps7_0_axi_periph_M00_AXI_WREADY,
       M00_AXI_wstrb(3 downto 0) => ps7_0_axi_periph_M00_AXI_WSTRB(3 downto 0),
       M00_AXI_wvalid => ps7_0_axi_periph_M00_AXI_WVALID,
       M01_ACLK => processing_system7_0_FCLK_CLK0,
       M01_ARESETN => rst_ps7_0_100M_peripheral_aresetn(0),
       M01_AXI_araddr(31 downto 0) => ps7_0_axi_periph_M01_AXI_ARADDR(31 downto 0),
-      M01_AXI_arburst(1 downto 0) => ps7_0_axi_periph_M01_AXI_ARBURST(1 downto 0),
-      M01_AXI_arcache(3 downto 0) => ps7_0_axi_periph_M01_AXI_ARCACHE(3 downto 0),
-      M01_AXI_arid(11 downto 0) => ps7_0_axi_periph_M01_AXI_ARID(11 downto 0),
-      M01_AXI_arlen(7 downto 0) => ps7_0_axi_periph_M01_AXI_ARLEN(7 downto 0),
-      M01_AXI_arlock => ps7_0_axi_periph_M01_AXI_ARLOCK,
       M01_AXI_arprot(2 downto 0) => ps7_0_axi_periph_M01_AXI_ARPROT(2 downto 0),
       M01_AXI_arready => ps7_0_axi_periph_M01_AXI_ARREADY,
-      M01_AXI_arsize(2 downto 0) => ps7_0_axi_periph_M01_AXI_ARSIZE(2 downto 0),
       M01_AXI_arvalid => ps7_0_axi_periph_M01_AXI_ARVALID,
       M01_AXI_awaddr(31 downto 0) => ps7_0_axi_periph_M01_AXI_AWADDR(31 downto 0),
-      M01_AXI_awburst(1 downto 0) => ps7_0_axi_periph_M01_AXI_AWBURST(1 downto 0),
-      M01_AXI_awcache(3 downto 0) => ps7_0_axi_periph_M01_AXI_AWCACHE(3 downto 0),
-      M01_AXI_awid(11 downto 0) => ps7_0_axi_periph_M01_AXI_AWID(11 downto 0),
-      M01_AXI_awlen(7 downto 0) => ps7_0_axi_periph_M01_AXI_AWLEN(7 downto 0),
-      M01_AXI_awlock => ps7_0_axi_periph_M01_AXI_AWLOCK,
       M01_AXI_awprot(2 downto 0) => ps7_0_axi_periph_M01_AXI_AWPROT(2 downto 0),
       M01_AXI_awready => ps7_0_axi_periph_M01_AXI_AWREADY,
-      M01_AXI_awsize(2 downto 0) => ps7_0_axi_periph_M01_AXI_AWSIZE(2 downto 0),
       M01_AXI_awvalid => ps7_0_axi_periph_M01_AXI_AWVALID,
-      M01_AXI_bid(11 downto 0) => ps7_0_axi_periph_M01_AXI_BID(11 downto 0),
       M01_AXI_bready => ps7_0_axi_periph_M01_AXI_BREADY,
       M01_AXI_bresp(1 downto 0) => ps7_0_axi_periph_M01_AXI_BRESP(1 downto 0),
       M01_AXI_bvalid => ps7_0_axi_periph_M01_AXI_BVALID,
       M01_AXI_rdata(31 downto 0) => ps7_0_axi_periph_M01_AXI_RDATA(31 downto 0),
-      M01_AXI_rid(11 downto 0) => ps7_0_axi_periph_M01_AXI_RID(11 downto 0),
-      M01_AXI_rlast => ps7_0_axi_periph_M01_AXI_RLAST,
       M01_AXI_rready => ps7_0_axi_periph_M01_AXI_RREADY,
       M01_AXI_rresp(1 downto 0) => ps7_0_axi_periph_M01_AXI_RRESP(1 downto 0),
       M01_AXI_rvalid => ps7_0_axi_periph_M01_AXI_RVALID,
       M01_AXI_wdata(31 downto 0) => ps7_0_axi_periph_M01_AXI_WDATA(31 downto 0),
-      M01_AXI_wlast => ps7_0_axi_periph_M01_AXI_WLAST,
       M01_AXI_wready => ps7_0_axi_periph_M01_AXI_WREADY,
       M01_AXI_wstrb(3 downto 0) => ps7_0_axi_periph_M01_AXI_WSTRB(3 downto 0),
       M01_AXI_wvalid => ps7_0_axi_periph_M01_AXI_WVALID,
@@ -4288,5 +4458,13 @@ rst_ps7_0_100M: component Mayo_keygen_rst_ps7_0_100M_0
       peripheral_aresetn(0) => rst_ps7_0_100M_peripheral_aresetn(0),
       peripheral_reset(0) => NLW_rst_ps7_0_100M_peripheral_reset_UNCONNECTED(0),
       slowest_sync_clk => processing_system7_0_FCLK_CLK0
+    );
+xlconcat_0: component Mayo_keygen_xlconcat_0_0
+     port map (
+      In0(1 downto 0) => MAYO_KEYGEN_FSM_0_o_err(1 downto 0),
+      In1(3 downto 0) => Ground4_dout1(3 downto 0),
+      In2(0) => Ground1_dout(0),
+      In3(0) => Ground1_dout(0),
+      dout(7 downto 0) => xlconcat_0_dout(7 downto 0)
     );
 end STRUCTURE;

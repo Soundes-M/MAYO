@@ -29,7 +29,7 @@ eval( EAInclude(ISEJScriptLib) );
 // pre-commands:
 ISETouchFile( "init_design", "begin" );
 ISEStep( "vivado",
-         "-log Mayo_keygen_no_zynq_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Mayo_keygen_no_zynq_wrapper.tcl -notrace" );
+         "-log Mayo_keygen_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Mayo_keygen_wrapper.tcl -notrace" );
 
 
 

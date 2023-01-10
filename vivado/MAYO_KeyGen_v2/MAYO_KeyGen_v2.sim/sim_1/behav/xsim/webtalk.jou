@@ -2,11 +2,11 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Fri Dec  9 17:58:03 2022
-# Process ID: 567009
+# Start of session at: Tue Jan  3 18:40:35 2023
+# Process ID: 545763
 # Current directory: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim
-# Command line: wbtcv -mode batch -source /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/Mayo_keygen_no_zynq_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Command line: wbtcv -mode batch -source /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/lin_comb_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/webtalk.log
 # Journal file: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/webtalk.jou
 #-----------------------------------------------------------
-source /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/Mayo_keygen_no_zynq_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+source /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.sim/sim_1/behav/xsim/xsim.dir/lin_comb_tb_behav/webtalk/xsim_webtalk.tcl -notrace

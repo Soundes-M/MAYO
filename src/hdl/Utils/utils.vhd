@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sat Oct 22 22:54:28 2022
+-- Last update : Sun Jan  8 14:20:55 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -107,6 +107,8 @@ PACKAGE UTILS_COMMON IS
   type array_8 is array(natural range <>) of std_logic_vector(7 downto 0);
 
   constant ZERO_32 : std_logic_vector(31 downto 0) := (others => '0');
+  constant ZERO_16 : std_logic_vector(15 downto 0) := (others => '0');
+
 
   ------------------------------------------------------------------------------
   -- CDMA REG SPACE

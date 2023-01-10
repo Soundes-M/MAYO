@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Tue Dec 20 21:51:41 2022
+-- Last update : Mon Jan  9 00:35:52 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -30,19 +30,22 @@ use work.UTILS_COMMON.all;
 
 ENTITY MAYO_KEYGEN_FSM IS
   GENERIC (
-    SIZE      : NATURAL := 999; -- typeholder
+    SIZE      : NATURAL := 31; -- typeholder
     BRAM_SIZE : NATURAL := 31
   );
   PORT (
     CLK               : IN STD_LOGIC;
-    ENABLE            : IN STD_LOGIC; -- TODO: Optional or change to internal config regs
+    ENABLE            : IN STD_LOGIC; 
     RESET             : IN STD_LOGIC;
     PUBLIC_KEY_ADDR_I : IN STD_LOGIC_VECTOR(31 DOWNTO 0); -- TODO: 32 bits adr of ram needs more work in vivado aka. axi DMA
     SECRET_KEY_ADDR_I : IN STD_LOGIC_VECTOR(31 DOWNTO 0); -- TODO: 32 bits adr of ram needs more work in vivado aka. axi DMA
-                                                          -- o_done            : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);  -- TODO: Maybe transform to type / 00-> nothing, 01 -> valid, 10 -> error , 11 -> reserved
-    o_done  : out std_logic;
-    i_debug : in  std_logic;
-    -- TODO add axi lite core slv here
+
+    o_busy   : out std_logic;
+    o_done   : out std_logic;
+    i_expose : in  std_logic;
+    i_debug  : in  std_logic;
+    o_err    : out std_logic_vector(1 downto 0);
+
     o_trng_r     : out std_logic;
     o_trng_w     : out std_logic;
     o_trng_data  : out std_logic_vector(31 downto 0);
@@ -133,7 +136,7 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
       compute0, compute1, compute2, compute3, compute4, compute5, compute6, compute7, compute8, compute9, compute10, compute11,
       compute12, compute13, compute14, compute15, compute16, compute17, compute18, compute19, compute20, compute21, compute22, compute23,
       done, wait_clear,fill_sk0,fill_sk1,fill_sk2,fill_sk3,fill_sk4, debug0, debug1, debug2, debug3, debug4, debug5, debug6, debug7, debug9, debug10, debug11, debug12
-      ,debug13,debug14,debug15,debug16, debug20, debug21, debug22, debug23);
+      ,debug13,debug14,debug15,debug16, debug20, debug21, debug22, debug23, debug24, debug25, debug26, debug27, debug28, debug29, debug30, debug31);
   SIGNAL STATE : STATES := idle; -- default to reset;
 
   signal trng : trng_t := DEFAULT_TRNG;
@@ -155,18 +158,17 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
   ------------------------------------------------------------------------------
   -- Reg Space (AXI-LITE)
   ------------------------------------------------------------------------------
-  signal s_status_reg  : std_logic_vector(31 downto 0);
-  signal s_control_reg : std_logic_vector(31 downto 0);
-  signal s_pk_reg      : std_logic_vector(31 downto 0); --can copy pk and sk to ddr
-  signal s_sk_reg      : std_logic_vector(31 downto 0);
+  signal s_pk_reg : std_logic_vector(31 downto 0); --can copy pk and sk to ddr
+  signal s_sk_reg : std_logic_vector(31 downto 0);
 
-  alias en     : std_logic is s_control_reg(1);
-  alias debug  : std_logic is s_control_reg(2);
-  alias irq    : std_logic is s_control_reg(3);
-  alias expose : std_logic is s_control_reg(4);
-
-  alias busy : std_logic is s_status_reg(1);
-  alias err  : std_logic is s_status_reg(2);
+  -- Control
+  signal en     : std_logic := '0';
+  signal debug  : std_logic := '0';
+  signal irq    : std_logic := '0';
+  signal expose : std_logic := '0';
+  -- Status
+  signal busy : std_logic                    := '0';
+  signal err  : std_logic_vector(1 downto 0) := "00";
 
   ------------------------------------------------------------------------------
   -- BRAM
@@ -180,9 +182,10 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
   ------------------------------------------------------------------------------
   constant C_DEBUG : std_logic := '1';
   file myFile      : text;
+  signal debug_ctr : integer := 0 ;
 BEGIN
 
-  o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = fill_sk0 or state = fill_sk1 or state = fill_sk2 or state = fill_sk3 or state = fill_sk4 or state = debug4 or state = debug5 or state = debug6 or state = debug7) else '0';
+  o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = fill_sk0 or state = fill_sk1 or state = fill_sk2 or state = fill_sk3 or state = fill_sk4 or state = debug4 or state = debug5 or state = debug6 or state = debug7 or state = debug24 or state = debug25 or state = debug26 or state = debug27 or state = debug28 or state = debug29 or state = debug30 or state = debug31) else '0';
   o_mem0b_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
   o_mem1a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = transpose3 or state = transpose4 or state = transpose5 or state = transpose7 or state = debug0 or state = debug1 or state = debug2 or state = debug3 or state = debug9 or state = debug10 or state = debug11 or state = debug12 or state = debug13 or state = debug14 or state = debug15 or state = debug16 or state = debug20 or state = debug21 or state = debug22 or state = debug23) else '0';
 
@@ -215,6 +218,10 @@ BEGIN
         s_hash_mem_sel     <= '1';
         o_red_bram_sel     <= '0';
         o_add_bram_sel     <= "00";
+
+        busy <= '0';
+        err  <= "00";
+
 
       else
         case (state) is
@@ -254,10 +261,10 @@ BEGIN
             if (trng.i.valid = '1') then
               bram0a.o.o_din  <= i_trng_data;
               bram0a.o.o_en   <= '1';
-              bram0a.o.o_addr <= std_logic_vector(to_unsigned(SK_BASE_ADR+index,PORT_WIDTH)) ; -- TODO : Check
+              bram0a.o.o_addr <= std_logic_vector(to_unsigned(SK_BASE_ADR+index,PORT_WIDTH)) ;
               index           <= index + 4;
 
-              if (index < 16) then
+              if (index < 16) then -- copy pk seed to big bram (will be overwritten)
                 bram0b.o.o_en <= '1';
                 bram1a.o.o_en <= '1';
 
@@ -271,14 +278,13 @@ BEGIN
               bram0a.o.o_en <= '0';
               bram0b.o.o_en <= '0';
               bram1a.o.o_en <= '0';
-              bram0a.o.o_we <= "0000";
             end if;
 
             if (trng.i.done = '1') then
               state <= rand6;
             end if;
 
-          when rand6 => -- copy pk seed to big bram (will be overwritten)
+          when rand6 =>
             trng.o.r <= '0';
 
             bram0a.o.o_en  <= '0';
@@ -286,6 +292,7 @@ BEGIN
             bram1a.o.o_en  <= '0';
             bram0b.o.o_we  <= "0000";
             bram1a.o.o_we  <= "0000";
+            bram0a.o.o_we  <= "0000";
             index          <= 0;
             state          <= expand0;
             s_hash_mem_sel <= '1';
@@ -415,15 +422,48 @@ BEGIN
           when debug7 =>
             bram0a.o.o_en <= '0';
             file_close(myFile);
-            state <= compute0;
+            state <= debug24;
 
+          when debug24 =>
+            report "Writing Sk!";
+            file_open(myFile, "SK.txt", write_mode);
+            i               <= 0;
+            bram0a.o.o_addr <= std_logic_vector(to_unsigned(SK_BASE_ADR,PORT_WIDTH));
+            bram0a.o.o_we   <= "0000";
+            bram0a.o.o_en   <= '1';
+            state           <= debug25;
+
+          when debug25 =>
+            state <= debug26;
+
+          when debug26 =>
+            hwrite(v_myLine, bram0a.i.i_dout); -- hex write 
+            writeline(myFile, v_myLine);
+            bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
+            if (i <= SK_RANGE -1 ) then
+              i     <= i+4;
+              state <= debug25;
+            else
+              state <= debug27;
+            end if;
+
+          when debug27 =>
+            bram0a.o.o_en <= '0';
+            file_close(myFile);
+            state <= compute0;
             --------------------------------------------------------------------
             -- DEBUG END
             --------------------------------------------------------------------
 
           -- PART 1
           when compute0 =>
-            file_close(myFile);
+            -- IGNORE IF DEBUG OFF! 
+            if (C_DEBUG = '1') then
+              report "Writing VEC";
+              file_open(myFile, "vec.txt", write_mode);
+              debug_ctr <= 0;
+            end if;
+
             i <= 0;
             j <= 0;
             -- Lin Combination
@@ -441,17 +481,19 @@ BEGIN
               s_p1_index <= P1_BASE_ADR + p1_counter*M;
               state      <= compute2 ;
             else
+              -- IGNORE IF DEBUG OFF! 
               if (C_DEBUG = '1') then
-                state <= debug9;
-              else
-                state <= compute8; --[DEBUG OFF]
+                file_close(myFile);
               end if;
+
+              state <= compute8;
             end if;
 
           when compute2 => ----------------------------------------------------- J CHECK
             if (j < O) then
               state <= compute3;
             else
+              i     <= i+1 ;
               state <= compute7;
             end if;
 
@@ -466,7 +508,13 @@ BEGIN
           when compute4 =>
             o_lin_enable <= '0';
             if (i_lin_done = '1') then
-              state <= compute5;
+
+              if (C_DEBUG = '1') then
+                state <= debug28; --[DEBUG ON] 
+              else
+                state <= compute5; --[DEBUG OFF]
+              end if;
+
             end if;
 
           when compute5 =>
@@ -486,12 +534,44 @@ BEGIN
               state             <= compute2;
             end if;
 
+          --------------------------------------------------------------------
+          -- DEBUG Start
+          --------------------------------------------------------------------
+          when debug28 =>
+            bram0a.o.o_addr <= std_logic_vector(to_unsigned(P2VEC_BASE_ADR,PORT_WIDTH));
+            bram0a.o.o_we   <= "0000";
+            bram0a.o.o_en   <= '1';
+            debug_ctr       <= 0;
+            state           <= debug29;
+
+          when debug29 =>
+            state <= debug30;
+
+          when debug30 =>
+            hwrite(v_myLine, bram0a.i.i_dout); -- hex write 
+            writeline(myFile, v_myLine);
+            bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
+            if (debug_ctr <= P2VEC_RANGE -1 ) then
+              debug_ctr <= debug_ctr+4;
+              state     <= debug29;
+            else
+              state <= debug31;
+            end if;
+
+          when debug31 =>
+            bram0a.o.o_en <= '0';
+            --write(v_myLine, string'(""));
+            writeline(myFile, v_myLine);
+            state <= compute5;
+            --------------------------------------------------------------------
+            -- DEBUG END
+            --------------------------------------------------------------------
+
           when compute7 => ----------------------------------------------------- END I
-            p1_counter <= p1_counter + (N-O-i);
+            p1_counter <= p1_counter + (N-O-i-1);
             -- update ctrs for next round
-            s_oil_space_index <= OIL_SPACE_BASE_ADR + i+1;
-            s_v1_index        <= TEMP_BASE_ADR + (i+1)*O*M;
-            i                 <= i+1 ;
+            s_oil_space_index <= OIL_SPACE_BASE_ADR + i;
+            s_v1_index        <= TEMP_BASE_ADR + i*O*M;
             j                 <= 0;
             state             <= compute1;
 
@@ -559,6 +639,7 @@ BEGIN
               s_p1_index <= P1_BASE_ADR + p1_counter*M;
               state      <= compute11;
             else
+              i     <= i+1 ;
               state <= compute13;
             end if;
 
@@ -579,8 +660,7 @@ BEGIN
             end if;
 
           when compute13 =>
-            s_v1_index <= TEMP_BASE_ADR + (i+1)*O*M;
-            i          <= i+1 ;
+            s_v1_index <= TEMP_BASE_ADR + i*O*M;
             j          <= 0;
             state      <= compute9;
 
@@ -632,7 +712,9 @@ BEGIN
 
           when transpose1 =>
             if (i < O) then
-              state <= transpose2;
+              state        <= transpose2;
+              s_src_index  <= TEMP_BASE_ADR + i*M;
+              s_dest_index <= TEMPT_BASE_ADR + i*(N-O)*M;
             else
               if (C_DEBUG ='1') then
                 state <= debug13;
@@ -645,11 +727,9 @@ BEGIN
             if (j < N-O) then
               state <= transpose3;
             else
-              j            <= 0 ;
-              s_src_index  <= TEMP_BASE_ADR + (i+1)*M;
-              s_dest_index <= TEMPT_BASE_ADR + (i+1)*(N-O)*M;
-              i            <= i+1;
-              state        <= transpose1;
+              j     <= 0 ;
+              i     <= i+1;
+              state <= transpose1;
             end if;
 
           when transpose3 => --read
@@ -880,6 +960,9 @@ BEGIN
     end if;
 
   END PROCESS KEYGEN;
+
+  o_busy <= busy;
+  o_err  <= err;
 
   o_hash_memsel <= s_hash_mem_sel;
 

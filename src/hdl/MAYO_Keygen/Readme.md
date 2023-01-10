@@ -12,7 +12,7 @@ Below is a table of which core access which BRAM
 
 
 # Core Ports to BRAM Mapping
-Most of the requires are connected with an arbiter/bus manager that passes signals to the correct BRAM depending on the controls signal
+Most of the cores are connected with an arbiter/bus manager that passes signals to the correct BRAM depending on the controls signal
 
 ## Linear Combination
 Vecs -> BRAM1A
@@ -42,9 +42,9 @@ New Config
 
 00 : v1 : BRAM1A, v2 : BRAM0A, out : BRAM1A _(v1 and v2 parallel read)_
 
-01 : v1 : BRAM1A, v2 : BRAM1A, out : BRAM1A (Slowest all is seperate)
+01 : v1 : BRAM1A, v2 : BRAM1A, out : BRAM1A (Slowest, all is seperate)
 
-10 : v1 : BRAM0A, v2 : BRAM0B, out : BRAM0A (Chane ports for read and write seperate 0a 0a 0b)
+10 : v1 : BRAM0A, v2 : BRAM0B, out : BRAM0A 
 
 11 : RESERVED
 

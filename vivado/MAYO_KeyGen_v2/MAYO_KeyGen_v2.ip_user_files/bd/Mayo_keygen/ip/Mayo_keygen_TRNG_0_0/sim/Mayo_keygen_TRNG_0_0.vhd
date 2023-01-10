@@ -1,4 +1,4 @@
--- (c) Copyright 1995-2022 Xilinx, Inc. All rights reserved.
+-- (c) Copyright 1995-2023 Xilinx, Inc. All rights reserved.
 -- 
 -- This file contains confidential and proprietary information
 -- of Xilinx, Inc. and is protected under U.S. and
@@ -96,7 +96,7 @@ ARCHITECTURE Mayo_keygen_TRNG_0_0_arch OF Mayo_keygen_TRNG_0_0 IS
 BEGIN
   U0 : TRNG
     GENERIC MAP (
-      IS_SIM => true
+      IS_SIM => false
     )
     PORT MAP (
       CLK_I => CLK_I,

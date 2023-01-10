@@ -38,6 +38,6 @@ EAStep()
 
 # pre-commands:
 /bin/touch .init_design.begin.rst
-EAStep vivado -log Mayo_keygen_no_zynq_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Mayo_keygen_no_zynq_wrapper.tcl -notrace
+EAStep vivado -log Mayo_keygen_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Mayo_keygen_wrapper.tcl -notrace
 
 
