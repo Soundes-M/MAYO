@@ -1,0 +1,831 @@
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 6
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"stm32f3_hal.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.global	UartHandle
+  16              		.bss
+  17              		.align	2
+  20              	UartHandle:
+  21 0000 00000000 		.space	112
+  21      00000000 
+  21      00000000 
+  21      00000000 
+  21      00000000 
+  22              		.section	.text.platform_init,"ax",%progbits
+  23              		.align	1
+  24              		.global	platform_init
+  25              		.arch armv7e-m
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  29              		.fpu softvfp
+  31              	platform_init:
+  32              	.LFB126:
+  33              		.file 1 ".././hal/stm32f3/stm32f3_hal.c"
+   1:.././hal/stm32f3/stm32f3_hal.c **** 
+   2:.././hal/stm32f3/stm32f3_hal.c **** #include "stm32f3_hal.h"
+   3:.././hal/stm32f3/stm32f3_hal.c **** #include "stm32f3_hal_lowlevel.h"
+   4:.././hal/stm32f3/stm32f3_hal.c **** #include "stm32f3xx_hal_rcc.h"
+   5:.././hal/stm32f3/stm32f3_hal.c **** #include "stm32f3xx_hal_gpio.h"
+   6:.././hal/stm32f3/stm32f3_hal.c **** #include "stm32f3xx_hal_dma.h"
+   7:.././hal/stm32f3/stm32f3_hal.c **** #include "stm32f3xx_hal_uart.h"
+   8:.././hal/stm32f3/stm32f3_hal.c **** 
+   9:.././hal/stm32f3/stm32f3_hal.c **** UART_HandleTypeDef UartHandle;
+  10:.././hal/stm32f3/stm32f3_hal.c **** 
+  11:.././hal/stm32f3/stm32f3_hal.c **** 
+  12:.././hal/stm32f3/stm32f3_hal.c **** void platform_init(void)
+  13:.././hal/stm32f3/stm32f3_hal.c **** {
+  34              		.loc 1 13 1
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 88
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 96B0     		sub	sp, sp, #88
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 96
+  46 0004 00AF     		add	r7, sp, #0
+  47              	.LCFI2:
+  48              		.cfi_def_cfa_register 7
+  14:.././hal/stm32f3/stm32f3_hal.c ****   //HAL_Init();
+  15:.././hal/stm32f3/stm32f3_hal.c **** 
+  16:.././hal/stm32f3/stm32f3_hal.c ****   #ifdef USE_INTERNAL_CLK
+  17:.././hal/stm32f3/stm32f3_hal.c ****      RCC_OscInitTypeDef RCC_OscInitStruct;
+  18:.././hal/stm32f3/stm32f3_hal.c ****      RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  19:.././hal/stm32f3/stm32f3_hal.c ****      RCC_OscInitStruct.HSEState       = RCC_HSE_OFF;
+  20:.././hal/stm32f3/stm32f3_hal.c ****      RCC_OscInitStruct.HSIState       = RCC_HSI_ON;
+  21:.././hal/stm32f3/stm32f3_hal.c ****      RCC_OscInitStruct.PLL.PLLSource  = RCC_PLL_NONE;
+  22:.././hal/stm32f3/stm32f3_hal.c ****      HAL_RCC_OscConfig(&RCC_OscInitStruct);
+  23:.././hal/stm32f3/stm32f3_hal.c **** 
+  24:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  25:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitStruct.ClockType      = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_
+  26:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_HSI;
+  27:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitStruct.AHBCLKDivider  = RCC_SYSCLK_DIV1;
+  28:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  29:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  30:.././hal/stm32f3/stm32f3_hal.c ****      uint32_t flash_latency = 0;
+  31:.././hal/stm32f3/stm32f3_hal.c ****      HAL_RCC_ClockConfig(&RCC_ClkInitStruct, flash_latency);
+  32:.././hal/stm32f3/stm32f3_hal.c ****   #else
+  33:.././hal/stm32f3/stm32f3_hal.c ****      RCC_OscInitTypeDef RCC_OscInitStruct;
+  34:.././hal/stm32f3/stm32f3_hal.c ****      RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_HSI;
+  49              		.loc 1 34 39
+  50 0006 0323     		movs	r3, #3
+  51 0008 FB62     		str	r3, [r7, #44]
+  35:.././hal/stm32f3/stm32f3_hal.c ****      RCC_OscInitStruct.HSEState       = RCC_HSE_BYPASS;
+  52              		.loc 1 35 39
+  53 000a 4FF4A023 		mov	r3, #327680
+  54 000e 3B63     		str	r3, [r7, #48]
+  36:.././hal/stm32f3/stm32f3_hal.c ****      RCC_OscInitStruct.HSIState       = RCC_HSI_OFF;
+  55              		.loc 1 36 39
+  56 0010 0023     		movs	r3, #0
+  57 0012 FB63     		str	r3, [r7, #60]
+  37:.././hal/stm32f3/stm32f3_hal.c ****      RCC_OscInitStruct.PLL.PLLSource  = RCC_PLL_NONE;
+  58              		.loc 1 37 39
+  59 0014 0023     		movs	r3, #0
+  60 0016 FB64     		str	r3, [r7, #76]
+  38:.././hal/stm32f3/stm32f3_hal.c ****      HAL_RCC_OscConfig(&RCC_OscInitStruct);
+  61              		.loc 1 38 6
+  62 0018 07F12C03 		add	r3, r7, #44
+  63 001c 1846     		mov	r0, r3
+  64 001e FFF7FEFF 		bl	HAL_RCC_OscConfig
+  39:.././hal/stm32f3/stm32f3_hal.c **** 
+  40:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  41:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitStruct.ClockType      = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_
+  65              		.loc 1 41 39
+  66 0022 0F23     		movs	r3, #15
+  67 0024 BB61     		str	r3, [r7, #24]
+  42:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitStruct.SYSCLKSource   = RCC_SYSCLKSOURCE_HSE;
+  68              		.loc 1 42 39
+  69 0026 0123     		movs	r3, #1
+  70 0028 FB61     		str	r3, [r7, #28]
+  43:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitStruct.AHBCLKDivider  = RCC_SYSCLK_DIV1;
+  71              		.loc 1 43 39
+  72 002a 0023     		movs	r3, #0
+  73 002c 3B62     		str	r3, [r7, #32]
+  44:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  74              		.loc 1 44 39
+  75 002e 0023     		movs	r3, #0
+  76 0030 7B62     		str	r3, [r7, #36]
+  45:.././hal/stm32f3/stm32f3_hal.c ****      RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  77              		.loc 1 45 39
+  78 0032 0023     		movs	r3, #0
+  79 0034 BB62     		str	r3, [r7, #40]
+  46:.././hal/stm32f3/stm32f3_hal.c ****      uint32_t flash_latency = 0;
+  80              		.loc 1 46 15
+  81 0036 0023     		movs	r3, #0
+  82 0038 7B65     		str	r3, [r7, #84]
+  47:.././hal/stm32f3/stm32f3_hal.c ****      HAL_RCC_ClockConfig(&RCC_ClkInitStruct, flash_latency);
+  83              		.loc 1 47 6
+  84 003a 07F11803 		add	r3, r7, #24
+  85 003e 796D     		ldr	r1, [r7, #84]
+  86 0040 1846     		mov	r0, r3
+  87 0042 FFF7FEFF 		bl	HAL_RCC_ClockConfig
+  88              	.LBB2:
+  48:.././hal/stm32f3/stm32f3_hal.c ****   #endif
+  49:.././hal/stm32f3/stm32f3_hal.c **** 
+  50:.././hal/stm32f3/stm32f3_hal.c **** 
+  51:.././hal/stm32f3/stm32f3_hal.c **** 
+  52:.././hal/stm32f3/stm32f3_hal.c **** 
+  53:.././hal/stm32f3/stm32f3_hal.c **** #if (PLATFORM==CWLITEARM)
+  54:.././hal/stm32f3/stm32f3_hal.c ****   __HAL_RCC_GPIOC_CLK_ENABLE();
+  89              		.loc 1 54 3
+  90 0046 154B     		ldr	r3, .L2
+  91 0048 5B69     		ldr	r3, [r3, #20]
+  92 004a 144A     		ldr	r2, .L2
+  93 004c 43F40023 		orr	r3, r3, #524288
+  94 0050 5361     		str	r3, [r2, #20]
+  95 0052 124B     		ldr	r3, .L2
+  96 0054 5B69     		ldr	r3, [r3, #20]
+  97 0056 03F40023 		and	r3, r3, #524288
+  98 005a 3B60     		str	r3, [r7]
+  99 005c 3B68     		ldr	r3, [r7]
+ 100              	.LBE2:
+  55:.././hal/stm32f3/stm32f3_hal.c ****   GPIO_InitTypeDef GpioInit;
+  56:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Pin       = GPIO_PIN_13 | GPIO_PIN_14;
+ 101              		.loc 1 56 22
+ 102 005e 4FF4C043 		mov	r3, #24576
+ 103 0062 7B60     		str	r3, [r7, #4]
+  57:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Mode      = GPIO_MODE_OUTPUT_PP;
+ 104              		.loc 1 57 22
+ 105 0064 0123     		movs	r3, #1
+ 106 0066 BB60     		str	r3, [r7, #8]
+  58:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Pull      = GPIO_NOPULL;
+ 107              		.loc 1 58 22
+ 108 0068 0023     		movs	r3, #0
+ 109 006a FB60     		str	r3, [r7, #12]
+  59:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Speed     = GPIO_SPEED_FREQ_HIGH;
+ 110              		.loc 1 59 22
+ 111 006c 0323     		movs	r3, #3
+ 112 006e 3B61     		str	r3, [r7, #16]
+  60:.././hal/stm32f3/stm32f3_hal.c ****   HAL_GPIO_Init(GPIOC, &GpioInit);
+ 113              		.loc 1 60 3
+ 114 0070 3B1D     		adds	r3, r7, #4
+ 115 0072 1946     		mov	r1, r3
+ 116 0074 0A48     		ldr	r0, .L2+4
+ 117 0076 FFF7FEFF 		bl	HAL_GPIO_Init
+  61:.././hal/stm32f3/stm32f3_hal.c **** 
+  62:.././hal/stm32f3/stm32f3_hal.c ****   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, SET);
+ 118              		.loc 1 62 3
+ 119 007a 0122     		movs	r2, #1
+ 120 007c 4FF40051 		mov	r1, #8192
+ 121 0080 0748     		ldr	r0, .L2+4
+ 122 0082 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  63:.././hal/stm32f3/stm32f3_hal.c ****   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, SET);
+ 123              		.loc 1 63 3
+ 124 0086 0122     		movs	r2, #1
+ 125 0088 4FF48041 		mov	r1, #16384
+ 126 008c 0448     		ldr	r0, .L2+4
+ 127 008e FFF7FEFF 		bl	HAL_GPIO_WritePin
+  64:.././hal/stm32f3/stm32f3_hal.c **** #endif
+  65:.././hal/stm32f3/stm32f3_hal.c **** }
+ 128              		.loc 1 65 1
+ 129 0092 00BF     		nop
+ 130 0094 5837     		adds	r7, r7, #88
+ 131              	.LCFI3:
+ 132              		.cfi_def_cfa_offset 8
+ 133 0096 BD46     		mov	sp, r7
+ 134              	.LCFI4:
+ 135              		.cfi_def_cfa_register 13
+ 136              		@ sp needed
+ 137 0098 80BD     		pop	{r7, pc}
+ 138              	.L3:
+ 139 009a 00BF     		.align	2
+ 140              	.L2:
+ 141 009c 00100240 		.word	1073876992
+ 142 00a0 00080048 		.word	1207961600
+ 143              		.cfi_endproc
+ 144              	.LFE126:
+ 146              		.section	.text.init_uart,"ax",%progbits
+ 147              		.align	1
+ 148              		.global	init_uart
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.fpu softvfp
+ 154              	init_uart:
+ 155              	.LFB127:
+  66:.././hal/stm32f3/stm32f3_hal.c **** 
+  67:.././hal/stm32f3/stm32f3_hal.c **** void init_uart(void)
+  68:.././hal/stm32f3/stm32f3_hal.c **** {
+ 156              		.loc 1 68 1
+ 157              		.cfi_startproc
+ 158              		@ args = 0, pretend = 0, frame = 32
+ 159              		@ frame_needed = 1, uses_anonymous_args = 0
+ 160 0000 80B5     		push	{r7, lr}
+ 161              	.LCFI5:
+ 162              		.cfi_def_cfa_offset 8
+ 163              		.cfi_offset 7, -8
+ 164              		.cfi_offset 14, -4
+ 165 0002 88B0     		sub	sp, sp, #32
+ 166              	.LCFI6:
+ 167              		.cfi_def_cfa_offset 40
+ 168 0004 00AF     		add	r7, sp, #0
+ 169              	.LCFI7:
+ 170              		.cfi_def_cfa_register 7
+  69:.././hal/stm32f3/stm32f3_hal.c ****   GPIO_InitTypeDef GpioInit;
+  70:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Pin       = GPIO_PIN_9 | GPIO_PIN_10;
+ 171              		.loc 1 70 22
+ 172 0006 4FF4C063 		mov	r3, #1536
+ 173 000a FB60     		str	r3, [r7, #12]
+  71:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Mode      = GPIO_MODE_AF_PP;
+ 174              		.loc 1 71 22
+ 175 000c 0223     		movs	r3, #2
+ 176 000e 3B61     		str	r3, [r7, #16]
+  72:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Pull      = GPIO_PULLUP;
+ 177              		.loc 1 72 22
+ 178 0010 0123     		movs	r3, #1
+ 179 0012 7B61     		str	r3, [r7, #20]
+  73:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Speed     = GPIO_SPEED_FREQ_HIGH;
+ 180              		.loc 1 73 22
+ 181 0014 0323     		movs	r3, #3
+ 182 0016 BB61     		str	r3, [r7, #24]
+  74:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Alternate = GPIO_AF7_USART1;
+ 183              		.loc 1 74 22
+ 184 0018 0723     		movs	r3, #7
+ 185 001a FB61     		str	r3, [r7, #28]
+ 186              	.LBB3:
+  75:.././hal/stm32f3/stm32f3_hal.c ****   __GPIOA_CLK_ENABLE();
+ 187              		.loc 1 75 3
+ 188 001c 1D4B     		ldr	r3, .L5
+ 189 001e 5B69     		ldr	r3, [r3, #20]
+ 190 0020 1C4A     		ldr	r2, .L5
+ 191 0022 43F40033 		orr	r3, r3, #131072
+ 192 0026 5361     		str	r3, [r2, #20]
+ 193 0028 1A4B     		ldr	r3, .L5
+ 194 002a 5B69     		ldr	r3, [r3, #20]
+ 195 002c 03F40033 		and	r3, r3, #131072
+ 196 0030 BB60     		str	r3, [r7, #8]
+ 197 0032 BB68     		ldr	r3, [r7, #8]
+ 198              	.LBE3:
+  76:.././hal/stm32f3/stm32f3_hal.c ****   HAL_GPIO_Init(GPIOA, &GpioInit);
+ 199              		.loc 1 76 3
+ 200 0034 07F10C03 		add	r3, r7, #12
+ 201 0038 1946     		mov	r1, r3
+ 202 003a 4FF09040 		mov	r0, #1207959552
+ 203 003e FFF7FEFF 		bl	HAL_GPIO_Init
+  77:.././hal/stm32f3/stm32f3_hal.c **** 
+  78:.././hal/stm32f3/stm32f3_hal.c ****   UartHandle.Instance        = USART1;
+ 204              		.loc 1 78 30
+ 205 0042 154B     		ldr	r3, .L5+4
+ 206 0044 154A     		ldr	r2, .L5+8
+ 207 0046 1A60     		str	r2, [r3]
+  79:.././hal/stm32f3/stm32f3_hal.c ****   #if SS_VER==SS_VER_2_1
+  80:.././hal/stm32f3/stm32f3_hal.c ****   UartHandle.Init.BaudRate   = 230400;
+  81:.././hal/stm32f3/stm32f3_hal.c ****   #else
+  82:.././hal/stm32f3/stm32f3_hal.c ****   UartHandle.Init.BaudRate   = 38400;
+ 208              		.loc 1 82 30
+ 209 0048 134B     		ldr	r3, .L5+4
+ 210 004a 4FF41642 		mov	r2, #38400
+ 211 004e 5A60     		str	r2, [r3, #4]
+  83:.././hal/stm32f3/stm32f3_hal.c ****   #endif
+  84:.././hal/stm32f3/stm32f3_hal.c ****   UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
+ 212              		.loc 1 84 30
+ 213 0050 114B     		ldr	r3, .L5+4
+ 214 0052 0022     		movs	r2, #0
+ 215 0054 9A60     		str	r2, [r3, #8]
+  85:.././hal/stm32f3/stm32f3_hal.c ****   UartHandle.Init.StopBits   = UART_STOPBITS_1;
+ 216              		.loc 1 85 30
+ 217 0056 104B     		ldr	r3, .L5+4
+ 218 0058 0022     		movs	r2, #0
+ 219 005a DA60     		str	r2, [r3, #12]
+  86:.././hal/stm32f3/stm32f3_hal.c ****   UartHandle.Init.Parity     = UART_PARITY_NONE;
+ 220              		.loc 1 86 30
+ 221 005c 0E4B     		ldr	r3, .L5+4
+ 222 005e 0022     		movs	r2, #0
+ 223 0060 1A61     		str	r2, [r3, #16]
+  87:.././hal/stm32f3/stm32f3_hal.c ****   UartHandle.Init.HwFlowCtl  = UART_HWCONTROL_NONE;
+ 224              		.loc 1 87 30
+ 225 0062 0D4B     		ldr	r3, .L5+4
+ 226 0064 0022     		movs	r2, #0
+ 227 0066 9A61     		str	r2, [r3, #24]
+  88:.././hal/stm32f3/stm32f3_hal.c ****   UartHandle.Init.Mode       = UART_MODE_TX_RX;
+ 228              		.loc 1 88 30
+ 229 0068 0B4B     		ldr	r3, .L5+4
+ 230 006a 0C22     		movs	r2, #12
+ 231 006c 5A61     		str	r2, [r3, #20]
+ 232              	.LBB4:
+  89:.././hal/stm32f3/stm32f3_hal.c ****   __USART1_CLK_ENABLE();
+ 233              		.loc 1 89 3
+ 234 006e 094B     		ldr	r3, .L5
+ 235 0070 9B69     		ldr	r3, [r3, #24]
+ 236 0072 084A     		ldr	r2, .L5
+ 237 0074 43F48043 		orr	r3, r3, #16384
+ 238 0078 9361     		str	r3, [r2, #24]
+ 239 007a 064B     		ldr	r3, .L5
+ 240 007c 9B69     		ldr	r3, [r3, #24]
+ 241 007e 03F48043 		and	r3, r3, #16384
+ 242 0082 7B60     		str	r3, [r7, #4]
+ 243 0084 7B68     		ldr	r3, [r7, #4]
+ 244              	.LBE4:
+  90:.././hal/stm32f3/stm32f3_hal.c ****   HAL_UART_Init(&UartHandle);
+ 245              		.loc 1 90 3
+ 246 0086 0448     		ldr	r0, .L5+4
+ 247 0088 FFF7FEFF 		bl	HAL_UART_Init
+  91:.././hal/stm32f3/stm32f3_hal.c **** }
+ 248              		.loc 1 91 1
+ 249 008c 00BF     		nop
+ 250 008e 2037     		adds	r7, r7, #32
+ 251              	.LCFI8:
+ 252              		.cfi_def_cfa_offset 8
+ 253 0090 BD46     		mov	sp, r7
+ 254              	.LCFI9:
+ 255              		.cfi_def_cfa_register 13
+ 256              		@ sp needed
+ 257 0092 80BD     		pop	{r7, pc}
+ 258              	.L6:
+ 259              		.align	2
+ 260              	.L5:
+ 261 0094 00100240 		.word	1073876992
+ 262 0098 00000000 		.word	UartHandle
+ 263 009c 00380140 		.word	1073821696
+ 264              		.cfi_endproc
+ 265              	.LFE127:
+ 267              		.section	.text.trigger_setup,"ax",%progbits
+ 268              		.align	1
+ 269              		.global	trigger_setup
+ 270              		.syntax unified
+ 271              		.thumb
+ 272              		.thumb_func
+ 273              		.fpu softvfp
+ 275              	trigger_setup:
+ 276              	.LFB128:
+  92:.././hal/stm32f3/stm32f3_hal.c **** 
+  93:.././hal/stm32f3/stm32f3_hal.c **** void trigger_setup(void)
+  94:.././hal/stm32f3/stm32f3_hal.c **** {
+ 277              		.loc 1 94 1
+ 278              		.cfi_startproc
+ 279              		@ args = 0, pretend = 0, frame = 24
+ 280              		@ frame_needed = 1, uses_anonymous_args = 0
+ 281 0000 80B5     		push	{r7, lr}
+ 282              	.LCFI10:
+ 283              		.cfi_def_cfa_offset 8
+ 284              		.cfi_offset 7, -8
+ 285              		.cfi_offset 14, -4
+ 286 0002 86B0     		sub	sp, sp, #24
+ 287              	.LCFI11:
+ 288              		.cfi_def_cfa_offset 32
+ 289 0004 00AF     		add	r7, sp, #0
+ 290              	.LCFI12:
+ 291              		.cfi_def_cfa_register 7
+ 292              	.LBB5:
+  95:.././hal/stm32f3/stm32f3_hal.c ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+ 293              		.loc 1 95 3
+ 294 0006 134B     		ldr	r3, .L8
+ 295 0008 5B69     		ldr	r3, [r3, #20]
+ 296 000a 124A     		ldr	r2, .L8
+ 297 000c 43F40033 		orr	r3, r3, #131072
+ 298 0010 5361     		str	r3, [r2, #20]
+ 299 0012 104B     		ldr	r3, .L8
+ 300 0014 5B69     		ldr	r3, [r3, #20]
+ 301 0016 03F40033 		and	r3, r3, #131072
+ 302 001a 3B60     		str	r3, [r7]
+ 303 001c 3B68     		ldr	r3, [r7]
+ 304              	.LBE5:
+  96:.././hal/stm32f3/stm32f3_hal.c **** 
+  97:.././hal/stm32f3/stm32f3_hal.c ****   GPIO_InitTypeDef GpioInit;
+  98:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Pin       = GPIO_PIN_12;
+ 305              		.loc 1 98 22
+ 306 001e 4FF48053 		mov	r3, #4096
+ 307 0022 7B60     		str	r3, [r7, #4]
+  99:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Mode      = GPIO_MODE_OUTPUT_PP;
+ 308              		.loc 1 99 22
+ 309 0024 0123     		movs	r3, #1
+ 310 0026 BB60     		str	r3, [r7, #8]
+ 100:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Pull      = GPIO_NOPULL;
+ 311              		.loc 1 100 22
+ 312 0028 0023     		movs	r3, #0
+ 313 002a FB60     		str	r3, [r7, #12]
+ 101:.././hal/stm32f3/stm32f3_hal.c ****   GpioInit.Speed     = GPIO_SPEED_FREQ_HIGH;
+ 314              		.loc 1 101 22
+ 315 002c 0323     		movs	r3, #3
+ 316 002e 3B61     		str	r3, [r7, #16]
+ 102:.././hal/stm32f3/stm32f3_hal.c ****   HAL_GPIO_Init(GPIOA, &GpioInit);
+ 317              		.loc 1 102 3
+ 318 0030 3B1D     		adds	r3, r7, #4
+ 319 0032 1946     		mov	r1, r3
+ 320 0034 4FF09040 		mov	r0, #1207959552
+ 321 0038 FFF7FEFF 		bl	HAL_GPIO_Init
+ 103:.././hal/stm32f3/stm32f3_hal.c **** 
+ 104:.././hal/stm32f3/stm32f3_hal.c ****   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, RESET);
+ 322              		.loc 1 104 3
+ 323 003c 0022     		movs	r2, #0
+ 324 003e 4FF48051 		mov	r1, #4096
+ 325 0042 4FF09040 		mov	r0, #1207959552
+ 326 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 105:.././hal/stm32f3/stm32f3_hal.c **** }
+ 327              		.loc 1 105 1
+ 328 004a 00BF     		nop
+ 329 004c 1837     		adds	r7, r7, #24
+ 330              	.LCFI13:
+ 331              		.cfi_def_cfa_offset 8
+ 332 004e BD46     		mov	sp, r7
+ 333              	.LCFI14:
+ 334              		.cfi_def_cfa_register 13
+ 335              		@ sp needed
+ 336 0050 80BD     		pop	{r7, pc}
+ 337              	.L9:
+ 338 0052 00BF     		.align	2
+ 339              	.L8:
+ 340 0054 00100240 		.word	1073876992
+ 341              		.cfi_endproc
+ 342              	.LFE128:
+ 344              		.section	.text.trigger_high,"ax",%progbits
+ 345              		.align	1
+ 346              		.global	trigger_high
+ 347              		.syntax unified
+ 348              		.thumb
+ 349              		.thumb_func
+ 350              		.fpu softvfp
+ 352              	trigger_high:
+ 353              	.LFB129:
+ 106:.././hal/stm32f3/stm32f3_hal.c **** 
+ 107:.././hal/stm32f3/stm32f3_hal.c **** void trigger_high(void)
+ 108:.././hal/stm32f3/stm32f3_hal.c **** {
+ 354              		.loc 1 108 1
+ 355              		.cfi_startproc
+ 356              		@ args = 0, pretend = 0, frame = 0
+ 357              		@ frame_needed = 1, uses_anonymous_args = 0
+ 358 0000 80B5     		push	{r7, lr}
+ 359              	.LCFI15:
+ 360              		.cfi_def_cfa_offset 8
+ 361              		.cfi_offset 7, -8
+ 362              		.cfi_offset 14, -4
+ 363 0002 00AF     		add	r7, sp, #0
+ 364              	.LCFI16:
+ 365              		.cfi_def_cfa_register 7
+ 109:.././hal/stm32f3/stm32f3_hal.c ****   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, SET);
+ 366              		.loc 1 109 3
+ 367 0004 0122     		movs	r2, #1
+ 368 0006 4FF48051 		mov	r1, #4096
+ 369 000a 4FF09040 		mov	r0, #1207959552
+ 370 000e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 110:.././hal/stm32f3/stm32f3_hal.c **** }
+ 371              		.loc 1 110 1
+ 372 0012 00BF     		nop
+ 373 0014 80BD     		pop	{r7, pc}
+ 374              		.cfi_endproc
+ 375              	.LFE129:
+ 377              		.section	.text.trigger_low,"ax",%progbits
+ 378              		.align	1
+ 379              		.global	trigger_low
+ 380              		.syntax unified
+ 381              		.thumb
+ 382              		.thumb_func
+ 383              		.fpu softvfp
+ 385              	trigger_low:
+ 386              	.LFB130:
+ 111:.././hal/stm32f3/stm32f3_hal.c **** 
+ 112:.././hal/stm32f3/stm32f3_hal.c **** void trigger_low(void)
+ 113:.././hal/stm32f3/stm32f3_hal.c **** {
+ 387              		.loc 1 113 1
+ 388              		.cfi_startproc
+ 389              		@ args = 0, pretend = 0, frame = 0
+ 390              		@ frame_needed = 1, uses_anonymous_args = 0
+ 391 0000 80B5     		push	{r7, lr}
+ 392              	.LCFI17:
+ 393              		.cfi_def_cfa_offset 8
+ 394              		.cfi_offset 7, -8
+ 395              		.cfi_offset 14, -4
+ 396 0002 00AF     		add	r7, sp, #0
+ 397              	.LCFI18:
+ 398              		.cfi_def_cfa_register 7
+ 114:.././hal/stm32f3/stm32f3_hal.c ****   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, RESET);
+ 399              		.loc 1 114 3
+ 400 0004 0022     		movs	r2, #0
+ 401 0006 4FF48051 		mov	r1, #4096
+ 402 000a 4FF09040 		mov	r0, #1207959552
+ 403 000e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 115:.././hal/stm32f3/stm32f3_hal.c **** }
+ 404              		.loc 1 115 1
+ 405 0012 00BF     		nop
+ 406 0014 80BD     		pop	{r7, pc}
+ 407              		.cfi_endproc
+ 408              	.LFE130:
+ 410              		.section	.text.getch,"ax",%progbits
+ 411              		.align	1
+ 412              		.global	getch
+ 413              		.syntax unified
+ 414              		.thumb
+ 415              		.thumb_func
+ 416              		.fpu softvfp
+ 418              	getch:
+ 419              	.LFB131:
+ 116:.././hal/stm32f3/stm32f3_hal.c **** 
+ 117:.././hal/stm32f3/stm32f3_hal.c **** char getch(void)
+ 118:.././hal/stm32f3/stm32f3_hal.c **** {
+ 420              		.loc 1 118 1
+ 421              		.cfi_startproc
+ 422              		@ args = 0, pretend = 0, frame = 8
+ 423              		@ frame_needed = 1, uses_anonymous_args = 0
+ 424 0000 80B5     		push	{r7, lr}
+ 425              	.LCFI19:
+ 426              		.cfi_def_cfa_offset 8
+ 427              		.cfi_offset 7, -8
+ 428              		.cfi_offset 14, -4
+ 429 0002 82B0     		sub	sp, sp, #8
+ 430              	.LCFI20:
+ 431              		.cfi_def_cfa_offset 16
+ 432 0004 00AF     		add	r7, sp, #0
+ 433              	.LCFI21:
+ 434              		.cfi_def_cfa_register 7
+ 119:.././hal/stm32f3/stm32f3_hal.c ****   uint8_t d;
+ 120:.././hal/stm32f3/stm32f3_hal.c ****   while (HAL_UART_Receive(&UartHandle, &d, 1, 5000) != HAL_OK)
+ 435              		.loc 1 120 9
+ 436 0006 05E0     		b	.L13
+ 437              	.L14:
+ 121:.././hal/stm32f3/stm32f3_hal.c ****     USART1->ICR |= (1 << 3);
+ 438              		.loc 1 121 17
+ 439 0008 0A4B     		ldr	r3, .L16
+ 440 000a 1B6A     		ldr	r3, [r3, #32]
+ 441 000c 094A     		ldr	r2, .L16
+ 442 000e 43F00803 		orr	r3, r3, #8
+ 443 0012 1362     		str	r3, [r2, #32]
+ 444              	.L13:
+ 120:.././hal/stm32f3/stm32f3_hal.c ****     USART1->ICR |= (1 << 3);
+ 445              		.loc 1 120 10
+ 446 0014 F91D     		adds	r1, r7, #7
+ 447 0016 41F28833 		movw	r3, #5000
+ 448 001a 0122     		movs	r2, #1
+ 449 001c 0648     		ldr	r0, .L16+4
+ 450 001e FFF7FEFF 		bl	HAL_UART_Receive
+ 451 0022 0346     		mov	r3, r0
+ 120:.././hal/stm32f3/stm32f3_hal.c ****     USART1->ICR |= (1 << 3);
+ 452              		.loc 1 120 9
+ 453 0024 002B     		cmp	r3, #0
+ 454 0026 EFD1     		bne	.L14
+ 122:.././hal/stm32f3/stm32f3_hal.c ****   //putch(d);
+ 123:.././hal/stm32f3/stm32f3_hal.c ****   return d;
+ 455              		.loc 1 123 10
+ 456 0028 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 124:.././hal/stm32f3/stm32f3_hal.c **** }
+ 457              		.loc 1 124 1
+ 458 002a 1846     		mov	r0, r3
+ 459 002c 0837     		adds	r7, r7, #8
+ 460              	.LCFI22:
+ 461              		.cfi_def_cfa_offset 8
+ 462 002e BD46     		mov	sp, r7
+ 463              	.LCFI23:
+ 464              		.cfi_def_cfa_register 13
+ 465              		@ sp needed
+ 466 0030 80BD     		pop	{r7, pc}
+ 467              	.L17:
+ 468 0032 00BF     		.align	2
+ 469              	.L16:
+ 470 0034 00380140 		.word	1073821696
+ 471 0038 00000000 		.word	UartHandle
+ 472              		.cfi_endproc
+ 473              	.LFE131:
+ 475              		.section	.text.putch,"ax",%progbits
+ 476              		.align	1
+ 477              		.global	putch
+ 478              		.syntax unified
+ 479              		.thumb
+ 480              		.thumb_func
+ 481              		.fpu softvfp
+ 483              	putch:
+ 484              	.LFB132:
+ 125:.././hal/stm32f3/stm32f3_hal.c **** 
+ 126:.././hal/stm32f3/stm32f3_hal.c **** void putch(char c)
+ 127:.././hal/stm32f3/stm32f3_hal.c **** {
+ 485              		.loc 1 127 1
+ 486              		.cfi_startproc
+ 487              		@ args = 0, pretend = 0, frame = 16
+ 488              		@ frame_needed = 1, uses_anonymous_args = 0
+ 489 0000 80B5     		push	{r7, lr}
+ 490              	.LCFI24:
+ 491              		.cfi_def_cfa_offset 8
+ 492              		.cfi_offset 7, -8
+ 493              		.cfi_offset 14, -4
+ 494 0002 84B0     		sub	sp, sp, #16
+ 495              	.LCFI25:
+ 496              		.cfi_def_cfa_offset 24
+ 497 0004 00AF     		add	r7, sp, #0
+ 498              	.LCFI26:
+ 499              		.cfi_def_cfa_register 7
+ 500 0006 0346     		mov	r3, r0
+ 501 0008 FB71     		strb	r3, [r7, #7]
+ 128:.././hal/stm32f3/stm32f3_hal.c ****   uint8_t d  = c;
+ 502              		.loc 1 128 11
+ 503 000a FB79     		ldrb	r3, [r7, #7]
+ 504 000c FB73     		strb	r3, [r7, #15]
+ 129:.././hal/stm32f3/stm32f3_hal.c ****   HAL_UART_Transmit(&UartHandle,  &d, 1, 5000);
+ 505              		.loc 1 129 3
+ 506 000e 07F10F01 		add	r1, r7, #15
+ 507 0012 41F28833 		movw	r3, #5000
+ 508 0016 0122     		movs	r2, #1
+ 509 0018 0348     		ldr	r0, .L19
+ 510 001a FFF7FEFF 		bl	HAL_UART_Transmit
+ 130:.././hal/stm32f3/stm32f3_hal.c **** }
+ 511              		.loc 1 130 1
+ 512 001e 00BF     		nop
+ 513 0020 1037     		adds	r7, r7, #16
+ 514              	.LCFI27:
+ 515              		.cfi_def_cfa_offset 8
+ 516 0022 BD46     		mov	sp, r7
+ 517              	.LCFI28:
+ 518              		.cfi_def_cfa_register 13
+ 519              		@ sp needed
+ 520 0024 80BD     		pop	{r7, pc}
+ 521              	.L20:
+ 522 0026 00BF     		.align	2
+ 523              	.L19:
+ 524 0028 00000000 		.word	UartHandle
+ 525              		.cfi_endproc
+ 526              	.LFE132:
+ 528              		.section	.text.change_err_led,"ax",%progbits
+ 529              		.align	1
+ 530              		.global	change_err_led
+ 531              		.syntax unified
+ 532              		.thumb
+ 533              		.thumb_func
+ 534              		.fpu softvfp
+ 536              	change_err_led:
+ 537              	.LFB133:
+ 131:.././hal/stm32f3/stm32f3_hal.c **** #if (PLATFORM==CWLITEARM)
+ 132:.././hal/stm32f3/stm32f3_hal.c **** void change_err_led(unsigned int x)
+ 133:.././hal/stm32f3/stm32f3_hal.c **** {
+ 538              		.loc 1 133 1
+ 539              		.cfi_startproc
+ 540              		@ args = 0, pretend = 0, frame = 8
+ 541              		@ frame_needed = 1, uses_anonymous_args = 0
+ 542 0000 80B5     		push	{r7, lr}
+ 543              	.LCFI29:
+ 544              		.cfi_def_cfa_offset 8
+ 545              		.cfi_offset 7, -8
+ 546              		.cfi_offset 14, -4
+ 547 0002 82B0     		sub	sp, sp, #8
+ 548              	.LCFI30:
+ 549              		.cfi_def_cfa_offset 16
+ 550 0004 00AF     		add	r7, sp, #0
+ 551              	.LCFI31:
+ 552              		.cfi_def_cfa_register 7
+ 553 0006 7860     		str	r0, [r7, #4]
+ 134:.././hal/stm32f3/stm32f3_hal.c ****     if (x)
+ 554              		.loc 1 134 8
+ 555 0008 7B68     		ldr	r3, [r7, #4]
+ 556 000a 002B     		cmp	r3, #0
+ 557 000c 06D0     		beq	.L22
+ 135:.././hal/stm32f3/stm32f3_hal.c ****          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, RESET);
+ 558              		.loc 1 135 10
+ 559 000e 0022     		movs	r2, #0
+ 560 0010 4FF40051 		mov	r1, #8192
+ 561 0014 0648     		ldr	r0, .L25
+ 562 0016 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 136:.././hal/stm32f3/stm32f3_hal.c ****     else
+ 137:.././hal/stm32f3/stm32f3_hal.c ****          HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, SET);
+ 138:.././hal/stm32f3/stm32f3_hal.c **** }
+ 563              		.loc 1 138 1
+ 564 001a 05E0     		b	.L24
+ 565              	.L22:
+ 137:.././hal/stm32f3/stm32f3_hal.c **** }
+ 566              		.loc 1 137 10
+ 567 001c 0122     		movs	r2, #1
+ 568 001e 4FF40051 		mov	r1, #8192
+ 569 0022 0348     		ldr	r0, .L25
+ 570 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 571              	.L24:
+ 572              		.loc 1 138 1
+ 573 0028 00BF     		nop
+ 574 002a 0837     		adds	r7, r7, #8
+ 575              	.LCFI32:
+ 576              		.cfi_def_cfa_offset 8
+ 577 002c BD46     		mov	sp, r7
+ 578              	.LCFI33:
+ 579              		.cfi_def_cfa_register 13
+ 580              		@ sp needed
+ 581 002e 80BD     		pop	{r7, pc}
+ 582              	.L26:
+ 583              		.align	2
+ 584              	.L25:
+ 585 0030 00080048 		.word	1207961600
+ 586              		.cfi_endproc
+ 587              	.LFE133:
+ 589              		.section	.text.change_ok_led,"ax",%progbits
+ 590              		.align	1
+ 591              		.global	change_ok_led
+ 592              		.syntax unified
+ 593              		.thumb
+ 594              		.thumb_func
+ 595              		.fpu softvfp
+ 597              	change_ok_led:
+ 598              	.LFB134:
+ 139:.././hal/stm32f3/stm32f3_hal.c **** 
+ 140:.././hal/stm32f3/stm32f3_hal.c **** void change_ok_led(unsigned int x)
+ 141:.././hal/stm32f3/stm32f3_hal.c **** {
+ 599              		.loc 1 141 1
+ 600              		.cfi_startproc
+ 601              		@ args = 0, pretend = 0, frame = 8
+ 602              		@ frame_needed = 1, uses_anonymous_args = 0
+ 603 0000 80B5     		push	{r7, lr}
+ 604              	.LCFI34:
+ 605              		.cfi_def_cfa_offset 8
+ 606              		.cfi_offset 7, -8
+ 607              		.cfi_offset 14, -4
+ 608 0002 82B0     		sub	sp, sp, #8
+ 609              	.LCFI35:
+ 610              		.cfi_def_cfa_offset 16
+ 611 0004 00AF     		add	r7, sp, #0
+ 612              	.LCFI36:
+ 613              		.cfi_def_cfa_register 7
+ 614 0006 7860     		str	r0, [r7, #4]
+ 142:.././hal/stm32f3/stm32f3_hal.c ****      if (x)
+ 615              		.loc 1 142 9
+ 616 0008 7B68     		ldr	r3, [r7, #4]
+ 617 000a 002B     		cmp	r3, #0
+ 618 000c 06D0     		beq	.L28
+ 143:.././hal/stm32f3/stm32f3_hal.c ****           HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, RESET);
+ 619              		.loc 1 143 11
+ 620 000e 0022     		movs	r2, #0
+ 621 0010 4FF48041 		mov	r1, #16384
+ 622 0014 0648     		ldr	r0, .L31
+ 623 0016 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 144:.././hal/stm32f3/stm32f3_hal.c ****      else
+ 145:.././hal/stm32f3/stm32f3_hal.c ****           HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, SET);
+ 146:.././hal/stm32f3/stm32f3_hal.c **** }
+ 624              		.loc 1 146 1
+ 625 001a 05E0     		b	.L30
+ 626              	.L28:
+ 145:.././hal/stm32f3/stm32f3_hal.c **** }
+ 627              		.loc 1 145 11
+ 628 001c 0122     		movs	r2, #1
+ 629 001e 4FF48041 		mov	r1, #16384
+ 630 0022 0348     		ldr	r0, .L31
+ 631 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 632              	.L30:
+ 633              		.loc 1 146 1
+ 634 0028 00BF     		nop
+ 635 002a 0837     		adds	r7, r7, #8
+ 636              	.LCFI37:
+ 637              		.cfi_def_cfa_offset 8
+ 638 002c BD46     		mov	sp, r7
+ 639              	.LCFI38:
+ 640              		.cfi_def_cfa_register 13
+ 641              		@ sp needed
+ 642 002e 80BD     		pop	{r7, pc}
+ 643              	.L32:
+ 644              		.align	2
+ 645              	.L31:
+ 646 0030 00080048 		.word	1207961600
+ 647              		.cfi_endproc
+ 648              	.LFE134:
+ 650              		.text
+ 651              	.Letext0:
+ 652              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 653              		.file 3 ".././hal/stm32f3/CMSIS/device/stm32f303xc.h"
+ 654              		.file 4 ".././hal/stm32f3/CMSIS/device/stm32f3xx.h"
+ 655              		.file 5 ".././hal/stm32f3/stm32f3xx_hal_def.h"
+ 656              		.file 6 ".././hal/stm32f3/stm32f3xx_hal_rcc.h"
+ 657              		.file 7 ".././hal/stm32f3/stm32f3xx_hal_gpio.h"
+ 658              		.file 8 ".././hal/stm32f3/stm32f3xx_hal_dma.h"
+ 659              		.file 9 ".././hal/stm32f3/stm32f3xx_hal_uart.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f3_hal.c
+     /tmp/ccOjSSIX.s:20     .bss:0000000000000000 UartHandle
+     /tmp/ccOjSSIX.s:17     .bss:0000000000000000 $d
+     /tmp/ccOjSSIX.s:23     .text.platform_init:0000000000000000 $t
+     /tmp/ccOjSSIX.s:31     .text.platform_init:0000000000000000 platform_init
+     /tmp/ccOjSSIX.s:141    .text.platform_init:000000000000009c $d
+     /tmp/ccOjSSIX.s:147    .text.init_uart:0000000000000000 $t
+     /tmp/ccOjSSIX.s:154    .text.init_uart:0000000000000000 init_uart
+     /tmp/ccOjSSIX.s:261    .text.init_uart:0000000000000094 $d
+     /tmp/ccOjSSIX.s:268    .text.trigger_setup:0000000000000000 $t
+     /tmp/ccOjSSIX.s:275    .text.trigger_setup:0000000000000000 trigger_setup
+     /tmp/ccOjSSIX.s:340    .text.trigger_setup:0000000000000054 $d
+     /tmp/ccOjSSIX.s:345    .text.trigger_high:0000000000000000 $t
+     /tmp/ccOjSSIX.s:352    .text.trigger_high:0000000000000000 trigger_high
+     /tmp/ccOjSSIX.s:378    .text.trigger_low:0000000000000000 $t
+     /tmp/ccOjSSIX.s:385    .text.trigger_low:0000000000000000 trigger_low
+     /tmp/ccOjSSIX.s:411    .text.getch:0000000000000000 $t
+     /tmp/ccOjSSIX.s:418    .text.getch:0000000000000000 getch
+     /tmp/ccOjSSIX.s:470    .text.getch:0000000000000034 $d
+     /tmp/ccOjSSIX.s:476    .text.putch:0000000000000000 $t
+     /tmp/ccOjSSIX.s:483    .text.putch:0000000000000000 putch
+     /tmp/ccOjSSIX.s:524    .text.putch:0000000000000028 $d
+     /tmp/ccOjSSIX.s:529    .text.change_err_led:0000000000000000 $t
+     /tmp/ccOjSSIX.s:536    .text.change_err_led:0000000000000000 change_err_led
+     /tmp/ccOjSSIX.s:585    .text.change_err_led:0000000000000030 $d
+     /tmp/ccOjSSIX.s:590    .text.change_ok_led:0000000000000000 $t
+     /tmp/ccOjSSIX.s:597    .text.change_ok_led:0000000000000000 change_ok_led
+     /tmp/ccOjSSIX.s:646    .text.change_ok_led:0000000000000030 $d
+
+UNDEFINED SYMBOLS
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_GPIO_Init
+HAL_GPIO_WritePin
+HAL_UART_Init
+HAL_UART_Receive
+HAL_UART_Transmit
