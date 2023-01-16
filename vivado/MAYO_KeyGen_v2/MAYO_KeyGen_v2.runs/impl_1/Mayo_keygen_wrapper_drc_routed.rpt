@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Sun Jan  8 14:55:14 2023
+| Date         : Tue Jan 10 19:04:03 2023
 | Host         : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 | Command      : report_drc -file Mayo_keygen_wrapper_drc_routed.rpt -pb Mayo_keygen_wrapper_drc_routed.pb -rpx Mayo_keygen_wrapper_drc_routed.rpx
 | Design       : Mayo_keygen_wrapper
@@ -24,26 +24,15 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 3
+             Violations found: 1
 +-----------+----------+-------------------+------------+
 | Rule      | Severity | Description       | Violations |
 +-----------+----------+-------------------+------------+
-| DPIP-1    | Warning  | Input pipelining  | 2          |
 | RTSTAT-10 | Warning  | No routable loads | 1          |
 +-----------+----------+-------------------+------------+
 
 2. REPORT DETAILS
 -----------------
-DPIP-1#1 Warning
-Input pipelining  
-DSP Mayo_keygen_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_a_reg[2] input Mayo_keygen_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_a_reg[2]/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#2 Warning
-Input pipelining  
-DSP Mayo_keygen_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_b_reg[2] input Mayo_keygen_i/mayo_linear_combinat_0/U0/DSP_Inst/acc_b_reg[2]/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
 RTSTAT-10#1 Warning
 No routable loads  
 1 net(s) have no routable loads. The problem bus(es) and/or net(s) are Mayo_keygen_i/TRNG/TRNG_0/U0/fifo_inst/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb.

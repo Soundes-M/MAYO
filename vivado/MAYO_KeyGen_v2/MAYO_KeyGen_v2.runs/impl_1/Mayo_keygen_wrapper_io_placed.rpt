@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date                      : Sun Jan  8 14:53:35 2023
+| Date                      : Tue Jan 10 19:01:54 2023
 | Host                      : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 | Command                   : report_io -file Mayo_keygen_wrapper_io_placed.rpt
 | Design                    : Mayo_keygen_wrapper

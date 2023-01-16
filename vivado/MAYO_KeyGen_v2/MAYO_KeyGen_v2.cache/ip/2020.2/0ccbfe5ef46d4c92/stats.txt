@@ -1,2 +1,0 @@
-NumberHits:13
-Timestamp: Sun Jan 01 23:04:13 UTC 2023

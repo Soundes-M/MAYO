@@ -1,7 +1,0 @@
-Running: xsim.dir/Mayo_keygen_wrapper_behav/xsimk -simmode gui -wdb Mayo_keygen_wrapper_behav.wdb -simrunnum 0 -socket 48999
-Design successfully loaded
-Design Loading Memory Usage: 33600 KB (Peak: 33720 KB)
-Design Loading CPU Usage: 30 ms
-Simulation completed
-Simulation Memory Usage: 115336 KB (Peak: 172868 KB)
-Simulation CPU Usage: 40 ms

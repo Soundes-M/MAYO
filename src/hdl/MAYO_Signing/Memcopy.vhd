@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari 
 -- Company     : TU BERLIN
 -- Created     : Mon Jan  9 00:23:33 2023
--- Last update : Mon Jan  9 00:32:44 2023
+-- Last update : Thu Jan 12 14:11:38 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -136,7 +136,7 @@ begin
 						bram_dst.o.o_en   <= '1';
 						bram_dst.o.o_we   <= "1111";
 
-						if (copy_index <= len ) then -- keep copying copying len Bytes! [TODO Check this loop]
+						if (copy_index < len ) then -- keep copying copying len Bytes! [TODO Check this loop]
 							copy_index        <= copy_index +4;
 							bram_src.o.o_addr <= std_logic_vector(unsigned(bram_src.o.o_addr) +4);
 							state             <= cpy1;
@@ -167,7 +167,7 @@ begin
 						bram_src.o.o_din  <= bram_src.i.i_dout;
 						bram_src.o.o_en   <= '1';
 						bram_src.o.o_we   <= "1111";
-						if (copy_index <= len) then
+						if (copy_index < len) then
 							copy_index <= copy_index +4;
 							state      <= cpy4;
 						else
@@ -195,7 +195,7 @@ begin
 						bram_dst.o.o_din  <= bram_dst.i.i_dout;
 						bram_dst.o.o_en   <= '1';
 						bram_dst.o.o_we   <= "1111";
-						if (copy_index <= len) then
+						if (copy_index < len) then
 							copy_index <= copy_index +4;
 							state      <= cpy8;
 						else

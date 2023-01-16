@@ -4,3 +4,5 @@
 [submodule "src/hdl/BIKE"]
 	path = src/hdl/BIKE
 	url = https://github.com/Chair-for-Security-Engineering/BIKE.git
+[submodule "src/hdl/SABER_HW"]
+	url = https://github.com/sujoyetc/SABER_HW

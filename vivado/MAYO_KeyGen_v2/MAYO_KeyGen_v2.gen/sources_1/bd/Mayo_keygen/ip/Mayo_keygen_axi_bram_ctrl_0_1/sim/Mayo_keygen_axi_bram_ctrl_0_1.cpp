@@ -95,7 +95,7 @@ void Mayo_keygen_axi_bram_ctrl_0_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
     S_AXI_transactor_param_props.addLong("ID_WIDTH", "12");
-    S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "19");
+    S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "18");
     S_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -125,7 +125,7 @@ void Mayo_keygen_axi_bram_ctrl_0_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S_AXI_transactor_param_props.addString("CLK_DOMAIN", "Mayo_keygen_processing_system7_0_0_FCLK_CLK0");
 
-    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,19,12,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,18,12,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
 
     // S_AXI' transactor ports
 
@@ -218,7 +218,7 @@ void Mayo_keygen_axi_bram_ctrl_0_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
     S_AXI_transactor_param_props.addLong("ID_WIDTH", "12");
-    S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "19");
+    S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "18");
     S_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -248,7 +248,7 @@ void Mayo_keygen_axi_bram_ctrl_0_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S_AXI_transactor_param_props.addString("CLK_DOMAIN", "Mayo_keygen_processing_system7_0_0_FCLK_CLK0");
 
-    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,19,12,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,18,12,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
 
     // S_AXI' transactor ports
 
@@ -341,7 +341,7 @@ void Mayo_keygen_axi_bram_ctrl_0_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
     S_AXI_transactor_param_props.addLong("ID_WIDTH", "12");
-    S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "19");
+    S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "18");
     S_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -371,7 +371,7 @@ void Mayo_keygen_axi_bram_ctrl_0_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S_AXI_transactor_param_props.addString("CLK_DOMAIN", "Mayo_keygen_processing_system7_0_0_FCLK_CLK0");
 
-    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,19,12,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,18,12,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
 
     // S_AXI' transactor ports
 
@@ -453,7 +453,7 @@ Mayo_keygen_axi_bram_ctrl_0_1::Mayo_keygen_axi_bram_ctrl_0_1(const sc_core::sc_m
     S_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
     S_AXI_transactor_param_props.addLong("ID_WIDTH", "12");
-    S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "19");
+    S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "18");
     S_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -483,7 +483,7 @@ Mayo_keygen_axi_bram_ctrl_0_1::Mayo_keygen_axi_bram_ctrl_0_1(const sc_core::sc_m
     S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S_AXI_transactor_param_props.addString("CLK_DOMAIN", "Mayo_keygen_processing_system7_0_0_FCLK_CLK0");
 
-    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,19,12,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,18,12,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
   mp_S_AXI_transactor->ARADDR(s_axi_araddr);
   mp_S_AXI_transactor->ARBURST(s_axi_arburst);
   mp_S_AXI_transactor->ARCACHE(s_axi_arcache);
@@ -577,7 +577,7 @@ Mayo_keygen_axi_bram_ctrl_0_1::Mayo_keygen_axi_bram_ctrl_0_1(const sc_core::sc_m
     S_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
     S_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
     S_AXI_transactor_param_props.addLong("ID_WIDTH", "12");
-    S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "19");
+    S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "18");
     S_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -607,7 +607,7 @@ Mayo_keygen_axi_bram_ctrl_0_1::Mayo_keygen_axi_bram_ctrl_0_1(const sc_core::sc_m
     S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S_AXI_transactor_param_props.addString("CLK_DOMAIN", "Mayo_keygen_processing_system7_0_0_FCLK_CLK0");
 
-    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,19,12,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,18,12,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
   mp_S_AXI_transactor->ARADDR(s_axi_araddr);
   mp_S_AXI_transactor->ARBURST(s_axi_arburst);
   mp_S_AXI_transactor->ARCACHE(s_axi_arcache);

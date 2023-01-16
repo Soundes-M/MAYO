@@ -61,9 +61,9 @@ Mayo_keygen_axi_bram_ctrl_0_1_sc::Mayo_keygen_axi_bram_ctrl_0_1_sc(const sc_core
 
   // initialize module
     xsc::common_cpp::properties model_param_props;
-    model_param_props.addLong("C_MEMORY_DEPTH", "131072");
-    model_param_props.addLong("C_BRAM_ADDR_WIDTH", "17");
-    model_param_props.addLong("C_S_AXI_ADDR_WIDTH", "19");
+    model_param_props.addLong("C_MEMORY_DEPTH", "65536");
+    model_param_props.addLong("C_BRAM_ADDR_WIDTH", "16");
+    model_param_props.addLong("C_S_AXI_ADDR_WIDTH", "18");
     model_param_props.addLong("C_S_AXI_DATA_WIDTH", "32");
     model_param_props.addLong("C_S_AXI_ID_WIDTH", "12");
     model_param_props.addLong("C_S_AXI_SUPPORTS_NARROW_BURST", "0");

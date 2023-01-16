@@ -67,10 +67,10 @@ PACKAGE MAYO_COMMON IS
   CONSTANT SIG_BYTES     : positive := SEED_BYTES + (K*N);
   CONSTANT MESSAGE_BYTES : positive := 100; -- Can be changed
 
-  CONSTANT SK_EXP_P1       : natural := 0; -- Can be changed
+  CONSTANT SK_EXP_P1       : natural  := 0; -- Can be changed
   CONSTANT SK_EXP_OIL      : positive := SK_EXP_P1 + P1_BYTES;
   CONSTANT SK_EXP_BILINEAR : positive := SK_EXP_OIL + OIL_SPACE_BYTES;
-  CONSTANT SK_EXP_BYTES    : positive := SK_EXP_BILINEAR + (M*(N-O)*O);
+  CONSTANT SK_EXP_BYTES    : positive := P1_BYTES + OIL_SPACE_BYTES + (M*(N-O)*O);
 
   ------------------------------------------------------------------------------
   -- ADDRESSE MAPPING EXPLAINED: (32 Bits Address space)
@@ -122,10 +122,10 @@ PACKAGE MAYO_COMMON IS
   CONSTANT SIG_HIGH_ADR : positive := SIG_BASE_ADR + SIG_RANGE -4;
 
   ------------------------------------------------------------------------------
-  -- Address Mapping (In BRAM II) (BIG DATA)
+  -- Address Mapping (In BRAM II) (BIG DATA1)
   ------------------------------------------------------------------------------
   CONSTANT BRAM_II_PORT_WIDTH : natural := 31;
-  CONSTANT BRAM_II_SIZE       : natural := 524_288; -- Bytes
+  CONSTANT BRAM_II_SIZE       : natural := 262_144; -- Bytes
 
   -----------------KEYGEN MEMORY SPACE-----------------------------
   CONSTANT P1_BASE_ADR : natural  := 16#0#;
@@ -145,15 +145,7 @@ PACKAGE MAYO_COMMON IS
   CONSTANT SK_EXP_BASE_ADR : natural  := 16#0#;
   CONSTANT SK_EXP_RANGE    : positive := SK_EXP_BYTES;
   CONSTANT SK_EXP_HIGH_ADR : positive := SK_EXP_BASE_ADR + SK_EXP_RANGE -4;
-
-  CONSTANT P1P1T_BASE_ADR : positive := SK_EXP_HIGH_ADR + 4 ;
-  CONSTANT P1P1T_RANGE    : positive := M * (N - O) * (N - O);
-  CONSTANT P1P1T_HIGH_ADR : positive := P1P1T_BASE_ADR + P1P1T_RANGE -4;
-
-  CONSTANT BILINEAR_TEMP_BASE_ADR : positive := P1P1T_HIGH_ADR + 4 ;
-  CONSTANT BILINEAR_TEMP_RANGE    : positive := M * (N - O) * O;
-  CONSTANT BILINEAR_TEMP_HIGH_ADR : positive := BILINEAR_TEMP_BASE_ADR + BILINEAR_TEMP_RANGE -4;
-
+  -- For P1, oilspace etc.. use offsets
 
   -- ADDRESS ZYNQ MEMORY SPACE [CPU SPACE]
   -----------------------> COPY WHEN EXPOSE = 1! 
@@ -177,6 +169,21 @@ PACKAGE MAYO_COMMON IS
   CONSTANT CPU_SPACE_SIG_HIGH_ADR : positive := CPU_SPACE_MESSAGE_BASE_ADR -4;
   CONSTANT CPU_SPACE_SIG_RANGE    : positive := SIG_BYTES;
   CONSTANT CPU_SPACE_SIG_BASE_ADR : positive := CPU_SPACE_SIG_HIGH_ADR - CPU_SPACE_SIG_RANGE+4;
+
+  ------------------------------------------------------------------------------
+  -- Address Mapping (In BRAM III) (BIG DATA2)
+  ------------------------------------------------------------------------------
+  CONSTANT BRAM_III_PORT_WIDTH : natural := 31;
+  CONSTANT BRAM_III_SIZE       : natural := 262_144; -- Bytes
+
+  -----------------SIGNING MEMORY SPACE-----------------------------
+  CONSTANT P1P1T_BASE_ADR : natural  := 16#0#;
+  CONSTANT P1P1T_RANGE    : positive := M * (N - O) * (N - O);
+  CONSTANT P1P1T_HIGH_ADR : positive := P1P1T_BASE_ADR + P1P1T_RANGE -4;
+
+  CONSTANT BILINEAR_TEMP_BASE_ADR : positive := P1P1T_HIGH_ADR + 4 ;
+  CONSTANT BILINEAR_TEMP_RANGE    : positive := M * (N - O) * O;
+  CONSTANT BILINEAR_TEMP_HIGH_ADR : positive := BILINEAR_TEMP_BASE_ADR + BILINEAR_TEMP_RANGE -4;
 
   ------------------------------------------------------------------------------
   -- Address Mapping DDR MAPPING  [DISCARDED]

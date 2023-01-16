@@ -15,7 +15,7 @@ INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO
 INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs'.
 INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/shake128'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.2/data/ip'.
-add_files: Time (s): cpu = 00:00:15 ; elapsed = 00:00:06 . Memory (MB): peak = 2594.613 ; gain = 272.133 ; free physical = 16470 ; free virtual = 27928
+add_files: Time (s): cpu = 00:00:19 ; elapsed = 00:00:07 . Memory (MB): peak = 2610.598 ; gain = 288.145 ; free physical = 16418 ; free virtual = 27236
 Command: synth_design -top Mayo_keygen_wrapper -part xc7z020clg484-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
@@ -23,95 +23,97 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 267677
+INFO: [Synth 8-7075] Helper process launched with PID 668704
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15226 ; free virtual = 26670
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15183 ; free virtual = 25987
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_wrapper' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd:40]
-INFO: [Synth 8-3491] module 'Mayo_keygen' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3108' bound to instance 'Mayo_keygen_i' of component 'Mayo_keygen' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd:67]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3138]
+INFO: [Synth 8-3491] module 'Mayo_keygen' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3151' bound to instance 'Mayo_keygen_i' of component 'Mayo_keygen' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd:67]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3181]
 INFO: [Synth 8-638] synthesizing module 'BRAM_big1_imp_QBI0MO' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:94]
-INFO: [Synth 8-3491] module 'Mayo_keygen_blk_mem_gen_0_2' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_blk_mem_gen_0_2_stub.vhdl:5' bound to instance 'BIG_BRAM512KDP' of component 'Mayo_keygen_blk_mem_gen_0_2' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:394]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_blk_mem_gen_0_2' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_blk_mem_gen_0_2_stub.vhdl:27]
-INFO: [Synth 8-3491] module 'Mayo_keygen_arbit_brama1_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_arbit_brama1_0_stub.vhdl:5' bound to instance 'arbit_brama1' of component 'Mayo_keygen_arbit_brama1_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:414]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_arbit_brama1_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_arbit_brama1_0_stub.vhdl:66]
-INFO: [Synth 8-3491] module 'Mayo_keygen_axi_bram_ctrl_0_1' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_axi_bram_ctrl_0_1_stub.vhdl:5' bound to instance 'axi_bram_ctrl_0' of component 'Mayo_keygen_axi_bram_ctrl_0_1' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:472]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_axi_bram_ctrl_0_1' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_axi_bram_ctrl_0_1_stub.vhdl:55]
+INFO: [Synth 8-3491] module 'Mayo_keygen_blk_mem_gen_0_2' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_blk_mem_gen_0_2_stub.vhdl:5' bound to instance 'BIG_BRAM256KDP' of component 'Mayo_keygen_blk_mem_gen_0_2' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:418]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_blk_mem_gen_0_2' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_blk_mem_gen_0_2_stub.vhdl:27]
+INFO: [Synth 8-3491] module 'Mayo_keygen_BIG_BRAM256KDP_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_BIG_BRAM256KDP_0_stub.vhdl:5' bound to instance 'BIG_BRAM256KDP1' of component 'Mayo_keygen_BIG_BRAM256KDP_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:438]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_BIG_BRAM256KDP_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_BIG_BRAM256KDP_0_stub.vhdl:27]
+INFO: [Synth 8-3491] module 'Mayo_keygen_arbit_brama1_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_arbit_brama1_0_stub.vhdl:5' bound to instance 'arbit_brama1' of component 'Mayo_keygen_arbit_brama1_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:457]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_arbit_brama1_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_arbit_brama1_0_stub.vhdl:66]
+INFO: [Synth 8-3491] module 'Mayo_keygen_axi_bram_ctrl_0_1' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_axi_bram_ctrl_0_1_stub.vhdl:5' bound to instance 'axi_bram_ctrl_0' of component 'Mayo_keygen_axi_bram_ctrl_0_1' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:515]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_axi_bram_ctrl_0_1' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_axi_bram_ctrl_0_1_stub.vhdl:55]
 INFO: [Synth 8-256] done synthesizing module 'BRAM_big1_imp_QBI0MO' (1#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:94]
-INFO: [Synth 8-638] synthesizing module 'BRAM_small_imp_EVICZV' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:602]
-INFO: [Synth 8-3491] module 'Mayo_keygen_Small_BRAM8k_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_Small_BRAM8k_0_stub.vhdl:5' bound to instance 'Small_BRAM8k' of component 'Mayo_keygen_Small_BRAM8k_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:906]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_Small_BRAM8k_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_Small_BRAM8k_0_stub.vhdl:27]
-INFO: [Synth 8-3491] module 'Mayo_keygen_arbit_brama0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_arbit_brama0_0_stub.vhdl:5' bound to instance 'arbit_brama0' of component 'Mayo_keygen_arbit_brama0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:925]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_arbit_brama0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_arbit_brama0_0_stub.vhdl:66]
-INFO: [Synth 8-3491] module 'Mayo_keygen_arbit_bramb0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_arbit_bramb0_0_stub.vhdl:5' bound to instance 'arbit_bramb0' of component 'Mayo_keygen_arbit_bramb0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:983]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_arbit_bramb0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_arbit_bramb0_0_stub.vhdl:66]
-INFO: [Synth 8-256] done synthesizing module 'BRAM_small_imp_EVICZV' (2#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:602]
-INFO: [Synth 8-3491] module 'Mayo_keygen_Ground0_2' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground0_2/synth/Mayo_keygen_Ground0_2.v:57' bound to instance 'Ground1' of component 'Mayo_keygen_Ground0_2' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3967]
+INFO: [Synth 8-638] synthesizing module 'BRAM_small_imp_EVICZV' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:645]
+INFO: [Synth 8-3491] module 'Mayo_keygen_Small_BRAM8k_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_Small_BRAM8k_0_stub.vhdl:5' bound to instance 'Small_BRAM8k' of component 'Mayo_keygen_Small_BRAM8k_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:949]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_Small_BRAM8k_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_Small_BRAM8k_0_stub.vhdl:27]
+INFO: [Synth 8-3491] module 'Mayo_keygen_arbit_brama0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_arbit_brama0_0_stub.vhdl:5' bound to instance 'arbit_brama0' of component 'Mayo_keygen_arbit_brama0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:968]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_arbit_brama0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_arbit_brama0_0_stub.vhdl:66]
+INFO: [Synth 8-3491] module 'Mayo_keygen_arbit_bramb0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_arbit_bramb0_0_stub.vhdl:5' bound to instance 'arbit_bramb0' of component 'Mayo_keygen_arbit_bramb0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1026]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_arbit_bramb0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_arbit_bramb0_0_stub.vhdl:66]
+INFO: [Synth 8-256] done synthesizing module 'BRAM_small_imp_EVICZV' (2#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:645]
+INFO: [Synth 8-3491] module 'Mayo_keygen_Ground0_2' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground0_2/synth/Mayo_keygen_Ground0_2.v:57' bound to instance 'Ground1' of component 'Mayo_keygen_Ground0_2' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4010]
 INFO: [Synth 8-6157] synthesizing module 'Mayo_keygen_Ground0_2' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground0_2/synth/Mayo_keygen_Ground0_2.v:57]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 	Parameter CONST_VAL bound to: 1'b0 
 	Parameter CONST_WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant' (3#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'Mayo_keygen_Ground0_2' (4#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground0_2/synth/Mayo_keygen_Ground0_2.v:57]
-INFO: [Synth 8-3491] module 'Mayo_keygen_Ground32_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground32_0/synth/Mayo_keygen_Ground32_0.v:57' bound to instance 'Ground33' of component 'Mayo_keygen_Ground32_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3971]
+INFO: [Synth 8-3491] module 'Mayo_keygen_Ground32_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground32_0/synth/Mayo_keygen_Ground32_0.v:57' bound to instance 'Ground33' of component 'Mayo_keygen_Ground32_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4014]
 INFO: [Synth 8-6157] synthesizing module 'Mayo_keygen_Ground32_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground32_0/synth/Mayo_keygen_Ground32_0.v:57]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 	Parameter CONST_VAL bound to: 0 - type: integer 
 	Parameter CONST_WIDTH bound to: 32 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized0' (4#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'Mayo_keygen_Ground32_0' (5#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground32_0/synth/Mayo_keygen_Ground32_0.v:57]
-INFO: [Synth 8-3491] module 'Mayo_keygen_Ground4_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground4_0/synth/Mayo_keygen_Ground4_0.v:57' bound to instance 'Ground5' of component 'Mayo_keygen_Ground4_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3975]
+INFO: [Synth 8-3491] module 'Mayo_keygen_Ground4_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground4_0/synth/Mayo_keygen_Ground4_0.v:57' bound to instance 'Ground5' of component 'Mayo_keygen_Ground4_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4018]
 INFO: [Synth 8-6157] synthesizing module 'Mayo_keygen_Ground4_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground4_0/synth/Mayo_keygen_Ground4_0.v:57]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized1' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 	Parameter CONST_VAL bound to: 4'b0000 
 	Parameter CONST_WIDTH bound to: 4 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized1' (5#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'Mayo_keygen_Ground4_0' (6#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Ground4_0/synth/Mayo_keygen_Ground4_0.v:57]
-INFO: [Synth 8-3491] module 'Mayo_keygen_MAYO_KEYGEN_FSM_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_MAYO_KEYGEN_FSM_0_0_stub.vhdl:5' bound to instance 'MAYO_KEYGEN_FSM_0' of component 'Mayo_keygen_MAYO_KEYGEN_FSM_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3979]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_MAYO_KEYGEN_FSM_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_MAYO_KEYGEN_FSM_0_0_stub.vhdl:81]
-INFO: [Synth 8-638] synthesizing module 'TRNG_imp_1KWX5GC' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1066]
-INFO: [Synth 8-3491] module 'Mayo_keygen_TRNG_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_TRNG_0_0_stub.vhdl:5' bound to instance 'TRNG_0' of component 'Mayo_keygen_TRNG_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1139]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_TRNG_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_TRNG_0_0_stub.vhdl:19]
-INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_trng_arbiter_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_trng_arbiter_0_0_stub.vhdl:5' bound to instance 'mayo_trng_arbiter_0' of component 'Mayo_keygen_mayo_trng_arbiter_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1150]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_trng_arbiter_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_trng_arbiter_0_0_stub.vhdl:30]
-INFO: [Synth 8-256] done synthesizing module 'TRNG_imp_1KWX5GC' (7#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1066]
-INFO: [Synth 8-638] synthesizing module 'hash_imp_1FCB8TA' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1204]
-INFO: [Synth 8-3491] module 'Mayo_keygen_MAYO_SHAKE_1_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_MAYO_SHAKE_1_0_stub.vhdl:5' bound to instance 'MAYO_SHAKE_1' of component 'Mayo_keygen_MAYO_SHAKE_1_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1298]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_MAYO_SHAKE_1_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_MAYO_SHAKE_1_0_stub.vhdl:26]
-INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_hash_bram_arbit_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_hash_bram_arbit_0_0_stub.vhdl:5' bound to instance 'mayo_hash_bram_arbit_0' of component 'Mayo_keygen_mayo_hash_bram_arbit_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1316]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_hash_bram_arbit_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_hash_bram_arbit_0_0_stub.vhdl:30]
-INFO: [Synth 8-256] done synthesizing module 'hash_imp_1FCB8TA' (8#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1204]
-INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_add_vectors_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_add_vectors_0_0_stub.vhdl:5' bound to instance 'mayo_add_vectors_0' of component 'Mayo_keygen_mayo_add_vectors_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4095]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_add_vectors_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_add_vectors_0_0_stub.vhdl:40]
-INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_axi_litev3_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_axi_litev3_0_0_stub.vhdl:5' bound to instance 'mayo_axi_litev3_0' of component 'Mayo_keygen_mayo_axi_litev3_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4127]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_axi_litev3_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_axi_litev3_0_0_stub.vhdl:46]
-INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_linear_combinat_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_linear_combinat_0_0_stub.vhdl:5' bound to instance 'mayo_linear_combinat_0' of component 'Mayo_keygen_mayo_linear_combinat_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4165]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_linear_combinat_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_linear_combinat_0_0_stub.vhdl:41]
-INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_negate_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_negate_0_0_stub.vhdl:5' bound to instance 'mayo_negate_0' of component 'Mayo_keygen_mayo_negate_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4198]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_negate_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_negate_0_0_stub.vhdl:24]
-INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_reduce_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_reduce_0_0_stub.vhdl:5' bound to instance 'mayo_reduce_0' of component 'Mayo_keygen_mayo_reduce_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4214]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_reduce_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_reduce_0_0_stub.vhdl:32]
-INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_sample_oil_space_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_sample_oil_space_0_0_stub.vhdl:5' bound to instance 'mayo_sample_oil_space_0' of component 'Mayo_keygen_mayo_sample_oil_space_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4238]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_sample_oil_space_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_mayo_sample_oil_space_0_0_stub.vhdl:30]
-INFO: [Synth 8-3491] module 'Mayo_keygen_processing_system7_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_processing_system7_0_0_stub.vhdl:5' bound to instance 'processing_system7_0' of component 'Mayo_keygen_processing_system7_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4260]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_processing_system7_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_processing_system7_0_0_stub.vhdl:80]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_ps7_0_axi_periph_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:2372]
-INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_FZLD13' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1422]
-INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_FZLD13' (9#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1422]
-INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_1A4U015' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1601]
-INFO: [Synth 8-3491] module 'Mayo_keygen_auto_pc_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'Mayo_keygen_auto_pc_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1787]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_auto_pc_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_auto_pc_0_stub.vhdl:71]
-INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_1A4U015' (10#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1601]
-INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_1N9RZTZ' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1939]
-INFO: [Synth 8-3491] module 'Mayo_keygen_auto_pc_1' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_auto_pc_1_stub.vhdl:5' bound to instance 'auto_pc' of component 'Mayo_keygen_auto_pc_1' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:2180]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_auto_pc_1' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_auto_pc_1_stub.vhdl:90]
-INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_1N9RZTZ' (11#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1939]
-INFO: [Synth 8-3491] module 'Mayo_keygen_xbar_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'Mayo_keygen_xbar_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:2983]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_xbar_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_xbar_0_stub.vhdl:89]
-INFO: [Synth 8-256] done synthesizing module 'Mayo_keygen_ps7_0_axi_periph_0' (12#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:2372]
-INFO: [Synth 8-3491] module 'Mayo_keygen_rst_ps7_0_100M_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_rst_ps7_0_100M_0_stub.vhdl:5' bound to instance 'rst_ps7_0_100M' of component 'Mayo_keygen_rst_ps7_0_100M_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4435]
-INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_rst_ps7_0_100M_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-267197-osm-hzb/realtime/Mayo_keygen_rst_ps7_0_100M_0_stub.vhdl:21]
-INFO: [Synth 8-3491] module 'Mayo_keygen_xlconcat_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_xlconcat_0_0/synth/Mayo_keygen_xlconcat_0_0.v:60' bound to instance 'xlconcat_0' of component 'Mayo_keygen_xlconcat_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4448]
+INFO: [Synth 8-3491] module 'Mayo_keygen_MAYO_KEYGEN_FSM_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_MAYO_KEYGEN_FSM_0_0_stub.vhdl:5' bound to instance 'MAYO_KEYGEN_FSM_0' of component 'Mayo_keygen_MAYO_KEYGEN_FSM_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4022]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_MAYO_KEYGEN_FSM_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_MAYO_KEYGEN_FSM_0_0_stub.vhdl:81]
+INFO: [Synth 8-638] synthesizing module 'TRNG_imp_1KWX5GC' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1109]
+INFO: [Synth 8-3491] module 'Mayo_keygen_TRNG_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_TRNG_0_0_stub.vhdl:5' bound to instance 'TRNG_0' of component 'Mayo_keygen_TRNG_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1182]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_TRNG_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_TRNG_0_0_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_trng_arbiter_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_trng_arbiter_0_0_stub.vhdl:5' bound to instance 'mayo_trng_arbiter_0' of component 'Mayo_keygen_mayo_trng_arbiter_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1193]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_trng_arbiter_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_trng_arbiter_0_0_stub.vhdl:30]
+INFO: [Synth 8-256] done synthesizing module 'TRNG_imp_1KWX5GC' (7#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1109]
+INFO: [Synth 8-638] synthesizing module 'hash_imp_1FCB8TA' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1247]
+INFO: [Synth 8-3491] module 'Mayo_keygen_MAYO_SHAKE_1_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_MAYO_SHAKE_1_0_stub.vhdl:5' bound to instance 'MAYO_SHAKE_1' of component 'Mayo_keygen_MAYO_SHAKE_1_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1341]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_MAYO_SHAKE_1_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_MAYO_SHAKE_1_0_stub.vhdl:26]
+INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_hash_bram_arbit_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_hash_bram_arbit_0_0_stub.vhdl:5' bound to instance 'mayo_hash_bram_arbit_0' of component 'Mayo_keygen_mayo_hash_bram_arbit_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1359]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_hash_bram_arbit_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_hash_bram_arbit_0_0_stub.vhdl:30]
+INFO: [Synth 8-256] done synthesizing module 'hash_imp_1FCB8TA' (8#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1247]
+INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_add_vectors_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_add_vectors_0_0_stub.vhdl:5' bound to instance 'mayo_add_vectors_0' of component 'Mayo_keygen_mayo_add_vectors_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4138]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_add_vectors_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_add_vectors_0_0_stub.vhdl:40]
+INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_axi_litev3_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_axi_litev3_0_0_stub.vhdl:5' bound to instance 'mayo_axi_litev3_0' of component 'Mayo_keygen_mayo_axi_litev3_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4170]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_axi_litev3_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_axi_litev3_0_0_stub.vhdl:46]
+INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_linear_combinat_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_linear_combinat_0_0_stub.vhdl:5' bound to instance 'mayo_linear_combinat_0' of component 'Mayo_keygen_mayo_linear_combinat_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4208]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_linear_combinat_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_linear_combinat_0_0_stub.vhdl:41]
+INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_negate_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_negate_0_0_stub.vhdl:5' bound to instance 'mayo_negate_0' of component 'Mayo_keygen_mayo_negate_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4241]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_negate_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_negate_0_0_stub.vhdl:24]
+INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_reduce_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_reduce_0_0_stub.vhdl:5' bound to instance 'mayo_reduce_0' of component 'Mayo_keygen_mayo_reduce_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4257]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_reduce_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_reduce_0_0_stub.vhdl:32]
+INFO: [Synth 8-3491] module 'Mayo_keygen_mayo_sample_oil_space_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_sample_oil_space_0_0_stub.vhdl:5' bound to instance 'mayo_sample_oil_space_0' of component 'Mayo_keygen_mayo_sample_oil_space_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4281]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_mayo_sample_oil_space_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_mayo_sample_oil_space_0_0_stub.vhdl:30]
+INFO: [Synth 8-3491] module 'Mayo_keygen_processing_system7_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_processing_system7_0_0_stub.vhdl:5' bound to instance 'processing_system7_0' of component 'Mayo_keygen_processing_system7_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4303]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_processing_system7_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_processing_system7_0_0_stub.vhdl:80]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_ps7_0_axi_periph_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:2415]
+INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_FZLD13' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1465]
+INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_FZLD13' (9#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1465]
+INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_1A4U015' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1644]
+INFO: [Synth 8-3491] module 'Mayo_keygen_auto_pc_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'Mayo_keygen_auto_pc_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1830]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_auto_pc_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_auto_pc_0_stub.vhdl:71]
+INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_1A4U015' (10#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1644]
+INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_1N9RZTZ' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1982]
+INFO: [Synth 8-3491] module 'Mayo_keygen_auto_pc_1' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_auto_pc_1_stub.vhdl:5' bound to instance 'auto_pc' of component 'Mayo_keygen_auto_pc_1' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:2223]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_auto_pc_1' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_auto_pc_1_stub.vhdl:90]
+INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_1N9RZTZ' (11#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:1982]
+INFO: [Synth 8-3491] module 'Mayo_keygen_xbar_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'Mayo_keygen_xbar_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3026]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_xbar_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_xbar_0_stub.vhdl:89]
+INFO: [Synth 8-256] done synthesizing module 'Mayo_keygen_ps7_0_axi_periph_0' (12#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:2415]
+INFO: [Synth 8-3491] module 'Mayo_keygen_rst_ps7_0_100M_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_rst_ps7_0_100M_0_stub.vhdl:5' bound to instance 'rst_ps7_0_100M' of component 'Mayo_keygen_rst_ps7_0_100M_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4478]
+INFO: [Synth 8-638] synthesizing module 'Mayo_keygen_rst_ps7_0_100M_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/.Xil/Vivado-668129-osm-hzb/realtime/Mayo_keygen_rst_ps7_0_100M_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'Mayo_keygen_xlconcat_0_0' declared at '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_xlconcat_0_0/synth/Mayo_keygen_xlconcat_0_0.v:60' bound to instance 'xlconcat_0' of component 'Mayo_keygen_xlconcat_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:4491]
 INFO: [Synth 8-6157] synthesizing module 'Mayo_keygen_xlconcat_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_xlconcat_0_0/synth/Mayo_keygen_xlconcat_0_0.v:60]
 INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_4_xlconcat' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/4b67/hdl/xlconcat_v2_1_vl_rfs.v:14]
 	Parameter IN0_WIDTH bound to: 2 - type: integer 
@@ -246,21 +248,21 @@ INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_4_xlconcat' [/home/osm/D
 	Parameter NUM_PORTS bound to: 4 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_4_xlconcat' (13#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/4b67/hdl/xlconcat_v2_1_vl_rfs.v:14]
 INFO: [Synth 8-6155] done synthesizing module 'Mayo_keygen_xlconcat_0_0' (14#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_xlconcat_0_0/synth/Mayo_keygen_xlconcat_0_0.v:60]
-INFO: [Synth 8-256] done synthesizing module 'Mayo_keygen' (15#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3138]
+INFO: [Synth 8-256] done synthesizing module 'Mayo_keygen' (15#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/synth/Mayo_keygen.vhd:3181]
 INFO: [Synth 8-256] done synthesizing module 'Mayo_keygen_wrapper' (16#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd:40]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15905 ; free virtual = 27352
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15105 ; free virtual = 25912
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15893 ; free virtual = 27352
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15780 ; free virtual = 26599
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15893 ; free virtual = 27351
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15780 ; free virtual = 26599
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15892 ; free virtual = 27351
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15831 ; free virtual = 26650
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -275,20 +277,22 @@ Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_auto_pc_0/Mayo_keygen_auto_pc_0/Mayo_keygen_auto_pc_0_in_context.xdc] for cell 'Mayo_keygen_i/ps7_0_axi_periph/m01_couplers/auto_pc'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_rst_ps7_0_100M_0/Mayo_keygen_rst_ps7_0_100M_0/Mayo_keygen_rst_ps7_0_100M_0_in_context.xdc] for cell 'Mayo_keygen_i/rst_ps7_0_100M'
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_rst_ps7_0_100M_0/Mayo_keygen_rst_ps7_0_100M_0/Mayo_keygen_rst_ps7_0_100M_0_in_context.xdc] for cell 'Mayo_keygen_i/rst_ps7_0_100M'
-Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_1_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/BIG_BRAM512KDP'
-Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_1_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/BIG_BRAM512KDP'
-Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/axi_bram_ctrl_0'
-Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/axi_bram_ctrl_0'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_arbit_brama1_0/Mayo_keygen_arbit_brama1_0/Mayo_keygen_arbit_brama1_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/arbit_brama1'
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_arbit_brama1_0/Mayo_keygen_arbit_brama1_0/Mayo_keygen_arbit_brama1_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/arbit_brama1'
-Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_blk_mem_gen_0_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_small/Small_BRAM8k'
-Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_blk_mem_gen_0_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_small/Small_BRAM8k'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_1_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/axi_bram_ctrl_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_1_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/axi_bram_ctrl_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/BIG_BRAM256KDP'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/BIG_BRAM256KDP'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_BIG_BRAM256KDP_0/Mayo_keygen_BIG_BRAM256KDP_0/Mayo_keygen_blk_mem_gen_0_2_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/BIG_BRAM256KDP1'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_BIG_BRAM256KDP_0/Mayo_keygen_BIG_BRAM256KDP_0/Mayo_keygen_blk_mem_gen_0_2_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_big1/BIG_BRAM256KDP1'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_Small_BRAM8k_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_small/Small_BRAM8k'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_Small_BRAM8k_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_small/Small_BRAM8k'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_arbit_brama0_0/Mayo_keygen_arbit_brama0_0/Mayo_keygen_arbit_brama0_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_small/arbit_brama0'
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_arbit_brama0_0/Mayo_keygen_arbit_brama0_0/Mayo_keygen_arbit_brama0_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_small/arbit_brama0'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_arbit_bramb0_0/Mayo_keygen_arbit_bramb0_0/Mayo_keygen_arbit_bramb0_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_small/arbit_bramb0'
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_arbit_bramb0_0/Mayo_keygen_arbit_bramb0_0/Mayo_keygen_arbit_bramb0_0_in_context.xdc] for cell 'Mayo_keygen_i/BRAM_small/arbit_bramb0'
-Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0/Mayo_keygen_no_zynq_TRNG_0_0_in_context.xdc] for cell 'Mayo_keygen_i/TRNG/TRNG_0'
-Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0/Mayo_keygen_no_zynq_TRNG_0_0_in_context.xdc] for cell 'Mayo_keygen_i/TRNG/TRNG_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0_in_context.xdc] for cell 'Mayo_keygen_i/TRNG/TRNG_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0_in_context.xdc] for cell 'Mayo_keygen_i/TRNG/TRNG_0'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_trng_arbiter_0_0/Mayo_keygen_mayo_trng_arbiter_0_0/Mayo_keygen_mayo_trng_arbiter_0_0_in_context.xdc] for cell 'Mayo_keygen_i/TRNG/mayo_trng_arbiter_0'
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_trng_arbiter_0_0/Mayo_keygen_mayo_trng_arbiter_0_0/Mayo_keygen_mayo_trng_arbiter_0_0_in_context.xdc] for cell 'Mayo_keygen_i/TRNG/mayo_trng_arbiter_0'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_MAYO_SHAKE_1_0/Mayo_keygen_MAYO_SHAKE_1_0/Mayo_keygen_MAYO_SHAKE_1_0_in_context.xdc] for cell 'Mayo_keygen_i/hash/MAYO_SHAKE_1'
@@ -297,8 +301,6 @@ Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_hash_bram_arbit_0_0/Mayo_keygen_mayo_hash_bram_arbit_0_0/Mayo_keygen_mayo_hash_bram_arbit_0_0_in_context.xdc] for cell 'Mayo_keygen_i/hash/mayo_hash_bram_arbit_0'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_axi_litev3_0_0/Mayo_keygen_mayo_axi_litev3_0_0/Mayo_keygen_mayo_axi_litev3_0_0_in_context.xdc] for cell 'Mayo_keygen_i/mayo_axi_litev3_0'
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_axi_litev3_0_0/Mayo_keygen_mayo_axi_litev3_0_0/Mayo_keygen_mayo_axi_litev3_0_0_in_context.xdc] for cell 'Mayo_keygen_i/mayo_axi_litev3_0'
-Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0_in_context.xdc] for cell 'Mayo_keygen_i/MAYO_KEYGEN_FSM_0'
-Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0_in_context.xdc] for cell 'Mayo_keygen_i/MAYO_KEYGEN_FSM_0'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_add_vectors_0_0/Mayo_keygen_mayo_add_vectors_0_0/Mayo_keygen_mayo_add_vectors_0_0_in_context.xdc] for cell 'Mayo_keygen_i/mayo_add_vectors_0'
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_add_vectors_0_0/Mayo_keygen_mayo_add_vectors_0_0/Mayo_keygen_mayo_add_vectors_0_0_in_context.xdc] for cell 'Mayo_keygen_i/mayo_add_vectors_0'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_linear_combinat_0_0/Mayo_keygen_mayo_linear_combinat_0_0/Mayo_keygen_mayo_linear_combinat_0_0_in_context.xdc] for cell 'Mayo_keygen_i/mayo_linear_combinat_0'
@@ -309,28 +311,30 @@ Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_reduce_0_0/Mayo_keygen_mayo_reduce_0_0/Mayo_keygen_mayo_reduce_0_0_in_context.xdc] for cell 'Mayo_keygen_i/mayo_reduce_0'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_sample_oil_space_0_0/Mayo_keygen_mayo_sample_oil_space_0_0/Mayo_keygen_mayo_sample_oil_space_0_0_in_context.xdc] for cell 'Mayo_keygen_i/mayo_sample_oil_space_0'
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_mayo_sample_oil_space_0_0/Mayo_keygen_mayo_sample_oil_space_0_0/Mayo_keygen_mayo_sample_oil_space_0_0_in_context.xdc] for cell 'Mayo_keygen_i/mayo_sample_oil_space_0'
+Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0_in_context.xdc] for cell 'Mayo_keygen_i/MAYO_KEYGEN_FSM_0'
+Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0_in_context.xdc] for cell 'Mayo_keygen_i/MAYO_KEYGEN_FSM_0'
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/constrs_1/new/Mayo_keygen_wrapper.xdc]
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/constrs_1/new/Mayo_keygen_wrapper.xdc]
 Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15830 ; free virtual = 27277
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15760 ; free virtual = 26567
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15830 ; free virtual = 27277
-WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'Mayo_keygen_i/BRAM_big1/BIG_BRAM512KDP' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15760 ; free virtual = 26567
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'Mayo_keygen_i/BRAM_big1/BIG_BRAM256KDP' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'Mayo_keygen_i/BRAM_small/Small_BRAM8k' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15921 ; free virtual = 27365
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15841 ; free virtual = 26647
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15921 ; free virtual = 27365
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15841 ; free virtual = 26647
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -602,9 +606,10 @@ Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/ps7_0_axi_periph/s0
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/ps7_0_axi_periph/m01_couplers/auto_pc. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/ps7_0_axi_periph. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/rst_ps7_0_100M. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/BRAM_big1/BIG_BRAM512KDP. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/BRAM_big1/axi_bram_ctrl_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/BRAM_big1/arbit_brama1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/BRAM_big1/axi_bram_ctrl_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/BRAM_big1/BIG_BRAM256KDP. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/BRAM_big1/BIG_BRAM256KDP1. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/BRAM_small/Small_BRAM8k. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/BRAM_small/arbit_brama0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/BRAM_small/arbit_bramb0. (constraint file  auto generated constraint).
@@ -617,17 +622,17 @@ Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/hash/MAYO_SHAKE_1. 
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/hash/mayo_hash_bram_arbit_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/xlconcat_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/mayo_axi_litev3_0. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/MAYO_KEYGEN_FSM_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/mayo_add_vectors_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/mayo_linear_combinat_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/mayo_negate_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/mayo_reduce_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/mayo_sample_oil_space_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Mayo_keygen_i/MAYO_KEYGEN_FSM_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15912 ; free virtual = 27359
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15839 ; free virtual = 26646
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15893 ; free virtual = 27353
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15828 ; free virtual = 26648
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -649,25 +654,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15888 ; free virtual = 27352
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15824 ; free virtual = 26648
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15766 ; free virtual = 27215
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15725 ; free virtual = 26536
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15766 ; free virtual = 27215
+Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15724 ; free virtual = 26535
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15759 ; free virtual = 27211
+Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15717 ; free virtual = 26529
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -685,37 +690,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15751 ; free virtual = 27215
+Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15702 ; free virtual = 26526
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15751 ; free virtual = 27215
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15702 ; free virtual = 26526
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15770 ; free virtual = 27218
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15702 ; free virtual = 26526
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15770 ; free virtual = 27218
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15702 ; free virtual = 26526
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15770 ; free virtual = 27218
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15702 ; free virtual = 26526
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15770 ; free virtual = 27218
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15702 ; free virtual = 26526
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -738,62 +743,64 @@ Report BlackBoxes:
 |11    |Mayo_keygen_processing_system7_0_0    |         1|
 |12    |Mayo_keygen_rst_ps7_0_100M_0          |         1|
 |13    |Mayo_keygen_blk_mem_gen_0_2           |         1|
-|14    |Mayo_keygen_arbit_brama1_0            |         1|
-|15    |Mayo_keygen_axi_bram_ctrl_0_1         |         1|
-|16    |Mayo_keygen_Small_BRAM8k_0            |         1|
-|17    |Mayo_keygen_arbit_brama0_0            |         1|
-|18    |Mayo_keygen_arbit_bramb0_0            |         1|
-|19    |Mayo_keygen_TRNG_0_0                  |         1|
-|20    |Mayo_keygen_mayo_trng_arbiter_0_0     |         1|
-|21    |Mayo_keygen_MAYO_SHAKE_1_0            |         1|
-|22    |Mayo_keygen_mayo_hash_bram_arbit_0_0  |         1|
+|14    |Mayo_keygen_BIG_BRAM256KDP_0          |         1|
+|15    |Mayo_keygen_arbit_brama1_0            |         1|
+|16    |Mayo_keygen_axi_bram_ctrl_0_1         |         1|
+|17    |Mayo_keygen_Small_BRAM8k_0            |         1|
+|18    |Mayo_keygen_arbit_brama0_0            |         1|
+|19    |Mayo_keygen_arbit_bramb0_0            |         1|
+|20    |Mayo_keygen_TRNG_0_0                  |         1|
+|21    |Mayo_keygen_mayo_trng_arbiter_0_0     |         1|
+|22    |Mayo_keygen_MAYO_SHAKE_1_0            |         1|
+|23    |Mayo_keygen_mayo_hash_bram_arbit_0_0  |         1|
 +------+--------------------------------------+----------+
 
 Report Cell Usage: 
 +------+-------------------------------------------+------+
 |      |Cell                                       |Count |
 +------+-------------------------------------------+------+
-|1     |Mayo_keygen_MAYO_KEYGEN_FSM_0_0_bbox       |     1|
-|2     |Mayo_keygen_MAYO_SHAKE_1_0_bbox            |     1|
-|3     |Mayo_keygen_Small_BRAM8k_0_bbox            |     1|
-|4     |Mayo_keygen_TRNG_0_0_bbox                  |     1|
-|5     |Mayo_keygen_arbit_brama0_0_bbox            |     1|
-|6     |Mayo_keygen_arbit_brama1_0_bbox            |     1|
-|7     |Mayo_keygen_arbit_bramb0_0_bbox            |     1|
-|8     |Mayo_keygen_auto_pc_0_bbox                 |     1|
-|9     |Mayo_keygen_auto_pc_1_bbox                 |     1|
-|10    |Mayo_keygen_axi_bram_ctrl_0_1_bbox         |     1|
-|11    |Mayo_keygen_blk_mem_gen_0_2_bbox           |     1|
-|12    |Mayo_keygen_mayo_add_vectors_0_0_bbox      |     1|
-|13    |Mayo_keygen_mayo_axi_litev3_0_0_bbox       |     1|
-|14    |Mayo_keygen_mayo_hash_bram_arbit_0_0_bbox  |     1|
-|15    |Mayo_keygen_mayo_linear_combinat_0_0_bbox  |     1|
-|16    |Mayo_keygen_mayo_negate_0_0_bbox           |     1|
-|17    |Mayo_keygen_mayo_reduce_0_0_bbox           |     1|
-|18    |Mayo_keygen_mayo_sample_oil_space_0_0_bbox |     1|
-|19    |Mayo_keygen_mayo_trng_arbiter_0_0_bbox     |     1|
-|20    |Mayo_keygen_processing_system7_0_0_bbox    |     1|
-|21    |Mayo_keygen_rst_ps7_0_100M_0_bbox          |     1|
-|22    |Mayo_keygen_xbar_0_bbox                    |     1|
+|1     |Mayo_keygen_BIG_BRAM256KDP_0_bbox          |     1|
+|2     |Mayo_keygen_MAYO_KEYGEN_FSM_0_0_bbox       |     1|
+|3     |Mayo_keygen_MAYO_SHAKE_1_0_bbox            |     1|
+|4     |Mayo_keygen_Small_BRAM8k_0_bbox            |     1|
+|5     |Mayo_keygen_TRNG_0_0_bbox                  |     1|
+|6     |Mayo_keygen_arbit_brama0_0_bbox            |     1|
+|7     |Mayo_keygen_arbit_brama1_0_bbox            |     1|
+|8     |Mayo_keygen_arbit_bramb0_0_bbox            |     1|
+|9     |Mayo_keygen_auto_pc_0_bbox                 |     1|
+|10    |Mayo_keygen_auto_pc_1_bbox                 |     1|
+|11    |Mayo_keygen_axi_bram_ctrl_0_1_bbox         |     1|
+|12    |Mayo_keygen_blk_mem_gen_0_2_bbox           |     1|
+|13    |Mayo_keygen_mayo_add_vectors_0_0_bbox      |     1|
+|14    |Mayo_keygen_mayo_axi_litev3_0_0_bbox       |     1|
+|15    |Mayo_keygen_mayo_hash_bram_arbit_0_0_bbox  |     1|
+|16    |Mayo_keygen_mayo_linear_combinat_0_0_bbox  |     1|
+|17    |Mayo_keygen_mayo_negate_0_0_bbox           |     1|
+|18    |Mayo_keygen_mayo_reduce_0_0_bbox           |     1|
+|19    |Mayo_keygen_mayo_sample_oil_space_0_0_bbox |     1|
+|20    |Mayo_keygen_mayo_trng_arbiter_0_0_bbox     |     1|
+|21    |Mayo_keygen_processing_system7_0_0_bbox    |     1|
+|22    |Mayo_keygen_rst_ps7_0_100M_0_bbox          |     1|
+|23    |Mayo_keygen_xbar_0_bbox                    |     1|
 +------+-------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15770 ; free virtual = 27218
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15702 ; free virtual = 26526
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15824 ; free virtual = 27272
-Synthesis Optimization Complete : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15824 ; free virtual = 27272
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15770 ; free virtual = 26581
+Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15771 ; free virtual = 26582
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15914 ; free virtual = 27362
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15858 ; free virtual = 26670
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15853 ; free virtual = 27305
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15794 ; free virtual = 26606
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-103 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+105 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:17 . Memory (MB): peak = 2594.613 ; gain = 0.000 ; free physical = 15986 ; free virtual = 27438
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:20 . Memory (MB): peak = 2610.598 ; gain = 0.000 ; free physical = 15931 ; free virtual = 26743
 INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/Mayo_keygen_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Mayo_keygen_wrapper_utilization_synth.rpt -pb Mayo_keygen_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Jan  8 14:51:16 2023...
+INFO: [Common 17-206] Exiting Vivado at Tue Jan 10 18:59:05 2023...

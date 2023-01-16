@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "Mayo_keygen_MAYO_SHAKE_1_0_synth_1" START { ROLLUP_AUTO }
-set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
@@ -86,6 +85,8 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:zed:part0:1.4 [current_project]
 set_property ip_repo_paths {
+  /home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_axi_litev3/mayo_axi_litev3_3
+  /home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo-axi/Mayo_axi_1.0
   /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs
   /home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/shake128
 } [current_project]

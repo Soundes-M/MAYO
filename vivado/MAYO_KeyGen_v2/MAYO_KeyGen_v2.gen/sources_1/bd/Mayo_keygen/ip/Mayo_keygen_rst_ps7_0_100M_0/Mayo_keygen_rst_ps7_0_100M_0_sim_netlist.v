@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-// Date        : Wed Oct 19 15:04:35 2022
+// Date        : Tue Jan 10 17:13:56 2023
 // Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
-// Command     : write_verilog -force -mode funcsim -rename_top Mayo_keygen_rst_ps7_0_100M_0 -prefix
-//               Mayo_keygen_rst_ps7_0_100M_0_ Mayo_keygen_rst_ps7_0_100M_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_rst_ps7_0_100M_0/Mayo_keygen_rst_ps7_0_100M_0_sim_netlist.v
 // Design      : Mayo_keygen_rst_ps7_0_100M_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -69,6 +69,7 @@ module Mayo_keygen_rst_ps7_0_100M_0
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
+(* ORIG_REF_NAME = "cdc_sync" *) 
 module Mayo_keygen_rst_ps7_0_100M_0_cdc_sync
    (lpf_asr_reg,
     scndry_out,
@@ -256,6 +257,7 @@ module Mayo_keygen_rst_ps7_0_100M_0_cdc_sync_0
         .O(lpf_exr_reg));
 endmodule
 
+(* ORIG_REF_NAME = "lpf" *) 
 module Mayo_keygen_rst_ps7_0_100M_0_lpf
    (lpf_int,
     slowest_sync_clk,
@@ -409,6 +411,7 @@ endmodule
 (* C_AUX_RESET_HIGH = "1'b0" *) (* C_AUX_RST_WIDTH = "4" *) (* C_EXT_RESET_HIGH = "1'b0" *) 
 (* C_EXT_RST_WIDTH = "4" *) (* C_FAMILY = "zynq" *) (* C_NUM_BUS_RST = "1" *) 
 (* C_NUM_INTERCONNECT_ARESETN = "1" *) (* C_NUM_PERP_ARESETN = "1" *) (* C_NUM_PERP_RST = "1" *) 
+(* ORIG_REF_NAME = "proc_sys_reset" *) 
 module Mayo_keygen_rst_ps7_0_100M_0_proc_sys_reset
    (slowest_sync_clk,
     ext_reset_in,
@@ -525,6 +528,7 @@ module Mayo_keygen_rst_ps7_0_100M_0_proc_sys_reset
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
+(* ORIG_REF_NAME = "sequence_psr" *) 
 module Mayo_keygen_rst_ps7_0_100M_0_sequence_psr
    (MB_out,
     Bsr_out,
@@ -765,6 +769,7 @@ module Mayo_keygen_rst_ps7_0_100M_0_sequence_psr
         .R(lpf_int));
 endmodule
 
+(* ORIG_REF_NAME = "upcnt_n" *) 
 module Mayo_keygen_rst_ps7_0_100M_0_upcnt_n
    (Q,
     seq_clr,
