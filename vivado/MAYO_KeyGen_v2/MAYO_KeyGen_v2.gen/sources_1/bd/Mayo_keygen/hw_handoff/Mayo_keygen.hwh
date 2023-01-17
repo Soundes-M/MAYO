@@ -1,9 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jan 10 18:57:49 2023" VIVADOVERSION="2020.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Jan 16 21:04:42 2023" VIVADOVERSION="2020.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.4" DEVICE="7z020" NAME="Mayo_keygen" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
+    <PORT DIR="O" NAME="LD0" SIGIS="undef" SIGNAME="blink_led_0_led0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="blink_led_0" PORT="led0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="LD1" SIGIS="undef" SIGNAME="blink_led_0_led1">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="blink_led_0" PORT="led1"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="IO" NAME="DDR_cas_n" SIGIS="undef" SIGNAME="processing_system7_0_DDR_CAS_n">
       <CONNECTIONS>
         <CONNECTION INSTANCE="processing_system7_0" PORT="DDR_CAS_n"/>
@@ -349,12 +359,12 @@
             <CONNECTION INSTANCE="BRAM_big1_axi_bram_ctrl_0" PORT="bram_rddata_a"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="BRAM_big1_arbit_brama1_BRAM_rst">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="BRAM_big1_arbit_brama1_BRAM_rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BRAM_big1_arbit_brama1" PORT="BRAM_rst"/>
           </CONNECTIONS>
@@ -1725,12 +1735,12 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rsta" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="BRAM_small_arbit_brama0_BRAM_rst">
+        <PORT DIR="I" NAME="rsta" SIGIS="rst" SIGNAME="BRAM_small_arbit_brama0_BRAM_rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_rst"/>
           </CONNECTIONS>
@@ -1760,12 +1770,12 @@
             <CONNECTION INSTANCE="BRAM_small_arbit_brama0" PORT="BRAM_dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+        <PORT DIR="I" NAME="clkb" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rstb" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="BRAM_small_arbit_bramb0_BRAM_rst">
+        <PORT DIR="I" NAME="rstb" SIGIS="rst" SIGNAME="BRAM_small_arbit_bramb0_BRAM_rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BRAM_small_arbit_bramb0" PORT="BRAM_rst"/>
           </CONNECTIONS>
@@ -2426,6 +2436,10 @@
             <CONNECTION INSTANCE="mayo_axi_litev3_0" PORT="i_Verification_done"/>
             <CONNECTION INSTANCE="mayo_axi_litev3_0" PORT="i_Signing_busy"/>
             <CONNECTION INSTANCE="mayo_axi_litev3_0" PORT="i_Verification_busy"/>
+            <CONNECTION INSTANCE="blink_led_0" PORT="in2"/>
+            <CONNECTION INSTANCE="blink_led_0" PORT="in3"/>
+            <CONNECTION INSTANCE="blink_led_0" PORT="in4"/>
+            <CONNECTION INSTANCE="blink_led_0" PORT="in5"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2521,11 +2535,13 @@
         <PORT DIR="O" NAME="o_busy" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_busy">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mayo_axi_litev3_0" PORT="i_Keygen_busy"/>
+            <CONNECTION INSTANCE="blink_led_0" PORT="in1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="o_done" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_done">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mayo_axi_litev3_0" PORT="i_Keygen_done"/>
+            <CONNECTION INSTANCE="blink_led_0" PORT="in0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="i_expose" SIGIS="undef" SIGNAME="mayo_axi_litev3_0_o_Expose">
@@ -2999,6 +3015,70 @@
             <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="i_trng_done"/>
           </CONNECTIONS>
         </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/blink_led_0" HWVERSION="1.0" INSTANCE="blink_led_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="blink_led" VLNV="xilinx.com:module_ref:blink_led:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="Mayo_keygen_blink_led_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_ps7_0_100M_peripheral_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="in0" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_done">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_done"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="in1" SIGIS="undef" SIGNAME="MAYO_KEYGEN_FSM_0_o_busy">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="o_busy"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="in2" SIGIS="undef" SIGNAME="Ground1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Ground1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="in3" SIGIS="undef" SIGNAME="Ground1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Ground1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="in4" SIGIS="undef" SIGNAME="Ground1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Ground1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="in5" SIGIS="undef" SIGNAME="Ground1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Ground1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="led0" SIGIS="undef" SIGNAME="blink_led_0_led0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="LD0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="led1" SIGIS="undef" SIGNAME="blink_led_0_led1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="LD1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="led2" SIGIS="undef"/>
+        <PORT DIR="O" NAME="led3" SIGIS="undef"/>
+        <PORT DIR="O" NAME="led4" SIGIS="undef"/>
+        <PORT DIR="O" NAME="led5" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -5205,14 +5285,15 @@
             <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="CLK_I"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ACLK"/>
             <CONNECTION INSTANCE="mayo_axi_litev3_0" PORT="s00_axi_aclk"/>
+            <CONNECTION INSTANCE="BRAM_big1_axi_bram_ctrl_0" PORT="s_axi_aclk"/>
+            <CONNECTION INSTANCE="BRAM_big1_BIG_BRAM256KDP" PORT="clkb"/>
             <CONNECTION INSTANCE="mayo_add_vectors_0" PORT="i_clk"/>
             <CONNECTION INSTANCE="mayo_linear_combinat_0" PORT="i_clk"/>
             <CONNECTION INSTANCE="mayo_negate_0" PORT="i_clk"/>
             <CONNECTION INSTANCE="mayo_reduce_0" PORT="i_clk"/>
             <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="i_clk"/>
             <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="CLK"/>
-            <CONNECTION INSTANCE="BRAM_big1_axi_bram_ctrl_0" PORT="s_axi_aclk"/>
-            <CONNECTION INSTANCE="BRAM_big1_BIG_BRAM256KDP" PORT="clkb"/>
+            <CONNECTION INSTANCE="blink_led_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
@@ -6445,6 +6526,7 @@
             <CONNECTION INSTANCE="mayo_reduce_0" PORT="rst"/>
             <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="rst"/>
             <CONNECTION INSTANCE="MAYO_KEYGEN_FSM_0" PORT="RESET"/>
+            <CONNECTION INSTANCE="blink_led_0" PORT="rst"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>

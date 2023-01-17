@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1673373490">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1673899496">
+  <File Type="VDS-TIMING-PB" Name="Mayo_keygen_wrapper_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="Mayo_keygen_wrapper_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="Mayo_keygen_wrapper.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="Mayo_keygen_wrapper_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="Mayo_keygen_wrapper_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="Mayo_keygen_wrapper_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="Mayo_keygen_wrapper.vds"/>
   <File Type="REPORTS-TCL" Name="Mayo_keygen_wrapper_reports.tcl"/>
   <File Type="PA-TCL" Name="Mayo_keygen_wrapper.tcl"/>
-  <File Type="RDS-DCP" Name="Mayo_keygen_wrapper.dcp"/>
-  <File Type="RDS-RDS" Name="Mayo_keygen_wrapper.vds"/>
-  <File Type="RDS-UTIL" Name="Mayo_keygen_wrapper_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="Mayo_keygen_wrapper_utilization_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Common.vhd">
@@ -69,6 +72,12 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Keygen_FSM.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/Utils/led_blinker.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -154,36 +163,26 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_TRNG_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_sample_oil_space_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_trng_arbiter_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_MAYO_SHAKE_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_reduce_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_xbar_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_brama0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_BIG_BRAM512K_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_MAYO_KEYGEN_FSM_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_negate_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_brama1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_add_vectors_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_linear_combinat_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_add_vectors_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_blink_led_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_arbit_brama1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_rst_ps7_0_100M_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_arbit_bramb0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_negate_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_MAYO_KEYGEN_FSM_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_reduce_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_add_vectors_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_trng_arbiter_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_arbit_brama0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_axi_bram_ctrl_0_1"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_linear_combinat_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_axi_litev3_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_processing_system7_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_blk_mem_gen_0_2"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_Small_BRAM8k_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_mayo_reduce_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_arbit_bramb0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_hash_bram_arbit_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_BIG_BRAM512K_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_xbar_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_MAYO_SHAKE_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_sample_oil_space_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_TRNG_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_Small_BRAM8k_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_blk_mem_gen_0_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_linear_combinat_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_processing_system7_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_axi_litev3_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_axi_bram_ctrl_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_negate_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_rst_ps7_0_100M_0"/>
 </GenRun>

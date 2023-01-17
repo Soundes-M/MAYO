@@ -7,8 +7,7 @@
       "name": "Mayo_keygen_no_zynq",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2020.2",
-      "validated": "true"
+      "tool_version": "2020.2"
     },
     "design_tree": {
       "BRAM_big": {
@@ -3775,8 +3774,8 @@
           "Ground0/dout",
           "BRAM_big/BRAM_add_rst",
           "BRAM_small/Zero0",
-          "MAYO_KEYGEN_FSM_0/i_debug",
-          "MAYO_KEYGEN_FSM_0/i_expose"
+          "MAYO_KEYGEN_FSM_0/i_expose",
+          "MAYO_KEYGEN_FSM_0/i_debug"
         ]
       },
       "Ground32_dout": {

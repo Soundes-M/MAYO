@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Tue Jan 10 19:04:07 2023
+| Date         : Mon Jan 16 21:09:33 2023
 | Host         : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 | Command      : report_methodology -file Mayo_keygen_wrapper_methodology_drc_routed.rpt -pb Mayo_keygen_wrapper_methodology_drc_routed.pb -rpx Mayo_keygen_wrapper_methodology_drc_routed.rpx
 | Design       : Mayo_keygen_wrapper
@@ -23,12 +23,13 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 1
-+---------+----------+------------------------------+------------+
-| Rule    | Severity | Description                  | Violations |
-+---------+----------+------------------------------+------------+
-| LUTAR-1 | Warning  | LUT drives async reset alert | 1          |
-+---------+----------+------------------------------+------------+
+             Violations found: 3
++-----------+----------+-------------------------------+------------+
+| Rule      | Severity | Description                   | Violations |
++-----------+----------+-------------------------------+------------+
+| LUTAR-1   | Warning  | LUT drives async reset alert  | 1          |
+| TIMING-18 | Warning  | Missing input or output delay | 2          |
++-----------+----------+-------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -49,7 +50,17 @@ Mayo_keygen_i/hash/MAYO_SHAKE_1/inst/SH/KECCAK/buffer_in/buffer_data_reg[1007]/C
 Mayo_keygen_i/hash/MAYO_SHAKE_1/inst/SH/KECCAK/buffer_in/buffer_data_reg[1008]/CLR,
 Mayo_keygen_i/hash/MAYO_SHAKE_1/inst/SH/KECCAK/buffer_in/buffer_data_reg[1009]/CLR,
 Mayo_keygen_i/hash/MAYO_SHAKE_1/inst/SH/KECCAK/buffer_in/buffer_data_reg[100]/CLR
- (the first 15 of 3167 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+ (the first 15 of 3175 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An output delay is missing on LD0 relative to clock(s) clk_fpga_0
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An output delay is missing on LD1 relative to clock(s) clk_fpga_0
 Related violations: <none>
 
 

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xCC6CFA53C0928857",
+      "boundary_crc": "0xDF1E9DE025E1BAC5",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen",
       "name": "Mayo_keygen",
@@ -24,10 +24,10 @@
       },
       "rst_ps7_0_100M": "",
       "BRAM_big1": {
-        "arbit_brama1": "",
         "axi_bram_ctrl_0": "",
         "BIG_BRAM256KDP": "",
-        "BIG_BRAM256KDP1": ""
+        "BIG_BRAM256KDP1": "",
+        "arbit_brama1": ""
       },
       "BRAM_small": {
         "Small_BRAM8k": "",
@@ -52,7 +52,8 @@
       "mayo_negate_0": "",
       "mayo_reduce_0": "",
       "mayo_sample_oil_space_0": "",
-      "MAYO_KEYGEN_FSM_0": ""
+      "MAYO_KEYGEN_FSM_0": "",
+      "blink_led_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -118,6 +119,14 @@
             "value_src": "default"
           }
         }
+      }
+    },
+    "ports": {
+      "LD0": {
+        "direction": "O"
+      },
+      "LD1": {
+        "direction": "O"
       }
     },
     "components": {
@@ -1396,16 +1405,16 @@
               }
             },
             "interface_nets": {
-              "auto_pc_to_m01_couplers": {
-                "interface_ports": [
-                  "M_AXI",
-                  "auto_pc/M_AXI"
-                ]
-              },
               "m01_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
                   "auto_pc/S_AXI"
+                ]
+              },
+              "auto_pc_to_m01_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
                 ]
               }
             },
@@ -1432,22 +1441,22 @@
               "m01_couplers/M_AXI"
             ]
           },
-          "s00_couplers_to_xbar": {
-            "interface_ports": [
-              "s00_couplers/M_AXI",
-              "xbar/S00_AXI"
-            ]
-          },
           "xbar_to_m01_couplers": {
             "interface_ports": [
               "xbar/M01_AXI",
               "m01_couplers/S_AXI"
             ]
           },
-          "m00_couplers_to_ps7_0_axi_periph": {
+          "ps7_0_axi_periph_to_s00_couplers": {
             "interface_ports": [
-              "M00_AXI",
-              "m00_couplers/M_AXI"
+              "S00_AXI",
+              "s00_couplers/S_AXI"
+            ]
+          },
+          "s00_couplers_to_xbar": {
+            "interface_ports": [
+              "s00_couplers/M_AXI",
+              "xbar/S00_AXI"
             ]
           },
           "xbar_to_m00_couplers": {
@@ -1456,10 +1465,10 @@
               "m00_couplers/S_AXI"
             ]
           },
-          "ps7_0_axi_periph_to_s00_couplers": {
+          "m00_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
+              "M00_AXI",
+              "m00_couplers/M_AXI"
             ]
           }
         },
@@ -1678,6 +1687,145 @@
           }
         },
         "components": {
+          "axi_bram_ctrl_0": {
+            "vlnv": "xilinx.com:ip:axi_bram_ctrl:4.1",
+            "xci_name": "Mayo_keygen_axi_bram_ctrl_0_1",
+            "xci_path": "ip/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_1.xci",
+            "inst_hier_path": "BRAM_big1/axi_bram_ctrl_0",
+            "parameters": {
+              "PROTOCOL": {
+                "value": "AXI4"
+              },
+              "SINGLE_PORT_BRAM": {
+                "value": "1"
+              },
+              "USE_ECC": {
+                "value": "0"
+              }
+            },
+            "hdl_attributes": {
+              "BMM_INFO_ADDRESS_SPACE": {
+                "value": "byte  0x40000000 32 > Mayo_keygen BRAM_big1/BIG_BRAM256KDP",
+                "value_src": "default"
+              },
+              "KEEP_HIERARCHY": {
+                "value": "yes",
+                "value_src": "default"
+              }
+            }
+          },
+          "BIG_BRAM256KDP": {
+            "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+            "xci_name": "Mayo_keygen_blk_mem_gen_0_2",
+            "xci_path": "ip/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2.xci",
+            "inst_hier_path": "BRAM_big1/BIG_BRAM256KDP",
+            "parameters": {
+              "EN_SAFETY_CKT": {
+                "value": "true"
+              },
+              "Enable_32bit_Address": {
+                "value": "true"
+              },
+              "Enable_B": {
+                "value": "Use_ENB_Pin"
+              },
+              "Memory_Type": {
+                "value": "True_Dual_Port_RAM"
+              },
+              "Port_B_Clock": {
+                "value": "100"
+              },
+              "Port_B_Enable_Rate": {
+                "value": "100"
+              },
+              "Port_B_Write_Rate": {
+                "value": "50"
+              },
+              "Read_Width_A": {
+                "value": "32"
+              },
+              "Read_Width_B": {
+                "value": "32"
+              },
+              "Register_PortA_Output_of_Memory_Primitives": {
+                "value": "false"
+              },
+              "Register_PortB_Output_of_Memory_Primitives": {
+                "value": "false"
+              },
+              "Use_RSTA_Pin": {
+                "value": "true"
+              },
+              "Use_RSTB_Pin": {
+                "value": "true"
+              },
+              "Write_Width_A": {
+                "value": "32"
+              },
+              "Write_Width_B": {
+                "value": "32"
+              },
+              "use_bram_block": {
+                "value": "BRAM_Controller"
+              }
+            }
+          },
+          "BIG_BRAM256KDP1": {
+            "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+            "xci_name": "Mayo_keygen_BIG_BRAM256KDP_0",
+            "xci_path": "ip/Mayo_keygen_BIG_BRAM256KDP_0/Mayo_keygen_BIG_BRAM256KDP_0.xci",
+            "inst_hier_path": "BRAM_big1/BIG_BRAM256KDP1",
+            "parameters": {
+              "EN_SAFETY_CKT": {
+                "value": "true"
+              },
+              "Enable_32bit_Address": {
+                "value": "true"
+              },
+              "Enable_B": {
+                "value": "Use_ENB_Pin"
+              },
+              "Memory_Type": {
+                "value": "True_Dual_Port_RAM"
+              },
+              "Port_B_Clock": {
+                "value": "100"
+              },
+              "Port_B_Enable_Rate": {
+                "value": "100"
+              },
+              "Port_B_Write_Rate": {
+                "value": "50"
+              },
+              "Read_Width_A": {
+                "value": "32"
+              },
+              "Read_Width_B": {
+                "value": "32"
+              },
+              "Register_PortA_Output_of_Memory_Primitives": {
+                "value": "false"
+              },
+              "Register_PortB_Output_of_Memory_Primitives": {
+                "value": "false"
+              },
+              "Use_RSTA_Pin": {
+                "value": "true"
+              },
+              "Use_RSTB_Pin": {
+                "value": "true"
+              },
+              "Write_Width_A": {
+                "value": "32"
+              },
+              "Write_Width_B": {
+                "value": "32"
+              },
+              "use_bram_block": {
+                "value": "BRAM_Controller"
+              }
+            }
+          },
           "arbit_brama1": {
             "vlnv": "xilinx.com:module_ref:mayo_bram_arbiter:1.0",
             "xci_name": "Mayo_keygen_arbit_brama1_0",
@@ -1927,158 +2075,19 @@
                 "direction": "I"
               }
             }
-          },
-          "axi_bram_ctrl_0": {
-            "vlnv": "xilinx.com:ip:axi_bram_ctrl:4.1",
-            "xci_name": "Mayo_keygen_axi_bram_ctrl_0_1",
-            "xci_path": "ip/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_1.xci",
-            "inst_hier_path": "BRAM_big1/axi_bram_ctrl_0",
-            "parameters": {
-              "PROTOCOL": {
-                "value": "AXI4"
-              },
-              "SINGLE_PORT_BRAM": {
-                "value": "1"
-              },
-              "USE_ECC": {
-                "value": "0"
-              }
-            },
-            "hdl_attributes": {
-              "BMM_INFO_ADDRESS_SPACE": {
-                "value": "byte  0x40000000 32 > Mayo_keygen BRAM_big1/BIG_BRAM256KDP",
-                "value_src": "default"
-              },
-              "KEEP_HIERARCHY": {
-                "value": "yes",
-                "value_src": "default"
-              }
-            }
-          },
-          "BIG_BRAM256KDP": {
-            "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
-            "xci_name": "Mayo_keygen_blk_mem_gen_0_2",
-            "xci_path": "ip/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2.xci",
-            "inst_hier_path": "BRAM_big1/BIG_BRAM256KDP",
-            "parameters": {
-              "EN_SAFETY_CKT": {
-                "value": "true"
-              },
-              "Enable_32bit_Address": {
-                "value": "true"
-              },
-              "Enable_B": {
-                "value": "Use_ENB_Pin"
-              },
-              "Memory_Type": {
-                "value": "True_Dual_Port_RAM"
-              },
-              "Port_B_Clock": {
-                "value": "100"
-              },
-              "Port_B_Enable_Rate": {
-                "value": "100"
-              },
-              "Port_B_Write_Rate": {
-                "value": "50"
-              },
-              "Read_Width_A": {
-                "value": "32"
-              },
-              "Read_Width_B": {
-                "value": "32"
-              },
-              "Register_PortA_Output_of_Memory_Primitives": {
-                "value": "false"
-              },
-              "Register_PortB_Output_of_Memory_Primitives": {
-                "value": "false"
-              },
-              "Use_RSTA_Pin": {
-                "value": "true"
-              },
-              "Use_RSTB_Pin": {
-                "value": "true"
-              },
-              "Write_Width_A": {
-                "value": "32"
-              },
-              "Write_Width_B": {
-                "value": "32"
-              },
-              "use_bram_block": {
-                "value": "BRAM_Controller"
-              }
-            }
-          },
-          "BIG_BRAM256KDP1": {
-            "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
-            "xci_name": "Mayo_keygen_BIG_BRAM256KDP_0",
-            "xci_path": "ip/Mayo_keygen_BIG_BRAM256KDP_0/Mayo_keygen_BIG_BRAM256KDP_0.xci",
-            "inst_hier_path": "BRAM_big1/BIG_BRAM256KDP1",
-            "parameters": {
-              "EN_SAFETY_CKT": {
-                "value": "true"
-              },
-              "Enable_32bit_Address": {
-                "value": "true"
-              },
-              "Enable_B": {
-                "value": "Use_ENB_Pin"
-              },
-              "Memory_Type": {
-                "value": "True_Dual_Port_RAM"
-              },
-              "Port_B_Clock": {
-                "value": "100"
-              },
-              "Port_B_Enable_Rate": {
-                "value": "100"
-              },
-              "Port_B_Write_Rate": {
-                "value": "50"
-              },
-              "Read_Width_A": {
-                "value": "32"
-              },
-              "Read_Width_B": {
-                "value": "32"
-              },
-              "Register_PortA_Output_of_Memory_Primitives": {
-                "value": "false"
-              },
-              "Register_PortB_Output_of_Memory_Primitives": {
-                "value": "false"
-              },
-              "Use_RSTA_Pin": {
-                "value": "true"
-              },
-              "Use_RSTB_Pin": {
-                "value": "true"
-              },
-              "Write_Width_A": {
-                "value": "32"
-              },
-              "Write_Width_B": {
-                "value": "32"
-              },
-              "use_bram_block": {
-                "value": "BRAM_Controller"
-              }
-            }
           }
         },
         "interface_nets": {
-          "axi_bram_ctrl_0_BRAM_PORTA": {
-            "interface_ports": [
-              "axi_bram_ctrl_0/BRAM_PORTA",
-              "BIG_BRAM256KDP/BRAM_PORTA"
-            ]
-          },
           "Conn1": {
             "interface_ports": [
               "S_AXI",
               "axi_bram_ctrl_0/S_AXI"
+            ]
+          },
+          "axi_bram_ctrl_0_BRAM_PORTA": {
+            "interface_ports": [
+              "axi_bram_ctrl_0/BRAM_PORTA",
+              "BIG_BRAM256KDP/BRAM_PORTA"
             ]
           }
         },
@@ -5434,19 +5443,102 @@
             "direction": "O"
           }
         }
+      },
+      "blink_led_0": {
+        "vlnv": "xilinx.com:module_ref:blink_led:1.0",
+        "xci_name": "Mayo_keygen_blink_led_0_0",
+        "xci_path": "ip/Mayo_keygen_blink_led_0_0/Mayo_keygen_blink_led_0_0.xci",
+        "inst_hier_path": "blink_led_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "blink_led",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "Mayo_keygen_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
+              }
+            }
+          },
+          "in0": {
+            "direction": "I"
+          },
+          "in1": {
+            "direction": "I"
+          },
+          "in2": {
+            "direction": "I"
+          },
+          "in3": {
+            "direction": "I"
+          },
+          "in4": {
+            "direction": "I"
+          },
+          "in5": {
+            "direction": "I"
+          },
+          "led0": {
+            "direction": "O"
+          },
+          "led1": {
+            "direction": "O"
+          },
+          "led2": {
+            "direction": "O"
+          },
+          "led3": {
+            "direction": "O"
+          },
+          "led4": {
+            "direction": "O"
+          },
+          "led5": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
-      "processing_system7_0_DDR": {
-        "interface_ports": [
-          "DDR",
-          "processing_system7_0/DDR"
-        ]
-      },
       "ps7_0_axi_periph_M01_AXI": {
         "interface_ports": [
           "ps7_0_axi_periph/M01_AXI",
           "mayo_axi_litev3_0/S00_AXI"
+        ]
+      },
+      "processing_system7_0_M_AXI_GP0": {
+        "interface_ports": [
+          "processing_system7_0/M_AXI_GP0",
+          "ps7_0_axi_periph/S00_AXI"
+        ]
+      },
+      "processing_system7_0_DDR": {
+        "interface_ports": [
+          "DDR",
+          "processing_system7_0/DDR"
         ]
       },
       "ps7_0_axi_periph_M00_AXI": {
@@ -5459,12 +5551,6 @@
         "interface_ports": [
           "FIXED_IO",
           "processing_system7_0/FIXED_IO"
-        ]
-      },
-      "processing_system7_0_M_AXI_GP0": {
-        "interface_ports": [
-          "processing_system7_0/M_AXI_GP0",
-          "ps7_0_axi_periph/S00_AXI"
         ]
       }
     },
@@ -6386,18 +6472,6 @@
           "TRNG/i_trng1_w"
         ]
       },
-      "MAYO_KEYGEN_FSM_0_o_done": {
-        "ports": [
-          "MAYO_KEYGEN_FSM_0/o_done",
-          "mayo_axi_litev3_0/i_Keygen_done"
-        ]
-      },
-      "MAYO_KEYGEN_FSM_0_o_busy": {
-        "ports": [
-          "MAYO_KEYGEN_FSM_0/o_busy",
-          "mayo_axi_litev3_0/i_Keygen_busy"
-        ]
-      },
       "MAYO_KEYGEN_FSM_0_o_err": {
         "ports": [
           "MAYO_KEYGEN_FSM_0/o_err",
@@ -6414,7 +6488,11 @@
           "mayo_axi_litev3_0/i_Signing_done",
           "mayo_axi_litev3_0/i_Verification_done",
           "mayo_axi_litev3_0/i_Signing_busy",
-          "mayo_axi_litev3_0/i_Verification_busy"
+          "mayo_axi_litev3_0/i_Verification_busy",
+          "blink_led_0/in2",
+          "blink_led_0/in3",
+          "blink_led_0/in4",
+          "blink_led_0/in5"
         ]
       },
       "mayo_axi_litev3_0_o_Debug": {
@@ -6457,7 +6535,8 @@
           "mayo_negate_0/rst",
           "mayo_reduce_0/rst",
           "mayo_sample_oil_space_0/rst",
-          "MAYO_KEYGEN_FSM_0/RESET"
+          "MAYO_KEYGEN_FSM_0/RESET",
+          "blink_led_0/rst"
         ]
       },
       "rst_ps7_0_100M_peripheral_aresetn": {
@@ -6484,14 +6563,41 @@
           "TRNG/clk",
           "ps7_0_axi_periph/M01_ACLK",
           "mayo_axi_litev3_0/s00_axi_aclk",
+          "BRAM_big1/s_axi_aclk",
+          "BRAM_big1/clkb",
           "mayo_add_vectors_0/i_clk",
           "mayo_linear_combinat_0/i_clk",
           "mayo_negate_0/i_clk",
           "mayo_reduce_0/i_clk",
           "mayo_sample_oil_space_0/i_clk",
           "MAYO_KEYGEN_FSM_0/CLK",
-          "BRAM_big1/s_axi_aclk",
-          "BRAM_big1/clkb"
+          "blink_led_0/clk"
+        ]
+      },
+      "blink_led_0_led0": {
+        "ports": [
+          "blink_led_0/led0",
+          "LD0"
+        ]
+      },
+      "blink_led_0_led1": {
+        "ports": [
+          "blink_led_0/led1",
+          "LD1"
+        ]
+      },
+      "MAYO_KEYGEN_FSM_0_o_busy": {
+        "ports": [
+          "MAYO_KEYGEN_FSM_0/o_busy",
+          "mayo_axi_litev3_0/i_Keygen_busy",
+          "blink_led_0/in1"
+        ]
+      },
+      "MAYO_KEYGEN_FSM_0_o_done": {
+        "ports": [
+          "MAYO_KEYGEN_FSM_0/o_done",
+          "mayo_axi_litev3_0/i_Keygen_done",
+          "blink_led_0/in0"
         ]
       }
     },

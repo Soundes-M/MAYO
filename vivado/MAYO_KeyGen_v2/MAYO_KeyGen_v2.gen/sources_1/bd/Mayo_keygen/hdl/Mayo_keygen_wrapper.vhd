@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
---Date        : Tue Jan 10 18:57:49 2023
+--Date        : Mon Jan 16 21:04:42 2023
 --Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 --Command     : generate_target Mayo_keygen_wrapper.bd
 --Design      : Mayo_keygen_wrapper
@@ -33,13 +33,17 @@ entity Mayo_keygen_wrapper is
     FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
     FIXED_IO_ps_clk : inout STD_LOGIC;
     FIXED_IO_ps_porb : inout STD_LOGIC;
-    FIXED_IO_ps_srstb : inout STD_LOGIC
+    FIXED_IO_ps_srstb : inout STD_LOGIC;
+    LD0 : out STD_LOGIC;
+    LD1 : out STD_LOGIC
   );
 end Mayo_keygen_wrapper;
 
 architecture STRUCTURE of Mayo_keygen_wrapper is
   component Mayo_keygen is
   port (
+    LD0 : out STD_LOGIC;
+    LD1 : out STD_LOGIC;
     DDR_cas_n : inout STD_LOGIC;
     DDR_cke : inout STD_LOGIC;
     DDR_ck_n : inout STD_LOGIC;
@@ -86,6 +90,8 @@ Mayo_keygen_i: component Mayo_keygen
       FIXED_IO_mio(53 downto 0) => FIXED_IO_mio(53 downto 0),
       FIXED_IO_ps_clk => FIXED_IO_ps_clk,
       FIXED_IO_ps_porb => FIXED_IO_ps_porb,
-      FIXED_IO_ps_srstb => FIXED_IO_ps_srstb
+      FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
+      LD0 => LD0,
+      LD1 => LD1
     );
 end STRUCTURE;

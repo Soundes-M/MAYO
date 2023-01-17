@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
---Date        : Tue Jan 10 18:57:48 2023
+--Date        : Mon Jan 16 21:04:42 2023
 --Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 --Command     : generate_target Mayo_keygen.bd
 --Design      : Mayo_keygen
@@ -92,65 +92,6 @@ entity BRAM_big1_imp_QBI0MO is
 end BRAM_big1_imp_QBI0MO;
 
 architecture STRUCTURE of BRAM_big1_imp_QBI0MO is
-  component Mayo_keygen_arbit_brama1_0 is
-  port (
-    BRAM_add_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_add_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_add_en : in STD_LOGIC;
-    BRAM_add_rst : in STD_LOGIC;
-    BRAM_add_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    BRAM_add_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_lin_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_lin_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_lin_en : in STD_LOGIC;
-    BRAM_lin_rst : in STD_LOGIC;
-    BRAM_lin_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    BRAM_lin_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_neg_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_neg_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_neg_en : in STD_LOGIC;
-    BRAM_neg_rst : in STD_LOGIC;
-    BRAM_neg_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    BRAM_neg_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_red_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_red_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_red_en : in STD_LOGIC;
-    BRAM_red_rst : in STD_LOGIC;
-    BRAM_red_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    BRAM_red_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_key_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_key_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_key_en : in STD_LOGIC;
-    BRAM_key_rst : in STD_LOGIC;
-    BRAM_key_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    BRAM_key_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_sam_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_sam_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_sam_en : in STD_LOGIC;
-    BRAM_sam_rst : in STD_LOGIC;
-    BRAM_sam_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    BRAM_sam_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_hash_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_hash_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_hash_en : in STD_LOGIC;
-    BRAM_hash_rst : in STD_LOGIC;
-    BRAM_hash_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    BRAM_hash_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    BRAM_en : out STD_LOGIC;
-    BRAM_rst : out STD_LOGIC;
-    BRAM_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    BRAM_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    add_control : in STD_LOGIC;
-    lin_control : in STD_LOGIC;
-    neg_control : in STD_LOGIC;
-    red_control : in STD_LOGIC;
-    sam_control : in STD_LOGIC;
-    hash_control : in STD_LOGIC;
-    bram_control : in STD_LOGIC
-  );
-  end component Mayo_keygen_arbit_brama1_0;
   component Mayo_keygen_axi_bram_ctrl_0_1 is
   port (
     s_axi_aclk : in STD_LOGIC;
@@ -239,6 +180,65 @@ architecture STRUCTURE of BRAM_big1_imp_QBI0MO is
     rstb_busy : out STD_LOGIC
   );
   end component Mayo_keygen_BIG_BRAM256KDP_0;
+  component Mayo_keygen_arbit_brama1_0 is
+  port (
+    BRAM_add_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_add_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_add_en : in STD_LOGIC;
+    BRAM_add_rst : in STD_LOGIC;
+    BRAM_add_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_add_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_lin_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_lin_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_lin_en : in STD_LOGIC;
+    BRAM_lin_rst : in STD_LOGIC;
+    BRAM_lin_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_lin_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_neg_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_neg_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_neg_en : in STD_LOGIC;
+    BRAM_neg_rst : in STD_LOGIC;
+    BRAM_neg_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_neg_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_red_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_red_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_red_en : in STD_LOGIC;
+    BRAM_red_rst : in STD_LOGIC;
+    BRAM_red_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_red_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_key_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_key_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_key_en : in STD_LOGIC;
+    BRAM_key_rst : in STD_LOGIC;
+    BRAM_key_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_key_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_sam_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_sam_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_sam_en : in STD_LOGIC;
+    BRAM_sam_rst : in STD_LOGIC;
+    BRAM_sam_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_sam_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_hash_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_hash_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_hash_en : in STD_LOGIC;
+    BRAM_hash_rst : in STD_LOGIC;
+    BRAM_hash_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_hash_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    BRAM_en : out STD_LOGIC;
+    BRAM_rst : out STD_LOGIC;
+    BRAM_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    add_control : in STD_LOGIC;
+    lin_control : in STD_LOGIC;
+    neg_control : in STD_LOGIC;
+    red_control : in STD_LOGIC;
+    sam_control : in STD_LOGIC;
+    hash_control : in STD_LOGIC;
+    bram_control : in STD_LOGIC
+  );
+  end component Mayo_keygen_arbit_brama1_0;
   signal BIG_BRAM256KDP_doutb : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_add_addr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_add_din_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3170,10 +3170,12 @@ entity Mayo_keygen is
     FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
     FIXED_IO_ps_clk : inout STD_LOGIC;
     FIXED_IO_ps_porb : inout STD_LOGIC;
-    FIXED_IO_ps_srstb : inout STD_LOGIC
+    FIXED_IO_ps_srstb : inout STD_LOGIC;
+    LD0 : out STD_LOGIC;
+    LD1 : out STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of Mayo_keygen : entity is "Mayo_keygen,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Mayo_keygen,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=35,numReposBlks=27,numNonXlnxBlks=3,numHierBlks=8,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=11,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=9,da_bram_cntlr_cnt=3,da_clkrst_cnt=14,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of Mayo_keygen : entity is "Mayo_keygen,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Mayo_keygen,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=36,numReposBlks=28,numNonXlnxBlks=3,numHierBlks=8,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=12,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=9,da_bram_cntlr_cnt=3,da_clkrst_cnt=15,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of Mayo_keygen : entity is "Mayo_keygen.hwdef";
 end Mayo_keygen;
@@ -3535,6 +3537,24 @@ architecture STRUCTURE of Mayo_keygen is
     o_mem1a_control : out STD_LOGIC
   );
   end component Mayo_keygen_MAYO_KEYGEN_FSM_0_0;
+  component Mayo_keygen_blink_led_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    in0 : in STD_LOGIC;
+    in1 : in STD_LOGIC;
+    in2 : in STD_LOGIC;
+    in3 : in STD_LOGIC;
+    in4 : in STD_LOGIC;
+    in5 : in STD_LOGIC;
+    led0 : out STD_LOGIC;
+    led1 : out STD_LOGIC;
+    led2 : out STD_LOGIC;
+    led3 : out STD_LOGIC;
+    led4 : out STD_LOGIC;
+    led5 : out STD_LOGIC
+  );
+  end component Mayo_keygen_blink_led_0_0;
   signal BRAM0_dout_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_big_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_big_BRAM_red_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3611,6 +3631,8 @@ architecture STRUCTURE of Mayo_keygen is
   signal arbit_brama1_BRAM_lin_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_bramb0_BRAM_key_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal arbit_bramb0_BRAM_sam_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal blink_led_0_led0 : STD_LOGIC;
+  signal blink_led_0_led1 : STD_LOGIC;
   signal bram_control_1 : STD_LOGIC;
   signal bram_control_2 : STD_LOGIC;
   signal hash_BRAM0_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3812,6 +3834,10 @@ architecture STRUCTURE of Mayo_keygen is
   signal rst_ps7_0_100M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_ps7_0_100M_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal NLW_blink_led_0_led2_UNCONNECTED : STD_LOGIC;
+  signal NLW_blink_led_0_led3_UNCONNECTED : STD_LOGIC;
+  signal NLW_blink_led_0_led4_UNCONNECTED : STD_LOGIC;
+  signal NLW_blink_led_0_led5_UNCONNECTED : STD_LOGIC;
   signal NLW_mayo_axi_litev3_0_o_Signing_en_UNCONNECTED : STD_LOGIC;
   signal NLW_mayo_axi_litev3_0_o_Verification_en_UNCONNECTED : STD_LOGIC;
   signal NLW_mayo_axi_litev3_0_o_irq_en_UNCONNECTED : STD_LOGIC;
@@ -3853,6 +3879,8 @@ architecture STRUCTURE of Mayo_keygen is
   attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
+  LD0 <= blink_led_0_led0;
+  LD1 <= blink_led_0_led1;
 BRAM_big1: entity work.BRAM_big1_imp_QBI0MO
      port map (
       BRAM_add_addr(31 downto 0) => mayo_add_vectors_0_o_memc_addr(31 downto 0),
@@ -4108,6 +4136,23 @@ TRNG: entity work.TRNG_imp_1KWX5GC
       o_trng1_data(31 downto 0) => TRNG_o_trng1_data(31 downto 0),
       o_trng1_done => TRNG_o_trng1_done,
       o_trng1_valid => TRNG_o_trng1_valid,
+      rst => rst_ps7_0_100M_peripheral_reset(0)
+    );
+blink_led_0: component Mayo_keygen_blink_led_0_0
+     port map (
+      clk => processing_system7_0_FCLK_CLK0,
+      in0 => MAYO_KEYGEN_FSM_0_o_done,
+      in1 => MAYO_KEYGEN_FSM_0_o_busy,
+      in2 => Ground1_dout(0),
+      in3 => Ground1_dout(0),
+      in4 => Ground1_dout(0),
+      in5 => Ground1_dout(0),
+      led0 => blink_led_0_led0,
+      led1 => blink_led_0_led1,
+      led2 => NLW_blink_led_0_led2_UNCONNECTED,
+      led3 => NLW_blink_led_0_led3_UNCONNECTED,
+      led4 => NLW_blink_led_0_led4_UNCONNECTED,
+      led5 => NLW_blink_led_0_led5_UNCONNECTED,
       rst => rst_ps7_0_100M_peripheral_reset(0)
     );
 hash: entity work.hash_imp_1FCB8TA

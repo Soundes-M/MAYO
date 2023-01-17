@@ -124,7 +124,6 @@ set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
   set_param chipscope.maxJobs 4
-  set_param xicom.use_bs_reader 1
   open_checkpoint Mayo_keygen_wrapper_routed.dcp
   set_property webtalk.parent_dir /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.cache/wt [current_project]
 set_property TOP Mayo_keygen_wrapper [current_fileset]

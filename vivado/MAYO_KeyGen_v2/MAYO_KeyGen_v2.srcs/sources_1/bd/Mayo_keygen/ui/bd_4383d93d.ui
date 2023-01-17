@@ -25,9 +25,9 @@ preplace inst mayo_trng_arbiter_0 -pg 1 -lvl 2 -x 560 -y 350 -defaultsOSRD
 preplace netloc mayo_trng_arbiter_0_o_trng_r 1 0 3 0 190 NJ 190 750
 preplace netloc mayo_trng_arbiter_0_o_trng_w 1 0 3 10 200 NJ 200 740
 preplace netloc mayo_trng_arbiter_0_o_trng_data 1 0 3 20 500 NJ 500 740
-preplace netloc TRNG_0_TRNG_DATA_O 1 1 1 360 70n
-preplace netloc TRNG_0_TRNG_VALID_O 1 1 1 350 90n
-preplace netloc TRNG_0_TRNG_DONE_O 1 1 1 340 110n
+preplace netloc TRNG_0_TRNG_DATA_O 1 1 1 380 70n
+preplace netloc TRNG_0_TRNG_VALID_O 1 1 1 370 90n
+preplace netloc TRNG_0_TRNG_DONE_O 1 1 1 360 110n
 preplace netloc clk_1 1 0 1 NJ 50
 preplace netloc rst_1 1 0 1 NJ 70
 preplace netloc mayo_trng_arbiter_0_o_trng0_data 1 2 1 NJ 330
@@ -44,7 +44,7 @@ preplace netloc i_trng1_r_1 1 0 2 NJ 400 NJ
 preplace netloc i_trng1_w_1 1 0 2 NJ 420 NJ
 preplace netloc i_trng1_data1_1 1 0 2 NJ 440 NJ
 levelinfo -pg 1 -20 190 560 780
-pagesize -pg 1 -db -bbox -sgen -210 -10 960 510
+pagesize -pg 1 -db -bbox -sgen -220 -10 970 510
 "
 }
 0

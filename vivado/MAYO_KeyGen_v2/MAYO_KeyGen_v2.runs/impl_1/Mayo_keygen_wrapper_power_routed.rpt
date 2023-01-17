@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date             : Tue Jan 10 19:04:12 2023
+| Date             : Mon Jan 16 21:09:37 2023
 | Host             : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 | Command          : report_power -file Mayo_keygen_wrapper_power_routed.rpt -pb Mayo_keygen_wrapper_power_summary_routed.pb -rpx Mayo_keygen_wrapper_power_routed.rpx
 | Design           : Mayo_keygen_wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 2.142        |
+| Total On-Chip Power (W)  | 2.152        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.979        |
-| Device Static (W)        | 0.162        |
+| Dynamic (W)              | 1.986        |
+| Device Static (W)        | 0.166        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 60.3         |
-| Junction Temperature (C) | 49.7         |
+| Max Ambient (C)          | 60.2         |
+| Junction Temperature (C) | 49.8         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,21 +52,22 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.047 |        3 |       --- |             --- |
-| Slice Logic              |     0.085 |    44304 |       --- |             --- |
-|   LUT as Logic           |     0.082 |    15467 |     53200 |           29.07 |
+| Clocks                   |     0.048 |        3 |       --- |             --- |
+| Slice Logic              |     0.086 |    44323 |       --- |             --- |
+|   LUT as Logic           |     0.082 |    15452 |     53200 |           29.05 |
 |   CARRY4                 |     0.002 |      705 |     13300 |            5.30 |
-|   Register               |     0.002 |    22191 |    106400 |           20.86 |
+|   Register               |     0.002 |    22201 |    106400 |           20.87 |
 |   F7/F8 Muxes            |    <0.001 |     2796 |     53200 |            5.26 |
 |   LUT as Distributed RAM |    <0.001 |      192 |     17400 |            1.10 |
 |   LUT as Shift Register  |    <0.001 |       77 |     17400 |            0.44 |
-|   Others                 |     0.000 |      395 |       --- |             --- |
-| Signals                  |     0.157 |    32820 |       --- |             --- |
+|   Others                 |     0.000 |      396 |       --- |             --- |
+| Signals                  |     0.163 |    32833 |       --- |             --- |
 | Block RAM                |     0.152 |       72 |       140 |           51.43 |
 | DSPs                     |     0.008 |        8 |       220 |            3.64 |
+| I/O                      |    <0.001 |        2 |       200 |            1.00 |
 | PS7                      |     1.529 |        1 |       --- |             --- |
-| Static Power             |     0.162 |          |           |                 |
-| Total                    |     2.142 |          |           |                 |
+| Static Power             |     0.166 |          |           |                 |
+| Total                    |     2.152 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,9 +77,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.458 |       0.437 |      0.021 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.465 |       0.444 |      0.021 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.017 |       0.000 |      0.017 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -152,21 +153,21 @@ Table of Contents
 +-----------------------------+-----------+
 | Name                        | Power (W) |
 +-----------------------------+-----------+
-| Mayo_keygen_wrapper         |     1.979 |
-|   Mayo_keygen_i             |     1.979 |
+| Mayo_keygen_wrapper         |     1.986 |
+|   Mayo_keygen_i             |     1.986 |
 |     BRAM_big1               |     0.149 |
 |       BIG_BRAM256KDP        |     0.139 |
-|       arbit_brama1          |     0.008 |
+|       arbit_brama1          |     0.009 |
 |       axi_bram_ctrl_0       |     0.002 |
-|     BRAM_small              |     0.022 |
+|     BRAM_small              |     0.021 |
 |       Small_BRAM8k          |     0.019 |
 |       arbit_brama0          |     0.002 |
 |     MAYO_KEYGEN_FSM_0       |     0.012 |
 |       U0                    |     0.012 |
 |     TRNG                    |     0.003 |
 |       TRNG_0                |     0.003 |
-|     hash                    |     0.220 |
-|       MAYO_SHAKE_1          |     0.220 |
+|     hash                    |     0.228 |
+|       MAYO_SHAKE_1          |     0.228 |
 |     mayo_add_vectors_0      |     0.006 |
 |       U0                    |     0.006 |
 |     mayo_linear_combinat_0  |     0.020 |
