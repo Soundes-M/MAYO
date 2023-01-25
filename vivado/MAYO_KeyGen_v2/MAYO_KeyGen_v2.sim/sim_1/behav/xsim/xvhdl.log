@@ -1,0 +1,2 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/hdl/Mayo_keygen_no_zynq_wrapper.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Mayo_keygen_no_zynq_wrapper'

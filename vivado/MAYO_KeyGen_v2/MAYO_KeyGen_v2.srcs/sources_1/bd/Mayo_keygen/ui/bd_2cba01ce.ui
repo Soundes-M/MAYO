@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"0.63254",
-   "Default View_TopLeft":"-922,0",
+   "Default View_TopLeft":"-922,85",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
@@ -24,6 +24,7 @@ preplace port add_control -pg 1 -lvl 0 -x 0 -y 780 -defaultsOSRD
 preplace port s_axi_aresetn -pg 1 -lvl 0 -x 0 -y 1070 -defaultsOSRD
 preplace port s_axi_aclk -pg 1 -lvl 0 -x 0 -y 1050 -defaultsOSRD
 preplace port clkb -pg 1 -lvl 0 -x 0 -y 960 -defaultsOSRD
+preplace port BRAM_en -pg 1 -lvl 3 -x 810 -y 550 -defaultsOSRD
 preplace portBus BRAM_neg_din -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
 preplace portBus BRAM_lin_din -pg 1 -lvl 0 -x 0 -y 160 -defaultsOSRD
 preplace portBus BRAM_lin_addr -pg 1 -lvl 0 -x 0 -y 180 -defaultsOSRD
@@ -61,7 +62,7 @@ preplace netloc MAYO_SHAKE_1_BRAMA_din 1 0 1 NJ 660
 preplace netloc MAYO_SHAKE_1_BRAMA_addr 1 0 1 NJ 680
 preplace netloc MAYO_SHAKE_1_BRAMA_en 1 0 1 NJ 700
 preplace netloc MAYO_SHAKE_1_BRAMA_we 1 0 1 NJ 740
-preplace netloc arbit_brama1_BRAM_hash_dout 1 1 2 500J 1120 NJ
+preplace netloc arbit_brama1_BRAM_hash_dout 1 1 2 NJ 490 790J
 preplace netloc mayo_linear_combinat_0_o_control1a 1 0 1 NJ 800
 preplace netloc MAYO_SHAKE_1_o_control 1 0 1 NJ 880
 preplace netloc BRAM_key_din_1 1 0 1 NJ 460
@@ -90,14 +91,14 @@ preplace netloc s_axi_aresetn_1 1 0 1 NJ 1070
 preplace netloc s_axi_aclk_1 1 0 1 NJ 1050
 preplace netloc BRAM_neg_din_1 1 0 1 40 260n
 preplace netloc BIG_BRAM256KDP_doutb 1 0 2 40 970 470J
-preplace netloc arbit_brama1_BRAM_din 1 1 1 530 510n
-preplace netloc arbit_brama1_BRAM_addr 1 1 1 520 530n
+preplace netloc arbit_brama1_BRAM_din 1 1 1 520 510n
+preplace netloc arbit_brama1_BRAM_addr 1 1 1 510 530n
 preplace netloc clka_1 1 0 2 NJ 960 NJ
-preplace netloc arbit_brama1_BRAM_en 1 1 1 490 550n
+preplace netloc arbit_brama1_BRAM_en 1 1 2 500 550 N
 preplace netloc arbit_brama1_BRAM_rst 1 1 1 480 570n
 preplace netloc arbit_brama1_BRAM_we 1 1 1 460 590n
-preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 1 1 510 900n
 preplace netloc Conn1 1 0 1 NJ 1030
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 1 1 490 900n
 levelinfo -pg 1 0 250 660 810
 pagesize -pg 1 -db -bbox -sgen -220 0 1030 1260
 "

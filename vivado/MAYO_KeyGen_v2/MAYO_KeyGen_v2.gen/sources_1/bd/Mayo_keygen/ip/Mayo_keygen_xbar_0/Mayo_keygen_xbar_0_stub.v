@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-// Date        : Tue Jan 10 17:15:33 2023
+// Date        : Tue Jan 10 17:15:32 2023
 // Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
-// Command     : write_verilog -force -mode synth_stub
-//               /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_xbar_0/Mayo_keygen_xbar_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top Mayo_keygen_xbar_0 -prefix
+//               Mayo_keygen_xbar_0_ Mayo_keygen_xbar_0_stub.v
 // Design      : Mayo_keygen_xbar_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1

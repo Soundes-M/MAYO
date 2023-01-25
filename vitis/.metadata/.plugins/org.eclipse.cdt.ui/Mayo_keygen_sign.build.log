@@ -1,0 +1,25 @@
+13:32:40 **** Incremental Build of configuration Debug for project Mayo_keygen_sign ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+ 
+make --no-print-directory main-build
+Building file: ../src/helloworld.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/osm/Documents/SECT-MAYO/MAYO/vitis/Mayo_keygen_wrapper/export/Mayo_keygen_wrapper/sw/Mayo_keygen_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+Finished building: ../src/helloworld.c
+ 
+Building target: Mayo_keygen_sign.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L/home/osm/Documents/SECT-MAYO/MAYO/vitis/Mayo_keygen_wrapper/export/Mayo_keygen_wrapper/sw/Mayo_keygen_wrapper/standalone_ps7_cortexa9_0/bsplib/lib -o "Mayo_keygen_sign.elf"  ./src/helloworld.o ./src/mayo.o ./src/platform.o ./src/ps7_init.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Mayo_keygen_sign.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size Mayo_keygen_sign.elf  |tee "Mayo_keygen_sign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  52540	  12516	  22640	  87696	  15690	Mayo_keygen_sign.elf
+Finished building: Mayo_keygen_sign.elf.size
+ 
+
+13:32:40 Build Finished (took 214ms)
+

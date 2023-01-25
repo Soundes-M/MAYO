@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Mon Jan  9 00:35:52 2023
+-- Last update : Wed Jan 25 10:42:01 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ ENTITY MAYO_KEYGEN_FSM IS
   );
   PORT (
     CLK               : IN STD_LOGIC;
-    ENABLE            : IN STD_LOGIC; 
+    ENABLE            : IN STD_LOGIC;
     RESET             : IN STD_LOGIC;
     PUBLIC_KEY_ADDR_I : IN STD_LOGIC_VECTOR(31 DOWNTO 0); -- TODO: 32 bits adr of ram needs more work in vivado aka. axi DMA
     SECRET_KEY_ADDR_I : IN STD_LOGIC_VECTOR(31 DOWNTO 0); -- TODO: 32 bits adr of ram needs more work in vivado aka. axi DMA
@@ -180,7 +180,7 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
   ------------------------------------------------------------------------------
   -- DEBUG
   ------------------------------------------------------------------------------
-  constant C_DEBUG : std_logic := '1';
+  constant C_DEBUG : std_logic := '0';
   file myFile      : text;
   signal debug_ctr : integer := 0 ;
 BEGIN

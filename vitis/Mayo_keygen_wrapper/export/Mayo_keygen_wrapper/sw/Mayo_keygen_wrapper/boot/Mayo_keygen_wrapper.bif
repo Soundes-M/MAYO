@@ -1,0 +1,7 @@
+/*Mayo_keygen_wrapper*/
+the_ROM_image:
+{
+  [bootloader]<Mayo_keygen_wrapper/boot/fsbl.elf>
+   <bitstream> 
+  <elf,ps7_cortexa9_0>
+}

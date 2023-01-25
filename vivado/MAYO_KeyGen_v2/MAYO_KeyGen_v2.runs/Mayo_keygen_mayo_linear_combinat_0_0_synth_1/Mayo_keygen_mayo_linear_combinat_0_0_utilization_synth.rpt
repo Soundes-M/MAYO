@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Mon Jan 16 19:40:36 2023
+| Date         : Wed Jan 25 12:10:10 2023
 | Host         : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 | Command      : report_utilization -file Mayo_keygen_mayo_linear_combinat_0_0_utilization_synth.rpt -pb Mayo_keygen_mayo_linear_combinat_0_0_utilization_synth.pb
 | Design       : Mayo_keygen_mayo_linear_combinat_0_0
@@ -30,11 +30,11 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             |  845 |     0 |     53200 |  1.59 |
-|   LUT as Logic          |  845 |     0 |     53200 |  1.59 |
+| Slice LUTs*             | 1344 |     0 |     53200 |  2.53 |
+|   LUT as Logic          | 1344 |     0 |     53200 |  2.53 |
 |   LUT as Memory         |    0 |     0 |     17400 |  0.00 |
-| Slice Registers         |  693 |     0 |    106400 |  0.65 |
-|   Register as Flip Flop |  693 |     0 |    106400 |  0.65 |
+| Slice Registers         |  785 |     0 |    106400 |  0.74 |
+|   Register as Flip Flop |  785 |     0 |    106400 |  0.74 |
 |   Register as Latch     |    0 |     0 |    106400 |  0.00 |
 | F7 Muxes                |    0 |     0 |     26600 |  0.00 |
 | F8 Muxes                |    0 |     0 |     13300 |  0.00 |
@@ -56,8 +56,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 1     |          Yes |         Set |            - |
-| 692   |          Yes |       Reset |            - |
+| 0     |          Yes |         Set |            - |
+| 785   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -147,16 +147,15 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     |  692 |        Flop & Latch |
-| LUT2     |  311 |                 LUT |
-| LUT1     |  274 |                 LUT |
-| CARRY4   |  168 |          CarryLogic |
-| LUT4     |  153 |                 LUT |
-| LUT3     |  128 |                 LUT |
-| LUT6     |   95 |                 LUT |
-| LUT5     |   63 |                 LUT |
+| FDRE     |  785 |        Flop & Latch |
+| LUT2     |  449 |                 LUT |
+| LUT4     |  332 |                 LUT |
+| LUT1     |  283 |                 LUT |
+| LUT6     |  261 |                 LUT |
+| CARRY4   |  256 |          CarryLogic |
+| LUT3     |  178 |                 LUT |
+| LUT5     |  106 |                 LUT |
 | DSP48E1  |    8 |    Block Arithmetic |
-| FDSE     |    1 |        Flop & Latch |
 +----------+------+---------------------+
 
 

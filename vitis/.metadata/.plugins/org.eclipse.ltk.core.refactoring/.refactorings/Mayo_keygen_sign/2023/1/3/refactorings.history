@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Mayo_keygen_sign/src/mayo_header.h&apos; to &apos;mayo.h&apos;" description="Rename resource &apos;mayo_header.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/mayo_header.h" name="mayo.h" stamp="1673973287742" updateReferences="true"/>
+</session>

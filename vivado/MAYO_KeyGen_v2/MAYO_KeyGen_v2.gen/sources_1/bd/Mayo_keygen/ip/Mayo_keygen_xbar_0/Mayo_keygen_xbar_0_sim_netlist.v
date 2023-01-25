@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-// Date        : Tue Jan 10 17:15:33 2023
+// Date        : Tue Jan 10 17:15:32 2023
 // Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ip/Mayo_keygen_xbar_0/Mayo_keygen_xbar_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top Mayo_keygen_xbar_0 -prefix
+//               Mayo_keygen_xbar_0_ Mayo_keygen_xbar_0_sim_netlist.v
 // Design      : Mayo_keygen_xbar_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -418,7 +418,6 @@ module Mayo_keygen_xbar_0
         .s_axi_wvalid(s_axi_wvalid));
 endmodule
 
-(* ORIG_REF_NAME = "axi_crossbar_v2_1_23_addr_arbiter" *) 
 module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_addr_arbiter
    (\gen_no_arbiter.s_ready_i_reg[0]_0 ,
     p_1_in,
@@ -2089,7 +2088,6 @@ module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_addr_arbiter_0
         .O(\storage_data1[1]_i_6_n_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "axi_crossbar_v2_1_23_arbiter_resp" *) 
 module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_arbiter_resp
    (aresetn_d_reg,
     \chosen_reg[0]_0 ,
@@ -4098,13 +4096,13 @@ endmodule
 (* C_NUM_MASTER_SLOTS = "2" *) (* C_NUM_SLAVE_SLOTS = "1" *) (* C_R_REGISTER = "0" *) 
 (* C_S_AXI_ARB_PRIORITY = "0" *) (* C_S_AXI_BASE_ID = "0" *) (* C_S_AXI_READ_ACCEPTANCE = "8" *) 
 (* C_S_AXI_SINGLE_THREAD = "0" *) (* C_S_AXI_THREAD_ID_WIDTH = "12" *) (* C_S_AXI_WRITE_ACCEPTANCE = "8" *) 
-(* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "axi_crossbar_v2_1_23_axi_crossbar" *) (* P_ADDR_DECODE = "1" *) 
-(* P_AXI3 = "1" *) (* P_AXI4 = "0" *) (* P_AXILITE = "2" *) 
-(* P_AXILITE_SIZE = "3'b010" *) (* P_FAMILY = "zynq" *) (* P_INCR = "2'b01" *) 
-(* P_LEN = "8" *) (* P_LOCK = "1" *) (* P_M_AXI_ERR_MODE = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) 
-(* P_M_AXI_SUPPORTS_READ = "2'b11" *) (* P_M_AXI_SUPPORTS_WRITE = "2'b11" *) (* P_ONES = "65'b11111111111111111111111111111111111111111111111111111111111111111" *) 
-(* P_RANGE_CHECK = "1" *) (* P_S_AXI_BASE_ID = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) (* P_S_AXI_HIGH_ID = "64'b0000000000000000000000000000000000000000000000000000111111111111" *) 
-(* P_S_AXI_SUPPORTS_READ = "1'b1" *) (* P_S_AXI_SUPPORTS_WRITE = "1'b1" *) 
+(* DowngradeIPIdentifiedWarnings = "yes" *) (* P_ADDR_DECODE = "1" *) (* P_AXI3 = "1" *) 
+(* P_AXI4 = "0" *) (* P_AXILITE = "2" *) (* P_AXILITE_SIZE = "3'b010" *) 
+(* P_FAMILY = "zynq" *) (* P_INCR = "2'b01" *) (* P_LEN = "8" *) 
+(* P_LOCK = "1" *) (* P_M_AXI_ERR_MODE = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) (* P_M_AXI_SUPPORTS_READ = "2'b11" *) 
+(* P_M_AXI_SUPPORTS_WRITE = "2'b11" *) (* P_ONES = "65'b11111111111111111111111111111111111111111111111111111111111111111" *) (* P_RANGE_CHECK = "1" *) 
+(* P_S_AXI_BASE_ID = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) (* P_S_AXI_HIGH_ID = "64'b0000000000000000000000000000000000000000000000000000111111111111" *) (* P_S_AXI_SUPPORTS_READ = "1'b1" *) 
+(* P_S_AXI_SUPPORTS_WRITE = "1'b1" *) 
 module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_axi_crossbar
    (aclk,
     aresetn,
@@ -4498,7 +4496,6 @@ module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_axi_crossbar
         .s_axi_wvalid(s_axi_wvalid));
 endmodule
 
-(* ORIG_REF_NAME = "axi_crossbar_v2_1_23_crossbar" *) 
 module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_crossbar
    (\gen_no_arbiter.s_ready_i_reg[0] ,
     \m_ready_d_reg[0] ,
@@ -5210,7 +5207,6 @@ module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_crossbar
         .p_1_in(p_1_in_0));
 endmodule
 
-(* ORIG_REF_NAME = "axi_crossbar_v2_1_23_decerr_slave" *) 
 module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_decerr_slave
    (mi_awready_2,
     mi_wready_2,
@@ -5809,7 +5805,6 @@ module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_decerr_slave
         .R(SR));
 endmodule
 
-(* ORIG_REF_NAME = "axi_crossbar_v2_1_23_si_transactor" *) 
 module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_si_transactor
    (\chosen_reg[0] ,
     aresetn_d_reg,
@@ -11264,7 +11259,6 @@ module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_si_transactor__parameterized0
         .O(\gen_no_arbiter.s_ready_i[0]_i_8__0_n_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "axi_crossbar_v2_1_23_splitter" *) 
 module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_splitter
    (\m_ready_d_reg[0]_0 ,
     m_ready_d,
@@ -11426,7 +11420,6 @@ module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_splitter_3
         .R(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "axi_crossbar_v2_1_23_wdata_router" *) 
 module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_wdata_router
    (ss_wr_awready,
     m_axi_wvalid,
@@ -11502,7 +11495,6 @@ module Mayo_keygen_xbar_0_axi_crossbar_v2_1_23_wdata_router
         .\storage_data1_reg[1]_0 (\storage_data1_reg[1] ));
 endmodule
 
-(* ORIG_REF_NAME = "axi_data_fifo_v2_1_21_axic_reg_srl_fifo" *) 
 module Mayo_keygen_xbar_0_axi_data_fifo_v2_1_21_axic_reg_srl_fifo
    (s_ready_i_reg_0,
     m_axi_wvalid,
@@ -12016,7 +12008,6 @@ module Mayo_keygen_xbar_0_axi_data_fifo_v2_1_21_ndeep_srl__parameterized0_4
         .O(\FSM_onehot_state_reg[1] ));
 endmodule
 
-(* ORIG_REF_NAME = "axi_register_slice_v2_1_22_axi_register_slice" *) 
 module Mayo_keygen_xbar_0_axi_register_slice_v2_1_22_axi_register_slice
    (m_axi_bready,
     st_mr_rvalid,

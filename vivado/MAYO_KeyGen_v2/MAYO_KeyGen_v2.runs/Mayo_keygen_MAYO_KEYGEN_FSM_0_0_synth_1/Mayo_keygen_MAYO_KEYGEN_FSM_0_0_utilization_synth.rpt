@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Mon Jan 16 19:40:48 2023
+| Date         : Wed Jan 25 11:06:43 2023
 | Host         : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 | Command      : report_utilization -file Mayo_keygen_MAYO_KEYGEN_FSM_0_0_utilization_synth.rpt -pb Mayo_keygen_MAYO_KEYGEN_FSM_0_0_utilization_synth.pb
 | Design       : Mayo_keygen_MAYO_KEYGEN_FSM_0_0
@@ -33,10 +33,10 @@ Table of Contents
 | Slice LUTs*             | 1333 |     0 |     53200 |  2.51 |
 |   LUT as Logic          | 1333 |     0 |     53200 |  2.51 |
 |   LUT as Memory         |    0 |     0 |     17400 |  0.00 |
-| Slice Registers         |  847 |     0 |    106400 |  0.80 |
-|   Register as Flip Flop |  847 |     0 |    106400 |  0.80 |
+| Slice Registers         |  846 |     0 |    106400 |  0.80 |
+|   Register as Flip Flop |  846 |     0 |    106400 |  0.80 |
 |   Register as Latch     |    0 |     0 |    106400 |  0.00 |
-| F7 Muxes                |    0 |     0 |     26600 |  0.00 |
+| F7 Muxes                |    5 |     0 |     26600 |  0.02 |
 | F8 Muxes                |    0 |     0 |     13300 |  0.00 |
 +-------------------------+------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -57,7 +57,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 12    |          Yes |         Set |            - |
-| 835   |          Yes |       Reset |            - |
+| 834   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -146,15 +146,16 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     |  835 |        Flop & Latch |
-| LUT2     |  772 |                 LUT |
-| CARRY4   |  286 |          CarryLogic |
-| LUT6     |  226 |                 LUT |
-| LUT3     |  218 |                 LUT |
-| LUT4     |  210 |                 LUT |
-| LUT5     |  166 |                 LUT |
+| FDRE     |  834 |        Flop & Latch |
+| LUT2     |  763 |                 LUT |
+| CARRY4   |  287 |          CarryLogic |
+| LUT4     |  234 |                 LUT |
+| LUT6     |  214 |                 LUT |
+| LUT3     |  195 |                 LUT |
+| LUT5     |  169 |                 LUT |
 | LUT1     |   91 |                 LUT |
 | FDSE     |   12 |        Flop & Latch |
+| MUXF7    |    5 |               MuxFx |
 +----------+------+---------------------+
 
 

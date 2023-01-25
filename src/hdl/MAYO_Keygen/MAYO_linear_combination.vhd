@@ -108,9 +108,9 @@ entity mayo_linear_combination is
 end entity mayo_linear_combination;
 architecture Behavioral of mayo_linear_combination is
 
-	type state is (idle, read1, read2, read3, read4, done);
+	type state is (idle, read1, read2, read3, read4, read5, done);
 	signal t_state : state := idle;
-	type state1 is (idle, main1, main2, main3, done);
+	type state1 is (idle, main1, main2, main3, main4, done);
 	signal t_state1 : state1 := idle;
 
 	-- BRAM 0 reg for small data (Dual Channel R/W)
@@ -120,7 +120,6 @@ architecture Behavioral of mayo_linear_combination is
 
 	signal bram1a : bram_t := DEFAULT_BRAM;
 
-	-- Control Registers
 	signal s_acc            : array_32(0 to 7) := (others => ZERO_32); -- Buffer for accumulation, using double buffering for WAR Hazards 
 	signal tmp              : array_32(0 to 7) := (others => ZERO_32);
 	attribute keep          : string; -- Force DSP usage
@@ -136,6 +135,9 @@ architecture Behavioral of mayo_linear_combination is
 	signal first        : std_logic;
 	signal dspb         : std_logic_vector(7 downto 0) := (others => '0');
 	signal dsp_enable   : std_logic                    := '0';
+
+	signal s_nomac_en  : std_logic        := '0';
+	signal s_tmp_nomac : array_32(0 to 3) := (others => ZERO_32);
 
 	signal s_vecs_addr   : std_logic_vector(PORT_WIDTH-1 downto 0);
 	signal s_coeffs_addr : std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -162,7 +164,7 @@ begin
 	DSP_Inst :
 		DSP_Accum port map (
 			clk         => i_clk,
-		    i_global_en => dsp_enable,
+			i_global_en => dsp_enable,
 			i_en        => s_main,
 			i_sel       => s_acc_sel,
 			rst         => rst,
@@ -182,7 +184,7 @@ begin
 			res7        => s_acc(7)
 		);
 
-	dsp_enable <= '1' when ( t_state /= idle or t_state1 /= idle) else '0';
+	dsp_enable <= '1' when ((t_state /= idle or t_state1 /= idle) and s_nomac_en ='0') else '0';
 
 	INPUT_Pr : process(i_clk) is
 	begin
@@ -198,8 +200,12 @@ begin
 				s_vecs        <= ZERO_32;
 				s_coeffs      <= ZERO_32;
 				s_main        <= '0';
-				t_state       <= idle;
+				s_nomac_en    <= '0';
 				dspb          <= (others => '0');
+				for k in 0 to 3 loop
+					s_tmp_nomac(k) <= ZERO_32;
+				end loop;
+				t_state <= idle;
 
 			else
 				case (t_state) is
@@ -207,15 +213,22 @@ begin
 						c <= 0;
 						i <= 0;
 						j <= 0;
-						if (i_enable ='1') then
+
+						if (i_enable ='1' and unsigned(i_len) > 0) then
 							-- READ Params
 							s_vecs_addr   <= i_vec_addr;
 							s_coeffs_addr <= i_coeffs_addr;
 							s_out_addr    <= i_out_addr;
 							s_len         <= i_len;
-							t_state       <= read1;
-							o_control0a   <= '1';
-							o_control1a   <= '1';
+
+							if (unsigned(i_len) = 1) then
+								s_nomac_en <= '1';
+							else
+								s_nomac_en <= '0';
+							end if;
+							t_state     <= read1;
+							o_control0a <= '1';
+							o_control1a <= '1';
 						else
 							t_state     <= idle;
 							o_control0a <= '0';
@@ -232,18 +245,20 @@ begin
 						bram1a.o.o_we   <= "0000";
 						t_state         <= read3;
 
-					when read3 =>            -- BRAM Extra Delay
+					when read3 =>          -- BRAM Extra Delay
 						s_main       <= '0'; -- DSPs should not take this data in ! 
 						s_acc_change <= '0';
-						t_state      <= read4;
 
-					when read4 => -- BRAM Extra Delay
-						t_state <= read2;
+						if ( s_nomac_en = '0') then
+							t_state <= read2;
+						else
+							t_state <= read4;
+						end if;
 
-					when read2 =>                  -- Read Vecs and Coefs, start DSPs and check lood conditions
-						s_vecs <= bram1a.i.i_dout; -- 32 Bits (4 Byte/clk)
+					when read2 =>                -- Read Vecs and Coefs, start DSPs and check loop conditions
+						s_vecs <= bram1a.i.i_dout; -- 32 Bits (4 Byte/Round)
 						if (c = 0) then
-							s_coeffs <= bram0a.i.i_dout; -- 32 Bits (1 Byte/clk)
+							s_coeffs <= bram0a.i.i_dout; -- 32 Bits (1 Byte/Round)
 							dspb     <= bram0a.i.i_dout(7 downto 0);
 						else
 							dspb <= s_coeffs(c*8+7 downto c*8);
@@ -258,19 +273,18 @@ begin
 							s_acc_change    <= '1'; -- Change acc buffer
 
 							if (j >= (M-4)) then --j loop done
-								t_state <= done; -- END; no more input data
+								t_state <= done;   -- END; no more input data
 							else
-								j       <= j +4 ;
+								j       <= j + 4 ;
 								c       <= 0;
 								t_state <= read3;
-
 							end if;
 
 						else
 							i <= i +1 ;
 
-							--Coeffs
-							if (c >= 3) then
+							--Coeffs 
+							if (c >= 3) then -- Need more coeffs 
 								bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) + 4);
 								c               <= 0;
 							else
@@ -282,6 +296,29 @@ begin
 							t_state         <= read3;
 						end if;
 
+					-- Special NO ACCUMULATE----------------------------------------------
+					when read4 =>
+						s_vecs          <= bram1a.i.i_dout;
+						s_coeffs        <= bram0a.i.i_dout;
+						bram1a.o.o_addr <= std_logic_vector(unsigned(bram1a.o.o_addr) +4); -- More vecs (j+4)
+						s_acc_change    <= '0';
+						t_state         <= read5;
+
+					when read5 =>
+						s_tmp_nomac(0) <= X"0000" & std_logic_vector(unsigned(s_vecs(7 downto 0)) * unsigned(s_coeffs(7 downto 0)));
+						s_tmp_nomac(1) <= X"0000" & std_logic_vector(unsigned(s_vecs(15 downto 8)) * unsigned(s_coeffs(7 downto 0)));
+						s_tmp_nomac(2) <= X"0000" & std_logic_vector(unsigned(s_vecs(23 downto 16)) * unsigned(s_coeffs(7 downto 0)));
+						s_tmp_nomac(3) <= X"0000" & std_logic_vector(unsigned(s_vecs(31 downto 24)) * unsigned(s_coeffs(7 downto 0)));
+						s_acc_change   <= '1';
+
+						if (j >= (M-4)) then
+							t_state <= done;
+						else
+							j       <= j+4 ;
+							t_state <= read4;
+						end if ;
+
+
 					when done => -- Done reading
 						s_acc_change  <= '0';
 						s_main        <= '0';
@@ -289,7 +326,7 @@ begin
 						bram1a.o.o_en <= '0';
 						t_state       <= idle;
 					when others =>
-						null;
+						t_state <= idle;
 				end case;
 			end if;
 		end if;
@@ -332,9 +369,14 @@ begin
 						bram0b.o.o_en <= '0';
 						bram0b.o.o_we <= "0000";
 						tmp_sel       <= '0';
-						if (s_acc_change= '1') then
+						if (s_acc_change= '1' and s_nomac_en = '0') then
 							t_state1    <= main2;
 							o_control0b <= '1';
+						elsif (s_acc_change= '1' and s_nomac_en = '1') then
+							t_state1    <= main4;
+							o_control0b <= '1';
+						else
+							t_state1 <= idle;
 						end if;
 
 					when main2 =>
@@ -383,6 +425,28 @@ begin
 							t_state1  <= idle;
 						end if;
 
+					-- Special NO ACCUMULATE----------------------------------------------
+					when main4 =>
+						bram0b.o.o_din (31 downto 24) <= std_logic_vector(resize(unsigned(s_tmp_nomac(3)) mod 31,8));
+						bram0b.o.o_din (23 downto 16) <= std_logic_vector(resize(unsigned(s_tmp_nomac(2)) mod 31,8));
+						bram0b.o.o_din (15 downto 8)  <= std_logic_vector(resize(unsigned(s_tmp_nomac(1)) mod 31,8));
+						bram0b.o.o_din (7 downto 0)   <= std_logic_vector(resize(unsigned(s_tmp_nomac(0)) mod 31,8));
+						bram0b.o.o_en                 <= '1';
+						bram0b.o.o_we                 <= "1111";
+
+						if (first = '0') then
+							bram0b.o.o_addr <= s_out_addr;
+							first           <= '1';
+						else
+							bram0b.o.o_addr <= std_logic_vector(unsigned(bram0b.o.o_addr) + 4);
+						end if;
+
+						if (s_out_ctr >= (M -4)) then
+							t_state1 <= done;
+						else
+							s_out_ctr <= s_out_ctr + 4;
+							t_state1  <= idle;
+						end if;
 
 					when done =>
 						report "Linear Combination done";

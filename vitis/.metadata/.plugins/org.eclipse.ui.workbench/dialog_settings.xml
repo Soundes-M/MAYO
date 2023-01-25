@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="InstallationDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="-205"/>
+		<item key="DIALOG_Y_ORIGIN" value="-411"/>
+		<item key="DIALOG_WIDTH" value="1571"/>
+		<item key="DIALOG_HEIGHT" value="1015"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
+	</section>
+	<section name="EditorSelectionDialog">
+		<item key="EditorSelectionDialog.STORE_ID_FILE_EXTENSION" value=".html"/>
+		<item key="EditorSelectionDialog.STORE_ID_INTERNAL_EXTERNAL" value="true"/>
+		<item key="EditorSelectionDialog.STORE_ID_DESCR" value="Firefox Web Browser"/>
+	</section>
+</section>

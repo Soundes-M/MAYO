@@ -1,0 +1,30 @@
+#ifndef __MAYO_HEADER_H_
+#define __MAYO_HEADER_H_
+
+/**
+ * Mayo func return status struct defn
+ */
+
+typedef enum
+{
+    MAYO_OK = 0x00U,
+    MAYO_BUSY = 0x01U,
+    MAYO_ERROR = 0x02U,
+    MAYO_TIMEOUT = 0x03U
+
+} MAYO_StatusTypeDef;
+
+
+typedef struct{
+  u8 KeyGen_ENABLE;
+  u8 KeyGen_DONE;
+}MAYO_KeyGenTypeDef;
+
+typedef struct{
+  u8 Signing_ENABLE;
+  u8 Signing_DONE;
+}MAYO_SigningTypeDef;
+
+
+
+#endif

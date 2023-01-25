@@ -69,9 +69,6 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen
 # IP: bd/Mayo_keygen/ip/Mayo_keygen_mayo_add_vectors_0_0/Mayo_keygen_mayo_add_vectors_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_mayo_add_vectors_0_0 || ORIG_REF_NAME==Mayo_keygen_mayo_add_vectors_0_0} -quiet] -quiet
 
-# IP: bd/Mayo_keygen/ip/Mayo_keygen_mayo_linear_combinat_0_0/Mayo_keygen_mayo_linear_combinat_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_mayo_linear_combinat_0_0 || ORIG_REF_NAME==Mayo_keygen_mayo_linear_combinat_0_0} -quiet] -quiet
-
 # IP: bd/Mayo_keygen/ip/Mayo_keygen_mayo_negate_0_0/Mayo_keygen_mayo_negate_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_mayo_negate_0_0 || ORIG_REF_NAME==Mayo_keygen_mayo_negate_0_0} -quiet] -quiet
 
@@ -81,11 +78,17 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen
 # IP: bd/Mayo_keygen/ip/Mayo_keygen_mayo_sample_oil_space_0_0/Mayo_keygen_mayo_sample_oil_space_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_mayo_sample_oil_space_0_0 || ORIG_REF_NAME==Mayo_keygen_mayo_sample_oil_space_0_0} -quiet] -quiet
 
+# IP: bd/Mayo_keygen/ip/Mayo_keygen_blink_led_0_0/Mayo_keygen_blink_led_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_blink_led_0_0 || ORIG_REF_NAME==Mayo_keygen_blink_led_0_0} -quiet] -quiet
+
+# IP: bd/Mayo_keygen/ip/Mayo_keygen_system_ila_0_3/Mayo_keygen_system_ila_0_3.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_system_ila_0_3 || ORIG_REF_NAME==Mayo_keygen_system_ila_0_3} -quiet] -quiet
+
 # IP: bd/Mayo_keygen/ip/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_MAYO_KEYGEN_FSM_0_0 || ORIG_REF_NAME==Mayo_keygen_MAYO_KEYGEN_FSM_0_0} -quiet] -quiet
 
-# IP: bd/Mayo_keygen/ip/Mayo_keygen_blink_led_0_0/Mayo_keygen_blink_led_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_blink_led_0_0 || ORIG_REF_NAME==Mayo_keygen_blink_led_0_0} -quiet] -quiet
+# IP: bd/Mayo_keygen/ip/Mayo_keygen_mayo_linear_combinat_0_0/Mayo_keygen_mayo_linear_combinat_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_mayo_linear_combinat_0_0 || ORIG_REF_NAME==Mayo_keygen_mayo_linear_combinat_0_0} -quiet] -quiet
 
 # IP: bd/Mayo_keygen/ip/Mayo_keygen_auto_pc_1/Mayo_keygen_auto_pc_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_keygen_auto_pc_1 || ORIG_REF_NAME==Mayo_keygen_auto_pc_1} -quiet] -quiet

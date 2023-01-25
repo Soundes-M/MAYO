@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
---Date        : Mon Jan 16 21:04:42 2023
+--Date        : Wed Jan 25 12:09:11 2023
 --Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 --Command     : generate_target Mayo_keygen.bd
 --Design      : Mayo_keygen
@@ -21,6 +21,7 @@ entity BRAM_big1_imp_QBI0MO is
     BRAM_add_rst1 : in STD_LOGIC;
     BRAM_add_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
     BRAM_add_we1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_en : out STD_LOGIC;
     BRAM_hash_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -335,10 +336,10 @@ architecture STRUCTURE of BRAM_big1_imp_QBI0MO is
   signal NLW_BIG_BRAM256KDP1_doutb_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_arbit_brama1_BRAM_neg_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_arbit_brama1_BRAM_sam_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  attribute BMM_INFO_ADDRESS_SPACE : string;
-  attribute BMM_INFO_ADDRESS_SPACE of axi_bram_ctrl_0 : label is "byte  0x40000000 32 > Mayo_keygen BRAM_big1/BIG_BRAM256KDP";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of axi_bram_ctrl_0 : label is "yes";
+  attribute bmm_info_address_space : string;
+  attribute bmm_info_address_space of axi_bram_ctrl_0 : label is "byte  0x40000000 32 > Mayo_keygen BRAM_big1/BIG_BRAM256KDP";
 begin
   BRAM_add_addr_1(31 downto 0) <= BRAM_add_addr(31 downto 0);
   BRAM_add_din_1(31 downto 0) <= BRAM_add_din(31 downto 0);
@@ -348,6 +349,7 @@ begin
   BRAM_add_rst_1 <= BRAM_add_rst;
   BRAM_add_we1_1(3 downto 0) <= BRAM_add_we1(3 downto 0);
   BRAM_add_we_1(3 downto 0) <= BRAM_add_we(3 downto 0);
+  BRAM_en <= arbit_brama1_BRAM_en;
   BRAM_hash_dout(31 downto 0) <= arbit_brama1_BRAM_hash_dout(31 downto 0);
   BRAM_key_addr_1(31 downto 0) <= BRAM_key_addr(31 downto 0);
   BRAM_key_din_1(31 downto 0) <= BRAM_key_din(31 downto 0);
@@ -578,6 +580,7 @@ entity BRAM_small_imp_EVICZV is
     BRAM_add_rst1 : in STD_LOGIC;
     BRAM_add_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
     BRAM_add_we1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    BRAM_en : out STD_LOGIC;
     BRAM_hash_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_din : in STD_LOGIC_VECTOR ( 31 downto 0 );
     BRAM_hash_dout : out STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -886,6 +889,7 @@ begin
   BRAM_add_en1_1 <= BRAM_add_en1;
   BRAM_add_rst1_1 <= BRAM_add_rst1;
   BRAM_add_we1_1(3 downto 0) <= BRAM_add_we1(3 downto 0);
+  BRAM_en <= arbit_brama0_BRAM_en;
   BRAM_hash_addr_1(31 downto 0) <= BRAM_hash_addr(31 downto 0);
   BRAM_hash_din_1(31 downto 0) <= BRAM_hash_din(31 downto 0);
   BRAM_hash_dout(31 downto 0) <= arbit_brama0_BRAM_hash_dout(31 downto 0);
@@ -1294,10 +1298,13 @@ architecture STRUCTURE of hash_imp_1FCB8TA is
   signal MAYO_SHAKE_1_BRAMA_en : STD_LOGIC;
   signal MAYO_SHAKE_1_BRAMA_we : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal MAYO_SHAKE_1_done : STD_LOGIC;
+  attribute debug : string;
+  attribute debug of MAYO_SHAKE_1_done : signal is "true";
   signal MAYO_SHAKE_1_dyn_done : STD_LOGIC;
   signal MAYO_SHAKE_1_o_control : STD_LOGIC;
   signal bram_sel_1 : STD_LOGIC;
   signal i_key_en_1 : STD_LOGIC;
+  attribute debug of i_key_en_1 : signal is "true";
   signal i_key_mlen_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal i_key_olen_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal i_key_read_adr_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3172,12 +3179,14 @@ entity Mayo_keygen is
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     LD0 : out STD_LOGIC;
-    LD1 : out STD_LOGIC
+    LD1 : out STD_LOGIC;
+    LD4 : out STD_LOGIC;
+    LD5 : out STD_LOGIC
   );
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of Mayo_keygen : entity is "Mayo_keygen,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Mayo_keygen,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=36,numReposBlks=28,numNonXlnxBlks=3,numHierBlks=8,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=12,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=9,da_bram_cntlr_cnt=3,da_clkrst_cnt=15,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
-  attribute HW_HANDOFF : string;
-  attribute HW_HANDOFF of Mayo_keygen : entity is "Mayo_keygen.hwdef";
+  attribute core_generation_info : string;
+  attribute core_generation_info of Mayo_keygen : entity is "Mayo_keygen,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Mayo_keygen,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=37,numReposBlks=29,numNonXlnxBlks=3,numHierBlks=8,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=12,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=9,da_bram_cntlr_cnt=3,da_clkrst_cnt=15,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
+  attribute hw_handoff : string;
+  attribute hw_handoff of Mayo_keygen : entity is "Mayo_keygen.hwdef";
 end Mayo_keygen;
 
 architecture STRUCTURE of Mayo_keygen is
@@ -3364,40 +3373,6 @@ architecture STRUCTURE of Mayo_keygen is
     o_controlc : out STD_LOGIC
   );
   end component Mayo_keygen_mayo_add_vectors_0_0;
-  component Mayo_keygen_mayo_linear_combinat_0_0 is
-  port (
-    i_clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    i_enable : in STD_LOGIC;
-    o_done : out STD_LOGIC;
-    i_bram_halt : in STD_LOGIC;
-    i_vec_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_coeffs_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_out_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_len : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    i_mem0a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0a_en : out STD_LOGIC;
-    o_mem0a_rst : out STD_LOGIC;
-    o_mem0a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_mem0b_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0b_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0b_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem0b_en : out STD_LOGIC;
-    o_mem0b_rst : out STD_LOGIC;
-    o_mem0b_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    i_mem1a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem1a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem1a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    o_mem1a_en : out STD_LOGIC;
-    o_mem1a_rst : out STD_LOGIC;
-    o_mem1a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    o_control0a : out STD_LOGIC;
-    o_control0b : out STD_LOGIC;
-    o_control1a : out STD_LOGIC
-  );
-  end component Mayo_keygen_mayo_linear_combinat_0_0;
   component Mayo_keygen_mayo_negate_0_0 is
   port (
     i_clk : in STD_LOGIC;
@@ -3463,6 +3438,35 @@ architecture STRUCTURE of Mayo_keygen is
     o_trng_sel : out STD_LOGIC
   );
   end component Mayo_keygen_mayo_sample_oil_space_0_0;
+  component Mayo_keygen_blink_led_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    in0 : in STD_LOGIC;
+    in1 : in STD_LOGIC;
+    in2 : in STD_LOGIC;
+    in3 : in STD_LOGIC;
+    in4 : in STD_LOGIC;
+    in5 : in STD_LOGIC;
+    led0 : out STD_LOGIC;
+    led1 : out STD_LOGIC;
+    led2 : out STD_LOGIC;
+    led3 : out STD_LOGIC;
+    led4 : out STD_LOGIC;
+    led5 : out STD_LOGIC
+  );
+  end component Mayo_keygen_blink_led_0_0;
+  component Mayo_keygen_system_ila_0_3 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component Mayo_keygen_system_ila_0_3;
   component Mayo_keygen_MAYO_KEYGEN_FSM_0_0 is
   port (
     CLK : in STD_LOGIC;
@@ -3537,25 +3541,42 @@ architecture STRUCTURE of Mayo_keygen is
     o_mem1a_control : out STD_LOGIC
   );
   end component Mayo_keygen_MAYO_KEYGEN_FSM_0_0;
-  component Mayo_keygen_blink_led_0_0 is
+  component Mayo_keygen_mayo_linear_combinat_0_0 is
   port (
-    clk : in STD_LOGIC;
+    i_clk : in STD_LOGIC;
     rst : in STD_LOGIC;
-    in0 : in STD_LOGIC;
-    in1 : in STD_LOGIC;
-    in2 : in STD_LOGIC;
-    in3 : in STD_LOGIC;
-    in4 : in STD_LOGIC;
-    in5 : in STD_LOGIC;
-    led0 : out STD_LOGIC;
-    led1 : out STD_LOGIC;
-    led2 : out STD_LOGIC;
-    led3 : out STD_LOGIC;
-    led4 : out STD_LOGIC;
-    led5 : out STD_LOGIC
+    i_enable : in STD_LOGIC;
+    o_done : out STD_LOGIC;
+    i_bram_halt : in STD_LOGIC;
+    i_vec_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_coeffs_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_out_addr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_len : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    i_mem0a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0a_en : out STD_LOGIC;
+    o_mem0a_rst : out STD_LOGIC;
+    o_mem0a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_mem0b_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0b_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0b_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem0b_en : out STD_LOGIC;
+    o_mem0b_rst : out STD_LOGIC;
+    o_mem0b_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    i_mem1a_dout : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem1a_din : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem1a_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    o_mem1a_en : out STD_LOGIC;
+    o_mem1a_rst : out STD_LOGIC;
+    o_mem1a_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    o_control0a : out STD_LOGIC;
+    o_control0b : out STD_LOGIC;
+    o_control1a : out STD_LOGIC
   );
-  end component Mayo_keygen_blink_led_0_0;
+  end component Mayo_keygen_mayo_linear_combinat_0_0;
   signal BRAM0_dout_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_big1_BRAM_en : STD_LOGIC;
   signal BRAM_big_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_big_BRAM_red_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_key_addr1_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3565,6 +3586,7 @@ architecture STRUCTURE of Mayo_keygen is
   signal BRAM_key_we_1 : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal BRAM_small_BRAM_add_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal BRAM_small_BRAM_add_dout1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal BRAM_small_BRAM_en : STD_LOGIC;
   signal Ground1_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal Ground32_dout1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal Ground4_dout1 : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -3575,8 +3597,14 @@ architecture STRUCTURE of Mayo_keygen is
   signal MAYO_KEYGEN_FSM_0_o_add_v2_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_busy : STD_LOGIC;
   signal MAYO_KEYGEN_FSM_0_o_done : STD_LOGIC;
+  attribute MARK_DEBUG : boolean;
+  attribute MARK_DEBUG of MAYO_KEYGEN_FSM_0_o_done : signal is std.standard.true;
+  attribute debug : string;
+  attribute debug of MAYO_KEYGEN_FSM_0_o_done : signal is "true";
   signal MAYO_KEYGEN_FSM_0_o_err : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_hash_en : STD_LOGIC;
+  attribute MARK_DEBUG of MAYO_KEYGEN_FSM_0_o_hash_en : signal is std.standard.true;
+  attribute debug of MAYO_KEYGEN_FSM_0_o_hash_en : signal is "true";
   signal MAYO_KEYGEN_FSM_0_o_hash_memsel : STD_LOGIC;
   signal MAYO_KEYGEN_FSM_0_o_hash_mlen : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_hash_olen : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3585,6 +3613,8 @@ architecture STRUCTURE of Mayo_keygen is
   signal MAYO_KEYGEN_FSM_0_o_lin_bram_halt : STD_LOGIC;
   signal MAYO_KEYGEN_FSM_0_o_lin_coeffs_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_lin_enable : STD_LOGIC;
+  attribute MARK_DEBUG of MAYO_KEYGEN_FSM_0_o_lin_enable : signal is std.standard.true;
+  attribute debug of MAYO_KEYGEN_FSM_0_o_lin_enable : signal is "true";
   signal MAYO_KEYGEN_FSM_0_o_lin_len : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_lin_out_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_lin_vec_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3601,10 +3631,14 @@ architecture STRUCTURE of Mayo_keygen is
   signal MAYO_KEYGEN_FSM_0_o_mem1a_we : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_neg_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_neg_enable : STD_LOGIC;
+  attribute MARK_DEBUG of MAYO_KEYGEN_FSM_0_o_neg_enable : signal is std.standard.true;
+  attribute debug of MAYO_KEYGEN_FSM_0_o_neg_enable : signal is "true";
   signal MAYO_KEYGEN_FSM_0_o_neg_len : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_red_adr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_red_bram_sel : STD_LOGIC;
   signal MAYO_KEYGEN_FSM_0_o_red_enable : STD_LOGIC;
+  attribute MARK_DEBUG of MAYO_KEYGEN_FSM_0_o_red_enable : signal is std.standard.true;
+  attribute debug of MAYO_KEYGEN_FSM_0_o_red_enable : signal is "true";
   signal MAYO_KEYGEN_FSM_0_o_red_len : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal MAYO_KEYGEN_FSM_0_o_sam_enable : STD_LOGIC;
   signal MAYO_KEYGEN_FSM_0_o_sam_oil_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3633,6 +3667,8 @@ architecture STRUCTURE of Mayo_keygen is
   signal arbit_bramb0_BRAM_sam_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal blink_led_0_led0 : STD_LOGIC;
   signal blink_led_0_led1 : STD_LOGIC;
+  signal blink_led_0_led4 : STD_LOGIC;
+  signal blink_led_0_led5 : STD_LOGIC;
   signal bram_control_1 : STD_LOGIC;
   signal bram_control_2 : STD_LOGIC;
   signal hash_BRAM0_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -3665,6 +3701,8 @@ architecture STRUCTURE of Mayo_keygen is
   signal mayo_axi_litev3_0_o_interrupt : STD_LOGIC;
   signal mayo_bram_arbiter_1_BRAM_lin_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal mayo_hash_arbiter_0_o_key_done : STD_LOGIC;
+  attribute MARK_DEBUG of mayo_hash_arbiter_0_o_key_done : signal is std.standard.true;
+  attribute debug of mayo_hash_arbiter_0_o_key_done : signal is "true";
   signal mayo_hash_arbiter_0_o_key_dyn_done : STD_LOGIC;
   signal mayo_linear_combinat_0_o_control0a : STD_LOGIC;
   signal mayo_linear_combinat_0_o_control0b : STD_LOGIC;
@@ -3836,8 +3874,6 @@ architecture STRUCTURE of Mayo_keygen is
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_blink_led_0_led2_UNCONNECTED : STD_LOGIC;
   signal NLW_blink_led_0_led3_UNCONNECTED : STD_LOGIC;
-  signal NLW_blink_led_0_led4_UNCONNECTED : STD_LOGIC;
-  signal NLW_blink_led_0_led5_UNCONNECTED : STD_LOGIC;
   signal NLW_mayo_axi_litev3_0_o_Signing_en_UNCONNECTED : STD_LOGIC;
   signal NLW_mayo_axi_litev3_0_o_Verification_en_UNCONNECTED : STD_LOGIC;
   signal NLW_mayo_axi_litev3_0_o_irq_en_UNCONNECTED : STD_LOGIC;
@@ -3849,38 +3885,40 @@ architecture STRUCTURE of Mayo_keygen is
   signal NLW_rst_ps7_0_100M_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_rst_ps7_0_100M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_ps7_0_100M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  attribute BMM_INFO_PROCESSOR : string;
-  attribute BMM_INFO_PROCESSOR of processing_system7_0 : label is "arm > Mayo_keygen BRAM_big1/axi_bram_ctrl_0";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of processing_system7_0 : label is "yes";
-  attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
-  attribute X_INTERFACE_INFO of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
-  attribute X_INTERFACE_INFO of DDR_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_P";
-  attribute X_INTERFACE_INFO of DDR_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR CKE";
-  attribute X_INTERFACE_INFO of DDR_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CS_N";
-  attribute X_INTERFACE_INFO of DDR_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR ODT";
-  attribute X_INTERFACE_INFO of DDR_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RAS_N";
-  attribute X_INTERFACE_INFO of DDR_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RESET_N";
-  attribute X_INTERFACE_INFO of DDR_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR WE_N";
-  attribute X_INTERFACE_INFO of FIXED_IO_ddr_vrn : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN";
-  attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of FIXED_IO_ddr_vrn : signal is "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false";
-  attribute X_INTERFACE_INFO of FIXED_IO_ddr_vrp : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP";
-  attribute X_INTERFACE_INFO of FIXED_IO_ps_clk : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK";
-  attribute X_INTERFACE_INFO of FIXED_IO_ps_porb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB";
-  attribute X_INTERFACE_INFO of FIXED_IO_ps_srstb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
-  attribute X_INTERFACE_INFO of DDR_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
-  attribute X_INTERFACE_PARAMETER of DDR_addr : signal is "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
-  attribute X_INTERFACE_INFO of DDR_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR BA";
-  attribute X_INTERFACE_INFO of DDR_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR DM";
-  attribute X_INTERFACE_INFO of DDR_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR DQ";
-  attribute X_INTERFACE_INFO of DDR_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
-  attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
-  attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
+  attribute bmm_info_processor : string;
+  attribute bmm_info_processor of processing_system7_0 : label is "arm > Mayo_keygen BRAM_big1/axi_bram_ctrl_0";
+  attribute x_interface_info : string;
+  attribute x_interface_info of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
+  attribute x_interface_info of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
+  attribute x_interface_info of DDR_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_P";
+  attribute x_interface_info of DDR_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR CKE";
+  attribute x_interface_info of DDR_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CS_N";
+  attribute x_interface_info of DDR_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR ODT";
+  attribute x_interface_info of DDR_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RAS_N";
+  attribute x_interface_info of DDR_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RESET_N";
+  attribute x_interface_info of DDR_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR WE_N";
+  attribute x_interface_info of FIXED_IO_ddr_vrn : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN";
+  attribute x_interface_parameter : string;
+  attribute x_interface_parameter of FIXED_IO_ddr_vrn : signal is "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false";
+  attribute x_interface_info of FIXED_IO_ddr_vrp : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP";
+  attribute x_interface_info of FIXED_IO_ps_clk : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK";
+  attribute x_interface_info of FIXED_IO_ps_porb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB";
+  attribute x_interface_info of FIXED_IO_ps_srstb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
+  attribute x_interface_info of DDR_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
+  attribute x_interface_parameter of DDR_addr : signal is "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
+  attribute x_interface_info of DDR_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR BA";
+  attribute x_interface_info of DDR_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR DM";
+  attribute x_interface_info of DDR_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR DQ";
+  attribute x_interface_info of DDR_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
+  attribute x_interface_info of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
+  attribute x_interface_info of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
   LD0 <= blink_led_0_led0;
   LD1 <= blink_led_0_led1;
+  LD4 <= blink_led_0_led4;
+  LD5 <= blink_led_0_led5;
 BRAM_big1: entity work.BRAM_big1_imp_QBI0MO
      port map (
       BRAM_add_addr(31 downto 0) => mayo_add_vectors_0_o_memc_addr(31 downto 0),
@@ -3891,6 +3929,7 @@ BRAM_big1: entity work.BRAM_big1_imp_QBI0MO
       BRAM_add_rst1 => mayo_add_vectors_0_o_memc_rst,
       BRAM_add_we(3 downto 0) => Ground4_dout1(3 downto 0),
       BRAM_add_we1(3 downto 0) => mayo_add_vectors_0_o_memc_we(3 downto 0),
+      BRAM_en => BRAM_big1_BRAM_en,
       BRAM_hash_addr(31 downto 0) => MAYO_SHAKE_1_BRAMA_addr(31 downto 0),
       BRAM_hash_din(31 downto 0) => MAYO_SHAKE_1_BRAMA_din(31 downto 0),
       BRAM_hash_dout(31 downto 0) => arbit_brama1_BRAM_hash_dout(31 downto 0),
@@ -3973,6 +4012,7 @@ BRAM_small: entity work.BRAM_small_imp_EVICZV
       BRAM_add_rst1 => mayo_add_vectors_0_o_memb_rst,
       BRAM_add_we(3 downto 0) => mayo_add_vectors_0_o_mema_we(3 downto 0),
       BRAM_add_we1(3 downto 0) => mayo_add_vectors_0_o_memb_we(3 downto 0),
+      BRAM_en => BRAM_small_BRAM_en,
       BRAM_hash_addr(31 downto 0) => hash_BRAM0_addr(31 downto 0),
       BRAM_hash_din(31 downto 0) => hash_BRAM0_din(31 downto 0),
       BRAM_hash_dout(31 downto 0) => BRAM0_dout_1(31 downto 0),
@@ -4145,14 +4185,14 @@ blink_led_0: component Mayo_keygen_blink_led_0_0
       in1 => MAYO_KEYGEN_FSM_0_o_busy,
       in2 => Ground1_dout(0),
       in3 => Ground1_dout(0),
-      in4 => Ground1_dout(0),
-      in5 => Ground1_dout(0),
+      in4 => BRAM_big1_BRAM_en,
+      in5 => BRAM_small_BRAM_en,
       led0 => blink_led_0_led0,
       led1 => blink_led_0_led1,
       led2 => NLW_blink_led_0_led2_UNCONNECTED,
       led3 => NLW_blink_led_0_led3_UNCONNECTED,
-      led4 => NLW_blink_led_0_led4_UNCONNECTED,
-      led5 => NLW_blink_led_0_led5_UNCONNECTED,
+      led4 => blink_led_0_led4,
+      led5 => blink_led_0_led5,
       rst => rst_ps7_0_100M_peripheral_reset(0)
     );
 hash: entity work.hash_imp_1FCB8TA
@@ -4533,12 +4573,22 @@ rst_ps7_0_100M: component Mayo_keygen_rst_ps7_0_100M_0
       peripheral_reset(0) => rst_ps7_0_100M_peripheral_reset(0),
       slowest_sync_clk => processing_system7_0_FCLK_CLK0
     );
+system_ila_0: component Mayo_keygen_system_ila_0_3
+     port map (
+      clk => processing_system7_0_FCLK_CLK0,
+      probe0(0) => mayo_hash_arbiter_0_o_key_done,
+      probe1(0) => MAYO_KEYGEN_FSM_0_o_done,
+      probe2(0) => MAYO_KEYGEN_FSM_0_o_hash_en,
+      probe3(0) => MAYO_KEYGEN_FSM_0_o_lin_enable,
+      probe4(0) => MAYO_KEYGEN_FSM_0_o_neg_enable,
+      probe5(0) => MAYO_KEYGEN_FSM_0_o_red_enable
+    );
 xlconcat_0: component Mayo_keygen_xlconcat_0_0
      port map (
       In0(1 downto 0) => MAYO_KEYGEN_FSM_0_o_err(1 downto 0),
       In1(3 downto 0) => Ground4_dout1(3 downto 0),
-      In2(0) => Ground1_dout(0),
-      In3(0) => Ground1_dout(0),
+      In2(0) => '0',
+      In3(0) => '0',
       dout(7 downto 0) => xlconcat_0_dout(7 downto 0)
     );
 end STRUCTURE;

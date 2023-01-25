@@ -252,7 +252,7 @@ begin
     
     wait for 110 ns ;
     enable      <= '0';
-    len         <= std_logic_vector(to_unsigned(60,32));
+    len         <= std_logic_vector(to_unsigned(1,32));
     vec_addr    <= std_logic_vector(to_unsigned(0,32));  -- in bram1
     coeffs_addr <= std_logic_vector(to_unsigned(0,32));  -- in bram0
     out_addr    <= std_logic_vector(to_unsigned(64,32)); -- in bram 0 

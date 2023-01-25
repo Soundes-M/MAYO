@@ -383,6 +383,7 @@ proc create_hier_cell_BRAM_small { parentCell nameHier } {
   create_bd_pin -dir I -type rst BRAM_add_rst1
   create_bd_pin -dir I -from 3 -to 0 BRAM_add_we
   create_bd_pin -dir I -from 3 -to 0 BRAM_add_we1
+  create_bd_pin -dir O BRAM_en
   create_bd_pin -dir I -from 31 -to 0 BRAM_hash_addr
   create_bd_pin -dir I -from 31 -to 0 BRAM_hash_din
   create_bd_pin -dir O -from 31 -to 0 BRAM_hash_dout
@@ -520,7 +521,7 @@ proc create_hier_cell_BRAM_small { parentCell nameHier } {
   connect_bd_net -net arbit_brama0_BRAM_add_dout [get_bd_pins BRAM_add_dout] [get_bd_pins arbit_brama0/BRAM_add_dout]
   connect_bd_net -net arbit_brama0_BRAM_addr [get_bd_pins Small_BRAM8k/addra] [get_bd_pins arbit_brama0/BRAM_addr]
   connect_bd_net -net arbit_brama0_BRAM_din [get_bd_pins Small_BRAM8k/dina] [get_bd_pins arbit_brama0/BRAM_din]
-  connect_bd_net -net arbit_brama0_BRAM_en [get_bd_pins Small_BRAM8k/ena] [get_bd_pins arbit_brama0/BRAM_en]
+  connect_bd_net -net arbit_brama0_BRAM_en [get_bd_pins BRAM_en] [get_bd_pins Small_BRAM8k/ena] [get_bd_pins arbit_brama0/BRAM_en]
   connect_bd_net -net arbit_brama0_BRAM_hash_dout [get_bd_pins BRAM_hash_dout] [get_bd_pins arbit_brama0/BRAM_hash_dout]
   connect_bd_net -net arbit_brama0_BRAM_key_dout [get_bd_pins BRAM_key_dout] [get_bd_pins arbit_brama0/BRAM_key_dout]
   connect_bd_net -net arbit_brama0_BRAM_lin_dout [get_bd_pins BRAM_lin_dout] [get_bd_pins arbit_brama0/BRAM_lin_dout]
@@ -628,6 +629,7 @@ proc create_hier_cell_BRAM_big1 { parentCell nameHier } {
   create_bd_pin -dir I -type rst BRAM_add_rst1
   create_bd_pin -dir I -from 3 -to 0 BRAM_add_we
   create_bd_pin -dir I -from 3 -to 0 BRAM_add_we1
+  create_bd_pin -dir O BRAM_en
   create_bd_pin -dir I -from 31 -to 0 BRAM_hash_addr
   create_bd_pin -dir I -from 31 -to 0 BRAM_hash_din
   create_bd_pin -dir O -from 31 -to 0 BRAM_hash_dout
@@ -760,7 +762,7 @@ proc create_hier_cell_BRAM_big1 { parentCell nameHier } {
   connect_bd_net -net arbit_brama1_BRAM_add_dout [get_bd_pins BRAM_add_dout] [get_bd_pins arbit_brama1/BRAM_add_dout]
   connect_bd_net -net arbit_brama1_BRAM_addr [get_bd_pins BIG_BRAM256KDP/addrb] [get_bd_pins arbit_brama1/BRAM_addr]
   connect_bd_net -net arbit_brama1_BRAM_din [get_bd_pins BIG_BRAM256KDP/dinb] [get_bd_pins arbit_brama1/BRAM_din]
-  connect_bd_net -net arbit_brama1_BRAM_en [get_bd_pins BIG_BRAM256KDP/enb] [get_bd_pins arbit_brama1/BRAM_en]
+  connect_bd_net -net arbit_brama1_BRAM_en [get_bd_pins BRAM_en] [get_bd_pins BIG_BRAM256KDP/enb] [get_bd_pins arbit_brama1/BRAM_en]
   connect_bd_net -net arbit_brama1_BRAM_hash_dout [get_bd_pins BRAM_hash_dout] [get_bd_pins arbit_brama1/BRAM_hash_dout]
   connect_bd_net -net arbit_brama1_BRAM_key_dout [get_bd_pins BRAM_key_dout] [get_bd_pins arbit_brama1/BRAM_key_dout]
   connect_bd_net -net arbit_brama1_BRAM_lin_dout [get_bd_pins BRAM_lin_dout] [get_bd_pins arbit_brama1/BRAM_lin_dout]
@@ -825,6 +827,8 @@ proc create_root_design { parentCell } {
   # Create ports
   set LD0 [ create_bd_port -dir O LD0 ]
   set LD1 [ create_bd_port -dir O LD1 ]
+  set LD4 [ create_bd_port -dir O LD4 ]
+  set LD5 [ create_bd_port -dir O LD5 ]
 
   # Create instance: BRAM_big1
   create_hier_cell_BRAM_big1 [current_bd_instance .] BRAM_big1
@@ -1347,6 +1351,19 @@ proc create_root_design { parentCell } {
   # Create instance: rst_ps7_0_100M, and set properties
   set rst_ps7_0_100M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_ps7_0_100M ]
 
+  # Create instance: system_ila_0, and set properties
+  set system_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0 ]
+  set_property -dict [ list \
+   CONFIG.C_MON_TYPE {NATIVE} \
+   CONFIG.C_NUM_OF_PROBES {6} \
+   CONFIG.C_PROBE0_TYPE {0} \
+   CONFIG.C_PROBE1_TYPE {0} \
+   CONFIG.C_PROBE2_TYPE {0} \
+   CONFIG.C_PROBE3_TYPE {0} \
+   CONFIG.C_PROBE4_TYPE {0} \
+   CONFIG.C_PROBE5_TYPE {0} \
+ ] $system_ila_0
+
   # Create instance: xlconcat_0, and set properties
   set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
   set_property -dict [ list \
@@ -1362,6 +1379,7 @@ proc create_root_design { parentCell } {
 
   # Create port connections
   connect_bd_net -net BRAM0_dout_1 [get_bd_pins BRAM_small/BRAM_hash_dout] [get_bd_pins hash/BRAM0_dout]
+  connect_bd_net -net BRAM_big1_BRAM_en [get_bd_pins BRAM_big1/BRAM_en] [get_bd_pins blink_led_0/in4]
   connect_bd_net -net BRAM_big_BRAM_add_dout [get_bd_pins BRAM_big1/BRAM_add_dout] [get_bd_pins mayo_add_vectors_0/i_memc_dout]
   connect_bd_net -net BRAM_big_BRAM_red_dout [get_bd_pins BRAM_big1/BRAM_red_dout] [get_bd_pins mayo_reduce_0/i_dout1]
   connect_bd_net -net BRAM_key_addr1_1 [get_bd_pins BRAM_small/BRAM_key_addr1] [get_bd_pins MAYO_KEYGEN_FSM_0/o_mem0b_addr]
@@ -1371,7 +1389,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net BRAM_key_we_1 [get_bd_pins BRAM_small/BRAM_key_we] [get_bd_pins MAYO_KEYGEN_FSM_0/o_mem0a_we]
   connect_bd_net -net BRAM_small_BRAM_add_dout [get_bd_pins BRAM_small/BRAM_add_dout] [get_bd_pins mayo_add_vectors_0/i_mema_dout]
   connect_bd_net -net BRAM_small_BRAM_add_dout1 [get_bd_pins BRAM_small/BRAM_add_dout1] [get_bd_pins mayo_add_vectors_0/i_memb_dout]
-  connect_bd_net -net Ground1_dout [get_bd_pins BRAM_big1/BRAM_add_rst] [get_bd_pins BRAM_small/Zero0] [get_bd_pins Ground1/dout] [get_bd_pins blink_led_0/in2] [get_bd_pins blink_led_0/in3] [get_bd_pins blink_led_0/in4] [get_bd_pins blink_led_0/in5] [get_bd_pins mayo_axi_litev3_0/i_Signing_busy] [get_bd_pins mayo_axi_litev3_0/i_Signing_done] [get_bd_pins mayo_axi_litev3_0/i_Verification_busy] [get_bd_pins mayo_axi_litev3_0/i_Verification_done] [get_bd_pins xlconcat_0/In2] [get_bd_pins xlconcat_0/In3]
+  connect_bd_net -net BRAM_small_BRAM_en [get_bd_pins BRAM_small/BRAM_en] [get_bd_pins blink_led_0/in5]
+  connect_bd_net -net Ground1_dout [get_bd_pins BRAM_big1/BRAM_add_rst] [get_bd_pins BRAM_small/Zero0] [get_bd_pins Ground1/dout] [get_bd_pins blink_led_0/in2] [get_bd_pins blink_led_0/in3] [get_bd_pins mayo_axi_litev3_0/i_Signing_busy] [get_bd_pins mayo_axi_litev3_0/i_Signing_done] [get_bd_pins mayo_axi_litev3_0/i_Verification_busy] [get_bd_pins mayo_axi_litev3_0/i_Verification_done]
   connect_bd_net -net Ground32_dout1 [get_bd_pins BRAM_big1/BRAM_neg_din] [get_bd_pins BRAM_small/Zero_32] [get_bd_pins Ground33/dout] [get_bd_pins MAYO_KEYGEN_FSM_0/PUBLIC_KEY_ADDR_I] [get_bd_pins MAYO_KEYGEN_FSM_0/SECRET_KEY_ADDR_I]
   connect_bd_net -net Ground4_dout1 [get_bd_pins BRAM_big1/BRAM_add_we] [get_bd_pins BRAM_small/Zero_4] [get_bd_pins Ground5/dout] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_add_bram_sel [get_bd_pins MAYO_KEYGEN_FSM_0/o_add_bram_sel] [get_bd_pins mayo_add_vectors_0/i_bram_sel]
@@ -1380,9 +1399,11 @@ proc create_root_design { parentCell } {
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_add_v1_addr [get_bd_pins MAYO_KEYGEN_FSM_0/o_add_v1_addr] [get_bd_pins mayo_add_vectors_0/i_v1_addr]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_add_v2_addr [get_bd_pins MAYO_KEYGEN_FSM_0/o_add_v2_addr] [get_bd_pins mayo_add_vectors_0/i_v2_addr]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_busy [get_bd_pins MAYO_KEYGEN_FSM_0/o_busy] [get_bd_pins blink_led_0/in1] [get_bd_pins mayo_axi_litev3_0/i_Keygen_busy]
-  connect_bd_net -net MAYO_KEYGEN_FSM_0_o_done [get_bd_pins MAYO_KEYGEN_FSM_0/o_done] [get_bd_pins blink_led_0/in0] [get_bd_pins mayo_axi_litev3_0/i_Keygen_done]
+  connect_bd_net -net MAYO_KEYGEN_FSM_0_o_done [get_bd_pins MAYO_KEYGEN_FSM_0/o_done] [get_bd_pins blink_led_0/in0] [get_bd_pins mayo_axi_litev3_0/i_Keygen_done] [get_bd_pins system_ila_0/probe1]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets MAYO_KEYGEN_FSM_0_o_done]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_err [get_bd_pins MAYO_KEYGEN_FSM_0/o_err] [get_bd_pins xlconcat_0/In0]
-  connect_bd_net -net MAYO_KEYGEN_FSM_0_o_hash_en [get_bd_pins MAYO_KEYGEN_FSM_0/o_hash_en] [get_bd_pins hash/i_key_en]
+  connect_bd_net -net MAYO_KEYGEN_FSM_0_o_hash_en [get_bd_pins MAYO_KEYGEN_FSM_0/o_hash_en] [get_bd_pins hash/i_key_en] [get_bd_pins system_ila_0/probe2]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets MAYO_KEYGEN_FSM_0_o_hash_en]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_hash_memsel [get_bd_pins MAYO_KEYGEN_FSM_0/o_hash_memsel] [get_bd_pins hash/bram_sel]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_hash_mlen [get_bd_pins MAYO_KEYGEN_FSM_0/o_hash_mlen] [get_bd_pins hash/i_key_mlen]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_hash_olen [get_bd_pins MAYO_KEYGEN_FSM_0/o_hash_olen] [get_bd_pins hash/i_key_olen]
@@ -1390,7 +1411,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_hash_write_adr [get_bd_pins MAYO_KEYGEN_FSM_0/o_hash_write_adr] [get_bd_pins hash/i_key_write_adr]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_lin_bram_halt [get_bd_pins MAYO_KEYGEN_FSM_0/o_lin_bram_halt] [get_bd_pins mayo_linear_combinat_0/i_bram_halt]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_lin_coeffs_addr [get_bd_pins MAYO_KEYGEN_FSM_0/o_lin_coeffs_addr] [get_bd_pins mayo_linear_combinat_0/i_coeffs_addr]
-  connect_bd_net -net MAYO_KEYGEN_FSM_0_o_lin_enable [get_bd_pins MAYO_KEYGEN_FSM_0/o_lin_enable] [get_bd_pins mayo_linear_combinat_0/i_enable]
+  connect_bd_net -net MAYO_KEYGEN_FSM_0_o_lin_enable [get_bd_pins MAYO_KEYGEN_FSM_0/o_lin_enable] [get_bd_pins mayo_linear_combinat_0/i_enable] [get_bd_pins system_ila_0/probe3]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets MAYO_KEYGEN_FSM_0_o_lin_enable]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_lin_len [get_bd_pins MAYO_KEYGEN_FSM_0/o_lin_len] [get_bd_pins mayo_linear_combinat_0/i_len]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_lin_out_addr [get_bd_pins MAYO_KEYGEN_FSM_0/o_lin_out_addr] [get_bd_pins mayo_linear_combinat_0/i_out_addr]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_lin_vec_addr [get_bd_pins MAYO_KEYGEN_FSM_0/o_lin_vec_addr] [get_bd_pins mayo_linear_combinat_0/i_vec_addr]
@@ -1406,11 +1428,13 @@ proc create_root_design { parentCell } {
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_mem1a_en [get_bd_pins BRAM_big1/BRAM_key_en] [get_bd_pins MAYO_KEYGEN_FSM_0/o_mem1a_en]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_mem1a_we [get_bd_pins BRAM_big1/BRAM_key_we] [get_bd_pins MAYO_KEYGEN_FSM_0/o_mem1a_we]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_neg_adr [get_bd_pins MAYO_KEYGEN_FSM_0/o_neg_adr] [get_bd_pins mayo_negate_0/i_adr]
-  connect_bd_net -net MAYO_KEYGEN_FSM_0_o_neg_enable [get_bd_pins MAYO_KEYGEN_FSM_0/o_neg_enable] [get_bd_pins mayo_negate_0/i_enable]
+  connect_bd_net -net MAYO_KEYGEN_FSM_0_o_neg_enable [get_bd_pins MAYO_KEYGEN_FSM_0/o_neg_enable] [get_bd_pins mayo_negate_0/i_enable] [get_bd_pins system_ila_0/probe4]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets MAYO_KEYGEN_FSM_0_o_neg_enable]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_neg_len [get_bd_pins MAYO_KEYGEN_FSM_0/o_neg_len] [get_bd_pins mayo_negate_0/i_len]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_red_adr [get_bd_pins MAYO_KEYGEN_FSM_0/o_red_adr] [get_bd_pins mayo_reduce_0/i_adr]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_red_bram_sel [get_bd_pins MAYO_KEYGEN_FSM_0/o_red_bram_sel] [get_bd_pins mayo_reduce_0/i_bram_sel]
-  connect_bd_net -net MAYO_KEYGEN_FSM_0_o_red_enable [get_bd_pins MAYO_KEYGEN_FSM_0/o_red_enable] [get_bd_pins mayo_reduce_0/i_enable]
+  connect_bd_net -net MAYO_KEYGEN_FSM_0_o_red_enable [get_bd_pins MAYO_KEYGEN_FSM_0/o_red_enable] [get_bd_pins mayo_reduce_0/i_enable] [get_bd_pins system_ila_0/probe5]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets MAYO_KEYGEN_FSM_0_o_red_enable]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_red_len [get_bd_pins MAYO_KEYGEN_FSM_0/o_red_len] [get_bd_pins mayo_reduce_0/i_len]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_sam_enable [get_bd_pins MAYO_KEYGEN_FSM_0/o_sam_enable] [get_bd_pins mayo_sample_oil_space_0/i_enable]
   connect_bd_net -net MAYO_KEYGEN_FSM_0_o_sam_oil_addr [get_bd_pins MAYO_KEYGEN_FSM_0/o_sam_oil_addr] [get_bd_pins mayo_sample_oil_space_0/i_oil_addr]
@@ -1439,6 +1463,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net arbit_bramb0_BRAM_sam_dout [get_bd_pins BRAM_small/BRAM_sam_dout1] [get_bd_pins mayo_sample_oil_space_0/i_memb_dout]
   connect_bd_net -net blink_led_0_led0 [get_bd_ports LD0] [get_bd_pins blink_led_0/led0]
   connect_bd_net -net blink_led_0_led1 [get_bd_ports LD1] [get_bd_pins blink_led_0/led1]
+  connect_bd_net -net blink_led_0_led4 [get_bd_ports LD4] [get_bd_pins blink_led_0/led4]
+  connect_bd_net -net blink_led_0_led5 [get_bd_ports LD5] [get_bd_pins blink_led_0/led5]
   connect_bd_net -net bram_control_1 [get_bd_pins BRAM_big1/bram_control] [get_bd_pins MAYO_KEYGEN_FSM_0/o_mem1a_control]
   connect_bd_net -net bram_control_2 [get_bd_pins BRAM_small/bram_control] [get_bd_pins MAYO_KEYGEN_FSM_0/o_mem0a_control]
   connect_bd_net -net hash_BRAM0_addr [get_bd_pins BRAM_small/BRAM_hash_addr] [get_bd_pins hash/BRAM0_addr]
@@ -1470,7 +1496,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net mayo_axi_litev3_0_o_Keygen_en [get_bd_pins MAYO_KEYGEN_FSM_0/ENABLE] [get_bd_pins mayo_axi_litev3_0/o_Keygen_en]
   connect_bd_net -net mayo_axi_litev3_0_o_interrupt [get_bd_pins mayo_axi_litev3_0/o_interrupt] [get_bd_pins processing_system7_0/IRQ_F2P]
   connect_bd_net -net mayo_bram_arbiter_1_BRAM_lin_dout [get_bd_pins BRAM_small/BRAM_lin_dout1] [get_bd_pins mayo_linear_combinat_0/i_mem0b_dout]
-  connect_bd_net -net mayo_hash_arbiter_0_o_key_done [get_bd_pins MAYO_KEYGEN_FSM_0/i_hash_done] [get_bd_pins hash/o_key_done]
+  connect_bd_net -net mayo_hash_arbiter_0_o_key_done [get_bd_pins MAYO_KEYGEN_FSM_0/i_hash_done] [get_bd_pins hash/o_key_done] [get_bd_pins system_ila_0/probe0]
+  set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets mayo_hash_arbiter_0_o_key_done]
   connect_bd_net -net mayo_hash_arbiter_0_o_key_dyn_done [get_bd_pins MAYO_KEYGEN_FSM_0/i_hash_dyn_done] [get_bd_pins hash/o_key_dyn_done]
   connect_bd_net -net mayo_linear_combinat_0_o_control0a [get_bd_pins BRAM_small/lin_control] [get_bd_pins mayo_linear_combinat_0/o_control0a]
   connect_bd_net -net mayo_linear_combinat_0_o_control0b [get_bd_pins BRAM_small/lin_control1] [get_bd_pins mayo_linear_combinat_0/o_control0b]
@@ -1522,7 +1549,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net mayo_sample_oil_space_0_o_trng_r [get_bd_pins TRNG/i_trng1_r] [get_bd_pins mayo_sample_oil_space_0/o_trng_r]
   connect_bd_net -net mayo_sample_oil_space_0_o_trng_sel [get_bd_pins TRNG/i_trng_sel] [get_bd_pins mayo_sample_oil_space_0/o_trng_sel]
   connect_bd_net -net mayo_sample_oil_space_0_o_trng_w [get_bd_pins TRNG/i_trng1_w] [get_bd_pins mayo_sample_oil_space_0/o_trng_w]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins BRAM_big1/clkb] [get_bd_pins BRAM_big1/s_axi_aclk] [get_bd_pins BRAM_small/clkb] [get_bd_pins MAYO_KEYGEN_FSM_0/CLK] [get_bd_pins TRNG/clk] [get_bd_pins blink_led_0/clk] [get_bd_pins hash/clk] [get_bd_pins mayo_add_vectors_0/i_clk] [get_bd_pins mayo_axi_litev3_0/s00_axi_aclk] [get_bd_pins mayo_linear_combinat_0/i_clk] [get_bd_pins mayo_negate_0/i_clk] [get_bd_pins mayo_reduce_0/i_clk] [get_bd_pins mayo_sample_oil_space_0/i_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins BRAM_big1/clkb] [get_bd_pins BRAM_big1/s_axi_aclk] [get_bd_pins BRAM_small/clkb] [get_bd_pins MAYO_KEYGEN_FSM_0/CLK] [get_bd_pins TRNG/clk] [get_bd_pins blink_led_0/clk] [get_bd_pins hash/clk] [get_bd_pins mayo_add_vectors_0/i_clk] [get_bd_pins mayo_axi_litev3_0/s00_axi_aclk] [get_bd_pins mayo_linear_combinat_0/i_clk] [get_bd_pins mayo_negate_0/i_clk] [get_bd_pins mayo_reduce_0/i_clk] [get_bd_pins mayo_sample_oil_space_0/i_clk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk] [get_bd_pins system_ila_0/clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_100M/ext_reset_in]
   connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins BRAM_big1/s_axi_aresetn] [get_bd_pins mayo_axi_litev3_0/s00_axi_aresetn] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn]
   connect_bd_net -net rst_ps7_0_100M_peripheral_reset [get_bd_pins MAYO_KEYGEN_FSM_0/RESET] [get_bd_pins TRNG/rst] [get_bd_pins blink_led_0/rst] [get_bd_pins hash/rst] [get_bd_pins mayo_add_vectors_0/rst] [get_bd_pins mayo_linear_combinat_0/rst] [get_bd_pins mayo_negate_0/rst] [get_bd_pins mayo_reduce_0/rst] [get_bd_pins mayo_sample_oil_space_0/rst] [get_bd_pins rst_ps7_0_100M/peripheral_reset]

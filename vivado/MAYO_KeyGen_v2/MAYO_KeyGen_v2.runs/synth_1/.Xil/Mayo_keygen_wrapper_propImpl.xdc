@@ -3,5 +3,9 @@ set_property src_info {type:XDC file:1 line:4 export:INPUT save:INPUT read:READ}
 set_property PACKAGE_PIN T22 [get_ports {LD0}];  # "LD0"
 set_property src_info {type:XDC file:1 line:5 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN T21 [get_ports {LD1}];  # "LD1"
+set_property src_info {type:XDC file:1 line:8 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN V22 [get_ports {LD4}];  # "LD4"
+set_property src_info {type:XDC file:1 line:9 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN W22 [get_ports {LD5}];  # "LD5"
 set_property src_info {type:XDC file:1 line:13 export:INPUT save:INPUT read:READ} [current_design]
 set_property IOSTANDARD "LVCMOS33" [get_ports -of_objects [get_iobanks 33]];
