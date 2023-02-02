@@ -14,6 +14,13 @@ entity MAYO_SIGNING_FSM is
 		i_enable : in  std_logic;
 		o_done   : out std_logic;
 
+		o_trng_r     : out std_logic;
+		o_trng_w     : out std_logic;
+		o_trng_data  : out std_logic_vector(31 downto 0);
+		i_trng_data  : in  std_logic_vector(31 downto 0);
+		i_trng_valid : in  std_logic;
+		i_trng_done  : in  std_logic;
+
 		--HASH (EXPAND [SHAKE128])
 		o_hash_en        : out std_logic;
 		o_hash_mlen      : out std_logic_vector(31 downto 0);
@@ -91,7 +98,23 @@ entity MAYO_SIGNING_FSM is
 		o_mem1a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem1a_en   : out std_logic;
 		o_mem1a_rst  : out std_logic;
-		o_mem1a_we   : out std_logic_vector (3 downto 0)
+		o_mem1a_we   : out std_logic_vector (3 downto 0);
+
+		--BRAM2-A
+		i_mem2a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mem2a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mem2a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mem2a_en   : out std_logic;
+		o_mem2a_rst  : out std_logic;
+		o_mem2a_we   : out std_logic_vector (3 downto 0);
+
+		--BRAM2-B
+		i_mem2b_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mem2b_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mem2b_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mem2b_en   : out std_logic;
+		o_mem2b_rst  : out std_logic;
+		o_mem2b_we   : out std_logic_vector (3 downto 0)
 	);
 
 end entity MAYO_SIGNING_FSM;
@@ -99,8 +122,9 @@ end entity MAYO_SIGNING_FSM;
 ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
 	type state_fsm_t is (idle,expand_sk0,expand_sk1,expand_sk2,expand_sk3,expand_sk4,expand_sk5,expand_sk6, expand_sk7, expand_sk8, sample0, sample1, sample2, computeBil0,
 			computeBil1, computeBil2, computeBil3, computeBil4, computeBil5, computeBil6, computeBil7, computeBil8, computeBil9, computeBil10, computeBil11, computeBil12, computeBil13,
-			computeBil14, computeBil15, transpose0, transpose1, transpose2, transpose3, sign0, done);
-	signal sign_fsm_state : state_fsm_t := idle;
+			computeBil14, computeBil15, transpose0, transpose1, transpose2, transpose3, sign0, sign1, sign2, sign3, sign4, msgdgst0, msgdgst1, msgdgst2, msgdgst3, msgdgst4, msgdgst5, msgdgst6, msgdgst7,msgdgst8,msgdgst9,
+			done);
+	signal state          : state_fsm_t := idle;
 	signal index          : integer     := 0;
 	signal s_hash_mem_sel : std_logic   := '1';
 	signal s_sam_mem_sel  : std_logic   := '1'; -- TODO : Use FOR SAMPLE OUT
@@ -113,7 +137,8 @@ ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
 	signal s_p1p1t_inv_adr : std_logic_vector(31 downto 0) := ZERO_32;
 	signal s_src_index     : integer                       := 0;
 	signal s_dest_index    : integer                       := 0;
-	signal s_utmp          : integer                       := 0 ;
+	signal s_utmp          : integer                       := 0;
+
 
 
 	------------------------------------------------------------------------------
@@ -122,6 +147,9 @@ ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
 	signal bram0a : bram_t := DEFAULT_BRAM;
 	signal bram0b : bram_t := DEFAULT_BRAM;
 	signal bram1a : bram_t := DEFAULT_BRAM;
+	signal bram2b : bram_t := DEFAULT_BRAM;
+	signal bram2a : bram_t := DEFAULT_BRAM;
+
 
 	------------------------------------------------------------------------------
 	-- DEBUG
@@ -137,7 +165,6 @@ begin
 		if (rising_edge(clk)) then
 			if(rst = '1') then
 				-- reset werte!
-				s_hash_mem_sel <= '1';
 				bram0a.o       <= DEFAULT_OUT_BRAM;
 				bram0b.o       <= DEFAULT_OUT_BRAM;
 				bram1a.o       <= DEFAULT_OUT_BRAM;
@@ -150,13 +177,13 @@ begin
 				s_utmp         <= 0;
 
 			else
-				case (sign_fsm_state) is
+				case (state) is
 					when idle =>
 						if (i_enable = '1') then
-							sign_fsm_state <= expand_sk0;
-							index          <= 0 ;
+							state <= expand_sk0;
+							index <= 0 ;
 						else
-							sign_fsm_state <= idle;
+							state <= idle;
 						end if;
 
 						-- TODO : Add expose
@@ -165,12 +192,12 @@ begin
 						bram0a.o.o_en   <= '1';
 						bram0a.o.o_we   <= "0000";
 						bram0a.o.o_addr <= std_logic_vector(to_unsigned(SK_BASE_ADR,PORT_WIDTH)) ; -- TODO : Check
-						sign_fsm_state  <= expand_sk1;
+						state           <= expand_sk1;
 
 					when expand_sk1 => -- BRAM LATENCY
-						bram1a.o.o_en  <= '0';
-						bram1a.o.o_we  <= "0000";
-						sign_fsm_state <= expand_sk2;
+						bram1a.o.o_en <= '0';
+						bram1a.o.o_we <= "0000";
+						state         <= expand_sk2;
 
 					when expand_sk2 =>
 						bram1a.o.o_din  <= bram0a.i.i_dout; -- TODO : Maybe timing viloation
@@ -181,11 +208,11 @@ begin
 						if (index < SEED_BYTES) then -- TODO check this loop?
 							index           <= index +4 ;
 							bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
-							sign_fsm_state  <= expand_sk1;
+							state           <= expand_sk1;
 						else
 							index          <= 0 ;
-							s_hash_mem_sel <= '0';
-							sign_fsm_state <= expand_sk3;
+							s_hash_mem_sel <= '1';
+							state          <= expand_sk3;
 						end if;
 
 					when expand_sk3 =>
@@ -201,7 +228,7 @@ begin
 						o_hash_read_adr  <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH));
 						o_hash_write_adr <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH)); -- Linked to BRAM 1 (BIG)
 						o_hash_en        <= '1';
-						sign_fsm_state   <= expand_sk4;
+						state            <= expand_sk4;
 
 					when expand_sk4 =>
 						o_hash_en        <= '0';
@@ -209,28 +236,28 @@ begin
 						o_hash_olen      <= ZERO_32;
 						o_hash_read_adr  <= ZERO_32;
 						o_hash_write_adr <= ZERO_32;
-						sign_fsm_state   <= expand_sk5;
+						state            <= expand_sk5;
 
 					when expand_sk5 =>
 						if (i_hash_done = '1') then
 							o_red_bram_sel <= '1';
-							sign_fsm_state <= expand_sk6;
+							state          <= expand_sk6;
 						end if;
 
 					when expand_sk6 =>
-						o_red_adr      <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH));
-						o_red_len      <= std_logic_vector(to_unsigned(P1_BYTES,PORT_WIDTH));
-						o_red_enable   <= '1';
-						sign_fsm_state <= expand_sk7;
+						o_red_adr    <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH));
+						o_red_len    <= std_logic_vector(to_unsigned(P1_BYTES,PORT_WIDTH));
+						o_red_enable <= '1';
+						state        <= expand_sk7;
 
 					when expand_sk7 =>
-						o_red_enable   <= '0';
-						sign_fsm_state <= expand_sk8;
+						o_red_enable <= '0';
+						state        <= expand_sk8;
 
 					when expand_sk8 =>
 						if (i_red_done = '1') then
 							s_hash_mem_sel <= '0'; -- Hash using small bram
-							sign_fsm_state <= sample0;
+							state          <= sample0;
 						end if;
 					--------------------------------------------------------------------
 					-- EXPAND PK END
@@ -238,17 +265,17 @@ begin
 					when sample0 =>            -- USES BOTH BRAM 0 PORTS!
 						o_sam_enable   <= '1'; -- TODO add bram ports
 						o_sam_oil_addr <= std_logic_vector(to_unsigned(OIL_SPACE_BASE_ADR,PORT_WIDTH));
-						sign_fsm_state <= sample1;
+						state          <= sample1;
 
 					when sample1 =>
-						o_sam_enable   <= '0';
-						sign_fsm_state <= sample2;
+						o_sam_enable <= '0';
+						state        <= sample2;
 
 					when sample2 =>
 						if (i_sam_done = '1') then
-							sign_fsm_state <= computeBil0;
+							state <= computeBil0;
 						else
-							sign_fsm_state <= sample2;
+							state <= sample2;
 						end if;
 
 					--------------------------------------------------------------------
@@ -263,24 +290,24 @@ begin
 						s_p1p1t_adr     <= std_logic_vector(to_unsigned(P1P1T_BASE_ADR,PORT_WIDTH));
 						s_p1_adr        <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH));
 
-						sign_fsm_state <= computeBil1;
+						state <= computeBil1;
 
 					when computeBil1 =>
 						if (i < N-O) then
-							sign_fsm_state  <= computeBil2 ;
+							state           <= computeBil2 ;
 							j               <= i;
 							s_p1p1t_adr     <= std_logic_vector(to_unsigned(P1P1T_BASE_ADR,PORT_WIDTH) + M*(i*(N-O)+i)); -- i = j !!
 							s_p1p1t_inv_adr <= std_logic_vector(to_unsigned(P1P1T_BASE_ADR,PORT_WIDTH) + M*(i*(N-O)+i));
 						else
-							sign_fsm_state <= computeBil6;
+							state <= computeBil6;
 						end if;
 
 					when computeBil2 =>
 						if (j < N-O) then
-							sign_fsm_state <= computeBil3;
+							state <= computeBil3;
 						else
-							i              <= i+1;
-							sign_fsm_state <= computeBil1;
+							i     <= i+1;
+							state <= computeBil1;
 						end if;
 
 					when computeBil3 => -- Runs for M 
@@ -293,15 +320,15 @@ begin
 							o_p1p1t_ji_equal <= '0';
 						end if;
 						o_p1p1t_enable <= '1';
-						sign_fsm_state <= computeBil4;
+						state          <= computeBil4;
 
 					when computeBil4 =>
 						o_p1p1t_enable <= '0';
 
 						if (i_p1p1t_done = '1') then
-							sign_fsm_state <= computeBil5;
+							state <= computeBil5;
 						else
-							sign_fsm_state <= computeBil4;
+							state <= computeBil4;
 						end if;
 
 					when computeBil5 =>
@@ -311,7 +338,7 @@ begin
 						j               <= j +1;
 						s_p1p1t_adr     <= std_logic_vector(unsigned(s_p1p1t_adr) + M);
 						s_p1p1t_inv_adr <= std_logic_vector(unsigned(s_p1p1t_inv_adr) + M*(N-O));
-						sign_fsm_state  <= computeBil2;
+						state           <= computeBil2;
 
 						--------------------------------------------------------
 
@@ -324,11 +351,11 @@ begin
 						s_p1p1t_adr     <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_OIL,PORT_WIDTH)); -- OILSPACE (Coefs)  [BIG BRAM 1]
 						s_p1p1t_inv_adr <= std_logic_vector(to_unsigned(BILINEAR_TEMP_BASE_ADR,PORT_WIDTH));       -- OUT [BIG BRAM 2]
 
-						sign_fsm_state <= computeBil7;
+						state <= computeBil7;
 
 					when computeBil7 =>
 						if (i < N-O) then
-							sign_fsm_state  <= computeBil8 ;
+							state           <= computeBil8 ;
 							s_p1_adr        <= std_logic_vector(to_unsigned(P1P1T_BASE_ADR,PORT_WIDTH) + M*(i*(N-O)));
 							s_p1p1t_adr     <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_OIL,PORT_WIDTH)); -- j = 0
 							s_p1p1t_inv_adr <= std_logic_vector(to_unsigned(BILINEAR_TEMP_BASE_ADR,PORT_WIDTH) + i*O*M);
@@ -340,16 +367,16 @@ begin
 							s_p1p1t_adr <= std_logic_vector(to_unsigned(BILINEAR_TEMP_BASE_ADR,PORT_WIDTH));
 							s_utmp      <= 0;
 
-							sign_fsm_state <= computeBil11;
+							state <= computeBil11;
 						end if;
 
 					when computeBil8 =>
 						if (j < O) then
-							sign_fsm_state <= computeBil9;
+							state <= computeBil9;
 						else
-							i              <= i+1;
-							j              <= 0;
-							sign_fsm_state <= computeBil7;
+							i     <= i+1;
+							j     <= 0;
+							state <= computeBil7;
 						end if;
 
 					when computeBil9 =>
@@ -358,18 +385,18 @@ begin
 						o_lin_vec_addr    <= s_p1_adr;
 						o_lin_coeffs_addr <= s_p1p1t_adr;
 						o_lin_out_addr    <= s_p1p1t_inv_adr;
-						sign_fsm_state    <= computeBil10;
+						state             <= computeBil10;
 
 					when computeBil10 =>
 						o_lin_enable <= '0';
 
 						if (i_lin_done = '1') then
-							sign_fsm_state  <= computeBil8;
+							state           <= computeBil8;
 							j               <= j+1;
 							s_p1p1t_adr     <= std_logic_vector(unsigned(s_p1p1t_adr) + (N-O));
 							s_p1p1t_inv_adr <= std_logic_vector(unsigned(s_p1p1t_inv_adr) + M);
 						else
-							sign_fsm_state <= computeBil10;
+							state <= computeBil10;
 						end if;
 
 					--------------------------------------------------------
@@ -379,9 +406,9 @@ begin
 					-- OUT --> BIG BRAM2
 					when computeBil11 =>
 						if (i < N-O) then
-							sign_fsm_state <= computeBil12 ;
-							s_p1p1t_adr    <= std_logic_vector(to_unsigned(BILINEAR_TEMP_BASE_ADR,PORT_WIDTH) + i*O*M);
-							s_p1_adr       <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH) + M*(counter+s_utmp));
+							state       <= computeBil12 ;
+							s_p1p1t_adr <= std_logic_vector(to_unsigned(BILINEAR_TEMP_BASE_ADR,PORT_WIDTH) + i*O*M);
+							s_p1_adr    <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH) + M*(counter+s_utmp));
 						else
 							-- ready for tranpose
 							i            <= 0 ;
@@ -389,17 +416,17 @@ begin
 							s_src_index  <= BILINEAR_TEMP_BASE_ADR;            -- BIG BRAM 2
 							s_dest_index <= SK_EXP_BASE_ADR + SK_EXP_BILINEAR; --BIG BRAM 1 
 
-							sign_fsm_state <= transpose0;
+							state <= transpose0;
 						end if;
 
 					when computeBil12 =>
 						if (j < O) then
-							sign_fsm_state <= computeBil13;
+							state <= computeBil13;
 						else
-							i              <= i+1;
-							j              <= 0;
-							s_utmp         <= s_utmp + O;
-							sign_fsm_state <= computeBil11;
+							i      <= i+1;
+							j      <= 0;
+							s_utmp <= s_utmp + O;
+							state  <= computeBil11;
 						end if;
 
 					when computeBil13 =>
@@ -408,18 +435,18 @@ begin
 						o_add_v2_addr  <= s_p1_adr;
 						o_add_out_addr <= s_p1p1t_adr;
 						o_add_bram_sel <= "00"; -- TODO : Make sure that demux understands this 
-						sign_fsm_state <= computeBil14;
+						state          <= computeBil14;
 
 					when computeBil14 =>
 						o_add_enable <= '0';
 
 						if (i_add_done = '1') then
-							sign_fsm_state <= computeBil12;
-							j              <= j+1;
-							s_p1p1t_adr    <= std_logic_vector(unsigned(s_p1p1t_adr) + M);
-							s_p1_adr       <= std_logic_vector(unsigned(s_p1_adr) + M);
+							state       <= computeBil12;
+							j           <= j+1;
+							s_p1p1t_adr <= std_logic_vector(unsigned(s_p1p1t_adr) + M);
+							s_p1_adr    <= std_logic_vector(unsigned(s_p1_adr) + M);
 						else
-							sign_fsm_state <= computeBil14;
+							state <= computeBil14;
 						end if;
 
 					------------------------------------------------------------------
@@ -427,20 +454,20 @@ begin
 					------------------------------------------------------------------
 					when transpose0 =>
 						if (i < N-O) then
-							sign_fsm_state <= transpose2;
-							s_src_index    <= BILINEAR_TEMP_BASE_ADR + i*O*M;
-							s_dest_index   <= SK_EXP_BASE_ADR + SK_EXP_BILINEAR + i*M;
+							state        <= transpose2;
+							s_src_index  <= BILINEAR_TEMP_BASE_ADR + i*O*M;
+							s_dest_index <= SK_EXP_BASE_ADR + SK_EXP_BILINEAR + i*M;
 						else
-							sign_fsm_state <= sign0; --DEBUG OFF
+							state <= sign0; --DEBUG OFF
 						end if;
 
 					when transpose1 =>
 						if (j < O) then
-							sign_fsm_state <= transpose2;
+							state <= transpose2;
 						else
-							j              <= 0 ;
-							i              <= i+1;
-							sign_fsm_state <= transpose0;
+							j     <= 0 ;
+							i     <= i+1;
+							state <= transpose0;
 						end if;
 
 					when transpose2 =>
@@ -449,25 +476,144 @@ begin
 						o_memcpy_dst_adr      <= std_logic_vector(to_unsigned(s_dest_index,PORT_WIDTH));
 						o_memcpy_len          <= std_logic_vector(to_unsigned(M,PORT_WIDTH));
 						o_memcpy_mem_port_sel <= "00";
-						sign_fsm_state        <= transpose3;
+						state                 <= transpose3;
 
 					when transpose3 =>
 						o_memcpy_start <= '0';
 						if (i_memcpy_done = '1') then
-							sign_fsm_state <= transpose1;
-							j              <= j+1;
-							s_dest_index   <= s_dest_index + (N-O);
-							s_src_index    <= s_src_index + M;
+							state        <= transpose1;
+							j            <= j+1;
+							s_dest_index <= s_dest_index + (N-O);
+							s_src_index  <= s_src_index + M;
 						else
-							sign_fsm_state <= transpose3;
+							state <= transpose3;
 						end if;
 
 					------------------------------------------------------------------
-					-- END TRANSPOSE TEMP -> TEMPT
+					-- END TRANSPOSE TEMP -> 
+					-- BEGIN SIGN FAST
 					-----------------------------------------------------------------
-					when sign0 =>
+					when sign0 => --randomized message digest 
+						o_trng_w      <= '1';
+						o_trng_r      <= '0';
+						o_trng_data   <= std_logic_vector(to_unsigned(SEED_BYTES,PORT_WIDTH));
+						bram2a.o.o_we <= "1111";
+						bram2b.o.o_we <= "1111";
+						index         <= 0 ;
+						state         <= sign1;
+					when sign1 =>
+						o_trng_w <= '0';
+						o_trng_r <= '0';
+						state    <= sign2;
 
+					when sign2 =>
+						o_trng_w <= '0';
+						o_trng_r <= '1';
+
+						if (i_trng_valid = '1') then
+							bram2a.o.o_din  <= i_trng_data;
+							bram2a.o.o_en   <= '1';
+							bram2a.o.o_addr <= std_logic_vector(to_unsigned(SIG_BASE_ADR+index,PORT_WIDTH)) ;
+
+							-- Also copy in here for message digest
+							bram2b.o.o_din  <= i_trng_data;
+							bram2b.o.o_en   <= '1';
+							bram2b.o.o_addr <= std_logic_vector(to_unsigned(DIG_BASE_ADR+index,PORT_WIDTH)) ;
+
+							index <= index + 4;
+
+						else
+							bram2a.o.o_en <= '0';
+						end if;
+
+						if (i_trng_done = '1') then
+							state <= sign3;
+						end if;
+
+					when sign3 =>
+						o_trng_r      <= '0';
+						bram2a.o.o_en <= '0';
+						bram2a.o.o_we <= "0000";
+						state         <= msgdgst0;
+					--------------------------------------------------------
+					-- Msg digest
+					--------------------------------------------------------
+					when msgdgst0 =>
+						s_hash_mem_sel <= '0';
+						-- Hash using small BRAM (2)
+						o_hash_mlen      <= std_logic_vector(to_unsigned(MESSAGE_BYTES,PORT_WIDTH));
+						o_hash_olen      <= std_logic_vector(to_unsigned(HASH_BYTES,PORT_WIDTH));
+						o_hash_read_adr  <= std_logic_vector(to_unsigned(MSG_BASE_ADR,PORT_WIDTH));
+						o_hash_write_adr <= std_logic_vector(to_unsigned(DIG_BASE_ADR + SEED_BYTES,PORT_WIDTH)); -- Linked to BRAM 1 (BIG)
+						o_hash_en        <= '1';
+						state            <= msgdgst1;
+
+					when msgdgst1 =>
+						o_hash_en        <= '0';
+						o_hash_mlen      <= ZERO_32;
+						o_hash_olen      <= ZERO_32;
+						o_hash_read_adr  <= ZERO_32;
+						o_hash_write_adr <= ZERO_32;
+						state            <= msgdgst2;
+
+					when msgdgst2 =>
+						if (i_hash_done = '1') then
+							index <= 0;
+							state <= msgdgst3;
+						end if;
+
+					when msgdgst3 => -- delay wait for hash reset [10 Clks]
+						index <= index +1;
+						if(index >= 10) then
+							state <= msgdgst4;
+						end if;
+
+					when msgdgst4 =>
+
+						s_hash_mem_sel <= '0';
+						-- Hash using small BRAM (2)
+						o_hash_mlen      <= std_logic_vector(to_unsigned(SEED_BYTES + HASH_BYTES,PORT_WIDTH));
+						o_hash_olen      <= std_logic_vector(to_unsigned(DIG_RANGE,PORT_WIDTH));
+						o_hash_read_adr  <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH));
+						o_hash_write_adr <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH)); -- Linked to BRAM 1 (BIG)
+						o_hash_en        <= '1';
+						state            <= msgdgst5;
+
+					when msgdgst5 =>
+						o_hash_en        <= '0';
+						o_hash_mlen      <= ZERO_32;
+						o_hash_olen      <= ZERO_32;
+						o_hash_read_adr  <= ZERO_32;
+						o_hash_write_adr <= ZERO_32;
+						state            <= msgdgst6;
+
+					when msgdgst6 =>
+						if (i_hash_done = '1') then
+							index          <= 0;
+							o_red_bram_sel <= '0'; -- reduce on small bram 
+							state          <= msgdgst7;
+						end if;
+
+					when msgdgst7 =>
+						o_red_adr    <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH));
+						o_red_len    <= std_logic_vector(to_unsigned(DIG_RANGE,PORT_WIDTH));
+						o_red_enable <= '1';
+						state        <= msgdgst8;
+
+					when msgdgst8 =>
+						o_red_enable <= '0';
+						state        <= msgdgst9;
+
+					when msgdgst9 =>
+						if (i_red_done = '1') then
+							state <= sign4;
+							report "Message Digest Done!";
+						end if;
+					when sign4 =>
 						null;
+
+
+
 
 
 
@@ -506,4 +652,20 @@ begin
 	o_mem1a_en      <= bram1a.o.o_en;
 	o_mem1a_rst     <= bram1a.o.o_rst;
 	o_mem1a_we      <= bram1a.o.o_we;
+
+	--BRAM2-A
+	bram2a.i.i_dout <= i_mem2a_dout;
+	o_mem2a_din     <= bram2a.o.o_din;
+	o_mem2a_addr    <= bram2a.o.o_addr;
+	o_mem2a_en      <= bram2a.o.o_en;
+	o_mem2a_rst     <= bram2a.o.o_rst;
+	o_mem2a_we      <= bram2a.o.o_we;
+
+	--BRAM2-B
+	-- bram2b.i.i_dout <= i_mem2b_dout;
+	o_mem2b_din  <= bram2b.o.o_din;
+	o_mem2b_addr <= bram2b.o.o_addr;
+	o_mem2b_en   <= bram2b.o.o_en;
+	o_mem2b_rst  <= bram2b.o.o_rst;
+	o_mem2b_we   <= bram2b.o.o_we;
 END ARCHITECTURE Behavioral;

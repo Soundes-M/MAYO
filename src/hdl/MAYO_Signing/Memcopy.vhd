@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari 
 -- Company     : TU BERLIN
 -- Created     : Mon Jan  9 00:23:33 2023
--- Last update : Thu Jan 12 14:11:38 2023
+-- Last update : Thu Jan 26 15:52:20 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -32,12 +32,12 @@ entity memcpy is
 		clk : in std_logic;
 		rst : in std_logic;
 
-		start           : in  std_logic;
-		i_src_adr : in  std_logic_vector(31 downto 0);
-		i_dst_adr : in  std_logic_vector(31 downto 0);
-		i_len           : in  std_logic_vector(31 downto 0);
-		o_done          : out std_logic;
-		i_mem_port_sel  : in  std_logic_vector(1 downto 0);
+		start          : in  std_logic;
+		i_src_adr      : in  std_logic_vector(31 downto 0);
+		i_dst_adr      : in  std_logic_vector(31 downto 0);
+		i_len          : in  std_logic_vector(31 downto 0);
+		o_done         : out std_logic;
+		i_mem_port_sel : in  std_logic_vector(1 downto 0);
 
 		--BRAM0-A
 		i_src_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);

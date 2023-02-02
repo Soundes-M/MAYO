@@ -66,6 +66,8 @@ PACKAGE MAYO_COMMON IS
 
   CONSTANT SIG_BYTES     : positive := SEED_BYTES + (K*N);
   CONSTANT MESSAGE_BYTES : positive := 100; -- Can be changed
+  CONSTANT DIGEST_BYTES  : positive := M;   -- Can be changed
+
 
   CONSTANT SK_EXP_P1       : natural  := 0; -- Can be changed
   CONSTANT SK_EXP_OIL      : positive := SK_EXP_P1 + P1_BYTES;
@@ -121,6 +123,16 @@ PACKAGE MAYO_COMMON IS
   CONSTANT SIG_RANGE    : positive := SIG_BYTES;
   CONSTANT SIG_HIGH_ADR : positive := SIG_BASE_ADR + SIG_RANGE -4;
 
+  -- Digest
+  CONSTANT DIG_BASE_ADR : positive := SIG_HIGH_ADR + 4;
+  CONSTANT DIG_RANGE    : positive := DIGEST_BYTES;
+  CONSTANT DIG_HIGH_ADR : positive := DIG_BASE_ADR + DIG_RANGE -4;
+
+  -- Message (LOCAL)
+  CONSTANT MSG_BASE_ADR : positive := DIG_HIGH_ADR +4;
+  CONSTANT MSG_RANGE    : positive := MESSAGE_BYTES;
+  CONSTANT MSG_HIGH_ADR : positive := MSG_BASE_ADR + MSG_RANGE -4;
+
   ------------------------------------------------------------------------------
   -- Address Mapping (In BRAM II) (BIG DATA1)
   ------------------------------------------------------------------------------
@@ -150,15 +162,19 @@ PACKAGE MAYO_COMMON IS
   -- ADDRESS ZYNQ MEMORY SPACE [CPU SPACE]
   -----------------------> COPY WHEN EXPOSE = 1! 
   -- Read from, if CPU provides data
-  -- SK [LAST WORD]
-  CONSTANT CPU_SPACE_SK_HIGH_ADR  : positive := BRAM_II_SIZE;
-  CONSTANT CPU_SPACE_SK_RANGE_ADR : positive := SK_BYTES;
-  CONSTANT CPU_SPACE_SK_BASE_ADR  : positive := CPU_SPACE_SK_HIGH_ADR - CPU_SPACE_SK_RANGE_ADR +4;
+  -- RESERVED 8K :)
+  -- CONSTANT OFFSET PADDING
+  CONSTANT OFFSET : positive := 8_192;
 
-  -- PK
-  CONSTANT CPU_SPACE_PK_HIGH_ADR  : positive := CPU_SPACE_SK_BASE_ADR -4;
-  CONSTANT CPU_SPACE_PK_RANGE_ADR : positive := PK_BYTES;
+  -- PK [LAST WORD]
+  CONSTANT CPU_SPACE_PK_HIGH_ADR  : positive := BRAM_II_SIZE - OFFSET;
+  CONSTANT CPU_SPACE_PK_RANGE_ADR : positive := SK_BYTES;
   CONSTANT CPU_SPACE_PK_BASE_ADR  : positive := CPU_SPACE_PK_HIGH_ADR - CPU_SPACE_PK_RANGE_ADR +4;
+
+  -- SK
+  CONSTANT CPU_SPACE_SK_HIGH_ADR  : positive := CPU_SPACE_PK_BASE_ADR -4;
+  CONSTANT CPU_SPACE_SK_RANGE_ADR : positive := PK_BYTES;
+  CONSTANT CPU_SPACE_SK_BASE_ADR  : positive := CPU_SPACE_SK_HIGH_ADR - CPU_SPACE_SK_RANGE_ADR +4;
 
   -- Message 
   CONSTANT CPU_SPACE_MESSAGE_HIGH_ADR : positive := CPU_SPACE_PK_BASE_ADR -4;
