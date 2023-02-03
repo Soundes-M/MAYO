@@ -524,6 +524,7 @@ begin
 
 						else
 							bram2a.o.o_en <= '0';
+							bram2b.o.o_en <= '0';
 						end if;
 
 						if (i_trng_done = '1') then
@@ -534,6 +535,8 @@ begin
 						o_trng_r      <= '0';
 						bram2a.o.o_en <= '0';
 						bram2a.o.o_we <= "0000";
+						bram2b.o.o_en <= '0';
+						bram2b.o.o_we <= "0000";
 						state         <= msgdgst0;
 					--------------------------------------------------------
 					-- Msg digest
@@ -609,8 +612,12 @@ begin
 							state <= sign4;
 							report "Message Digest Done!";
 						end if;
+
+					--------------------------------------------------------
+					-- INFINITE LOOP BEGIN
+					--------------------------------------------------------
 					when sign4 =>
-						null;
+						n
 
 
 

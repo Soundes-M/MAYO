@@ -68,11 +68,11 @@ PACKAGE MAYO_COMMON IS
   CONSTANT MESSAGE_BYTES : positive := 100; -- Can be changed
   CONSTANT DIGEST_BYTES  : positive := M;   -- Can be changed
 
-
   CONSTANT SK_EXP_P1       : natural  := 0; -- Can be changed
   CONSTANT SK_EXP_OIL      : positive := SK_EXP_P1 + P1_BYTES;
   CONSTANT SK_EXP_BILINEAR : positive := SK_EXP_OIL + OIL_SPACE_BYTES;
   CONSTANT SK_EXP_BYTES    : positive := P1_BYTES + OIL_SPACE_BYTES + (M*(N-O)*O);
+
 
   ------------------------------------------------------------------------------
   -- ADDRESSE MAPPING EXPLAINED: (32 Bits Address space)
@@ -122,6 +122,7 @@ PACKAGE MAYO_COMMON IS
   CONSTANT SIG_BASE_ADR : positive := P2VEC_HIGH_ADR + 4;
   CONSTANT SIG_RANGE    : positive := SIG_BYTES;
   CONSTANT SIG_HIGH_ADR : positive := SIG_BASE_ADR + SIG_RANGE -4;
+  CONSTANT SIG_INPUTS   : positive := SIG_BASE_ADR + SEED_BYTES;
 
   -- Digest
   CONSTANT DIG_BASE_ADR : positive := SIG_HIGH_ADR + 4;
@@ -132,6 +133,13 @@ PACKAGE MAYO_COMMON IS
   CONSTANT MSG_BASE_ADR : positive := DIG_HIGH_ADR +4;
   CONSTANT MSG_RANGE    : positive := MESSAGE_BYTES;
   CONSTANT MSG_HIGH_ADR : positive := MSG_BASE_ADR + MSG_RANGE -4;
+
+  -- OIL_SOLUTION TODO: Can also be in P2VEC?
+  CONSTANT OILSOL_BASE_ADR : positive := MSG_HIGH_ADR +4;
+  CONSTANT OILSOL_RANGE    : positive := K*O;
+  CONSTANT OILSOL_HIGH_ADR : positive := OILSOL_BASE_ADR + OILSOL_RANGE -4;
+
+  
 
   ------------------------------------------------------------------------------
   -- Address Mapping (In BRAM II) (BIG DATA1)
