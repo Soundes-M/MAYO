@@ -76,6 +76,11 @@ entity MAYO_SIGNING_FSM is
 		i_add_done     : in  std_logic;
 		o_add_bram_sel : out std_logic_vector(1 downto 0);
 
+		-- Sample Vinegar
+		o_sam_vin_en        : out std_logic;
+		i_sam_vin_done      : in  std_logic;
+		o_sam_vin_input_adr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+
 		--BRAM0-A
 		i_mem0a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem0a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -122,7 +127,8 @@ end entity MAYO_SIGNING_FSM;
 ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
 	type state_fsm_t is (idle,expand_sk0,expand_sk1,expand_sk2,expand_sk3,expand_sk4,expand_sk5,expand_sk6, expand_sk7, expand_sk8, sample0, sample1, sample2, computeBil0,
 			computeBil1, computeBil2, computeBil3, computeBil4, computeBil5, computeBil6, computeBil7, computeBil8, computeBil9, computeBil10, computeBil11, computeBil12, computeBil13,
-			computeBil14, computeBil15, transpose0, transpose1, transpose2, transpose3, sign0, sign1, sign2, sign3, sign4, msgdgst0, msgdgst1, msgdgst2, msgdgst3, msgdgst4, msgdgst5, msgdgst6, msgdgst7,msgdgst8,msgdgst9,
+			computeBil14, computeBil15, transpose0, transpose1, transpose2, transpose3, sign0, sign1, sign2, sign3, sign4, sign5, sign6, sign7, sign8, sign9, sign10, sign11, sign12, sign13,
+			sign14, sign15, sign16, sign17, sign18, sign19, sign20, sign21, sign22, sign23, sign24, sign25, sign26, sign27, sign28, sign29, signX, msgdgst0, msgdgst1, msgdgst2, msgdgst3, msgdgst4, msgdgst5, msgdgst6, msgdgst7,msgdgst8,msgdgst9,
 			done);
 	signal state          : state_fsm_t := idle;
 	signal index          : integer     := 0;
@@ -131,15 +137,23 @@ ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
 	signal counter        : integer     := 0;
 	signal i              : integer     := 0;
 	signal j              : integer     := 0;
+	signal k              : integer     := 0;
+	signal l,m            : integer     := 0;
+	signal ctr            : integer     := 0;
 
 	signal s_p1p1t_adr     : std_logic_vector(31 downto 0) := ZERO_32;
 	signal s_p1_adr        : std_logic_vector(31 downto 0) := ZERO_32;
 	signal s_p1p1t_inv_adr : std_logic_vector(31 downto 0) := ZERO_32;
-	signal s_src_index     : integer                       := 0;
-	signal s_dest_index    : integer                       := 0;
-	signal s_utmp          : integer                       := 0;
+	signal tmp             : std_logic_vector(31 downto 0) := ZERO_32;
 
+	alias s_sign1_adr is s_p1p1t_adr;
+	alias s_sign2_adr is s_p1_adr;
+	alias s_vin_adr is s_p1p1t_inv_adr;
 
+	signal s_src_index  : integer := 0;
+	signal s_dest_index : integer := 0;
+	signal s_utmp       : integer := 0;
+	signal unsigned_tmp : unsigned(PORT_WIDTH -1 downto 0);
 
 	------------------------------------------------------------------------------
 	-- BRAM
@@ -173,6 +187,7 @@ begin
 				index          <= 0;
 				i              <= 0;
 				j              <= 0;
+				k              <= 0;
 				counter        <= 0;
 				s_utmp         <= 0;
 
@@ -262,8 +277,8 @@ begin
 					--------------------------------------------------------------------
 					-- EXPAND PK END
 					--------------------------------------------------------------------
-					when sample0 =>            -- USES BOTH BRAM 0 PORTS!
-						o_sam_enable   <= '1'; -- TODO add bram ports
+					when sample0 => -- USES BOTH BRAM 0 PORTS!
+						o_sam_enable   <= '1';
 						o_sam_oil_addr <= std_logic_vector(to_unsigned(OIL_SPACE_BASE_ADR,PORT_WIDTH));
 						state          <= sample1;
 
@@ -617,7 +632,188 @@ begin
 					-- INFINITE LOOP BEGIN
 					--------------------------------------------------------
 					when sign4 =>
-						n
+						o_sam_vin_input_adr <= std_logic_vector(to_unsigned(SIG_INPUTS,PORT_WIDTH)); -- Small BRAM
+						o_sam_vin_en        <= '1';
+						state               <= sign5;
+
+					when sign5 =>
+						o_sam_vin_input_adr <= ZERO_32;
+						o_sam_vin_en        <= '0';
+						if ( i_sam_vin_done = '1') then
+							ctr <= 0;
+							i   <= 0 ;
+							j   <= 0 ;
+
+							-- Mem reuse
+							-- FF reuse
+							s_sign1_adr <= std_logic_vector(to_unsigned(SIG_INPUTS,PORT_WIDTH));   -- Small BRAM [rows] / inputs[i*N + k]
+							s_sign2_adr <= std_logic_vector(to_unsigned(SIG_INPUTS,PORT_WIDTH));   -- Small BRAM [cols] / inputs[j*N + k]
+							s_vin_adr   <= std_logic_vector(to_unsigned(VIN_BASE_ADR,PORT_WIDTH)); -- Using P2VEC as VINEGAR{N}! 
+
+							state <= sign6;
+						end if;
+
+					when sign6 =>
+						if (i < K) then
+							j     <= i ;
+							state <= sign7;
+						else
+							state <= signX; -- TODO
+						end if;
+
+					when sign7 =>
+						if (j < K) then
+							k     <= 0 ;
+							state <= sign12;
+						else
+							i     <= i+1;
+							state <= sign6;
+						end if;
+
+					when sign12 =>
+						if (k < N) then
+							state <= sign8;
+						else
+							state <= sign13;
+							l     <= 0 ;
+							m     <= 0 ;
+							k     <= 0 ;
+						end if;
+						bram2b.o.o_we <= "0000";
+						bram2a.o.o_en <= '0';
+
+					when sign8 =>
+						bram2a.o.o_we   <= "0000";
+						bram2a.o.o_en   <= '1';
+						bram2a.o.o_addr <= std_logic_vector(unsigned(s_sign1_adr)+k) ;
+
+						if (s_sign1_adr /= s_sign2_adr) then -- Avoid read collisions
+							bram2b.o.o_we   <= "0000";
+							bram2b.o.o_en   <= '1';
+							bram2b.o.o_addr <= std_logic_vector(unsigned(s_sign2_adr)+k) ;
+						end if;
+						state <= sign9;
+
+					when sign9 =>
+						state <= sign10;
+
+					when sign10 =>
+						bram2a.o.o_en <= '0';
+						bram2b.o.o_en <= '0';
+						if (s_sign1_adr /= s_sign2_adr) then
+							for x in 0 to 3 loop
+								unsigned_tmp(7+x*8 downto x*8) <= (unsigned(i_mem2a_dout(7+x*8 downto x*8)) + unsigned(i_mem2b_dout(7+x*8 downto x*8))) mod PRIME;
+							end loop;
+						else
+							for x in 0 to 3 loop
+								unsigned_tmp(7+x*8 downto x*8) <= (unsigned(i_mem2a_dout(7+x*8 downto x*8)) + unsigned(i_mem2a_dout(7+x*8 downto x*8))) mod PRIME;
+							end loop;
+						end if;
+						state <= sign11;
+
+					when sign11 =>
+						bram2b.o.o_we   <= "1111";
+						bram2a.o.o_en   <= '1';
+						bram2a.o.o_din  <= std_logic_vector(unsigned_tmp);
+						bram2a.o.o_addr <= std_logic_vector(unsigned(s_vin_adr) + k) ;
+						k               <= k +4;
+						state           <= sign12;
+
+					--------------------------------------------------------
+					-- EvaluateP_vinegar BEGIN
+					--------------------------------------------------------
+					when sign13 =>
+						if (l < N-O) then
+							m     <= l;
+							state <= sign14;
+						else
+							state <= sign19;
+						end if;
+
+
+					when sign14 =>
+						if (m < N-O) then
+							state <= sign15;
+						else
+							l <= l+1;
+
+							if (index <3) then
+								index <= index +1;
+							else
+								index <= 0 ;
+							end if;
+
+							state <= sign13;
+						end if;
+						bram0a.o.o_en <= '0';
+						bram0a.o.o_we <= "0000";
+
+					when sign15 =>
+						bram2a.o.o_we   <= "0000";
+						bram2a.o.o_en   <= '1';
+						bram2a.o.o_addr <= std_logic_vector(unsigned(s_sign1_adr)+l);
+
+						if (l /= m) then -- Avoid read collisions
+							bram2b.o.o_we   <= "0000";
+							bram2b.o.o_en   <= '1';
+							bram2b.o.o_addr <= std_logic_vector(unsigned(s_sign2_adr)+m) ;
+						end if;
+
+						state <= sign16;
+
+					when sign16 =>
+						state <= sign17;
+
+					when sign17 =>
+						bram2a.o.o_en <= '0';
+						bram2b.o.o_en <= '0';
+						if (l /= m) then
+							for x in 0 to 3 loop
+								unsigned_tmp(7+x*8 downto x*8) <= (unsigned(i_mem2a_dout(7+index*8 downto index*8)) * unsigned(i_mem2b_dout(7+x*8 downto x*8))) mod PRIME;
+							end loop;
+						else
+							for x in 0 to 3 loop
+								unsigned_tmp(7+x*8 downto x*8) <= (unsigned(i_mem2a_dout(7+index*8 downto index*8)) * unsigned(i_mem2a_dout(7+x*8 downto x*8))) mod PRIME;
+							end loop;
+						end if;
+
+						state <= sign18;
+
+					when sign18 =>
+						bram0a.o.o_en   <= '1';
+						bram0a.o.o_we   <= "1111";
+						bram0a.o.o_din  <= std_logic_vector(unsigned_tmp);
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(PRODUCT_BASE_ADR,PORT_WIDTH)+ counter);
+						counter         <= counter+4;
+						m               <= m+4 ;
+						state           <= sign14;
+
+					when sign19 =>                                                                               -- TODO Check linear comb bram connections
+						o_lin_vec_addr    <= std_logic_vector(to_unsigned(SK_EXP_P1,PORT_WIDTH));                -- Big bram 1
+						o_lin_coeffs_addr <= std_logic_vector(to_unsigned(PRODUCT_BASE_ADR,PORT_WIDTH));         -- big bram 2 
+						o_lin_out_addr    <= std_logic_vector(to_unsigned(VINEVAL_BASE_ADR + ctr*M,PORT_WIDTH)); -- (BIG DATA2)
+						o_lin_len         <= std_logic_vector(to_unsigned((N-O)*(N-O+1)/2,PORT_WIDTH));
+						o_lin_enable      <= '1';
+
+						state <= sign20;
+
+					when sign20 =>
+						o_lin_vec_addr    <= ZERO_32;
+						o_lin_coeffs_addr <= ZERO_32;
+						o_lin_out_addr    <= ZERO_32;
+						o_lin_len         <= std_logic_vector(to_unsigned((N-O)*(N-O+1)/2,PORT_WIDTH));
+						o_lin_enable      <= '0';
+
+						if (i_lin_done = '1') then
+							report "EvaluteP_vin done";
+							state <= sign21;
+						end if;
+						--------------------------------------------------------
+						-- EvaluateP_vinegar END
+						--------------------------------------------------------
+
+					when sign21 =>
+						null;
 
 
 
@@ -661,12 +857,12 @@ begin
 	o_mem1a_we      <= bram1a.o.o_we;
 
 	--BRAM2-A
-	bram2a.i.i_dout <= i_mem2a_dout;
-	o_mem2a_din     <= bram2a.o.o_din;
-	o_mem2a_addr    <= bram2a.o.o_addr;
-	o_mem2a_en      <= bram2a.o.o_en;
-	o_mem2a_rst     <= bram2a.o.o_rst;
-	o_mem2a_we      <= bram2a.o.o_we;
+	--bram2a.i.i_dout <= i_mem2a_dout;
+	o_mem2a_din  <= bram2a.o.o_din;
+	o_mem2a_addr <= bram2a.o.o_addr;
+	o_mem2a_en   <= bram2a.o.o_en;
+	o_mem2a_rst  <= bram2a.o.o_rst;
+	o_mem2a_we   <= bram2a.o.o_we;
 
 	--BRAM2-B
 	-- bram2b.i.i_dout <= i_mem2b_dout;

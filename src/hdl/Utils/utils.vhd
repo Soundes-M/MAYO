@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sun Jan  8 14:20:55 2023
+-- Last update : Sat Feb  4 14:24:52 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -18,6 +18,22 @@
 -- the revision control system (RCS).  The RCS should be consulted
 -- on revision history.
 -------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+-- Python Script to generate FSMS
+-- def fsms(start, end, root):
+--    test = "";
+--    for s in range(start,end):
+--        if (s == end -1):
+--            test += str(root)+str(s)
+--        else:
+--            test += str(root)+str(s)+", "
+--    return test
+--
+-- print(f'FSMs:  {fsms(5,20,"sign")}')
+--------------------------------------------------------------------------------
+
 
 LIBRARY IEEE;
 USE ieee.std_logic_1164.ALL;

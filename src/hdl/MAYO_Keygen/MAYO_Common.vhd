@@ -22,20 +22,16 @@ USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 -- PACKAGE
 PACKAGE MAYO_COMMON IS
-
   -- USEFUL FUNCTIONS
-
-  FUNCTION P2KC2_MONO (K : NATURAL) RETURN real;
-
-  FUNCTION P1MONOMIALS_F (N : NATURAL; O : NATURAL) RETURN real;
 
   -- MOD Alternative
   FUNCTION BARRETT_REDUCTION(A  : NATURAL) return natural;
   FUNCTION MERSENNE_REDUCTION(A : NATURAL) return natural;
 
+  function MAX_VALUE (A, B : positive) return positive;
 
-  -- Parameters ---
-  -- MAYO
+  ---~~ Parameters ~~---
+  -- MAYO GENERAL
   CONSTANT PRIME      : positive := 31; -- q =31
   CONSTANT PRIME_BITS : positive := 5;
   CONSTANT M          : positive := 60; -- #Equations in public key map P
@@ -43,10 +39,13 @@ PACKAGE MAYO_COMMON IS
   CONSTANT O          : positive := 6;  -- Dimension of the secret linear subspace
   CONSTANT K          : positive := 10; -- Used to construct a larger map P*
 
+  -- Number of sums of 2 of these input vectors to P* 
+  --(xi + xj) for i,j in 1 <= i <= j <= K
+  CONSTANT KC2 : positive := (K*(K+1)/2);
+
   CONSTANT SEED_BYTES : positive := 16;
   CONSTANT SK_BYTES   : positive := SEED_BYTES *2;
   CONSTANT PK_BYTES   : positive := SEED_BYTES + M*O*(O+1)/2; -- (PK_P2(0) + M*O*(O+1)/2) = (((0) + SEED_BYTES) + M*O*(O+1)/2)
-
 
   -- Number of coefficients that are needed to characterize a quadratic polynomial with N variables
   CONSTANT MONOMIALS : positive := (N*(N+1)/2);
@@ -115,8 +114,12 @@ PACKAGE MAYO_COMMON IS
 
   -- COMPUTEP2 VEC
   CONSTANT P2VEC_BASE_ADR : positive := PK_HIGH_ADR + 4;
-  CONSTANT P2VEC_RANGE    : positive := M;
+  CONSTANT P2VEC_RANGE    : positive := MAX_VALUE(N,M); -- Multiple use so allocate biggest size
   CONSTANT P2VEC_HIGH_ADR : positive := P2VEC_BASE_ADR + P2VEC_RANGE -4 ;
+  --VINEGAR(REUSE)
+  CONSTANT VIN_BASE_ADR : positive := PK_HIGH_ADR + 4;
+  CONSTANT VIN_RANGE    : positive := P2VEC_RANGE; -- Multiple use so allocate biggest size
+  CONSTANT VIN_HIGH_ADR : positive := VIN_BASE_ADR + VIN_RANGE -4 ;
 
   -- Signature (LOCAL)
   CONSTANT SIG_BASE_ADR : positive := P2VEC_HIGH_ADR + 4;
@@ -134,12 +137,10 @@ PACKAGE MAYO_COMMON IS
   CONSTANT MSG_RANGE    : positive := MESSAGE_BYTES;
   CONSTANT MSG_HIGH_ADR : positive := MSG_BASE_ADR + MSG_RANGE -4;
 
-  -- OIL_SOLUTION TODO: Can also be in P2VEC?
+  -- OIL_SOLUTION 
   CONSTANT OILSOL_BASE_ADR : positive := MSG_HIGH_ADR +4;
   CONSTANT OILSOL_RANGE    : positive := K*O;
   CONSTANT OILSOL_HIGH_ADR : positive := OILSOL_BASE_ADR + OILSOL_RANGE -4;
-
-  
 
   ------------------------------------------------------------------------------
   -- Address Mapping (In BRAM II) (BIG DATA1)
@@ -165,6 +166,7 @@ PACKAGE MAYO_COMMON IS
   CONSTANT SK_EXP_BASE_ADR : natural  := 16#0#;
   CONSTANT SK_EXP_RANGE    : positive := SK_EXP_BYTES;
   CONSTANT SK_EXP_HIGH_ADR : positive := SK_EXP_BASE_ADR + SK_EXP_RANGE -4;
+
   -- For P1, oilspace etc.. use offsets
 
   -- ADDRESS ZYNQ MEMORY SPACE [CPU SPACE]
@@ -201,6 +203,7 @@ PACKAGE MAYO_COMMON IS
   CONSTANT BRAM_III_SIZE       : natural := 262_144; -- Bytes
 
   -----------------SIGNING MEMORY SPACE-----------------------------
+  -- WARNING: FOLLOWING 2 ARE USED ONLY ONCE SO POST USAGE and overwrite is allowed (Used in compute bilinear)
   CONSTANT P1P1T_BASE_ADR : natural  := 16#0#;
   CONSTANT P1P1T_RANGE    : positive := M * (N - O) * (N - O);
   CONSTANT P1P1T_HIGH_ADR : positive := P1P1T_BASE_ADR + P1P1T_RANGE -4;
@@ -208,6 +211,20 @@ PACKAGE MAYO_COMMON IS
   CONSTANT BILINEAR_TEMP_BASE_ADR : positive := P1P1T_HIGH_ADR + 4 ;
   CONSTANT BILINEAR_TEMP_RANGE    : positive := M * (N - O) * O;
   CONSTANT BILINEAR_TEMP_HIGH_ADR : positive := BILINEAR_TEMP_BASE_ADR + BILINEAR_TEMP_RANGE -4;
+  -------------------------------OVERWRITE----------------------------------------------
+  CONSTANT VINEVAL_BASE_ADR : natural  := 16#0#;
+  CONSTANT VINEVAL_RANGE    : positive := KC2*M;
+  CONSTANT VINEVAL_HIGH_ADR : positive := VINEVAL_BASE_ADR + VINEVAL_RANGE -4;
+
+  CONSTANT LINEAR_BASE_ADR : positive := VINEVAL_HIGH_ADR +4;
+  CONSTANT LINEAR_RANGE    : positive := M*K*O;
+  CONSTANT LINEAR_HIGH_ADR : positive := LINEAR_BASE_ADR + LINEAR_RANGE -4;
+
+  -- Used for evaluateP_vinegar/ Can be reused after done
+  CONSTANT PRODUCT_BASE_ADR : positive := LINEAR_HIGH_ADR +4;
+  CONSTANT PRODUCT_RANGE    : positive := (N-O)*(N-O+1)/2;
+  CONSTANT PRODUCT_HIGH_ADR : positive := PRODUCT_BASE_ADR + PRODUCT_RANGE -4;
+
 
   ------------------------------------------------------------------------------
   -- Address Mapping DDR MAPPING  [DISCARDED]
@@ -222,16 +239,6 @@ END PACKAGE MAYO_COMMON;
 -- PACKAGE BODY
 
 PACKAGE BODY MAYO_COMMON IS
-
-  FUNCTION P2KC2_MONO (K : NATURAL) RETURN real IS
-  BEGIN
-    RETURN real((K * (K + 1)) / 2);
-  END FUNCTION;
-
-  FUNCTION P1MONOMIALS_F (N : natural; O : natural) RETURN real IS
-  BEGIN
-    return real((N - O) * (N - O + 1) / 2 + (N - O) * O);
-  END FUNCTION;
 
   function BARRETT_REDUCTION(A : NATURAL) return natural is
     -- https://en.wikipedia.org/wiki/Barrett_reduction
@@ -263,5 +270,14 @@ PACKAGE BODY MAYO_COMMON IS
     end if;
     return i;
   end function MERSENNE_REDUCTION;
+
+  function MAX_VALUE (A, B : positive) return positive is
+  begin
+    if A >= B then
+      return A;
+    else
+      return B;
+    end if;
+  end function;
 
 END PACKAGE BODY MAYO_COMMON;
