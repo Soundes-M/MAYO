@@ -107,19 +107,20 @@ PACKAGE MAYO_COMMON IS
   CONSTANT OIL_SPACE_RANGE    : positive := OIL_SPACE_BYTES ;
   CONSTANT OIL_SPACE_HIGH_ADR : positive := OIL_SPACE_BASE_ADR + OIL_SPACE_RANGE - 4;
 
+  --SIGN SCARTCH BUFFERS(reuse)
+  CONSTANT SM_TEMP_BASE_ADR : positive := OIL_SPACE_BASE_ADR;
+  CONSTANT SM_TEMP_RANGE    : positive := 2*M-1 ;
+  CONSTANT SM_TEMP_HIGH_ADR : positive := SM_TEMP_BASE_ADR + SM_TEMP_RANGE - 4;
+
   -- PUBLIC KEY (PK)
   CONSTANT PK_BASE_ADR : positive := OIL_SPACE_HIGH_ADR + 4 ;
   CONSTANT PK_RANGE    : positive := PK_BYTES ;
   CONSTANT PK_HIGH_ADR : positive := PK_BASE_ADR + PK_RANGE - 4;
 
-  -- COMPUTEP2 VEC
+  -- COMPUTEP2 VEC (Usually for lin-comb)
   CONSTANT P2VEC_BASE_ADR : positive := PK_HIGH_ADR + 4;
-  CONSTANT P2VEC_RANGE    : positive := MAX_VALUE(N,M); -- Multiple use so allocate biggest size
+  CONSTANT P2VEC_RANGE    : positive := M; -- Multiple use so allocate biggest size
   CONSTANT P2VEC_HIGH_ADR : positive := P2VEC_BASE_ADR + P2VEC_RANGE -4 ;
-  --VINEGAR(REUSE)
-  CONSTANT VIN_BASE_ADR : positive := PK_HIGH_ADR + 4;
-  CONSTANT VIN_RANGE    : positive := P2VEC_RANGE; -- Multiple use so allocate biggest size
-  CONSTANT VIN_HIGH_ADR : positive := VIN_BASE_ADR + VIN_RANGE -4 ;
 
   -- Signature (LOCAL)
   CONSTANT SIG_BASE_ADR : positive := P2VEC_HIGH_ADR + 4;
@@ -141,6 +142,11 @@ PACKAGE MAYO_COMMON IS
   CONSTANT OILSOL_BASE_ADR : positive := MSG_HIGH_ADR +4;
   CONSTANT OILSOL_RANGE    : positive := K*O;
   CONSTANT OILSOL_HIGH_ADR : positive := OILSOL_BASE_ADR + OILSOL_RANGE -4;
+
+  --VINEGAR
+  CONSTANT VIN_BASE_ADR : positive := OILSOL_HIGH_ADR + 4;
+  CONSTANT VIN_RANGE    : positive := N;
+  CONSTANT VIN_HIGH_ADR : positive := VIN_BASE_ADR + VIN_RANGE -4;
 
   ------------------------------------------------------------------------------
   -- Address Mapping (In BRAM II) (BIG DATA1)
@@ -220,10 +226,15 @@ PACKAGE MAYO_COMMON IS
   CONSTANT LINEAR_RANGE    : positive := M*K*O;
   CONSTANT LINEAR_HIGH_ADR : positive := LINEAR_BASE_ADR + LINEAR_RANGE -4;
 
-  -- Used for evaluateP_vinegar/ Can be reused after done
+  -- Used for evaluateP_vinegar ONLY/ Can be reused after done
   CONSTANT PRODUCT_BASE_ADR : positive := LINEAR_HIGH_ADR +4;
   CONSTANT PRODUCT_RANGE    : positive := (N-O)*(N-O+1)/2;
   CONSTANT PRODUCT_HIGH_ADR : positive := PRODUCT_BASE_ADR + PRODUCT_RANGE -4;
+
+  --Sign Scarth buffer 1
+  CONSTANT MULTIED_BASE_ADR : positive := LINEAR_HIGH_ADR + 4;
+  CONSTANT MULTIED_RANGE    : positive := N;
+  CONSTANT MULTIED_HIGH_ADR : positive := MULTIED_BASE_ADR + MULTIED_RANGE -4;
 
 
   ------------------------------------------------------------------------------

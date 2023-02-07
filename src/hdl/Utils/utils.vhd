@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sat Feb  4 14:24:52 2023
+-- Last update : Mon Feb  6 21:42:13 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -43,6 +43,10 @@ PACKAGE UTILS_COMMON IS
 
   -- PARAMETERS
   CONSTANT PORT_WIDTH : natural := 32; -- 32 Bit arch
+
+
+  function clipNext(currentVal : integer := 0; max : integer := 0) return integer;
+  function clipPrev(currentVal : integer := 0; max : integer := 0) return integer;
 
   ------------------------------------------------------------------------------
   -- BRAM 
@@ -139,4 +143,28 @@ END PACKAGE UTILS_COMMON;
 
 -- PACKAGE BODY
 PACKAGE BODY UTILS_COMMON IS
+
+  function clipNext(currentVal : integer := 0;
+      max : integer := 0) return integer is
+    variable returnVal : integer;
+  begin
+    if (currentVal < max) then
+      returnVal := currentVal +1;
+    else
+      returnVal := 0;
+    end if;
+    return returnVal;
+  end function;
+
+  function clipPrev(currentVal : integer := 0;
+      max : integer := 0) return integer is
+    variable returnVal : integer;
+  begin
+    if (currentVal = 0) then
+      returnVal := max;
+    else
+      returnVal := currentVal-1;
+    end if;
+    return returnVal;
+  end function;
 END PACKAGE BODY UTILS_COMMON;

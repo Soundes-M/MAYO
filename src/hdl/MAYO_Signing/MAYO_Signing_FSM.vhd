@@ -1,6 +1,7 @@
 LIBRARY IEEE;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
+use ieee.math_real.all;
 use STD.textio.all;
 use ieee.std_logic_textio.all;
 
@@ -81,6 +82,12 @@ entity MAYO_SIGNING_FSM is
 		i_sam_vin_done      : in  std_logic;
 		o_sam_vin_input_adr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 
+		--Reduce extension
+		o_red_ext_en         : out std_logic;
+		i_red_ext_done       : in  std_logic;
+		o_red_ext_input_adr  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_red_ext_output_adr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+
 		--BRAM0-A
 		i_mem0a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem0a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -140,15 +147,22 @@ ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
 	signal k              : integer     := 0;
 	signal l,m            : integer     := 0;
 	signal ctr            : integer     := 0;
+	signal c              : integer     := 0;
 
 	signal s_p1p1t_adr     : std_logic_vector(31 downto 0) := ZERO_32;
 	signal s_p1_adr        : std_logic_vector(31 downto 0) := ZERO_32;
 	signal s_p1p1t_inv_adr : std_logic_vector(31 downto 0) := ZERO_32;
 	signal tmp             : std_logic_vector(31 downto 0) := ZERO_32;
+	signal tmp1            : std_logic_vector(31 downto 0) := ZERO_32;
 
+	-- Register reuse through alias
 	alias s_sign1_adr is s_p1p1t_adr;
 	alias s_sign2_adr is s_p1_adr;
 	alias s_vin_adr is s_p1p1t_inv_adr;
+
+	alias s_bil_adr is s_p1p1t_adr;
+	alias s_lin_adr is s_p1_adr;
+	alias s_lin1_adr is s_p1p1t_inv_adr;
 
 	signal s_src_index  : integer := 0;
 	signal s_dest_index : integer := 0;
@@ -279,7 +293,7 @@ begin
 					--------------------------------------------------------------------
 					when sample0 => -- USES BOTH BRAM 0 PORTS!
 						o_sam_enable   <= '1';
-						o_sam_oil_addr <= std_logic_vector(to_unsigned(OIL_SPACE_BASE_ADR,PORT_WIDTH));
+						o_sam_oil_addr <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_OIL,PORT_WIDTH));
 						state          <= sample1;
 
 					when sample1 =>
@@ -644,43 +658,46 @@ begin
 							i   <= 0 ;
 							j   <= 0 ;
 
-							-- Mem reuse
-							-- FF reuse
+							-- Mem reuse (FF)
 							s_sign1_adr <= std_logic_vector(to_unsigned(SIG_INPUTS,PORT_WIDTH));   -- Small BRAM [rows] / inputs[i*N + k]
 							s_sign2_adr <= std_logic_vector(to_unsigned(SIG_INPUTS,PORT_WIDTH));   -- Small BRAM [cols] / inputs[j*N + k]
 							s_vin_adr   <= std_logic_vector(to_unsigned(VIN_BASE_ADR,PORT_WIDTH)); -- Using P2VEC as VINEGAR{N}! 
-
-							state <= sign6;
+							state       <= sign6;
 						end if;
 
 					when sign6 =>
 						if (i < K) then
-							j     <= i ;
-							state <= sign7;
+							j           <= i ;
+							s_sign2_adr <= s_sign1_adr;
+							state       <= sign7;
 						else
 							state <= signX; -- TODO
 						end if;
 
 					when sign7 =>
 						if (j < K) then
-							k     <= 0 ;
-							state <= sign12;
+							k           <= 0 ;
+							s_sign2_adr <= std_logic_vector(unsigned(s_sign2_adr)+N);
+							state       <= sign12;
 						else
-							i     <= i+1;
-							state <= sign6;
+							i           <= i+1;
+							s_sign1_adr <= std_logic_vector(unsigned(s_sign1_adr)+N);
+							state       <= sign6;
 						end if;
 
 					when sign12 =>
+						bram2b.o.o_we <= "0000";
+						bram2a.o.o_en <= '0';
+
 						if (k < N) then
 							state <= sign8;
 						else
-							state <= sign13;
 							l     <= 0 ;
 							m     <= 0 ;
 							k     <= 0 ;
+							state <= sign13;
 						end if;
-						bram2b.o.o_we <= "0000";
-						bram2a.o.o_en <= '0';
+
 
 					when sign8 =>
 						bram2a.o.o_we   <= "0000";
@@ -788,10 +805,10 @@ begin
 						m               <= m+4 ;
 						state           <= sign14;
 
-					when sign19 =>                                                                               -- TODO Check linear comb bram connections
-						o_lin_vec_addr    <= std_logic_vector(to_unsigned(SK_EXP_P1,PORT_WIDTH));                -- Big bram 1
-						o_lin_coeffs_addr <= std_logic_vector(to_unsigned(PRODUCT_BASE_ADR,PORT_WIDTH));         -- big bram 2 
-						o_lin_out_addr    <= std_logic_vector(to_unsigned(VINEVAL_BASE_ADR + ctr*M,PORT_WIDTH)); -- (BIG DATA2)
+					when sign19 =>                                                                                  -- TODO Check linear comb bram connections
+						o_lin_vec_addr    <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH)); -- Big bram 1
+						o_lin_coeffs_addr <= std_logic_vector(to_unsigned(PRODUCT_BASE_ADR,PORT_WIDTH));            -- big bram 2 
+						o_lin_out_addr    <= std_logic_vector(to_unsigned(VINEVAL_BASE_ADR + ctr*M,PORT_WIDTH));    -- (BIG DATA2)
 						o_lin_len         <= std_logic_vector(to_unsigned((N-O)*(N-O+1)/2,PORT_WIDTH));
 						o_lin_enable      <= '1';
 
@@ -801,19 +818,179 @@ begin
 						o_lin_vec_addr    <= ZERO_32;
 						o_lin_coeffs_addr <= ZERO_32;
 						o_lin_out_addr    <= ZERO_32;
-						o_lin_len         <= std_logic_vector(to_unsigned((N-O)*(N-O+1)/2,PORT_WIDTH));
+						o_lin_len         <= ZERO_32;
 						o_lin_enable      <= '0';
 
 						if (i_lin_done = '1') then
 							report "EvaluteP_vin done";
-							state <= sign21;
+							c         <= 0 ;
+							s_bil_adr <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_BILINEAR,PORT_WIDTH)); -- big bram 1 
+							s_lin_adr <= std_logic_vector(to_unsigned(LINEAR_BASE_ADR,PORT_WIDTH));                   -- bram big 2
+							state     <= sign21;
 						end if;
 						--------------------------------------------------------
 						-- EvaluateP_vinegar END
 						--------------------------------------------------------
 
+					-- Compute linear part
 					when sign21 =>
-						null;
+						if(c < O) then
+							state <= sign22;
+						else
+							state <= signX;
+						end if;
+
+					when sign22 =>
+						o_lin_vec_addr    <= s_bil_adr;
+						o_lin_coeffs_addr <= std_logic_vector(to_unsigned(VIN_BASE_ADR,PORT_WIDTH));
+						o_lin_out_addr    <= std_logic_vector(to_unsigned(P2VEC_BASE_ADR,PORT_WIDTH));
+						o_lin_len         <= std_logic_vector(to_unsigned(N-O,PORT_WIDTH));
+						o_lin_enable      <= '1';
+						state             <= sign23;
+
+					when sign23 =>
+						o_lin_vec_addr    <= ZERO_32;
+						o_lin_coeffs_addr <= ZERO_32;
+						o_lin_out_addr    <= ZERO_32;
+						o_lin_len         <= ZERO_32;
+						o_lin_enable      <= '0';
+						if (i_lin_done = '1') then
+							state <= sign24;
+							l     <= 0 ;
+							m     <= 0 ;
+						end if;
+
+					-- multiply extension field
+					when sign24 =>
+						if (l < M) then
+							m <= 0;
+
+							if ((l < ceil(ctr/4)*4) and (l >= floor(x/4)*4)) then
+								state <= sign25;
+							else
+								l     <= l+1 ;
+								state <= sign24;
+							end if;
+
+						else
+							state <= sign30;
+						end if;
+
+
+					when sign25 =>
+						if (m < M) then
+							state <= sign26;
+						else
+							l     <= l+1;
+							state <= sign24;
+						end if;
+
+					when sign26 =>
+						bram2a.o.o_we   <= "0000";
+						bram2a.o.o_en   <= '1';
+						bram2a.o.o_addr <= std_logic_vector(to_unsigned(P2VEC_BASE_ADR+m,PORT_WIDTH));
+
+						bram2b.o.o_we   <= "0000";
+						bram2b.o.o_en   <= '1';
+						bram2b.o.o_addr <= std_logic_vector(to_unsigned(SM_TEMP_BASE_ADR+l+m,PORT_WIDTH));
+						state           <= sign27;
+
+					when sign27 =>
+						bram2a.o.o_en <= '0';
+						bram2b.o.o_en <= '0';
+						s_utmp        <= ctr mod 4;
+						tmp           <= i_mem2a_dout;
+						tmp1          <= i_mem2b_dout;
+						state         <= sign28;
+
+					when sign28 =>
+						case (s_utmp) is
+							when 0 =>
+								bram2b.o.o_din(7 downto 0)  <= std_logic_vector(unsigned(tmp(7 downto 0))+unsigned(tmp1(7 downto 0)));
+								bram2b.o.o_din(31 downto 8) <= X"FF_FF_FF";
+								bram2b.o.o_we               <= "0001";
+							when 1 =>
+								bram2b.o.o_din(7 downto 0)   <= X"FF";
+								bram2b.o.o_din(15 downto 8)  <= std_logic_vector(unsigned(tmp(15 downto 8))+unsigned(tmp1(15 downto 8)));
+								bram2b.o.o_din(31 downto 16) <= X"FF_FF";
+								bram2b.o.o_we                <= "0010";
+							when 2 =>
+								bram2b.o.o_din(15 downto 0)  <= X"FF_FF";
+								bram2b.o.o_din(23 downto 16) <= std_logic_vector(unsigned(tmp(23 downto 16))+unsigned(tmp1(23 downto 16)));
+								bram2b.o.o_din(31 downto 24) <= X"FF";
+								bram2b.o.o_we                <= "0100";
+
+							when 3 =>
+								bram2b.o.o_din(23 downto 0)  <= X"FF_FF_FF";
+								bram2b.o.o_din(31 downto 24) <= std_logic_vector(unsigned(tmp(31 downto 24))+unsigned(tmp1(31 downto 24)));
+								bram2b.o.o_we                <= "0100";
+						end case;
+						bram2b.o.o_en <= '1';
+						state         <= sign29;
+
+					when state29 =>
+						bram2a.o.o_en  <= '0';
+						bram2a.o.o_we  <= "0000";
+						bram2a.o.o_din <= ZERO_32;
+						m              <= m+4;
+						state          <= sign25;
+
+					when state30 =>
+						o_red_ext_en         <= '1';
+						o_red_ext_input_adr  <= std_logic_vector(to_unsigned(SM_TEMP_BASE_ADR,PORT_WIDTH));
+						o_red_ext_output_adr <= std_logic_vector(to_unsigned(MULTIED_BASE_ADR,PORT_WIDTH)); -- bram 2; (bram0a)
+						state                <= sign31;
+
+					when state31 =>
+						o_red_ext_en <= '0';
+						if (i_red_ext_done = '1') then
+							state <= add_mult0;
+						end if;
+
+					when add_mult0 =>
+						if ( k < M ) then
+							state <= add_mult1;
+						else
+							state <= add_multX;
+						end if;
+
+					when add_mult1 =>
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(MULTIED_BASE_ADR,PORT_WIDTH) +k);
+						bram0a.o.o_we   <= "0000";
+						bram0a.o.o_en   <= '1';
+
+						bram0b.o.o_addr <= std_logic_vector(unsigned(s_lin_adr));
+						bram0b.o.o_we   <= "0000";
+						bram0b.o.o_en   <= '1';
+
+						state <= add_mult2;
+
+					when add_mult2 =>
+
+						-- TODO : finsih add_vectors
+
+						c          <= c +1;
+						s_bil_adr  <= std_logic_vector(unsigned(s_bil_adr) + (N-O)*M);
+						s_lin_adr  <= std_logic_vector(unsigned(s_lin_adr) + M);
+						s_lin1_adr <= std_logic_vector(unsigned(s_lin1_adr) + M);
+
+
+					when state31 =>
+						s_lin_adr  <= std_logic_vector(to_unsigned(LINEAR_BASE_ADR + M*i*O, PORT_WIDTH));
+						s_lin1_adr <= std_logic_vector(to_unsigned(LINEAR_BASE_ADR + M*(j+1)*O, PORT_WIDTH));
+
+						ctr   <= ctr +1;
+						j     <= j +1;
+						state <= sign7;
+
+
+
+
+
+
+
+
+
 
 
 
