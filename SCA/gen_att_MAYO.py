@@ -113,61 +113,105 @@ def main(argv):
             time.sleep(0.05)
 ###############################################################            
 
+
+
     print(PATH)
     os.chdir(PATH)
-    os.system("make PLATFORM=" + PLATFORM + " CRYPTO_TARGET=NONE CRYPTO_OPTIONS=NONE clean")
-    os.system("make PLATFORM=" + PLATFORM + " CRYPTO_TARGET=NONE CRYPTO_OPTIONS=NONE")
 
-    # make PLATFORM=CWLITEARM CRYPTO_TARGET=NONE CRYPTO_OPTIONS=NONE    
-
-    fw_path = FULLPATH.format(PLATFORM)
-    print(fw_path)
-
-    cw.program_target(scope, prog, fw_path)
-
-    print(target.read())
-
-    #os.system("sed -i 's/<handle>/{0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, }/g' uov.h")
-
-    samples = 5000
-    counter = 0
-    #meanTraces = []
-    tempTraces = []
-    mean = np.zeros(samples)
-    C = 10
-
-    for _ in range(C):
-        scope.adc.samples = samples
-        scope.arm()
-
-        target.write('g') 
-
-        ret = scope.capture()
-        if ret:
-            print("Target timed out!")
-            continue
-
-        while True:
-            if target.read(1) != "r":
-                break
-
-        tempTraces.append(scope.get_last_trace())
-        #mean = mean + scope.get_last_trace()
-
-    #mean = mean / C
-    #tempTraces.append(mean)
+    q = 31
+    m = 30
+    n = 32
+    v = 29
+    #m = 26
+    #n = 28
+    #v = 25
 
 
-    tempTraces = np.array(tempTraces).T
-    tempPath = "tempTraces_" + datetime.now().strftime("%Y%m%d_%H%M%S") + ".csv"
-    # np.savetxt(path, trace, delimiter=",")
     
-    np.savetxt(tempPath, tempTraces, delimiter=',', comments="")
-       
-    
+    for j in range(10):
+
+
+        with open(PATH + "mayo.input", 'r') as file :
+            filedata = file.read()
+
+        # generate reference vinegars that are all fixed to a certain value
+        #refvin = '{}'.format(','.join(str(j) for _ in range(v)))
+        #refvin = '{}'.format(','.join(str(np.random.randint(q)) for _ in range(v)))
+        refvin = '{}'.format(','.join(str(np.random.randint(q)) for _ in range(v*(n-v))))
+
+        print(refvin)
+
+        #filedata = filedata.replace('<INPUT>', str(result.decode('utf8')))
+        filedata = filedata.replace('<INPUT>', str(refvin))
+
+        # Write the file out again
+        with open(PATH + "MAYO.h", 'w') as file:
+            file.write(filedata)
+
+        os.system("make PLATFORM=" + PLATFORM + " CRYPTO_TARGET=NONE CRYPTO_OPTIONS=NONE clean")
+        os.system("make PLATFORM=" + PLATFORM + " CRYPTO_TARGET=NONE CRYPTO_OPTIONS=NONE")
+
+        # make PLATFORM=CWLITEARM CRYPTO_TARGET=NONE CRYPTO_OPTIONS=NONE    
+
+        fw_path = FULLPATH.format(PLATFORM)
+        print(fw_path)
+
+        cw.program_target(scope, prog, fw_path)
+
+        print(target.read())
+
+        #os.system("sed -i 's/<handle>/{0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, 0xEB, }/g' uov.h")
+
+        samples = 5000
+        counter = 0
+        #meanTraces = []
+        tempTraces = []
+        mean = np.zeros(samples)
+        scope.adc.timeout=1
+
+        for _ in range(v):
+            scope.adc.samples = samples
+            scope.arm()
+
+            target.write('g') 
+
+            ret = scope.capture()
+            if ret:
+                print("Target timed out!")
+                continue
+
+            while True:
+                if target.read(1) != "r":
+                    break
+
+            tempTraces.append(scope.get_last_trace())
+            #mean = mean + scope.get_last_trace()
+
+        #mean = mean / C
+        #tempTraces.append(mean)
+
+
+        tempTraces = np.array(tempTraces).T
+        tempPath = "attacktraces/attacktrace_" + str(j) + ".csv"
+        # np.savetxt(path, trace, delimiter=",")
+        
+        np.savetxt(tempPath, tempTraces, delimiter=',', comments="")
+
+    # pickle file 
+    # import pickle 
+
+    # with open('xmega30.pickle', 'wb') as handle:
+    #     pickle.dump(trace1, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    # with open('xmega30_labels.pickle', 'wb') as handle:
+    #     pickle.dump(res_dec, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
     scope.dis()
     target.dis()
-
+#reading
+# with open('cortex7.pickle', 'rb') as handle:
+#      cortextrace7 = pickle.load(handle)
+        
+# cortextrace7 =np.zeros((N,1500 ))
 
 if __name__ == "__main__":
     main(sys.argv[1:])

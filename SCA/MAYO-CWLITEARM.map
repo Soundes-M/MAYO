@@ -12,6 +12,8 @@ Archive member included to satisfy reference by file (symbol)
                               /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-exit.o) (_global_impure_ptr)
 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
                               /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/crt0.o (__libc_init_array)
+/usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
+                              objdir-CWLITEARM/MAYO.o (memcpy)
 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
                               /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/crt0.o (memset)
 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-__atexit.o)
@@ -42,43 +44,10 @@ Discarded input sections
  .ARM.attributes
                 0x0000000000000000       0x1c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/crt0.o
  .text          0x0000000000000000        0x0 objdir-CWLITEARM/MAYO.o
- .bss           0x0000000000000000        0x4 objdir-CWLITEARM/MAYO.o
- .text.add_vectors
-                0x0000000000000000       0x64 objdir-CWLITEARM/MAYO.o
+ .text.compute_bilinear_part
+                0x0000000000000000      0x508 objdir-CWLITEARM/MAYO.o
  .text          0x0000000000000000        0x0 objdir-CWLITEARM/simpleserial.o
- .data          0x0000000000000000       0x10 objdir-CWLITEARM/simpleserial.o
- .bss           0x0000000000000000      0x104 objdir-CWLITEARM/simpleserial.o
  .text.ss_crc   0x0000000000000000       0x6c objdir-CWLITEARM/simpleserial.o
- .text.check_version
-                0x0000000000000000       0x18 objdir-CWLITEARM/simpleserial.o
- .text.ss_num_commands
-                0x0000000000000000       0x30 objdir-CWLITEARM/simpleserial.o
- .text.ss_get_commands
-                0x0000000000000000       0xc0 objdir-CWLITEARM/simpleserial.o
- .text.hex_decode
-                0x0000000000000000      0x130 objdir-CWLITEARM/simpleserial.o
- .text.simpleserial_init
-                0x0000000000000000       0x34 objdir-CWLITEARM/simpleserial.o
- .text.simpleserial_addcmd
-                0x0000000000000000       0x24 objdir-CWLITEARM/simpleserial.o
- .text.simpleserial_addcmd_flags
-                0x0000000000000000       0x88 objdir-CWLITEARM/simpleserial.o
- .text.simpleserial_get
-                0x0000000000000000      0x1c4 objdir-CWLITEARM/simpleserial.o
- .text.simpleserial_put
-                0x0000000000000000       0x6c objdir-CWLITEARM/simpleserial.o
- .debug_info    0x0000000000000000      0x590 objdir-CWLITEARM/simpleserial.o
- .debug_abbrev  0x0000000000000000      0x1fe objdir-CWLITEARM/simpleserial.o
- .debug_loc     0x0000000000000000      0x330 objdir-CWLITEARM/simpleserial.o
- .debug_aranges
-                0x0000000000000000       0x68 objdir-CWLITEARM/simpleserial.o
- .debug_ranges  0x0000000000000000       0x88 objdir-CWLITEARM/simpleserial.o
- .debug_line    0x0000000000000000      0x410 objdir-CWLITEARM/simpleserial.o
- .debug_str     0x0000000000000000      0x2d7 objdir-CWLITEARM/simpleserial.o
- .comment       0x0000000000000000       0x34 objdir-CWLITEARM/simpleserial.o
- .debug_frame   0x0000000000000000      0x184 objdir-CWLITEARM/simpleserial.o
- .ARM.attributes
-                0x0000000000000000       0x2e objdir-CWLITEARM/simpleserial.o
  .text          0x0000000000000000        0x0 objdir-CWLITEARM/stm32f3_hal.o
  .data          0x0000000000000000        0x0 objdir-CWLITEARM/stm32f3_hal.o
  .text.change_err_led
@@ -188,6 +157,8 @@ Discarded input sections
                 0x0000000000000000       0x2e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-impure.o)
  .data          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
  .data          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
  .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
  .text          0x0000000000000000       0xac /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-__atexit.o)
@@ -290,228 +261,269 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
                 0x0000000008000000                g_pfnVectors
                 0x0000000008000188                . = ALIGN (0x4)
 
-.text           0x0000000008000188     0x2518
+.text           0x0000000008000188     0x31c0
                 0x0000000008000188                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000008000188       0x88 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
  .text          0x0000000008000210       0x48 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
                 0x0000000008000210                __libc_init_array
- .text          0x0000000008000258       0xa4 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
-                0x0000000008000258                memset
+ .text          0x0000000008000258      0x134 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
+                0x0000000008000258                memcpy
+ .text          0x000000000800038c       0xa4 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
+                0x000000000800038c                memset
  *(.text*)
  .text.putString
-                0x00000000080002fc       0x36 objdir-CWLITEARM/MAYO.o
-                0x00000000080002fc                putString
- *fill*         0x0000000008000332        0x2 
+                0x0000000008000430       0x36 objdir-CWLITEARM/MAYO.o
+                0x0000000008000430                putString
+ *fill*         0x0000000008000466        0x2 
+ .text.add_vectors
+                0x0000000008000468       0x64 objdir-CWLITEARM/MAYO.o
+                0x0000000008000468                add_vectors
+ .text.negate   0x00000000080004cc       0x5c objdir-CWLITEARM/MAYO.o
+                0x00000000080004cc                negate
  .text._linear_combination
-                0x0000000008000334      0x16c objdir-CWLITEARM/MAYO.o
-                0x0000000008000334                _linear_combination
+                0x0000000008000528      0x140 objdir-CWLITEARM/MAYO.o
+                0x0000000008000528                _linear_combination
+ .text.computeP2
+                0x0000000008000668      0x560 objdir-CWLITEARM/MAYO.o
+                0x0000000008000668                computeP2
  .text.mayo_trace
-                0x00000000080004a0       0x44 objdir-CWLITEARM/MAYO.o
-                0x00000000080004a0                mayo_trace
- .text.main     0x00000000080004e4       0x48 objdir-CWLITEARM/MAYO.o
-                0x00000000080004e4                main
+                0x0000000008000bc8       0x7c objdir-CWLITEARM/MAYO.o
+                0x0000000008000bc8                mayo_trace
+ .text.main     0x0000000008000c44       0x48 objdir-CWLITEARM/MAYO.o
+                0x0000000008000c44                main
+ .text.check_version
+                0x0000000008000c8c       0x18 objdir-CWLITEARM/simpleserial.o
+                0x0000000008000c8c                check_version
+ .text.ss_num_commands
+                0x0000000008000ca4       0x30 objdir-CWLITEARM/simpleserial.o
+                0x0000000008000ca4                ss_num_commands
+ .text.ss_get_commands
+                0x0000000008000cd4       0xc0 objdir-CWLITEARM/simpleserial.o
+                0x0000000008000cd4                ss_get_commands
+ .text.hex_decode
+                0x0000000008000d94      0x130 objdir-CWLITEARM/simpleserial.o
+                0x0000000008000d94                hex_decode
+ .text.simpleserial_init
+                0x0000000008000ec4       0x34 objdir-CWLITEARM/simpleserial.o
+                0x0000000008000ec4                simpleserial_init
+ .text.simpleserial_addcmd
+                0x0000000008000ef8       0x24 objdir-CWLITEARM/simpleserial.o
+                0x0000000008000ef8                simpleserial_addcmd
+ .text.simpleserial_addcmd_flags
+                0x0000000008000f1c       0x88 objdir-CWLITEARM/simpleserial.o
+                0x0000000008000f1c                simpleserial_addcmd_flags
+ .text.simpleserial_get
+                0x0000000008000fa4      0x1c4 objdir-CWLITEARM/simpleserial.o
+                0x0000000008000fa4                simpleserial_get
+ .text.simpleserial_put
+                0x0000000008001168       0x6c objdir-CWLITEARM/simpleserial.o
+                0x0000000008001168                simpleserial_put
  .text.platform_init
-                0x000000000800052c       0xa4 objdir-CWLITEARM/stm32f3_hal.o
-                0x000000000800052c                platform_init
+                0x00000000080011d4       0xa4 objdir-CWLITEARM/stm32f3_hal.o
+                0x00000000080011d4                platform_init
  .text.init_uart
-                0x00000000080005d0       0xa0 objdir-CWLITEARM/stm32f3_hal.o
-                0x00000000080005d0                init_uart
+                0x0000000008001278       0xa0 objdir-CWLITEARM/stm32f3_hal.o
+                0x0000000008001278                init_uart
  .text.trigger_setup
-                0x0000000008000670       0x58 objdir-CWLITEARM/stm32f3_hal.o
-                0x0000000008000670                trigger_setup
+                0x0000000008001318       0x58 objdir-CWLITEARM/stm32f3_hal.o
+                0x0000000008001318                trigger_setup
  .text.trigger_high
-                0x00000000080006c8       0x16 objdir-CWLITEARM/stm32f3_hal.o
-                0x00000000080006c8                trigger_high
+                0x0000000008001370       0x16 objdir-CWLITEARM/stm32f3_hal.o
+                0x0000000008001370                trigger_high
  .text.trigger_low
-                0x00000000080006de       0x16 objdir-CWLITEARM/stm32f3_hal.o
-                0x00000000080006de                trigger_low
- .text.getch    0x00000000080006f4       0x3c objdir-CWLITEARM/stm32f3_hal.o
-                0x00000000080006f4                getch
- .text.putch    0x0000000008000730       0x2c objdir-CWLITEARM/stm32f3_hal.o
-                0x0000000008000730                putch
+                0x0000000008001386       0x16 objdir-CWLITEARM/stm32f3_hal.o
+                0x0000000008001386                trigger_low
+ .text.getch    0x000000000800139c       0x3c objdir-CWLITEARM/stm32f3_hal.o
+                0x000000000800139c                getch
+ .text.putch    0x00000000080013d8       0x2c objdir-CWLITEARM/stm32f3_hal.o
+                0x00000000080013d8                putch
  .text.HAL_GetTick
-                0x000000000800075c       0x1c objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x000000000800075c                HAL_GetTick
+                0x0000000008001404       0x1c objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008001404                HAL_GetTick
  .text.HAL_RCC_GetSysClockFreq
-                0x0000000008000778       0x10 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000008000778                HAL_RCC_GetSysClockFreq
+                0x0000000008001420       0x10 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008001420                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x0000000008000788       0x10 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000008000788                HAL_RCC_GetPCLK1Freq
+                0x0000000008001430       0x10 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008001430                HAL_RCC_GetPCLK1Freq
  .text.HAL_RCC_OscConfig
-                0x0000000008000798     0x102c objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000008000798                HAL_RCC_OscConfig
+                0x0000000008001440     0x102c objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008001440                HAL_RCC_OscConfig
  .text.HAL_RCC_ClockConfig
-                0x00000000080017c4      0x304 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x00000000080017c4                HAL_RCC_ClockConfig
+                0x000000000800246c      0x304 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x000000000800246c                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetPCLK2Freq
-                0x0000000008001ac8       0x10 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000008001ac8                HAL_RCC_GetPCLK2Freq
+                0x0000000008002770       0x10 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008002770                HAL_RCC_GetPCLK2Freq
  .text.HAL_GPIO_Init
-                0x0000000008001ad8      0x2fc objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000008001ad8                HAL_GPIO_Init
+                0x0000000008002780      0x2fc objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008002780                HAL_GPIO_Init
  .text.HAL_GPIO_WritePin
-                0x0000000008001dd4       0x2e objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000008001dd4                HAL_GPIO_WritePin
- *fill*         0x0000000008001e02        0x2 
+                0x0000000008002a7c       0x2e objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008002a7c                HAL_GPIO_WritePin
+ *fill*         0x0000000008002aaa        0x2 
  .text.UART_SetConfig
-                0x0000000008001e04      0x400 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000008001e04                UART_SetConfig
+                0x0000000008002aac      0x400 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008002aac                UART_SetConfig
  .text.UART_CheckIdleState
-                0x0000000008002204       0x92 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000008002204                UART_CheckIdleState
+                0x0000000008002eac       0x92 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008002eac                UART_CheckIdleState
  .text.HAL_UART_Init
-                0x0000000008002296       0x8e objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000008002296                HAL_UART_Init
+                0x0000000008002f3e       0x8e objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008002f3e                HAL_UART_Init
  .text.UART_WaitOnFlagUntilTimeout
-                0x0000000008002324       0x94 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000008002324                UART_WaitOnFlagUntilTimeout
+                0x0000000008002fcc       0x94 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008002fcc                UART_WaitOnFlagUntilTimeout
  .text.HAL_UART_Transmit
-                0x00000000080023b8      0x11a objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x00000000080023b8                HAL_UART_Transmit
+                0x0000000008003060      0x11a objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000008003060                HAL_UART_Transmit
  .text.HAL_UART_Receive
-                0x00000000080024d2      0x16a objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x00000000080024d2                HAL_UART_Receive
+                0x000000000800317a      0x16a objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x000000000800317a                HAL_UART_Receive
  .text.Reset_Handler
-                0x000000000800263c       0x48 objdir-CWLITEARM/stm32f3_startup.o
-                0x000000000800263c                Reset_Handler
+                0x00000000080032e4       0x48 objdir-CWLITEARM/stm32f3_startup.o
+                0x00000000080032e4                Reset_Handler
  .text.Default_Handler
-                0x0000000008002684        0x2 objdir-CWLITEARM/stm32f3_startup.o
-                0x0000000008002684                DebugMon_Handler
-                0x0000000008002684                HardFault_Handler
-                0x0000000008002684                SysTick_Handler
-                0x0000000008002684                PendSV_Handler
-                0x0000000008002684                NMI_Handler
-                0x0000000008002684                UsageFault_Handler
-                0x0000000008002684                Default_Handler
-                0x0000000008002684                MemManage_Handler
-                0x0000000008002684                SVC_Handler
-                0x0000000008002684                BusFault_Handler
+                0x000000000800332c        0x2 objdir-CWLITEARM/stm32f3_startup.o
+                0x000000000800332c                DebugMon_Handler
+                0x000000000800332c                HardFault_Handler
+                0x000000000800332c                SysTick_Handler
+                0x000000000800332c                PendSV_Handler
+                0x000000000800332c                NMI_Handler
+                0x000000000800332c                UsageFault_Handler
+                0x000000000800332c                Default_Handler
+                0x000000000800332c                MemManage_Handler
+                0x000000000800332c                SVC_Handler
+                0x000000000800332c                BusFault_Handler
  *(.glue_7)
- .glue_7        0x0000000008002686        0x0 linker stubs
+ .glue_7        0x000000000800332e        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000000008002686        0x0 linker stubs
+ .glue_7t       0x000000000800332e        0x0 linker stubs
  *(.eh_frame)
- *fill*         0x0000000008002686        0x2 
- .eh_frame      0x0000000008002688        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+ *fill*         0x000000000800332e        0x2 
+ .eh_frame      0x0000000008003330        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
  *(.init)
- .init          0x0000000008002688        0x4 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
-                0x0000000008002688                _init
- .init          0x000000000800268c        0x8 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
+ .init          0x0000000008003330        0x4 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
+                0x0000000008003330                _init
+ .init          0x0000000008003334        0x8 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
  *(.fini)
- .fini          0x0000000008002694        0x4 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
-                0x0000000008002694                _fini
- .fini          0x0000000008002698        0x8 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
-                0x00000000080026a0                . = ALIGN (0x4)
-                0x00000000080026a0                _etext = .
+ .fini          0x000000000800333c        0x4 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crti.o
+                0x000000000800333c                _fini
+ .fini          0x0000000008003340        0x8 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
+                0x0000000008003348                . = ALIGN (0x4)
+                0x0000000008003348                _etext = .
 
-.vfp11_veneer   0x00000000080026a0        0x0
- .vfp11_veneer  0x00000000080026a0        0x0 linker stubs
+.vfp11_veneer   0x0000000008003348        0x0
+ .vfp11_veneer  0x0000000008003348        0x0 linker stubs
 
-.v4_bx          0x00000000080026a0        0x0
- .v4_bx         0x00000000080026a0        0x0 linker stubs
+.v4_bx          0x0000000008003348        0x0
+ .v4_bx         0x0000000008003348        0x0 linker stubs
 
-.iplt           0x00000000080026a0        0x0
- .iplt          0x00000000080026a0        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+.iplt           0x0000000008003348        0x0
+ .iplt          0x0000000008003348        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.rodata         0x00000000080026a0       0x1c
-                0x00000000080026a0                . = ALIGN (0x4)
+.rodata         0x0000000008003348       0x1c
+                0x0000000008003348                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x00000000080026a0       0x1b objdir-CWLITEARM/MAYO.o
+ .rodata        0x0000000008003348       0x1b objdir-CWLITEARM/MAYO.o
  *(.rodata*)
-                0x00000000080026bc                . = ALIGN (0x4)
- *fill*         0x00000000080026bb        0x1 
+                0x0000000008003364                . = ALIGN (0x4)
+ *fill*         0x0000000008003363        0x1 
 
-.rel.dyn        0x00000000080026bc        0x0
- .rel.iplt      0x00000000080026bc        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+.rel.dyn        0x0000000008003364        0x0
+ .rel.iplt      0x0000000008003364        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
 
-.ARM.extab      0x00000000080026bc        0x0
-                0x00000000080026bc                . = ALIGN (0x4)
+.ARM.extab      0x0000000008003364        0x0
+                0x0000000008003364                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00000000080026bc                . = ALIGN (0x4)
+                0x0000000008003364                . = ALIGN (0x4)
 
-.ARM            0x00000000080026bc        0x0
-                0x00000000080026bc                . = ALIGN (0x4)
-                0x00000000080026bc                __exidx_start = .
+.ARM            0x0000000008003364        0x0
+                0x0000000008003364                . = ALIGN (0x4)
+                0x0000000008003364                __exidx_start = .
  *(.ARM.exidx*)
-                0x00000000080026bc                __exidx_end = .
-                0x00000000080026bc                . = ALIGN (0x4)
+                0x0000000008003364                __exidx_end = .
+                0x0000000008003364                . = ALIGN (0x4)
 
-.preinit_array  0x00000000080026bc        0x0
-                0x00000000080026bc                . = ALIGN (0x4)
-                0x00000000080026bc                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0000000008003364        0x0
+                0x0000000008003364                . = ALIGN (0x4)
+                0x0000000008003364                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x00000000080026bc                PROVIDE (__preinit_array_end = .)
-                0x00000000080026bc                . = ALIGN (0x4)
+                0x0000000008003364                PROVIDE (__preinit_array_end = .)
+                0x0000000008003364                . = ALIGN (0x4)
 
-.init_array     0x00000000080026bc        0x4
-                0x00000000080026bc                . = ALIGN (0x4)
-                0x00000000080026bc                PROVIDE (__init_array_start = .)
+.init_array     0x0000000008003364        0x4
+                0x0000000008003364                . = ALIGN (0x4)
+                0x0000000008003364                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x00000000080026bc        0x4 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
-                0x00000000080026c0                PROVIDE (__init_array_end = .)
-                0x00000000080026c0                . = ALIGN (0x4)
+ .init_array    0x0000000008003364        0x4 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x0000000008003368                PROVIDE (__init_array_end = .)
+                0x0000000008003368                . = ALIGN (0x4)
 
-.fini_array     0x00000000080026c0        0x4
-                0x00000000080026c0                . = ALIGN (0x4)
-                0x00000000080026c0                PROVIDE (__fini_array_start = .)
+.fini_array     0x0000000008003368        0x4
+                0x0000000008003368                . = ALIGN (0x4)
+                0x0000000008003368                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x00000000080026c0        0x4 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
-                0x00000000080026c4                PROVIDE (__fini_array_end = .)
-                0x00000000080026c4                . = ALIGN (0x4)
-                0x00000000080026c4                _sidata = LOADADDR (.data)
+ .fini_array    0x0000000008003368        0x4 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x000000000800336c                PROVIDE (__fini_array_end = .)
+                0x000000000800336c                . = ALIGN (0x4)
+                0x000000000800336c                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0xec0 load address 0x00000000080026c4
+.data           0x0000000020000000     0x3d94 load address 0x000000000800336c
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
- .data          0x0000000020000000      0xec0 objdir-CWLITEARM/MAYO.o
+ .data          0x0000000020000000     0x3d83 objdir-CWLITEARM/MAYO.o
                 0x0000000020000000                P1
-                0x0000000020000e88                oilspace
+                0x0000000020003d2c                oilspace
+ *fill*         0x0000000020003d83        0x1 
+ .data          0x0000000020003d84       0x10 objdir-CWLITEARM/simpleserial.o
  *(.data*)
-                0x0000000020000ec0                . = ALIGN (0x4)
-                0x0000000020000ec0                _edata = .
+                0x0000000020003d94                . = ALIGN (0x4)
+                0x0000000020003d94                _edata = .
 
 .tm_clone_table
-                0x0000000020000ec0        0x0 load address 0x0000000008003584
+                0x0000000020003d94        0x0 load address 0x0000000008007100
  .tm_clone_table
-                0x0000000020000ec0        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x0000000020003d94        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
  .tm_clone_table
-                0x0000000020000ec0        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtend.o
+                0x0000000020003d94        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtend.o
 
-.igot.plt       0x0000000020000ec0        0x0 load address 0x0000000008003584
- .igot.plt      0x0000000020000ec0        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
-                0x0000000020000ec0                . = ALIGN (0x4)
+.igot.plt       0x0000000020003d94        0x0 load address 0x0000000008007100
+ .igot.plt      0x0000000020003d94        0x0 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+                0x0000000020003d94                . = ALIGN (0x4)
 
-.bss            0x0000000020000ec0       0x94 load address 0x0000000008003584
-                0x0000000020000ec0                _sbss = .
-                0x0000000020000ec0                __bss_start__ = _sbss
+.bss            0x0000000020003d94      0x19c load address 0x0000000008007100
+                0x0000000020003d94                _sbss = .
+                0x0000000020003d94                __bss_start__ = _sbss
  *(.bss)
- .bss           0x0000000020000ec0       0x1c /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
- .bss           0x0000000020000edc       0x70 objdir-CWLITEARM/stm32f3_hal.o
-                0x0000000020000edc                UartHandle
- .bss           0x0000000020000f4c        0x8 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
-                0x0000000020000f4c                hal_sys_tick
-                0x0000000020000f50                uwTick
+ .bss           0x0000000020003d94       0x1c /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
+ .bss           0x0000000020003db0        0x4 objdir-CWLITEARM/MAYO.o
+                0x0000000020003db0                trigger
+ .bss           0x0000000020003db4      0x104 objdir-CWLITEARM/simpleserial.o
+ .bss           0x0000000020003eb8       0x70 objdir-CWLITEARM/stm32f3_hal.o
+                0x0000000020003eb8                UartHandle
+ .bss           0x0000000020003f28        0x8 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x0000000020003f28                hal_sys_tick
+                0x0000000020003f2c                uwTick
  *(.bss*)
  *(COMMON)
-                0x0000000020000f54                . = ALIGN (0x4)
-                0x0000000020000f54                _ebss = .
-                0x0000000020000f54                __bss_end__ = _ebss
+                0x0000000020003f30                . = ALIGN (0x4)
+                0x0000000020003f30                _ebss = .
+                0x0000000020003f30                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020000f54      0x404 load address 0x0000000008003584
-                0x0000000020000f58                . = ALIGN (0x8)
- *fill*         0x0000000020000f54        0x4 
-                0x0000000020000f58                PROVIDE (end = .)
+                0x0000000020003f30      0x400 load address 0x0000000008007100
+                0x0000000020003f30                . = ALIGN (0x8)
+                0x0000000020003f30                PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
-                0x0000000020000f58                . = (. + _Min_Heap_Size)
-                0x0000000020001358                . = (. + _Min_Stack_Size)
- *fill*         0x0000000020000f58      0x400 
-                0x0000000020001358                . = ALIGN (0x8)
+                0x0000000020003f30                . = (. + _Min_Heap_Size)
+                0x0000000020004330                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020003f30      0x400 
+                0x0000000020004330                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -528,19 +540,23 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
  .ARM.attributes
                 0x000000000000004c       0x2e objdir-CWLITEARM/MAYO.o
  .ARM.attributes
-                0x000000000000007a       0x2e objdir-CWLITEARM/stm32f3_hal.o
+                0x000000000000007a       0x2e objdir-CWLITEARM/simpleserial.o
  .ARM.attributes
-                0x00000000000000a8       0x2e objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x00000000000000a8       0x2e objdir-CWLITEARM/stm32f3_hal.o
  .ARM.attributes
-                0x00000000000000d6       0x21 objdir-CWLITEARM/stm32f3_startup.o
+                0x00000000000000d6       0x2e objdir-CWLITEARM/stm32f3_hal_lowlevel.o
  .ARM.attributes
-                0x00000000000000f7       0x2e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
+                0x0000000000000104       0x21 objdir-CWLITEARM/stm32f3_startup.o
  .ARM.attributes
-                0x0000000000000125       0x2e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
+                0x0000000000000125       0x2e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
  .ARM.attributes
-                0x0000000000000153       0x2e /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtend.o
+                0x0000000000000153       0x1c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
  .ARM.attributes
-                0x0000000000000181       0x1e /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
+                0x000000000000016f       0x2e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x000000000000019d       0x2e /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtend.o
+ .ARM.attributes
+                0x00000000000001cb       0x1e /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtn.o
 OUTPUT(MAYO-CWLITEARM.elf elf32-littlearm)
 LOAD linker stubs
 LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libc.a
@@ -551,75 +567,92 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/libgcc.a
  .comment       0x0000000000000000       0x33 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtbegin.o
                                          0x34 (size before relaxing)
  .comment       0x0000000000000033       0x34 objdir-CWLITEARM/MAYO.o
+ .comment       0x0000000000000033       0x34 objdir-CWLITEARM/simpleserial.o
  .comment       0x0000000000000033       0x34 objdir-CWLITEARM/stm32f3_hal.o
  .comment       0x0000000000000033       0x34 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
  .comment       0x0000000000000033       0x34 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
  .comment       0x0000000000000033       0x34 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
  .comment       0x0000000000000033       0x34 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m/nofp/crtend.o
 
-.debug_info     0x0000000000000000     0x3595
- .debug_info    0x0000000000000000      0x32d objdir-CWLITEARM/MAYO.o
- .debug_info    0x000000000000032d      0xc3d objdir-CWLITEARM/stm32f3_hal.o
- .debug_info    0x0000000000000f6a     0x23da objdir-CWLITEARM/stm32f3_hal_lowlevel.o
- .debug_info    0x0000000000003344      0x11a /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
- .debug_info    0x000000000000345e      0x137 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
+.debug_info     0x0000000000000000     0x3e9e
+ .debug_info    0x0000000000000000      0x680 objdir-CWLITEARM/MAYO.o
+ .debug_info    0x0000000000000680      0x590 objdir-CWLITEARM/simpleserial.o
+ .debug_info    0x0000000000000c10      0xc3d objdir-CWLITEARM/stm32f3_hal.o
+ .debug_info    0x000000000000184d     0x23da objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+ .debug_info    0x0000000000003c27      0x11a /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
+ .debug_info    0x0000000000003d41       0x26 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
+ .debug_info    0x0000000000003d67      0x137 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
 
-.debug_abbrev   0x0000000000000000      0x862
- .debug_abbrev  0x0000000000000000      0x170 objdir-CWLITEARM/MAYO.o
- .debug_abbrev  0x0000000000000170      0x1e3 objdir-CWLITEARM/stm32f3_hal.o
- .debug_abbrev  0x0000000000000353      0x38f objdir-CWLITEARM/stm32f3_hal_lowlevel.o
- .debug_abbrev  0x00000000000006e2       0xcc /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
- .debug_abbrev  0x00000000000007ae       0xb4 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
+.debug_abbrev   0x0000000000000000      0xa94
+ .debug_abbrev  0x0000000000000000      0x190 objdir-CWLITEARM/MAYO.o
+ .debug_abbrev  0x0000000000000190      0x1fe objdir-CWLITEARM/simpleserial.o
+ .debug_abbrev  0x000000000000038e      0x1e3 objdir-CWLITEARM/stm32f3_hal.o
+ .debug_abbrev  0x0000000000000571      0x38f objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+ .debug_abbrev  0x0000000000000900       0xcc /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
+ .debug_abbrev  0x00000000000009cc       0x14 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
+ .debug_abbrev  0x00000000000009e0       0xb4 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
 
-.debug_loc      0x0000000000000000      0xd48
- .debug_loc     0x0000000000000000      0x1a0 objdir-CWLITEARM/MAYO.o
- .debug_loc     0x00000000000001a0      0x28a objdir-CWLITEARM/stm32f3_hal.o
- .debug_loc     0x000000000000042a      0x638 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
- .debug_loc     0x0000000000000a62       0xba /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
- .debug_loc     0x0000000000000b1c      0x22c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
+.debug_loc      0x0000000000000000     0x1170
+ .debug_loc     0x0000000000000000      0x298 objdir-CWLITEARM/MAYO.o
+ .debug_loc     0x0000000000000298      0x330 objdir-CWLITEARM/simpleserial.o
+ .debug_loc     0x00000000000005c8      0x28a objdir-CWLITEARM/stm32f3_hal.o
+ .debug_loc     0x0000000000000852      0x638 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+ .debug_loc     0x0000000000000e8a       0xba /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
+ .debug_loc     0x0000000000000f44      0x22c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
 
-.debug_aranges  0x0000000000000000      0x198
+.debug_aranges  0x0000000000000000      0x238
  .debug_aranges
-                0x0000000000000000       0x40 objdir-CWLITEARM/MAYO.o
+                0x0000000000000000       0x58 objdir-CWLITEARM/MAYO.o
  .debug_aranges
-                0x0000000000000040       0x60 objdir-CWLITEARM/stm32f3_hal.o
+                0x0000000000000058       0x68 objdir-CWLITEARM/simpleserial.o
  .debug_aranges
-                0x00000000000000a0       0xb8 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+                0x00000000000000c0       0x60 objdir-CWLITEARM/stm32f3_hal.o
  .debug_aranges
-                0x0000000000000158       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
+                0x0000000000000120       0xb8 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
  .debug_aranges
-                0x0000000000000178       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
+                0x00000000000001d8       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
+ .debug_aranges
+                0x00000000000001f8       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
+ .debug_aranges
+                0x0000000000000218       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
 
-.debug_ranges   0x0000000000000000      0x128
- .debug_ranges  0x0000000000000000       0x30 objdir-CWLITEARM/MAYO.o
- .debug_ranges  0x0000000000000030       0x50 objdir-CWLITEARM/stm32f3_hal.o
- .debug_ranges  0x0000000000000080       0xa8 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+.debug_ranges   0x0000000000000000      0x1c8
+ .debug_ranges  0x0000000000000000       0x48 objdir-CWLITEARM/MAYO.o
+ .debug_ranges  0x0000000000000048       0x88 objdir-CWLITEARM/simpleserial.o
+ .debug_ranges  0x00000000000000d0       0x50 objdir-CWLITEARM/stm32f3_hal.o
+ .debug_ranges  0x0000000000000120       0xa8 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
 
-.debug_line     0x0000000000000000     0x19ee
- .debug_line    0x0000000000000000      0x211 objdir-CWLITEARM/MAYO.o
- .debug_line    0x0000000000000211      0x262 objdir-CWLITEARM/stm32f3_hal.o
- .debug_line    0x0000000000000473     0x1284 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
- .debug_line    0x00000000000016f7      0x138 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
- .debug_line    0x000000000000182f      0x1bf /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
+.debug_line     0x0000000000000000     0x231f
+ .debug_line    0x0000000000000000      0x674 objdir-CWLITEARM/MAYO.o
+ .debug_line    0x0000000000000674      0x410 objdir-CWLITEARM/simpleserial.o
+ .debug_line    0x0000000000000a84      0x262 objdir-CWLITEARM/stm32f3_hal.o
+ .debug_line    0x0000000000000ce6     0x1284 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+ .debug_line    0x0000000000001f6a      0x138 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
+ .debug_line    0x00000000000020a2       0xbe /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
+ .debug_line    0x0000000000002160      0x1bf /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x0000000000000000     0x13fe
- .debug_str     0x0000000000000000      0x1f5 objdir-CWLITEARM/MAYO.o
-                                        0x23e (size before relaxing)
- .debug_str     0x00000000000001f5      0x6b9 objdir-CWLITEARM/stm32f3_hal.o
+.debug_str      0x0000000000000000     0x1627
+ .debug_str     0x0000000000000000      0x249 objdir-CWLITEARM/MAYO.o
+                                        0x296 (size before relaxing)
+ .debug_str     0x0000000000000249      0x122 objdir-CWLITEARM/simpleserial.o
+                                        0x2d7 (size before relaxing)
+ .debug_str     0x000000000000036b      0x6b9 objdir-CWLITEARM/stm32f3_hal.o
                                         0x89a (size before relaxing)
- .debug_str     0x00000000000008ae      0x92c objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+ .debug_str     0x0000000000000a24      0x92c objdir-CWLITEARM/stm32f3_hal_lowlevel.o
                                        0x116c (size before relaxing)
- .debug_str     0x00000000000011da      0x176 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
+ .debug_str     0x0000000000001350      0x176 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
                                         0x205 (size before relaxing)
- .debug_str     0x0000000000001350       0xae /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
+ .debug_str     0x00000000000014c6       0xb3 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
+ .debug_str     0x0000000000001579       0xae /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
                                         0x1ba (size before relaxing)
 
-.debug_frame    0x0000000000000000      0x560
- .debug_frame   0x0000000000000000       0xd0 objdir-CWLITEARM/MAYO.o
- .debug_frame   0x00000000000000d0      0x144 objdir-CWLITEARM/stm32f3_hal.o
- .debug_frame   0x0000000000000214      0x2f4 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
- .debug_frame   0x0000000000000508       0x2c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
- .debug_frame   0x0000000000000534       0x2c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
+.debug_frame    0x0000000000000000      0x75c
+ .debug_frame   0x0000000000000000      0x148 objdir-CWLITEARM/MAYO.o
+ .debug_frame   0x0000000000000148      0x184 objdir-CWLITEARM/simpleserial.o
+ .debug_frame   0x00000000000002cc      0x144 objdir-CWLITEARM/stm32f3_hal.o
+ .debug_frame   0x0000000000000410      0x2f4 objdir-CWLITEARM/stm32f3_hal_lowlevel.o
+ .debug_frame   0x0000000000000704       0x2c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-init.o)
+ .debug_frame   0x0000000000000730       0x2c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
 
 .stab           0x0000000000000000      0x144
  .stab          0x0000000000000000      0x144 objdir-CWLITEARM/stm32f3_startup.o
@@ -731,6 +764,8 @@ atexit                                            /usr/lib/gcc/arm-none-eabi/10.
 change_err_led                                    objdir-CWLITEARM/stm32f3_hal.o
 change_ok_led                                     objdir-CWLITEARM/stm32f3_hal.o
 check_version                                     objdir-CWLITEARM/simpleserial.o
+computeP2                                         objdir-CWLITEARM/MAYO.o
+compute_bilinear_part                             objdir-CWLITEARM/MAYO.o
 end                                               objdir-CWLITEARM/stm32f3_sysmem.o
 exit                                              /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-exit.o)
                                                   /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/crt0.o
@@ -748,9 +783,12 @@ main                                              objdir-CWLITEARM/MAYO.o
                                                   /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/crt0.o
 malloc                                            /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-__atexit.o)
 mayo_trace                                        objdir-CWLITEARM/MAYO.o
+memcpy                                            /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memcpy.o)
+                                                  objdir-CWLITEARM/MAYO.o
 memset                                            /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg_nano.a(lib_a-memset.o)
                                                   objdir-CWLITEARM/MAYO.o
                                                   /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/crt0.o
+negate                                            objdir-CWLITEARM/MAYO.o
 oilspace                                          objdir-CWLITEARM/MAYO.o
 platform_init                                     objdir-CWLITEARM/stm32f3_hal.o
                                                   objdir-CWLITEARM/MAYO.o
@@ -761,7 +799,9 @@ putch                                             objdir-CWLITEARM/stm32f3_hal.o
 simpleserial_addcmd                               objdir-CWLITEARM/simpleserial.o
 simpleserial_addcmd_flags                         objdir-CWLITEARM/simpleserial.o
 simpleserial_get                                  objdir-CWLITEARM/simpleserial.o
+                                                  objdir-CWLITEARM/MAYO.o
 simpleserial_init                                 objdir-CWLITEARM/simpleserial.o
+                                                  objdir-CWLITEARM/MAYO.o
 simpleserial_put                                  objdir-CWLITEARM/simpleserial.o
 software_init_hook                                /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m/nofp/crt0.o
 ss_crc                                            objdir-CWLITEARM/simpleserial.o
