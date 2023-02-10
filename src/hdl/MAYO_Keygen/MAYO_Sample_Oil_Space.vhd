@@ -187,7 +187,6 @@ begin
 						t_state <= main3;
 
 					when main3 =>
-						--report integer'image(TO_INTEGER(unsigned(s_rand(7+i*8 downto i*8)))) & " mod 32  = " & integer'image(tmp) & "? 31" ;
 						-- 32 = (1<<PRIME_BITS)
 						if (tmp >= PRIME) then
 							if (i < 3) then

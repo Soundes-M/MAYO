@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Wed Jan 25 10:42:01 2023
+-- Last update : Fri Feb  3 20:57:07 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -43,6 +43,7 @@ ENTITY MAYO_KEYGEN_FSM IS
     o_busy   : out std_logic;
     o_done   : out std_logic;
     i_expose : in  std_logic;
+    i_irq    : in  std_logic;
     i_debug  : in  std_logic;
     o_err    : out std_logic_vector(1 downto 0);
 
@@ -135,7 +136,7 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
       transpose3, transpose4, transpose5, transpose6, transpose7, negate0, negate1, negate2, sample0, sample1, sample2,
       compute0, compute1, compute2, compute3, compute4, compute5, compute6, compute7, compute8, compute9, compute10, compute11,
       compute12, compute13, compute14, compute15, compute16, compute17, compute18, compute19, compute20, compute21, compute22, compute23,
-      done, wait_clear,fill_sk0,fill_sk1,fill_sk2,fill_sk3,fill_sk4, debug0, debug1, debug2, debug3, debug4, debug5, debug6, debug7, debug9, debug10, debug11, debug12
+      done, wait_clear,fill_sk0,fill_sk1,fill_sk2,fill_sk3,fill_sk4, cpy0, cpy1, cpy2, cpy3, cpy4, cpy5, debug0, debug1, debug2, debug3, debug4, debug5, debug6, debug7, debug9, debug10, debug11, debug12
       ,debug13,debug14,debug15,debug16, debug20, debug21, debug22, debug23, debug24, debug25, debug26, debug27, debug28, debug29, debug30, debug31);
   SIGNAL STATE : STATES := idle; -- default to reset;
 
@@ -160,11 +161,12 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
   ------------------------------------------------------------------------------
   signal s_pk_reg : std_logic_vector(31 downto 0); --can copy pk and sk to ddr
   signal s_sk_reg : std_logic_vector(31 downto 0);
+  signal s_debug  : std_logic;
+  signal s_expose : std_logic;
 
   -- Control
   signal en     : std_logic := '0';
   signal debug  : std_logic := '0';
-  signal irq    : std_logic := '0';
   signal expose : std_logic := '0';
   -- Status
   signal busy : std_logic                    := '0';
@@ -185,9 +187,9 @@ ARCHITECTURE RTL OF MAYO_KEYGEN_FSM IS
   signal debug_ctr : integer := 0 ;
 BEGIN
 
-  o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = fill_sk0 or state = fill_sk1 or state = fill_sk2 or state = fill_sk3 or state = fill_sk4 or state = debug4 or state = debug5 or state = debug6 or state = debug7 or state = debug24 or state = debug25 or state = debug26 or state = debug27 or state = debug28 or state = debug29 or state = debug30 or state = debug31) else '0';
+  o_mem0a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = cpy0 or state = cpy1 or state = cpy2 or state = cpy3 or state = cpy4 or state = cpy5 or state = fill_sk0 or state = fill_sk1 or state = fill_sk2 or state = fill_sk3 or state = fill_sk4 or state = debug4 or state = debug5 or state = debug6 or state = debug7 or state = debug24 or state = debug25 or state = debug26 or state = debug27 or state = debug28 or state = debug29 or state = debug30 or state = debug31) else '0';
   o_mem0b_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6) else '0';
-  o_mem1a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = transpose3 or state = transpose4 or state = transpose5 or state = transpose7 or state = debug0 or state = debug1 or state = debug2 or state = debug3 or state = debug9 or state = debug10 or state = debug11 or state = debug12 or state = debug13 or state = debug14 or state = debug15 or state = debug16 or state = debug20 or state = debug21 or state = debug22 or state = debug23) else '0';
+  o_mem1a_control <= '1' when (state = rand0 or state = rand1 or state = rand2 or state = rand3 or state = rand4 or state = rand5 or state = rand6 or state = cpy0 or state = cpy1 or state = cpy2 or state = cpy3 or state = cpy4 or state = cpy5 or state = transpose3 or state = transpose4 or state = transpose5 or state = transpose7 or state = debug0 or state = debug1 or state = debug2 or state = debug3 or state = debug9 or state = debug10 or state = debug11 or state = debug12 or state = debug13 or state = debug14 or state = debug15 or state = debug16 or state = debug20 or state = debug21 or state = debug22 or state = debug23) else '0';
 
   -- sync compute!
   KEYGEN            : PROCESS (CLK) IS
@@ -227,7 +229,6 @@ BEGIN
         case (state) is
           when idle =>
             o_done <= '0';
-            irq    <= '0';
             if (enable = '1' or en = '1') then
               state <= rand0;
               busy  <= '1';
@@ -902,12 +903,75 @@ BEGIN
 
           when negate1 =>
             if (i_neg_done = '1') then
-              if C_DEBUG = '1' then
+              if (C_DEBUG = '1') then
                 state <= fill_sk0;
                 i     <= 0 ;
               else
-                state <= done; -- DEBUG OFF
+                if (s_expose ='1') then
+                  copy_index <= 0;
+                  state      <= cpy0;
+                else
+                  state <= done; -- DEBUG OFF
+                end if;
               end if;
+            end if;
+
+          --------------------------------------------------------------------
+          -- Copy PK && and SK to CPU SPACE
+          --------------------------------------------------------------------
+          when cpy0 => --read
+            bram0a.o.o_addr <= std_logic_vector(to_unsigned(SK_BASE_ADR,PORT_WIDTH));
+            bram0a.o.o_we   <= "0000";
+            bram0a.o.o_en   <= '1';
+            state           <= cpy1;
+
+          when cpy1 =>
+            bram1a.o.o_we <= "0000";
+            bram1a.o.o_en <= '0';
+            state         <= cpy2;
+
+          when cpy2 => -- writeback
+            bram1a.o.o_addr <= std_logic_vector(to_unsigned(CPU_SPACE_SK_BASE_ADR,PORT_WIDTH) + copy_index);
+            bram1a.o.o_din  <= bram0a.i.i_dout;
+            bram1a.o.o_en   <= '1';
+            bram1a.o.o_we   <= "1111";
+
+            if (copy_index < SK_RANGE ) then -- keep copying copying 
+              copy_index      <= copy_index +4;
+              bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
+              state           <= cpy1;
+            else
+              bram0a.o.o_we <= "0000";
+              bram0a.o.o_en <= '0';
+              copy_index    <= 0;
+              state         <= cpy3;
+            end if;
+
+          when cpy3 => --read
+            bram0a.o.o_addr <= std_logic_vector(to_unsigned(PK_BASE_ADR,PORT_WIDTH));
+            bram0a.o.o_we   <= "0000";
+            bram0a.o.o_en   <= '1';
+            state           <= cpy1;
+
+          when cpy4 =>
+            bram1a.o.o_we <= "0000";
+            bram1a.o.o_en <= '0';
+            state         <= cpy2;
+
+          when cpy5 => -- writeback
+            bram1a.o.o_addr <= std_logic_vector(to_unsigned(CPU_SPACE_PK_BASE_ADR,PORT_WIDTH) + copy_index);
+            bram1a.o.o_din  <= bram0a.i.i_dout;
+            bram1a.o.o_en   <= '1';
+            bram1a.o.o_we   <= "1111";
+
+            if (copy_index < PK_RANGE ) then -- keep copying copying 
+              copy_index      <= copy_index +4;
+              bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
+              state           <= cpy1;
+            else
+              bram0a.o.o_we <= "0000";
+              bram0a.o.o_en <= '0';
+              state         <= done;
             end if;
 
           ----------------------------------------------------------------------
@@ -944,11 +1008,10 @@ BEGIN
           when done =>
             --file_close(file_sk);
             o_done <= '1';
-            irq    <= '1';
             state  <= wait_clear;
 
           when wait_clear =>
-            if (irq = '0' or i_debug = '1') then
+            if (i_irq = '1' or s_debug = '1') then
               state <= idle;
             end if;
 
