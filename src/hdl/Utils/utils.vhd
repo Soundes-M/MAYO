@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Mon Feb 13 00:55:51 2023
+-- Last update : Tue Feb 14 09:38:48 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ PACKAGE UTILS_COMMON IS
 
   function clipNext(currentVal : integer := 0; max : integer := 0) return integer;
   function clipPrev(currentVal : integer := 0; max : integer := 0) return integer;
-  function isUneven(num          : integer) return std_logic;
+  function isUneven(num        : integer) return std_logic;
 
   ------------------------------------------------------------------------------
   -- BRAM 
@@ -136,7 +136,6 @@ PACKAGE UTILS_COMMON IS
 
   constant ZERO_32 : std_logic_vector(31 downto 0) := (others => '0');
   constant ZERO_16 : std_logic_vector(15 downto 0) := (others => '0');
-
 
   ------------------------------------------------------------------------------
   -- CDMA REG SPACE
