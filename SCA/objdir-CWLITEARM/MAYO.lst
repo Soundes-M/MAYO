@@ -4835,33 +4835,33 @@
  1227              		.global	oilspace
  1228              		.align	2
  1231              	oilspace:
- 1232 3d2c 1119081D 		.ascii	"\021\031\010\035\032\003\007\030\000\000\001\003\001"
- 1232      1A030718 
- 1232      00000103 
- 1232      01
- 1233 3d39 061C1402 		.ascii	"\006\034\024\002\014\012\006\004\032\012\000\024\000"
- 1233      0C0A0604 
- 1233      1A0A0014 
- 1233      00
- 1234 3d46 1B030815 		.ascii	"\033\003\010\025\022\015\036\033\012\005\025\006\031"
- 1234      120D1E1B 
- 1234      0A051506 
- 1234      19
- 1235 3d53 1A151A03 		.ascii	"\032\025\032\003\000\016\031\011\034\035\024\034\000"
- 1235      000E1909 
- 1235      1C1D141C 
- 1235      00
- 1236 3d60 1713021D 		.ascii	"\027\023\002\035\023\035\034\032\007\036\030\001\014"
- 1236      131D1C1A 
- 1236      071E1801 
- 1236      0C
- 1237 3d6d 1E18110A 		.ascii	"\036\030\021\012\027\027\025\001\001\021\027\003\001"
- 1237      17171501 
- 1237      01111703 
- 1237      01
- 1238 3d7a 0D1E0813 		.ascii	"\015\036\010\023\006\004\030\036\025"
- 1238      0604181E 
- 1238      15
+ 1232 3d2c 0F0F0F0F 		.ascii	"\017\017\017\017\017\017\017\017\017\017\017\017\017"
+ 1232      0F0F0F0F 
+ 1232      0F0F0F0F 
+ 1232      0F
+ 1233 3d39 0F0F0F0F 		.ascii	"\017\017\017\017\017\017\017\017\017\017\017\017\017"
+ 1233      0F0F0F0F 
+ 1233      0F0F0F0F 
+ 1233      0F
+ 1234 3d46 0F0F0F0F 		.ascii	"\017\017\017\017\017\017\017\017\017\017\017\017\017"
+ 1234      0F0F0F0F 
+ 1234      0F0F0F0F 
+ 1234      0F
+ 1235 3d53 0F0F0F0F 		.ascii	"\017\017\017\017\017\017\017\017\017\017\017\017\017"
+ 1235      0F0F0F0F 
+ 1235      0F0F0F0F 
+ 1235      0F
+ 1236 3d60 0F0F0F0F 		.ascii	"\017\017\017\017\017\017\017\017\017\017\017\017\017"
+ 1236      0F0F0F0F 
+ 1236      0F0F0F0F 
+ 1236      0F
+ 1237 3d6d 0F0F0F0F 		.ascii	"\017\017\017\017\017\017\017\017\017\017\017\017\017"
+ 1237      0F0F0F0F 
+ 1237      0F0F0F0F 
+ 1237      0F
+ 1238 3d7a 0F0F0F0F 		.ascii	"\017\017\017\017\017\017\017\017\017"
+ 1238      0F0F0F0F 
+ 1238      0F
  1239              		.global	trigger
  1240              		.bss
  1241              		.align	2
@@ -5501,7 +5501,7 @@
  1774 0052 02F11802 		add	r2, r2, #24
  1775 0056 1360     		str	r3, [r2]
  1776              		.loc 1 98 2
- 1777 0058 A8E0     		b	.L28
+ 1777 0058 AFE0     		b	.L28
  1778              	.L32:
  1779              	.LBB10:
   99:MAYO.c        **** 	{
@@ -5513,1377 +5513,1383 @@
  1783 0060 02F11402 		add	r2, r2, #20
  1784 0064 1360     		str	r3, [r2]
  1785              		.loc 1 101 3
- 1786 0066 7CE0     		b	.L29
+ 1786 0066 83E0     		b	.L29
  1787              	.L31:
  1788              	.LBB11:
  102:MAYO.c        **** 		{
- 103:MAYO.c        **** 			if(j==0) trigger=1;
+ 103:MAYO.c        **** 			if(j==0 && i==0) trigger=1;
  1789              		.loc 1 103 6
  1790 0068 07F5A653 		add	r3, r7, #5312
  1791 006c 03F11403 		add	r3, r3, #20
  1792 0070 1B68     		ldr	r3, [r3]
  1793 0072 002B     		cmp	r3, #0
- 1794 0074 02D1     		bne	.L30
- 1795              		.loc 1 103 20 discriminator 1
- 1796 0076 D34B     		ldr	r3, .L46
- 1797 0078 0122     		movs	r2, #1
- 1798 007a 1A60     		str	r2, [r3]
- 1799              	.L30:
+ 1794 0074 09D1     		bne	.L30
+ 1795              		.loc 1 103 12 discriminator 1
+ 1796 0076 07F5A653 		add	r3, r7, #5312
+ 1797 007a 03F11803 		add	r3, r3, #24
+ 1798 007e 1B68     		ldr	r3, [r3]
+ 1799 0080 002B     		cmp	r3, #0
+ 1800 0082 02D1     		bne	.L30
+ 1801              		.loc 1 103 28 discriminator 2
+ 1802 0084 D34B     		ldr	r3, .L46
+ 1803 0086 0122     		movs	r2, #1
+ 1804 0088 1A60     		str	r2, [r3]
+ 1805              	.L30:
  104:MAYO.c        **** 			unsigned char vec[M];
  105:MAYO.c        **** 			_linear_combination(P1 + p1_counter*M, oil_space + (j*(N-O) + i), N-O-i, vec);
- 1800              		.loc 1 105 39 discriminator 2
- 1801 007c 07F5A653 		add	r3, r7, #5312
- 1802 0080 03F11C03 		add	r3, r3, #28
- 1803 0084 1A68     		ldr	r2, [r3]
- 1804 0086 1346     		mov	r3, r2
- 1805 0088 1B01     		lsls	r3, r3, #4
- 1806 008a 9B1A     		subs	r3, r3, r2
- 1807 008c 5B00     		lsls	r3, r3, #1
- 1808 008e 1A46     		mov	r2, r3
- 1809              		.loc 1 105 4 discriminator 2
- 1810 0090 07F59C63 		add	r3, r7, #1248
- 1811 0094 A3F59B63 		sub	r3, r3, #1240
- 1812 0098 1B68     		ldr	r3, [r3]
- 1813 009a 9818     		adds	r0, r3, r2
- 1814              		.loc 1 105 57 discriminator 2
- 1815 009c 07F5A653 		add	r3, r7, #5312
- 1816 00a0 03F11403 		add	r3, r3, #20
- 1817 00a4 1A68     		ldr	r2, [r3]
- 1818 00a6 1346     		mov	r3, r2
- 1819 00a8 DB00     		lsls	r3, r3, #3
- 1820 00aa 9B1A     		subs	r3, r3, r2
- 1821 00ac 9B00     		lsls	r3, r3, #2
- 1822 00ae 1A44     		add	r2, r2, r3
- 1823              		.loc 1 105 64 discriminator 2
- 1824 00b0 07F5A653 		add	r3, r7, #5312
- 1825 00b4 03F11803 		add	r3, r3, #24
- 1826 00b8 1B68     		ldr	r3, [r3]
- 1827 00ba 1344     		add	r3, r3, r2
- 1828 00bc 1A46     		mov	r2, r3
- 1829              		.loc 1 105 4 discriminator 2
- 1830 00be 07F59C63 		add	r3, r7, #1248
- 1831 00c2 A3F2D443 		subw	r3, r3, #1236
+ 1806              		.loc 1 105 39 discriminator 2
+ 1807 008a 07F5A653 		add	r3, r7, #5312
+ 1808 008e 03F11C03 		add	r3, r3, #28
+ 1809 0092 1A68     		ldr	r2, [r3]
+ 1810 0094 1346     		mov	r3, r2
+ 1811 0096 1B01     		lsls	r3, r3, #4
+ 1812 0098 9B1A     		subs	r3, r3, r2
+ 1813 009a 5B00     		lsls	r3, r3, #1
+ 1814 009c 1A46     		mov	r2, r3
+ 1815              		.loc 1 105 4 discriminator 2
+ 1816 009e 07F59C63 		add	r3, r7, #1248
+ 1817 00a2 A3F59B63 		sub	r3, r3, #1240
+ 1818 00a6 1B68     		ldr	r3, [r3]
+ 1819 00a8 9818     		adds	r0, r3, r2
+ 1820              		.loc 1 105 57 discriminator 2
+ 1821 00aa 07F5A653 		add	r3, r7, #5312
+ 1822 00ae 03F11403 		add	r3, r3, #20
+ 1823 00b2 1A68     		ldr	r2, [r3]
+ 1824 00b4 1346     		mov	r3, r2
+ 1825 00b6 DB00     		lsls	r3, r3, #3
+ 1826 00b8 9B1A     		subs	r3, r3, r2
+ 1827 00ba 9B00     		lsls	r3, r3, #2
+ 1828 00bc 1A44     		add	r2, r2, r3
+ 1829              		.loc 1 105 64 discriminator 2
+ 1830 00be 07F5A653 		add	r3, r7, #5312
+ 1831 00c2 03F11803 		add	r3, r3, #24
  1832 00c6 1B68     		ldr	r3, [r3]
- 1833 00c8 9918     		adds	r1, r3, r2
- 1834 00ca 07F5A653 		add	r3, r7, #5312
- 1835 00ce 03F11803 		add	r3, r3, #24
- 1836 00d2 1B68     		ldr	r3, [r3]
- 1837 00d4 C3F11D02 		rsb	r2, r3, #29
- 1838 00d8 07F14003 		add	r3, r7, #64
- 1839 00dc 103B     		subs	r3, r3, #16
- 1840 00de FFF7FEFF 		bl	_linear_combination
+ 1833 00c8 1344     		add	r3, r3, r2
+ 1834 00ca 1A46     		mov	r2, r3
+ 1835              		.loc 1 105 4 discriminator 2
+ 1836 00cc 07F59C63 		add	r3, r7, #1248
+ 1837 00d0 A3F2D443 		subw	r3, r3, #1236
+ 1838 00d4 1B68     		ldr	r3, [r3]
+ 1839 00d6 9918     		adds	r1, r3, r2
+ 1840 00d8 07F5A653 		add	r3, r7, #5312
+ 1841 00dc 03F11803 		add	r3, r3, #24
+ 1842 00e0 1B68     		ldr	r3, [r3]
+ 1843 00e2 C3F11D02 		rsb	r2, r3, #29
+ 1844 00e6 07F14003 		add	r3, r7, #64
+ 1845 00ea 103B     		subs	r3, r3, #16
+ 1846 00ec FFF7FEFF 		bl	_linear_combination
  106:MAYO.c        **** 			add_vectors(temp + (i*O + j)*M, vec,temp + (i*O + j)*M);
- 1841              		.loc 1 106 25 discriminator 2
- 1842 00e2 07F5A653 		add	r3, r7, #5312
- 1843 00e6 03F11803 		add	r3, r3, #24
- 1844 00ea 1A68     		ldr	r2, [r3]
- 1845 00ec 1346     		mov	r3, r2
- 1846 00ee 5B00     		lsls	r3, r3, #1
- 1847 00f0 1A44     		add	r2, r2, r3
- 1848              		.loc 1 106 28 discriminator 2
- 1849 00f2 07F5A653 		add	r3, r7, #5312
- 1850 00f6 03F11403 		add	r3, r3, #20
- 1851 00fa 1B68     		ldr	r3, [r3]
- 1852 00fc 1A44     		add	r2, r2, r3
- 1853              		.loc 1 106 32 discriminator 2
- 1854 00fe 1346     		mov	r3, r2
- 1855 0100 1B01     		lsls	r3, r3, #4
- 1856 0102 9B1A     		subs	r3, r3, r2
- 1857 0104 5B00     		lsls	r3, r3, #1
- 1858 0106 1A46     		mov	r2, r3
- 1859              		.loc 1 106 4 discriminator 2
- 1860 0108 07F68423 		addw	r3, r7, #2692
- 1861 010c 9818     		adds	r0, r3, r2
- 1862              		.loc 1 106 49 discriminator 2
- 1863 010e 07F5A653 		add	r3, r7, #5312
- 1864 0112 03F11803 		add	r3, r3, #24
- 1865 0116 1A68     		ldr	r2, [r3]
- 1866 0118 1346     		mov	r3, r2
- 1867 011a 5B00     		lsls	r3, r3, #1
- 1868 011c 1A44     		add	r2, r2, r3
- 1869              		.loc 1 106 52 discriminator 2
- 1870 011e 07F5A653 		add	r3, r7, #5312
- 1871 0122 03F11403 		add	r3, r3, #20
- 1872 0126 1B68     		ldr	r3, [r3]
- 1873 0128 1A44     		add	r2, r2, r3
- 1874              		.loc 1 106 56 discriminator 2
- 1875 012a 1346     		mov	r3, r2
- 1876 012c 1B01     		lsls	r3, r3, #4
- 1877 012e 9B1A     		subs	r3, r3, r2
- 1878 0130 5B00     		lsls	r3, r3, #1
- 1879 0132 1A46     		mov	r2, r3
- 1880              		.loc 1 106 4 discriminator 2
- 1881 0134 07F68423 		addw	r3, r7, #2692
- 1882 0138 1A44     		add	r2, r2, r3
- 1883 013a 07F14003 		add	r3, r7, #64
- 1884 013e 103B     		subs	r3, r3, #16
- 1885 0140 1946     		mov	r1, r3
- 1886 0142 FFF7FEFF 		bl	add_vectors
+ 1847              		.loc 1 106 25 discriminator 2
+ 1848 00f0 07F5A653 		add	r3, r7, #5312
+ 1849 00f4 03F11803 		add	r3, r3, #24
+ 1850 00f8 1A68     		ldr	r2, [r3]
+ 1851 00fa 1346     		mov	r3, r2
+ 1852 00fc 5B00     		lsls	r3, r3, #1
+ 1853 00fe 1A44     		add	r2, r2, r3
+ 1854              		.loc 1 106 28 discriminator 2
+ 1855 0100 07F5A653 		add	r3, r7, #5312
+ 1856 0104 03F11403 		add	r3, r3, #20
+ 1857 0108 1B68     		ldr	r3, [r3]
+ 1858 010a 1A44     		add	r2, r2, r3
+ 1859              		.loc 1 106 32 discriminator 2
+ 1860 010c 1346     		mov	r3, r2
+ 1861 010e 1B01     		lsls	r3, r3, #4
+ 1862 0110 9B1A     		subs	r3, r3, r2
+ 1863 0112 5B00     		lsls	r3, r3, #1
+ 1864 0114 1A46     		mov	r2, r3
+ 1865              		.loc 1 106 4 discriminator 2
+ 1866 0116 07F68423 		addw	r3, r7, #2692
+ 1867 011a 9818     		adds	r0, r3, r2
+ 1868              		.loc 1 106 49 discriminator 2
+ 1869 011c 07F5A653 		add	r3, r7, #5312
+ 1870 0120 03F11803 		add	r3, r3, #24
+ 1871 0124 1A68     		ldr	r2, [r3]
+ 1872 0126 1346     		mov	r3, r2
+ 1873 0128 5B00     		lsls	r3, r3, #1
+ 1874 012a 1A44     		add	r2, r2, r3
+ 1875              		.loc 1 106 52 discriminator 2
+ 1876 012c 07F5A653 		add	r3, r7, #5312
+ 1877 0130 03F11403 		add	r3, r3, #20
+ 1878 0134 1B68     		ldr	r3, [r3]
+ 1879 0136 1A44     		add	r2, r2, r3
+ 1880              		.loc 1 106 56 discriminator 2
+ 1881 0138 1346     		mov	r3, r2
+ 1882 013a 1B01     		lsls	r3, r3, #4
+ 1883 013c 9B1A     		subs	r3, r3, r2
+ 1884 013e 5B00     		lsls	r3, r3, #1
+ 1885 0140 1A46     		mov	r2, r3
+ 1886              		.loc 1 106 4 discriminator 2
+ 1887 0142 07F68423 		addw	r3, r7, #2692
+ 1888 0146 1A44     		add	r2, r2, r3
+ 1889 0148 07F14003 		add	r3, r7, #64
+ 1890 014c 103B     		subs	r3, r3, #16
+ 1891 014e 1946     		mov	r1, r3
+ 1892 0150 FFF7FEFF 		bl	add_vectors
  107:MAYO.c        **** 			trigger = 0;
- 1887              		.loc 1 107 12 discriminator 2
- 1888 0146 9F4B     		ldr	r3, .L46
- 1889 0148 0022     		movs	r2, #0
- 1890 014a 1A60     		str	r2, [r3]
- 1891              	.LBE11:
+ 1893              		.loc 1 107 12 discriminator 2
+ 1894 0154 9F4B     		ldr	r3, .L46
+ 1895 0156 0022     		movs	r2, #0
+ 1896 0158 1A60     		str	r2, [r3]
+ 1897              	.LBE11:
  101:MAYO.c        **** 		{
- 1892              		.loc 1 101 26 discriminator 2
- 1893 014c 07F5A653 		add	r3, r7, #5312
- 1894 0150 03F11403 		add	r3, r3, #20
- 1895 0154 1B68     		ldr	r3, [r3]
- 1896 0156 0133     		adds	r3, r3, #1
- 1897 0158 07F5A652 		add	r2, r7, #5312
- 1898 015c 02F11402 		add	r2, r2, #20
- 1899 0160 1360     		str	r3, [r2]
- 1900              	.L29:
+ 1898              		.loc 1 101 26 discriminator 2
+ 1899 015a 07F5A653 		add	r3, r7, #5312
+ 1900 015e 03F11403 		add	r3, r3, #20
+ 1901 0162 1B68     		ldr	r3, [r3]
+ 1902 0164 0133     		adds	r3, r3, #1
+ 1903 0166 07F5A652 		add	r2, r7, #5312
+ 1904 016a 02F11402 		add	r2, r2, #20
+ 1905 016e 1360     		str	r3, [r2]
+ 1906              	.L29:
  101:MAYO.c        **** 		{
- 1901              		.loc 1 101 3 discriminator 1
- 1902 0162 07F5A653 		add	r3, r7, #5312
- 1903 0166 03F11403 		add	r3, r3, #20
- 1904 016a 1B68     		ldr	r3, [r3]
- 1905 016c 022B     		cmp	r3, #2
- 1906 016e 7FF77BAF 		ble	.L31
- 1907              	.LBE10:
+ 1907              		.loc 1 101 3 discriminator 1
+ 1908 0170 07F5A653 		add	r3, r7, #5312
+ 1909 0174 03F11403 		add	r3, r3, #20
+ 1910 0178 1B68     		ldr	r3, [r3]
+ 1911 017a 022B     		cmp	r3, #2
+ 1912 017c 7FF774AF 		ble	.L31
+ 1913              	.LBE10:
  108:MAYO.c        **** 		}
  109:MAYO.c        **** 		p1_counter += (N-O-i);
- 1908              		.loc 1 109 21 discriminator 2
- 1909 0172 07F5A653 		add	r3, r7, #5312
- 1910 0176 03F11803 		add	r3, r3, #24
- 1911 017a 1B68     		ldr	r3, [r3]
- 1912 017c C3F11D03 		rsb	r3, r3, #29
- 1913              		.loc 1 109 14 discriminator 2
- 1914 0180 07F5A652 		add	r2, r7, #5312
- 1915 0184 02F11C02 		add	r2, r2, #28
- 1916 0188 1268     		ldr	r2, [r2]
- 1917 018a 1344     		add	r3, r3, r2
- 1918 018c 07F5A652 		add	r2, r7, #5312
- 1919 0190 02F11C02 		add	r2, r2, #28
- 1920 0194 1360     		str	r3, [r2]
+ 1914              		.loc 1 109 21 discriminator 2
+ 1915 0180 07F5A653 		add	r3, r7, #5312
+ 1916 0184 03F11803 		add	r3, r3, #24
+ 1917 0188 1B68     		ldr	r3, [r3]
+ 1918 018a C3F11D03 		rsb	r3, r3, #29
+ 1919              		.loc 1 109 14 discriminator 2
+ 1920 018e 07F5A652 		add	r2, r7, #5312
+ 1921 0192 02F11C02 		add	r2, r2, #28
+ 1922 0196 1268     		ldr	r2, [r2]
+ 1923 0198 1344     		add	r3, r3, r2
+ 1924 019a 07F5A652 		add	r2, r7, #5312
+ 1925 019e 02F11C02 		add	r2, r2, #28
+ 1926 01a2 1360     		str	r3, [r2]
   98:MAYO.c        **** 	{
- 1921              		.loc 1 98 27 discriminator 2
- 1922 0196 07F5A653 		add	r3, r7, #5312
- 1923 019a 03F11803 		add	r3, r3, #24
- 1924 019e 1B68     		ldr	r3, [r3]
- 1925 01a0 0133     		adds	r3, r3, #1
- 1926 01a2 07F5A652 		add	r2, r7, #5312
- 1927 01a6 02F11802 		add	r2, r2, #24
- 1928 01aa 1360     		str	r3, [r2]
- 1929              	.L28:
+ 1927              		.loc 1 98 27 discriminator 2
+ 1928 01a4 07F5A653 		add	r3, r7, #5312
+ 1929 01a8 03F11803 		add	r3, r3, #24
+ 1930 01ac 1B68     		ldr	r3, [r3]
+ 1931 01ae 0133     		adds	r3, r3, #1
+ 1932 01b0 07F5A652 		add	r2, r7, #5312
+ 1933 01b4 02F11802 		add	r2, r2, #24
+ 1934 01b8 1360     		str	r3, [r2]
+ 1935              	.L28:
   98:MAYO.c        **** 	{
- 1930              		.loc 1 98 2 discriminator 1
- 1931 01ac 07F5A653 		add	r3, r7, #5312
- 1932 01b0 03F11803 		add	r3, r3, #24
- 1933 01b4 1B68     		ldr	r3, [r3]
- 1934 01b6 1C2B     		cmp	r3, #28
- 1935 01b8 7FF74FAF 		ble	.L32
- 1936              	.LBE9:
- 1937              	.LBB12:
+ 1936              		.loc 1 98 2 discriminator 1
+ 1937 01ba 07F5A653 		add	r3, r7, #5312
+ 1938 01be 03F11803 		add	r3, r3, #24
+ 1939 01c2 1B68     		ldr	r3, [r3]
+ 1940 01c4 1C2B     		cmp	r3, #28
+ 1941 01c6 7FF748AF 		ble	.L32
+ 1942              	.LBE9:
+ 1943              	.LBB12:
  110:MAYO.c        **** 	}
  111:MAYO.c        **** 
  112:MAYO.c        **** 	for (int i = 0; i < N-O; ++i)
- 1938              		.loc 1 112 11
- 1939 01bc 0023     		movs	r3, #0
- 1940 01be 07F5A652 		add	r2, r7, #5312
- 1941 01c2 02F11002 		add	r2, r2, #16
- 1942 01c6 1360     		str	r3, [r2]
- 1943              		.loc 1 112 2
- 1944 01c8 6DE0     		b	.L33
- 1945              	.L36:
- 1946              	.LBB13:
+ 1944              		.loc 1 112 11
+ 1945 01ca 0023     		movs	r3, #0
+ 1946 01cc 07F5A652 		add	r2, r7, #5312
+ 1947 01d0 02F11002 		add	r2, r2, #16
+ 1948 01d4 1360     		str	r3, [r2]
+ 1949              		.loc 1 112 2
+ 1950 01d6 6DE0     		b	.L33
+ 1951              	.L36:
+ 1952              	.LBB13:
  113:MAYO.c        **** 	{
  114:MAYO.c        **** 		// P1' part
  115:MAYO.c        **** 		for (int j = 0; j < O; j++)
- 1947              		.loc 1 115 12
- 1948 01ca 0023     		movs	r3, #0
- 1949 01cc 07F5A652 		add	r2, r7, #5312
- 1950 01d0 02F10C02 		add	r2, r2, #12
- 1951 01d4 1360     		str	r3, [r2]
- 1952              		.loc 1 115 3
- 1953 01d6 54E0     		b	.L34
- 1954              	.L35:
+ 1953              		.loc 1 115 12
+ 1954 01d8 0023     		movs	r3, #0
+ 1955 01da 07F5A652 		add	r2, r7, #5312
+ 1956 01de 02F10C02 		add	r2, r2, #12
+ 1957 01e2 1360     		str	r3, [r2]
+ 1958              		.loc 1 115 3
+ 1959 01e4 54E0     		b	.L34
+ 1960              	.L35:
  116:MAYO.c        **** 		{
  117:MAYO.c        **** 			add_vectors(temp + (i*O + j)*M, P1 + p1_counter*M, temp + (i*O + j)*M);
- 1955              		.loc 1 117 25 discriminator 3
- 1956 01d8 07F5A653 		add	r3, r7, #5312
- 1957 01dc 03F11003 		add	r3, r3, #16
- 1958 01e0 1A68     		ldr	r2, [r3]
- 1959 01e2 1346     		mov	r3, r2
- 1960 01e4 5B00     		lsls	r3, r3, #1
- 1961 01e6 1A44     		add	r2, r2, r3
- 1962              		.loc 1 117 28 discriminator 3
- 1963 01e8 07F5A653 		add	r3, r7, #5312
- 1964 01ec 03F10C03 		add	r3, r3, #12
- 1965 01f0 1B68     		ldr	r3, [r3]
- 1966 01f2 1A44     		add	r2, r2, r3
- 1967              		.loc 1 117 32 discriminator 3
- 1968 01f4 1346     		mov	r3, r2
- 1969 01f6 1B01     		lsls	r3, r3, #4
- 1970 01f8 9B1A     		subs	r3, r3, r2
- 1971 01fa 5B00     		lsls	r3, r3, #1
- 1972 01fc 1A46     		mov	r2, r3
- 1973              		.loc 1 117 4 discriminator 3
- 1974 01fe 07F68423 		addw	r3, r7, #2692
- 1975 0202 9818     		adds	r0, r3, r2
- 1976              		.loc 1 117 51 discriminator 3
- 1977 0204 07F5A653 		add	r3, r7, #5312
- 1978 0208 03F11C03 		add	r3, r3, #28
- 1979 020c 1A68     		ldr	r2, [r3]
- 1980 020e 1346     		mov	r3, r2
- 1981 0210 1B01     		lsls	r3, r3, #4
- 1982 0212 9B1A     		subs	r3, r3, r2
- 1983 0214 5B00     		lsls	r3, r3, #1
- 1984 0216 1A46     		mov	r2, r3
- 1985              		.loc 1 117 4 discriminator 3
- 1986 0218 07F59C63 		add	r3, r7, #1248
- 1987 021c A3F59B63 		sub	r3, r3, #1240
- 1988 0220 1B68     		ldr	r3, [r3]
- 1989 0222 9918     		adds	r1, r3, r2
- 1990              		.loc 1 117 64 discriminator 3
- 1991 0224 07F5A653 		add	r3, r7, #5312
- 1992 0228 03F11003 		add	r3, r3, #16
- 1993 022c 1A68     		ldr	r2, [r3]
- 1994 022e 1346     		mov	r3, r2
- 1995 0230 5B00     		lsls	r3, r3, #1
- 1996 0232 1A44     		add	r2, r2, r3
- 1997              		.loc 1 117 67 discriminator 3
- 1998 0234 07F5A653 		add	r3, r7, #5312
- 1999 0238 03F10C03 		add	r3, r3, #12
- 2000 023c 1B68     		ldr	r3, [r3]
- 2001 023e 1A44     		add	r2, r2, r3
- 2002              		.loc 1 117 71 discriminator 3
- 2003 0240 1346     		mov	r3, r2
- 2004 0242 1B01     		lsls	r3, r3, #4
- 2005 0244 9B1A     		subs	r3, r3, r2
- 2006 0246 5B00     		lsls	r3, r3, #1
- 2007 0248 1A46     		mov	r2, r3
- 2008              		.loc 1 117 4 discriminator 3
- 2009 024a 07F68423 		addw	r3, r7, #2692
- 2010 024e 1344     		add	r3, r3, r2
- 2011 0250 1A46     		mov	r2, r3
- 2012 0252 FFF7FEFF 		bl	add_vectors
+ 1961              		.loc 1 117 25 discriminator 3
+ 1962 01e6 07F5A653 		add	r3, r7, #5312
+ 1963 01ea 03F11003 		add	r3, r3, #16
+ 1964 01ee 1A68     		ldr	r2, [r3]
+ 1965 01f0 1346     		mov	r3, r2
+ 1966 01f2 5B00     		lsls	r3, r3, #1
+ 1967 01f4 1A44     		add	r2, r2, r3
+ 1968              		.loc 1 117 28 discriminator 3
+ 1969 01f6 07F5A653 		add	r3, r7, #5312
+ 1970 01fa 03F10C03 		add	r3, r3, #12
+ 1971 01fe 1B68     		ldr	r3, [r3]
+ 1972 0200 1A44     		add	r2, r2, r3
+ 1973              		.loc 1 117 32 discriminator 3
+ 1974 0202 1346     		mov	r3, r2
+ 1975 0204 1B01     		lsls	r3, r3, #4
+ 1976 0206 9B1A     		subs	r3, r3, r2
+ 1977 0208 5B00     		lsls	r3, r3, #1
+ 1978 020a 1A46     		mov	r2, r3
+ 1979              		.loc 1 117 4 discriminator 3
+ 1980 020c 07F68423 		addw	r3, r7, #2692
+ 1981 0210 9818     		adds	r0, r3, r2
+ 1982              		.loc 1 117 51 discriminator 3
+ 1983 0212 07F5A653 		add	r3, r7, #5312
+ 1984 0216 03F11C03 		add	r3, r3, #28
+ 1985 021a 1A68     		ldr	r2, [r3]
+ 1986 021c 1346     		mov	r3, r2
+ 1987 021e 1B01     		lsls	r3, r3, #4
+ 1988 0220 9B1A     		subs	r3, r3, r2
+ 1989 0222 5B00     		lsls	r3, r3, #1
+ 1990 0224 1A46     		mov	r2, r3
+ 1991              		.loc 1 117 4 discriminator 3
+ 1992 0226 07F59C63 		add	r3, r7, #1248
+ 1993 022a A3F59B63 		sub	r3, r3, #1240
+ 1994 022e 1B68     		ldr	r3, [r3]
+ 1995 0230 9918     		adds	r1, r3, r2
+ 1996              		.loc 1 117 64 discriminator 3
+ 1997 0232 07F5A653 		add	r3, r7, #5312
+ 1998 0236 03F11003 		add	r3, r3, #16
+ 1999 023a 1A68     		ldr	r2, [r3]
+ 2000 023c 1346     		mov	r3, r2
+ 2001 023e 5B00     		lsls	r3, r3, #1
+ 2002 0240 1A44     		add	r2, r2, r3
+ 2003              		.loc 1 117 67 discriminator 3
+ 2004 0242 07F5A653 		add	r3, r7, #5312
+ 2005 0246 03F10C03 		add	r3, r3, #12
+ 2006 024a 1B68     		ldr	r3, [r3]
+ 2007 024c 1A44     		add	r2, r2, r3
+ 2008              		.loc 1 117 71 discriminator 3
+ 2009 024e 1346     		mov	r3, r2
+ 2010 0250 1B01     		lsls	r3, r3, #4
+ 2011 0252 9B1A     		subs	r3, r3, r2
+ 2012 0254 5B00     		lsls	r3, r3, #1
+ 2013 0256 1A46     		mov	r2, r3
+ 2014              		.loc 1 117 4 discriminator 3
+ 2015 0258 07F68423 		addw	r3, r7, #2692
+ 2016 025c 1344     		add	r3, r3, r2
+ 2017 025e 1A46     		mov	r2, r3
+ 2018 0260 FFF7FEFF 		bl	add_vectors
  118:MAYO.c        **** 			p1_counter ++;
- 2013              		.loc 1 118 15 discriminator 3
- 2014 0256 07F5A653 		add	r3, r7, #5312
- 2015 025a 03F11C03 		add	r3, r3, #28
- 2016 025e 1B68     		ldr	r3, [r3]
- 2017 0260 0133     		adds	r3, r3, #1
- 2018 0262 07F5A652 		add	r2, r7, #5312
- 2019 0266 02F11C02 		add	r2, r2, #28
- 2020 026a 1360     		str	r3, [r2]
+ 2019              		.loc 1 118 15 discriminator 3
+ 2020 0264 07F5A653 		add	r3, r7, #5312
+ 2021 0268 03F11C03 		add	r3, r3, #28
+ 2022 026c 1B68     		ldr	r3, [r3]
+ 2023 026e 0133     		adds	r3, r3, #1
+ 2024 0270 07F5A652 		add	r2, r7, #5312
+ 2025 0274 02F11C02 		add	r2, r2, #28
+ 2026 0278 1360     		str	r3, [r2]
  115:MAYO.c        **** 		{
- 2021              		.loc 1 115 27 discriminator 3
- 2022 026c 07F5A653 		add	r3, r7, #5312
- 2023 0270 03F10C03 		add	r3, r3, #12
- 2024 0274 1B68     		ldr	r3, [r3]
- 2025 0276 0133     		adds	r3, r3, #1
- 2026 0278 07F5A652 		add	r2, r7, #5312
- 2027 027c 02F10C02 		add	r2, r2, #12
- 2028 0280 1360     		str	r3, [r2]
- 2029              	.L34:
+ 2027              		.loc 1 115 27 discriminator 3
+ 2028 027a 07F5A653 		add	r3, r7, #5312
+ 2029 027e 03F10C03 		add	r3, r3, #12
+ 2030 0282 1B68     		ldr	r3, [r3]
+ 2031 0284 0133     		adds	r3, r3, #1
+ 2032 0286 07F5A652 		add	r2, r7, #5312
+ 2033 028a 02F10C02 		add	r2, r2, #12
+ 2034 028e 1360     		str	r3, [r2]
+ 2035              	.L34:
  115:MAYO.c        **** 		{
- 2030              		.loc 1 115 3 discriminator 1
- 2031 0282 07F5A653 		add	r3, r7, #5312
- 2032 0286 03F10C03 		add	r3, r3, #12
- 2033 028a 1B68     		ldr	r3, [r3]
- 2034 028c 022B     		cmp	r3, #2
- 2035 028e A3DD     		ble	.L35
- 2036              	.LBE13:
+ 2036              		.loc 1 115 3 discriminator 1
+ 2037 0290 07F5A653 		add	r3, r7, #5312
+ 2038 0294 03F10C03 		add	r3, r3, #12
+ 2039 0298 1B68     		ldr	r3, [r3]
+ 2040 029a 022B     		cmp	r3, #2
+ 2041 029c A3DD     		ble	.L35
+ 2042              	.LBE13:
  112:MAYO.c        **** 	{
- 2037              		.loc 1 112 27 discriminator 2
- 2038 0290 07F5A653 		add	r3, r7, #5312
- 2039 0294 03F11003 		add	r3, r3, #16
- 2040 0298 1B68     		ldr	r3, [r3]
- 2041 029a 0133     		adds	r3, r3, #1
- 2042 029c 07F5A652 		add	r2, r7, #5312
- 2043 02a0 02F11002 		add	r2, r2, #16
- 2044 02a4 1360     		str	r3, [r2]
- 2045              	.L33:
+ 2043              		.loc 1 112 27 discriminator 2
+ 2044 029e 07F5A653 		add	r3, r7, #5312
+ 2045 02a2 03F11003 		add	r3, r3, #16
+ 2046 02a6 1B68     		ldr	r3, [r3]
+ 2047 02a8 0133     		adds	r3, r3, #1
+ 2048 02aa 07F5A652 		add	r2, r7, #5312
+ 2049 02ae 02F11002 		add	r2, r2, #16
+ 2050 02b2 1360     		str	r3, [r2]
+ 2051              	.L33:
  112:MAYO.c        **** 	{
- 2046              		.loc 1 112 2 discriminator 1
- 2047 02a6 07F5A653 		add	r3, r7, #5312
- 2048 02aa 03F11003 		add	r3, r3, #16
- 2049 02ae 1B68     		ldr	r3, [r3]
- 2050 02b0 1C2B     		cmp	r3, #28
- 2051 02b2 8ADD     		ble	.L36
- 2052              	.LBE12:
+ 2052              		.loc 1 112 2 discriminator 1
+ 2053 02b4 07F5A653 		add	r3, r7, #5312
+ 2054 02b8 03F11003 		add	r3, r3, #16
+ 2055 02bc 1B68     		ldr	r3, [r3]
+ 2056 02be 1C2B     		cmp	r3, #28
+ 2057 02c0 8ADD     		ble	.L36
+ 2058              	.LBE12:
  119:MAYO.c        **** 		}
  120:MAYO.c        **** 	}
  121:MAYO.c        **** 
  122:MAYO.c        **** 	// permute Temp
  123:MAYO.c        **** 	unsigned char tempt[M*(N-O)*O] = {0};
- 2053              		.loc 1 123 16
- 2054 02b4 07F59C63 		add	r3, r7, #1248
- 2055 02b8 A3F59263 		sub	r3, r3, #1168
- 2056 02bc 0022     		movs	r2, #0
- 2057 02be 1A60     		str	r2, [r3]
- 2058 02c0 0433     		adds	r3, r3, #4
- 2059 02c2 40F62E22 		movw	r2, #2606
- 2060 02c6 0021     		movs	r1, #0
- 2061 02c8 1846     		mov	r0, r3
- 2062 02ca FFF7FEFF 		bl	memset
- 2063              	.LBB14:
+ 2059              		.loc 1 123 16
+ 2060 02c2 07F59C63 		add	r3, r7, #1248
+ 2061 02c6 A3F59263 		sub	r3, r3, #1168
+ 2062 02ca 0022     		movs	r2, #0
+ 2063 02cc 1A60     		str	r2, [r3]
+ 2064 02ce 0433     		adds	r3, r3, #4
+ 2065 02d0 40F62E22 		movw	r2, #2606
+ 2066 02d4 0021     		movs	r1, #0
+ 2067 02d6 1846     		mov	r0, r3
+ 2068 02d8 FFF7FEFF 		bl	memset
+ 2069              	.LBB14:
  124:MAYO.c        **** 
  125:MAYO.c        **** 	for (int i = 0; i < O; ++i)
- 2064              		.loc 1 125 11
- 2065 02ce 0023     		movs	r3, #0
- 2066 02d0 07F5A652 		add	r2, r7, #5312
- 2067 02d4 02F10802 		add	r2, r2, #8
- 2068 02d8 1360     		str	r3, [r2]
- 2069              		.loc 1 125 2
- 2070 02da 56E0     		b	.L37
- 2071              	.L40:
- 2072              	.LBB15:
+ 2070              		.loc 1 125 11
+ 2071 02dc 0023     		movs	r3, #0
+ 2072 02de 07F5A652 		add	r2, r7, #5312
+ 2073 02e2 02F10802 		add	r2, r2, #8
+ 2074 02e6 1360     		str	r3, [r2]
+ 2075              		.loc 1 125 2
+ 2076 02e8 56E0     		b	.L37
+ 2077              	.L40:
+ 2078              	.LBB15:
  126:MAYO.c        **** 	{
  127:MAYO.c        **** 		for(int j=0; j< N-O; j++){
- 2073              		.loc 1 127 11
- 2074 02dc 0023     		movs	r3, #0
- 2075 02de 07F5A652 		add	r2, r7, #5312
- 2076 02e2 02F10402 		add	r2, r2, #4
- 2077 02e6 1360     		str	r3, [r2]
- 2078              		.loc 1 127 3
- 2079 02e8 3DE0     		b	.L38
- 2080              	.L39:
+ 2079              		.loc 1 127 11
+ 2080 02ea 0023     		movs	r3, #0
+ 2081 02ec 07F5A652 		add	r2, r7, #5312
+ 2082 02f0 02F10402 		add	r2, r2, #4
+ 2083 02f4 1360     		str	r3, [r2]
+ 2084              		.loc 1 127 3
+ 2085 02f6 3DE0     		b	.L38
+ 2086              	.L39:
  128:MAYO.c        **** 			memcpy(tempt + ((i*(N-O) + j)*M), temp + ((j*O+i)*M), M);
- 2081              		.loc 1 128 22 discriminator 3
- 2082 02ea 07F5A653 		add	r3, r7, #5312
- 2083 02ee 03F10803 		add	r3, r3, #8
- 2084 02f2 1A68     		ldr	r2, [r3]
- 2085 02f4 1346     		mov	r3, r2
- 2086 02f6 DB00     		lsls	r3, r3, #3
- 2087 02f8 9B1A     		subs	r3, r3, r2
- 2088 02fa 9B00     		lsls	r3, r3, #2
- 2089 02fc 1A44     		add	r2, r2, r3
- 2090              		.loc 1 128 29 discriminator 3
- 2091 02fe 07F5A653 		add	r3, r7, #5312
- 2092 0302 03F10403 		add	r3, r3, #4
- 2093 0306 1B68     		ldr	r3, [r3]
- 2094 0308 1A44     		add	r2, r2, r3
- 2095              		.loc 1 128 33 discriminator 3
- 2096 030a 1346     		mov	r3, r2
- 2097 030c 1B01     		lsls	r3, r3, #4
- 2098 030e 9B1A     		subs	r3, r3, r2
- 2099 0310 5B00     		lsls	r3, r3, #1
- 2100 0312 1A46     		mov	r2, r3
- 2101              		.loc 1 128 4 discriminator 3
- 2102 0314 07F16003 		add	r3, r7, #96
- 2103 0318 103B     		subs	r3, r3, #16
- 2104 031a 9818     		adds	r0, r3, r2
- 2105              		.loc 1 128 48 discriminator 3
- 2106 031c 07F5A653 		add	r3, r7, #5312
- 2107 0320 03F10403 		add	r3, r3, #4
- 2108 0324 1A68     		ldr	r2, [r3]
- 2109 0326 1346     		mov	r3, r2
- 2110 0328 5B00     		lsls	r3, r3, #1
- 2111 032a 1A44     		add	r2, r2, r3
- 2112              		.loc 1 128 50 discriminator 3
- 2113 032c 07F5A653 		add	r3, r7, #5312
- 2114 0330 03F10803 		add	r3, r3, #8
- 2115 0334 1B68     		ldr	r3, [r3]
- 2116 0336 1A44     		add	r2, r2, r3
- 2117              		.loc 1 128 53 discriminator 3
- 2118 0338 1346     		mov	r3, r2
- 2119 033a 1B01     		lsls	r3, r3, #4
- 2120 033c 9B1A     		subs	r3, r3, r2
- 2121 033e 5B00     		lsls	r3, r3, #1
- 2122 0340 1A46     		mov	r2, r3
- 2123              		.loc 1 128 4 discriminator 3
- 2124 0342 07F68423 		addw	r3, r7, #2692
- 2125 0346 1344     		add	r3, r3, r2
- 2126 0348 1E22     		movs	r2, #30
- 2127 034a 1946     		mov	r1, r3
- 2128 034c FFF7FEFF 		bl	memcpy
+ 2087              		.loc 1 128 22 discriminator 3
+ 2088 02f8 07F5A653 		add	r3, r7, #5312
+ 2089 02fc 03F10803 		add	r3, r3, #8
+ 2090 0300 1A68     		ldr	r2, [r3]
+ 2091 0302 1346     		mov	r3, r2
+ 2092 0304 DB00     		lsls	r3, r3, #3
+ 2093 0306 9B1A     		subs	r3, r3, r2
+ 2094 0308 9B00     		lsls	r3, r3, #2
+ 2095 030a 1A44     		add	r2, r2, r3
+ 2096              		.loc 1 128 29 discriminator 3
+ 2097 030c 07F5A653 		add	r3, r7, #5312
+ 2098 0310 03F10403 		add	r3, r3, #4
+ 2099 0314 1B68     		ldr	r3, [r3]
+ 2100 0316 1A44     		add	r2, r2, r3
+ 2101              		.loc 1 128 33 discriminator 3
+ 2102 0318 1346     		mov	r3, r2
+ 2103 031a 1B01     		lsls	r3, r3, #4
+ 2104 031c 9B1A     		subs	r3, r3, r2
+ 2105 031e 5B00     		lsls	r3, r3, #1
+ 2106 0320 1A46     		mov	r2, r3
+ 2107              		.loc 1 128 4 discriminator 3
+ 2108 0322 07F16003 		add	r3, r7, #96
+ 2109 0326 103B     		subs	r3, r3, #16
+ 2110 0328 9818     		adds	r0, r3, r2
+ 2111              		.loc 1 128 48 discriminator 3
+ 2112 032a 07F5A653 		add	r3, r7, #5312
+ 2113 032e 03F10403 		add	r3, r3, #4
+ 2114 0332 1A68     		ldr	r2, [r3]
+ 2115 0334 1346     		mov	r3, r2
+ 2116 0336 5B00     		lsls	r3, r3, #1
+ 2117 0338 1A44     		add	r2, r2, r3
+ 2118              		.loc 1 128 50 discriminator 3
+ 2119 033a 07F5A653 		add	r3, r7, #5312
+ 2120 033e 03F10803 		add	r3, r3, #8
+ 2121 0342 1B68     		ldr	r3, [r3]
+ 2122 0344 1A44     		add	r2, r2, r3
+ 2123              		.loc 1 128 53 discriminator 3
+ 2124 0346 1346     		mov	r3, r2
+ 2125 0348 1B01     		lsls	r3, r3, #4
+ 2126 034a 9B1A     		subs	r3, r3, r2
+ 2127 034c 5B00     		lsls	r3, r3, #1
+ 2128 034e 1A46     		mov	r2, r3
+ 2129              		.loc 1 128 4 discriminator 3
+ 2130 0350 07F68423 		addw	r3, r7, #2692
+ 2131 0354 1344     		add	r3, r3, r2
+ 2132 0356 1E22     		movs	r2, #30
+ 2133 0358 1946     		mov	r1, r3
+ 2134 035a FFF7FEFF 		bl	memcpy
  127:MAYO.c        **** 			memcpy(tempt + ((i*(N-O) + j)*M), temp + ((j*O+i)*M), M);
- 2129              		.loc 1 127 25 discriminator 3
- 2130 0350 07F5A653 		add	r3, r7, #5312
- 2131 0354 03F10403 		add	r3, r3, #4
- 2132 0358 1B68     		ldr	r3, [r3]
- 2133 035a 0133     		adds	r3, r3, #1
- 2134 035c 07F5A652 		add	r2, r7, #5312
- 2135 0360 02F10402 		add	r2, r2, #4
- 2136 0364 1360     		str	r3, [r2]
- 2137              	.L38:
+ 2135              		.loc 1 127 25 discriminator 3
+ 2136 035e 07F5A653 		add	r3, r7, #5312
+ 2137 0362 03F10403 		add	r3, r3, #4
+ 2138 0366 1B68     		ldr	r3, [r3]
+ 2139 0368 0133     		adds	r3, r3, #1
+ 2140 036a 07F5A652 		add	r2, r7, #5312
+ 2141 036e 02F10402 		add	r2, r2, #4
+ 2142 0372 1360     		str	r3, [r2]
+ 2143              	.L38:
  127:MAYO.c        **** 			memcpy(tempt + ((i*(N-O) + j)*M), temp + ((j*O+i)*M), M);
- 2138              		.loc 1 127 3 discriminator 1
- 2139 0366 07F5A653 		add	r3, r7, #5312
- 2140 036a 03F10403 		add	r3, r3, #4
- 2141 036e 1B68     		ldr	r3, [r3]
- 2142 0370 1C2B     		cmp	r3, #28
- 2143 0372 BADD     		ble	.L39
- 2144              	.LBE15:
+ 2144              		.loc 1 127 3 discriminator 1
+ 2145 0374 07F5A653 		add	r3, r7, #5312
+ 2146 0378 03F10403 		add	r3, r3, #4
+ 2147 037c 1B68     		ldr	r3, [r3]
+ 2148 037e 1C2B     		cmp	r3, #28
+ 2149 0380 BADD     		ble	.L39
+ 2150              	.LBE15:
  125:MAYO.c        **** 	{
- 2145              		.loc 1 125 25 discriminator 2
- 2146 0374 07F5A653 		add	r3, r7, #5312
- 2147 0378 03F10803 		add	r3, r3, #8
- 2148 037c 1B68     		ldr	r3, [r3]
- 2149 037e 0133     		adds	r3, r3, #1
- 2150 0380 07F5A652 		add	r2, r7, #5312
- 2151 0384 02F10802 		add	r2, r2, #8
- 2152 0388 1360     		str	r3, [r2]
- 2153              	.L37:
+ 2151              		.loc 1 125 25 discriminator 2
+ 2152 0382 07F5A653 		add	r3, r7, #5312
+ 2153 0386 03F10803 		add	r3, r3, #8
+ 2154 038a 1B68     		ldr	r3, [r3]
+ 2155 038c 0133     		adds	r3, r3, #1
+ 2156 038e 07F5A652 		add	r2, r7, #5312
+ 2157 0392 02F10802 		add	r2, r2, #8
+ 2158 0396 1360     		str	r3, [r2]
+ 2159              	.L37:
  125:MAYO.c        **** 	{
- 2154              		.loc 1 125 2 discriminator 1
- 2155 038a 07F5A653 		add	r3, r7, #5312
- 2156 038e 03F10803 		add	r3, r3, #8
- 2157 0392 1B68     		ldr	r3, [r3]
- 2158 0394 022B     		cmp	r3, #2
- 2159 0396 A1DD     		ble	.L40
- 2160              	.LBE14:
+ 2160              		.loc 1 125 2 discriminator 1
+ 2161 0398 07F5A653 		add	r3, r7, #5312
+ 2162 039c 03F10803 		add	r3, r3, #8
+ 2163 03a0 1B68     		ldr	r3, [r3]
+ 2164 03a2 022B     		cmp	r3, #2
+ 2165 03a4 A1DD     		ble	.L40
+ 2166              	.LBE14:
  129:MAYO.c        **** 		}
  130:MAYO.c        **** 	}
  131:MAYO.c        **** 
  132:MAYO.c        **** 	int counter = 0;
- 2161              		.loc 1 132 6
- 2162 0398 0023     		movs	r3, #0
- 2163 039a 07F5A652 		add	r2, r7, #5312
- 2164 039e 1360     		str	r3, [r2]
- 2165              	.LBB16:
+ 2167              		.loc 1 132 6
+ 2168 03a6 0023     		movs	r3, #0
+ 2169 03a8 07F5A652 		add	r2, r7, #5312
+ 2170 03ac 1360     		str	r3, [r2]
+ 2171              	.LBB16:
  133:MAYO.c        **** 	// compute O*Temp;
  134:MAYO.c        **** 	for (int i = 0; i < O; ++i)
- 2166              		.loc 1 134 11
- 2167 03a0 0023     		movs	r3, #0
- 2168 03a2 07F5A552 		add	r2, r7, #5280
- 2169 03a6 02F11C02 		add	r2, r2, #28
- 2170 03aa 1360     		str	r3, [r2]
- 2171              		.loc 1 134 2
- 2172 03ac C3E0     		b	.L41
- 2173              	.L45:
- 2174              	.LBB17:
+ 2172              		.loc 1 134 11
+ 2173 03ae 0023     		movs	r3, #0
+ 2174 03b0 07F5A552 		add	r2, r7, #5280
+ 2175 03b4 02F11C02 		add	r2, r2, #28
+ 2176 03b8 1360     		str	r3, [r2]
+ 2177              		.loc 1 134 2
+ 2178 03ba C4E0     		b	.L41
+ 2179              	.L45:
+ 2180              	.LBB17:
  135:MAYO.c        **** 	{
  136:MAYO.c        **** 		for (int j = i; j < O; ++j)
- 2175              		.loc 1 136 12
- 2176 03ae 07F5A553 		add	r3, r7, #5280
- 2177 03b2 03F11C03 		add	r3, r3, #28
- 2178 03b6 1B68     		ldr	r3, [r3]
- 2179 03b8 07F5A552 		add	r2, r7, #5280
- 2180 03bc 02F11802 		add	r2, r2, #24
- 2181 03c0 1360     		str	r3, [r2]
- 2182              		.loc 1 136 3
- 2183 03c2 A5E0     		b	.L42
- 2184              	.L47:
- 2185              		.align	2
- 2186              	.L46:
- 2187 03c4 00000000 		.word	trigger
- 2188              	.L44:
+ 2181              		.loc 1 136 12
+ 2182 03bc 07F5A553 		add	r3, r7, #5280
+ 2183 03c0 03F11C03 		add	r3, r3, #28
+ 2184 03c4 1B68     		ldr	r3, [r3]
+ 2185 03c6 07F5A552 		add	r2, r7, #5280
+ 2186 03ca 02F11802 		add	r2, r2, #24
+ 2187 03ce 1360     		str	r3, [r2]
+ 2188              		.loc 1 136 3
+ 2189 03d0 A6E0     		b	.L42
+ 2190              	.L47:
+ 2191 03d2 00BF     		.align	2
+ 2192              	.L46:
+ 2193 03d4 00000000 		.word	trigger
+ 2194              	.L44:
  137:MAYO.c        **** 		{
  138:MAYO.c        **** 			_linear_combination(tempt + (j*(N-O))*M, oil_space + i*(N-O), N-O, P2 + counter*M);
- 2189              		.loc 1 138 41
- 2190 03c8 07F5A553 		add	r3, r7, #5280
- 2191 03cc 03F11803 		add	r3, r3, #24
- 2192 03d0 1B68     		ldr	r3, [r3]
- 2193 03d2 40F26632 		movw	r2, #870
- 2194 03d6 02FB03F3 		mul	r3, r2, r3
- 2195 03da 1A46     		mov	r2, r3
- 2196              		.loc 1 138 4
- 2197 03dc 07F16003 		add	r3, r7, #96
- 2198 03e0 103B     		subs	r3, r3, #16
- 2199 03e2 9818     		adds	r0, r3, r2
- 2200              		.loc 1 138 58
- 2201 03e4 07F5A553 		add	r3, r7, #5280
- 2202 03e8 03F11C03 		add	r3, r3, #28
- 2203 03ec 1A68     		ldr	r2, [r3]
- 2204 03ee 1346     		mov	r3, r2
- 2205 03f0 DB00     		lsls	r3, r3, #3
- 2206 03f2 9B1A     		subs	r3, r3, r2
- 2207 03f4 9B00     		lsls	r3, r3, #2
- 2208 03f6 1344     		add	r3, r3, r2
- 2209 03f8 1A46     		mov	r2, r3
- 2210              		.loc 1 138 4
- 2211 03fa 07F59C63 		add	r3, r7, #1248
- 2212 03fe A3F2D443 		subw	r3, r3, #1236
- 2213 0402 1B68     		ldr	r3, [r3]
- 2214 0404 9918     		adds	r1, r3, r2
- 2215              		.loc 1 138 83
- 2216 0406 07F5A653 		add	r3, r7, #5312
- 2217 040a 1A68     		ldr	r2, [r3]
- 2218 040c 1346     		mov	r3, r2
- 2219 040e 1B01     		lsls	r3, r3, #4
- 2220 0410 9B1A     		subs	r3, r3, r2
- 2221 0412 5B00     		lsls	r3, r3, #1
- 2222 0414 1A46     		mov	r2, r3
- 2223              		.loc 1 138 4
- 2224 0416 07F59C63 		add	r3, r7, #1248
- 2225 041a A3F2DC43 		subw	r3, r3, #1244
- 2226 041e 1B68     		ldr	r3, [r3]
- 2227 0420 1344     		add	r3, r3, r2
- 2228 0422 1D22     		movs	r2, #29
- 2229 0424 FFF7FEFF 		bl	_linear_combination
+ 2195              		.loc 1 138 41
+ 2196 03d8 07F5A553 		add	r3, r7, #5280
+ 2197 03dc 03F11803 		add	r3, r3, #24
+ 2198 03e0 1B68     		ldr	r3, [r3]
+ 2199 03e2 40F26632 		movw	r2, #870
+ 2200 03e6 02FB03F3 		mul	r3, r2, r3
+ 2201 03ea 1A46     		mov	r2, r3
+ 2202              		.loc 1 138 4
+ 2203 03ec 07F16003 		add	r3, r7, #96
+ 2204 03f0 103B     		subs	r3, r3, #16
+ 2205 03f2 9818     		adds	r0, r3, r2
+ 2206              		.loc 1 138 58
+ 2207 03f4 07F5A553 		add	r3, r7, #5280
+ 2208 03f8 03F11C03 		add	r3, r3, #28
+ 2209 03fc 1A68     		ldr	r2, [r3]
+ 2210 03fe 1346     		mov	r3, r2
+ 2211 0400 DB00     		lsls	r3, r3, #3
+ 2212 0402 9B1A     		subs	r3, r3, r2
+ 2213 0404 9B00     		lsls	r3, r3, #2
+ 2214 0406 1344     		add	r3, r3, r2
+ 2215 0408 1A46     		mov	r2, r3
+ 2216              		.loc 1 138 4
+ 2217 040a 07F59C63 		add	r3, r7, #1248
+ 2218 040e A3F2D443 		subw	r3, r3, #1236
+ 2219 0412 1B68     		ldr	r3, [r3]
+ 2220 0414 9918     		adds	r1, r3, r2
+ 2221              		.loc 1 138 83
+ 2222 0416 07F5A653 		add	r3, r7, #5312
+ 2223 041a 1A68     		ldr	r2, [r3]
+ 2224 041c 1346     		mov	r3, r2
+ 2225 041e 1B01     		lsls	r3, r3, #4
+ 2226 0420 9B1A     		subs	r3, r3, r2
+ 2227 0422 5B00     		lsls	r3, r3, #1
+ 2228 0424 1A46     		mov	r2, r3
+ 2229              		.loc 1 138 4
+ 2230 0426 07F59C63 		add	r3, r7, #1248
+ 2231 042a A3F2DC43 		subw	r3, r3, #1244
+ 2232 042e 1B68     		ldr	r3, [r3]
+ 2233 0430 1344     		add	r3, r3, r2
+ 2234 0432 1D22     		movs	r2, #29
+ 2235 0434 FFF7FEFF 		bl	_linear_combination
  139:MAYO.c        **** 
  140:MAYO.c        **** 			if(j!= i){
- 2230              		.loc 1 140 6
- 2231 0428 07F5A553 		add	r3, r7, #5280
- 2232 042c 03F11803 		add	r3, r3, #24
- 2233 0430 1A68     		ldr	r2, [r3]
- 2234 0432 07F5A553 		add	r3, r7, #5280
- 2235 0436 03F11C03 		add	r3, r3, #28
- 2236 043a 1B68     		ldr	r3, [r3]
- 2237 043c 9A42     		cmp	r2, r3
- 2238 043e 55D0     		beq	.L43
- 2239              	.LBB18:
+ 2236              		.loc 1 140 6
+ 2237 0438 07F5A553 		add	r3, r7, #5280
+ 2238 043c 03F11803 		add	r3, r3, #24
+ 2239 0440 1A68     		ldr	r2, [r3]
+ 2240 0442 07F5A553 		add	r3, r7, #5280
+ 2241 0446 03F11C03 		add	r3, r3, #28
+ 2242 044a 1B68     		ldr	r3, [r3]
+ 2243 044c 9A42     		cmp	r2, r3
+ 2244 044e 55D0     		beq	.L43
+ 2245              	.LBB18:
  141:MAYO.c        **** 				unsigned char vec[M] = {0};
- 2240              		.loc 1 141 19
- 2241 0440 07F59C63 		add	r3, r7, #1248
- 2242 0444 A3F59A63 		sub	r3, r3, #1232
- 2243 0448 0022     		movs	r2, #0
- 2244 044a 1A60     		str	r2, [r3]
- 2245 044c 0433     		adds	r3, r3, #4
- 2246 044e 0022     		movs	r2, #0
- 2247 0450 1A60     		str	r2, [r3]
- 2248 0452 5A60     		str	r2, [r3, #4]
- 2249 0454 9A60     		str	r2, [r3, #8]
- 2250 0456 DA60     		str	r2, [r3, #12]
- 2251 0458 1A61     		str	r2, [r3, #16]
- 2252 045a 5A61     		str	r2, [r3, #20]
- 2253 045c 1A83     		strh	r2, [r3, #24]	@ movhi
+ 2246              		.loc 1 141 19
+ 2247 0450 07F59C63 		add	r3, r7, #1248
+ 2248 0454 A3F59A63 		sub	r3, r3, #1232
+ 2249 0458 0022     		movs	r2, #0
+ 2250 045a 1A60     		str	r2, [r3]
+ 2251 045c 0433     		adds	r3, r3, #4
+ 2252 045e 0022     		movs	r2, #0
+ 2253 0460 1A60     		str	r2, [r3]
+ 2254 0462 5A60     		str	r2, [r3, #4]
+ 2255 0464 9A60     		str	r2, [r3, #8]
+ 2256 0466 DA60     		str	r2, [r3, #12]
+ 2257 0468 1A61     		str	r2, [r3, #16]
+ 2258 046a 5A61     		str	r2, [r3, #20]
+ 2259 046c 1A83     		strh	r2, [r3, #24]	@ movhi
  142:MAYO.c        **** 				_linear_combination(tempt + (i*(N-O))*M, oil_space + j*(N-O), N-O, vec);
- 2254              		.loc 1 142 42
- 2255 045e 07F5A553 		add	r3, r7, #5280
- 2256 0462 03F11C03 		add	r3, r3, #28
- 2257 0466 1B68     		ldr	r3, [r3]
- 2258 0468 40F26632 		movw	r2, #870
- 2259 046c 02FB03F3 		mul	r3, r2, r3
- 2260 0470 1A46     		mov	r2, r3
- 2261              		.loc 1 142 5
- 2262 0472 07F16003 		add	r3, r7, #96
- 2263 0476 103B     		subs	r3, r3, #16
- 2264 0478 9818     		adds	r0, r3, r2
- 2265              		.loc 1 142 59
- 2266 047a 07F5A553 		add	r3, r7, #5280
- 2267 047e 03F11803 		add	r3, r3, #24
- 2268 0482 1A68     		ldr	r2, [r3]
- 2269 0484 1346     		mov	r3, r2
- 2270 0486 DB00     		lsls	r3, r3, #3
- 2271 0488 9B1A     		subs	r3, r3, r2
- 2272 048a 9B00     		lsls	r3, r3, #2
- 2273 048c 1344     		add	r3, r3, r2
- 2274 048e 1A46     		mov	r2, r3
- 2275              		.loc 1 142 5
- 2276 0490 07F59C63 		add	r3, r7, #1248
- 2277 0494 A3F2D443 		subw	r3, r3, #1236
- 2278 0498 1B68     		ldr	r3, [r3]
- 2279 049a 9918     		adds	r1, r3, r2
- 2280 049c 07F12003 		add	r3, r7, #32
- 2281 04a0 103B     		subs	r3, r3, #16
- 2282 04a2 1D22     		movs	r2, #29
- 2283 04a4 FFF7FEFF 		bl	_linear_combination
+ 2260              		.loc 1 142 42
+ 2261 046e 07F5A553 		add	r3, r7, #5280
+ 2262 0472 03F11C03 		add	r3, r3, #28
+ 2263 0476 1B68     		ldr	r3, [r3]
+ 2264 0478 40F26632 		movw	r2, #870
+ 2265 047c 02FB03F3 		mul	r3, r2, r3
+ 2266 0480 1A46     		mov	r2, r3
+ 2267              		.loc 1 142 5
+ 2268 0482 07F16003 		add	r3, r7, #96
+ 2269 0486 103B     		subs	r3, r3, #16
+ 2270 0488 9818     		adds	r0, r3, r2
+ 2271              		.loc 1 142 59
+ 2272 048a 07F5A553 		add	r3, r7, #5280
+ 2273 048e 03F11803 		add	r3, r3, #24
+ 2274 0492 1A68     		ldr	r2, [r3]
+ 2275 0494 1346     		mov	r3, r2
+ 2276 0496 DB00     		lsls	r3, r3, #3
+ 2277 0498 9B1A     		subs	r3, r3, r2
+ 2278 049a 9B00     		lsls	r3, r3, #2
+ 2279 049c 1344     		add	r3, r3, r2
+ 2280 049e 1A46     		mov	r2, r3
+ 2281              		.loc 1 142 5
+ 2282 04a0 07F59C63 		add	r3, r7, #1248
+ 2283 04a4 A3F2D443 		subw	r3, r3, #1236
+ 2284 04a8 1B68     		ldr	r3, [r3]
+ 2285 04aa 9918     		adds	r1, r3, r2
+ 2286 04ac 07F12003 		add	r3, r7, #32
+ 2287 04b0 103B     		subs	r3, r3, #16
+ 2288 04b2 1D22     		movs	r2, #29
+ 2289 04b4 FFF7FEFF 		bl	_linear_combination
  143:MAYO.c        **** 				add_vectors(P2 + counter*M, vec, P2 + counter*M);
- 2284              		.loc 1 143 29
- 2285 04a8 07F5A653 		add	r3, r7, #5312
- 2286 04ac 1A68     		ldr	r2, [r3]
- 2287 04ae 1346     		mov	r3, r2
- 2288 04b0 1B01     		lsls	r3, r3, #4
- 2289 04b2 9B1A     		subs	r3, r3, r2
- 2290 04b4 5B00     		lsls	r3, r3, #1
- 2291 04b6 1A46     		mov	r2, r3
- 2292              		.loc 1 143 20
- 2293 04b8 07F59C63 		add	r3, r7, #1248
- 2294 04bc A3F2DC43 		subw	r3, r3, #1244
- 2295 04c0 1B68     		ldr	r3, [r3]
- 2296 04c2 9818     		adds	r0, r3, r2
- 2297              		.loc 1 143 50
- 2298 04c4 07F5A653 		add	r3, r7, #5312
- 2299 04c8 1A68     		ldr	r2, [r3]
- 2300 04ca 1346     		mov	r3, r2
- 2301 04cc 1B01     		lsls	r3, r3, #4
- 2302 04ce 9B1A     		subs	r3, r3, r2
- 2303 04d0 5B00     		lsls	r3, r3, #1
- 2304 04d2 1A46     		mov	r2, r3
- 2305              		.loc 1 143 5
- 2306 04d4 07F59C63 		add	r3, r7, #1248
- 2307 04d8 A3F2DC43 		subw	r3, r3, #1244
- 2308 04dc 1B68     		ldr	r3, [r3]
- 2309 04de 1A44     		add	r2, r2, r3
- 2310 04e0 07F12003 		add	r3, r7, #32
- 2311 04e4 103B     		subs	r3, r3, #16
- 2312 04e6 1946     		mov	r1, r3
- 2313 04e8 FFF7FEFF 		bl	add_vectors
- 2314              	.L43:
- 2315              	.LBE18:
+ 2290              		.loc 1 143 29
+ 2291 04b8 07F5A653 		add	r3, r7, #5312
+ 2292 04bc 1A68     		ldr	r2, [r3]
+ 2293 04be 1346     		mov	r3, r2
+ 2294 04c0 1B01     		lsls	r3, r3, #4
+ 2295 04c2 9B1A     		subs	r3, r3, r2
+ 2296 04c4 5B00     		lsls	r3, r3, #1
+ 2297 04c6 1A46     		mov	r2, r3
+ 2298              		.loc 1 143 20
+ 2299 04c8 07F59C63 		add	r3, r7, #1248
+ 2300 04cc A3F2DC43 		subw	r3, r3, #1244
+ 2301 04d0 1B68     		ldr	r3, [r3]
+ 2302 04d2 9818     		adds	r0, r3, r2
+ 2303              		.loc 1 143 50
+ 2304 04d4 07F5A653 		add	r3, r7, #5312
+ 2305 04d8 1A68     		ldr	r2, [r3]
+ 2306 04da 1346     		mov	r3, r2
+ 2307 04dc 1B01     		lsls	r3, r3, #4
+ 2308 04de 9B1A     		subs	r3, r3, r2
+ 2309 04e0 5B00     		lsls	r3, r3, #1
+ 2310 04e2 1A46     		mov	r2, r3
+ 2311              		.loc 1 143 5
+ 2312 04e4 07F59C63 		add	r3, r7, #1248
+ 2313 04e8 A3F2DC43 		subw	r3, r3, #1244
+ 2314 04ec 1B68     		ldr	r3, [r3]
+ 2315 04ee 1A44     		add	r2, r2, r3
+ 2316 04f0 07F12003 		add	r3, r7, #32
+ 2317 04f4 103B     		subs	r3, r3, #16
+ 2318 04f6 1946     		mov	r1, r3
+ 2319 04f8 FFF7FEFF 		bl	add_vectors
+ 2320              	.L43:
+ 2321              	.LBE18:
  144:MAYO.c        **** 			}
  145:MAYO.c        **** 			counter ++;
- 2316              		.loc 1 145 12 discriminator 2
- 2317 04ec 07F5A653 		add	r3, r7, #5312
- 2318 04f0 1B68     		ldr	r3, [r3]
- 2319 04f2 0133     		adds	r3, r3, #1
- 2320 04f4 07F5A652 		add	r2, r7, #5312
- 2321 04f8 1360     		str	r3, [r2]
+ 2322              		.loc 1 145 12 discriminator 2
+ 2323 04fc 07F5A653 		add	r3, r7, #5312
+ 2324 0500 1B68     		ldr	r3, [r3]
+ 2325 0502 0133     		adds	r3, r3, #1
+ 2326 0504 07F5A652 		add	r2, r7, #5312
+ 2327 0508 1360     		str	r3, [r2]
  136:MAYO.c        **** 		{
- 2322              		.loc 1 136 26 discriminator 2
- 2323 04fa 07F5A553 		add	r3, r7, #5280
- 2324 04fe 03F11803 		add	r3, r3, #24
- 2325 0502 1B68     		ldr	r3, [r3]
- 2326 0504 0133     		adds	r3, r3, #1
- 2327 0506 07F5A552 		add	r2, r7, #5280
- 2328 050a 02F11802 		add	r2, r2, #24
- 2329 050e 1360     		str	r3, [r2]
- 2330              	.L42:
+ 2328              		.loc 1 136 26 discriminator 2
+ 2329 050a 07F5A553 		add	r3, r7, #5280
+ 2330 050e 03F11803 		add	r3, r3, #24
+ 2331 0512 1B68     		ldr	r3, [r3]
+ 2332 0514 0133     		adds	r3, r3, #1
+ 2333 0516 07F5A552 		add	r2, r7, #5280
+ 2334 051a 02F11802 		add	r2, r2, #24
+ 2335 051e 1360     		str	r3, [r2]
+ 2336              	.L42:
  136:MAYO.c        **** 		{
- 2331              		.loc 1 136 3 discriminator 1
- 2332 0510 07F5A553 		add	r3, r7, #5280
- 2333 0514 03F11803 		add	r3, r3, #24
- 2334 0518 1B68     		ldr	r3, [r3]
- 2335 051a 022B     		cmp	r3, #2
- 2336 051c 7FF754AF 		ble	.L44
- 2337              	.LBE17:
+ 2337              		.loc 1 136 3 discriminator 1
+ 2338 0520 07F5A553 		add	r3, r7, #5280
+ 2339 0524 03F11803 		add	r3, r3, #24
+ 2340 0528 1B68     		ldr	r3, [r3]
+ 2341 052a 022B     		cmp	r3, #2
+ 2342 052c 7FF754AF 		ble	.L44
+ 2343              	.LBE17:
  134:MAYO.c        **** 	{
- 2338              		.loc 1 134 25 discriminator 2
- 2339 0520 07F5A553 		add	r3, r7, #5280
- 2340 0524 03F11C03 		add	r3, r3, #28
- 2341 0528 1B68     		ldr	r3, [r3]
- 2342 052a 0133     		adds	r3, r3, #1
- 2343 052c 07F5A552 		add	r2, r7, #5280
- 2344 0530 02F11C02 		add	r2, r2, #28
- 2345 0534 1360     		str	r3, [r2]
- 2346              	.L41:
+ 2344              		.loc 1 134 25 discriminator 2
+ 2345 0530 07F5A553 		add	r3, r7, #5280
+ 2346 0534 03F11C03 		add	r3, r3, #28
+ 2347 0538 1B68     		ldr	r3, [r3]
+ 2348 053a 0133     		adds	r3, r3, #1
+ 2349 053c 07F5A552 		add	r2, r7, #5280
+ 2350 0540 02F11C02 		add	r2, r2, #28
+ 2351 0544 1360     		str	r3, [r2]
+ 2352              	.L41:
  134:MAYO.c        **** 	{
- 2347              		.loc 1 134 2 discriminator 1
- 2348 0536 07F5A553 		add	r3, r7, #5280
- 2349 053a 03F11C03 		add	r3, r3, #28
- 2350 053e 1B68     		ldr	r3, [r3]
- 2351 0540 022B     		cmp	r3, #2
- 2352 0542 7FF734AF 		ble	.L45
- 2353              	.LBE16:
+ 2353              		.loc 1 134 2 discriminator 1
+ 2354 0546 07F5A553 		add	r3, r7, #5280
+ 2355 054a 03F11C03 		add	r3, r3, #28
+ 2356 054e 1B68     		ldr	r3, [r3]
+ 2357 0550 022B     		cmp	r3, #2
+ 2358 0552 7FF733AF 		ble	.L45
+ 2359              	.LBE16:
  146:MAYO.c        **** 		}
  147:MAYO.c        **** 	}
  148:MAYO.c        **** 
  149:MAYO.c        **** 	// P2 = -P2
  150:MAYO.c        **** 	negate(P2,P2_BYTES);
- 2354              		.loc 1 150 2
- 2355 0546 07F59C63 		add	r3, r7, #1248
- 2356 054a A3F2DC43 		subw	r3, r3, #1244
- 2357 054e B421     		movs	r1, #180
- 2358 0550 1868     		ldr	r0, [r3]
- 2359 0552 FFF7FEFF 		bl	negate
+ 2360              		.loc 1 150 2
+ 2361 0556 07F59C63 		add	r3, r7, #1248
+ 2362 055a A3F2DC43 		subw	r3, r3, #1244
+ 2363 055e B421     		movs	r1, #180
+ 2364 0560 1868     		ldr	r0, [r3]
+ 2365 0562 FFF7FEFF 		bl	negate
  151:MAYO.c        **** }
- 2360              		.loc 1 151 1
- 2361 0556 00BF     		nop
- 2362 0558 07F5A757 		add	r7, r7, #5344
- 2363              	.LCFI25:
- 2364              		.cfi_def_cfa_offset 8
- 2365 055c BD46     		mov	sp, r7
- 2366              	.LCFI26:
- 2367              		.cfi_def_cfa_register 13
- 2368              		@ sp needed
- 2369 055e 80BD     		pop	{r7, pc}
- 2370              		.cfi_endproc
- 2371              	.LFE4:
- 2373              		.section	.text.compute_bilinear_part,"ax",%progbits
- 2374              		.align	1
- 2375              		.global	compute_bilinear_part
- 2376              		.syntax unified
- 2377              		.thumb
- 2378              		.thumb_func
- 2379              		.fpu softvfp
- 2381              	compute_bilinear_part:
- 2382              	.LFB5:
+ 2366              		.loc 1 151 1
+ 2367 0566 00BF     		nop
+ 2368 0568 07F5A757 		add	r7, r7, #5344
+ 2369              	.LCFI25:
+ 2370              		.cfi_def_cfa_offset 8
+ 2371 056c BD46     		mov	sp, r7
+ 2372              	.LCFI26:
+ 2373              		.cfi_def_cfa_register 13
+ 2374              		@ sp needed
+ 2375 056e 80BD     		pop	{r7, pc}
+ 2376              		.cfi_endproc
+ 2377              	.LFE4:
+ 2379              		.section	.text.compute_bilinear_part,"ax",%progbits
+ 2380              		.align	1
+ 2381              		.global	compute_bilinear_part
+ 2382              		.syntax unified
+ 2383              		.thumb
+ 2384              		.thumb_func
+ 2385              		.fpu softvfp
+ 2387              	compute_bilinear_part:
+ 2388              	.LFB5:
  152:MAYO.c        **** 
  153:MAYO.c        **** // computes (P1 + P1^t) O^T + P2 
  154:MAYO.c        **** void compute_bilinear_part(const unsigned char *P1, const unsigned char *oil_space, unsigned char *
- 2383              		.loc 1 154 109
- 2384              		.cfi_startproc
- 2385              		@ args = 0, pretend = 0, frame = 27896
- 2386              		@ frame_needed = 1, uses_anonymous_args = 0
- 2387 0000 80B5     		push	{r7, lr}
- 2388              	.LCFI27:
- 2389              		.cfi_def_cfa_offset 8
- 2390              		.cfi_offset 7, -8
- 2391              		.cfi_offset 14, -4
- 2392 0002 ADF5D94D 		sub	sp, sp, #27776
- 2393              	.LCFI28:
- 2394              		.cfi_def_cfa_offset 27784
- 2395 0006 9EB0     		sub	sp, sp, #120
- 2396              	.LCFI29:
- 2397              		.cfi_def_cfa_offset 27904
- 2398 0008 00AF     		add	r7, sp, #0
- 2399              	.LCFI30:
- 2400              		.cfi_def_cfa_register 7
- 2401 000a 07F6F843 		addw	r3, r7, #3320
- 2402 000e A3F6EC43 		subw	r3, r3, #3308
- 2403 0012 1860     		str	r0, [r3]
- 2404 0014 07F6F843 		addw	r3, r7, #3320
- 2405 0018 A3F54F63 		sub	r3, r3, #3312
- 2406 001c 1960     		str	r1, [r3]
- 2407 001e 07F6F843 		addw	r3, r7, #3320
- 2408 0022 A3F6F443 		subw	r3, r3, #3316
- 2409 0026 1A60     		str	r2, [r3]
+ 2389              		.loc 1 154 109
+ 2390              		.cfi_startproc
+ 2391              		@ args = 0, pretend = 0, frame = 27896
+ 2392              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2393 0000 80B5     		push	{r7, lr}
+ 2394              	.LCFI27:
+ 2395              		.cfi_def_cfa_offset 8
+ 2396              		.cfi_offset 7, -8
+ 2397              		.cfi_offset 14, -4
+ 2398 0002 ADF5D94D 		sub	sp, sp, #27776
+ 2399              	.LCFI28:
+ 2400              		.cfi_def_cfa_offset 27784
+ 2401 0006 9EB0     		sub	sp, sp, #120
+ 2402              	.LCFI29:
+ 2403              		.cfi_def_cfa_offset 27904
+ 2404 0008 00AF     		add	r7, sp, #0
+ 2405              	.LCFI30:
+ 2406              		.cfi_def_cfa_register 7
+ 2407 000a 07F6F843 		addw	r3, r7, #3320
+ 2408 000e A3F6EC43 		subw	r3, r3, #3308
+ 2409 0012 1860     		str	r0, [r3]
+ 2410 0014 07F6F843 		addw	r3, r7, #3320
+ 2411 0018 A3F54F63 		sub	r3, r3, #3312
+ 2412 001c 1960     		str	r1, [r3]
+ 2413 001e 07F6F843 		addw	r3, r7, #3320
+ 2414 0022 A3F6F443 		subw	r3, r3, #3316
+ 2415 0026 1A60     		str	r2, [r3]
  155:MAYO.c        **** 
  156:MAYO.c        **** 	trigger = 0;
- 2410              		.loc 1 156 10
- 2411 0028 C34B     		ldr	r3, .L68
- 2412 002a 0022     		movs	r2, #0
- 2413 002c 1A60     		str	r2, [r3]
+ 2416              		.loc 1 156 10
+ 2417 0028 C34B     		ldr	r3, .L68
+ 2418 002a 0022     		movs	r2, #0
+ 2419 002c 1A60     		str	r2, [r3]
  157:MAYO.c        ****     char c;
  158:MAYO.c        **** 	unsigned char bilinear_temp[M*(N-O)*O];
  159:MAYO.c        **** 	
  160:MAYO.c        **** 	// compute P1 + P1^T
  161:MAYO.c        **** 	unsigned char P1P1T[M*(N-O)*(N-O)];
  162:MAYO.c        **** 	int counter = 0;
- 2414              		.loc 1 162 6
- 2415 002e 0023     		movs	r3, #0
- 2416 0030 07F5D942 		add	r2, r7, #27776
- 2417 0034 02F17402 		add	r2, r2, #116
- 2418 0038 1360     		str	r3, [r2]
- 2419              	.LBB19:
+ 2420              		.loc 1 162 6
+ 2421 002e 0023     		movs	r3, #0
+ 2422 0030 07F5D942 		add	r2, r7, #27776
+ 2423 0034 02F17402 		add	r2, r2, #116
+ 2424 0038 1360     		str	r3, [r2]
+ 2425              	.LBB19:
  163:MAYO.c        **** 	
  164:MAYO.c        **** 	for (int i = 0; i < N-O; ++i)
- 2420              		.loc 1 164 11
- 2421 003a 0023     		movs	r3, #0
- 2422 003c 07F5D942 		add	r2, r7, #27776
- 2423 0040 02F17002 		add	r2, r2, #112
- 2424 0044 1360     		str	r3, [r2]
- 2425              		.loc 1 164 2
- 2426 0046 E8E0     		b	.L49
- 2427              	.L54:
- 2428              	.LBB20:
+ 2426              		.loc 1 164 11
+ 2427 003a 0023     		movs	r3, #0
+ 2428 003c 07F5D942 		add	r2, r7, #27776
+ 2429 0040 02F17002 		add	r2, r2, #112
+ 2430 0044 1360     		str	r3, [r2]
+ 2431              		.loc 1 164 2
+ 2432 0046 E8E0     		b	.L49
+ 2433              	.L54:
+ 2434              	.LBB20:
  165:MAYO.c        **** 	{
  166:MAYO.c        **** 		for (int j = i; j < N-O; ++j)
- 2429              		.loc 1 166 12
- 2430 0048 07F5D943 		add	r3, r7, #27776
- 2431 004c 03F17003 		add	r3, r3, #112
- 2432 0050 1B68     		ldr	r3, [r3]
- 2433 0052 07F5D942 		add	r2, r7, #27776
- 2434 0056 02F16C02 		add	r2, r2, #108
- 2435 005a 1360     		str	r3, [r2]
- 2436              		.loc 1 166 3
- 2437 005c CAE0     		b	.L50
- 2438              	.L53:
+ 2435              		.loc 1 166 12
+ 2436 0048 07F5D943 		add	r3, r7, #27776
+ 2437 004c 03F17003 		add	r3, r3, #112
+ 2438 0050 1B68     		ldr	r3, [r3]
+ 2439 0052 07F5D942 		add	r2, r7, #27776
+ 2440 0056 02F16C02 		add	r2, r2, #108
+ 2441 005a 1360     		str	r3, [r2]
+ 2442              		.loc 1 166 3
+ 2443 005c CAE0     		b	.L50
+ 2444              	.L53:
  167:MAYO.c        **** 		{
  168:MAYO.c        **** 			memcpy(P1P1T + M*(i*(N-O)+j), P1 + (M*counter), M);
- 2439              		.loc 1 168 23
- 2440 005e 07F5D943 		add	r3, r7, #27776
- 2441 0062 03F17003 		add	r3, r3, #112
- 2442 0066 1A68     		ldr	r2, [r3]
- 2443 0068 1346     		mov	r3, r2
- 2444 006a DB00     		lsls	r3, r3, #3
- 2445 006c 9B1A     		subs	r3, r3, r2
- 2446 006e 9B00     		lsls	r3, r3, #2
- 2447 0070 1A44     		add	r2, r2, r3
- 2448              		.loc 1 168 29
- 2449 0072 07F5D943 		add	r3, r7, #27776
- 2450 0076 03F16C03 		add	r3, r3, #108
- 2451 007a 1B68     		ldr	r3, [r3]
- 2452 007c 1A44     		add	r2, r2, r3
- 2453              		.loc 1 168 20
- 2454 007e 1346     		mov	r3, r2
- 2455 0080 1B01     		lsls	r3, r3, #4
- 2456 0082 9B1A     		subs	r3, r3, r2
- 2457 0084 5B00     		lsls	r3, r3, #1
- 2458 0086 1A46     		mov	r2, r3
- 2459              		.loc 1 168 4
- 2460 0088 07F17803 		add	r3, r7, #120
- 2461 008c 683B     		subs	r3, r3, #104
- 2462 008e 9818     		adds	r0, r3, r2
- 2463              		.loc 1 168 41
- 2464 0090 07F5D943 		add	r3, r7, #27776
- 2465 0094 03F17403 		add	r3, r3, #116
- 2466 0098 1A68     		ldr	r2, [r3]
- 2467 009a 1346     		mov	r3, r2
- 2468 009c 1B01     		lsls	r3, r3, #4
- 2469 009e 9B1A     		subs	r3, r3, r2
- 2470 00a0 5B00     		lsls	r3, r3, #1
- 2471 00a2 1A46     		mov	r2, r3
- 2472              		.loc 1 168 37
- 2473 00a4 07F6F843 		addw	r3, r7, #3320
- 2474 00a8 A3F6EC43 		subw	r3, r3, #3308
- 2475 00ac 1B68     		ldr	r3, [r3]
- 2476 00ae 1344     		add	r3, r3, r2
- 2477              		.loc 1 168 4
- 2478 00b0 1E22     		movs	r2, #30
- 2479 00b2 1946     		mov	r1, r3
- 2480 00b4 FFF7FEFF 		bl	memcpy
+ 2445              		.loc 1 168 23
+ 2446 005e 07F5D943 		add	r3, r7, #27776
+ 2447 0062 03F17003 		add	r3, r3, #112
+ 2448 0066 1A68     		ldr	r2, [r3]
+ 2449 0068 1346     		mov	r3, r2
+ 2450 006a DB00     		lsls	r3, r3, #3
+ 2451 006c 9B1A     		subs	r3, r3, r2
+ 2452 006e 9B00     		lsls	r3, r3, #2
+ 2453 0070 1A44     		add	r2, r2, r3
+ 2454              		.loc 1 168 29
+ 2455 0072 07F5D943 		add	r3, r7, #27776
+ 2456 0076 03F16C03 		add	r3, r3, #108
+ 2457 007a 1B68     		ldr	r3, [r3]
+ 2458 007c 1A44     		add	r2, r2, r3
+ 2459              		.loc 1 168 20
+ 2460 007e 1346     		mov	r3, r2
+ 2461 0080 1B01     		lsls	r3, r3, #4
+ 2462 0082 9B1A     		subs	r3, r3, r2
+ 2463 0084 5B00     		lsls	r3, r3, #1
+ 2464 0086 1A46     		mov	r2, r3
+ 2465              		.loc 1 168 4
+ 2466 0088 07F17803 		add	r3, r7, #120
+ 2467 008c 683B     		subs	r3, r3, #104
+ 2468 008e 9818     		adds	r0, r3, r2
+ 2469              		.loc 1 168 41
+ 2470 0090 07F5D943 		add	r3, r7, #27776
+ 2471 0094 03F17403 		add	r3, r3, #116
+ 2472 0098 1A68     		ldr	r2, [r3]
+ 2473 009a 1346     		mov	r3, r2
+ 2474 009c 1B01     		lsls	r3, r3, #4
+ 2475 009e 9B1A     		subs	r3, r3, r2
+ 2476 00a0 5B00     		lsls	r3, r3, #1
+ 2477 00a2 1A46     		mov	r2, r3
+ 2478              		.loc 1 168 37
+ 2479 00a4 07F6F843 		addw	r3, r7, #3320
+ 2480 00a8 A3F6EC43 		subw	r3, r3, #3308
+ 2481 00ac 1B68     		ldr	r3, [r3]
+ 2482 00ae 1344     		add	r3, r3, r2
+ 2483              		.loc 1 168 4
+ 2484 00b0 1E22     		movs	r2, #30
+ 2485 00b2 1946     		mov	r1, r3
+ 2486 00b4 FFF7FEFF 		bl	memcpy
  169:MAYO.c        **** 			
  170:MAYO.c        **** 			if(j == i){ 
- 2481              		.loc 1 170 6
- 2482 00b8 07F5D943 		add	r3, r7, #27776
- 2483 00bc 03F16C03 		add	r3, r3, #108
- 2484 00c0 1A68     		ldr	r2, [r3]
- 2485 00c2 07F5D943 		add	r3, r7, #27776
- 2486 00c6 03F17003 		add	r3, r3, #112
- 2487 00ca 1B68     		ldr	r3, [r3]
- 2488 00cc 9A42     		cmp	r2, r3
- 2489 00ce 4ED1     		bne	.L51
+ 2487              		.loc 1 170 6
+ 2488 00b8 07F5D943 		add	r3, r7, #27776
+ 2489 00bc 03F16C03 		add	r3, r3, #108
+ 2490 00c0 1A68     		ldr	r2, [r3]
+ 2491 00c2 07F5D943 		add	r3, r7, #27776
+ 2492 00c6 03F17003 		add	r3, r3, #112
+ 2493 00ca 1B68     		ldr	r3, [r3]
+ 2494 00cc 9A42     		cmp	r2, r3
+ 2495 00ce 4ED1     		bne	.L51
  171:MAYO.c        **** 				// mutiply by 2
  172:MAYO.c        **** 				add_vectors(P1P1T + M*(i*(N-O)+j),P1P1T + M*(i*(N-O)+j),P1P1T + M*(i*(N-O)+j));
- 2490              		.loc 1 172 29
- 2491 00d0 07F5D943 		add	r3, r7, #27776
- 2492 00d4 03F17003 		add	r3, r3, #112
- 2493 00d8 1A68     		ldr	r2, [r3]
- 2494 00da 1346     		mov	r3, r2
- 2495 00dc DB00     		lsls	r3, r3, #3
- 2496 00de 9B1A     		subs	r3, r3, r2
- 2497 00e0 9B00     		lsls	r3, r3, #2
- 2498 00e2 1A44     		add	r2, r2, r3
- 2499              		.loc 1 172 35
- 2500 00e4 07F5D943 		add	r3, r7, #27776
- 2501 00e8 03F16C03 		add	r3, r3, #108
- 2502 00ec 1B68     		ldr	r3, [r3]
- 2503 00ee 1A44     		add	r2, r2, r3
- 2504              		.loc 1 172 26
- 2505 00f0 1346     		mov	r3, r2
- 2506 00f2 1B01     		lsls	r3, r3, #4
- 2507 00f4 9B1A     		subs	r3, r3, r2
- 2508 00f6 5B00     		lsls	r3, r3, #1
- 2509 00f8 1A46     		mov	r2, r3
- 2510              		.loc 1 172 5
- 2511 00fa 07F17803 		add	r3, r7, #120
- 2512 00fe 683B     		subs	r3, r3, #104
- 2513 0100 9818     		adds	r0, r3, r2
- 2514              		.loc 1 172 51
- 2515 0102 07F5D943 		add	r3, r7, #27776
- 2516 0106 03F17003 		add	r3, r3, #112
- 2517 010a 1A68     		ldr	r2, [r3]
- 2518 010c 1346     		mov	r3, r2
- 2519 010e DB00     		lsls	r3, r3, #3
- 2520 0110 9B1A     		subs	r3, r3, r2
- 2521 0112 9B00     		lsls	r3, r3, #2
- 2522 0114 1A44     		add	r2, r2, r3
- 2523              		.loc 1 172 57
- 2524 0116 07F5D943 		add	r3, r7, #27776
- 2525 011a 03F16C03 		add	r3, r3, #108
- 2526 011e 1B68     		ldr	r3, [r3]
- 2527 0120 1A44     		add	r2, r2, r3
- 2528              		.loc 1 172 48
- 2529 0122 1346     		mov	r3, r2
- 2530 0124 1B01     		lsls	r3, r3, #4
- 2531 0126 9B1A     		subs	r3, r3, r2
- 2532 0128 5B00     		lsls	r3, r3, #1
- 2533 012a 1A46     		mov	r2, r3
- 2534              		.loc 1 172 5
- 2535 012c 07F17803 		add	r3, r7, #120
- 2536 0130 683B     		subs	r3, r3, #104
- 2537 0132 9918     		adds	r1, r3, r2
- 2538              		.loc 1 172 73
- 2539 0134 07F5D943 		add	r3, r7, #27776
- 2540 0138 03F17003 		add	r3, r3, #112
- 2541 013c 1A68     		ldr	r2, [r3]
- 2542 013e 1346     		mov	r3, r2
- 2543 0140 DB00     		lsls	r3, r3, #3
- 2544 0142 9B1A     		subs	r3, r3, r2
- 2545 0144 9B00     		lsls	r3, r3, #2
- 2546 0146 1A44     		add	r2, r2, r3
- 2547              		.loc 1 172 79
- 2548 0148 07F5D943 		add	r3, r7, #27776
- 2549 014c 03F16C03 		add	r3, r3, #108
- 2550 0150 1B68     		ldr	r3, [r3]
- 2551 0152 1A44     		add	r2, r2, r3
- 2552              		.loc 1 172 70
- 2553 0154 1346     		mov	r3, r2
- 2554 0156 1B01     		lsls	r3, r3, #4
- 2555 0158 9B1A     		subs	r3, r3, r2
- 2556 015a 5B00     		lsls	r3, r3, #1
- 2557 015c 1A46     		mov	r2, r3
- 2558              		.loc 1 172 5
- 2559 015e 07F17803 		add	r3, r7, #120
- 2560 0162 683B     		subs	r3, r3, #104
- 2561 0164 1344     		add	r3, r3, r2
- 2562 0166 1A46     		mov	r2, r3
- 2563 0168 FFF7FEFF 		bl	add_vectors
- 2564 016c 2CE0     		b	.L52
- 2565              	.L51:
+ 2496              		.loc 1 172 29
+ 2497 00d0 07F5D943 		add	r3, r7, #27776
+ 2498 00d4 03F17003 		add	r3, r3, #112
+ 2499 00d8 1A68     		ldr	r2, [r3]
+ 2500 00da 1346     		mov	r3, r2
+ 2501 00dc DB00     		lsls	r3, r3, #3
+ 2502 00de 9B1A     		subs	r3, r3, r2
+ 2503 00e0 9B00     		lsls	r3, r3, #2
+ 2504 00e2 1A44     		add	r2, r2, r3
+ 2505              		.loc 1 172 35
+ 2506 00e4 07F5D943 		add	r3, r7, #27776
+ 2507 00e8 03F16C03 		add	r3, r3, #108
+ 2508 00ec 1B68     		ldr	r3, [r3]
+ 2509 00ee 1A44     		add	r2, r2, r3
+ 2510              		.loc 1 172 26
+ 2511 00f0 1346     		mov	r3, r2
+ 2512 00f2 1B01     		lsls	r3, r3, #4
+ 2513 00f4 9B1A     		subs	r3, r3, r2
+ 2514 00f6 5B00     		lsls	r3, r3, #1
+ 2515 00f8 1A46     		mov	r2, r3
+ 2516              		.loc 1 172 5
+ 2517 00fa 07F17803 		add	r3, r7, #120
+ 2518 00fe 683B     		subs	r3, r3, #104
+ 2519 0100 9818     		adds	r0, r3, r2
+ 2520              		.loc 1 172 51
+ 2521 0102 07F5D943 		add	r3, r7, #27776
+ 2522 0106 03F17003 		add	r3, r3, #112
+ 2523 010a 1A68     		ldr	r2, [r3]
+ 2524 010c 1346     		mov	r3, r2
+ 2525 010e DB00     		lsls	r3, r3, #3
+ 2526 0110 9B1A     		subs	r3, r3, r2
+ 2527 0112 9B00     		lsls	r3, r3, #2
+ 2528 0114 1A44     		add	r2, r2, r3
+ 2529              		.loc 1 172 57
+ 2530 0116 07F5D943 		add	r3, r7, #27776
+ 2531 011a 03F16C03 		add	r3, r3, #108
+ 2532 011e 1B68     		ldr	r3, [r3]
+ 2533 0120 1A44     		add	r2, r2, r3
+ 2534              		.loc 1 172 48
+ 2535 0122 1346     		mov	r3, r2
+ 2536 0124 1B01     		lsls	r3, r3, #4
+ 2537 0126 9B1A     		subs	r3, r3, r2
+ 2538 0128 5B00     		lsls	r3, r3, #1
+ 2539 012a 1A46     		mov	r2, r3
+ 2540              		.loc 1 172 5
+ 2541 012c 07F17803 		add	r3, r7, #120
+ 2542 0130 683B     		subs	r3, r3, #104
+ 2543 0132 9918     		adds	r1, r3, r2
+ 2544              		.loc 1 172 73
+ 2545 0134 07F5D943 		add	r3, r7, #27776
+ 2546 0138 03F17003 		add	r3, r3, #112
+ 2547 013c 1A68     		ldr	r2, [r3]
+ 2548 013e 1346     		mov	r3, r2
+ 2549 0140 DB00     		lsls	r3, r3, #3
+ 2550 0142 9B1A     		subs	r3, r3, r2
+ 2551 0144 9B00     		lsls	r3, r3, #2
+ 2552 0146 1A44     		add	r2, r2, r3
+ 2553              		.loc 1 172 79
+ 2554 0148 07F5D943 		add	r3, r7, #27776
+ 2555 014c 03F16C03 		add	r3, r3, #108
+ 2556 0150 1B68     		ldr	r3, [r3]
+ 2557 0152 1A44     		add	r2, r2, r3
+ 2558              		.loc 1 172 70
+ 2559 0154 1346     		mov	r3, r2
+ 2560 0156 1B01     		lsls	r3, r3, #4
+ 2561 0158 9B1A     		subs	r3, r3, r2
+ 2562 015a 5B00     		lsls	r3, r3, #1
+ 2563 015c 1A46     		mov	r2, r3
+ 2564              		.loc 1 172 5
+ 2565 015e 07F17803 		add	r3, r7, #120
+ 2566 0162 683B     		subs	r3, r3, #104
+ 2567 0164 1344     		add	r3, r3, r2
+ 2568 0166 1A46     		mov	r2, r3
+ 2569 0168 FFF7FEFF 		bl	add_vectors
+ 2570 016c 2CE0     		b	.L52
+ 2571              	.L51:
  173:MAYO.c        **** 			}
  174:MAYO.c        **** 			else {
  175:MAYO.c        **** 				memcpy(P1P1T + M*(j*(N-O)+i), P1 + (M*counter), M);
- 2566              		.loc 1 175 24
- 2567 016e 07F5D943 		add	r3, r7, #27776
- 2568 0172 03F16C03 		add	r3, r3, #108
- 2569 0176 1A68     		ldr	r2, [r3]
- 2570 0178 1346     		mov	r3, r2
- 2571 017a DB00     		lsls	r3, r3, #3
- 2572 017c 9B1A     		subs	r3, r3, r2
- 2573 017e 9B00     		lsls	r3, r3, #2
- 2574 0180 1A44     		add	r2, r2, r3
- 2575              		.loc 1 175 30
- 2576 0182 07F5D943 		add	r3, r7, #27776
- 2577 0186 03F17003 		add	r3, r3, #112
- 2578 018a 1B68     		ldr	r3, [r3]
- 2579 018c 1A44     		add	r2, r2, r3
- 2580              		.loc 1 175 21
- 2581 018e 1346     		mov	r3, r2
- 2582 0190 1B01     		lsls	r3, r3, #4
- 2583 0192 9B1A     		subs	r3, r3, r2
- 2584 0194 5B00     		lsls	r3, r3, #1
- 2585 0196 1A46     		mov	r2, r3
- 2586              		.loc 1 175 5
- 2587 0198 07F17803 		add	r3, r7, #120
- 2588 019c 683B     		subs	r3, r3, #104
- 2589 019e 9818     		adds	r0, r3, r2
- 2590              		.loc 1 175 42
- 2591 01a0 07F5D943 		add	r3, r7, #27776
- 2592 01a4 03F17403 		add	r3, r3, #116
- 2593 01a8 1A68     		ldr	r2, [r3]
- 2594 01aa 1346     		mov	r3, r2
- 2595 01ac 1B01     		lsls	r3, r3, #4
- 2596 01ae 9B1A     		subs	r3, r3, r2
- 2597 01b0 5B00     		lsls	r3, r3, #1
- 2598 01b2 1A46     		mov	r2, r3
- 2599              		.loc 1 175 38
- 2600 01b4 07F6F843 		addw	r3, r7, #3320
- 2601 01b8 A3F6EC43 		subw	r3, r3, #3308
- 2602 01bc 1B68     		ldr	r3, [r3]
- 2603 01be 1344     		add	r3, r3, r2
- 2604              		.loc 1 175 5
- 2605 01c0 1E22     		movs	r2, #30
- 2606 01c2 1946     		mov	r1, r3
- 2607 01c4 FFF7FEFF 		bl	memcpy
- 2608              	.L52:
+ 2572              		.loc 1 175 24
+ 2573 016e 07F5D943 		add	r3, r7, #27776
+ 2574 0172 03F16C03 		add	r3, r3, #108
+ 2575 0176 1A68     		ldr	r2, [r3]
+ 2576 0178 1346     		mov	r3, r2
+ 2577 017a DB00     		lsls	r3, r3, #3
+ 2578 017c 9B1A     		subs	r3, r3, r2
+ 2579 017e 9B00     		lsls	r3, r3, #2
+ 2580 0180 1A44     		add	r2, r2, r3
+ 2581              		.loc 1 175 30
+ 2582 0182 07F5D943 		add	r3, r7, #27776
+ 2583 0186 03F17003 		add	r3, r3, #112
+ 2584 018a 1B68     		ldr	r3, [r3]
+ 2585 018c 1A44     		add	r2, r2, r3
+ 2586              		.loc 1 175 21
+ 2587 018e 1346     		mov	r3, r2
+ 2588 0190 1B01     		lsls	r3, r3, #4
+ 2589 0192 9B1A     		subs	r3, r3, r2
+ 2590 0194 5B00     		lsls	r3, r3, #1
+ 2591 0196 1A46     		mov	r2, r3
+ 2592              		.loc 1 175 5
+ 2593 0198 07F17803 		add	r3, r7, #120
+ 2594 019c 683B     		subs	r3, r3, #104
+ 2595 019e 9818     		adds	r0, r3, r2
+ 2596              		.loc 1 175 42
+ 2597 01a0 07F5D943 		add	r3, r7, #27776
+ 2598 01a4 03F17403 		add	r3, r3, #116
+ 2599 01a8 1A68     		ldr	r2, [r3]
+ 2600 01aa 1346     		mov	r3, r2
+ 2601 01ac 1B01     		lsls	r3, r3, #4
+ 2602 01ae 9B1A     		subs	r3, r3, r2
+ 2603 01b0 5B00     		lsls	r3, r3, #1
+ 2604 01b2 1A46     		mov	r2, r3
+ 2605              		.loc 1 175 38
+ 2606 01b4 07F6F843 		addw	r3, r7, #3320
+ 2607 01b8 A3F6EC43 		subw	r3, r3, #3308
+ 2608 01bc 1B68     		ldr	r3, [r3]
+ 2609 01be 1344     		add	r3, r3, r2
+ 2610              		.loc 1 175 5
+ 2611 01c0 1E22     		movs	r2, #30
+ 2612 01c2 1946     		mov	r1, r3
+ 2613 01c4 FFF7FEFF 		bl	memcpy
+ 2614              	.L52:
  176:MAYO.c        **** 			}
  177:MAYO.c        **** 			
  178:MAYO.c        **** 			counter++;
- 2609              		.loc 1 178 11 discriminator 2
- 2610 01c8 07F5D943 		add	r3, r7, #27776
- 2611 01cc 03F17403 		add	r3, r3, #116
- 2612 01d0 1B68     		ldr	r3, [r3]
- 2613 01d2 0133     		adds	r3, r3, #1
- 2614 01d4 07F5D942 		add	r2, r7, #27776
- 2615 01d8 02F17402 		add	r2, r2, #116
- 2616 01dc 1360     		str	r3, [r2]
+ 2615              		.loc 1 178 11 discriminator 2
+ 2616 01c8 07F5D943 		add	r3, r7, #27776
+ 2617 01cc 03F17403 		add	r3, r3, #116
+ 2618 01d0 1B68     		ldr	r3, [r3]
+ 2619 01d2 0133     		adds	r3, r3, #1
+ 2620 01d4 07F5D942 		add	r2, r7, #27776
+ 2621 01d8 02F17402 		add	r2, r2, #116
+ 2622 01dc 1360     		str	r3, [r2]
  166:MAYO.c        **** 		{
- 2617              		.loc 1 166 28 discriminator 2
- 2618 01de 07F5D943 		add	r3, r7, #27776
- 2619 01e2 03F16C03 		add	r3, r3, #108
- 2620 01e6 1B68     		ldr	r3, [r3]
- 2621 01e8 0133     		adds	r3, r3, #1
- 2622 01ea 07F5D942 		add	r2, r7, #27776
- 2623 01ee 02F16C02 		add	r2, r2, #108
- 2624 01f2 1360     		str	r3, [r2]
- 2625              	.L50:
+ 2623              		.loc 1 166 28 discriminator 2
+ 2624 01de 07F5D943 		add	r3, r7, #27776
+ 2625 01e2 03F16C03 		add	r3, r3, #108
+ 2626 01e6 1B68     		ldr	r3, [r3]
+ 2627 01e8 0133     		adds	r3, r3, #1
+ 2628 01ea 07F5D942 		add	r2, r7, #27776
+ 2629 01ee 02F16C02 		add	r2, r2, #108
+ 2630 01f2 1360     		str	r3, [r2]
+ 2631              	.L50:
  166:MAYO.c        **** 		{
- 2626              		.loc 1 166 3 discriminator 1
- 2627 01f4 07F5D943 		add	r3, r7, #27776
- 2628 01f8 03F16C03 		add	r3, r3, #108
- 2629 01fc 1B68     		ldr	r3, [r3]
- 2630 01fe 1C2B     		cmp	r3, #28
- 2631 0200 7FF72DAF 		ble	.L53
- 2632              	.LBE20:
+ 2632              		.loc 1 166 3 discriminator 1
+ 2633 01f4 07F5D943 		add	r3, r7, #27776
+ 2634 01f8 03F16C03 		add	r3, r3, #108
+ 2635 01fc 1B68     		ldr	r3, [r3]
+ 2636 01fe 1C2B     		cmp	r3, #28
+ 2637 0200 7FF72DAF 		ble	.L53
+ 2638              	.LBE20:
  164:MAYO.c        **** 	{
- 2633              		.loc 1 164 27 discriminator 2
- 2634 0204 07F5D943 		add	r3, r7, #27776
- 2635 0208 03F17003 		add	r3, r3, #112
- 2636 020c 1B68     		ldr	r3, [r3]
- 2637 020e 0133     		adds	r3, r3, #1
- 2638 0210 07F5D942 		add	r2, r7, #27776
- 2639 0214 02F17002 		add	r2, r2, #112
- 2640 0218 1360     		str	r3, [r2]
- 2641              	.L49:
+ 2639              		.loc 1 164 27 discriminator 2
+ 2640 0204 07F5D943 		add	r3, r7, #27776
+ 2641 0208 03F17003 		add	r3, r3, #112
+ 2642 020c 1B68     		ldr	r3, [r3]
+ 2643 020e 0133     		adds	r3, r3, #1
+ 2644 0210 07F5D942 		add	r2, r7, #27776
+ 2645 0214 02F17002 		add	r2, r2, #112
+ 2646 0218 1360     		str	r3, [r2]
+ 2647              	.L49:
  164:MAYO.c        **** 	{
- 2642              		.loc 1 164 2 discriminator 1
- 2643 021a 07F5D943 		add	r3, r7, #27776
- 2644 021e 03F17003 		add	r3, r3, #112
- 2645 0222 1B68     		ldr	r3, [r3]
- 2646 0224 1C2B     		cmp	r3, #28
- 2647 0226 7FF70FAF 		ble	.L54
- 2648              	.LBE19:
- 2649              	.LBB21:
+ 2648              		.loc 1 164 2 discriminator 1
+ 2649 021a 07F5D943 		add	r3, r7, #27776
+ 2650 021e 03F17003 		add	r3, r3, #112
+ 2651 0222 1B68     		ldr	r3, [r3]
+ 2652 0224 1C2B     		cmp	r3, #28
+ 2653 0226 7FF70FAF 		ble	.L54
+ 2654              	.LBE19:
+ 2655              	.LBB21:
  179:MAYO.c        **** 		}
  180:MAYO.c        **** 	}
  181:MAYO.c        **** 	
  182:MAYO.c        **** 	for (int i = 0; i < N-O; ++i)
- 2650              		.loc 1 182 11
- 2651 022a 0023     		movs	r3, #0
- 2652 022c 07F5D942 		add	r2, r7, #27776
- 2653 0230 02F16802 		add	r2, r2, #104
- 2654 0234 1360     		str	r3, [r2]
- 2655              		.loc 1 182 2
- 2656 0236 6AE0     		b	.L55
- 2657              	.L59:
- 2658              	.LBB22:
+ 2656              		.loc 1 182 11
+ 2657 022a 0023     		movs	r3, #0
+ 2658 022c 07F5D942 		add	r2, r7, #27776
+ 2659 0230 02F16802 		add	r2, r2, #104
+ 2660 0234 1360     		str	r3, [r2]
+ 2661              		.loc 1 182 2
+ 2662 0236 6AE0     		b	.L55
+ 2663              	.L59:
+ 2664              	.LBB22:
  183:MAYO.c        **** 	{
  184:MAYO.c        **** 		// P1PiT*O^t part
  185:MAYO.c        **** 		for (int j = 0; j < O; ++j)
- 2659              		.loc 1 185 12
- 2660 0238 0023     		movs	r3, #0
- 2661 023a 07F5D942 		add	r2, r7, #27776
- 2662 023e 02F16402 		add	r2, r2, #100
- 2663 0242 1360     		str	r3, [r2]
- 2664              		.loc 1 185 3
- 2665 0244 51E0     		b	.L56
- 2666              	.L58:
+ 2665              		.loc 1 185 12
+ 2666 0238 0023     		movs	r3, #0
+ 2667 023a 07F5D942 		add	r2, r7, #27776
+ 2668 023e 02F16402 		add	r2, r2, #100
+ 2669 0242 1360     		str	r3, [r2]
+ 2670              		.loc 1 185 3
+ 2671 0244 51E0     		b	.L56
+ 2672              	.L58:
  186:MAYO.c        **** 		{
  187:MAYO.c        **** 			if(j==0) trigger=1;
- 2667              		.loc 1 187 6
- 2668 0246 07F5D943 		add	r3, r7, #27776
- 2669 024a 03F16403 		add	r3, r3, #100
- 2670 024e 1B68     		ldr	r3, [r3]
- 2671 0250 002B     		cmp	r3, #0
- 2672 0252 02D1     		bne	.L57
- 2673              		.loc 1 187 20 discriminator 1
- 2674 0254 384B     		ldr	r3, .L68
- 2675 0256 0122     		movs	r2, #1
- 2676 0258 1A60     		str	r2, [r3]
- 2677              	.L57:
+ 2673              		.loc 1 187 6
+ 2674 0246 07F5D943 		add	r3, r7, #27776
+ 2675 024a 03F16403 		add	r3, r3, #100
+ 2676 024e 1B68     		ldr	r3, [r3]
+ 2677 0250 002B     		cmp	r3, #0
+ 2678 0252 02D1     		bne	.L57
+ 2679              		.loc 1 187 20 discriminator 1
+ 2680 0254 384B     		ldr	r3, .L68
+ 2681 0256 0122     		movs	r2, #1
+ 2682 0258 1A60     		str	r2, [r3]
+ 2683              	.L57:
  188:MAYO.c        **** 
  189:MAYO.c        **** 			_linear_combination(P1P1T + (M*i*(N-O)), oil_space + (j*(N-O)), N-O, bilinear_temp + (i*O + j)*M
- 2678              		.loc 1 189 36 discriminator 2
- 2679 025a 07F5D943 		add	r3, r7, #27776
- 2680 025e 03F16803 		add	r3, r3, #104
- 2681 0262 1B68     		ldr	r3, [r3]
- 2682 0264 40F26632 		movw	r2, #870
- 2683 0268 02FB03F3 		mul	r3, r2, r3
- 2684 026c 1A46     		mov	r2, r3
- 2685              		.loc 1 189 4 discriminator 2
- 2686 026e 07F17803 		add	r3, r7, #120
- 2687 0272 683B     		subs	r3, r3, #104
- 2688 0274 9818     		adds	r0, r3, r2
- 2689              		.loc 1 189 59 discriminator 2
- 2690 0276 07F5D943 		add	r3, r7, #27776
- 2691 027a 03F16403 		add	r3, r3, #100
- 2692 027e 1A68     		ldr	r2, [r3]
- 2693 0280 1346     		mov	r3, r2
- 2694 0282 DB00     		lsls	r3, r3, #3
- 2695 0284 9B1A     		subs	r3, r3, r2
- 2696 0286 9B00     		lsls	r3, r3, #2
- 2697 0288 1344     		add	r3, r3, r2
- 2698 028a 1A46     		mov	r2, r3
- 2699              		.loc 1 189 4 discriminator 2
- 2700 028c 07F6F843 		addw	r3, r7, #3320
- 2701 0290 A3F54F63 		sub	r3, r3, #3312
- 2702 0294 1B68     		ldr	r3, [r3]
- 2703 0296 9918     		adds	r1, r3, r2
- 2704              		.loc 1 189 91 discriminator 2
- 2705 0298 07F5D943 		add	r3, r7, #27776
- 2706 029c 03F16803 		add	r3, r3, #104
- 2707 02a0 1A68     		ldr	r2, [r3]
- 2708 02a2 1346     		mov	r3, r2
- 2709 02a4 5B00     		lsls	r3, r3, #1
- 2710 02a6 1A44     		add	r2, r2, r3
- 2711              		.loc 1 189 94 discriminator 2
- 2712 02a8 07F5D943 		add	r3, r7, #27776
- 2713 02ac 03F16403 		add	r3, r3, #100
- 2714 02b0 1B68     		ldr	r3, [r3]
- 2715 02b2 1A44     		add	r2, r2, r3
- 2716              		.loc 1 189 98 discriminator 2
- 2717 02b4 1346     		mov	r3, r2
- 2718 02b6 1B01     		lsls	r3, r3, #4
- 2719 02b8 9B1A     		subs	r3, r3, r2
- 2720 02ba 5B00     		lsls	r3, r3, #1
- 2721 02bc 1A46     		mov	r2, r3
- 2722              		.loc 1 189 4 discriminator 2
- 2723 02be 07F5C543 		add	r3, r7, #25216
- 2724 02c2 03F12003 		add	r3, r3, #32
- 2725 02c6 1344     		add	r3, r3, r2
- 2726 02c8 1D22     		movs	r2, #29
- 2727 02ca FFF7FEFF 		bl	_linear_combination
+ 2684              		.loc 1 189 36 discriminator 2
+ 2685 025a 07F5D943 		add	r3, r7, #27776
+ 2686 025e 03F16803 		add	r3, r3, #104
+ 2687 0262 1B68     		ldr	r3, [r3]
+ 2688 0264 40F26632 		movw	r2, #870
+ 2689 0268 02FB03F3 		mul	r3, r2, r3
+ 2690 026c 1A46     		mov	r2, r3
+ 2691              		.loc 1 189 4 discriminator 2
+ 2692 026e 07F17803 		add	r3, r7, #120
+ 2693 0272 683B     		subs	r3, r3, #104
+ 2694 0274 9818     		adds	r0, r3, r2
+ 2695              		.loc 1 189 59 discriminator 2
+ 2696 0276 07F5D943 		add	r3, r7, #27776
+ 2697 027a 03F16403 		add	r3, r3, #100
+ 2698 027e 1A68     		ldr	r2, [r3]
+ 2699 0280 1346     		mov	r3, r2
+ 2700 0282 DB00     		lsls	r3, r3, #3
+ 2701 0284 9B1A     		subs	r3, r3, r2
+ 2702 0286 9B00     		lsls	r3, r3, #2
+ 2703 0288 1344     		add	r3, r3, r2
+ 2704 028a 1A46     		mov	r2, r3
+ 2705              		.loc 1 189 4 discriminator 2
+ 2706 028c 07F6F843 		addw	r3, r7, #3320
+ 2707 0290 A3F54F63 		sub	r3, r3, #3312
+ 2708 0294 1B68     		ldr	r3, [r3]
+ 2709 0296 9918     		adds	r1, r3, r2
+ 2710              		.loc 1 189 91 discriminator 2
+ 2711 0298 07F5D943 		add	r3, r7, #27776
+ 2712 029c 03F16803 		add	r3, r3, #104
+ 2713 02a0 1A68     		ldr	r2, [r3]
+ 2714 02a2 1346     		mov	r3, r2
+ 2715 02a4 5B00     		lsls	r3, r3, #1
+ 2716 02a6 1A44     		add	r2, r2, r3
+ 2717              		.loc 1 189 94 discriminator 2
+ 2718 02a8 07F5D943 		add	r3, r7, #27776
+ 2719 02ac 03F16403 		add	r3, r3, #100
+ 2720 02b0 1B68     		ldr	r3, [r3]
+ 2721 02b2 1A44     		add	r2, r2, r3
+ 2722              		.loc 1 189 98 discriminator 2
+ 2723 02b4 1346     		mov	r3, r2
+ 2724 02b6 1B01     		lsls	r3, r3, #4
+ 2725 02b8 9B1A     		subs	r3, r3, r2
+ 2726 02ba 5B00     		lsls	r3, r3, #1
+ 2727 02bc 1A46     		mov	r2, r3
+ 2728              		.loc 1 189 4 discriminator 2
+ 2729 02be 07F5C543 		add	r3, r7, #25216
+ 2730 02c2 03F12003 		add	r3, r3, #32
+ 2731 02c6 1344     		add	r3, r3, r2
+ 2732 02c8 1D22     		movs	r2, #29
+ 2733 02ca FFF7FEFF 		bl	_linear_combination
  190:MAYO.c        **** 
  191:MAYO.c        **** 			trigger = 0;
- 2728              		.loc 1 191 12 discriminator 2
- 2729 02ce 1A4B     		ldr	r3, .L68
- 2730 02d0 0022     		movs	r2, #0
- 2731 02d2 1A60     		str	r2, [r3]
+ 2734              		.loc 1 191 12 discriminator 2
+ 2735 02ce 1A4B     		ldr	r3, .L68
+ 2736 02d0 0022     		movs	r2, #0
+ 2737 02d2 1A60     		str	r2, [r3]
  185:MAYO.c        **** 		{
- 2732              		.loc 1 185 26 discriminator 2
- 2733 02d4 07F5D943 		add	r3, r7, #27776
- 2734 02d8 03F16403 		add	r3, r3, #100
- 2735 02dc 1B68     		ldr	r3, [r3]
- 2736 02de 0133     		adds	r3, r3, #1
- 2737 02e0 07F5D942 		add	r2, r7, #27776
- 2738 02e4 02F16402 		add	r2, r2, #100
- 2739 02e8 1360     		str	r3, [r2]
- 2740              	.L56:
+ 2738              		.loc 1 185 26 discriminator 2
+ 2739 02d4 07F5D943 		add	r3, r7, #27776
+ 2740 02d8 03F16403 		add	r3, r3, #100
+ 2741 02dc 1B68     		ldr	r3, [r3]
+ 2742 02de 0133     		adds	r3, r3, #1
+ 2743 02e0 07F5D942 		add	r2, r7, #27776
+ 2744 02e4 02F16402 		add	r2, r2, #100
+ 2745 02e8 1360     		str	r3, [r2]
+ 2746              	.L56:
  185:MAYO.c        **** 		{
- 2741              		.loc 1 185 3 discriminator 1
- 2742 02ea 07F5D943 		add	r3, r7, #27776
- 2743 02ee 03F16403 		add	r3, r3, #100
- 2744 02f2 1B68     		ldr	r3, [r3]
- 2745 02f4 022B     		cmp	r3, #2
- 2746 02f6 A6DD     		ble	.L58
- 2747              	.LBE22:
+ 2747              		.loc 1 185 3 discriminator 1
+ 2748 02ea 07F5D943 		add	r3, r7, #27776
+ 2749 02ee 03F16403 		add	r3, r3, #100
+ 2750 02f2 1B68     		ldr	r3, [r3]
+ 2751 02f4 022B     		cmp	r3, #2
+ 2752 02f6 A6DD     		ble	.L58
+ 2753              	.LBE22:
  182:MAYO.c        **** 	{
- 2748              		.loc 1 182 27 discriminator 2
- 2749 02f8 07F5D943 		add	r3, r7, #27776
- 2750 02fc 03F16803 		add	r3, r3, #104
- 2751 0300 1B68     		ldr	r3, [r3]
- 2752 0302 0133     		adds	r3, r3, #1
- 2753 0304 07F5D942 		add	r2, r7, #27776
- 2754 0308 02F16802 		add	r2, r2, #104
- 2755 030c 1360     		str	r3, [r2]
- 2756              	.L55:
+ 2754              		.loc 1 182 27 discriminator 2
+ 2755 02f8 07F5D943 		add	r3, r7, #27776
+ 2756 02fc 03F16803 		add	r3, r3, #104
+ 2757 0300 1B68     		ldr	r3, [r3]
+ 2758 0302 0133     		adds	r3, r3, #1
+ 2759 0304 07F5D942 		add	r2, r7, #27776
+ 2760 0308 02F16802 		add	r2, r2, #104
+ 2761 030c 1360     		str	r3, [r2]
+ 2762              	.L55:
  182:MAYO.c        **** 	{
- 2757              		.loc 1 182 2 discriminator 1
- 2758 030e 07F5D943 		add	r3, r7, #27776
- 2759 0312 03F16803 		add	r3, r3, #104
- 2760 0316 1B68     		ldr	r3, [r3]
- 2761 0318 1C2B     		cmp	r3, #28
- 2762 031a 8DDD     		ble	.L59
- 2763              	.LBE21:
- 2764              	.LBB23:
+ 2763              		.loc 1 182 2 discriminator 1
+ 2764 030e 07F5D943 		add	r3, r7, #27776
+ 2765 0312 03F16803 		add	r3, r3, #104
+ 2766 0316 1B68     		ldr	r3, [r3]
+ 2767 0318 1C2B     		cmp	r3, #28
+ 2768 031a 8DDD     		ble	.L59
+ 2769              	.LBE21:
+ 2770              	.LBB23:
  192:MAYO.c        **** 		}
  193:MAYO.c        **** 
  194:MAYO.c        **** 	}
  195:MAYO.c        **** 
  196:MAYO.c        **** 	for (int i = 0; i < N-O; ++i)
- 2765              		.loc 1 196 11
- 2766 031c 0023     		movs	r3, #0
- 2767 031e 07F5D942 		add	r2, r7, #27776
- 2768 0322 02F16002 		add	r2, r2, #96
- 2769 0326 1360     		str	r3, [r2]
- 2770              		.loc 1 196 2
- 2771 0328 77E0     		b	.L60
- 2772              	.L63:
- 2773              	.LBB24:
+ 2771              		.loc 1 196 11
+ 2772 031c 0023     		movs	r3, #0
+ 2773 031e 07F5D942 		add	r2, r7, #27776
+ 2774 0322 02F16002 		add	r2, r2, #96
+ 2775 0326 1360     		str	r3, [r2]
+ 2776              		.loc 1 196 2
+ 2777 0328 77E0     		b	.L60
+ 2778              	.L63:
+ 2779              	.LBB24:
  197:MAYO.c        **** 	{
  198:MAYO.c        **** 		// P1' part
  199:MAYO.c        **** 		for (int j = 0; j < O; j++)
- 2774              		.loc 1 199 12
- 2775 032a 0023     		movs	r3, #0
- 2776 032c 07F5D942 		add	r2, r7, #27776
- 2777 0330 02F15C02 		add	r2, r2, #92
- 2778 0334 1360     		str	r3, [r2]
- 2779              		.loc 1 199 3
- 2780 0336 5EE0     		b	.L61
- 2781              	.L69:
- 2782              		.align	2
- 2783              	.L68:
- 2784 0338 00000000 		.word	trigger
- 2785              	.L62:
+ 2780              		.loc 1 199 12
+ 2781 032a 0023     		movs	r3, #0
+ 2782 032c 07F5D942 		add	r2, r7, #27776
+ 2783 0330 02F15C02 		add	r2, r2, #92
+ 2784 0334 1360     		str	r3, [r2]
+ 2785              		.loc 1 199 3
+ 2786 0336 5EE0     		b	.L61
+ 2787              	.L69:
+ 2788              		.align	2
+ 2789              	.L68:
+ 2790 0338 00000000 		.word	trigger
+ 2791              	.L62:
  200:MAYO.c        **** 		{
  201:MAYO.c        **** 			add_vectors(bilinear_temp + (i*O + j)*M, P1 + M*(counter + i*O + j), bilinear_temp + (i*O + j)*M
- 2786              		.loc 1 201 34 discriminator 3
- 2787 033c 07F5D943 		add	r3, r7, #27776
- 2788 0340 03F16003 		add	r3, r3, #96
- 2789 0344 1A68     		ldr	r2, [r3]
- 2790 0346 1346     		mov	r3, r2
- 2791 0348 5B00     		lsls	r3, r3, #1
- 2792 034a 1A44     		add	r2, r2, r3
- 2793              		.loc 1 201 37 discriminator 3
- 2794 034c 07F5D943 		add	r3, r7, #27776
- 2795 0350 03F15C03 		add	r3, r3, #92
- 2796 0354 1B68     		ldr	r3, [r3]
- 2797 0356 1A44     		add	r2, r2, r3
- 2798              		.loc 1 201 41 discriminator 3
- 2799 0358 1346     		mov	r3, r2
- 2800 035a 1B01     		lsls	r3, r3, #4
- 2801 035c 9B1A     		subs	r3, r3, r2
- 2802 035e 5B00     		lsls	r3, r3, #1
- 2803 0360 1A46     		mov	r2, r3
- 2804              		.loc 1 201 4 discriminator 3
- 2805 0362 07F5C543 		add	r3, r7, #25216
- 2806 0366 03F12003 		add	r3, r3, #32
- 2807 036a 9818     		adds	r0, r3, r2
- 2808              		.loc 1 201 64 discriminator 3
- 2809 036c 07F5D943 		add	r3, r7, #27776
- 2810 0370 03F16003 		add	r3, r3, #96
- 2811 0374 1A68     		ldr	r2, [r3]
- 2812 0376 1346     		mov	r3, r2
- 2813 0378 5B00     		lsls	r3, r3, #1
- 2814 037a 1A44     		add	r2, r2, r3
- 2815              		.loc 1 201 61 discriminator 3
- 2816 037c 07F5D943 		add	r3, r7, #27776
- 2817 0380 03F17403 		add	r3, r3, #116
- 2818 0384 1B68     		ldr	r3, [r3]
- 2819 0386 1A44     		add	r2, r2, r3
- 2820              		.loc 1 201 67 discriminator 3
- 2821 0388 07F5D943 		add	r3, r7, #27776
- 2822 038c 03F15C03 		add	r3, r3, #92
- 2823 0390 1B68     		ldr	r3, [r3]
- 2824 0392 1A44     		add	r2, r2, r3
- 2825              		.loc 1 201 51 discriminator 3
- 2826 0394 1346     		mov	r3, r2
- 2827 0396 1B01     		lsls	r3, r3, #4
- 2828 0398 9B1A     		subs	r3, r3, r2
- 2829 039a 5B00     		lsls	r3, r3, #1
- 2830 039c 1A46     		mov	r2, r3
- 2831              		.loc 1 201 4 discriminator 3
- 2832 039e 07F6F843 		addw	r3, r7, #3320
- 2833 03a2 A3F6EC43 		subw	r3, r3, #3308
- 2834 03a6 1B68     		ldr	r3, [r3]
- 2835 03a8 9918     		adds	r1, r3, r2
- 2836              		.loc 1 201 91 discriminator 3
- 2837 03aa 07F5D943 		add	r3, r7, #27776
- 2838 03ae 03F16003 		add	r3, r3, #96
- 2839 03b2 1A68     		ldr	r2, [r3]
- 2840 03b4 1346     		mov	r3, r2
- 2841 03b6 5B00     		lsls	r3, r3, #1
- 2842 03b8 1A44     		add	r2, r2, r3
- 2843              		.loc 1 201 94 discriminator 3
- 2844 03ba 07F5D943 		add	r3, r7, #27776
- 2845 03be 03F15C03 		add	r3, r3, #92
- 2846 03c2 1B68     		ldr	r3, [r3]
- 2847 03c4 1A44     		add	r2, r2, r3
- 2848              		.loc 1 201 98 discriminator 3
- 2849 03c6 1346     		mov	r3, r2
- 2850 03c8 1B01     		lsls	r3, r3, #4
- 2851 03ca 9B1A     		subs	r3, r3, r2
- 2852 03cc 5B00     		lsls	r3, r3, #1
- 2853 03ce 1A46     		mov	r2, r3
- 2854              		.loc 1 201 4 discriminator 3
- 2855 03d0 07F5C543 		add	r3, r7, #25216
- 2856 03d4 03F12003 		add	r3, r3, #32
- 2857 03d8 1344     		add	r3, r3, r2
- 2858 03da 1A46     		mov	r2, r3
- 2859 03dc FFF7FEFF 		bl	add_vectors
+ 2792              		.loc 1 201 34 discriminator 3
+ 2793 033c 07F5D943 		add	r3, r7, #27776
+ 2794 0340 03F16003 		add	r3, r3, #96
+ 2795 0344 1A68     		ldr	r2, [r3]
+ 2796 0346 1346     		mov	r3, r2
+ 2797 0348 5B00     		lsls	r3, r3, #1
+ 2798 034a 1A44     		add	r2, r2, r3
+ 2799              		.loc 1 201 37 discriminator 3
+ 2800 034c 07F5D943 		add	r3, r7, #27776
+ 2801 0350 03F15C03 		add	r3, r3, #92
+ 2802 0354 1B68     		ldr	r3, [r3]
+ 2803 0356 1A44     		add	r2, r2, r3
+ 2804              		.loc 1 201 41 discriminator 3
+ 2805 0358 1346     		mov	r3, r2
+ 2806 035a 1B01     		lsls	r3, r3, #4
+ 2807 035c 9B1A     		subs	r3, r3, r2
+ 2808 035e 5B00     		lsls	r3, r3, #1
+ 2809 0360 1A46     		mov	r2, r3
+ 2810              		.loc 1 201 4 discriminator 3
+ 2811 0362 07F5C543 		add	r3, r7, #25216
+ 2812 0366 03F12003 		add	r3, r3, #32
+ 2813 036a 9818     		adds	r0, r3, r2
+ 2814              		.loc 1 201 64 discriminator 3
+ 2815 036c 07F5D943 		add	r3, r7, #27776
+ 2816 0370 03F16003 		add	r3, r3, #96
+ 2817 0374 1A68     		ldr	r2, [r3]
+ 2818 0376 1346     		mov	r3, r2
+ 2819 0378 5B00     		lsls	r3, r3, #1
+ 2820 037a 1A44     		add	r2, r2, r3
+ 2821              		.loc 1 201 61 discriminator 3
+ 2822 037c 07F5D943 		add	r3, r7, #27776
+ 2823 0380 03F17403 		add	r3, r3, #116
+ 2824 0384 1B68     		ldr	r3, [r3]
+ 2825 0386 1A44     		add	r2, r2, r3
+ 2826              		.loc 1 201 67 discriminator 3
+ 2827 0388 07F5D943 		add	r3, r7, #27776
+ 2828 038c 03F15C03 		add	r3, r3, #92
+ 2829 0390 1B68     		ldr	r3, [r3]
+ 2830 0392 1A44     		add	r2, r2, r3
+ 2831              		.loc 1 201 51 discriminator 3
+ 2832 0394 1346     		mov	r3, r2
+ 2833 0396 1B01     		lsls	r3, r3, #4
+ 2834 0398 9B1A     		subs	r3, r3, r2
+ 2835 039a 5B00     		lsls	r3, r3, #1
+ 2836 039c 1A46     		mov	r2, r3
+ 2837              		.loc 1 201 4 discriminator 3
+ 2838 039e 07F6F843 		addw	r3, r7, #3320
+ 2839 03a2 A3F6EC43 		subw	r3, r3, #3308
+ 2840 03a6 1B68     		ldr	r3, [r3]
+ 2841 03a8 9918     		adds	r1, r3, r2
+ 2842              		.loc 1 201 91 discriminator 3
+ 2843 03aa 07F5D943 		add	r3, r7, #27776
+ 2844 03ae 03F16003 		add	r3, r3, #96
+ 2845 03b2 1A68     		ldr	r2, [r3]
+ 2846 03b4 1346     		mov	r3, r2
+ 2847 03b6 5B00     		lsls	r3, r3, #1
+ 2848 03b8 1A44     		add	r2, r2, r3
+ 2849              		.loc 1 201 94 discriminator 3
+ 2850 03ba 07F5D943 		add	r3, r7, #27776
+ 2851 03be 03F15C03 		add	r3, r3, #92
+ 2852 03c2 1B68     		ldr	r3, [r3]
+ 2853 03c4 1A44     		add	r2, r2, r3
+ 2854              		.loc 1 201 98 discriminator 3
+ 2855 03c6 1346     		mov	r3, r2
+ 2856 03c8 1B01     		lsls	r3, r3, #4
+ 2857 03ca 9B1A     		subs	r3, r3, r2
+ 2858 03cc 5B00     		lsls	r3, r3, #1
+ 2859 03ce 1A46     		mov	r2, r3
+ 2860              		.loc 1 201 4 discriminator 3
+ 2861 03d0 07F5C543 		add	r3, r7, #25216
+ 2862 03d4 03F12003 		add	r3, r3, #32
+ 2863 03d8 1344     		add	r3, r3, r2
+ 2864 03da 1A46     		mov	r2, r3
+ 2865 03dc FFF7FEFF 		bl	add_vectors
  199:MAYO.c        **** 		{
- 2860              		.loc 1 199 27 discriminator 3
- 2861 03e0 07F5D943 		add	r3, r7, #27776
- 2862 03e4 03F15C03 		add	r3, r3, #92
- 2863 03e8 1B68     		ldr	r3, [r3]
- 2864 03ea 0133     		adds	r3, r3, #1
- 2865 03ec 07F5D942 		add	r2, r7, #27776
- 2866 03f0 02F15C02 		add	r2, r2, #92
- 2867 03f4 1360     		str	r3, [r2]
- 2868              	.L61:
+ 2866              		.loc 1 199 27 discriminator 3
+ 2867 03e0 07F5D943 		add	r3, r7, #27776
+ 2868 03e4 03F15C03 		add	r3, r3, #92
+ 2869 03e8 1B68     		ldr	r3, [r3]
+ 2870 03ea 0133     		adds	r3, r3, #1
+ 2871 03ec 07F5D942 		add	r2, r7, #27776
+ 2872 03f0 02F15C02 		add	r2, r2, #92
+ 2873 03f4 1360     		str	r3, [r2]
+ 2874              	.L61:
  199:MAYO.c        **** 		{
- 2869              		.loc 1 199 3 discriminator 1
- 2870 03f6 07F5D943 		add	r3, r7, #27776
- 2871 03fa 03F15C03 		add	r3, r3, #92
- 2872 03fe 1B68     		ldr	r3, [r3]
- 2873 0400 022B     		cmp	r3, #2
- 2874 0402 9BDD     		ble	.L62
- 2875              	.LBE24:
+ 2875              		.loc 1 199 3 discriminator 1
+ 2876 03f6 07F5D943 		add	r3, r7, #27776
+ 2877 03fa 03F15C03 		add	r3, r3, #92
+ 2878 03fe 1B68     		ldr	r3, [r3]
+ 2879 0400 022B     		cmp	r3, #2
+ 2880 0402 9BDD     		ble	.L62
+ 2881              	.LBE24:
  196:MAYO.c        **** 	{
- 2876              		.loc 1 196 27 discriminator 2
- 2877 0404 07F5D943 		add	r3, r7, #27776
- 2878 0408 03F16003 		add	r3, r3, #96
- 2879 040c 1B68     		ldr	r3, [r3]
- 2880 040e 0133     		adds	r3, r3, #1
- 2881 0410 07F5D942 		add	r2, r7, #27776
- 2882 0414 02F16002 		add	r2, r2, #96
- 2883 0418 1360     		str	r3, [r2]
- 2884              	.L60:
+ 2882              		.loc 1 196 27 discriminator 2
+ 2883 0404 07F5D943 		add	r3, r7, #27776
+ 2884 0408 03F16003 		add	r3, r3, #96
+ 2885 040c 1B68     		ldr	r3, [r3]
+ 2886 040e 0133     		adds	r3, r3, #1
+ 2887 0410 07F5D942 		add	r2, r7, #27776
+ 2888 0414 02F16002 		add	r2, r2, #96
+ 2889 0418 1360     		str	r3, [r2]
+ 2890              	.L60:
  196:MAYO.c        **** 	{
- 2885              		.loc 1 196 2 discriminator 1
- 2886 041a 07F5D943 		add	r3, r7, #27776
- 2887 041e 03F16003 		add	r3, r3, #96
- 2888 0422 1B68     		ldr	r3, [r3]
- 2889 0424 1C2B     		cmp	r3, #28
- 2890 0426 80DD     		ble	.L63
- 2891              	.LBE23:
- 2892              	.LBB25:
+ 2891              		.loc 1 196 2 discriminator 1
+ 2892 041a 07F5D943 		add	r3, r7, #27776
+ 2893 041e 03F16003 		add	r3, r3, #96
+ 2894 0422 1B68     		ldr	r3, [r3]
+ 2895 0424 1C2B     		cmp	r3, #28
+ 2896 0426 80DD     		ble	.L63
+ 2897              	.LBE23:
+ 2898              	.LBB25:
  202:MAYO.c        **** 		}
  203:MAYO.c        **** 	}
  204:MAYO.c        **** 
  205:MAYO.c        **** 	// transpose bilinear_temp
  206:MAYO.c        **** 	for (int i = 0; i < (N-O); ++i)
- 2893              		.loc 1 206 11
- 2894 0428 0023     		movs	r3, #0
- 2895 042a 07F5D942 		add	r2, r7, #27776
- 2896 042e 02F15802 		add	r2, r2, #88
- 2897 0432 1360     		str	r3, [r2]
- 2898              		.loc 1 206 2
- 2899 0434 5AE0     		b	.L64
- 2900              	.L67:
- 2901              	.LBB26:
+ 2899              		.loc 1 206 11
+ 2900 0428 0023     		movs	r3, #0
+ 2901 042a 07F5D942 		add	r2, r7, #27776
+ 2902 042e 02F15802 		add	r2, r2, #88
+ 2903 0432 1360     		str	r3, [r2]
+ 2904              		.loc 1 206 2
+ 2905 0434 5AE0     		b	.L64
+ 2906              	.L67:
+ 2907              	.LBB26:
  207:MAYO.c        **** 	{
  208:MAYO.c        **** 		for (int j = 0; j < O; ++j)
- 2902              		.loc 1 208 12
- 2903 0436 0023     		movs	r3, #0
- 2904 0438 07F5D942 		add	r2, r7, #27776
- 2905 043c 02F15402 		add	r2, r2, #84
- 2906 0440 1360     		str	r3, [r2]
- 2907              		.loc 1 208 3
- 2908 0442 41E0     		b	.L65
- 2909              	.L66:
+ 2908              		.loc 1 208 12
+ 2909 0436 0023     		movs	r3, #0
+ 2910 0438 07F5D942 		add	r2, r7, #27776
+ 2911 043c 02F15402 		add	r2, r2, #84
+ 2912 0440 1360     		str	r3, [r2]
+ 2913              		.loc 1 208 3
+ 2914 0442 41E0     		b	.L65
+ 2915              	.L66:
  209:MAYO.c        **** 		{
  210:MAYO.c        **** 			memcpy(bilinear + M*(j*(N-O) + i), bilinear_temp + (i*O + j)*M, M);
- 2910              		.loc 1 210 26 discriminator 3
- 2911 0444 07F5D943 		add	r3, r7, #27776
- 2912 0448 03F15403 		add	r3, r3, #84
- 2913 044c 1A68     		ldr	r2, [r3]
- 2914 044e 1346     		mov	r3, r2
- 2915 0450 DB00     		lsls	r3, r3, #3
- 2916 0452 9B1A     		subs	r3, r3, r2
- 2917 0454 9B00     		lsls	r3, r3, #2
- 2918 0456 1A44     		add	r2, r2, r3
- 2919              		.loc 1 210 33 discriminator 3
- 2920 0458 07F5D943 		add	r3, r7, #27776
- 2921 045c 03F15803 		add	r3, r3, #88
- 2922 0460 1B68     		ldr	r3, [r3]
- 2923 0462 1A44     		add	r2, r2, r3
- 2924              		.loc 1 210 23 discriminator 3
- 2925 0464 1346     		mov	r3, r2
- 2926 0466 1B01     		lsls	r3, r3, #4
- 2927 0468 9B1A     		subs	r3, r3, r2
- 2928 046a 5B00     		lsls	r3, r3, #1
- 2929 046c 1A46     		mov	r2, r3
- 2930              		.loc 1 210 20 discriminator 3
- 2931 046e 07F6F843 		addw	r3, r7, #3320
- 2932 0472 A3F6F443 		subw	r3, r3, #3316
- 2933 0476 1B68     		ldr	r3, [r3]
- 2934 0478 9818     		adds	r0, r3, r2
- 2935              		.loc 1 210 57 discriminator 3
- 2936 047a 07F5D943 		add	r3, r7, #27776
- 2937 047e 03F15803 		add	r3, r3, #88
- 2938 0482 1A68     		ldr	r2, [r3]
- 2939 0484 1346     		mov	r3, r2
- 2940 0486 5B00     		lsls	r3, r3, #1
- 2941 0488 1A44     		add	r2, r2, r3
- 2942              		.loc 1 210 60 discriminator 3
- 2943 048a 07F5D943 		add	r3, r7, #27776
- 2944 048e 03F15403 		add	r3, r3, #84
- 2945 0492 1B68     		ldr	r3, [r3]
- 2946 0494 1A44     		add	r2, r2, r3
- 2947              		.loc 1 210 64 discriminator 3
- 2948 0496 1346     		mov	r3, r2
- 2949 0498 1B01     		lsls	r3, r3, #4
- 2950 049a 9B1A     		subs	r3, r3, r2
- 2951 049c 5B00     		lsls	r3, r3, #1
- 2952 049e 1A46     		mov	r2, r3
- 2953              		.loc 1 210 4 discriminator 3
- 2954 04a0 07F5C543 		add	r3, r7, #25216
- 2955 04a4 03F12003 		add	r3, r3, #32
- 2956 04a8 1344     		add	r3, r3, r2
- 2957 04aa 1E22     		movs	r2, #30
- 2958 04ac 1946     		mov	r1, r3
- 2959 04ae FFF7FEFF 		bl	memcpy
+ 2916              		.loc 1 210 26 discriminator 3
+ 2917 0444 07F5D943 		add	r3, r7, #27776
+ 2918 0448 03F15403 		add	r3, r3, #84
+ 2919 044c 1A68     		ldr	r2, [r3]
+ 2920 044e 1346     		mov	r3, r2
+ 2921 0450 DB00     		lsls	r3, r3, #3
+ 2922 0452 9B1A     		subs	r3, r3, r2
+ 2923 0454 9B00     		lsls	r3, r3, #2
+ 2924 0456 1A44     		add	r2, r2, r3
+ 2925              		.loc 1 210 33 discriminator 3
+ 2926 0458 07F5D943 		add	r3, r7, #27776
+ 2927 045c 03F15803 		add	r3, r3, #88
+ 2928 0460 1B68     		ldr	r3, [r3]
+ 2929 0462 1A44     		add	r2, r2, r3
+ 2930              		.loc 1 210 23 discriminator 3
+ 2931 0464 1346     		mov	r3, r2
+ 2932 0466 1B01     		lsls	r3, r3, #4
+ 2933 0468 9B1A     		subs	r3, r3, r2
+ 2934 046a 5B00     		lsls	r3, r3, #1
+ 2935 046c 1A46     		mov	r2, r3
+ 2936              		.loc 1 210 20 discriminator 3
+ 2937 046e 07F6F843 		addw	r3, r7, #3320
+ 2938 0472 A3F6F443 		subw	r3, r3, #3316
+ 2939 0476 1B68     		ldr	r3, [r3]
+ 2940 0478 9818     		adds	r0, r3, r2
+ 2941              		.loc 1 210 57 discriminator 3
+ 2942 047a 07F5D943 		add	r3, r7, #27776
+ 2943 047e 03F15803 		add	r3, r3, #88
+ 2944 0482 1A68     		ldr	r2, [r3]
+ 2945 0484 1346     		mov	r3, r2
+ 2946 0486 5B00     		lsls	r3, r3, #1
+ 2947 0488 1A44     		add	r2, r2, r3
+ 2948              		.loc 1 210 60 discriminator 3
+ 2949 048a 07F5D943 		add	r3, r7, #27776
+ 2950 048e 03F15403 		add	r3, r3, #84
+ 2951 0492 1B68     		ldr	r3, [r3]
+ 2952 0494 1A44     		add	r2, r2, r3
+ 2953              		.loc 1 210 64 discriminator 3
+ 2954 0496 1346     		mov	r3, r2
+ 2955 0498 1B01     		lsls	r3, r3, #4
+ 2956 049a 9B1A     		subs	r3, r3, r2
+ 2957 049c 5B00     		lsls	r3, r3, #1
+ 2958 049e 1A46     		mov	r2, r3
+ 2959              		.loc 1 210 4 discriminator 3
+ 2960 04a0 07F5C543 		add	r3, r7, #25216
+ 2961 04a4 03F12003 		add	r3, r3, #32
+ 2962 04a8 1344     		add	r3, r3, r2
+ 2963 04aa 1E22     		movs	r2, #30
+ 2964 04ac 1946     		mov	r1, r3
+ 2965 04ae FFF7FEFF 		bl	memcpy
  208:MAYO.c        **** 		{
- 2960              		.loc 1 208 26 discriminator 3
- 2961 04b2 07F5D943 		add	r3, r7, #27776
- 2962 04b6 03F15403 		add	r3, r3, #84
- 2963 04ba 1B68     		ldr	r3, [r3]
- 2964 04bc 0133     		adds	r3, r3, #1
- 2965 04be 07F5D942 		add	r2, r7, #27776
- 2966 04c2 02F15402 		add	r2, r2, #84
- 2967 04c6 1360     		str	r3, [r2]
- 2968              	.L65:
+ 2966              		.loc 1 208 26 discriminator 3
+ 2967 04b2 07F5D943 		add	r3, r7, #27776
+ 2968 04b6 03F15403 		add	r3, r3, #84
+ 2969 04ba 1B68     		ldr	r3, [r3]
+ 2970 04bc 0133     		adds	r3, r3, #1
+ 2971 04be 07F5D942 		add	r2, r7, #27776
+ 2972 04c2 02F15402 		add	r2, r2, #84
+ 2973 04c6 1360     		str	r3, [r2]
+ 2974              	.L65:
  208:MAYO.c        **** 		{
- 2969              		.loc 1 208 3 discriminator 1
- 2970 04c8 07F5D943 		add	r3, r7, #27776
- 2971 04cc 03F15403 		add	r3, r3, #84
- 2972 04d0 1B68     		ldr	r3, [r3]
- 2973 04d2 022B     		cmp	r3, #2
- 2974 04d4 B6DD     		ble	.L66
- 2975              	.LBE26:
+ 2975              		.loc 1 208 3 discriminator 1
+ 2976 04c8 07F5D943 		add	r3, r7, #27776
+ 2977 04cc 03F15403 		add	r3, r3, #84
+ 2978 04d0 1B68     		ldr	r3, [r3]
+ 2979 04d2 022B     		cmp	r3, #2
+ 2980 04d4 B6DD     		ble	.L66
+ 2981              	.LBE26:
  206:MAYO.c        **** 	{
- 2976              		.loc 1 206 29 discriminator 2
- 2977 04d6 07F5D943 		add	r3, r7, #27776
- 2978 04da 03F15803 		add	r3, r3, #88
- 2979 04de 1B68     		ldr	r3, [r3]
- 2980 04e0 0133     		adds	r3, r3, #1
- 2981 04e2 07F5D942 		add	r2, r7, #27776
- 2982 04e6 02F15802 		add	r2, r2, #88
- 2983 04ea 1360     		str	r3, [r2]
- 2984              	.L64:
+ 2982              		.loc 1 206 29 discriminator 2
+ 2983 04d6 07F5D943 		add	r3, r7, #27776
+ 2984 04da 03F15803 		add	r3, r3, #88
+ 2985 04de 1B68     		ldr	r3, [r3]
+ 2986 04e0 0133     		adds	r3, r3, #1
+ 2987 04e2 07F5D942 		add	r2, r7, #27776
+ 2988 04e6 02F15802 		add	r2, r2, #88
+ 2989 04ea 1360     		str	r3, [r2]
+ 2990              	.L64:
  206:MAYO.c        **** 	{
- 2985              		.loc 1 206 2 discriminator 1
- 2986 04ec 07F5D943 		add	r3, r7, #27776
- 2987 04f0 03F15803 		add	r3, r3, #88
- 2988 04f4 1B68     		ldr	r3, [r3]
- 2989 04f6 1C2B     		cmp	r3, #28
- 2990 04f8 9DDD     		ble	.L67
- 2991              	.LBE25:
+ 2991              		.loc 1 206 2 discriminator 1
+ 2992 04ec 07F5D943 		add	r3, r7, #27776
+ 2993 04f0 03F15803 		add	r3, r3, #88
+ 2994 04f4 1B68     		ldr	r3, [r3]
+ 2995 04f6 1C2B     		cmp	r3, #28
+ 2996 04f8 9DDD     		ble	.L67
+ 2997              	.LBE25:
  211:MAYO.c        **** 		}
  212:MAYO.c        **** 	}
  213:MAYO.c        **** }
- 2992              		.loc 1 213 1
- 2993 04fa 00BF     		nop
- 2994 04fc 00BF     		nop
- 2995 04fe 07F5D947 		add	r7, r7, #27776
- 2996 0502 7837     		adds	r7, r7, #120
- 2997              	.LCFI31:
- 2998              		.cfi_def_cfa_offset 8
- 2999 0504 BD46     		mov	sp, r7
- 3000              	.LCFI32:
- 3001              		.cfi_def_cfa_register 13
- 3002              		@ sp needed
- 3003 0506 80BD     		pop	{r7, pc}
- 3004              		.cfi_endproc
- 3005              	.LFE5:
- 3007              		.section	.text.mayo_trace,"ax",%progbits
- 3008              		.align	1
- 3009              		.global	mayo_trace
- 3010              		.syntax unified
- 3011              		.thumb
- 3012              		.thumb_func
- 3013              		.fpu softvfp
- 3015              	mayo_trace:
- 3016              	.LFB6:
+ 2998              		.loc 1 213 1
+ 2999 04fa 00BF     		nop
+ 3000 04fc 00BF     		nop
+ 3001 04fe 07F5D947 		add	r7, r7, #27776
+ 3002 0502 7837     		adds	r7, r7, #120
+ 3003              	.LCFI31:
+ 3004              		.cfi_def_cfa_offset 8
+ 3005 0504 BD46     		mov	sp, r7
+ 3006              	.LCFI32:
+ 3007              		.cfi_def_cfa_register 13
+ 3008              		@ sp needed
+ 3009 0506 80BD     		pop	{r7, pc}
+ 3010              		.cfi_endproc
+ 3011              	.LFE5:
+ 3013              		.section	.text.mayo_trace,"ax",%progbits
+ 3014              		.align	1
+ 3015              		.global	mayo_trace
+ 3016              		.syntax unified
+ 3017              		.thumb
+ 3018              		.thumb_func
+ 3019              		.fpu softvfp
+ 3021              	mayo_trace:
+ 3022              	.LFB6:
  214:MAYO.c        **** 
  215:MAYO.c        **** 
  216:MAYO.c        **** 
@@ -6894,57 +6900,58 @@
  221:MAYO.c        **** // uint8_t uov_trace(uint8_t* pw, uint8_t len)
  222:MAYO.c        **** uint8_t mayo_trace()
  223:MAYO.c        **** {
- 3017              		.loc 1 223 1
- 3018              		.cfi_startproc
- 3019              		@ args = 0, pretend = 0, frame = 2920
- 3020              		@ frame_needed = 1, uses_anonymous_args = 0
- 3021 0000 80B5     		push	{r7, lr}
- 3022              	.LCFI33:
- 3023              		.cfi_def_cfa_offset 8
- 3024              		.cfi_offset 7, -8
- 3025              		.cfi_offset 14, -4
- 3026 0002 ADF6683D 		subw	sp, sp, #2920
- 3027              	.LCFI34:
- 3028              		.cfi_def_cfa_offset 2928
- 3029 0006 00AF     		add	r7, sp, #0
- 3030              	.LCFI35:
- 3031              		.cfi_def_cfa_register 7
+ 3023              		.loc 1 223 1
+ 3024              		.cfi_startproc
+ 3025              		@ args = 0, pretend = 0, frame = 2920
+ 3026              		@ frame_needed = 1, uses_anonymous_args = 0
+ 3027 0000 80B5     		push	{r7, lr}
+ 3028              	.LCFI33:
+ 3029              		.cfi_def_cfa_offset 8
+ 3030              		.cfi_offset 7, -8
+ 3031              		.cfi_offset 14, -4
+ 3032 0002 ADF6683D 		subw	sp, sp, #2920
+ 3033              	.LCFI34:
+ 3034              		.cfi_def_cfa_offset 2928
+ 3035 0006 00AF     		add	r7, sp, #0
+ 3036              	.LCFI35:
+ 3037              		.cfi_def_cfa_register 7
  224:MAYO.c        ****     // C = 10;
  225:MAYO.c        ****     unsigned char out[M] = {0};
- 3032              		.loc 1 225 19
- 3033 0008 0023     		movs	r3, #0
- 3034 000a C7F8483B 		str	r3, [r7, #2888]
- 3035 000e 07F64C33 		addw	r3, r7, #2892
- 3036 0012 0022     		movs	r2, #0
- 3037 0014 1A60     		str	r2, [r3]
- 3038 0016 5A60     		str	r2, [r3, #4]
- 3039 0018 9A60     		str	r2, [r3, #8]
- 3040 001a DA60     		str	r2, [r3, #12]
- 3041 001c 1A61     		str	r2, [r3, #16]
- 3042 001e 5A61     		str	r2, [r3, #20]
- 3043 0020 1A83     		strh	r2, [r3, #24]	@ movhi
+ 3038              		.loc 1 225 19
+ 3039 0008 0023     		movs	r3, #0
+ 3040 000a C7F8443B 		str	r3, [r7, #2884]
+ 3041 000e 07F64833 		addw	r3, r7, #2888
+ 3042 0012 0022     		movs	r2, #0
+ 3043 0014 1A60     		str	r2, [r3]
+ 3044 0016 5A60     		str	r2, [r3, #4]
+ 3045 0018 9A60     		str	r2, [r3, #8]
+ 3046 001a DA60     		str	r2, [r3, #12]
+ 3047 001c 1A61     		str	r2, [r3, #16]
+ 3048 001e 5A61     		str	r2, [r3, #20]
+ 3049 0020 1A83     		strh	r2, [r3, #24]	@ movhi
  226:MAYO.c        **** 	unsigned char bilinear[M*(N-O)*O] = {0};
- 3044              		.loc 1 226 16
- 3045 0022 07F66833 		addw	r3, r7, #2920
- 3046 0026 A3F65423 		subw	r3, r3, #2644
- 3047 002a 0022     		movs	r2, #0
- 3048 002c 1A60     		str	r2, [r3]
- 3049 002e 0433     		adds	r3, r3, #4
- 3050 0030 40F62E22 		movw	r2, #2606
- 3051 0034 0021     		movs	r1, #0
- 3052 0036 1846     		mov	r0, r3
- 3053 0038 FFF7FEFF 		bl	memset
+ 3050              		.loc 1 226 16
+ 3051 0022 07F66833 		addw	r3, r7, #2920
+ 3052 0026 A3F65823 		subw	r3, r3, #2648
+ 3053 002a 0022     		movs	r2, #0
+ 3054 002c 1A60     		str	r2, [r3]
+ 3055 002e 0433     		adds	r3, r3, #4
+ 3056 0030 40F62E22 		movw	r2, #2606
+ 3057 0034 0021     		movs	r1, #0
+ 3058 0036 1846     		mov	r0, r3
+ 3059 0038 FFF7FEFF 		bl	memset
  227:MAYO.c        **** 	unsigned char P2[M*O*O] = {0};
- 3054              		.loc 1 227 16
- 3055 003c 07F66833 		addw	r3, r7, #2920
- 3056 0040 A3F66433 		subw	r3, r3, #2916
- 3057 0044 0022     		movs	r2, #0
- 3058 0046 1A60     		str	r2, [r3]
- 3059 0048 0433     		adds	r3, r3, #4
- 3060 004a 4FF48572 		mov	r2, #266
- 3061 004e 0021     		movs	r1, #0
- 3062 0050 1846     		mov	r0, r3
- 3063 0052 FFF7FEFF 		bl	memset
+ 3060              		.loc 1 227 16
+ 3061 003c 07F66833 		addw	r3, r7, #2920
+ 3062 0040 A3F66833 		subw	r3, r3, #2920
+ 3063 0044 0022     		movs	r2, #0
+ 3064 0046 1A60     		str	r2, [r3]
+ 3065 0048 0433     		adds	r3, r3, #4
+ 3066 004a 4FF48572 		mov	r2, #266
+ 3067 004e 0021     		movs	r1, #0
+ 3068 0050 1846     		mov	r0, r3
+ 3069 0052 FFF7FEFF 		bl	memset
+ 3070              	.LBB27:
  228:MAYO.c        **** 
  229:MAYO.c        **** 
  230:MAYO.c        ****     // define P1 in .h file, hardcoded
@@ -6960,171 +6967,193 @@
  240:MAYO.c        ****     //{
  241:MAYO.c        ****     //_linear_combination(P1, oilspace, N-O, out);
  242:MAYO.c        ****     //compute_bilinear_part(ptr_P1, oilspace, bilinear);
- 243:MAYO.c        **** 	computeP2(oilspace, P1, P2);
- 3064              		.loc 1 243 2
- 3065 0056 3B1D     		adds	r3, r7, #4
- 3066 0058 1A46     		mov	r2, r3
- 3067 005a 0649     		ldr	r1, .L72
- 3068 005c 0648     		ldr	r0, .L72+4
- 3069 005e FFF7FEFF 		bl	computeP2
- 244:MAYO.c        ****     //}
- 245:MAYO.c        ****     
- 246:MAYO.c        ****     
- 247:MAYO.c        ****     // send 'e' for end of trace
- 248:MAYO.c        ****     putch('e');
- 3070              		.loc 1 248 5
- 3071 0062 6520     		movs	r0, #101
- 3072 0064 FFF7FEFF 		bl	putch
+ 243:MAYO.c        **** 	for (int i = 0; i < 200; ++i)
+ 3071              		.loc 1 243 11
+ 3072 0056 0023     		movs	r3, #0
+ 3073 0058 C7F8643B 		str	r3, [r7, #2916]
+ 3074              		.loc 1 243 2
+ 3075 005c 0AE0     		b	.L71
+ 3076              	.L72:
+ 244:MAYO.c        **** 	{
+ 245:MAYO.c        **** 		computeP2(oilspace, P1, P2);
+ 3077              		.loc 1 245 3 discriminator 3
+ 3078 005e 3B46     		mov	r3, r7
+ 3079 0060 1A46     		mov	r2, r3
+ 3080 0062 0B49     		ldr	r1, .L74
+ 3081 0064 0B48     		ldr	r0, .L74+4
+ 3082 0066 FFF7FEFF 		bl	computeP2
+ 243:MAYO.c        **** 	{
+ 3083              		.loc 1 243 27 discriminator 3
+ 3084 006a D7F8643B 		ldr	r3, [r7, #2916]
+ 3085 006e 0133     		adds	r3, r3, #1
+ 3086 0070 C7F8643B 		str	r3, [r7, #2916]
+ 3087              	.L71:
+ 243:MAYO.c        **** 	{
+ 3088              		.loc 1 243 2 discriminator 1
+ 3089 0074 D7F8643B 		ldr	r3, [r7, #2916]
+ 3090 0078 C72B     		cmp	r3, #199
+ 3091 007a F0DD     		ble	.L72
+ 3092              	.LBE27:
+ 246:MAYO.c        **** 	}
+ 247:MAYO.c        **** 		
+ 248:MAYO.c        ****     //}
  249:MAYO.c        ****     
- 250:MAYO.c        ****     //putString(y, _O1_BYTE);
- 251:MAYO.c        **** 
- 252:MAYO.c        ****     return 1;
- 3073              		.loc 1 252 12
- 3074 0068 0123     		movs	r3, #1
- 253:MAYO.c        **** }
- 3075              		.loc 1 253 1
- 3076 006a 1846     		mov	r0, r3
- 3077 006c 07F66837 		addw	r7, r7, #2920
- 3078              	.LCFI36:
- 3079              		.cfi_def_cfa_offset 8
- 3080 0070 BD46     		mov	sp, r7
- 3081              	.LCFI37:
- 3082              		.cfi_def_cfa_register 13
- 3083              		@ sp needed
- 3084 0072 80BD     		pop	{r7, pc}
- 3085              	.L73:
- 3086              		.align	2
- 3087              	.L72:
- 3088 0074 00000000 		.word	P1
- 3089 0078 00000000 		.word	oilspace
- 3090              		.cfi_endproc
- 3091              	.LFE6:
- 3093              		.section	.rodata
- 3094              		.align	2
- 3095              	.LC0:
- 3096 0000 48656C6C 		.ascii	"Hello from the other side!\000"
- 3096      6F206672 
- 3096      6F6D2074 
- 3096      6865206F 
- 3096      74686572 
- 3097              		.section	.text.main,"ax",%progbits
- 3098              		.align	1
- 3099              		.global	main
- 3100              		.syntax unified
- 3101              		.thumb
- 3102              		.thumb_func
- 3103              		.fpu softvfp
- 3105              	main:
- 3106              	.LFB7:
- 254:MAYO.c        **** 
- 255:MAYO.c        **** int main(void)
- 256:MAYO.c        **** {
- 3107              		.loc 1 256 1
- 3108              		.cfi_startproc
- 3109              		@ args = 0, pretend = 0, frame = 32
- 3110              		@ frame_needed = 1, uses_anonymous_args = 0
- 3111 0000 B0B5     		push	{r4, r5, r7, lr}
- 3112              	.LCFI38:
- 3113              		.cfi_def_cfa_offset 16
- 3114              		.cfi_offset 4, -16
- 3115              		.cfi_offset 5, -12
- 3116              		.cfi_offset 7, -8
- 3117              		.cfi_offset 14, -4
- 3118 0002 88B0     		sub	sp, sp, #32
- 3119              	.LCFI39:
- 3120              		.cfi_def_cfa_offset 48
- 3121 0004 00AF     		add	r7, sp, #0
- 3122              	.LCFI40:
- 3123              		.cfi_def_cfa_register 7
- 257:MAYO.c        ****     platform_init();
- 3124              		.loc 1 257 5
- 3125 0006 FFF7FEFF 		bl	platform_init
- 258:MAYO.c        ****     init_uart();
- 3126              		.loc 1 258 5
- 3127 000a FFF7FEFF 		bl	init_uart
- 259:MAYO.c        ****     trigger_setup();
- 3128              		.loc 1 259 5
- 3129 000e FFF7FEFF 		bl	trigger_setup
- 260:MAYO.c        **** 
- 261:MAYO.c        ****     unsigned char Hello[] = "Hello from the other side!";
- 3130              		.loc 1 261 19
- 3131 0012 0C4B     		ldr	r3, .L76
- 3132 0014 3C1D     		adds	r4, r7, #4
- 3133 0016 1D46     		mov	r5, r3
- 3134 0018 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
- 3135 001a 0FC4     		stmia	r4!, {r0, r1, r2, r3}
- 3136 001c 95E80700 		ldm	r5, {r0, r1, r2}
- 3137 0020 03C4     		stmia	r4!, {r0, r1}
- 3138 0022 2280     		strh	r2, [r4]	@ movhi
- 3139 0024 0234     		adds	r4, r4, #2
- 3140 0026 130C     		lsrs	r3, r2, #16
- 3141 0028 2370     		strb	r3, [r4]
- 262:MAYO.c        ****     putString(Hello, 26);
- 3142              		.loc 1 262 5
- 3143 002a 3B1D     		adds	r3, r7, #4
- 3144 002c 1A21     		movs	r1, #26
- 3145 002e 1846     		mov	r0, r3
- 3146 0030 FFF7FEFF 		bl	putString
- 263:MAYO.c        **** 
- 264:MAYO.c        ****     simpleserial_init();
- 3147              		.loc 1 264 5
- 3148 0034 FFF7FEFF 		bl	simpleserial_init
- 265:MAYO.c        **** 
- 266:MAYO.c        ****     //for n in range(256)
- 267:MAYO.c        ****     mayo_trace();
- 3149              		.loc 1 267 5
- 3150 0038 FFF7FEFF 		bl	mayo_trace
- 3151              	.L75:
- 268:MAYO.c        **** 
+ 250:MAYO.c        ****     
+ 251:MAYO.c        ****     // send 'e' for end of trace
+ 252:MAYO.c        ****     putch('e');
+ 3093              		.loc 1 252 5
+ 3094 007c 6520     		movs	r0, #101
+ 3095 007e FFF7FEFF 		bl	putch
+ 253:MAYO.c        ****     
+ 254:MAYO.c        ****     //putString(y, _O1_BYTE);
+ 255:MAYO.c        **** 
+ 256:MAYO.c        ****     return 1;
+ 3096              		.loc 1 256 12
+ 3097 0082 0123     		movs	r3, #1
+ 257:MAYO.c        **** }
+ 3098              		.loc 1 257 1
+ 3099 0084 1846     		mov	r0, r3
+ 3100 0086 07F66837 		addw	r7, r7, #2920
+ 3101              	.LCFI36:
+ 3102              		.cfi_def_cfa_offset 8
+ 3103 008a BD46     		mov	sp, r7
+ 3104              	.LCFI37:
+ 3105              		.cfi_def_cfa_register 13
+ 3106              		@ sp needed
+ 3107 008c 80BD     		pop	{r7, pc}
+ 3108              	.L75:
+ 3109 008e 00BF     		.align	2
+ 3110              	.L74:
+ 3111 0090 00000000 		.word	P1
+ 3112 0094 00000000 		.word	oilspace
+ 3113              		.cfi_endproc
+ 3114              	.LFE6:
+ 3116              		.section	.rodata
+ 3117              		.align	2
+ 3118              	.LC0:
+ 3119 0000 48656C6C 		.ascii	"Hello from the other side!\000"
+ 3119      6F206672 
+ 3119      6F6D2074 
+ 3119      6865206F 
+ 3119      74686572 
+ 3120              		.section	.text.main,"ax",%progbits
+ 3121              		.align	1
+ 3122              		.global	main
+ 3123              		.syntax unified
+ 3124              		.thumb
+ 3125              		.thumb_func
+ 3126              		.fpu softvfp
+ 3128              	main:
+ 3129              	.LFB7:
+ 258:MAYO.c        **** 
+ 259:MAYO.c        **** int main(void)
+ 260:MAYO.c        **** {
+ 3130              		.loc 1 260 1
+ 3131              		.cfi_startproc
+ 3132              		@ args = 0, pretend = 0, frame = 32
+ 3133              		@ frame_needed = 1, uses_anonymous_args = 0
+ 3134 0000 B0B5     		push	{r4, r5, r7, lr}
+ 3135              	.LCFI38:
+ 3136              		.cfi_def_cfa_offset 16
+ 3137              		.cfi_offset 4, -16
+ 3138              		.cfi_offset 5, -12
+ 3139              		.cfi_offset 7, -8
+ 3140              		.cfi_offset 14, -4
+ 3141 0002 88B0     		sub	sp, sp, #32
+ 3142              	.LCFI39:
+ 3143              		.cfi_def_cfa_offset 48
+ 3144 0004 00AF     		add	r7, sp, #0
+ 3145              	.LCFI40:
+ 3146              		.cfi_def_cfa_register 7
+ 261:MAYO.c        ****     platform_init();
+ 3147              		.loc 1 261 5
+ 3148 0006 FFF7FEFF 		bl	platform_init
+ 262:MAYO.c        ****     init_uart();
+ 3149              		.loc 1 262 5
+ 3150 000a FFF7FEFF 		bl	init_uart
+ 263:MAYO.c        ****     trigger_setup();
+ 3151              		.loc 1 263 5
+ 3152 000e FFF7FEFF 		bl	trigger_setup
+ 264:MAYO.c        **** 
+ 265:MAYO.c        ****     unsigned char Hello[] = "Hello from the other side!";
+ 3153              		.loc 1 265 19
+ 3154 0012 0C4B     		ldr	r3, .L78
+ 3155 0014 3C1D     		adds	r4, r7, #4
+ 3156 0016 1D46     		mov	r5, r3
+ 3157 0018 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 3158 001a 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 3159 001c 95E80700 		ldm	r5, {r0, r1, r2}
+ 3160 0020 03C4     		stmia	r4!, {r0, r1}
+ 3161 0022 2280     		strh	r2, [r4]	@ movhi
+ 3162 0024 0234     		adds	r4, r4, #2
+ 3163 0026 130C     		lsrs	r3, r2, #16
+ 3164 0028 2370     		strb	r3, [r4]
+ 266:MAYO.c        ****     putString(Hello, 26);
+ 3165              		.loc 1 266 5
+ 3166 002a 3B1D     		adds	r3, r7, #4
+ 3167 002c 1A21     		movs	r1, #26
+ 3168 002e 1846     		mov	r0, r3
+ 3169 0030 FFF7FEFF 		bl	putString
+ 267:MAYO.c        **** 
+ 268:MAYO.c        ****     simpleserial_init();
+ 3170              		.loc 1 268 5
+ 3171 0034 FFF7FEFF 		bl	simpleserial_init
  269:MAYO.c        **** 
- 270:MAYO.c        ****     while (1)
- 271:MAYO.c        ****          simpleserial_get();
- 3152              		.loc 1 271 10 discriminator 1
- 3153 003c FFF7FEFF 		bl	simpleserial_get
- 3154 0040 FCE7     		b	.L75
- 3155              	.L77:
- 3156 0042 00BF     		.align	2
- 3157              	.L76:
- 3158 0044 00000000 		.word	.LC0
- 3159              		.cfi_endproc
- 3160              	.LFE7:
- 3162              		.text
- 3163              	.Letext0:
- 3164              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
- 3165              		.file 3 "MAYO.h"
+ 270:MAYO.c        ****     //for n in range(256)
+ 271:MAYO.c        ****     mayo_trace();
+ 3172              		.loc 1 271 5
+ 3173 0038 FFF7FEFF 		bl	mayo_trace
+ 3174              	.L77:
+ 272:MAYO.c        **** 
+ 273:MAYO.c        **** 
+ 274:MAYO.c        ****     while (1)
+ 275:MAYO.c        ****          simpleserial_get();
+ 3175              		.loc 1 275 10 discriminator 1
+ 3176 003c FFF7FEFF 		bl	simpleserial_get
+ 3177 0040 FCE7     		b	.L77
+ 3178              	.L79:
+ 3179 0042 00BF     		.align	2
+ 3180              	.L78:
+ 3181 0044 00000000 		.word	.LC0
+ 3182              		.cfi_endproc
+ 3183              	.LFE7:
+ 3185              		.text
+ 3186              	.Letext0:
+ 3187              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 3188              		.file 3 "MAYO.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 MAYO.c
-     /tmp/ccpoI8pa.s:20     .data:0000000000000000 P1
-     /tmp/ccpoI8pa.s:17     .data:0000000000000000 $d
-     /tmp/ccpoI8pa.s:1231   .data:0000000000003d2c oilspace
-     /tmp/ccpoI8pa.s:1244   .bss:0000000000000000 trigger
-     /tmp/ccpoI8pa.s:1241   .bss:0000000000000000 $d
-     /tmp/ccpoI8pa.s:1247   .text.putString:0000000000000000 $t
-     /tmp/ccpoI8pa.s:1255   .text.putString:0000000000000000 putString
-     /tmp/ccpoI8pa.s:1317   .text.add_vectors:0000000000000000 $t
-     /tmp/ccpoI8pa.s:1324   .text.add_vectors:0000000000000000 add_vectors
-     /tmp/ccpoI8pa.s:1411   .text.add_vectors:0000000000000060 $d
-     /tmp/ccpoI8pa.s:1416   .text.negate:0000000000000000 $t
-     /tmp/ccpoI8pa.s:1423   .text.negate:0000000000000000 negate
-     /tmp/ccpoI8pa.s:1503   .text.negate:0000000000000058 $d
-     /tmp/ccpoI8pa.s:1508   .text._linear_combination:0000000000000000 $t
-     /tmp/ccpoI8pa.s:1515   .text._linear_combination:0000000000000000 _linear_combination
-     /tmp/ccpoI8pa.s:1716   .text._linear_combination:0000000000000138 $d
-     /tmp/ccpoI8pa.s:1722   .text.computeP2:0000000000000000 $t
-     /tmp/ccpoI8pa.s:1729   .text.computeP2:0000000000000000 computeP2
-     /tmp/ccpoI8pa.s:2187   .text.computeP2:00000000000003c4 $d
-     /tmp/ccpoI8pa.s:2190   .text.computeP2:00000000000003c8 $t
-     /tmp/ccpoI8pa.s:2374   .text.compute_bilinear_part:0000000000000000 $t
-     /tmp/ccpoI8pa.s:2381   .text.compute_bilinear_part:0000000000000000 compute_bilinear_part
-     /tmp/ccpoI8pa.s:2784   .text.compute_bilinear_part:0000000000000338 $d
-     /tmp/ccpoI8pa.s:2787   .text.compute_bilinear_part:000000000000033c $t
-     /tmp/ccpoI8pa.s:3008   .text.mayo_trace:0000000000000000 $t
-     /tmp/ccpoI8pa.s:3015   .text.mayo_trace:0000000000000000 mayo_trace
-     /tmp/ccpoI8pa.s:3088   .text.mayo_trace:0000000000000074 $d
-     /tmp/ccpoI8pa.s:3094   .rodata:0000000000000000 $d
-     /tmp/ccpoI8pa.s:3098   .text.main:0000000000000000 $t
-     /tmp/ccpoI8pa.s:3105   .text.main:0000000000000000 main
-     /tmp/ccpoI8pa.s:3158   .text.main:0000000000000044 $d
+     /tmp/ccA1iHQp.s:20     .data:0000000000000000 P1
+     /tmp/ccA1iHQp.s:17     .data:0000000000000000 $d
+     /tmp/ccA1iHQp.s:1231   .data:0000000000003d2c oilspace
+     /tmp/ccA1iHQp.s:1244   .bss:0000000000000000 trigger
+     /tmp/ccA1iHQp.s:1241   .bss:0000000000000000 $d
+     /tmp/ccA1iHQp.s:1247   .text.putString:0000000000000000 $t
+     /tmp/ccA1iHQp.s:1255   .text.putString:0000000000000000 putString
+     /tmp/ccA1iHQp.s:1317   .text.add_vectors:0000000000000000 $t
+     /tmp/ccA1iHQp.s:1324   .text.add_vectors:0000000000000000 add_vectors
+     /tmp/ccA1iHQp.s:1411   .text.add_vectors:0000000000000060 $d
+     /tmp/ccA1iHQp.s:1416   .text.negate:0000000000000000 $t
+     /tmp/ccA1iHQp.s:1423   .text.negate:0000000000000000 negate
+     /tmp/ccA1iHQp.s:1503   .text.negate:0000000000000058 $d
+     /tmp/ccA1iHQp.s:1508   .text._linear_combination:0000000000000000 $t
+     /tmp/ccA1iHQp.s:1515   .text._linear_combination:0000000000000000 _linear_combination
+     /tmp/ccA1iHQp.s:1716   .text._linear_combination:0000000000000138 $d
+     /tmp/ccA1iHQp.s:1722   .text.computeP2:0000000000000000 $t
+     /tmp/ccA1iHQp.s:1729   .text.computeP2:0000000000000000 computeP2
+     /tmp/ccA1iHQp.s:2193   .text.computeP2:00000000000003d4 $d
+     /tmp/ccA1iHQp.s:2196   .text.computeP2:00000000000003d8 $t
+     /tmp/ccA1iHQp.s:2380   .text.compute_bilinear_part:0000000000000000 $t
+     /tmp/ccA1iHQp.s:2387   .text.compute_bilinear_part:0000000000000000 compute_bilinear_part
+     /tmp/ccA1iHQp.s:2790   .text.compute_bilinear_part:0000000000000338 $d
+     /tmp/ccA1iHQp.s:2793   .text.compute_bilinear_part:000000000000033c $t
+     /tmp/ccA1iHQp.s:3014   .text.mayo_trace:0000000000000000 $t
+     /tmp/ccA1iHQp.s:3021   .text.mayo_trace:0000000000000000 mayo_trace
+     /tmp/ccA1iHQp.s:3111   .text.mayo_trace:0000000000000090 $d
+     /tmp/ccA1iHQp.s:3117   .rodata:0000000000000000 $d
+     /tmp/ccA1iHQp.s:3121   .text.main:0000000000000000 $t
+     /tmp/ccA1iHQp.s:3128   .text.main:0000000000000000 main
+     /tmp/ccA1iHQp.s:3181   .text.main:0000000000000044 $d
 
 UNDEFINED SYMBOLS
 putch

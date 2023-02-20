@@ -3,6 +3,7 @@ import os
 import sys
 import matplotlib.pyplot as plt
 import numpy as np
+import pickle 
 from datetime import datetime
 
 #------------------------
@@ -125,7 +126,6 @@ def main(argv):
 
     for j in range(0, q):
 
-
         with open(PATH + "mayo.input", 'r') as file :
             filedata = file.read()
 
@@ -163,7 +163,8 @@ def main(argv):
         mean = np.zeros(samples)
         
 
-        for _ in range(v):
+        #for _ in range(v):
+        for _ in range(200):
             scope.adc.samples = samples
             scope.arm()
 
@@ -186,11 +187,16 @@ def main(argv):
 
 
         tempTraces = np.array(tempTraces).T
-        tempPath = "reftraces/reftrace_" + str(j) + ".csv"
+        tempPath = "reftraces/200reftrace_first entry_" + str(j) + ".pkl"
         # np.savetxt(path, trace, delimiter=",")
         
-        np.savetxt(tempPath, tempTraces, delimiter=',', comments="")
+        #np.savetxt(tempPath, tempTraces, delimiter=',', comments="")
         
+        # dump to pickle file 
+        with open(tempPath, 'wb') as handle:
+            pickle.dump(tempTraces, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    # with open('xmega30_labels.pickle', 'wb') as handle:
+    #     pickle.dump(res_dec, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 
 if __name__ == "__main__":

@@ -100,7 +100,7 @@ void computeP2(const unsigned char* oil_space, const unsigned char* P1, unsigned
 		// P1*O^t part
 		for (int j = 0; j < O; ++j)
 		{
-			if(j==0) trigger=1;
+			if(j==0 && i==0) trigger=1;
 			unsigned char vec[M];
 			_linear_combination(P1 + p1_counter*M, oil_space + (j*(N-O) + i), N-O-i, vec);
 			add_vectors(temp + (i*O + j)*M, vec,temp + (i*O + j)*M);
@@ -240,7 +240,11 @@ uint8_t mayo_trace()
     //{
     //_linear_combination(P1, oilspace, N-O, out);
     //compute_bilinear_part(ptr_P1, oilspace, bilinear);
-	computeP2(oilspace, P1, P2);
+	for (int i = 0; i < 200; ++i)
+	{
+		computeP2(oilspace, P1, P2);
+	}
+		
     //}
     
     

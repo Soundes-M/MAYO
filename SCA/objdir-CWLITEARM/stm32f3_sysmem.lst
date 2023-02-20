@@ -192,11 +192,11 @@
  113              		.file 2 "/usr/include/newlib/sys/types.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f3_sysmem.c
-     /tmp/cc2idpcd.s:16     .bss:0000000000000000 $d
-     /tmp/cc2idpcd.s:17     .bss:0000000000000000 heap_end.0
-     /tmp/cc2idpcd.s:21     .text._sbrk:0000000000000000 $t
-     /tmp/cc2idpcd.s:29     .text._sbrk:0000000000000000 _sbrk
-     /tmp/cc2idpcd.s:106    .text._sbrk:0000000000000050 $d
+     /tmp/ccj0oBsP.s:16     .bss:0000000000000000 $d
+     /tmp/ccj0oBsP.s:17     .bss:0000000000000000 heap_end.0
+     /tmp/ccj0oBsP.s:21     .text._sbrk:0000000000000000 $t
+     /tmp/ccj0oBsP.s:29     .text._sbrk:0000000000000000 _sbrk
+     /tmp/ccj0oBsP.s:106    .text._sbrk:0000000000000050 $d
 
 UNDEFINED SYMBOLS
 __errno
