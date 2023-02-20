@@ -72,7 +72,6 @@ PACKAGE MAYO_COMMON IS
   CONSTANT SK_EXP_BILINEAR : positive := SK_EXP_OIL + OIL_SPACE_BYTES;
   CONSTANT SK_EXP_BYTES    : positive := P1_BYTES + OIL_SPACE_BYTES + (M*(N-O)*O);
 
-
   ------------------------------------------------------------------------------
   -- ADDRESSE MAPPING EXPLAINED: (32 Bits Address space)
   -- 
@@ -109,7 +108,7 @@ PACKAGE MAYO_COMMON IS
 
   --SIGN SCARTCH BUFFERS(reuse)
   CONSTANT SM_TEMP_BASE_ADR : positive := OIL_SPACE_BASE_ADR;
-  CONSTANT SM_TEMP_RANGE    : positive := 2*M-1 ;
+  CONSTANT SM_TEMP_RANGE    : positive := 2*M-1 *2 ; -- 16 bits !
   CONSTANT SM_TEMP_HIGH_ADR : positive := SM_TEMP_BASE_ADR + SM_TEMP_RANGE - 4;
 
   -- PUBLIC KEY (PK)
@@ -235,6 +234,10 @@ PACKAGE MAYO_COMMON IS
   CONSTANT MULTIED_BASE_ADR : positive := LINEAR_HIGH_ADR + 4;
   CONSTANT MULTIED_RANGE    : positive := N;
   CONSTANT MULTIED_HIGH_ADR : positive := MULTIED_BASE_ADR + MULTIED_RANGE -4;
+  -- Same buffer  = RHS (reuse)
+  CONSTANT RHS_BASE_ADR : positive := LINEAR_HIGH_ADR + 4;
+  CONSTANT RHS_RANGE    : positive := N;
+  CONSTANT RHS_HIGH_ADR : positive := RHS_BASE_ADR + RHS_RANGE -4;
 
 
   ------------------------------------------------------------------------------

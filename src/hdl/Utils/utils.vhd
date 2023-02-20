@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Mon Feb  6 21:42:13 2023
+-- Last update : Tue Feb 14 09:38:48 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -22,16 +22,16 @@
 
 --------------------------------------------------------------------------------
 -- Python Script to generate FSMS
--- def fsms(start, end, root):
---    test = "";
---    for s in range(start,end):
---        if (s == end -1):
---            test += str(root)+str(s)
---        else:
---            test += str(root)+str(s)+", "
---    return test
---
--- print(f'FSMs:  {fsms(5,20,"sign")}')
+--def fsms(start, end, root):
+--   test = "";
+--   for s in range(start,end):
+--       if (s == end -1):
+--           test += str(root)+str(s)
+--       else:
+--           test += str(root)+str(s)+", "
+--   return test
+
+--print(f'FSMs:  {fsms(5,20,"sign")}')
 --------------------------------------------------------------------------------
 
 
@@ -47,6 +47,7 @@ PACKAGE UTILS_COMMON IS
 
   function clipNext(currentVal : integer := 0; max : integer := 0) return integer;
   function clipPrev(currentVal : integer := 0; max : integer := 0) return integer;
+  function isUneven(num        : integer) return std_logic;
 
   ------------------------------------------------------------------------------
   -- BRAM 
@@ -121,6 +122,13 @@ PACKAGE UTILS_COMMON IS
   type demux_output is array (natural range <>) of o_bram;
   type demux_input is array (natural range <>) of i_bram;
 
+  type range_t is record
+    lower : integer;
+    upper : integer;
+  end record range_t;
+  function four_range (num : integer) return range_t;
+
+
   -- Small storage arrays(LUTs)
   type array_32 is array(natural range <>) of std_logic_vector(31 downto 0);
   type array_16 is array(natural range <>) of std_logic_vector(15 downto 0);
@@ -128,7 +136,6 @@ PACKAGE UTILS_COMMON IS
 
   constant ZERO_32 : std_logic_vector(31 downto 0) := (others => '0');
   constant ZERO_16 : std_logic_vector(15 downto 0) := (others => '0');
-
 
   ------------------------------------------------------------------------------
   -- CDMA REG SPACE
@@ -166,5 +173,24 @@ PACKAGE BODY UTILS_COMMON IS
       returnVal := currentVal-1;
     end if;
     return returnVal;
+  end function;
+
+  function four_range (num : integer) return range_t is
+    variable res             : range_t;
+  begin
+    res.lower := to_integer((to_unsigned(num,PORT_WIDTH) srl 2) sll 2); -- lower_bound := 4 * (num div 4);
+    res.upper := res.lower + 3;
+    return res;
+  end function;
+
+  function isUneven(num : integer) return std_logic is
+    variable res          : std_logic;
+  begin
+    if (to_unsigned(num,PORT_WIDTH)(0) = '1') then
+      res := '1';
+    else
+      res := '0';
+    end if;
+    return res;
   end function;
 END PACKAGE BODY UTILS_COMMON;
