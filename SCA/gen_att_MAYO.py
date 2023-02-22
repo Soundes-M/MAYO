@@ -3,6 +3,7 @@ import os
 import sys
 import matplotlib.pyplot as plt
 import numpy as np
+import pickle
 from datetime import datetime
 
 #------------------------
@@ -128,7 +129,7 @@ def main(argv):
 
 
     
-    for j in range(10):
+    for j in range(50):
 
 
         with open(PATH + "mayo.input", 'r') as file :
@@ -167,9 +168,9 @@ def main(argv):
         #meanTraces = []
         tempTraces = []
         mean = np.zeros(samples)
-        scope.adc.timeout=1
+        #scope.adc.timeout=1
 
-        for _ in range(v):
+        for _ in range(1):
             scope.adc.samples = samples
             scope.arm()
 
@@ -192,18 +193,18 @@ def main(argv):
 
 
         tempTraces = np.array(tempTraces).T
-        tempPath = "attacktraces/attacktrace_" + str(j) + ".csv"
+        tempPath = "attacktraces/attacktrace_" + str(j) + ".pkl"
+        oilvectorPath = "attacktraces/oilvector_" + str(j) + ".pkl"
         # np.savetxt(path, trace, delimiter=",")
         
-        np.savetxt(tempPath, tempTraces, delimiter=',', comments="")
+        with open(tempPath, 'wb') as handle:
+            pickle.dump(tempTraces, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-    # pickle file 
-    # import pickle 
+        with open(oilvectorPath, 'wb') as handle:
+            pickle.dump(refvin, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-    # with open('xmega30.pickle', 'wb') as handle:
-    #     pickle.dump(trace1, handle, protocol=pickle.HIGHEST_PROTOCOL)
-    # with open('xmega30_labels.pickle', 'wb') as handle:
-    #     pickle.dump(res_dec, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        #np.savetxt(tempPath, tempTraces, delimiter=',', comments="")
+
 
     scope.dis()
     target.dis()

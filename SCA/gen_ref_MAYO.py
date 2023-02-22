@@ -187,7 +187,7 @@ def main(argv):
 
 
         tempTraces = np.array(tempTraces).T
-        tempPath = "reftraces/200reftrace_first entry_" + str(j) + ".pkl"
+        tempPath = "reftraces/trainingdata_02entry/200reftrace_second entry_" + str(j) + ".pkl"
         # np.savetxt(path, trace, delimiter=",")
         
         #np.savetxt(tempPath, tempTraces, delimiter=',', comments="")
