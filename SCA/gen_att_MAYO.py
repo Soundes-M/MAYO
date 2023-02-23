@@ -137,8 +137,9 @@ def main(argv):
 
         # generate reference vinegars that are all fixed to a certain value
         #refvin = '{}'.format(','.join(str(j) for _ in range(v)))
-        #refvin = '{}'.format(','.join(str(np.random.randint(q)) for _ in range(v)))
-        refvin = '{}'.format(','.join(str(np.random.randint(q)) for _ in range(v*(n-v))))
+        #refvin = '{}'.format(','.join(str(np.random.randint(q)) for _ in range(v))) 
+        rand_ints = np.random.randint(0, q, size=v*(n-v)).tolist() 
+        refvin = '{}'.format(','.join(str(x) for x in rand_ints[:v*(n-v)]))
 
         print(refvin)
 
@@ -201,7 +202,7 @@ def main(argv):
             pickle.dump(tempTraces, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
         with open(oilvectorPath, 'wb') as handle:
-            pickle.dump(refvin, handle, protocol=pickle.HIGHEST_PROTOCOL)
+            pickle.dump(rand_ints, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
         #np.savetxt(tempPath, tempTraces, delimiter=',', comments="")
 
