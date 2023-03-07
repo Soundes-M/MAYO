@@ -127,9 +127,9 @@ def main(argv):
     #n = 28
     #v = 25
 
-
+    #rand_ints = np.random.randint(0, q, size=v*(n-v)).tolist() 
     
-    for j in range(50):
+    for j in range(200):
 
 
         with open(PATH + "mayo.input", 'r') as file :
@@ -139,7 +139,8 @@ def main(argv):
         #refvin = '{}'.format(','.join(str(j) for _ in range(v)))
         #refvin = '{}'.format(','.join(str(np.random.randint(q)) for _ in range(v))) 
         rand_ints = np.random.randint(0, q, size=v*(n-v)).tolist() 
-        refvin = '{}'.format(','.join(str(x) for x in rand_ints[:v*(n-v)]))
+        #rand_ints[0] = j
+        refvin = '{}'.format(','.join(str(x) for x in rand_ints[0:v*(n-v)]))
 
         print(refvin)
 
@@ -171,7 +172,7 @@ def main(argv):
         mean = np.zeros(samples)
         #scope.adc.timeout=1
 
-        for _ in range(1):
+        for _ in range(31):
             scope.adc.samples = samples
             scope.arm()
 
@@ -194,15 +195,16 @@ def main(argv):
 
 
         tempTraces = np.array(tempTraces).T
-        tempPath = "attacktraces/attacktrace_" + str(j) + ".pkl"
-        oilvectorPath = "attacktraces/oilvector_" + str(j) + ".pkl"
+        tempPath = "moretraining/trace_" + str(j) + ".pkl"
+        # tempPath = "attacktraces/attacktrace_" + str(j) + ".pkl"
+        # oilvectorPath = "attacktraces/oilvector_" + str(j) + ".pkl"
         # np.savetxt(path, trace, delimiter=",")
         
         with open(tempPath, 'wb') as handle:
             pickle.dump(tempTraces, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-        with open(oilvectorPath, 'wb') as handle:
-            pickle.dump(rand_ints, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        #with open(oilvectorPath, 'wb') as handle:
+        #    pickle.dump(rand_ints, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
         #np.savetxt(tempPath, tempTraces, delimiter=',', comments="")
 

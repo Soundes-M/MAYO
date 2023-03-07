@@ -23,6 +23,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #define gf256v_add _gf256v_add_u32
 #define gf256v_madd _gf256v_madd_u32
@@ -32,6 +33,7 @@ extern unsigned char oilspace[87];
 
 extern uint32_t trigger;
 
+FILE *pFile;
 
 void putString(const unsigned char *string, const unsigned int length)
 {
@@ -61,7 +63,6 @@ void _linear_combination(const unsigned char* vecs, const unsigned char* coeffs,
 	{ 
         // j runs through the  of vecs which contains the coefficients of the different equations
         // each entry in coeefs gets multiplied with m entries in vecs, the intermediate result is stored in accumulators
-
 		if(trigger == 1 && i==0)
 		{
 			char c = 'A';
@@ -224,7 +225,7 @@ uint8_t mayo_trace()
     // C = 10;
     unsigned char out[M] = {0};
 	unsigned char bilinear[M*(N-O)*O] = {0};
-	unsigned char P2[M*O*O] = {0};
+	//unsigned char P2[M*O*O] = {0};
 
 
     // define P1 in .h file, hardcoded
@@ -232,7 +233,7 @@ uint8_t mayo_trace()
     //ptr_P1 = P1;
 
 
-    //onst unsigned char *ptr_oilspace;
+    //const unsigned char *ptr_oilspace;
     //ptr_oilspace = oilspace;
 
 
@@ -242,10 +243,24 @@ uint8_t mayo_trace()
     //compute_bilinear_part(ptr_P1, oilspace, bilinear);
 	
 	//////////////////////////////////// Use this loop to collect multiple profiling traces with given oilspace
-	//for (int i = 0; i < 200; ++i)
-	//{
+
+	//pFile = fopen("oilvector_labels.txt", "a");
+
+	for (int i = 0; i < 31; ++i)
+	{
+	//oilspace[0] = rand() % 31;
+	
+	oilspace[0]=i;
+
+	//printf(oilspace);
+	//putString(oilspace, 10);
+
+	//fprintf(pFile, "%d\n", oilspace[0]);
+	unsigned char P2[M*O*O] = {0};
 	computeP2(oilspace, P1, P2);
-	//}
+	}
+
+
 		
     //}
     
