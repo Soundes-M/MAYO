@@ -1,6 +1,6 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: /tools/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto c288448962fe4364bad66aba55020fde --incr --debug typical --relax --mt 8 -L xil_defaultlib -L blk_mem_gen_v8_4_4 -L xlconstant_v1_1_7 -L fifo_generator_v13_2_5 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot Mayo_keygen_no_zynq_tb_behav xil_defaultlib.Mayo_keygen_no_zynq_tb xil_defaultlib.glbl -log elaborate.log 
+Running: /tools/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto c288448962fe4364bad66aba55020fde --incr --debug typical --relax --mt 8 -L xil_defaultlib -L blk_mem_gen_v8_4_4 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot gaussian_tb_behav xil_defaultlib.gaussian_tb xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -12,77 +12,16 @@ Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_textio
 Compiling package xil_defaultlib.mayo_common
 Compiling package xil_defaultlib.utils_common
-Compiling package unisim.vcomponents
-Compiling package ieee.std_logic_textio
-Compiling package synopsys.attributes
-Compiling package ieee.std_logic_misc
-Compiling package ieee.std_logic_arith
-Compiling package xil_defaultlib.keccak_globals
-Compiling package ieee.std_logic_unsigned
 Compiling package vl.vl_types
 Compiling module xil_defaultlib.glbl
 Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_output_stage(...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_output_stage(...
 Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_softecc_outpu...
 Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_mem_module(C_...
 Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4(C_FAMILY="zyn...
-Compiling module xil_defaultlib.Mayo_keygen_no_zynq_BIG_BRAM512K...
-Compiling architecture behavioral of entity xil_defaultlib.mayo_bram_arbiter [mayo_bram_arbiter_default]
-Compiling architecture mayo_keygen_no_zynq_arbit_brama1_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_arbit_brama1_0 [mayo_keygen_no_zynq_arbit_brama1...]
-Compiling architecture structure of entity xil_defaultlib.BRAM_big_imp_13MOJ7Q [bram_big_imp_13moj7q_default]
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_output_stage(...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_softecc_outpu...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_mem_module(C_...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4(C_FAMILY="zyn...
-Compiling module xil_defaultlib.Mayo_keygen_no_zynq_Small_BRAM8k...
-Compiling architecture mayo_keygen_no_zynq_arbit_brama0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_arbit_brama0_0 [mayo_keygen_no_zynq_arbit_brama0...]
-Compiling architecture mayo_keygen_no_zynq_arbit_bramb0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_arbit_bramb0_0 [mayo_keygen_no_zynq_arbit_bramb0...]
-Compiling architecture structure of entity xil_defaultlib.BRAM_small_imp_16BUBJ2 [bram_small_imp_16bubj2_default]
-Compiling module xlconstant_v1_1_7.xlconstant_v1_1_7_xlconstant(CON...
-Compiling module xil_defaultlib.Mayo_keygen_no_zynq_Ground0_0
-Compiling module xlconstant_v1_1_7.xlconstant_v1_1_7_xlconstant(CON...
-Compiling module xil_defaultlib.Mayo_keygen_no_zynq_Ground32_0
-Compiling module xlconstant_v1_1_7.xlconstant_v1_1_7_xlconstant(CON...
-Compiling module xil_defaultlib.Mayo_keygen_no_zynq_Ground4_0
-Compiling architecture rtl of entity xil_defaultlib.MAYO_KEYGEN_FSM [mayo_keygen_fsm_default]
-Compiling architecture mayo_keygen_no_zynq_mayo_keygen_fsm_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0 [mayo_keygen_no_zynq_mayo_keygen_...]
-Compiling module fifo_generator_v13_2_5.fifo_generator_v13_2_5_bhv_ver_s...
-Compiling module fifo_generator_v13_2_5.fifo_generator_v13_2_5_CONV_VER(...
-Compiling module fifo_generator_v13_2_5.fifo_generator_vlog_beh(C_COMMON...
-Compiling module xil_defaultlib.fifo_generator_0
-Compiling architecture neotrng_cell_rtl of entity xil_defaultlib.neoTRNG_cell [\neoTRNG_cell(num_inv_s=5,num_in...]
-Compiling architecture neotrng_cell_rtl of entity xil_defaultlib.neoTRNG_cell [\neoTRNG_cell(num_inv_s=7,num_in...]
-Compiling architecture neotrng_cell_rtl of entity xil_defaultlib.neoTRNG_cell [\neoTRNG_cell(num_inv_s=9,num_in...]
-Compiling architecture neotrng_rtl of entity xil_defaultlib.neoTRNG [\neoTRNG(num_cells=3,num_inv_sta...]
-Compiling architecture behavioral of entity xil_defaultlib.TRNG [\TRNG(is_sim=true)\]
-Compiling architecture mayo_keygen_no_zynq_trng_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_TRNG_0_0 [mayo_keygen_no_zynq_trng_0_0_def...]
-Compiling architecture behavioral of entity xil_defaultlib.mayo_trng_arbiter [mayo_trng_arbiter_default]
-Compiling architecture mayo_keygen_no_zynq_mayo_trng_arbiter_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_mayo_trng_arbiter_0_0 [mayo_keygen_no_zynq_mayo_trng_ar...]
-Compiling architecture structure of entity xil_defaultlib.TRNG_imp_G7X2XE [trng_imp_g7x2xe_default]
-Compiling architecture rtl of entity xil_defaultlib.keccak_round [keccak_round_default]
-Compiling architecture rtl of entity xil_defaultlib.keccak_round_constants_gen [keccak_round_constants_gen_defau...]
-Compiling architecture rtl of entity xil_defaultlib.keccak_buffer [keccak_buffer_default]
-Compiling architecture rtl of entity xil_defaultlib.keccak [keccak_default]
-Compiling module xil_defaultlib.SHA_SHAKE_wrapper
-Compiling module xil_defaultlib.MAYO_SHAKE
-Compiling module xil_defaultlib.Mayo_keygen_no_zynq_MAYO_SHAKE_1...
-Compiling architecture behavioral of entity xil_defaultlib.mayo_hash_bram_arbiter [mayo_hash_bram_arbiter_default]
-Compiling architecture mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_mayo_hash_bram_arbit_0_0 [mayo_keygen_no_zynq_mayo_hash_br...]
-Compiling architecture structure of entity xil_defaultlib.hash_imp_EASPA4 [hash_imp_easpa4_default]
-Compiling architecture behavioral of entity xil_defaultlib.mayo_add_vectors [mayo_add_vectors_default]
-Compiling architecture mayo_keygen_no_zynq_mayo_add_vectors_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_mayo_add_vectors_0_0 [mayo_keygen_no_zynq_mayo_add_vec...]
-Compiling architecture behavioral of entity xil_defaultlib.DSP_Accum [dsp_accum_default]
-Compiling architecture behavioral of entity xil_defaultlib.mayo_linear_combination [mayo_linear_combination_default]
-Compiling architecture mayo_keygen_no_zynq_mayo_linear_combinat_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_mayo_linear_combinat_0_0 [mayo_keygen_no_zynq_mayo_linear_...]
-Compiling architecture behavioral of entity xil_defaultlib.mayo_negate [mayo_negate_default]
-Compiling architecture mayo_keygen_no_zynq_mayo_negate_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_mayo_negate_0_0 [mayo_keygen_no_zynq_mayo_negate_...]
-Compiling architecture behavioral of entity xil_defaultlib.mayo_reduce [mayo_reduce_default]
-Compiling architecture mayo_keygen_no_zynq_mayo_reduce_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_mayo_reduce_0_0 [mayo_keygen_no_zynq_mayo_reduce_...]
-Compiling architecture behavioral of entity xil_defaultlib.mayo_sample_oil_space [mayo_sample_oil_space_default]
-Compiling architecture mayo_keygen_no_zynq_mayo_sample_oil_space_0_0_arch of entity xil_defaultlib.Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0 [mayo_keygen_no_zynq_mayo_sample_...]
-Compiling architecture structure of entity xil_defaultlib.Mayo_keygen_no_zynq [mayo_keygen_no_zynq_default]
-Compiling architecture structure of entity xil_defaultlib.Mayo_keygen_no_zynq_wrapper [mayo_keygen_no_zynq_wrapper_defa...]
-Compiling architecture behavioral of entity xil_defaultlib.mayo_keygen_no_zynq_tb
-Built simulation snapshot Mayo_keygen_no_zynq_tb_behav
+Compiling module xil_defaultlib.Test_BRAM0
+Compiling architecture behavioral of entity xil_defaultlib.mayo_sample_oil [\mayo_sample_oil(rhs_adr=3604,li...]
+Compiling architecture behavioral of entity xil_defaultlib.gaussian_tb
+Built simulation snapshot gaussian_tb_behav

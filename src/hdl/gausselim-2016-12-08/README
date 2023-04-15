@@ -1,0 +1,33 @@
+
+**********************************************************************
+This package contains working code and testbenches for doing gaussian
+systemization on a random matrix.
+
+Run the testbench in systemize_tb/ by invoking below command:
+
+  ./run_test N L K
+
+For example:
+
+  ./run_test 4 8 16
+
+
+Note:
+Software Versions Used for Testing:
+  SageMath (sage) 6.3 and 7.4
+  Python (python) 2.7
+  Icarus Verilog (iverilog) 0.9.7
+
+**********************************************************************
+For more explanations about the code, please refer to the paper:
+
+Solving Large Systems of Linear Equations over GF(2) on FPGAs. 
+Wen Wang, Jakub Szefer and Ruben Niederhagen. ReConFig, 2016.
+
+**********************************************************************
+For more information about the code/paper, please contact the authors:
+
+Wen Wang -- wen.wang.ww349@yale.edu
+Jakub Szefer -- jakub.szefer@yale.edu
+Ruben Niederhagen -- ruben@polycephaly.org
+

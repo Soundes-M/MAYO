@@ -1,0 +1,123 @@
+#!/bin/bash
+
+# Copyright (C) 2016
+# Authors: Wen Wang <wen.wang.ww349@yale.edu>
+#          Ruben Niederhagen <ruben@polycephaly.org>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+function show_help {
+  cat <<EOF
+
+Usage: $0 [OPTION]... [N] [L] [K]
+
+  Given parameters N, L, and K, generate comb_SA,
+  compile the testbench, generate a test matrix,
+  run the testbench and compare the output of the
+  testbench with the expceted result.
+
+  Options:
+    -v               Verbose output.
+    -n N  or  [N]    Block size of comb_sa.
+    -l L  or  [L]    Number of rows in the matrix.
+    -k K  or  [K]    Number of columns in the matrix.
+
+EOF
+}
+
+OPTIND=1
+
+N=4
+L=8
+K=16
+
+verbose=0
+
+########### option handling ##############
+
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--help") set -- "$@" "-h" ;;
+    *)        set -- "$@" "$arg"
+  esac
+done
+
+while getopts "h?vn:l:k:" opt; do
+    case "$opt" in
+    h|\?)
+        show_help
+        exit 0
+        ;;
+    v)  verbose=1
+        ;;
+    n)  N=$OPTARG
+        ;;
+    l)  L=$OPTARG
+        ;;
+    k)  K=$OPTARG
+        ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+if [[ $# -ge 1 ]]
+then
+  N=$1
+  shift
+fi
+
+if [[ $# -ge 1 ]]
+then
+  L=$1
+  shift
+fi
+
+if [[ $# -ge 1 ]]
+then
+  K=$1
+  shift
+fi
+
+
+########### run test ##############
+
+# make sure L and K are multiples of N
+L=$((L - (L % N)))
+K=$((K - (K % N)))
+
+if [[ $L -ge $K ]]
+then
+  printf "\nL must be larger than K!\n\n"
+  exit
+fi
+
+echo "N = $N, L = $L, K = $K"
+
+if [ $verbose == 1 ]
+then
+  set -x
+fi
+
+python2 ../gen_comb_SA.py -n $N > comb_SA.v 
+
+make -e N=$N L=$L K=$K systemize_tb
+
+sage ./gen_test.sage $N $L $K > data.in
+
+./systemize_tb
+
+sage ./verify_test.sage $N $L $K data.in data.out
+

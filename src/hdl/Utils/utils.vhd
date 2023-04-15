@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Tue Feb 14 09:38:48 2023
+-- Last update : Mon Apr  3 15:28:07 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -45,9 +45,10 @@ PACKAGE UTILS_COMMON IS
   CONSTANT PORT_WIDTH : natural := 32; -- 32 Bit arch
 
 
-  function clipNext(currentVal : integer := 0; max : integer := 0) return integer;
-  function clipPrev(currentVal : integer := 0; max : integer := 0) return integer;
-  function isUneven(num        : integer) return std_logic;
+  function clipNext(currentVal         : integer := 0; max : integer := 0) return integer;
+  function clipPrev(currentVal         : integer := 0; max : integer := 0) return integer;
+  function isUneven(num                : integer) return std_logic;
+  function firstOneIndex (input_vector : std_logic_vector) return integer;
 
   ------------------------------------------------------------------------------
   -- BRAM 
@@ -192,5 +193,19 @@ PACKAGE BODY UTILS_COMMON IS
       res := '0';
     end if;
     return res;
+  end function;
+
+  -- Returns the index of the first '1' Bit
+  function firstOneIndex (input_vector : std_logic_vector) return integer is
+    variable counter                     : natural := 0;
+  begin
+    for i in input_vector'range loop
+      if input_vector(i) = '1' then
+        return counter;
+      end if;
+      counter := counter + 1;
+    end loop;
+    -- if there is no '1' in the input vector, return -1 or raise an exception
+    return -1;
   end function;
 END PACKAGE BODY UTILS_COMMON;

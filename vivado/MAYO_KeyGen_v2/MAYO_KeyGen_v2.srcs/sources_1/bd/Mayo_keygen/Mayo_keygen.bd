@@ -48,12 +48,12 @@
       "mayo_axi_litev3_0": "",
       "blink_led_0": "",
       "system_ila_0": "",
+      "MAYO_KEYGEN_FSM_0": "",
       "mayo_add_vectors_0": "",
       "mayo_linear_combinat_0": "",
       "mayo_negate_0": "",
       "mayo_reduce_0": "",
-      "mayo_sample_oil_space_0": "",
-      "MAYO_KEYGEN_FSM_0": ""
+      "mayo_sample_oil_space_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1203,16 +1203,16 @@
               }
             },
             "interface_nets": {
-              "auto_pc_to_s00_couplers": {
-                "interface_ports": [
-                  "M_AXI",
-                  "auto_pc/M_AXI"
-                ]
-              },
               "s00_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
                   "auto_pc/S_AXI"
+                ]
+              },
+              "auto_pc_to_s00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
                 ]
               }
             },
@@ -1355,16 +1355,16 @@
               }
             },
             "interface_nets": {
-              "m01_couplers_to_auto_pc": {
-                "interface_ports": [
-                  "S_AXI",
-                  "auto_pc/S_AXI"
-                ]
-              },
               "auto_pc_to_m01_couplers": {
                 "interface_ports": [
                   "M_AXI",
                   "auto_pc/M_AXI"
+                ]
+              },
+              "m01_couplers_to_auto_pc": {
+                "interface_ports": [
+                  "S_AXI",
+                  "auto_pc/S_AXI"
                 ]
               }
             },
@@ -1385,6 +1385,12 @@
           }
         },
         "interface_nets": {
+          "m01_couplers_to_ps7_0_axi_periph": {
+            "interface_ports": [
+              "M01_AXI",
+              "m01_couplers/M_AXI"
+            ]
+          },
           "xbar_to_m01_couplers": {
             "interface_ports": [
               "xbar/M01_AXI",
@@ -1413,12 +1419,6 @@
             "interface_ports": [
               "xbar/M00_AXI",
               "m00_couplers/S_AXI"
-            ]
-          },
-          "m01_couplers_to_ps7_0_axi_periph": {
-            "interface_ports": [
-              "M01_AXI",
-              "m01_couplers/M_AXI"
             ]
           }
         },
@@ -4572,6 +4572,318 @@
           }
         }
       },
+      "MAYO_KEYGEN_FSM_0": {
+        "vlnv": "xilinx.com:module_ref:MAYO_KEYGEN_FSM:1.0",
+        "xci_name": "Mayo_keygen_MAYO_KEYGEN_FSM_0_0",
+        "xci_path": "ip/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0.xci",
+        "inst_hier_path": "MAYO_KEYGEN_FSM_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "MAYO_KEYGEN_FSM",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "CLK": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "RESET",
+                "value_src": "constant"
+              }
+            }
+          },
+          "ENABLE": {
+            "direction": "I"
+          },
+          "RESET": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "PUBLIC_KEY_ADDR_I": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "SECRET_KEY_ADDR_I": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_busy": {
+            "direction": "O"
+          },
+          "o_done": {
+            "direction": "O"
+          },
+          "i_expose": {
+            "direction": "I"
+          },
+          "i_irq": {
+            "type": "intr",
+            "direction": "I",
+            "parameters": {
+              "SENSITIVITY": {
+                "value": "LEVEL_HIGH",
+                "value_src": "constant"
+              }
+            }
+          },
+          "i_debug": {
+            "direction": "I"
+          },
+          "o_err": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "o_trng_r": {
+            "direction": "O"
+          },
+          "o_trng_w": {
+            "direction": "O"
+          },
+          "o_trng_data": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "i_trng_data": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_trng_valid": {
+            "direction": "I"
+          },
+          "i_trng_done": {
+            "direction": "I"
+          },
+          "o_hash_en": {
+            "direction": "O"
+          },
+          "o_hash_mlen": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_hash_olen": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_hash_write_adr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_hash_read_adr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "i_hash_done": {
+            "direction": "I"
+          },
+          "i_hash_dyn_done": {
+            "direction": "I"
+          },
+          "o_hash_memsel": {
+            "direction": "O"
+          },
+          "o_red_enable": {
+            "direction": "O"
+          },
+          "o_red_len": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_red_adr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_red_bram_sel": {
+            "direction": "O"
+          },
+          "i_red_done": {
+            "direction": "I"
+          },
+          "o_sam_enable": {
+            "direction": "O"
+          },
+          "i_sam_done": {
+            "direction": "I"
+          },
+          "o_sam_oil_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_lin_enable": {
+            "direction": "O"
+          },
+          "i_lin_done": {
+            "direction": "I"
+          },
+          "o_lin_bram_halt": {
+            "direction": "O"
+          },
+          "o_lin_vec_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_lin_coeffs_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_lin_out_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_lin_len": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_add_enable": {
+            "direction": "O"
+          },
+          "o_add_v1_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_add_v2_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_add_out_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "i_add_done": {
+            "direction": "I"
+          },
+          "o_add_bram_sel": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "o_neg_enable": {
+            "direction": "O"
+          },
+          "o_neg_len": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_neg_adr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "i_neg_done": {
+            "direction": "I"
+          },
+          "i_mem0a_dout": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0a_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0a_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0a_en": {
+            "direction": "O"
+          },
+          "o_mem0a_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "o_mem0a_we": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "i_mem0b_dout": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0b_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0b_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem0b_en": {
+            "direction": "O"
+          },
+          "o_mem0b_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "o_mem0b_we": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "i_mem1a_dout": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem1a_din": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem1a_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "o_mem1a_en": {
+            "direction": "O"
+          },
+          "o_mem1a_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "o_mem1a_we": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "o_mem0a_control": {
+            "direction": "O"
+          },
+          "o_mem0b_control": {
+            "direction": "O"
+          },
+          "o_mem1a_control": {
+            "direction": "O"
+          }
+        }
+      },
       "mayo_add_vectors_0": {
         "vlnv": "xilinx.com:module_ref:mayo_add_vectors:1.0",
         "xci_name": "Mayo_keygen_mayo_add_vectors_0_0",
@@ -5131,318 +5443,6 @@
             "direction": "O"
           },
           "o_trng_sel": {
-            "direction": "O"
-          }
-        }
-      },
-      "MAYO_KEYGEN_FSM_0": {
-        "vlnv": "xilinx.com:module_ref:MAYO_KEYGEN_FSM:1.0",
-        "xci_name": "Mayo_keygen_MAYO_KEYGEN_FSM_0_0",
-        "xci_path": "ip/Mayo_keygen_MAYO_KEYGEN_FSM_0_0/Mayo_keygen_MAYO_KEYGEN_FSM_0_0.xci",
-        "inst_hier_path": "MAYO_KEYGEN_FSM_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "MAYO_KEYGEN_FSM",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "CLK": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "RESET",
-                "value_src": "constant"
-              }
-            }
-          },
-          "ENABLE": {
-            "direction": "I"
-          },
-          "RESET": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "PUBLIC_KEY_ADDR_I": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "SECRET_KEY_ADDR_I": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_busy": {
-            "direction": "O"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "i_expose": {
-            "direction": "I"
-          },
-          "i_irq": {
-            "type": "intr",
-            "direction": "I",
-            "parameters": {
-              "SENSITIVITY": {
-                "value": "LEVEL_HIGH",
-                "value_src": "constant"
-              }
-            }
-          },
-          "i_debug": {
-            "direction": "I"
-          },
-          "o_err": {
-            "direction": "O",
-            "left": "1",
-            "right": "0"
-          },
-          "o_trng_r": {
-            "direction": "O"
-          },
-          "o_trng_w": {
-            "direction": "O"
-          },
-          "o_trng_data": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "i_trng_data": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_trng_valid": {
-            "direction": "I"
-          },
-          "i_trng_done": {
-            "direction": "I"
-          },
-          "o_hash_en": {
-            "direction": "O"
-          },
-          "o_hash_mlen": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_hash_olen": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_hash_write_adr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_hash_read_adr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "i_hash_done": {
-            "direction": "I"
-          },
-          "i_hash_dyn_done": {
-            "direction": "I"
-          },
-          "o_hash_memsel": {
-            "direction": "O"
-          },
-          "o_red_enable": {
-            "direction": "O"
-          },
-          "o_red_len": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_red_adr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_red_bram_sel": {
-            "direction": "O"
-          },
-          "i_red_done": {
-            "direction": "I"
-          },
-          "o_sam_enable": {
-            "direction": "O"
-          },
-          "i_sam_done": {
-            "direction": "I"
-          },
-          "o_sam_oil_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_lin_enable": {
-            "direction": "O"
-          },
-          "i_lin_done": {
-            "direction": "I"
-          },
-          "o_lin_bram_halt": {
-            "direction": "O"
-          },
-          "o_lin_vec_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_lin_coeffs_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_lin_out_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_lin_len": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_add_enable": {
-            "direction": "O"
-          },
-          "o_add_v1_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_add_v2_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_add_out_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "i_add_done": {
-            "direction": "I"
-          },
-          "o_add_bram_sel": {
-            "direction": "O",
-            "left": "1",
-            "right": "0"
-          },
-          "o_neg_enable": {
-            "direction": "O"
-          },
-          "o_neg_len": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_neg_adr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "i_neg_done": {
-            "direction": "I"
-          },
-          "i_mem0a_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_en": {
-            "direction": "O"
-          },
-          "o_mem0a_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem0a_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "i_mem0b_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_en": {
-            "direction": "O"
-          },
-          "o_mem0b_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem0b_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "i_mem1a_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_en": {
-            "direction": "O"
-          },
-          "o_mem1a_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem1a_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_mem0a_control": {
-            "direction": "O"
-          },
-          "o_mem0b_control": {
-            "direction": "O"
-          },
-          "o_mem1a_control": {
             "direction": "O"
           }
         }
@@ -6485,12 +6485,12 @@
           "hash/rst",
           "TRNG/rst",
           "blink_led_0/rst",
+          "MAYO_KEYGEN_FSM_0/RESET",
           "mayo_add_vectors_0/rst",
           "mayo_linear_combinat_0/rst",
           "mayo_negate_0/rst",
           "mayo_reduce_0/rst",
-          "mayo_sample_oil_space_0/rst",
-          "MAYO_KEYGEN_FSM_0/RESET"
+          "mayo_sample_oil_space_0/rst"
         ]
       },
       "rst_ps7_0_100M_peripheral_aresetn": {
@@ -6521,12 +6521,12 @@
           "BRAM_big1/clkb",
           "blink_led_0/clk",
           "system_ila_0/clk",
+          "MAYO_KEYGEN_FSM_0/CLK",
           "mayo_add_vectors_0/i_clk",
           "mayo_linear_combinat_0/i_clk",
           "mayo_negate_0/i_clk",
           "mayo_reduce_0/i_clk",
-          "mayo_sample_oil_space_0/i_clk",
-          "MAYO_KEYGEN_FSM_0/CLK"
+          "mayo_sample_oil_space_0/i_clk"
         ]
       },
       "blink_led_0_led0": {

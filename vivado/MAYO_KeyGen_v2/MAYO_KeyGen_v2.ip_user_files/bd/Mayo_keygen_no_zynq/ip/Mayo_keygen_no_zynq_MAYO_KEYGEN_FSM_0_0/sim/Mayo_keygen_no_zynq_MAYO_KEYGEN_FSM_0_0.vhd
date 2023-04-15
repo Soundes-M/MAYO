@@ -63,6 +63,7 @@ ENTITY Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0 IS
     o_busy : OUT STD_LOGIC;
     o_done : OUT STD_LOGIC;
     i_expose : IN STD_LOGIC;
+    i_irq : IN STD_LOGIC;
     i_debug : IN STD_LOGIC;
     o_err : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     o_trng_r : OUT STD_LOGIC;
@@ -145,6 +146,7 @@ ARCHITECTURE Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0_arch OF Mayo_keygen_no_zynq
       o_busy : OUT STD_LOGIC;
       o_done : OUT STD_LOGIC;
       i_expose : IN STD_LOGIC;
+      i_irq : IN STD_LOGIC;
       i_debug : IN STD_LOGIC;
       o_err : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       o_trng_r : OUT STD_LOGIC;
@@ -219,6 +221,8 @@ ARCHITECTURE Mayo_keygen_no_zynq_MAYO_KEYGEN_FSM_0_0_arch OF Mayo_keygen_no_zynq
   ATTRIBUTE X_INTERFACE_INFO OF o_mem0b_rst: SIGNAL IS "xilinx.com:signal:reset:1.0 o_mem0b_rst RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF o_mem0a_rst: SIGNAL IS "XIL_INTERFACENAME o_mem0a_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF o_mem0a_rst: SIGNAL IS "xilinx.com:signal:reset:1.0 o_mem0a_rst RST";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF i_irq: SIGNAL IS "XIL_INTERFACENAME i_irq, SENSITIVITY LEVEL_HIGH, PortWidth 1";
+  ATTRIBUTE X_INTERFACE_INFO OF i_irq: SIGNAL IS "xilinx.com:signal:interrupt:1.0 i_irq INTERRUPT";
   ATTRIBUTE X_INTERFACE_PARAMETER OF RESET: SIGNAL IS "XIL_INTERFACENAME RESET, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF RESET: SIGNAL IS "xilinx.com:signal:reset:1.0 RESET RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF CLK: SIGNAL IS "XIL_INTERFACENAME CLK, ASSOCIATED_RESET RESET, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, INSERT_VIP 0";
@@ -238,6 +242,7 @@ BEGIN
       o_busy => o_busy,
       o_done => o_done,
       i_expose => i_expose,
+      i_irq => i_irq,
       i_debug => i_debug,
       o_err => o_err,
       o_trng_r => o_trng_r,

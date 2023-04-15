@@ -234,11 +234,16 @@ PACKAGE MAYO_COMMON IS
   CONSTANT MULTIED_BASE_ADR : positive := LINEAR_HIGH_ADR + 4;
   CONSTANT MULTIED_RANGE    : positive := N;
   CONSTANT MULTIED_HIGH_ADR : positive := MULTIED_BASE_ADR + MULTIED_RANGE -4;
+
   -- Same buffer  = RHS (reuse)
   CONSTANT RHS_BASE_ADR : positive := LINEAR_HIGH_ADR + 4;
-  CONSTANT RHS_RANGE    : positive := N;
+  CONSTANT RHS_RANGE    : positive := M;
   CONSTANT RHS_HIGH_ADR : positive := RHS_BASE_ADR + RHS_RANGE -4;
 
+  -- ~~~~~~UNPACKED; 16Bit Values (Overwise after gaussian)
+  CONSTANT UNPACKED_AUGMENT_BASE_ADR : positive := RHS_HIGH_ADR +4;
+  CONSTANT UNPACKED_AUGMENT_RANGE    : positive := M*(K*O+2) *2; -- todo check this ! is it +1 or +2 for range! 
+  CONSTANT UNPACKED_AUGMENT_HIGH_ADR : positive := UNPACKED_AUGMENT_BASE_ADR + UNPACKED_AUGMENT_RANGE -4;
 
   ------------------------------------------------------------------------------
   -- Address Mapping DDR MAPPING  [DISCARDED]

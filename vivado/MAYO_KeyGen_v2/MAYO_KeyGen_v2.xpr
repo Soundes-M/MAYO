@@ -50,20 +50,20 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="zed"/>
-    <Option Name="WTXSimLaunchSim" Val="535"/>
+    <Option Name="WTXSimLaunchSim" Val="592"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="208"/>
-    <Option Name="WTModelSimExportSim" Val="208"/>
-    <Option Name="WTQuestaExportSim" Val="207"/>
-    <Option Name="WTIesExportSim" Val="207"/>
-    <Option Name="WTVcsExportSim" Val="207"/>
-    <Option Name="WTRivieraExportSim" Val="207"/>
-    <Option Name="WTActivehdlExportSim" Val="207"/>
+    <Option Name="WTXSimExportSim" Val="209"/>
+    <Option Name="WTModelSimExportSim" Val="209"/>
+    <Option Name="WTQuestaExportSim" Val="208"/>
+    <Option Name="WTIesExportSim" Val="208"/>
+    <Option Name="WTVcsExportSim" Val="208"/>
+    <Option Name="WTRivieraExportSim" Val="208"/>
+    <Option Name="WTActivehdlExportSim" Val="208"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -91,49 +91,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_BRAM_Arbiter.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_trng_Arbiter.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_HASH_BRAM_Arbiter.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/hdl/Utils/led_blinker.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_linear_combination.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_negate.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_reduce.vhd">
+      <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_Sample_Oil.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -141,58 +99,63 @@
       </File>
       <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_BRAM_Arbiter.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_HASH_BRAM_Arbiter.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_trng_Arbiter.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Keygen_FSM.vhd">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/bd/Mayo_keygen/Mayo_keygen.bd">
+      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_MAYO_SHAKE_1_0/Mayo_keygen_MAYO_SHAKE_1_0.xci">
-          <Proxy FileSetName="Mayo_keygen_MAYO_SHAKE_1_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_mayo_axi_litev3_0_0/Mayo_keygen_mayo_axi_litev3_0_0.xci">
-          <Proxy FileSetName="Mayo_keygen_mayo_axi_litev3_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_blink_led_0_0/Mayo_keygen_blink_led_0_0.xci">
-          <Proxy FileSetName="Mayo_keygen_blink_led_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_system_ila_0_3/Mayo_keygen_system_ila_0_3.xci">
-          <Proxy FileSetName="Mayo_keygen_system_ila_0_3"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0.xci">
-          <Proxy FileSetName="Mayo_keygen_TRNG_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_Small_BRAM8k_0.xci">
-          <Proxy FileSetName="Mayo_keygen_Small_BRAM8k_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2.xci">
-          <Proxy FileSetName="Mayo_keygen_blk_mem_gen_0_2"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_1.xci">
-          <Proxy FileSetName="Mayo_keygen_axi_bram_ctrl_0_1"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_rst_ps7_0_100M_0/Mayo_keygen_rst_ps7_0_100M_0.xci">
-          <Proxy FileSetName="Mayo_keygen_rst_ps7_0_100M_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_processing_system7_0_0/Mayo_keygen_processing_system7_0_0.xci">
-          <Proxy FileSetName="Mayo_keygen_processing_system7_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_xbar_0/Mayo_keygen_xbar_0.xci">
-          <Proxy FileSetName="Mayo_keygen_xbar_0"/>
-        </CompFileExtendedInfo>
       </File>
-      <File Path="$PGENDIR/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd">
+      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_linear_combination.vhd">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_negate.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_reduce.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -209,6 +172,61 @@
         </CompFileExtendedInfo>
       </File>
       <File Path="$PGENDIR/sources_1/bd/Mayo_keygen_no_zynq/hdl/Mayo_keygen_no_zynq_wrapper.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/hdl/Utils/led_blinker.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/bd/Mayo_keygen/Mayo_keygen.bd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_processing_system7_0_0/Mayo_keygen_processing_system7_0_0.xci">
+          <Proxy FileSetName="Mayo_keygen_processing_system7_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_xbar_0/Mayo_keygen_xbar_0.xci">
+          <Proxy FileSetName="Mayo_keygen_xbar_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_rst_ps7_0_100M_0/Mayo_keygen_rst_ps7_0_100M_0.xci">
+          <Proxy FileSetName="Mayo_keygen_rst_ps7_0_100M_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_axi_bram_ctrl_0_1/Mayo_keygen_axi_bram_ctrl_0_1.xci">
+          <Proxy FileSetName="Mayo_keygen_axi_bram_ctrl_0_1"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2.xci">
+          <Proxy FileSetName="Mayo_keygen_blk_mem_gen_0_2"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_Small_BRAM8k_0.xci">
+          <Proxy FileSetName="Mayo_keygen_Small_BRAM8k_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0.xci">
+          <Proxy FileSetName="Mayo_keygen_TRNG_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_MAYO_SHAKE_1_0/Mayo_keygen_MAYO_SHAKE_1_0.xci">
+          <Proxy FileSetName="Mayo_keygen_MAYO_SHAKE_1_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_mayo_axi_litev3_0_0/Mayo_keygen_mayo_axi_litev3_0_0.xci">
+          <Proxy FileSetName="Mayo_keygen_mayo_axi_litev3_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_blink_led_0_0/Mayo_keygen_blink_led_0_0.xci">
+          <Proxy FileSetName="Mayo_keygen_blink_led_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_system_ila_0_3/Mayo_keygen_system_ila_0_3.xci">
+          <Proxy FileSetName="Mayo_keygen_system_ila_0_3"/>
+        </CompFileExtendedInfo>
+      </File>
+      <File Path="$PGENDIR/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -241,7 +259,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="Mayo_keygen_wrapper"/>
+        <Option Name="TopModule" Val="mayo_sample_oil"/>
       </Config>
     </FileSet>
     <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
@@ -259,20 +277,27 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sim_1/new/Mayo_keygen_no_zynq_tb.vhd">
+      <File Path="$PSRCDIR/sim_1/new/gaussian_tb.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sim_1/new/lin_comb_tb.vhd">
+      <File Path="$PSRCDIR/sim_1/new/core_env_tb.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sim_1/new/core_env_tb.vhd">
+      <File Path="$PSRCDIR/sim_1/new/Mayo_keygen_no_zynq_tb.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sim_1/new/lin_comb_tb.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -300,7 +325,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="Mayo_keygen_no_zynq_tb"/>
+        <Option Name="TopModule" Val="gaussian_tb"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
@@ -572,7 +597,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="constrs_1" Description="Uses multiple algorithms for optimization, placement, and routing to get potentially better results." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_1">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="constrs_1" Description="Uses multiple algorithms for optimization, placement, and routing to get potentially better results." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Performance_Explore" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>
@@ -593,7 +618,6 @@
         <Step Id="post_route_phys_opt_design"/>
         <Step Id="write_bitstream"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>

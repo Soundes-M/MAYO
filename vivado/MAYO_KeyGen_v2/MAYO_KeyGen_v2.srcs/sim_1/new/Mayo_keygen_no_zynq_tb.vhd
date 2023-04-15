@@ -57,7 +57,7 @@ architecture Behavioral of Mayo_keygen_no_zynq_tb is
 begin
 
   clk   <= not clk after clk_period / 2 ;
-  reset <= '1', '0' after 100 ns;
+  reset <= '1', '0' after 500 ns;
 
   keygen : Mayo_keygen_no_zynq_wrapper
 
@@ -71,7 +71,7 @@ begin
   begin
     report "Mayo Keyen (RTL) Begin" severity note;
 
-    wait for 100 ns;
+    wait for 1000 ns;
 
     enable <= '1';
 
