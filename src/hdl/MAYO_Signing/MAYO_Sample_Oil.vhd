@@ -37,7 +37,17 @@ entity mayo_sample_oil is
 		o_mem0b_en   : out std_logic;
 		o_mem0b_rst  : out std_logic;
 		o_mem0b_we   : out std_logic_vector (3 downto 0);
-		o_control0b  : out std_logic
+		o_control0b  : out std_logic;
+
+		--SMALL BRAM
+		--BRAM1-A
+		i_mem1a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mem1a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mem1a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mem1a_en   : out std_logic;
+		o_mem1a_rst  : out std_logic;
+		o_mem1a_we   : out std_logic_vector (3 downto 0);
+		o_control1a  : out std_logic
 	);
 
 end entity mayo_sample_oil;
@@ -49,8 +59,8 @@ architecture Behavioral of mayo_sample_oil is
 	------------------------------------------------------------------------------
 	signal bram0a : bram_t := DEFAULT_BRAM;
 	signal bram0b : bram_t := DEFAULT_BRAM;
-	signal bram2b : bram_t := DEFAULT_BRAM;
-	signal bram2a : bram_t := DEFAULT_BRAM;
+	signal bram1a : bram_t := DEFAULT_BRAM;
+
 
 	signal s_lin_adr : std_logic_vector(PORT_WIDTH-1 downto 0);
 	signal s_rhs_adr : std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -59,26 +69,33 @@ architecture Behavioral of mayo_sample_oil is
 			debug0, debug1, debug2, debug3, debug4, debug5, debug6, debug7,
 			piv0, piv1, piv2, piv3,
 			swap0, swap1, swap2, swap3,
+			sol0, sol1, sol2, sol3, sol4, sol5, sol6, sol7, sol8, sol9, sol10, sol11, sol12, sol13, sol14, sol15, sol16,
+			sol17, sol18, sol19, sol20, sol21, sol22, sol23, sol24, sol25, sol26, sol27, sol28, sol29,
 			scale0, scale1, scale2, scale3, scale4, scale5, scale6, scale7, scale8,
-			rowop0, rowop1, rowop2, rowop3, rowop4, rowop5, rowop6, rowop7, rowop8, rowop9, rowop10, rowop11, rowop12, rowop13, rowop14, rowop15, rowop16, rowop17, rowop18, rowop19
-			,done);
+			rowop0, rowop1, rowop2, rowop3, rowop4, rowop5, rowop6, rowop7, rowop8, rowop9, rowop10, rowop11, done);
 	signal state          : state_t := idle;
 	signal tmp            : std_logic_vector(PORT_WIDTH-1 downto 0);
 	signal utmp           : unsigned(PORT_WIDTH-1 downto 0);
 	signal utmp1          : unsigned(PORT_WIDTH-1 downto 0);
 	signal booltmp        : std_logic;
-	signal unpack_ctr     : integer;
-	signal unpack_lin_ctr : integer;
-	signal unpack_ctr1    : integer;
+	signal unpack_lin_ctr : integer := 0;
+	signal unpack_ctr1    : integer := 0;
 	signal cached_rhs     : std_logic_vector(PORT_WIDTH-1 downto 0);
-	signal col            : integer;
-	signal row            : integer;
-	signal rowcols_ctr    : integer;
-	signal find_row       : integer;
-	signal i              : integer;
-	signal j              : integer;
+	signal col            : integer := 0;
+	signal row            : integer := 0;
+	signal rowcols_ctr    : integer := 0;
+	signal find_row       : integer := 0;
+	signal i              : integer := 0;
+	signal j              : integer := 0;
 	signal s_inv          : unsigned(7 downto 0);
 	signal s_isColEven    : std_logic;
+	signal s_solution_col : std_logic_vector(PORT_WIDTH-1 downto 0);
+
+	signal s_lfsr_rnd : std_logic_vector(5 downto 0);
+	signal lfsr_en    : std_logic := '0';
+
+	alias col2 is rowcols_ctr;
+	alias sol_ctr is unpack_lin_ctr;
 
 	file myFile      : text;
 	signal debug_ctr : integer := 0 ;
@@ -138,7 +155,7 @@ architecture Behavioral of mayo_sample_oil is
 	function unpackAdrOffset(adr : integer) return integer is
 		variable res                 : integer;
 	begin
-		if (isUneven(adr) = '1')then
+		if (isUneven(adr) = '1') then
 			res := (adr -1 )*2;
 		else
 			res := adr *2;
@@ -150,15 +167,14 @@ begin
 	process(clk) is
 		variable v_tmp,v_tmp0 : integer;
 		variable v_tmp1       : std_logic;
-		variable v_coef       : unsigned(4 downto 0);
-		variable v_myLine     : line;
+		variable v_coef       : unsigned(4 downto 0); -- debug
+		variable v_myLine     : line;                 -- debug
 
 	begin
 		if (rising_edge(clk)) then
 			if (rst = '1') then
 				s_lin_adr      <= ZERO_32;
 				s_rhs_adr      <= ZERO_32;
-				unpack_ctr     <= 0;
 				unpack_ctr1    <= 0;
 				unpack_lin_ctr <= 0;
 				cached_rhs     <= ZERO_32;
@@ -172,8 +188,8 @@ begin
 				o_control0a    <= '0';
 				o_control0b    <= '0';
 				o_ret          <= '0';
-
-				state <= idle;
+				lfsr_en        <= '0';
+				state          <= idle;
 
 			else
 				case (state) is
@@ -184,7 +200,6 @@ begin
 						if (en = '1') then
 							s_lin_adr      <= std_logic_vector(to_unsigned(LIN_ADR,PORT_WIDTH));
 							s_rhs_adr      <= std_logic_vector(to_unsigned(RHS_ADR,PORT_WIDTH));
-							unpack_ctr     <= 0;
 							unpack_ctr1    <= 0;
 							unpack_lin_ctr <= 0;
 							cached_rhs     <= ZERO_32;
@@ -196,6 +211,7 @@ begin
 							booltmp        <= '1';
 							o_control0a    <= '1';
 							o_control0b    <= '1';
+							lfsr_en        <= '1';
 							state          <= unpack0;
 						else
 							state <= idle;
@@ -377,9 +393,7 @@ begin
 
 					when unpack7 => -- while(1)
 						if (row = M) then
-							o_control0a <= '0';
-							o_control0b <= '0';
-							state       <= done;
+							state <= sol0;
 						else
 							find_row <= row;
 							state    <= unpack8;
@@ -497,7 +511,7 @@ begin
 						bram0b.o.o_en  <= '1';
 						bram0b.o.o_we  <= "1111";
 
-						if (i < K*O) then -- TODO : Maybe wrong
+						if (i < K*O) then
 							i     <= i +2;
 							state <= swap0;
 						else
@@ -533,8 +547,6 @@ begin
 						state   <= scale3;
 
 					when scale3 =>
-						report "mod_inverse " & integer'image(to_integer(s_inv));
-
 						bram0a.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH)+ unpackAdrOffset(row * (K*O+2)+i));
 						bram0a.o.o_en   <= '1';
 						bram0a.o.o_we   <= "0000";
@@ -674,11 +686,6 @@ begin
 						col   <= col +1;
 						state <= unpack7;
 
-					when done =>
-					   o_done <= '1';
-						state  <= idle;
-						--state <= debug4;
-
 					--------------------------------------------------------------------------------
 					when debug4 =>
 						report "Writing AUG_MATR_POST";
@@ -719,6 +726,213 @@ begin
 						i             <= 0;
 						file_close(myFile);
 						--------------------------------------------------------------------------------
+						state <= idle;
+
+					--------------------------------------------------------------------------------
+					-- READ SOLUTION AFTER GAUSSIAN REDUCTiON
+					when sol0 =>
+						col   <= K*O;
+						row   <= M-1;
+						state <= sol1;
+
+					when sol1 =>
+						--while(row >= 0) -- LOOP1
+						if (row >= 0) then
+							col2  <= 0;
+							state <= sol2;
+						else
+							state <= done; -- out of big while
+						end if ;
+
+					when sol2 => -- LOOP2
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH)+ unpackAdrOffset(row*(K*O+2)+col2));
+						bram0a.o.o_en   <= '1';
+						bram0a.o.o_we   <= "0000";
+						state           <= sol3;
+
+					when sol3 =>
+						state <= sol4;
+
+					when sol4 =>
+						bram0a.o.o_en      <= '0';
+						utmp(15 downto 0)  <= unsigned(bram0a.i.i_dout(15 downto 0)) mod PRIME;
+						utmp(31 downto 16) <= unsigned(bram0a.i.i_dout(31 downto 16)) mod PRIME;
+						state              <= sol5;
+
+					when sol5 =>
+						if (utmp(15 downto 0) = 0 and utmp(31 downto 16) = 0) then
+							col2 <= col2 +2;
+							if (col2 < K*O-1)then
+								state <= sol2;
+							else
+								state <= sol6; --break of LOOP2
+							end if ;
+
+						elsif (utmp(15 downto 0) = 0 and utmp(31 downto 16) /= 0) then
+							col2  <= col2 +1;
+							state <= sol6; --break of LOOP2
+
+						else -- utmp(15 downto 0) /= 0, utmp(31 downto 16): DONT CARE
+							state <= sol6;
+						end if;
+
+					when sol6 =>
+						if (col2 = K*O-1) then
+							row   <= row -1;
+							state <= sol1; -- LOOP1
+						elsif (col2 = K*O) then
+							report "Error, solution not found" severity warning;
+							o_ret  <= '1';
+							o_done <= '1';
+							state  <= done;
+						else
+							sol_ctr <= K*O -4;
+							j       <= 3;
+							state   <= sol7;
+						end if;
+
+					when sol7 =>
+						if (col > col2+1) then
+							col                              <= col -1;
+							s_solution_col(j*8+7 downto j*8) <= "00" & s_lfsr_rnd; -- todo not sure if works 
+							if (j = 0) then
+								bram1a.o.o_addr <= std_logic_vector(to_unsigned(SOL_ADR,PORT_WIDTH)+ sol_ctr);
+								bram1a.o.o_din  <= s_solution_col;
+								bram1a.o.o_en   <= '1';
+								bram1a.o.o_we   <= "1111";
+								sol_ctr         <= sol_ctr -4;
+								j               <= 3;
+							else
+								j <= j-1;
+							end if;
+							i     <= 0;
+							utmp  <= resize(unsigned(not s_lfsr_rnd),PORT_WIDTH); -- One's Complement
+							state <= sol8;
+						else
+							state <= sol13;
+						end if;
+
+					when sol8 =>
+						bram1a.o.o_en <= '0';
+						bram1a.o.o_we <= "0000";
+						bram0b.o.o_en <= '0';
+						bram0b.o.o_we <= "0000";
+						if (i < M) then
+							state <= sol9;
+						else
+							state <= sol7;
+						end if;
+
+					when sol9 =>
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH)+ unpackAdrOffset(i*(K*O+2)+col)); -- RS2
+						bram0a.o.o_en   <= '1';
+						bram0a.o.o_we   <= "0000";
+
+						bram0b.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH)+ unpackAdrOffset(i*(K*O+2)+K*O)); --RS1
+						bram0b.o.o_en   <= '1';
+						bram0b.o.o_we   <= "0000";
+						state           <= sol10;
+
+					when sol10 =>
+						state <= sol11;
+
+					when sol11 =>
+						bram0a.o.o_en <= '0';
+						bram0b.o.o_en <= '0';
+
+						if (s_isColEven = '1') then
+							utmp1 <= unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(15 downto 0)); -- TODO: maybe too much
+						else
+							utmp1 <= unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(31 downto 16)); -- TODO: maybe too much
+						end if ;
+						state <= sol12;
+
+					when sol12 =>
+						bram0b.o.o_en               <= '1';
+						bram0b.o.o_we               <= "0011";
+						bram0a.o.o_din(15 downto 0) <= std_logic_vector(resize(utmp1,15) mod PRIME);
+						i                           <= i+1;
+						state                       <= sol8;
+
+					---------------------------------------------------------------------------------
+					when sol13 =>
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH)+ unpackAdrOffset(row*(K*O+2)+K*O)); -- RS2
+						bram0a.o.o_en   <= '1';
+						bram0a.o.o_we   <= "0000";
+						state           <= sol14;
+
+					when sol14 =>
+						state <= sol15;
+
+					when sol15 =>
+						col <= col -1;
+						-- Suppose that the unpacked version can fit into packed (16--> 8)
+						s_solution_col(j*8+7 downto j*8) <= bram0a.i.i_dout(7 downto 0); -- todo not sure if works 
+						if (j = 0) then
+							bram1a.o.o_addr <= std_logic_vector(to_unsigned(SOL_ADR,PORT_WIDTH)+ sol_ctr);
+							bram1a.o.o_din  <= s_solution_col;
+							bram1a.o.o_en   <= '1';
+							bram1a.o.o_we   <= "1111";
+							sol_ctr         <= sol_ctr -4;
+							j               <= 3;
+						else
+							j <= j-1;
+						end if;
+						i     <= 0 ;
+						state <= sol16;
+
+					when sol16 =>
+						bram1a.o.o_en <= '0';
+						bram1a.o.o_we <= "0000";
+						bram0b.o.o_en <= '0';
+						bram0b.o.o_we <= "0000";
+						if (i < M) then
+							state <= sol17;
+						else
+							state <= sol7;
+						end if;
+
+					when sol17 =>
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH)+ unpackAdrOffset(i*(K*O+2)+col)); -- RS2
+						bram0a.o.o_en   <= '1';
+						bram0a.o.o_we   <= "0000";
+
+						bram0b.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH)+ unpackAdrOffset(i*(K*O+2)+K*O)); --RS1
+						bram0b.o.o_en   <= '1';
+						bram0b.o.o_we   <= "0000";
+						state           <= sol18;
+
+					when sol18 =>
+						state <= sol19;
+
+					when sol19 =>
+						bram0a.o.o_en <= '0';
+						bram0b.o.o_en <= '0';
+
+						if (s_isColEven = '1') then
+							utmp1 <= unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(15 downto 0)); -- TODO: maybe too much
+						else
+							utmp1 <= unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(31 downto 16)); -- TODO: maybe too much
+						end if ;
+						state <= sol20;
+
+					when sol20 =>
+						bram0b.o.o_en               <= '1';
+						bram0b.o.o_we               <= "0011";
+						bram0a.o.o_din(15 downto 0) <= std_logic_vector(resize(utmp1,15) mod PRIME);
+						i                           <= i+1;
+						state                       <= sol16;
+
+					when sol21 =>
+						row   <= row -1;
+						state <= sol1;
+
+					when sol22 =>
+						o_done <= '1';
+						o_ret  <= '0';
+						state  <= done;
+
+					when done =>
 						o_done <= '1';
 						state  <= idle;
 
@@ -726,6 +940,20 @@ begin
 						null;
 
 				end case ;
+			end if;
+		end if;
+	end process;
+
+	rng : process(clk,rst)
+	begin
+		if (rst = '1') then
+			s_lfsr_rnd <= (others => '0'); -- reset LFSR to all zeros
+		elsif rising_edge(clk) then
+			-- LFSR Feedback
+			if (lfsr_en = '1')then
+				s_lfsr_rnd <= s_lfsr_rnd(4 downto 0) & (s_lfsr_rnd(5) xor s_lfsr_rnd(3) xor s_lfsr_rnd(2) xor s_lfsr_rnd(0));
+			else
+				s_lfsr_rnd <= (others => '0');
 			end if;
 		end if;
 	end process;
@@ -745,4 +973,11 @@ begin
 	o_mem0b_en      <= bram0b.o.o_en;
 	o_mem0b_rst     <= bram0b.o.o_rst;
 	o_mem0b_we      <= bram0b.o.o_we;
+
+	bram1a.i.i_dout <= i_mem1a_dout;
+	o_mem1a_din     <= bram1a.o.o_din;
+	o_mem1a_addr    <= bram1a.o.o_addr;
+	o_mem1a_en      <= bram1a.o.o_en;
+	o_mem1a_rst     <= bram1a.o.o_rst;
+	o_mem1a_we      <= bram1a.o.o_we;
 end architecture Behavioral;
