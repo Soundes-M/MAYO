@@ -274,3 +274,9 @@ timestamp=[2023-01-25 13:24:29], mode=BUILD, duration=0:00:00.269, duration_ms=2
 timestamp=[2023-01-25 13:28:13], mode=BUILD, duration=0:00:00.269, duration_ms=269, data={name=Mayo_keygen_sign, configuration=Debug, clean_build=false}
 timestamp=[2023-01-25 13:31:18], mode=BUILD, duration=0:00:00.271, duration_ms=271, data={name=Mayo_keygen_sign, configuration=Debug, clean_build=false}
 timestamp=[2023-01-25 13:32:40], mode=BUILD, duration=0:00:00.218, duration_ms=218, data={name=Mayo_keygen_sign, configuration=Debug, clean_build=false}
+timestamp=[2023-02-06 21:10:57], mode=WORKBENCH_START, duration=0:00:07.562, duration_ms=7562, data={}
+timestamp=[2023-02-06 21:10:57], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.077, duration_ms=77, data={}
+timestamp=[2023-02-06 21:10:58], mode=WORKBENCH_UI_INIT, duration=0:00:01.031, duration_ms=1031, data={editors_count=11, platform_editors_count=5, projects_count=4, platform_projects_count=1, active_platform_editor=true, projects=Mayo_keygen_sign,Mayo_keygen_sign_system,Mayo_keygen_wrapper,RemoteSystemsTempFiles}
+timestamp=[2023-04-07 16:17:25], mode=WORKBENCH_START, duration=0:00:06.671, duration_ms=6671, data={}
+timestamp=[2023-04-07 16:17:25], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.044, duration_ms=44, data={}
+timestamp=[2023-04-07 16:17:26], mode=WORKBENCH_UI_INIT, duration=0:00:01.089, duration_ms=1089, data={editors_count=12, platform_editors_count=6, projects_count=4, platform_projects_count=1, active_platform_editor=true, projects=Mayo_keygen_sign,Mayo_keygen_sign_system,Mayo_keygen_wrapper,RemoteSystemsTempFiles}

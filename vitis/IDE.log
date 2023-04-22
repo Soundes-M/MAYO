@@ -4112,3 +4112,19 @@ con
 
 13:33:17 INFO  : Launch script is exported to file '/home/osm/Documents/SECT-MAYO/MAYO/vitis/Mayo_keygen_sign_system/_ide/scripts/debugger_mayo_keygen_sign-default.tcl'
 13:33:41 INFO  : Disconnected from the channel tcfchan#15.
+21:10:53 INFO  : Launching XSCT server: xsct -n  -interactive /home/osm/Documents/SECT-MAYO/MAYO/vitis/temp_xsdb_launch_script.tcl
+21:10:56 INFO  : XSCT server has started successfully.
+21:10:56 INFO  : Successfully done setting XSCT server connection channel  
+21:10:56 INFO  : plnx-install-location is set to ''
+21:10:56 INFO  : Successfully done setting workspace for the tool. 
+21:10:57 INFO  : Platform repository initialization has completed.
+21:10:57 INFO  : Registering command handlers for Vitis TCF services
+21:10:57 INFO  : Successfully done query RDI_DATADIR 
+16:17:22 INFO  : Launching XSCT server: xsct -n  -interactive /home/osm/Documents/SECT-MAYO/MAYO/vitis/temp_xsdb_launch_script.tcl
+16:17:24 INFO  : XSCT server has started successfully.
+16:17:24 INFO  : plnx-install-location is set to ''
+16:17:24 INFO  : Successfully done setting XSCT server connection channel  
+16:17:24 INFO  : Successfully done setting workspace for the tool. 
+16:17:25 INFO  : Platform repository initialization has completed.
+16:17:26 INFO  : Registering command handlers for Vitis TCF services
+16:17:26 INFO  : Successfully done query RDI_DATADIR 

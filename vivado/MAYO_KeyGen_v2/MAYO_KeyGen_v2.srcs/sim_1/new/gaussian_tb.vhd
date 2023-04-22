@@ -73,7 +73,16 @@ architecture Behavioral of gaussian_tb is
 			o_mem0b_en   : out std_logic;
 			o_mem0b_rst  : out std_logic;
 			o_mem0b_we   : out std_logic_vector (3 downto 0);
-			o_control0b  : out std_logic
+			o_control0b  : out std_logic;
+			--SMALL BRAM
+			--BRAM1-A
+			i_mem1a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+			o_mem1a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+			o_mem1a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+			o_mem1a_en   : out std_logic;
+			o_mem1a_rst  : out std_logic;
+			o_mem1a_we   : out std_logic_vector (3 downto 0);
+			o_control1a  : out std_logic
 		);
 	end component mayo_sample_oil;
 
@@ -118,12 +127,12 @@ architecture Behavioral of gaussian_tb is
 	signal addra1, dina1, douta1, addrb1, dinb1, doutb1                   : std_logic_vector(31 downto 0);
 	signal wea1, web1                                                     : std_logic_vector(3 downto 0);
 
-	signal ret, enable, control0a, control0b, controlc, done : std_logic                     := '0' ;
-	signal len, vec_addr, coeffs_addr, out_addr              : std_logic_vector(31 downto 0) := ZERO_32;
-	signal i, bytes                                          : integer                       := 0;
-	signal addraa, dinaa, doutaa                             : std_logic_vector(31 downto 0);
-	signal control                                           : std_logic := '0';
-	signal bram_sel                                          : std_logic_vector(1 downto 0);
+	signal ret, enable, control0a, control0b, control1a, controlc, done : std_logic                     := '0' ;
+	signal len, vec_addr, coeffs_addr, out_addr                         : std_logic_vector(31 downto 0) := ZERO_32;
+	signal i, bytes                                                     : integer                       := 0;
+	signal addraa, dinaa, doutaa                                        : std_logic_vector(31 downto 0);
+	signal control                                                      : std_logic := '0';
+	signal bram_sel                                                     : std_logic_vector(1 downto 0);
 
 
 begin
@@ -161,9 +170,29 @@ begin
 			rsta_busy => rsta_busy0,
 			rstb_busy => rstb_busy0
 		);
-	-- Warning this testbench is only used in gaussian reduction test
+
+	bram1 : Test_BRAM0
+		PORT MAP (
+			clka      => clka1,
+			rsta      => rsta1,
+			ena       => ena1,
+			wea       => wea1,
+			addra     => addra1,
+			dina      => dina1,
+			douta     => douta1,
+			clkb      => clkb1,
+			rstb      => rstb1,
+			enb       => enb1,
+			web       => web1,
+			addrb     => addrb1,
+			dinb      => dinb1,
+			doutb     => doutb1,
+			rsta_busy => rsta_busy1,
+			rstb_busy => rstb_busy1
+		);
+
 	uut : mayo_sample_oil
-		generic map(LIN_ADR => 0, RHS_ADR => M*K*O+4)
+		generic map(LIN_ADR => 0, RHS_ADR => M*K*O+4, SOL_ADR => 0)
 		port map (
 			clk    => clk,
 			rst    => reset,
@@ -185,7 +214,15 @@ begin
 			o_mem0b_en   => enb0,
 			o_mem0b_rst  => rstb0,
 			o_mem0b_we   => web0,
-			o_control0b  => control0b
+			o_control0b  => control0b,
+
+			i_mem1a_dout => douta1,
+			o_mem1a_din  => dina1,
+			o_mem1a_addr => addra1,
+			o_mem1a_en   => ena1,
+			o_mem1a_rst  => rsta1,
+			o_mem1a_we   => wea1,
+			o_control1a  => control1a
 		);
 
 	tb               : process
@@ -237,7 +274,7 @@ begin
 		user_dina0 <= ZERO_32;
 		wait for clk_period;
 		bram_mine0 <= '1';
-		i <= M*K*O+4;
+		i          <= M*K*O+4;
 		wait for clk_period;
 
 		-- Fill rhs 
@@ -272,26 +309,31 @@ begin
 		enable <= '0';
 
 		wait until done = '1';
-		
+
 		bram_mine0 <= '1'; -- Take control over BRAM Port 
 		wait for clk_period;
 
 		user_wea0  <= "0000";
 		user_dina0 <= ZERO_32;
 		rstb1      <= '0';
-		for i in 0 to K*O*M / 4 loop --15 -1 == M / 4 -1  + addr offset [Last Read to check overflow, should expect 0] 
+		for i in 0 to 8 / 4 loop --15 -1 == M / 4 -1  + addr offset [Last Read to check overflow, should expect 0] 
 			user_addra0 <= std_logic_vector(to_unsigned(i*4 + UNPACKED_AUGMENT_BASE_ADR,32));
 			user_ena0   <= '1';
+			wait for clk_period * 2 ;
+		end loop;
+		user_ena0   <= '0';
+		user_addra0 <= (others => '0');
+		bram_mine0  <= '0'; -- Release control over BRAM Port 
+		wait for clk_period * 2 ;
+
+		for i in 0 to M / 4 loop --15 -1 == M / 4 -1  + addr offset [Last Read to check overflow, should expect 0] 
+			addrb1 <= std_logic_vector(to_unsigned(i*4 + 0,32));
+			enb1   <= '1';
 			wait for clk_period * 2 ;
 		end loop;
 
 		FILE_CLOSE(filein1);
 		FILE_CLOSE(filein2);
 		report "Done" severity failure;
-
-
 	end process;
-
-
-
 end Behavioral;

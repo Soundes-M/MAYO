@@ -13,18 +13,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="11810000001fs"></ZoomEndTime>
-      <Cursor1Time time="1743381700fs"></Cursor1Time>
+      <ZoomStartTime time="2039307500fs"></ZoomStartTime>
+      <ZoomEndTime time="2040528501fs"></ZoomEndTime>
+      <Cursor1Time time="2039719500fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="225"></NameColumnWidth>
-      <ValueColumnWidth column_width="83"></ValueColumnWidth>
+      <NameColumnWidth column_width="193"></NameColumnWidth>
+      <ValueColumnWidth column_width="75"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="29" />
-   <wave_markers>
-      <marker label="" time="9305000" />
-   </wave_markers>
+   <WVObjectSize size="32" />
    <wvobject fp_name="divider27" type="divider">
       <obj_property name="label">BRAM0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -98,13 +95,39 @@
       <obj_property name="label">1A</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/gaussian_tb/bram1/douta">
+         <obj_property name="ElementShortName">douta[31:0]</obj_property>
+         <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/gaussian_tb/bram1/dina">
+         <obj_property name="ElementShortName">dina[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/gaussian_tb/bram1/addra">
+         <obj_property name="ElementShortName">addra[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addra[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/gaussian_tb/bram1/wea">
+         <obj_property name="ElementShortName">wea[3:0]</obj_property>
+         <obj_property name="ObjectShortName">wea[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/gaussian_tb/bram1/ena">
+         <obj_property name="ElementShortName">ena</obj_property>
+         <obj_property name="ObjectShortName">ena</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/bram1/addrb">
+      <obj_property name="ElementShortName">addrb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/bram1/doutb">
+      <obj_property name="ElementShortName">doutb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="divider114" type="divider">
       <obj_property name="label">UUT</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject fp_name="divider39" type="divider">
-      <obj_property name="label">Keygen</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
    <wvobject type="other" fp_name="/gaussian_tb/uut/state">
@@ -131,10 +154,6 @@
       <obj_property name="ElementShortName">j</obj_property>
       <obj_property name="ObjectShortName">j</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/gaussian_tb/uut/unpack_ctr">
-      <obj_property name="ElementShortName">unpack_ctr</obj_property>
-      <obj_property name="ObjectShortName">unpack_ctr</obj_property>
-   </wvobject>
    <wvobject type="other" fp_name="/gaussian_tb/uut/unpack_ctr1">
       <obj_property name="ElementShortName">unpack_ctr1</obj_property>
       <obj_property name="ObjectShortName">unpack_ctr1</obj_property>
@@ -154,5 +173,18 @@
    <wvobject type="array" fp_name="/gaussian_tb/uut/utmp1">
       <obj_property name="ElementShortName">utmp1[31:0]</obj_property>
       <obj_property name="ObjectShortName">utmp1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/gaussian_tb/uut/rowcols_ctr">
+      <obj_property name="ElementShortName">rowcols_ctr</obj_property>
+      <obj_property name="ObjectShortName">rowcols_ctr</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/s_inv">
+      <obj_property name="ElementShortName">s_inv[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s_inv[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/s_lfsr_rnd">
+      <obj_property name="ElementShortName">s_lfsr_rnd[5:0]</obj_property>
+      <obj_property name="ObjectShortName">s_lfsr_rnd[5:0]</obj_property>
    </wvobject>
 </wave_config>

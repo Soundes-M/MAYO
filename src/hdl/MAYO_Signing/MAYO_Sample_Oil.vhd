@@ -1,3 +1,26 @@
+--------------------------------------------------------------------------------
+-- Title       : Sample Oil
+-- Project     : MAYO
+--------------------------------------------------------------------------------
+-- File        : MAYO_Sample_Oil.vhd
+-- Author      : Oussama Sayari
+-- Company     : TU Berlin
+-- Created     : Sat Apr 22 15:07:52 2023
+-- Last update : Sat Apr 22 15:16:31 2023
+-- Platform    : Designed for Zynq 7000 Series
+-- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
+--------------------------------------------------------------------------------
+-- Copyright (c) 2023 TU Berlin
+-------------------------------------------------------------------------------
+-- Description: 
+-- Sample the oil and get a solution if possible
+-- LFSR included (Not using TRNG)
+--------------------------------------------------------------------------------
+-- Revisions:  Revisions and documentation are controlled by
+-- the revision control system (RCS).  The RCS should be consulted
+-- on revision history.
+-------------------------------------------------------------------------------
+
 LIBRARY IEEE;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -91,8 +114,9 @@ architecture Behavioral of mayo_sample_oil is
 	signal s_isColEven    : std_logic;
 	signal s_solution_col : std_logic_vector(PORT_WIDTH-1 downto 0);
 
-	signal s_lfsr_rnd : std_logic_vector(5 downto 0);
-	signal lfsr_en    : std_logic := '0';
+	signal s_lfsr_rnd  : std_logic_vector(5 downto 0);
+	signal lfsr_en     : std_logic                                      := '0';
+	constant LSFR_SEED : std_logic_vector(s_lfsr_rnd'LENGTH-1 downto 0) := "101011";
 
 	alias col2 is rowcols_ctr;
 	alias sol_ctr is unpack_lin_ctr;
@@ -194,9 +218,9 @@ begin
 			else
 				case (state) is
 					when idle =>
-						o_done <= '0';
-						o_ret  <= '0';
-
+						o_done  <= '0';
+						o_ret   <= '0';
+						lfsr_en <= '0';
 						if (en = '1') then
 							s_lin_adr      <= std_logic_vector(to_unsigned(LIN_ADR,PORT_WIDTH));
 							s_rhs_adr      <= std_logic_vector(to_unsigned(RHS_ADR,PORT_WIDTH));
@@ -212,7 +236,12 @@ begin
 							o_control0a    <= '1';
 							o_control0b    <= '1';
 							lfsr_en        <= '1';
-							state          <= unpack0;
+							report "Sample_oil core :" &
+							LF & "LINEAR ADR : " & integer'image(LIN_ADR) &
+							LF & "RHS ADR: " & integer'image(RHS_ADR) &
+							LF & "AUGmatrix ADR: " & integer'image(UNPACKED_AUGMENT_BASE_ADR) &
+							LF & "SOL ADR :" & integer'image(SOL_ADR) severity note;
+							state <= unpack0;
 						else
 							state <= idle;
 						end if;
@@ -348,7 +377,7 @@ begin
 						col           <= 0;
 						find_row      <= 0;
 						rowcols_ctr   <= 0;
-						state         <= unpack7;
+						state         <= debug0;
 
 					--------------------------------------------------------------------------------
 					when debug0 =>
@@ -393,7 +422,7 @@ begin
 
 					when unpack7 => -- while(1)
 						if (row = M) then
-							state <= sol0;
+							state <= debug4;
 						else
 							find_row <= row;
 							state    <= unpack8;
@@ -479,10 +508,8 @@ begin
 						bram0a.o.o_we <= "0000";
 						bram0a.o.o_en <= '0';
 						i             <= 0;
-						report "Pivot at (" & integer'image(find_row) & "," & integer'image(col) & ")" severity note;
 
 						if (find_row /= row) then -- swap row!
-							report "Swapping " & integer'image(find_row) & " and " & integer'image(row) severity note;
 							state <= swap0;
 						else
 							state <= scale0;
@@ -541,7 +568,7 @@ begin
 						if (s_isColEven = '1') then -- Pick lower words
 							s_inv <= modinv(unsigned(bram0a.i.i_dout(15 downto 0)));
 						else -- Pick upper words
-							s_inv <= modinv(unsigned(bram0a.i.i_dout(15 downto 0)));
+							s_inv <= modinv(unsigned(bram0a.i.i_dout(31 downto 16)));
 						end if ;
 						booltmp <= '1'; -- 2OP or 1OP
 						state   <= scale3;
@@ -584,11 +611,11 @@ begin
 							bram0b.o.o_din(31 downto 16) <= std_logic_vector(utmp1(31 downto 16) mod PRIME);
 						end if;
 
-						if (i < K*O-2) then -- move in 2 ops
+						if (i < K*O-4) then -- move in 2 ops
 							i     <= i +4;
 							state <= scale3;
-						elsif (i = K*O-2) then -- last one (requires one op)
-							i       <= i+2;
+						elsif (i = K*O-4) then -- last one (requires one op)
+							i       <= i+4;
 							booltmp <= '0';
 							state   <= scale3;
 						else -- END SCALE
@@ -725,15 +752,18 @@ begin
 						col           <= 0;
 						i             <= 0;
 						file_close(myFile);
-						--------------------------------------------------------------------------------
-						state <= idle;
+						state <= sol0;
+						--state <= done;
 
 					--------------------------------------------------------------------------------
 					-- READ SOLUTION AFTER GAUSSIAN REDUCTiON
 					when sol0 =>
-						col   <= K*O;
-						row   <= M-1;
-						state <= sol1;
+						col     <= K*O;
+						sol_ctr <= K*O -4;
+						col2    <= 0;
+						j       <= 3;
+						row     <= M-1;
+						state   <= sol1;
 
 					when sol1 =>
 						--while(row >= 0) -- LOOP1
@@ -762,7 +792,7 @@ begin
 					when sol5 =>
 						if (utmp(15 downto 0) = 0 and utmp(31 downto 16) = 0) then
 							col2 <= col2 +2;
-							if (col2 < K*O-1)then
+							if (col2 < K*O) then
 								state <= sol2;
 							else
 								state <= sol6; --break of LOOP2
@@ -777,7 +807,7 @@ begin
 						end if;
 
 					when sol6 =>
-						if (col2 = K*O-1) then
+						if (col2 = K*O+1) then
 							row   <= row -1;
 							state <= sol1; -- LOOP1
 						elsif (col2 = K*O) then
@@ -786,18 +816,19 @@ begin
 							o_done <= '1';
 							state  <= done;
 						else
-							sol_ctr <= K*O -4;
-							j       <= 3;
-							state   <= sol7;
+							state <= sol7;
 						end if;
 
 					when sol7 =>
 						if (col > col2+1) then
 							col                              <= col -1;
 							s_solution_col(j*8+7 downto j*8) <= "00" & s_lfsr_rnd; -- todo not sure if works 
+							report "-> Choosing solution at random" &
+							LF & "solution[" & integer'image(col-1) & "]= " & integer'image(to_integer(unsigned(s_lfsr_rnd)));
+
 							if (j = 0) then
 								bram1a.o.o_addr <= std_logic_vector(to_unsigned(SOL_ADR,PORT_WIDTH)+ sol_ctr);
-								bram1a.o.o_din  <= s_solution_col;
+								bram1a.o.o_din  <= s_solution_col(31 downto 8) & "00" & s_lfsr_rnd;
 								bram1a.o.o_en   <= '1';
 								bram1a.o.o_we   <= "1111";
 								sol_ctr         <= sol_ctr -4;
@@ -805,9 +836,11 @@ begin
 							else
 								j <= j-1;
 							end if;
+
 							i     <= 0;
-							utmp  <= resize(unsigned(not s_lfsr_rnd),PORT_WIDTH); -- One's Complement
+							utmp  <= resize(to_unsigned(PRIME,6) - unsigned(s_lfsr_rnd),PORT_WIDTH); -- One's Complement
 							state <= sol8;
+
 						else
 							state <= sol13;
 						end if;
@@ -841,16 +874,16 @@ begin
 						bram0b.o.o_en <= '0';
 
 						if (s_isColEven = '1') then
-							utmp1 <= unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(15 downto 0)); -- TODO: maybe too much
+							utmp1 <= resize(unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(15 downto 0)),PORT_WIDTH); -- TODO: maybe too much
 						else
-							utmp1 <= unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(31 downto 16)); -- TODO: maybe too much
+							utmp1 <= resize(unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(31 downto 16)),PORT_WIDTH); -- TODO: maybe too much
 						end if ;
 						state <= sol12;
 
 					when sol12 =>
 						bram0b.o.o_en               <= '1';
 						bram0b.o.o_we               <= "0011";
-						bram0a.o.o_din(15 downto 0) <= std_logic_vector(resize(utmp1,15) mod PRIME);
+						bram0b.o.o_din(15 downto 0) <= std_logic_vector(resize(utmp1 mod PRIME,16));
 						i                           <= i+1;
 						state                       <= sol8;
 
@@ -865,20 +898,27 @@ begin
 						state <= sol15;
 
 					when sol15 =>
-						col <= col -1;
+						bram0a.o.o_en <= '0';
+						col           <= col -1;
 						-- Suppose that the unpacked version can fit into packed (16--> 8)
 						s_solution_col(j*8+7 downto j*8) <= bram0a.i.i_dout(7 downto 0); -- todo not sure if works 
+
+						report "solution[" & integer'image(col-1) & "]= " & integer'image(to_integer(unsigned(bram0a.i.i_dout(7 downto 0))));
+
 						if (j = 0) then
 							bram1a.o.o_addr <= std_logic_vector(to_unsigned(SOL_ADR,PORT_WIDTH)+ sol_ctr);
-							bram1a.o.o_din  <= s_solution_col;
+							bram1a.o.o_din  <= s_solution_col(31 downto 8) & bram0a.i.i_dout(7 downto 0);
 							bram1a.o.o_en   <= '1';
 							bram1a.o.o_we   <= "1111";
-							sol_ctr         <= sol_ctr -4;
+							sol_ctr         <= sol_ctr-4;
 							j               <= 3;
 						else
 							j <= j-1;
 						end if;
-						i     <= 0 ;
+
+						i    <= 0 ;
+						utmp <= resize(to_unsigned(PRIME,8) - unsigned(bram0a.i.i_dout(7 downto 0)),PORT_WIDTH); -- One's Complement
+
 						state <= sol16;
 
 					when sol16 =>
@@ -889,7 +929,7 @@ begin
 						if (i < M) then
 							state <= sol17;
 						else
-							state <= sol7;
+							state <= sol21;
 						end if;
 
 					when sol17 =>
@@ -910,16 +950,16 @@ begin
 						bram0b.o.o_en <= '0';
 
 						if (s_isColEven = '1') then
-							utmp1 <= unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(15 downto 0)); -- TODO: maybe too much
+							utmp1 <= resize(unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(15 downto 0)),PORT_WIDTH); -- TODO: maybe too much
 						else
-							utmp1 <= unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(31 downto 16)); -- TODO: maybe too much
+							utmp1 <= resize(unsigned(bram0b.i.i_dout(15 downto 0)) + utmp(5 downto 0) * unsigned(bram0a.i.i_dout(31 downto 16)),PORT_WIDTH); -- TODO: maybe too much
 						end if ;
 						state <= sol20;
 
 					when sol20 =>
 						bram0b.o.o_en               <= '1';
 						bram0b.o.o_we               <= "0011";
-						bram0a.o.o_din(15 downto 0) <= std_logic_vector(resize(utmp1,15) mod PRIME);
+						bram0b.o.o_din(15 downto 0) <= std_logic_vector(resize(utmp1 mod PRIME,16));
 						i                           <= i+1;
 						state                       <= sol16;
 
@@ -947,13 +987,13 @@ begin
 	rng : process(clk,rst)
 	begin
 		if (rst = '1') then
-			s_lfsr_rnd <= (others => '0'); -- reset LFSR to all zeros
+			s_lfsr_rnd <= LSFR_SEED; -- reset LFSR to a seed
 		elsif rising_edge(clk) then
 			-- LFSR Feedback
 			if (lfsr_en = '1')then
 				s_lfsr_rnd <= s_lfsr_rnd(4 downto 0) & (s_lfsr_rnd(5) xor s_lfsr_rnd(3) xor s_lfsr_rnd(2) xor s_lfsr_rnd(0));
 			else
-				s_lfsr_rnd <= (others => '0');
+				s_lfsr_rnd <= s_lfsr_rnd;
 			end if;
 		end if;
 	end process;

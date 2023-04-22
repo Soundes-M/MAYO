@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Sat Apr 15 13:47:21 2023
+| Date         : Fri Apr 21 13:58:46 2023
 | Host         : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
 | Command      : report_utilization -file mayo_sample_oil_utilization_synth.rpt -pb mayo_sample_oil_utilization_synth.pb
 | Design       : mayo_sample_oil
@@ -30,13 +30,13 @@ Table of Contents
 +-------------------------+------+-------+-----------+-------+
 |        Site Type        | Used | Fixed | Available | Util% |
 +-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             | 2308 |     0 |     53200 |  4.34 |
-|   LUT as Logic          | 2308 |     0 |     53200 |  4.34 |
+| Slice LUTs*             | 2931 |     0 |     53200 |  5.51 |
+|   LUT as Logic          | 2931 |     0 |     53200 |  5.51 |
 |   LUT as Memory         |    0 |     0 |     17400 |  0.00 |
-| Slice Registers         |  443 |     0 |    106400 |  0.42 |
-|   Register as Flip Flop |  443 |     0 |    106400 |  0.42 |
+| Slice Registers         |  591 |     0 |    106400 |  0.56 |
+|   Register as Flip Flop |  591 |     0 |    106400 |  0.56 |
 |   Register as Latch     |    0 |     0 |    106400 |  0.00 |
-| F7 Muxes                |    0 |     0 |     26600 |  0.00 |
+| F7 Muxes                |   33 |     0 |     26600 |  0.12 |
 | F8 Muxes                |    0 |     0 |     13300 |  0.00 |
 +-------------------------+------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -57,7 +57,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 443   |          Yes |       Reset |            - |
+| 591   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -80,8 +80,8 @@ Table of Contents
 +----------------+------+-------+-----------+-------+
 |    Site Type   | Used | Fixed | Available | Util% |
 +----------------+------+-------+-----------+-------+
-| DSPs           |    1 |     0 |       220 |  0.45 |
-|   DSP48E1 only |    1 |       |           |       |
+| DSPs           |    3 |     0 |       220 |  1.36 |
+|   DSP48E1 only |    3 |       |           |       |
 +----------------+------+-------+-----------+-------+
 
 
@@ -91,7 +91,7 @@ Table of Contents
 +-----------------------------+------+-------+-----------+--------+
 |          Site Type          | Used | Fixed | Available |  Util% |
 +-----------------------------+------+-------+-----------+--------+
-| Bonded IOB                  |  211 |     0 |       200 | 105.50 |
+| Bonded IOB                  |  282 |     0 |       200 | 141.00 |
 | Bonded IPADs                |    0 |     0 |         2 |   0.00 |
 | Bonded IOPADs               |    0 |     0 |       130 |   0.00 |
 | PHY_CONTROL                 |    0 |     0 |         4 |   0.00 |
@@ -147,17 +147,19 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT2     | 1228 |                 LUT |
-| CARRY4   |  657 |          CarryLogic |
-| LUT6     |  555 |                 LUT |
-| FDRE     |  443 |        Flop & Latch |
-| LUT4     |  240 |                 LUT |
-| LUT5     |  213 |                 LUT |
-| LUT1     |  188 |                 LUT |
-| OBUF     |  144 |                  IO |
-| LUT3     |   94 |                 LUT |
+| LUT2     | 1348 |                 LUT |
+| CARRY4   |  756 |          CarryLogic |
+| LUT6     |  727 |                 LUT |
+| FDRE     |  591 |        Flop & Latch |
+| LUT5     |  350 |                 LUT |
+| LUT4     |  317 |                 LUT |
+| LUT1     |  272 |                 LUT |
+| LUT3     |  226 |                 LUT |
+| OBUF     |  214 |                  IO |
 | IBUF     |   67 |                  IO |
-| DSP48E1  |    1 |    Block Arithmetic |
+| MUXF7    |   33 |               MuxFx |
+| DSP48E1  |    3 |    Block Arithmetic |
+| OBUFT    |    1 |                  IO |
 | BUFG     |    1 |               Clock |
 +----------+------+---------------------+
 
