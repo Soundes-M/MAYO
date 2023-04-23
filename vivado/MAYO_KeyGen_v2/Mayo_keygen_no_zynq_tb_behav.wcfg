@@ -3,9 +3,9 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="gaussian_tb_behav.wdb" id="1">
+      <db_ref path="add_oil_tb_behav.wdb" id="1">
          <top_modules>
-            <top_module name="gaussian_tb" />
+            <top_module name="add_oil_tb" />
             <top_module name="glbl" />
             <top_module name="mayo_common" />
             <top_module name="utils_common" />
@@ -13,15 +13,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2039307500fs"></ZoomStartTime>
-      <ZoomEndTime time="2040528501fs"></ZoomEndTime>
-      <Cursor1Time time="2039719500fs"></Cursor1Time>
+      <ZoomStartTime time="748617fs"></ZoomStartTime>
+      <ZoomEndTime time="872718fs"></ZoomEndTime>
+      <Cursor1Time time="769300fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="193"></NameColumnWidth>
+      <NameColumnWidth column_width="173"></NameColumnWidth>
       <ValueColumnWidth column_width="75"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="32" />
+   <WVObjectSize size="22" />
    <wvobject fp_name="divider27" type="divider">
       <obj_property name="label">BRAM0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -34,157 +34,134 @@
          <obj_property name="label">A</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/add_oil_tb/bram0/ena">
+            <obj_property name="ElementShortName">ena</obj_property>
+            <obj_property name="ObjectShortName">ena</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/add_oil_tb/bram0/wea">
+            <obj_property name="ElementShortName">wea[3:0]</obj_property>
+            <obj_property name="ObjectShortName">wea[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/add_oil_tb/bram0/addra">
+            <obj_property name="ElementShortName">addra[31:0]</obj_property>
+            <obj_property name="ObjectShortName">addra[31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/add_oil_tb/bram0/dina">
+            <obj_property name="ElementShortName">dina[31:0]</obj_property>
+            <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/add_oil_tb/bram0/douta">
+            <obj_property name="ElementShortName">douta[31:0]</obj_property>
+            <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+         </wvobject>
       </wvobject>
       <wvobject type="group" fp_name="group55">
          <obj_property name="label">B</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/add_oil_tb/bram0/enb">
+            <obj_property name="ElementShortName">enb</obj_property>
+            <obj_property name="ObjectShortName">enb</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/add_oil_tb/bram0/web">
+            <obj_property name="ElementShortName">web[3:0]</obj_property>
+            <obj_property name="ObjectShortName">web[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/add_oil_tb/bram0/addrb">
+            <obj_property name="ElementShortName">addrb[31:0]</obj_property>
+            <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/add_oil_tb/bram0/dinb">
+            <obj_property name="ElementShortName">dinb[31:0]</obj_property>
+            <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/add_oil_tb/bram0/doutb">
+            <obj_property name="ElementShortName">doutb[31:0]</obj_property>
+            <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
+         </wvobject>
       </wvobject>
    </wvobject>
    <wvobject fp_name="divider33" type="divider">
       <obj_property name="label">BRAM1</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/gaussian_tb/bram0/clka">
-      <obj_property name="ElementShortName">clka</obj_property>
-      <obj_property name="ObjectShortName">clka</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/gaussian_tb/bram0/ena">
-      <obj_property name="ElementShortName">ena</obj_property>
-      <obj_property name="ObjectShortName">ena</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/bram0/wea">
-      <obj_property name="ElementShortName">wea[3:0]</obj_property>
-      <obj_property name="ObjectShortName">wea[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/bram0/addra">
-      <obj_property name="ElementShortName">addra[31:0]</obj_property>
-      <obj_property name="ObjectShortName">addra[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/bram0/dina">
-      <obj_property name="ElementShortName">dina[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/bram0/douta">
-      <obj_property name="ElementShortName">douta[31:0]</obj_property>
-      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/gaussian_tb/bram0/enb">
-      <obj_property name="ElementShortName">enb</obj_property>
-      <obj_property name="ObjectShortName">enb</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/bram0/web">
-      <obj_property name="ElementShortName">web[3:0]</obj_property>
-      <obj_property name="ObjectShortName">web[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/bram0/addrb">
-      <obj_property name="ElementShortName">addrb[31:0]</obj_property>
-      <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/bram0/dinb">
-      <obj_property name="ElementShortName">dinb[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/bram0/doutb">
-      <obj_property name="ElementShortName">doutb[31:0]</obj_property>
-      <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
-   </wvobject>
    <wvobject type="group" fp_name="group56">
       <obj_property name="label">1A</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject type="array" fp_name="/gaussian_tb/bram1/douta">
-         <obj_property name="ElementShortName">douta[31:0]</obj_property>
-         <obj_property name="ObjectShortName">douta[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/gaussian_tb/bram1/dina">
-         <obj_property name="ElementShortName">dina[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dina[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/gaussian_tb/bram1/addra">
-         <obj_property name="ElementShortName">addra[31:0]</obj_property>
-         <obj_property name="ObjectShortName">addra[31:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/gaussian_tb/bram1/wea">
-         <obj_property name="ElementShortName">wea[3:0]</obj_property>
-         <obj_property name="ObjectShortName">wea[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/gaussian_tb/bram1/ena">
-         <obj_property name="ElementShortName">ena</obj_property>
-         <obj_property name="ObjectShortName">ena</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/bram1/addrb">
-      <obj_property name="ElementShortName">addrb[31:0]</obj_property>
-      <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/bram1/doutb">
-      <obj_property name="ElementShortName">doutb[31:0]</obj_property>
-      <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="divider114" type="divider">
       <obj_property name="label">UUT</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/gaussian_tb/uut/state">
-      <obj_property name="ElementShortName">state</obj_property>
-      <obj_property name="ObjectShortName">state</obj_property>
+   <wvobject type="logic" fp_name="/add_oil_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/gaussian_tb/uut/row">
-      <obj_property name="ElementShortName">row</obj_property>
-      <obj_property name="ObjectShortName">row</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/gaussian_tb/uut/col">
-      <obj_property name="ElementShortName">col</obj_property>
-      <obj_property name="ObjectShortName">col</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/gaussian_tb/uut/find_row">
-      <obj_property name="ElementShortName">find_row</obj_property>
-      <obj_property name="ObjectShortName">find_row</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/gaussian_tb/uut/i">
+   <wvobject type="other" fp_name="/add_oil_tb/uut/i">
       <obj_property name="ElementShortName">i</obj_property>
       <obj_property name="ObjectShortName">i</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/gaussian_tb/uut/j">
+   <wvobject type="logic" fp_name="/add_oil_tb/uut/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/j">
       <obj_property name="ElementShortName">j</obj_property>
       <obj_property name="ObjectShortName">j</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/gaussian_tb/uut/unpack_ctr1">
-      <obj_property name="ElementShortName">unpack_ctr1</obj_property>
-      <obj_property name="ObjectShortName">unpack_ctr1</obj_property>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/copy_index">
+      <obj_property name="ElementShortName">copy_index</obj_property>
+      <obj_property name="ObjectShortName">copy_index</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/gaussian_tb/uut/unpack_lin_ctr">
-      <obj_property name="ElementShortName">unpack_lin_ctr</obj_property>
-      <obj_property name="ObjectShortName">unpack_lin_ctr</obj_property>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/s_src_ctr">
+      <obj_property name="ElementShortName">s_src_ctr</obj_property>
+      <obj_property name="ObjectShortName">s_src_ctr</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/uut/tmp">
-      <obj_property name="ElementShortName">tmp[31:0]</obj_property>
-      <obj_property name="ObjectShortName">tmp[31:0]</obj_property>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/s_dst_ctr">
+      <obj_property name="ElementShortName">s_dst_ctr</obj_property>
+      <obj_property name="ObjectShortName">s_dst_ctr</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/uut/utmp">
-      <obj_property name="ElementShortName">utmp[31:0]</obj_property>
-      <obj_property name="ObjectShortName">utmp[31:0]</obj_property>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/s_inp_base_adr">
+      <obj_property name="ElementShortName">s_inp_base_adr</obj_property>
+      <obj_property name="ObjectShortName">s_inp_base_adr</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/uut/utmp1">
-      <obj_property name="ElementShortName">utmp1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">utmp1[31:0]</obj_property>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/s_inp_pos_in_line">
+      <obj_property name="ElementShortName">s_inp_pos_in_line</obj_property>
+      <obj_property name="ObjectShortName">s_inp_pos_in_line</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/gaussian_tb/uut/rowcols_ctr">
-      <obj_property name="ElementShortName">rowcols_ctr</obj_property>
-      <obj_property name="ObjectShortName">rowcols_ctr</obj_property>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/s_oil_base_adr">
+      <obj_property name="ElementShortName">s_oil_base_adr</obj_property>
+      <obj_property name="ObjectShortName">s_oil_base_adr</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/uut/s_inv">
-      <obj_property name="ElementShortName">s_inv[7:0]</obj_property>
-      <obj_property name="ObjectShortName">s_inv[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/s_oil_pos_in_line">
+      <obj_property name="ElementShortName">s_oil_pos_in_line</obj_property>
+      <obj_property name="ObjectShortName">s_oil_pos_in_line</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/gaussian_tb/uut/s_lfsr_rnd">
-      <obj_property name="ElementShortName">s_lfsr_rnd[5:0]</obj_property>
-      <obj_property name="ObjectShortName">s_lfsr_rnd[5:0]</obj_property>
+   <wvobject type="array" fp_name="/add_oil_tb/uut/mempcpy_scratch">
+      <obj_property name="ElementShortName">mempcpy_scratch[47:0]</obj_property>
+      <obj_property name="ObjectShortName">mempcpy_scratch[47:0]</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/bytes_first_line">
+      <obj_property name="ElementShortName">bytes_first_line</obj_property>
+      <obj_property name="ObjectShortName">bytes_first_line</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/bytes_second_line">
+      <obj_property name="ElementShortName">bytes_second_line</obj_property>
+      <obj_property name="ObjectShortName">bytes_second_line</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/offset">
+      <obj_property name="ElementShortName">offset</obj_property>
+      <obj_property name="ObjectShortName">offset</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/add_oil_tb/uut/state">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/add_oil_tb/uut/i_enable">
+      <obj_property name="ElementShortName">i_enable</obj_property>
+      <obj_property name="ObjectShortName">i_enable</obj_property>
    </wvobject>
 </wave_config>

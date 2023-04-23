@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1682169803">
-  <File Type="VDS-TIMING-PB" Name="mayo_sample_oil_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="mayo_sample_oil_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="mayo_sample_oil.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="mayo_sample_oil_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="mayo_sample_oil_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="mayo_sample_oil_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="mayo_sample_oil.vds"/>
   <File Type="REPORTS-TCL" Name="mayo_sample_oil_reports.tcl"/>
   <File Type="PA-TCL" Name="mayo_sample_oil.tcl"/>
+  <File Type="RDS-DCP" Name="mayo_sample_oil.dcp"/>
+  <File Type="RDS-RDS" Name="mayo_sample_oil.vds"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Common.vhd">
@@ -181,16 +176,16 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_system_ila_0_3"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_BIG_BRAM512K_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_xbar_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_MAYO_SHAKE_1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_blink_led_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_mayo_axi_litev3_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_TRNG_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_processing_system7_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_Small_BRAM8k_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_blk_mem_gen_0_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_MAYO_SHAKE_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_xbar_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_system_ila_0_3"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_axi_bram_ctrl_0_1"/>
   <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_rst_ps7_0_100M_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_blk_mem_gen_0_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_Small_BRAM8k_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_processing_system7_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_keygen_no_zynq_BIG_BRAM512K_0"/>
 </GenRun>

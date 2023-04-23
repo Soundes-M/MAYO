@@ -1,0 +1,7 @@
+Running: xsim.dir/add_oil_tb_behav/xsimk -simmode gui -wdb add_oil_tb_behav.wdb -simrunnum 0 -socket 55501
+Design successfully loaded
+Design Loading Memory Usage: 34780 KB (Peak: 34780 KB)
+Design Loading CPU Usage: 20 ms
+Simulation completed
+Simulation Memory Usage: 124976 KB (Peak: 174048 KB)
+Simulation CPU Usage: 50 ms
