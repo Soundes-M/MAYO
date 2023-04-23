@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari 
 -- Company     : TU BERLIN
 -- Created     : Mon Jan  9 00:23:33 2023
--- Last update : Thu Jan 26 15:52:20 2023
+-- Last update : Sun Apr 23 00:07:01 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ architecture Behavioral of memcpy is
 	signal s_mode               : std_logic_vector(1 downto 0) := "00" ;
 	-- 00 Two ports
 	-- 01 1 port: src 
-	-- 10 1 port: dest
+	-- 10 1 port: src
 	-- 11 RESERVED 
 
 	signal bram_src : bram_t := DEFAULT_BRAM;
@@ -136,7 +136,7 @@ begin
 						bram_dst.o.o_en   <= '1';
 						bram_dst.o.o_we   <= "1111";
 
-						if (copy_index < len ) then -- keep copying copying len Bytes! [TODO Check this loop]
+						if (copy_index < len ) then -- keep copying len Bytes! [TODO Check this loop]
 							copy_index        <= copy_index +4;
 							bram_src.o.o_addr <= std_logic_vector(unsigned(bram_src.o.o_addr) +4);
 							state             <= cpy1;

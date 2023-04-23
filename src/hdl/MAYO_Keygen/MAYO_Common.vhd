@@ -67,7 +67,7 @@ PACKAGE MAYO_COMMON IS
   CONSTANT MESSAGE_BYTES : positive := 100; -- Can be changed
   CONSTANT DIGEST_BYTES  : positive := M;   -- Can be changed
 
-  CONSTANT SK_EXP_P1       : natural  := 0; -- Can be changed
+  CONSTANT SK_EXP_P1       : positive  := 0; -- Can be changed
   CONSTANT SK_EXP_OIL      : positive := SK_EXP_P1 + P1_BYTES;
   CONSTANT SK_EXP_BILINEAR : positive := SK_EXP_OIL + OIL_SPACE_BYTES;
   CONSTANT SK_EXP_BYTES    : positive := P1_BYTES + OIL_SPACE_BYTES + (M*(N-O)*O);

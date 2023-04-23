@@ -88,11 +88,16 @@ entity MAYO_SIGNING_FSM is
 		o_red_ext_input_adr  : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_red_ext_output_adr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 
+		-- NEGATE CORE
 		o_neg_enable : out std_logic;
 		o_neg_len    : out std_logic_vector (31 downto 0);
 		o_neg_adr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		i_neg_done   : in  std_logic;
 
+		--SAMPLE OIL CORE
+		o_sam_oil_en   : out std_logic;
+		i_sam_oil_ret  : in  std_logic; -- 1 if fail else 0 for success(sync with o_done)
+		i_sam_oil_done : in  std_logic;
 
 		--BRAM0-A
 		i_mem0a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -132,7 +137,13 @@ entity MAYO_SIGNING_FSM is
 		o_mem2b_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem2b_en   : out std_logic;
 		o_mem2b_rst  : out std_logic;
-		o_mem2b_we   : out std_logic_vector (3 downto 0)
+		o_mem2b_we   : out std_logic_vector (3 downto 0);
+
+		o_mem0a_control : out std_logic;
+		o_mem0b_control : out std_logic;
+		o_mem1a_control : out std_logic;
+		o_mem2a_control : out std_logic;
+		o_mem2b_control : out std_logic
 	);
 
 end entity MAYO_SIGNING_FSM;
@@ -170,7 +181,6 @@ ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
 	signal tmp1 : std_logic_vector(31 downto 0) := ZERO_32;
 	signal tmp2 : std_logic_vector(31 downto 0) := ZERO_32;
 
-
 	-- Register reuse through alias
 	alias s_sign1_adr is s_p1p1t_adr;
 	alias s_sign2_adr is s_p1_adr;
@@ -179,7 +189,6 @@ ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
 	alias s_bil_adr is s_p1p1t_adr;
 	alias s_lin_adr is s_p1_adr;
 	alias s_lin1_adr is s_p1p1t_inv_adr;
-
 
 	signal s_src_index  : integer := 0;
 	signal s_dest_index : integer := 0;
@@ -673,7 +682,7 @@ begin
 						end if;
 
 					--------------------------------------------------------
-					-- INFINITE LOOP BEGIN
+					-- INFINITE WHILE LOOP BEGIN
 					--------------------------------------------------------
 					when sign4 =>
 						o_sam_vin_input_adr <= std_logic_vector(to_unsigned(SIG_INPUTS,PORT_WIDTH)); -- Small BRAM
@@ -838,7 +847,7 @@ begin
 						m               <= m+4 ;
 						state           <= sign14;
 
-					when sign19 =>                                                                                  -- TODO Check linear comb bram connections
+					when sign19 =>                                                                                -- TODO Check linear comb bram connections
 						o_lin_vec_addr    <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH)); -- Big bram 1
 						o_lin_coeffs_addr <= std_logic_vector(to_unsigned(PRODUCT_BASE_ADR,PORT_WIDTH));            -- big bram 2 
 						o_lin_out_addr    <= std_logic_vector(to_unsigned(VINEVAL_BASE_ADR + ctr*M,PORT_WIDTH));    -- (BIG DATA2)
@@ -1211,7 +1220,32 @@ begin
 						end if;
 
 					when sample3 =>
-						-- TODO : sample oil /solve gaussian 
+						o_sam_oil_en <= '1';
+						state        <= sample4;
+
+					when sample4 =>
+						o_sam_enable <= '0';
+						state        <= sample5;
+
+					when sample5 =>
+						if(i_sam_oil_done = '1')then
+							if (i_sam_oil_ret= '0') then --SUCCESS
+								state <= sample6;
+							else
+								state <= sign4; -- OUT OF WHILE LOOP
+								report "Sample oil did not find a solution, repeating...";
+							end if;
+						else
+							state <= sample5;
+						end if;
+
+						--------------------------------------------------------
+						-- INFINITE WHILE LOOP END
+						--------------------------------------------------------
+						when sample6 => 
+					
+
+
 
 					when others =>
 						null;

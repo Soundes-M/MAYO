@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari
 -- Company     : TU Berlin
 -- Created     : Sat Apr 22 15:07:52 2023
--- Last update : Sat Apr 22 15:16:31 2023
+-- Last update : Sat Apr 22 15:38:20 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -14,6 +14,7 @@
 -------------------------------------------------------------------------------
 -- Description: 
 -- Sample the oil and get a solution if possible
+-- Look at o_ret for return value
 -- LFSR included (Not using TRNG)
 --------------------------------------------------------------------------------
 -- Revisions:  Revisions and documentation are controlled by
@@ -83,7 +84,7 @@ architecture Behavioral of mayo_sample_oil is
 	signal bram0a : bram_t := DEFAULT_BRAM;
 	signal bram0b : bram_t := DEFAULT_BRAM;
 	signal bram1a : bram_t := DEFAULT_BRAM;
-
+	------------------------------------------------------------------------------
 
 	signal s_lin_adr : std_logic_vector(PORT_WIDTH-1 downto 0);
 	signal s_rhs_adr : std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -103,7 +104,6 @@ architecture Behavioral of mayo_sample_oil is
 	signal booltmp        : std_logic;
 	signal unpack_lin_ctr : integer := 0;
 	signal unpack_ctr1    : integer := 0;
-	signal cached_rhs     : std_logic_vector(PORT_WIDTH-1 downto 0);
 	signal col            : integer := 0;
 	signal row            : integer := 0;
 	signal rowcols_ctr    : integer := 0;
@@ -114,12 +114,12 @@ architecture Behavioral of mayo_sample_oil is
 	signal s_isColEven    : std_logic;
 	signal s_solution_col : std_logic_vector(PORT_WIDTH-1 downto 0);
 
-	signal s_lfsr_rnd  : std_logic_vector(5 downto 0);
-	signal lfsr_en     : std_logic                                      := '0';
-	constant LSFR_SEED : std_logic_vector(s_lfsr_rnd'LENGTH-1 downto 0) := "101011";
-
 	alias col2 is rowcols_ctr;
 	alias sol_ctr is unpack_lin_ctr;
+
+	constant LSFR_SEED : std_logic_vector(s_lfsr_rnd'LENGTH-1 downto 0) := "101011";
+	signal s_lfsr_rnd  : std_logic_vector(5 downto 0);
+	signal lfsr_en     : std_logic := '0';
 
 	file myFile      : text;
 	signal debug_ctr : integer := 0 ;
@@ -201,7 +201,7 @@ begin
 				s_rhs_adr      <= ZERO_32;
 				unpack_ctr1    <= 0;
 				unpack_lin_ctr <= 0;
-				cached_rhs     <= ZERO_32;
+				s_solution_col <= ZERO_32;
 				col            <= 0;
 				row            <= 0;
 				rowcols_ctr    <= 0;
@@ -209,24 +209,31 @@ begin
 				j              <= 0;
 				find_row       <= 0;
 				booltmp        <= '1';
-				o_control0a    <= '0';
-				o_control0b    <= '0';
 				o_ret          <= '0';
 				lfsr_en        <= '0';
+				bram0a.o       <= DEFAULT_OUT_BRAM;
+				bram0b.o       <= DEFAULT_OUT_BRAM;
+				bram1a.o       <= DEFAULT_OUT_BRAM;
+				o_control0a    <= '0';
+				o_control0b    <= '0';
+				o_control1a    <= '0';
 				state          <= idle;
 
 			else
 				case (state) is
 					when idle =>
-						o_done  <= '0';
-						o_ret   <= '0';
-						lfsr_en <= '0';
+						o_done      <= '0';
+						o_ret       <= '0';
+						lfsr_en     <= '0';
+						o_control0a <= '0';
+						o_control0b <= '0';
+						o_control1a <= '0';
+
 						if (en = '1') then
 							s_lin_adr      <= std_logic_vector(to_unsigned(LIN_ADR,PORT_WIDTH));
 							s_rhs_adr      <= std_logic_vector(to_unsigned(RHS_ADR,PORT_WIDTH));
 							unpack_ctr1    <= 0;
 							unpack_lin_ctr <= 0;
-							cached_rhs     <= ZERO_32;
 							col            <= 0;
 							row            <= 0;
 							rowcols_ctr    <= 0;
@@ -377,7 +384,7 @@ begin
 						col           <= 0;
 						find_row      <= 0;
 						rowcols_ctr   <= 0;
-						state         <= debug0;
+						state         <= unpack7;
 
 					--------------------------------------------------------------------------------
 					when debug0 =>
@@ -422,7 +429,7 @@ begin
 
 					when unpack7 => -- while(1)
 						if (row = M) then
-							state <= debug4;
+							state <= sol0;
 						else
 							find_row <= row;
 							state    <= unpack8;
