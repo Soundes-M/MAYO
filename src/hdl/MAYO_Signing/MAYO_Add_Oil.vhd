@@ -19,6 +19,7 @@ entity mayo_add_oil is
 		o_mem0a_en   : out std_logic;
 		o_mem0a_rst  : out std_logic;
 		o_mem0a_we   : out std_logic_vector (3 downto 0);
+		o_control0a  : out std_logic;
 
 		--BRAM0-B
 		i_mem0b_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -27,6 +28,7 @@ entity mayo_add_oil is
 		o_mem0b_en   : out std_logic;
 		o_mem0b_rst  : out std_logic;
 		o_mem0b_we   : out std_logic_vector (3 downto 0);
+		o_control0b  : out std_logic;
 
 		--BRAM1-A
 		i_mem1a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -34,7 +36,8 @@ entity mayo_add_oil is
 		o_mem1a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem1a_en   : out std_logic;
 		o_mem1a_rst  : out std_logic;
-		o_mem1a_we   : out std_logic_vector (3 downto 0)
+		o_mem1a_we   : out std_logic_vector (3 downto 0);
+		o_control1a  : out std_logic
 
 	);
 end entity mayo_add_oil;
@@ -104,7 +107,10 @@ begin
 							LF & "OILSOL_ADR : " & integer'image(OILSOL_ADR) &
 							LF & "INPUTS_ADR: " & integer'image(INPUTS_ADR) &
 							LF & "OILSPACE_ADR: " & integer'image(OILSPACE_ADR) severity note;
-							state <= main0;
+							o_control0a <= '1';
+							o_control0b <= '1';
+							o_control1a <= '1';
+							state       <= main0;
 						else
 							state <= idle;
 						end if;
@@ -421,8 +427,11 @@ begin
 						state <= main0;
 
 					when done =>
-						o_done <= '1';
-						state  <= idle;
+						o_done      <= '1';
+						o_control0a <= '0';
+						o_control0b <= '0';
+						o_control1a <= '0';
+						state       <= idle;
 
 					when others =>
 						report "Others state";

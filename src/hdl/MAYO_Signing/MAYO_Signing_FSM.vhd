@@ -99,6 +99,10 @@ entity MAYO_SIGNING_FSM is
 		i_sam_oil_ret  : in  std_logic; -- 1 if fail else 0 for success(sync with o_done)
 		i_sam_oil_done : in  std_logic;
 
+		-- ADD OIL CORE
+		o_add_oil_enable : out std_logic;
+		i_add_oil_done   : in  std_logic;
+
 		--BRAM0-A
 		i_mem0a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem0a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -153,8 +157,8 @@ ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
 			computeBil1, computeBil2, computeBil3, computeBil4, computeBil5, computeBil6, computeBil7, computeBil8, computeBil9, computeBil10, computeBil11, computeBil12, computeBil13,
 			computeBil14, computeBil15, transpose0, transpose1, transpose2, transpose3, sign0, sign1, sign2, sign3, sign4, sign5, sign6, sign7, sign8, sign9, sign10, sign11, sign12, sign13,
 			sign14, sign15, sign16, sign17, sign18, sign19, sign20, sign21, sign22, sign23, sign24, sign25, sign26, sign27, sign28, sign29, sign30, sign31, sign32, sign33, sign34,
-			sign35, sign36, sign37, sign38, sign39, sign40, sign41, sign42, sign43, sign44, sign45, sign46, sign47, sign48, sign49, sign50, neg0, neg1,
-			signX, msgdgst0, msgdgst1, msgdgst2, msgdgst3, msgdgst4, msgdgst5, msgdgst6, msgdgst7,msgdgst8,msgdgst9, add_mult0, add_mult1, add_mult2, add_mult3, add_mult4, add_mult5,
+			sign35, sign36, sign37, sign38, sign39, sign40, sign41, sign42, sign43, sign44, sign45, sign46, sign47, sign48, sign49, sign50, neg0, neg1, sample6, sample7, sample8,
+			msgdgst0, msgdgst1, msgdgst2, msgdgst3, msgdgst4, msgdgst5, msgdgst6, msgdgst7,msgdgst8,msgdgst9, add_mult0, add_mult1, add_mult2, add_mult3, add_mult4, add_mult5,
 			done);
 	signal state          : state_fsm_t := idle;
 	signal index          : integer     := 0;
@@ -247,6 +251,7 @@ begin
 			else
 				case (state) is
 					when idle =>
+						o_done <= '0';
 						if (i_enable = '1') then
 							state <= expand_sk0;
 							index <= 0 ;
@@ -1239,13 +1244,28 @@ begin
 							state <= sample5;
 						end if;
 
-						--------------------------------------------------------
-						-- INFINITE WHILE LOOP END
-						--------------------------------------------------------
-						when sample6 => 
-					
+					--------------------------------------------------------
+					-- INFINITE WHILE LOOP END
+					--------------------------------------------------------
+					when sample6 =>
+						o_add_oil_enable <= '1';
+						state            <= sample7;
 
+					when sample7 =>
+						o_add_oil_enable <= '0';
+						state            <= sample8;
 
+					when sample8 =>
+						if(i_add_oil_done = '1')then
+							state <= done;
+						else
+							state <= sample8;
+						end if;
+
+					when done =>
+						o_done <= '1';
+						report "Sign Done";
+						state <= idle;
 
 					when others =>
 						null;
