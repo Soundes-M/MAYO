@@ -161,6 +161,26 @@ begin
 			rsta_busy => rsta_busy0,
 			rstb_busy => rstb_busy0
 		);
+		
+		bram1 : Test_BRAM0
+		PORT MAP (
+			clka      => clka1,
+			rsta      => rsta1,
+			ena       => ena1,
+			wea       => wea1,
+			addra     => addra1,
+			dina      => dina1,
+			douta     => douta1,
+			clkb      => clkb1,
+			rstb      => rstb1,
+			enb       => enb1,
+			web       => web1,
+			addrb     => addrb1,
+			dinb      => dinb1,
+			doutb     => doutb1,
+			rsta_busy => rsta_busy1,
+			rstb_busy => rstb_busy1
+		);
 
 	uut : mayo_add_oil
 		port map (
@@ -191,11 +211,11 @@ begin
 			o_mem1a_en   => ena1,
 			o_mem1a_rst  => rsta1,
 			o_mem1a_we   => wea1
-			--o_control1a  => control1a
+		--o_control1a  => control1a
 		);
 
-	tb           : process
-		file filein1 : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/add_oil/src.dat";
+	tb               : process
+		file filein1     : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/add_oil/src.dat";
 		file filein2     : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_rhs.dat";
 		variable v_line1 : line;
 		variable v_line2 : line;
@@ -244,11 +264,26 @@ begin
 		user_dina0 <= ZERO_32;
 		wait for clk_period;
 		bram_mine0 <= '0';
+		
+	   i <= SK_EXP_BASE_ADR + SK_EXP_OIL;
+	   while not endfile(filein1) loop
+			readline(filein1, v_line1);
+			hread(v_line2, v_tmp, good);
+			assert good
+				report "Text I/O read error" severity error;
+			addrb1 <= std_logic_vector(to_unsigned(i,32));
+			enb1   <= '1';
+			web1   <= "1111";
+			dinb1  <= v_tmp;
+			i           <= i+4;
+			wait for clk_period;
+			bytes <= bytes +4 ;
+		end loop;
 
 		----------------------------------------------------------------------------
 		-- Start UUT
 		----------------------------------------------------------------------------
-        wait for clk_period;
+		wait for clk_period;
 
 		enable <= '1';
 
@@ -257,14 +292,14 @@ begin
 		enable <= '0';
 
 		wait until done = '1';
-        wait for 4*clk_period;
+		wait for 4*clk_period;
 
 		bram_mine0 <= '1'; -- Take control over BRAM Port 
 		wait for clk_period;
 
 		for i in 0 to M / 4 loop --15 -1 == M / 4 -1  + addr offset [Last Read to check overflow, should expect 0] 
-			addrb1 <= std_logic_vector(to_unsigned(i*4 + SIG_INPUTS,32));
-			enb1   <= '1';
+			user_addra0 <= std_logic_vector(to_unsigned(i*4 + SIG_INPUTS,32));
+			user_ena0   <= '1';
 			wait for clk_period * 2 ;
 		end loop;
 

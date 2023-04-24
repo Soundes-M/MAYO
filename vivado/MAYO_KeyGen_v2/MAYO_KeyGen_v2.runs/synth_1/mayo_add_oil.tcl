@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/mayo_sample_oil.tcl"
+  variable script "/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/synth_1/mayo_add_oil.tcl"
   variable category "vivado_synth"
 }
 
@@ -96,7 +96,7 @@ OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
   /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Common.vhd
   /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/Utils/utils.vhd
-  /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Sample_Oil.vhd
+  /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Add_Oil.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -114,7 +114,7 @@ set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top mayo_sample_oil -part xc7z020clg484-1
+synth_design -top mayo_add_oil -part xc7z020clg484-1
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
@@ -124,10 +124,10 @@ if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
 OPTRACE "write_checkpoint" START { CHECKPOINT }
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef mayo_sample_oil.dcp
+write_checkpoint -force -noxdef mayo_add_oil.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file mayo_sample_oil_utilization_synth.rpt -pb mayo_sample_oil_utilization_synth.pb"
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file mayo_add_oil_utilization_synth.rpt -pb mayo_add_oil_utilization_synth.pb"
 OPTRACE "synth reports" END { }
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

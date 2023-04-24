@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/sim_1/new/add_oil_tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'add_oil_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Add_Oil.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'mayo_add_oil'

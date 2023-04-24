@@ -1,12 +1,12 @@
 Vivado Simulator 2020.2
 Time resolution is 1 ps
 Block Memory Generator module add_oil_tb.bram0.inst.\native_mem_mapped_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
-Note: add_oil core :
+Block Memory Generator module add_oil_tb.bram1.inst.\native_mem_mapped_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Note: Add_oil core :
 OILSOL_ADR : 3172
 INPUTS_ADR: 2392
 OILSPACE_ADR: 115920
 Time: 745 ns  Iteration: 0  Process: /add_oil_tb/uut/main  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Add_Oil.vhd
-Note: 0
-Time: 755 ns  Iteration: 0  Process: /add_oil_tb/uut/main  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Add_Oil.vhd
-Note: 0
-Time: 755 ns  Iteration: 0  Process: /add_oil_tb/uut/main  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Add_Oil.vhd
+Failure: Done
+Time: 175635 ns  Iteration: 0  Process: /add_oil_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/sim_1/new/add_oil_tb.vhd
+$finish called at time : 175635 ns : File "/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/sim_1/new/add_oil_tb.vhd" Line 308

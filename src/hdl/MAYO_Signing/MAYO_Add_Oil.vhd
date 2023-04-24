@@ -45,20 +45,18 @@ architecture Behavioral of mayo_add_oil is
 	constant OILSOL_ADR   : integer := OILSOL_BASE_ADR;
 	constant OILSPACE_ADR : integer := SK_EXP_BASE_ADR + SK_EXP_OIL;
 
-	signal i,j,l      : integer := 0;
-	signal copy_index : integer := 0;
-
-	signal s_src_ctr : integer := 0;
-	signal s_dst_ctr : integer := 0;
+	signal i,j,l : integer := 0;
 
 	signal s_inp_base_adr    : integer := 0;
 	signal s_inp_pos_in_line : integer range 0 to 3;
 	signal s_oil_base_adr    : integer := 0;
 	signal s_oil_pos_in_line : integer range 0 to 3;
-	signal mempcpy_scratch   : std_logic_vector(47 downto 0);
-	signal bytes_first_line  : integer := 0;
-	signal bytes_second_line : integer := 0;
-	signal offset            : integer := 0;
+	signal mempcpy_scratch   : std_logic_vector(47 downto 0) := (others => '0');
+	signal mempcpy_scratch1  : std_logic_vector(47 downto 0) := (others => '0');
+	signal s_3_lines         : std_logic                     := '0';
+	signal bytes_first_line  : integer                       := 0;
+	signal bytes_second_line : integer                       := 0;
+	signal t0                : std_logic_vector(15 downto 0) := ZERO_16;
 
 	signal bram0a : bram_t := DEFAULT_BRAM;
 	signal bram0b : bram_t := DEFAULT_BRAM;
@@ -66,7 +64,8 @@ architecture Behavioral of mayo_add_oil is
 
 	type states is (idle,
 			memcpy0, memcpy1, memcpy2, memcpy3, memcpy4, memcpy5, memcpy6, memcpy7, memcpy8, memcpy9,
-			main0,main1,
+			main0, main1, main2, main3, main4, main5, main6, main7, main8, main9, main10, main11, main12,
+			main13, main14, main15, main16, main17, main18, main19, main20, main21, main22, main23, main24,
 			done);
 	signal state : states := idle;
 
@@ -74,15 +73,6 @@ architecture Behavioral of mayo_add_oil is
 	function base_adr(x : integer) return integer is
 	begin
 		return to_integer(unsigned(std_logic_vector(to_unsigned(x,PORT_WIDTH)) and not "00000000000000000000000000000011"));
-	end function;
-
-	function clip4(x : integer) return integer is
-	begin
-		if(x<4) then
-			return x;
-		else
-			return 4;
-		end if;
 	end function;
 
 begin
@@ -95,7 +85,6 @@ begin
 				i                 <= 0;
 				j                 <= 0;
 				l                 <= 0;
-				copy_index        <= 0;
 				s_inp_base_adr    <= 0;
 				s_inp_pos_in_line <= 0;
 				s_oil_base_adr    <= 0;
@@ -103,15 +92,15 @@ begin
 				mempcpy_scratch   <= (others => '0');
 				bytes_first_line  <= 0;
 				bytes_second_line <= 0;
-				offset            <= 0;
+				s_3_lines         <= '0';
+				t0                <= ZERO_16;
 				state             <= idle;
-
 			else
 				case (state) is
 					when idle =>
+						l <= 0;
 						if (i_enable ='1')then
-							l <= 0;
-							report "add_oil core :" &
+							report "Add_oil core :" &
 							LF & "OILSOL_ADR : " & integer'image(OILSOL_ADR) &
 							LF & "INPUTS_ADR: " & integer'image(INPUTS_ADR) &
 							LF & "OILSPACE_ADR: " & integer'image(OILSPACE_ADR) severity note;
@@ -121,24 +110,21 @@ begin
 						end if;
 
 					when main0 =>
-						report integer'image(l);
 						if (l < K) then
 							v_tmp             := base_adr(OILSOL_ADR + l*O);
 							v_tmp1            := (OILSOL_ADR + l*O) - base_adr(OILSOL_ADR + l*O);
 							s_oil_base_adr    <= v_tmp;
 							s_oil_pos_in_line <= v_tmp1; -- |3|2|1|0| ? 
-							report integer'image(v_tmp1);
-							if (v_tmp1 < 3) then
-								-- 2 lines 
-								-- WARNING: O is hardcoded to 6!!!! 
-								bytes_first_line  <= 4- s_oil_pos_in_line;     -- how many bytes to copy from first line 
-								bytes_second_line <= 6- (4-s_oil_pos_in_line); -- how many bytes to copy from second line
-								state             <= memcpy0;
-							else
-								-- 3 lines
-								state <= memcpy3;
-							end if;
 
+							if (v_tmp1 < 3) then                  -- 2 lines 
+								                                    -- WARNING: O is hardcoded to 6!
+								bytes_first_line  <= 4- v_tmp1;     -- how many bytes to copy from first line 
+								bytes_second_line <= 6- (4-v_tmp1); -- how many bytes to copy from second line
+								s_3_lines         <= '0';
+							else
+								s_3_lines <= '1';
+							end if;
+							state <= memcpy0;
 						else
 							state <= done;
 						end if;
@@ -160,7 +146,11 @@ begin
 						state           <= memcpy1;
 
 					when memcpy1 =>
-						state <= memcpy2;
+						if s_3_lines = '0' then
+							state <= memcpy2;
+						else
+							state <= memcpy3;
+						end if;
 
 					when memcpy2 => -- write to scratch buffer
 						mempcpy_scratch(8*bytes_first_line-1 downto 0)                                        <= bram0a.i.i_dout(31 downto 8*s_oil_pos_in_line);
@@ -187,27 +177,31 @@ begin
 						mempcpy_scratch(47 downto 40) <= bram0a.i.i_dout(7 downto 0);
 						state                         <= memcpy6;
 
-					when memcpy6 =>
+					when memcpy6 => -- write to dst
 						v_tmp             := base_adr((INPUTS_ADR + N-O) + l*N);
 						v_tmp1            := ((INPUTS_ADR + N-O) + l*N) - base_adr((INPUTS_ADR + N-O) + l*N);
 						s_inp_base_adr    <= v_tmp;
 						s_inp_pos_in_line <= v_tmp1; -- |3|2|1|0| ? 
 
-						if (((INPUTS_ADR + N-O) + l*N) - base_adr((INPUTS_ADR + N-O) + l*N) < 3)then
-							-- 2 lines 
-							-- WARNING: O is hardcoded to 6!!!! 
-							bytes_first_line  <= 4- s_inp_pos_in_line;     -- how many bytes to copy from first line 
-							bytes_second_line <= 6- (4-s_inp_pos_in_line); -- how many bytes to copy from second line
+						if (v_tmp1 < 3)then                   -- 2 lines 
+							                                    -- WARNING: O is hardcoded to 6! 
+							bytes_first_line  <= 4- v_tmp1;     -- how many bytes to copy from first line 
+							bytes_second_line <= 6- (4-v_tmp1); -- how many bytes to copy from second line
 							state             <= memcpy7;
-						else
-							-- 3 lines
+						else -- 3 lines
 							state <= memcpy8;
 						end if;
 
 					when memcpy7 =>
-						bram0a.o.o_addr <= std_logic_vector(to_unsigned(s_inp_base_adr,PORT_WIDTH));
-						bram0a.o.o_en   <= '1';
-						bram0a.o.o_din  <= mempcpy_scratch(8*bytes_first_line-1 downto 0);
+						bram0a.o.o_addr                               <= std_logic_vector(to_unsigned(s_inp_base_adr,PORT_WIDTH));
+						bram0a.o.o_en                                 <= '1';
+						bram0a.o.o_din                                <= (others => '0');
+						bram0a.o.o_din(31 downto 8*s_inp_pos_in_line) <= mempcpy_scratch(8*bytes_first_line-1 downto 0);
+
+						bram0b.o.o_addr                                <= std_logic_vector(to_unsigned(s_inp_base_adr+4,PORT_WIDTH));
+						bram0b.o.o_en                                  <= '1';
+						bram0b.o.o_din                                 <= (others => '0');
+						bram0b.o.o_din(8*bytes_second_line-1 downto 0) <= mempcpy_scratch(8*bytes_second_line-1 + 8*bytes_first_line downto 8*bytes_first_line);
 
 						case(s_inp_pos_in_line) is
 							when (0) =>
@@ -225,36 +219,29 @@ begin
 							when others =>
 								report "Unexpected pos: " & integer'image(s_inp_pos_in_line) severity error;
 						end case;
-
-						bram0b.o.o_addr                                <= std_logic_vector(to_unsigned(s_inp_base_adr+4,PORT_WIDTH));
-						bram0b.o.o_en                                  <= '1';
-						bram0b.o.o_din(31 downto 8*bytes_second_line)  <= (others => '0');
-						bram0b.o.o_din(8*bytes_second_line-1 downto 0) <= mempcpy_scratch(8*bytes_second_line-1 + 8*bytes_first_line downto 8*bytes_first_line);
-
 						state <= main1;
 
-					when memcpy8 => -- write to dst
+					when memcpy8 =>
 						bram0a.o.o_addr <= std_logic_vector(to_unsigned(s_inp_base_adr,PORT_WIDTH));
 						bram0a.o.o_din  <= mempcpy_scratch(7 downto 0) & X"00_00_00";
 						bram0a.o.o_we   <= "1000";
 						bram0a.o.o_en   <= '1';
 
-
 						bram0b.o.o_addr <= std_logic_vector(to_unsigned(s_inp_base_adr+4,PORT_WIDTH));
 						bram0b.o.o_din  <= mempcpy_scratch(39 downto 8);
 						bram0b.o.o_we   <= "1111";
 						bram0b.o.o_en   <= '1';
-
-						state <= memcpy9;
+						state           <= memcpy9;
 
 					when memcpy9 =>
-						bram0b.o.o_en <= '0';
-						bram0b.o.o_we <= "0000";
-
 						bram0a.o.o_addr <= std_logic_vector(to_unsigned(s_inp_base_adr+8,PORT_WIDTH));
 						bram0a.o.o_din  <= X"00_00_00" & mempcpy_scratch(47 downto 40);
 						bram0a.o.o_we   <= "0001";
-						state           <= main1;
+
+						bram0b.o.o_en <= '0';
+						bram0b.o.o_we <= "0000";
+
+						state <= main1;
 						--------------------------------------------------------------------
 						-- MEMCPY DONE
 						--------------------------------------------------------------------
@@ -264,7 +251,174 @@ begin
 						bram0b.o.o_en <= '0';
 						bram0a.o.o_we <= "0000";
 						bram0b.o.o_we <= "0000";
-						state         <= done;
+						i             <= 0;
+						state         <= main2;
+
+					when main2 =>
+						if (i< (N-O)) then
+							state <= main3;
+						else
+							state <= main7;
+						end if;
+
+					when main3 =>
+						-- Fill t = inputs[k*N + i]
+						v_tmp             := base_adr(INPUTS_ADR + l*N +i);
+						v_tmp1            := (INPUTS_ADR + l*N +i) - base_adr(INPUTS_ADR + l*N +i);
+						s_inp_base_adr    <= v_tmp;
+						s_inp_pos_in_line <= v_tmp1; -- |3|2|1|0| ? 
+						state             <= main4;
+
+					when main4 =>
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(s_inp_base_adr,PORT_WIDTH));
+						bram0a.o.o_we   <= "0000";
+						bram0a.o.o_en   <= '1';
+						state           <= main5;
+
+					when main5 =>
+						state <= main6;
+
+					when main6 => -- write to t
+						case (s_inp_pos_in_line) is
+							when (0) =>
+								t0 <= X"00" & bram0a.i.i_dout(7 downto 0);
+
+							when (1) =>
+								t0 <= X"00" & bram0a.i.i_dout(15 downto 8);
+
+							when (2) =>
+								t0 <= X"00" & bram0a.i.i_dout(23 downto 16);
+
+							when (3) =>
+								t0 <= X"00" & bram0a.i.i_dout(31 downto 24);
+
+							when others =>
+								report "Unexpected position " severity error;
+						end case ;
+						bram0a.o.o_we <= "0000";
+						bram0a.o.o_en <= '0';
+						state         <= main10;
+
+					when main10 => -- GET RS1 : inputs[k*N + N-O + j]
+						v_tmp             := base_adr(INPUTS_ADR + l*N + N-O);
+						v_tmp1            := (INPUTS_ADR + l*N + N-O) - base_adr(INPUTS_ADR + l*N + N-O);
+						s_inp_base_adr    <= v_tmp;
+						s_inp_pos_in_line <= v_tmp1; -- |3|2|1|0| ? 
+						if (v_tmp1 < 3) then
+							bytes_first_line  <= 4- v_tmp1;
+							bytes_second_line <= 6- (4-v_tmp1);
+							s_3_lines         <= '0';
+						else
+							s_3_lines <= '1';
+						end if;
+						state <= main11;
+
+					when main11 =>
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(s_inp_base_adr,PORT_WIDTH));
+						bram0a.o.o_we   <= "0000";
+						bram0a.o.o_en   <= '1';
+
+						bram0b.o.o_addr <= std_logic_vector(to_unsigned(s_inp_base_adr+4,PORT_WIDTH));
+						bram0b.o.o_we   <= "0000";
+						bram0b.o.o_en   <= '1';
+						state           <= main12;
+
+					when main12 =>
+						if s_3_lines = '0' then
+							state <= main13;
+						else
+							state <= main14;
+						end if;
+
+					when main13 => -- write to scratch buffer1
+						mempcpy_scratch(8*bytes_first_line-1 downto 0)                                        <= bram0a.i.i_dout(31 downto 8*s_inp_pos_in_line);
+						mempcpy_scratch(8*bytes_second_line-1 + 8*bytes_first_line downto 8*bytes_first_line) <= bram0b.i.i_dout(8*bytes_second_line-1 downto 0);
+
+						bram0a.o.o_we <= "0000";
+						bram0a.o.o_en <= '0';
+						bram0b.o.o_we <= "0000";
+						bram0b.o.o_en <= '0';
+						j             <= 0;
+						state         <= main17;
+
+					when main14 =>
+						bram0a.o.o_addr              <= std_logic_vector(to_unsigned(s_inp_base_adr+8,PORT_WIDTH));
+						bram0b.o.o_en                <= '0';
+						mempcpy_scratch(7 downto 0)  <= bram0a.i.i_dout(31 downto 24);
+						mempcpy_scratch(39 downto 8) <= bram0b.i.i_dout(31 downto 0);
+						state                        <= main15;
+
+					when main15 =>
+						state <= main16;
+
+					when main16 =>
+						bram0a.o.o_en                 <= '0';
+						mempcpy_scratch(47 downto 40) <= bram0a.i.i_dout(7 downto 0);
+						j                             <= 0;
+						state                         <= main17;
+
+					when main17 => -- GET RS2 : oil_space[j*(N-O) + i] and do math
+						if (j <6) then
+							v_tmp           := base_adr(OILSPACE_ADR + j*(N-O)+i);
+							bram1a.o.o_addr <= std_logic_vector(to_unsigned(v_tmp,PORT_WIDTH));
+							bram1a.o.o_en   <= '1';
+							bram1a.o.o_we   <= "0000";
+
+							v_tmp1            := (OILSPACE_ADR + j*(N-O)+i) - base_adr(OILSPACE_ADR + j*(N-O)+i);
+							s_oil_base_adr    <= v_tmp;
+							s_oil_pos_in_line <= v_tmp1; -- |3|2|1|0| ? 
+							state             <= main18;
+						else
+							state <= main20;
+						end if;
+
+					when main18 =>
+						state <= main19;
+
+					when main19 => -- Do ALU OP
+						bram1a.o.o_en <= '0';
+
+						t0    <= std_logic_vector(resize(unsigned(t0) + unsigned(mempcpy_scratch(8*j+7 downto 8*j))*unsigned(bram1a.i.i_dout(s_oil_pos_in_line*8+7 downto s_oil_pos_in_line*8)),t0'length));
+						j     <= j +1;
+						state <= main17;
+
+					when main20 => -- write result
+						v_tmp             := base_adr(INPUTS_ADR + l*N +i);
+						v_tmp1            := (INPUTS_ADR + l*N +i) - base_adr(INPUTS_ADR + l*N +i);
+						s_inp_base_adr    <= v_tmp;
+						s_inp_pos_in_line <= v_tmp1; -- |3|2|1|0| ? 
+						t0                <= std_logic_vector(unsigned(t0) mod PRIME);
+						state             <= main21;
+
+					when main21 =>
+						bram0a.o.o_addr                                                  <= std_logic_vector(to_unsigned(s_inp_base_adr,PORT_WIDTH));
+						bram0a.o.o_en                                                    <= '1';
+						bram0a.o.o_din                                                   <= ZERO_32;
+						bram0a.o.o_din(s_inp_pos_in_line*8+7 downto s_inp_pos_in_line*8) <= t0(7 downto 0);
+
+						case(s_inp_pos_in_line) is
+							when (0) =>
+								bram0a.o.o_we <= "0001";
+							when (1) =>
+								bram0a.o.o_we <= "0010";
+							when (2) =>
+								bram0a.o.o_we <= "0100";
+							when (3) =>
+								bram0a.o.o_we <= "1000";
+							when others =>
+								report "Unexpected position" severity error;
+						end case;
+						state <= main22;
+
+					when main22 =>
+						bram0a.o.o_en <= '0';
+						bram0a.o.o_we <= "0000";
+						i             <= i +1 ;
+						state         <= main2;
+
+					when main7 =>
+						l     <= l+1;
+						state <= main0;
 
 					when done =>
 						o_done <= '1';

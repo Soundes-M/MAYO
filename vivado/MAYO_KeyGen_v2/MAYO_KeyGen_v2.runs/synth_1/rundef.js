@@ -27,7 +27,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log mayo_sample_oil.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_sample_oil.tcl" );
+         "-log mayo_add_oil.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_add_oil.tcl" );
 
 
 

@@ -36,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log mayo_sample_oil.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_sample_oil.tcl
+EAStep vivado -log mayo_add_oil.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mayo_add_oil.tcl

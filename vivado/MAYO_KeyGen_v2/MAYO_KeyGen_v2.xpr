@@ -50,7 +50,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="zed"/>
-    <Option Name="WTXSimLaunchSim" Val="673"/>
+    <Option Name="WTXSimLaunchSim" Val="683"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -199,21 +199,6 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_mayo_axi_litev3_0_0/Mayo_keygen_mayo_axi_litev3_0_0.xci">
-          <Proxy FileSetName="Mayo_keygen_mayo_axi_litev3_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_blink_led_0_0/Mayo_keygen_blink_led_0_0.xci">
-          <Proxy FileSetName="Mayo_keygen_blink_led_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_system_ila_0_3/Mayo_keygen_system_ila_0_3.xci">
-          <Proxy FileSetName="Mayo_keygen_system_ila_0_3"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0.xci">
-          <Proxy FileSetName="Mayo_keygen_TRNG_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_Small_BRAM8k_0.xci">
-          <Proxy FileSetName="Mayo_keygen_Small_BRAM8k_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_processing_system7_0_0/Mayo_keygen_processing_system7_0_0.xci">
           <Proxy FileSetName="Mayo_keygen_processing_system7_0_0"/>
         </CompFileExtendedInfo>
@@ -229,8 +214,23 @@
         <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_blk_mem_gen_0_2/Mayo_keygen_blk_mem_gen_0_2.xci">
           <Proxy FileSetName="Mayo_keygen_blk_mem_gen_0_2"/>
         </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_Small_BRAM8k_0/Mayo_keygen_Small_BRAM8k_0.xci">
+          <Proxy FileSetName="Mayo_keygen_Small_BRAM8k_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_TRNG_0_0/Mayo_keygen_TRNG_0_0.xci">
+          <Proxy FileSetName="Mayo_keygen_TRNG_0_0"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_MAYO_SHAKE_1_0/Mayo_keygen_MAYO_SHAKE_1_0.xci">
           <Proxy FileSetName="Mayo_keygen_MAYO_SHAKE_1_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_mayo_axi_litev3_0_0/Mayo_keygen_mayo_axi_litev3_0_0.xci">
+          <Proxy FileSetName="Mayo_keygen_mayo_axi_litev3_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_blink_led_0_0/Mayo_keygen_blink_led_0_0.xci">
+          <Proxy FileSetName="Mayo_keygen_blink_led_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_system_ila_0_3/Mayo_keygen_system_ila_0_3.xci">
+          <Proxy FileSetName="Mayo_keygen_system_ila_0_3"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PGENDIR/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd">
