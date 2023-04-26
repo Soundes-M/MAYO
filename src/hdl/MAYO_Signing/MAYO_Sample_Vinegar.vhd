@@ -48,7 +48,8 @@ entity mayo_sample_vinegar is
 		o_memb_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_memb_en   : out std_logic;
 		o_memb_rst  : out std_logic;
-		o_memb_we   : out std_logic_vector (3 downto 0)
+		o_memb_we   : out std_logic_vector (3 downto 0);
+		o_controlb  : out std_logic
 
 	);
 end entity mayo_sample_vinegar;
@@ -70,9 +71,7 @@ architecture Behavioral of mayo_sample_vinegar is
 	signal s_input_adr : std_logic_vector(PORT_WIDTH-1 downto 0) := ZERO_32;
 	signal s_inputs    : std_logic_vector(PORT_WIDTH-1 downto 0) := ZERO_32;
 
-
 begin
-
 	process(clk) is
 	begin
 		if(rising_edge(clk)) then
@@ -85,21 +84,25 @@ begin
 				index       <= 0;
 				s_need_rand <= '1';
 				s_rand      <= ZERO_32;
+				o_controlb  <= '0';
 			else
 				case state is
 					when idle =>
 						o_done <= '0';
 						if (en = '1') then
 							s_input_adr <= i_input_adr;
-							state       <= rand0;
 							index       <= 0;
 							out_index   <= 0;
 							c           <= 0;
 							i           <= 0;
 							j           <= 0;
 							s_need_rand <= '1';
+							o_controlb  <= '1';
+							state       <= rand0;
+
 						else
 							s_input_adr <= ZERO_32;
+							o_controlb  <= '0';
 							state       <= idle;
 						end if;
 

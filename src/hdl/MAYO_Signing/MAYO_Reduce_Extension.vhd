@@ -21,6 +21,7 @@ entity mayo_reduce_extension is
 		o_mema_en   : out std_logic;
 		o_mema_rst  : out std_logic;
 		o_mema_we   : out std_logic_vector (3 downto 0);
+		o_controla  : out std_logic;
 
 		i_memb_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_memb_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -28,6 +29,7 @@ entity mayo_reduce_extension is
 		o_memb_en   : out std_logic;
 		o_memb_rst  : out std_logic;
 		o_memb_we   : out std_logic_vector (3 downto 0);
+		o_controlb  : out std_logic;
 
 		-- big bram 2 ( output)
 		i_memc_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -35,7 +37,9 @@ entity mayo_reduce_extension is
 		o_memc_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_memc_en   : out std_logic;
 		o_memc_rst  : out std_logic;
-		o_memc_we   : out std_logic_vector (3 downto 0)
+		o_memc_we   : out std_logic_vector (3 downto 0);
+		o_controlc  : out std_logic
+
 
 	);
 
@@ -82,18 +86,23 @@ begin
 				o_mema_we    <= "0000";
 				o_memb_en    <= '0';
 				o_memb_we    <= "0000";
-
-				state0 <= idle;
+				o_controla   <= '0';
+				o_controlb   <= '0';
+				state0       <= idle;
 
 			else
 				case state0 is
 					when idle =>
+						o_controla <= '0';
+						o_controlb <= '0';
 						if (en = '1') then
 							s_input_adr  <= i_input_adr;
 							s_output_adr <= i_output_adr;
 							i            <= 118;
 							in_ctr       <= 0;
 							coef_ctr     <= 0;
+							o_controla   <= '1';
+							o_controlb   <= '1';
 							state0       <= main0;
 						end if;
 
@@ -205,29 +214,32 @@ begin
 	begin
 		if(rising_edge(clk)) then
 			if(rst ='1') then
-				k         <= M;
-				o_memc_en <= '0';
-				o_memc_we <= "0000";
+				k          <= M;
+				o_memc_en  <= '0';
+				o_memc_we  <= "0000";
+				o_controlc <= '0';
 			else
 				if (write_out <= '1') then
 					o_memc_din  <= std_logic_vector(((temp_output(clipPrev(out_ctr)) mod PRIME )+ PRIME) mod PRIME); -- todo : maybe too long : Timing
 					o_memc_addr <= std_logic_vector(unsigned(s_output_adr) +k-4);
 					o_memc_en   <= '1';
 					o_memc_we   <= "1111";
+					o_controlc  <= '1';
 					k           <= k -4 ;
 				else
 					k         <= k;
 					o_memc_en <= '0';
 					o_memc_we <= "0000";
+					o_controlc <= '1';
 				end if;
-
+				o_done <= '0';
 				if (k = 0) then
-					o_done <= '1';
+					o_controlc <= '0';
+					o_done     <= '1';
 					report "Reduce_extension done";
 					k <= M;
 				end if;
 
-				o_done <= '0';
 			end if;
 		end if;
 	end process;

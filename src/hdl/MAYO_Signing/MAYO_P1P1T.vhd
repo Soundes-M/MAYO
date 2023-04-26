@@ -6,7 +6,7 @@
 -- Author      : User Name <user.email@user.company.com>
 -- Company     : User Company Name
 -- Created     : Thu Jan 12 13:40:45 2023
--- Last update : Mon Jan 16 12:42:20 2023
+-- Last update : Wed Apr 26 16:28:37 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -48,6 +48,7 @@ entity MAYO_P1P1T is
 		o_mem0b_en   : out std_logic;
 		o_mem0b_rst  : out std_logic;
 		o_mem0b_we   : out std_logic_vector (3 downto 0);
+		o_control0b  : out std_logic;
 
 		--BRAM1-A
 		i_mem1a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -55,7 +56,8 @@ entity MAYO_P1P1T is
 		o_mem1a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem1a_en   : out std_logic;
 		o_mem1a_rst  : out std_logic;
-		o_mem1a_we   : out std_logic_vector (3 downto 0)
+		o_mem1a_we   : out std_logic_vector (3 downto 0);
+		o_control1a  : out std_logic
 
 		--BRAM1-B
 		--i_mem1b_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -96,24 +98,30 @@ begin
 	begin
 		if (rising_edge(clk)) then
 			if(rst = '1') then
-				s_src_adr  <= ZERO_32;
-				s_dsta_adr <= ZERO_32;
-				s_ji_eq    <= '0';
-				copy_index <= 0;
-				p1_in      <= ZERO_32;
-				bram0b.o   <= DEFAULT_OUT_BRAM;
-				state      <= idle;
+				s_src_adr   <= ZERO_32;
+				s_dsta_adr  <= ZERO_32;
+				s_ji_eq     <= '0';
+				copy_index  <= 0;
+				p1_in       <= ZERO_32;
+				bram0b.o    <= DEFAULT_OUT_BRAM;
+				o_control0b <= '0';
+				o_control1a <= '0';
+				state       <= idle;
 
 			else
 				case (state) is
 					when idle =>
-						copy_index <= 0 ;
+						copy_index  <= 0 ;
+						o_control1a <= '0';
+						o_control0b <= '0';
 						if (enable = '1') then
-							s_src_adr  <= i_src_adr;
-							s_dsta_adr <= i_dsta_adr;
-							s_dstb_adr <= i_dstb_adr;
-							s_ji_eq    <= i_ji_equal;
-							state      <= cpy0;
+							s_src_adr   <= i_src_adr;
+							s_dsta_adr  <= i_dsta_adr;
+							s_dstb_adr  <= i_dstb_adr;
+							s_ji_eq     <= i_ji_equal;
+							o_control1a <= '1';
+							o_control0b <= '1';
+							state       <= cpy0;
 						else
 							state      <= state;
 							s_ji_eq    <= s_ji_eq;
@@ -146,7 +154,8 @@ begin
 
 					when done =>
 						if (state1 = done) then
-							state <= idle;
+							o_control0b <= '0';
+							state       <= idle;
 						end if;
 
 					when others =>
@@ -215,6 +224,7 @@ begin
 							write_index <= write_index +4;
 							state1      <= main4;
 						else
+
 							state1 <= done;
 						end if;
 					when others =>
@@ -267,11 +277,11 @@ begin
 	o_mem1a_we      <= bram1a.o.o_we;
 
 	--BRAM1-B
-		--bram1b.i.i_dout <= i_mem1b_dout;
-		--o_mem1b_din     <= bram1b.o.o_din;
-		--o_mem1b_addr    <= bram1b.o.o_addr;
-		--o_mem1b_en      <= bram1b.o.o_en;
-		--o_mem1b_rst     <= bram1b.o.o_rst;
-		--o_mem1b_we      <= bram1b.o.o_we;
+	--bram1b.i.i_dout <= i_mem1b_dout;
+	--o_mem1b_din     <= bram1b.o.o_din;
+	--o_mem1b_addr    <= bram1b.o.o_addr;
+	--o_mem1b_en      <= bram1b.o.o_en;
+	--o_mem1b_rst     <= bram1b.o.o_rst;
+	--o_mem1b_we      <= bram1b.o.o_we;
 
 end architecture Behavioral; 

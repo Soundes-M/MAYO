@@ -253,6 +253,19 @@ PACKAGE MAYO_COMMON IS
   CONSTANT DDR_RANGE    : positive := 536_870_912; -- Zedboard --> 512MB DRAM TODO: Chnage this!
   CONSTANT DDR_HIGH_ADR : positive := DDR_BASE_ADR + DDR_RANGE - 4;
 
+  -- Default secret key if none provided
+  type mem_array is array (0 to 7) of std_logic_vector(31 downto 0);
+  constant NOT_SECRECT_KEY : mem_array := (
+      std_logic_vector(to_unsigned(21, 8)) & std_logic_vector(to_unsigned(166, 8)) & std_logic_vector(to_unsigned(31, 8)) & std_logic_vector(to_unsigned(245, 8)),
+      std_logic_vector(to_unsigned(76, 8)) & std_logic_vector(to_unsigned(19, 8)) & std_logic_vector(to_unsigned(162, 8)) & std_logic_vector(to_unsigned(5, 8)),
+      std_logic_vector(to_unsigned(53, 8)) & std_logic_vector(to_unsigned(151, 8)) & std_logic_vector(to_unsigned(54, 8)) & std_logic_vector(to_unsigned(161, 8)),
+      std_logic_vector(to_unsigned(60, 8)) & std_logic_vector(to_unsigned(7, 8)) & std_logic_vector(to_unsigned(220, 8)) & std_logic_vector(to_unsigned(230, 8)),
+      std_logic_vector(to_unsigned(133, 8)) & std_logic_vector(to_unsigned(138, 8)) & std_logic_vector(to_unsigned(34, 8)) & std_logic_vector(to_unsigned(161, 8)),
+      std_logic_vector(to_unsigned(229, 8)) & std_logic_vector(to_unsigned(137, 8)) & std_logic_vector(to_unsigned(220, 8)) & std_logic_vector(to_unsigned(127, 8)),
+      std_logic_vector(to_unsigned(96, 8)) & std_logic_vector(to_unsigned(162, 8)) & std_logic_vector(to_unsigned(189, 8)) & std_logic_vector(to_unsigned(226, 8)),
+      std_logic_vector(to_unsigned(231, 8)) & std_logic_vector(to_unsigned(210, 8)) & std_logic_vector(to_unsigned(70, 8)) & std_logic_vector(to_unsigned(194, 8))
+    );
+
 END PACKAGE MAYO_COMMON;
 
 -- PACKAGE BODY

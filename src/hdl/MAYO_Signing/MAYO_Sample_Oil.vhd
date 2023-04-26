@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari
 -- Company     : TU Berlin
 -- Created     : Sat Apr 22 15:07:52 2023
--- Last update : Sat Apr 22 15:38:20 2023
+-- Last update : Wed Apr 26 11:41:05 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -32,11 +32,6 @@ use work.MAYO_COMMON.all;
 use work.UTILS_COMMON.all;
 
 entity mayo_sample_oil is
-	generic ( -- Generics are usualy linked to constants, but can be set as INs
-		RHS_ADR : integer := RHS_BASE_ADR;
-		LIN_ADR : integer := LINEAR_BASE_ADR;
-		SOL_ADR : integer := OILSOL_BASE_ADR
-	);
 	port (
 		clk    : in  std_logic;
 		rst    : in  std_logic;
@@ -114,11 +109,15 @@ architecture Behavioral of mayo_sample_oil is
 	signal s_isColEven    : std_logic;
 	signal s_solution_col : std_logic_vector(PORT_WIDTH-1 downto 0);
 
+	constant RHS_ADR : integer := RHS_BASE_ADR;
+	constant LIN_ADR : integer := LINEAR_BASE_ADR;
+	constant SOL_ADR : integer := OILSOL_BASE_ADR;
+
 	alias col2 is rowcols_ctr;
 	alias sol_ctr is unpack_lin_ctr;
 
-	constant LSFR_SEED : std_logic_vector(s_lfsr_rnd'LENGTH-1 downto 0) := "101011";
 	signal s_lfsr_rnd  : std_logic_vector(5 downto 0);
+	constant LSFR_SEED : std_logic_vector(s_lfsr_rnd'LENGTH-1 downto 0) := "101011";
 	signal lfsr_en     : std_logic := '0';
 
 	file myFile      : text;

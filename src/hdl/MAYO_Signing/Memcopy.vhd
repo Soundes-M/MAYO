@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari 
 -- Company     : TU BERLIN
 -- Created     : Mon Jan  9 00:23:33 2023
--- Last update : Sun Apr 23 00:07:01 2023
+-- Last update : Wed Apr 26 16:38:44 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -40,20 +40,22 @@ entity memcpy is
 		i_mem_port_sel : in  std_logic_vector(1 downto 0);
 
 		--BRAM0-A
-		i_src_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_src_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_src_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_src_en   : out std_logic;
-		o_src_rst  : out std_logic;
-		o_src_we   : out std_logic_vector (3 downto 0);
+		i_src_dout    : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_src_din     : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_src_addr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_src_en      : out std_logic;
+		o_src_rst     : out std_logic;
+		o_src_we      : out std_logic_vector (3 downto 0);
+		o_src_control : out std_logic;
 
 		--BRAM0-B
-		i_dest_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_dest_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_dest_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_dest_en   : out std_logic;
-		o_dest_rst  : out std_logic;
-		o_dest_we   : out std_logic_vector (3 downto 0)
+		i_dest_dout    : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_dest_din     : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_dest_addr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_dest_en      : out std_logic;
+		o_dest_rst     : out std_logic;
+		o_dest_we      : out std_logic_vector (3 downto 0);
+		o_dest_control : out std_logic
 	);
 
 end entity memcpy;
@@ -78,12 +80,16 @@ begin
 	begin
 		if (rising_edge(clk)) then
 			if (rst = '1') then
-				copy_index <= 0;
-				o_done     <= '0';
-				len        <= 0 ;
-				s_src_adr  <= ZERO_32;
-				s_dst_adr  <= ZERO_32;
-				state      <= idle;
+				copy_index     <= 0;
+				o_done         <= '0';
+				len            <= 0 ;
+				s_src_adr      <= ZERO_32;
+				s_dst_adr      <= ZERO_32;
+				bram_dst.o     <= DEFAULT_OUT_BRAM;
+				bram_src.o     <= DEFAULT_OUT_BRAM;
+				o_src_control  <= '0';
+				o_dest_control <= '0';
+				state          <= idle;
 
 			else
 				case (state) is
@@ -91,11 +97,13 @@ begin
 						o_done <= '0';
 
 						if (start = '1')then
-							s_src_adr  <= i_src_adr;
-							s_dst_adr  <= i_dst_adr;
-							len        <= to_integer(unsigned(i_len));
-							s_mode     <= i_mem_port_sel;
-							copy_index <= 0;
+							s_src_adr      <= i_src_adr;
+							s_dst_adr      <= i_dst_adr;
+							len            <= to_integer(unsigned(i_len));
+							s_mode         <= i_mem_port_sel;
+							copy_index     <= 0;
+							o_src_control  <= '1';
+							o_dest_control <= '1';
 
 							case (i_mem_port_sel) is
 								when "00" =>
