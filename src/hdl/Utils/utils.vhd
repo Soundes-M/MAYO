@@ -6,13 +6,13 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Mon Apr 24 17:57:04 2023
+-- Last update : Sat Apr 29 18:38:33 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
 -- Copyright (c) 2022 TU Berlin
 -------------------------------------------------------------------------------
--- Description: 
+-- Description: Utils package for MAYO that contains useful funcs
 --------------------------------------------------------------------------------
 -- Revisions:  Revisions and documentation are controlled by
 -- the revision control system (RCS).  The RCS should be consulted

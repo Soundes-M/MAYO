@@ -1,3 +1,24 @@
+--------------------------------------------------------------------------------
+-- Title       : MAYO SCRAMBLE
+-- Project     : MAYO
+--------------------------------------------------------------------------------
+-- File        : MAYO_Scramble.vhd
+-- Author      : Oussama Sayari
+-- Company     : TU Berlin
+-- Created     : Sat Apr 29 18:39:54 2023
+-- Last update : Sat Apr 29 18:40:16 2023
+-- Platform    : Designed for Zynq 7000 Series
+-- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
+--------------------------------------------------------------------------------
+-- Copyright (c) 2023 TU Berlin
+-------------------------------------------------------------------------------
+-- Description: Used to scramble ops against power analysis attacks 
+--------------------------------------------------------------------------------
+-- Revisions:  Revisions and documentation are controlled by
+-- the revision control system (RCS).  The RCS should be consulted
+-- on revision history.
+-------------------------------------------------------------------------------
+
 LIBRARY IEEE;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;

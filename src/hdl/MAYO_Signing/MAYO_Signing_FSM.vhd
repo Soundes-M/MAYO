@@ -1,3 +1,25 @@
+--------------------------------------------------------------------------------
+-- Title       : SIGN FSM
+-- Project     : MAYO
+--------------------------------------------------------------------------------
+-- File        : MAYO_Signing_FSM.vhd
+-- Author      : Oussama Sayari
+-- Company     : TU Berlin
+-- Created     : Sat Apr 29 18:37:13 2023
+-- Last update : Sat Apr 29 18:38:00 2023
+-- Platform    : Designed for Zynq 7000 Series
+-- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
+--------------------------------------------------------------------------------
+-- Copyright (c) 2023 TU Berlin
+-------------------------------------------------------------------------------
+-- Description: FSM that describes the main function for the signing process in MAYO
+-- This should be used with the BRAM Arbiters and the available cores.
+--------------------------------------------------------------------------------
+-- Revisions:  Revisions and documentation are controlled by
+-- the revision control system (RCS).  The RCS should be consulted
+-- on revision history.
+-------------------------------------------------------------------------------
+
 LIBRARY IEEE;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -15,6 +37,7 @@ entity MAYO_SIGNING_FSM is
 		i_enable : in  std_logic;
 		i_secret : in  std_logic;
 		o_done   : out std_logic;
+		o_err    : out std_logic;
 
 		o_trng_r     : out std_logic;
 		o_trng_w     : out std_logic;
@@ -269,11 +292,13 @@ begin
 				case (state) is
 					when idle =>
 						o_done      <= '0';
+						o_err       <= "00";
 						o_control0a <= '0';
 						o_control0a <= '0';
 						o_control1a <= '0';
 						o_control2a <= '0';
 						o_control2b <= '0';
+
 						if (i_enable = '1') then
 							report "MAYO Signing core :" &
 							LF & "PK_ADR : " & integer'image(PK_BASE_ADR) & " " & integer'image(CPU_SPACE_PK_BASE_ADR) &
@@ -283,7 +308,6 @@ begin
 							s_secret <= i_secret;
 							index    <= 0;
 							state    <= msg0;
-
 						else
 							state <= idle;
 						end if;
@@ -804,6 +828,7 @@ begin
 					-- INFINITE WHILE LOOP BEGIN
 					--------------------------------------------------------
 					when sign4 =>
+						o_err               <= "00";
 						o_sam_vin_input_adr <= std_logic_vector(to_unsigned(SIG_INPUTS,PORT_WIDTH)); -- Small BRAM
 						o_sam_vin_en        <= '1';
 						state               <= sign5;
@@ -1376,6 +1401,7 @@ begin
 								state <= sample6;
 							else
 								state <= sign4; -- OUT OF WHILE LOOP
+								o_err <= "01";
 								report "Sample oil did not find a solution, repeating...";
 							end if;
 						else

@@ -1,3 +1,24 @@
+--------------------------------------------------------------------------------
+-- Title       : ADD_OIL
+-- Project     : MAYO
+--------------------------------------------------------------------------------
+-- File        : MAYO_Add_Oil.vhd
+-- Author      : Oussama Sayari
+-- Company     : TU Berlin
+-- Created     : Sat Apr 29 18:39:04 2023
+-- Last update : Sat Apr 29 18:39:44 2023
+-- Platform    : Designed for Zynq 7000 Series
+-- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
+--------------------------------------------------------------------------------
+-- Copyright (c) 2023 TU Berlin
+-------------------------------------------------------------------------------
+-- Description: Adds solution to the appropriate memory space (used as final space)
+--------------------------------------------------------------------------------
+-- Revisions:  Revisions and documentation are controlled by
+-- the revision control system (RCS).  The RCS should be consulted
+-- on revision history.
+-------------------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 use IEEE.NUMERIC_STD.all;

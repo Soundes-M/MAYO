@@ -10,7 +10,7 @@
 --------------------------------------------------------------------------------
 -- Copyright (c) 2022 TU Berlin
 -------------------------------------------------------------------------------
--- Description: 
+-- Description: Memory space and param description for MAYO
 --------------------------------------------------------------------------------
 -- Revisions:  Revisions and documentation are controlled by
 -- the revision control system (RCS).  The RCS should be consulted
