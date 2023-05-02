@@ -66,6 +66,16 @@ end entity mayo_sample_oil_space;
 
 architecture Behavioral of mayo_sample_oil_space is
 
+	ATTRIBUTE X_INTERFACE_INFO                : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_memb_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_controlb  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb CTRL";
+
+
 	type state is (idle, rand0, rand1, rand2, rand3, main1, main2, main3, main4, main5, main6, main7, main8, done);
 
 	signal t_state : state := idle;

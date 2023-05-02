@@ -6,7 +6,7 @@
 -- Author      : User Name <user.email@user.company.com>
 -- Company     : User Company Name
 -- Created     : Thu Jan 12 13:40:45 2023
--- Last update : Wed Apr 26 16:28:37 2023
+-- Last update : Sun Apr 30 21:26:18 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -26,7 +26,6 @@ USE ieee.numeric_std.ALL;
 
 use work.MAYO_COMMON.all;
 use work.UTILS_COMMON.all;
-
 
 entity MAYO_P1P1T is
 	port (
@@ -72,6 +71,25 @@ entity MAYO_P1P1T is
 end entity;
 
 architecture Behavioral of MAYO_P1P1T is
+
+	ATTRIBUTE X_INTERFACE_INFO                 : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mem0b_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control0b  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mem1a_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control1a  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a CTRL";
+
+
 	type states_t is (idle, cpy0, cpy1, cpy2, done);
 	signal state : states_t := idle;
 	type states1_t is (idle, main0, main1, main2, main3, main4, main5, done);

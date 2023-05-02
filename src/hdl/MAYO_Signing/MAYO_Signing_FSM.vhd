@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari
 -- Company     : TU Berlin
 -- Created     : Sat Apr 29 18:37:13 2023
--- Last update : Sat Apr 29 18:38:00 2023
+-- Last update : Tue May  2 17:04:21 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ entity MAYO_SIGNING_FSM is
 		i_enable : in  std_logic;
 		i_secret : in  std_logic;
 		o_done   : out std_logic;
-		o_err    : out std_logic;
+		o_err    : out std_logic_vector(1 downto 0);
 
 		o_trng_r     : out std_logic;
 		o_trng_w     : out std_logic;
@@ -184,6 +184,63 @@ entity MAYO_SIGNING_FSM is
 end entity MAYO_SIGNING_FSM;
 
 ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
+	--------------------------------------------------------------------------------
+	-- INTERFACES
+	--------------------------------------------------------------------------------
+	ATTRIBUTE X_INTERFACE_INFO                 : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0a_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0a DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0a_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0a ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0a_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0a EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0a_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0a RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0a_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0a WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mem0a_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0a DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control0a  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0a CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0b DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0b ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0b EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0b RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0b WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mem0b_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0b DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control0b  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign0b CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign1a DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign1a ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign1a EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign1a RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign1a WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mem1a_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign1a DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control1a  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign1a CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_mem2a_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2a DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem2a_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2a ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem2a_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2a EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem2a_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2a RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem2a_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2a WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mem2a_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2a DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control2a  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2a CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_mem2b_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2b DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem2b_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2b ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem2b_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2b EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem2b_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2b RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem2b_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2b WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mem2b_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2b DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control2b  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sign2b CTRL";
+
+	ATTRIBUTE X_INTERFACE_IGNORE                      : STRING;
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_lin_vec_addr    : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_lin_coeffs_addr : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_lin_out_addr    : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_add_v1_addr     : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_add_v2_addr     : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_add_out_addr    : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_sam_oil_addr    : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_hash_en         : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_sam_vin_en      : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_red_ext_en      : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF o_sam_oil_en      : SIGNAL IS "TRUE";
+
 	type state_fsm_t is (idle,expand_sk0,expand_sk1,expand_sk2,expand_sk3,expand_sk4,expand_sk5,expand_sk6, expand_sk7, expand_sk8, sample0, sample1, sample2, sample3, sample4, sample5, computeBil0,
 			computeBil1, computeBil2, computeBil3, computeBil4, computeBil5, computeBil6, computeBil7, computeBil8, computeBil9, computeBil10, computeBil11, computeBil12, computeBil13,
 			computeBil14, computeBil15, transpose0, transpose1, transpose2, transpose3, sign0, sign1, sign2, sign3, sign4, sign5, sign6, sign7, sign8, sign9, sign10, sign11, sign12, sign13,
@@ -317,10 +374,10 @@ begin
 					------------------------------------------------------------------------
 					when msg0 =>
 						o_memcpy1_start        <= '1';
-						o_memcpy1_src_adr      <= std_logic_vector(to_unsigned(CPU_SPACE_PK_BASE_ADR,PORT_WIDTH)) ;
-						o_memcpy1_dst_adr      <= std_logic_vector(to_unsigned(PK_BASE_ADR,PORT_WIDTH));
+						o_memcpy1_src_adr      <= std_logic_vector(to_unsigned(CPU_SPACE_PK_BASE_ADR,PORT_WIDTH)); -- BRAM II 
+						o_memcpy1_dst_adr      <= std_logic_vector(to_unsigned(PK_BASE_ADR,PORT_WIDTH));           -- BRAM II 
 						o_memcpy1_len          <= std_logic_vector(to_unsigned(PK_BYTES,PORT_WIDTH));
-						o_memcpy1_mem_port_sel <= "00";
+						o_memcpy1_mem_port_sel <= "01";
 						state                  <= msg1;
 
 					when msg1 =>
@@ -334,10 +391,10 @@ begin
 					when msg2 =>
 						if (s_secret = '1') then
 							o_memcpy1_start        <= '1';
-							o_memcpy1_src_adr      <= std_logic_vector(to_unsigned(CPU_SPACE_SK_BASE_ADR,PORT_WIDTH)) ;
-							o_memcpy1_dst_adr      <= std_logic_vector(to_unsigned(SK_BASE_ADR,PORT_WIDTH));
+							o_memcpy1_src_adr      <= std_logic_vector(to_unsigned(CPU_SPACE_SK_BASE_ADR,PORT_WIDTH)); -- BRAM II 
+							o_memcpy1_dst_adr      <= std_logic_vector(to_unsigned(SK_BASE_ADR,PORT_WIDTH));           -- BRAM II 
 							o_memcpy1_len          <= std_logic_vector(to_unsigned(SK_BYTES,PORT_WIDTH));
-							o_memcpy1_mem_port_sel <= "00";
+							o_memcpy1_mem_port_sel <= "01";
 							state                  <= msg3;
 						else
 							o_control0a <= '1';
@@ -374,10 +431,10 @@ begin
 
 					when msg4 =>
 						o_memcpy1_start        <= '1';
-						o_memcpy1_src_adr      <= std_logic_vector(to_unsigned(CPU_SPACE_MESSAGE_BASE_ADR,PORT_WIDTH)) ;
-						o_memcpy1_dst_adr      <= std_logic_vector(to_unsigned(MSG_BASE_ADR,PORT_WIDTH));
+						o_memcpy1_src_adr      <= std_logic_vector(to_unsigned(CPU_SPACE_MESSAGE_BASE_ADR,PORT_WIDTH)) ; -- BRAM II 
+						o_memcpy1_dst_adr      <= std_logic_vector(to_unsigned(MSG_BASE_ADR,PORT_WIDTH));                -- BRAM II 
 						o_memcpy1_len          <= std_logic_vector(to_unsigned(MESSAGE_BYTES,PORT_WIDTH));
-						o_memcpy1_mem_port_sel <= "00";
+						o_memcpy1_mem_port_sel <= "01";
 						state                  <= msg5;
 
 					when msg5 =>
@@ -429,8 +486,8 @@ begin
 						--------------------------------------------------------------------
 						o_hash_mlen      <= std_logic_vector(to_unsigned(SEED_BYTES,PORT_WIDTH));
 						o_hash_olen      <= std_logic_vector(to_unsigned(P1_BYTES,PORT_WIDTH));
-						o_hash_read_adr  <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH));
-						o_hash_write_adr <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH)); -- Linked to BRAM 1 (BIG)
+						o_hash_read_adr  <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH)); -- BRAM II
+						o_hash_write_adr <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH)); -- BRAM II
 						o_hash_en        <= '1';
 						state            <= expand_sk4;
 
@@ -446,12 +503,12 @@ begin
 
 					when expand_sk5 =>
 						if (i_hash_done = '1') then
-							o_red_bram_sel <= '1';
+							o_red_bram_sel <= '1'; -- BRAM II only
 							state          <= expand_sk6;
 						end if;
 
 					when expand_sk6 =>
-						o_red_adr    <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH));
+						o_red_adr    <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH)); -- BRAM II 
 						o_red_len    <= std_logic_vector(to_unsigned(P1_BYTES,PORT_WIDTH));
 						o_red_enable <= '1';
 						state        <= expand_sk7;
@@ -468,9 +525,9 @@ begin
 					--------------------------------------------------------------------
 					-- EXPAND PK END
 					--------------------------------------------------------------------
-					when sample0 => -- USES BOTH BRAM 0 PORTS!
+					when sample0 =>
 						o_sam_enable   <= '1';
-						o_sam_oil_addr <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_OIL,PORT_WIDTH));
+						o_sam_oil_addr <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_OIL,PORT_WIDTH)); -- BRAM II
 						state          <= sample1;
 
 					when sample1 =>
@@ -516,10 +573,10 @@ begin
 							state <= computeBil1;
 						end if;
 
-					when computeBil3 => -- Runs for M 
-						o_p1p1t_src_adr  <= s_p1_adr;
-						o_p1p1t_dsta_adr <= s_p1p1t_adr;
-						o_p1p1t_dstb_adr <= s_p1p1t_inv_adr;
+					when computeBil3 =>                    -- Runs for M 
+						o_p1p1t_src_adr  <= s_p1_adr;        -- BRAM II 
+						o_p1p1t_dsta_adr <= s_p1p1t_adr;     -- BRAM III 
+						o_p1p1t_dstb_adr <= s_p1p1t_inv_adr; -- BRAM III 
 						if (i = j) then
 							o_p1p1t_ji_equal <= '1';
 						else
@@ -588,9 +645,9 @@ begin
 					when computeBil9 =>
 						o_lin_enable      <= '1';
 						o_lin_len         <= std_logic_vector(to_unsigned(N-O,PORT_WIDTH));
-						o_lin_vec_addr    <= s_p1_adr;
-						o_lin_coeffs_addr <= s_p1p1t_adr;
-						o_lin_out_addr    <= s_p1p1t_inv_adr;
+						o_lin_vec_addr    <= s_p1_adr;        -- BRAM III
+						o_lin_coeffs_addr <= s_p1p1t_adr;     -- BRAM II
+						o_lin_out_addr    <= s_p1p1t_inv_adr; -- BRAM III
 						state             <= computeBil10;
 
 					when computeBil10 =>
@@ -637,10 +694,10 @@ begin
 
 					when computeBil13 =>
 						o_add_enable   <= '1';
-						o_add_v1_addr  <= s_p1p1t_adr;
-						o_add_v2_addr  <= s_p1_adr;
-						o_add_out_addr <= s_p1p1t_adr;
-						o_add_bram_sel <= "00"; -- TODO : Make sure that demux understands this 
+						o_add_v1_addr  <= s_p1p1t_adr; -- BRAM III
+						o_add_v2_addr  <= s_p1_adr;    -- BRAM II
+						o_add_out_addr <= s_p1p1t_adr; -- BRAM III
+						o_add_bram_sel <= "00";
 						state          <= computeBil14;
 
 					when computeBil14 =>
@@ -678,8 +735,8 @@ begin
 
 					when transpose2 =>
 						o_memcpy_start        <= '1';
-						o_memcpy_src_adr      <= std_logic_vector(to_unsigned(s_src_index,PORT_WIDTH)) ;
-						o_memcpy_dst_adr      <= std_logic_vector(to_unsigned(s_dest_index,PORT_WIDTH));
+						o_memcpy_src_adr      <= std_logic_vector(to_unsigned(s_src_index,PORT_WIDTH)) ; -- BRAM III
+						o_memcpy_dst_adr      <= std_logic_vector(to_unsigned(s_dest_index,PORT_WIDTH)); -- BRAM II
 						o_memcpy_len          <= std_logic_vector(to_unsigned(M,PORT_WIDTH));
 						o_memcpy_mem_port_sel <= "00";
 						state                 <= transpose3;
@@ -757,8 +814,8 @@ begin
 						-- Hash using small BRAM (2)
 						o_hash_mlen      <= std_logic_vector(to_unsigned(MESSAGE_BYTES,PORT_WIDTH));
 						o_hash_olen      <= std_logic_vector(to_unsigned(HASH_BYTES,PORT_WIDTH));
-						o_hash_read_adr  <= std_logic_vector(to_unsigned(MSG_BASE_ADR,PORT_WIDTH));
-						o_hash_write_adr <= std_logic_vector(to_unsigned(DIG_BASE_ADR + SEED_BYTES,PORT_WIDTH)); -- Linked to BRAM 1 (BIG)
+						o_hash_read_adr  <= std_logic_vector(to_unsigned(MSG_BASE_ADR,PORT_WIDTH));              -- BRAM I 
+						o_hash_write_adr <= std_logic_vector(to_unsigned(DIG_BASE_ADR + SEED_BYTES,PORT_WIDTH)); -- BRAM I 
 						o_hash_en        <= '1';
 						state            <= msgdgst1;
 
@@ -788,8 +845,8 @@ begin
 						-- Hash using small BRAM (2)
 						o_hash_mlen      <= std_logic_vector(to_unsigned(SEED_BYTES + HASH_BYTES,PORT_WIDTH));
 						o_hash_olen      <= std_logic_vector(to_unsigned(DIG_RANGE,PORT_WIDTH));
-						o_hash_read_adr  <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH));
-						o_hash_write_adr <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH)); -- Linked to BRAM 1 (BIG)
+						o_hash_read_adr  <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH)); -- BRAM I 
+						o_hash_write_adr <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH)); -- BRAM I 
 						o_hash_en        <= '1';
 						state            <= msgdgst5;
 
@@ -809,7 +866,7 @@ begin
 						end if;
 
 					when msgdgst7 =>
-						o_red_adr    <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH));
+						o_red_adr    <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH)); -- BRAM I 
 						o_red_len    <= std_logic_vector(to_unsigned(DIG_RANGE,PORT_WIDTH));
 						o_red_enable <= '1';
 						state        <= msgdgst8;
@@ -1000,9 +1057,9 @@ begin
 						o_control2a <= '0';
 						o_control0a <= '0';
 						-- TODO Check linear comb bram connections
-						o_lin_vec_addr    <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH)); -- Big bram 1
-						o_lin_coeffs_addr <= std_logic_vector(to_unsigned(PRODUCT_BASE_ADR,PORT_WIDTH));            -- big bram 2 
-						o_lin_out_addr    <= std_logic_vector(to_unsigned(VINEVAL_BASE_ADR + ctr*M,PORT_WIDTH));    -- (BIG DATA2)
+						o_lin_vec_addr    <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_P1,PORT_WIDTH)); -- BRAM II
+						o_lin_coeffs_addr <= std_logic_vector(to_unsigned(PRODUCT_BASE_ADR,PORT_WIDTH));            -- BRAM III
+						o_lin_out_addr    <= std_logic_vector(to_unsigned(VINEVAL_BASE_ADR + ctr*M,PORT_WIDTH));    -- BRAM III
 						o_lin_len         <= std_logic_vector(to_unsigned((N-O)*(N-O+1)/2,PORT_WIDTH));
 						o_lin_enable      <= '1';
 
@@ -1019,7 +1076,7 @@ begin
 							report "EvaluteP_vin done";
 							c         <= 0 ;
 							s_bil_adr <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_BILINEAR,PORT_WIDTH)); -- big bram 1 
-							s_lin_adr <= std_logic_vector(to_unsigned(LINEAR_BASE_ADR,PORT_WIDTH));                   -- bram big 2
+							s_lin_adr <= std_logic_vector(to_unsigned(LINEAR_BASE_ADR,PORT_WIDTH));                   -- big bram 2
 							state     <= sign21;
 						end if;
 						--------------------------------------------------------
@@ -1035,9 +1092,9 @@ begin
 						end if;
 
 					when sign22 =>
-						o_lin_vec_addr    <= s_bil_adr;
-						o_lin_coeffs_addr <= std_logic_vector(to_unsigned(VIN_BASE_ADR,PORT_WIDTH));
-						o_lin_out_addr    <= std_logic_vector(to_unsigned(P2VEC_BASE_ADR,PORT_WIDTH));
+						o_lin_vec_addr    <= s_bil_adr;                                                -- BRAM II
+						o_lin_coeffs_addr <= std_logic_vector(to_unsigned(VIN_BASE_ADR,PORT_WIDTH));   -- BRAM I
+						o_lin_out_addr    <= std_logic_vector(to_unsigned(P2VEC_BASE_ADR,PORT_WIDTH)); -- BRAM I 
 						o_lin_len         <= std_logic_vector(to_unsigned(N-O,PORT_WIDTH));
 						o_lin_enable      <= '1';
 						state             <= sign23;
@@ -1174,8 +1231,8 @@ begin
 
 					when sign33 =>
 						o_red_ext_en         <= '1';
-						o_red_ext_input_adr  <= std_logic_vector(to_unsigned(SM_TEMP_BASE_ADR,PORT_WIDTH));
-						o_red_ext_output_adr <= std_logic_vector(to_unsigned(MULTIED_BASE_ADR,PORT_WIDTH)); -- bram 2; (bram0a)
+						o_red_ext_input_adr  <= std_logic_vector(to_unsigned(SM_TEMP_BASE_ADR,PORT_WIDTH)); -- BRAM I
+						o_red_ext_output_adr <= std_logic_vector(to_unsigned(MULTIED_BASE_ADR,PORT_WIDTH)); -- BRAM III
 						state                <= sign34;
 
 					when sign34 =>
@@ -1193,10 +1250,10 @@ begin
 
 					when add_mult1 =>
 						o_add_enable   <= '1';
-						o_add_v1_addr  <= std_logic_vector(to_unsigned(MULTIED_BASE_ADR,PORT_WIDTH));
-						o_add_v2_addr  <= s_lin_adr;
-						o_add_out_addr <= s_lin_adr;
-						o_add_bram_sel <= "00"; -- ALL IN BIG bram 2
+						o_add_v1_addr  <= std_logic_vector(to_unsigned(MULTIED_BASE_ADR,PORT_WIDTH)); -- BRAM III
+						o_add_v2_addr  <= s_lin_adr;                                                  -- BRAM III
+						o_add_out_addr <= s_lin_adr;                                                  -- BRAM III
+						o_add_bram_sel <= "10";                                                       -- ALL IN BIG bram 2
 
 						state <= add_mult2;
 
@@ -1208,10 +1265,10 @@ begin
 
 					when add_mult3 =>
 						o_add_enable   <= '1';
-						o_add_v1_addr  <= std_logic_vector(to_unsigned(MULTIED_BASE_ADR,PORT_WIDTH));
-						o_add_v2_addr  <= s_lin1_adr;
-						o_add_out_addr <= s_lin1_adr;
-						o_add_bram_sel <= "00"; -- ALL IN BIG bram 2
+						o_add_v1_addr  <= std_logic_vector(to_unsigned(MULTIED_BASE_ADR,PORT_WIDTH)); -- BRAM III
+						o_add_v2_addr  <= s_lin1_adr;                                                 -- BRAM III
+						o_add_out_addr <= s_lin1_adr;                                                 -- BRAM III
+						o_add_bram_sel <= "10";                                                       -- ALL IN BIG bram 2
 
 						state <= add_mult4;
 
@@ -1353,8 +1410,8 @@ begin
 
 					when sign45 =>
 						o_red_ext_en         <= '1';
-						o_red_ext_input_adr  <= std_logic_vector(to_unsigned(SM_TEMP_BASE_ADR,PORT_WIDTH));
-						o_red_ext_output_adr <= std_logic_vector(to_unsigned(RHS_BASE_ADR,PORT_WIDTH)); -- bram 2; (bram0a)
+						o_red_ext_input_adr  <= std_logic_vector(to_unsigned(SM_TEMP_BASE_ADR,PORT_WIDTH)); -- BRAM I 
+						o_red_ext_output_adr <= std_logic_vector(to_unsigned(RHS_BASE_ADR,PORT_WIDTH));     -- BRAM III
 						state                <= sign46;
 
 					when sign46 =>
@@ -1365,7 +1422,7 @@ begin
 					when neg0 =>
 						o_neg_enable <= '1';
 						o_neg_len    <= std_logic_vector(to_unsigned(M,PORT_WIDTH));
-						o_neg_adr    <= std_logic_vector(to_unsigned(RHS_BASE_ADR,PORT_WIDTH));
+						o_neg_adr    <= std_logic_vector(to_unsigned(RHS_BASE_ADR,PORT_WIDTH)); -- BRAM III
 						state        <= neg1;
 
 					when neg1 =>
@@ -1376,9 +1433,9 @@ begin
 
 					when sign47 =>
 						o_add_enable   <= '1';
-						o_add_v1_addr  <= std_logic_vector(to_unsigned(RHS_BASE_ADR,PORT_WIDTH));
-						o_add_v2_addr  <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH)); -- Linked to BRAM 1 (BIG)
-						o_add_out_addr <= std_logic_vector(to_unsigned(RHS_BASE_ADR,PORT_WIDTH));
+						o_add_v1_addr  <= std_logic_vector(to_unsigned(RHS_BASE_ADR,PORT_WIDTH)); -- BRAM III
+						o_add_v2_addr  <= std_logic_vector(to_unsigned(DIG_BASE_ADR,PORT_WIDTH)); -- BRAM I
+						o_add_out_addr <= std_logic_vector(to_unsigned(RHS_BASE_ADR,PORT_WIDTH)); -- BRAM III
 						o_add_bram_sel <= "00";
 						state          <= sign48;
 					when sign48 =>
@@ -1392,7 +1449,7 @@ begin
 						state        <= sample4;
 
 					when sample4 =>
-						o_sam_enable <= '0';
+						o_sam_oil_en <= '0';
 						state        <= sample5;
 
 					when sample5 =>
@@ -1428,10 +1485,10 @@ begin
 
 					when msg8 =>
 						o_memcpy1_start        <= '1';
-						o_memcpy1_src_adr      <= std_logic_vector(to_unsigned(SIG_BASE_ADR,PORT_WIDTH)) ;
-						o_memcpy1_dst_adr      <= std_logic_vector(to_unsigned(CPU_SPACE_SIG_BASE_ADR,PORT_WIDTH));
+						o_memcpy1_src_adr      <= std_logic_vector(to_unsigned(SIG_BASE_ADR,PORT_WIDTH));           -- BRAM II 
+						o_memcpy1_dst_adr      <= std_logic_vector(to_unsigned(CPU_SPACE_SIG_BASE_ADR,PORT_WIDTH)); -- BRAM II 
 						o_memcpy1_len          <= std_logic_vector(to_unsigned(SIG_BYTES,PORT_WIDTH));
-						o_memcpy1_mem_port_sel <= "00";
+						o_memcpy1_mem_port_sel <= "01";
 						state                  <= msg9;
 
 					when msg9 =>

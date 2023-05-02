@@ -31,11 +31,11 @@
         "mayo_trng_arbiter_0": ""
       },
       "MAYO_KEYGEN_FSM_0": "",
-      "mayo_add_vectors_0": "",
       "mayo_linear_combinat_0": "",
       "mayo_negate_0": "",
       "mayo_reduce_0": "",
-      "mayo_sample_oil_space_0": ""
+      "mayo_sample_oil_space_0": "",
+      "mayo_add_vectors_0": ""
     },
     "ports": {
       "rst": {
@@ -277,223 +277,313 @@
               "ref_name": "mayo_bram_arbiter",
               "boundary_crc": "0x0"
             },
+            "interface_ports": {
+              "BRAM": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_en",
+                    "direction": "O"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_dout",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_din",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_we",
+                    "direction": "O",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_addr",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_rst",
+                    "direction": "O"
+                  }
+                }
+              },
+              "BRAM_add": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_add_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_add_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_add_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_add_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_add_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_add_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_hash": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_hash_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_hash_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_hash_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_hash_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_hash_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_hash_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_key": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_key_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_key_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_key_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_key_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_key_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_key_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_lin": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_lin_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_lin_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_lin_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_lin_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_lin_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_lin_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_neg": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_neg_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_neg_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_neg_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_neg_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_neg_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_neg_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_red": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_red_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_red_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_red_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_red_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_red_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_red_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_sam": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_sam_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_sam_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_sam_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_sam_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_sam_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_sam_rst",
+                    "direction": "I"
+                  }
+                }
+              }
+            },
             "ports": {
-              "BRAM_add_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_add_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_add_en": {
-                "direction": "I"
-              },
-              "BRAM_add_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_add_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_add_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_lin_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_lin_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_lin_en": {
-                "direction": "I"
-              },
-              "BRAM_lin_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_lin_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_lin_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_neg_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_neg_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_neg_en": {
-                "direction": "I"
-              },
-              "BRAM_neg_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_neg_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_neg_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_red_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_red_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_red_en": {
-                "direction": "I"
-              },
-              "BRAM_red_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_red_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_red_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_key_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_key_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_key_en": {
-                "direction": "I"
-              },
-              "BRAM_key_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_key_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_key_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_sam_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_sam_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_sam_en": {
-                "direction": "I"
-              },
-              "BRAM_sam_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_sam_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_sam_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_hash_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_hash_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_hash_en": {
-                "direction": "I"
-              },
-              "BRAM_hash_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_hash_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_hash_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_din": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_addr": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_en": {
-                "direction": "O"
-              },
-              "BRAM_rst": {
-                "type": "rst",
-                "direction": "O"
-              },
-              "BRAM_we": {
-                "direction": "O",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_dout": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
               "add_control": {
                 "direction": "I"
               },
@@ -1177,223 +1267,313 @@
               "ref_name": "mayo_bram_arbiter",
               "boundary_crc": "0x0"
             },
+            "interface_ports": {
+              "BRAM": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_en",
+                    "direction": "O"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_dout",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_din",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_we",
+                    "direction": "O",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_addr",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_rst",
+                    "direction": "O"
+                  }
+                }
+              },
+              "BRAM_add": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_add_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_add_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_add_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_add_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_add_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_add_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_hash": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_hash_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_hash_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_hash_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_hash_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_hash_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_hash_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_key": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_key_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_key_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_key_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_key_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_key_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_key_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_lin": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_lin_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_lin_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_lin_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_lin_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_lin_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_lin_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_neg": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_neg_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_neg_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_neg_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_neg_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_neg_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_neg_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_red": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_red_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_red_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_red_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_red_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_red_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_red_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_sam": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_sam_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_sam_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_sam_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_sam_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_sam_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_sam_rst",
+                    "direction": "I"
+                  }
+                }
+              }
+            },
             "ports": {
-              "BRAM_add_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_add_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_add_en": {
-                "direction": "I"
-              },
-              "BRAM_add_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_add_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_add_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_lin_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_lin_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_lin_en": {
-                "direction": "I"
-              },
-              "BRAM_lin_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_lin_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_lin_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_neg_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_neg_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_neg_en": {
-                "direction": "I"
-              },
-              "BRAM_neg_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_neg_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_neg_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_red_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_red_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_red_en": {
-                "direction": "I"
-              },
-              "BRAM_red_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_red_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_red_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_key_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_key_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_key_en": {
-                "direction": "I"
-              },
-              "BRAM_key_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_key_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_key_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_sam_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_sam_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_sam_en": {
-                "direction": "I"
-              },
-              "BRAM_sam_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_sam_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_sam_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_hash_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_hash_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_hash_en": {
-                "direction": "I"
-              },
-              "BRAM_hash_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_hash_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_hash_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_din": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_addr": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_en": {
-                "direction": "O"
-              },
-              "BRAM_rst": {
-                "type": "rst",
-                "direction": "O"
-              },
-              "BRAM_we": {
-                "direction": "O",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_dout": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
               "add_control": {
                 "direction": "I"
               },
@@ -1427,223 +1607,313 @@
               "ref_name": "mayo_bram_arbiter",
               "boundary_crc": "0x0"
             },
+            "interface_ports": {
+              "BRAM": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_en",
+                    "direction": "O"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_dout",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_din",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_we",
+                    "direction": "O",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_addr",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_rst",
+                    "direction": "O"
+                  }
+                }
+              },
+              "BRAM_add": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_add_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_add_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_add_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_add_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_add_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_add_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_hash": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_hash_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_hash_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_hash_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_hash_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_hash_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_hash_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_key": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_key_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_key_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_key_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_key_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_key_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_key_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_lin": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_lin_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_lin_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_lin_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_lin_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_lin_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_lin_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_neg": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_neg_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_neg_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_neg_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_neg_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_neg_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_neg_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_red": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_red_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_red_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_red_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_red_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_red_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_red_rst",
+                    "direction": "I"
+                  }
+                }
+              },
+              "BRAM_sam": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM_sam_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM_sam_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM_sam_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM_sam_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM_sam_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "RST": {
+                    "physical_name": "BRAM_sam_rst",
+                    "direction": "I"
+                  }
+                }
+              }
+            },
             "ports": {
-              "BRAM_add_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_add_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_add_en": {
-                "direction": "I"
-              },
-              "BRAM_add_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_add_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_add_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_lin_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_lin_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_lin_en": {
-                "direction": "I"
-              },
-              "BRAM_lin_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_lin_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_lin_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_neg_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_neg_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_neg_en": {
-                "direction": "I"
-              },
-              "BRAM_neg_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_neg_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_neg_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_red_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_red_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_red_en": {
-                "direction": "I"
-              },
-              "BRAM_red_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_red_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_red_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_key_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_key_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_key_en": {
-                "direction": "I"
-              },
-              "BRAM_key_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_key_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_key_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_sam_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_sam_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_sam_en": {
-                "direction": "I"
-              },
-              "BRAM_sam_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_sam_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_sam_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_hash_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_hash_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_hash_en": {
-                "direction": "I"
-              },
-              "BRAM_hash_rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "BRAM_hash_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_hash_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_din": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_addr": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM_en": {
-                "direction": "O"
-              },
-              "BRAM_rst": {
-                "type": "rst",
-                "direction": "O"
-              },
-              "BRAM_we": {
-                "direction": "O",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM_dout": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
               "add_control": {
                 "direction": "I"
               },
@@ -2360,87 +2630,124 @@
               "ref_name": "mayo_hash_bram_arbiter",
               "boundary_crc": "0x0"
             },
+            "interface_ports": {
+              "BRAM_HashSmall": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM0_en",
+                    "direction": "O"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM0_dout",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM0_din",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM0_we",
+                    "direction": "O",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM0_addr",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "CTRL": {
+                    "physical_name": "BRAM0_control",
+                    "direction": "O"
+                  }
+                }
+              },
+              "BRAM_HashBig": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "BRAM1_en",
+                    "direction": "O"
+                  },
+                  "DOUT": {
+                    "physical_name": "BRAM1_dout",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "BRAM1_din",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "BRAM1_we",
+                    "direction": "O",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "BRAM1_addr",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "CTRL": {
+                    "physical_name": "BRAM1_control",
+                    "direction": "O"
+                  }
+                }
+              },
+              "hash": {
+                "mode": "Slave",
+                "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+                "port_maps": {
+                  "EN": {
+                    "physical_name": "hash_en",
+                    "direction": "I"
+                  },
+                  "DOUT": {
+                    "physical_name": "hash_dout",
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "DIN": {
+                    "physical_name": "hash_din",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "WE": {
+                    "physical_name": "hash_we",
+                    "direction": "I",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "ADDR": {
+                    "physical_name": "hash_addr",
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  }
+                }
+              }
+            },
             "ports": {
               "bram_sel": {
                 "direction": "I"
               },
-              "hash_din": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "hash_addr": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "hash_en": {
-                "direction": "I"
-              },
               "hash_control": {
                 "direction": "I"
-              },
-              "hash_we": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "hash_dout": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM0_din": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM0_addr": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM0_en": {
-                "direction": "O"
-              },
-              "BRAM0_we": {
-                "direction": "O",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM0_dout": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM0_control": {
-                "direction": "O"
-              },
-              "BRAM1_din": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM1_addr": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM1_en": {
-                "direction": "O"
-              },
-              "BRAM1_we": {
-                "direction": "O",
-                "left": "3",
-                "right": "0"
-              },
-              "BRAM1_dout": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "BRAM1_control": {
-                "direction": "O"
               }
             }
           }
@@ -2906,6 +3213,104 @@
           "ref_name": "MAYO_KEYGEN_FSM",
           "boundary_crc": "0x0"
         },
+        "interface_ports": {
+          "o_mem0a": {
+            "mode": "Slave",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_mem0a_en",
+                "direction": "O"
+              },
+              "DIN": {
+                "physical_name": "o_mem0a_din",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_mem0a_we",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_mem0a_addr",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_mem0a_rst",
+                "direction": "O"
+              }
+            }
+          },
+          "o_mem0b": {
+            "mode": "Slave",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_mem0b_en",
+                "direction": "O"
+              },
+              "DIN": {
+                "physical_name": "o_mem0b_din",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_mem0b_we",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_mem0b_addr",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_mem0b_rst",
+                "direction": "O"
+              }
+            }
+          },
+          "o_mem1a": {
+            "mode": "Slave",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_mem1a_en",
+                "direction": "O"
+              },
+              "DIN": {
+                "physical_name": "o_mem1a_din",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_mem1a_we",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_mem1a_addr",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_mem1a_rst",
+                "direction": "O"
+              }
+            }
+          }
+        },
         "ports": {
           "CLK": {
             "type": "clk",
@@ -3121,80 +3526,14 @@
             "left": "31",
             "right": "0"
           },
-          "o_mem0a_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_en": {
-            "direction": "O"
-          },
-          "o_mem0a_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem0a_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
           "i_mem0b_dout": {
             "direction": "I",
             "left": "31",
             "right": "0"
           },
-          "o_mem0b_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_en": {
-            "direction": "O"
-          },
-          "o_mem0b_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem0b_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
           "i_mem1a_dout": {
             "direction": "I",
             "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_en": {
-            "direction": "O"
-          },
-          "o_mem1a_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem1a_we": {
-            "direction": "O",
-            "left": "3",
             "right": "0"
           },
           "o_mem0a_control": {
@@ -3208,6 +3547,545 @@
           }
         }
       },
+      "mayo_linear_combinat_0": {
+        "vlnv": "xilinx.com:module_ref:mayo_linear_combination:1.0",
+        "xci_name": "Mayo_keygen_no_zynq_mayo_linear_combinat_0_0",
+        "xci_path": "ip/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0.xci",
+        "inst_hier_path": "mayo_linear_combinat_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mayo_linear_combination",
+          "boundary_crc": "0x0"
+        },
+        "interface_ports": {
+          "BRAM_Lin0a": {
+            "mode": "Master",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_mem0a_en",
+                "direction": "O"
+              },
+              "DOUT": {
+                "physical_name": "i_mem0a_dout",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "DIN": {
+                "physical_name": "o_mem0a_din",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_mem0a_we",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_mem0a_addr",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_mem0a_rst",
+                "direction": "O"
+              },
+              "CTRL": {
+                "physical_name": "o_control0a",
+                "direction": "O"
+              }
+            }
+          },
+          "BRAM_Lin0b": {
+            "mode": "Master",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_mem0b_en",
+                "direction": "O"
+              },
+              "DOUT": {
+                "physical_name": "i_mem0b_dout",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "DIN": {
+                "physical_name": "o_mem0b_din",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_mem0b_we",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_mem0b_addr",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_mem0b_rst",
+                "direction": "O"
+              },
+              "CTRL": {
+                "physical_name": "o_control0b",
+                "direction": "O"
+              }
+            }
+          },
+          "BRAM_Lin1a": {
+            "mode": "Master",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_mem1a_en",
+                "direction": "O"
+              },
+              "DOUT": {
+                "physical_name": "i_mem1a_dout",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "DIN": {
+                "physical_name": "o_mem1a_din",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_mem1a_we",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_mem1a_addr",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_mem1a_rst",
+                "direction": "O"
+              },
+              "CTRL": {
+                "physical_name": "o_control1a",
+                "direction": "O"
+              }
+            }
+          },
+          "i_coeffs": {
+            "mode": "Slave",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "ADDR": {
+                "physical_name": "i_coeffs_addr",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "rst",
+                "direction": "I"
+              }
+            }
+          },
+          "i_out": {
+            "mode": "Slave",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "ADDR": {
+                "physical_name": "i_out_addr",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "rst",
+                "direction": "I"
+              }
+            }
+          },
+          "i_vec": {
+            "mode": "Slave",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "ADDR": {
+                "physical_name": "i_vec_addr",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "rst",
+                "direction": "I"
+              }
+            }
+          }
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "i_enable": {
+            "direction": "I"
+          },
+          "o_done": {
+            "direction": "O"
+          },
+          "i_bram_halt": {
+            "direction": "I"
+          },
+          "i_len": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "mayo_negate_0": {
+        "vlnv": "xilinx.com:module_ref:mayo_negate:1.0",
+        "xci_name": "Mayo_keygen_no_zynq_mayo_negate_0_0",
+        "xci_path": "ip/Mayo_keygen_no_zynq_mayo_negate_0_0/Mayo_keygen_no_zynq_mayo_negate_0_0.xci",
+        "inst_hier_path": "mayo_negate_0",
+        "parameters": {
+          "BRAM_SIZE": {
+            "value": "32"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mayo_negate",
+          "boundary_crc": "0x0"
+        },
+        "interface_ports": {
+          "BRAM_Negate": {
+            "mode": "Master",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_enb",
+                "direction": "O"
+              },
+              "DOUT": {
+                "physical_name": "i_doutb",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "DIN": {
+                "physical_name": "o_dinb",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_web",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_addrb",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_rstb",
+                "direction": "O"
+              },
+              "CTRL": {
+                "physical_name": "o_control",
+                "direction": "O"
+              }
+            }
+          }
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "i_enable": {
+            "direction": "I"
+          },
+          "i_len": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_adr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_done": {
+            "direction": "O"
+          }
+        }
+      },
+      "mayo_reduce_0": {
+        "vlnv": "xilinx.com:module_ref:mayo_reduce:1.0",
+        "xci_name": "Mayo_keygen_no_zynq_mayo_reduce_0_0",
+        "xci_path": "ip/Mayo_keygen_no_zynq_mayo_reduce_0_0/Mayo_keygen_no_zynq_mayo_reduce_0_0.xci",
+        "inst_hier_path": "mayo_reduce_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mayo_reduce",
+          "boundary_crc": "0x0"
+        },
+        "interface_ports": {
+          "BRAM_Red0": {
+            "mode": "Master",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_en0",
+                "direction": "O"
+              },
+              "DOUT": {
+                "physical_name": "i_dout0",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "DIN": {
+                "physical_name": "o_din0",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_we0",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_addr0",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_rst0",
+                "direction": "O"
+              },
+              "CTRL": {
+                "physical_name": "o_control0",
+                "direction": "O"
+              }
+            }
+          },
+          "BRAM_Red1": {
+            "mode": "Master",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_en1",
+                "direction": "O"
+              },
+              "DOUT": {
+                "physical_name": "i_dout1",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "DIN": {
+                "physical_name": "o_din1",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_we1",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_addr1",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_rst1",
+                "direction": "O"
+              },
+              "CTRL": {
+                "physical_name": "o_control1",
+                "direction": "O"
+              }
+            }
+          }
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "i_enable": {
+            "direction": "I"
+          },
+          "i_bram_sel": {
+            "direction": "I"
+          },
+          "i_len": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_adr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "o_done": {
+            "direction": "O"
+          }
+        }
+      },
+      "mayo_sample_oil_space_0": {
+        "vlnv": "xilinx.com:module_ref:mayo_sample_oil_space:1.0",
+        "xci_name": "Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0",
+        "xci_path": "ip/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0.xci",
+        "inst_hier_path": "mayo_sample_oil_space_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "mayo_sample_oil_space",
+          "boundary_crc": "0x0"
+        },
+        "interface_ports": {
+          "BRAM_Samb": {
+            "mode": "Master",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_memb_en",
+                "direction": "O"
+              },
+              "DOUT": {
+                "physical_name": "i_memb_dout",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "DIN": {
+                "physical_name": "o_memb_din",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_memb_we",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_memb_addr",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_memb_rst",
+                "direction": "O"
+              },
+              "CTRL": {
+                "physical_name": "o_controlb",
+                "direction": "O"
+              }
+            }
+          },
+          "i_oil": {
+            "mode": "Slave",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "ADDR": {
+                "physical_name": "i_oil_addr",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "rst",
+                "direction": "I"
+              }
+            }
+          }
+        },
+        "ports": {
+          "i_clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "i_enable": {
+            "direction": "I"
+          },
+          "o_done": {
+            "direction": "O"
+          },
+          "o_trng_r": {
+            "direction": "O"
+          },
+          "o_trng_w": {
+            "direction": "O"
+          },
+          "o_trng_data": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "i_trng_data": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "i_trng_valid": {
+            "direction": "I"
+          },
+          "i_trng_done": {
+            "direction": "I"
+          },
+          "o_trng_sel": {
+            "direction": "O"
+          }
+        }
+      },
       "mayo_add_vectors_0": {
         "vlnv": "xilinx.com:module_ref:mayo_add_vectors:1.0",
         "xci_name": "Mayo_keygen_no_zynq_mayo_add_vectors_0_0",
@@ -3217,6 +4095,134 @@
           "ref_type": "hdl",
           "ref_name": "mayo_add_vectors",
           "boundary_crc": "0x0"
+        },
+        "interface_ports": {
+          "BRAM_Add_VecA": {
+            "mode": "Master",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_mema_en",
+                "direction": "O"
+              },
+              "DOUT": {
+                "physical_name": "i_mema_dout",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "DIN": {
+                "physical_name": "o_mema_din",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_mema_we",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_mema_addr",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_mema_rst",
+                "direction": "O"
+              },
+              "CTRL": {
+                "physical_name": "o_controla",
+                "direction": "O"
+              }
+            }
+          },
+          "BRAM_Add_VecB": {
+            "mode": "Master",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_memb_en",
+                "direction": "O"
+              },
+              "DOUT": {
+                "physical_name": "i_memb_dout",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "DIN": {
+                "physical_name": "o_memb_din",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_memb_we",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_memb_addr",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_memb_rst",
+                "direction": "O"
+              },
+              "CTRL": {
+                "physical_name": "o_controlb",
+                "direction": "O"
+              }
+            }
+          },
+          "BRAM_Add_VecC": {
+            "mode": "Master",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_memc_en",
+                "direction": "O"
+              },
+              "DOUT": {
+                "physical_name": "i_memc_dout",
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "DIN": {
+                "physical_name": "o_memc_din",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "WE": {
+                "physical_name": "o_memc_we",
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ADDR": {
+                "physical_name": "o_memc_addr",
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RST": {
+                "physical_name": "o_memc_rst",
+                "direction": "O"
+              },
+              "CTRL": {
+                "physical_name": "o_controlc",
+                "direction": "O"
+              }
+            }
+          }
         },
         "ports": {
           "i_clk": {
@@ -3257,516 +4263,6 @@
             "right": "0"
           },
           "o_done": {
-            "direction": "O"
-          },
-          "i_mema_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mema_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mema_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mema_en": {
-            "direction": "O"
-          },
-          "o_mema_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mema_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "i_memb_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_en": {
-            "direction": "O"
-          },
-          "o_memb_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_memb_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "i_memc_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memc_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memc_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memc_en": {
-            "direction": "O"
-          },
-          "o_memc_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_memc_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_controla": {
-            "direction": "O"
-          },
-          "o_controlb": {
-            "direction": "O"
-          },
-          "o_controlc": {
-            "direction": "O"
-          }
-        }
-      },
-      "mayo_linear_combinat_0": {
-        "vlnv": "xilinx.com:module_ref:mayo_linear_combination:1.0",
-        "xci_name": "Mayo_keygen_no_zynq_mayo_linear_combinat_0_0",
-        "xci_path": "ip/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0/Mayo_keygen_no_zynq_mayo_linear_combinat_0_0.xci",
-        "inst_hier_path": "mayo_linear_combinat_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mayo_linear_combination",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "i_enable": {
-            "direction": "I"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "i_bram_halt": {
-            "direction": "I"
-          },
-          "i_vec_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_coeffs_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_out_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_len": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_mem0a_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0a_en": {
-            "direction": "O"
-          },
-          "o_mem0a_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem0a_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "i_mem0b_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem0b_en": {
-            "direction": "O"
-          },
-          "o_mem0b_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem0b_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "i_mem1a_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_mem1a_en": {
-            "direction": "O"
-          },
-          "o_mem1a_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_mem1a_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_control0a": {
-            "direction": "O"
-          },
-          "o_control0b": {
-            "direction": "O"
-          },
-          "o_control1a": {
-            "direction": "O"
-          }
-        }
-      },
-      "mayo_negate_0": {
-        "vlnv": "xilinx.com:module_ref:mayo_negate:1.0",
-        "xci_name": "Mayo_keygen_no_zynq_mayo_negate_0_0",
-        "xci_path": "ip/Mayo_keygen_no_zynq_mayo_negate_0_0/Mayo_keygen_no_zynq_mayo_negate_0_0.xci",
-        "inst_hier_path": "mayo_negate_0",
-        "parameters": {
-          "BRAM_SIZE": {
-            "value": "32"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mayo_negate",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "i_enable": {
-            "direction": "I"
-          },
-          "i_len": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_adr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_doutb": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_addrb": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_dinb": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_enb": {
-            "direction": "O"
-          },
-          "o_rstb": {
-            "direction": "O"
-          },
-          "o_web": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "o_control": {
-            "direction": "O"
-          }
-        }
-      },
-      "mayo_reduce_0": {
-        "vlnv": "xilinx.com:module_ref:mayo_reduce:1.0",
-        "xci_name": "Mayo_keygen_no_zynq_mayo_reduce_0_0",
-        "xci_path": "ip/Mayo_keygen_no_zynq_mayo_reduce_0_0/Mayo_keygen_no_zynq_mayo_reduce_0_0.xci",
-        "inst_hier_path": "mayo_reduce_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mayo_reduce",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "i_enable": {
-            "direction": "I"
-          },
-          "i_bram_sel": {
-            "direction": "I"
-          },
-          "i_len": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_adr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_dout0": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_addr0": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_din0": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_en0": {
-            "direction": "O"
-          },
-          "o_rst0": {
-            "direction": "O"
-          },
-          "o_we0": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "i_dout1": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_addr1": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_din1": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_en1": {
-            "direction": "O"
-          },
-          "o_rst1": {
-            "direction": "O"
-          },
-          "o_we1": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "o_control0": {
-            "direction": "O"
-          },
-          "o_control1": {
-            "direction": "O"
-          }
-        }
-      },
-      "mayo_sample_oil_space_0": {
-        "vlnv": "xilinx.com:module_ref:mayo_sample_oil_space:1.0",
-        "xci_name": "Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0",
-        "xci_path": "ip/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0/Mayo_keygen_no_zynq_mayo_sample_oil_space_0_0.xci",
-        "inst_hier_path": "mayo_sample_oil_space_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "mayo_sample_oil_space",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "i_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "i_enable": {
-            "direction": "I"
-          },
-          "o_done": {
-            "direction": "O"
-          },
-          "i_oil_addr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_trng_r": {
-            "direction": "O"
-          },
-          "o_trng_w": {
-            "direction": "O"
-          },
-          "o_trng_data": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "i_trng_data": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "i_trng_valid": {
-            "direction": "I"
-          },
-          "i_trng_done": {
-            "direction": "I"
-          },
-          "i_memb_dout": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_din": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_addr": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "o_memb_en": {
-            "direction": "O"
-          },
-          "o_memb_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "o_memb_we": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          },
-          "o_controlb": {
-            "direction": "O"
-          },
-          "o_trng_sel": {
             "direction": "O"
           }
         }
@@ -4191,11 +4687,11 @@
           "hash/clk",
           "TRNG/clk",
           "MAYO_KEYGEN_FSM_0/CLK",
-          "mayo_add_vectors_0/i_clk",
           "mayo_linear_combinat_0/i_clk",
           "mayo_negate_0/i_clk",
           "mayo_reduce_0/i_clk",
-          "mayo_sample_oil_space_0/i_clk"
+          "mayo_sample_oil_space_0/i_clk",
+          "mayo_add_vectors_0/i_clk"
         ]
       },
       "rst_1": {
@@ -4205,11 +4701,11 @@
           "hash/rst",
           "TRNG/rst",
           "MAYO_KEYGEN_FSM_0/RESET",
-          "mayo_add_vectors_0/rst",
           "mayo_linear_combinat_0/rst",
           "mayo_negate_0/rst",
           "mayo_reduce_0/rst",
-          "mayo_sample_oil_space_0/rst"
+          "mayo_sample_oil_space_0/rst",
+          "mayo_add_vectors_0/rst"
         ]
       },
       "MAYO_KEYGEN_FSM_0_o_hash_en": {

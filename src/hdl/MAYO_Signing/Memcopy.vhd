@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari 
 -- Company     : TU BERLIN
 -- Created     : Mon Jan  9 00:23:33 2023
--- Last update : Wed Apr 26 16:38:44 2023
+-- Last update : Tue May  2 14:51:57 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -61,15 +61,33 @@ entity memcpy is
 end entity memcpy;
 
 architecture Behavioral of memcpy is
+
+	ATTRIBUTE X_INTERFACE_INFO                  : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of o_src_din     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Src_PORTA DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_src_addr    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Src_PORTA ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_src_en      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Src_PORTA EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_src_rst     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Src_PORTA RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_src_we      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Src_PORTA WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_src_dout    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Src_PORTA DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_src_control : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Src_PORTA CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_dest_din     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Dest_PORTB DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_dest_addr    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Dest_PORTB ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_dest_en      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Dest_PORTB EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_dest_rst     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Dest_PORTB RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_dest_we      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Dest_PORTB WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_dest_dout    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Dest_PORTB DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_dest_control : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Dest_PORTB CTRL";
+
 	type states_t is (idle, cpy0, cpy1, cpy2, cpy3, cpy4, cpy5, cpy6, cpy7, cpy8, cpy9, cpy10, done, done0, done1);
 	signal state                : states_t := idle;
 	signal copy_index           : integer  := 0 ;
 	signal s_src_adr, s_dst_adr : std_logic_vector(31 downto 0);
 	signal len                  : integer                      := 0;
 	signal s_mode               : std_logic_vector(1 downto 0) := "00" ;
-	-- 00 Two ports
-	-- 01 1 port: src 
-	-- 10 1 port: src
+	-- 00 Two ports in parallel read and write async
+	-- 01 1 port: read and write only on src port 
+	-- 10 1 port: read and write only on dst port
 	-- 11 RESERVED 
 
 	signal bram_src : bram_t := DEFAULT_BRAM;

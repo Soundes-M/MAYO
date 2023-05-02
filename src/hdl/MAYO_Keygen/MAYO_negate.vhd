@@ -51,6 +51,15 @@ end mayo_negate;
 
 architecture Behavioral of mayo_negate is
 
+	ATTRIBUTE X_INTERFACE_INFO              : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of o_dinb    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Negate DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_addrb   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Negate ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_enb     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Negate EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_rstb    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Negate RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_web     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Negate WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_doutb   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Negate DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Negate CTRL";
+
 	type state is (idle, read1, read2,read3, write1, write2, done);
 	signal t_state   : state := idle;
 	signal s_rstb    : std_logic;
@@ -93,8 +102,8 @@ begin
 
 					when read1 =>
 						--s_addrb <= std_logic_vector(unsigned(s_addrb) + to_unsigned(s_index,PORT_WIDTH)); -- Set READ ADR
-						if (s_index /= 0) then 
-						  s_addrb <= std_logic_vector(unsigned(s_addrb) + 4);
+						if (s_index /= 0) then
+							s_addrb <= std_logic_vector(unsigned(s_addrb) + 4);
 						end if;
 						s_enb   <= '1';
 						s_rstb  <= '0';

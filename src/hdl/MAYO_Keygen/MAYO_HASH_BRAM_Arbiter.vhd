@@ -39,6 +39,21 @@ end entity mayo_hash_bram_arbiter;
 
 architecture Behavioral of mayo_hash_bram_arbiter is
 
+	ATTRIBUTE X_INTERFACE_INFO                  : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of BRAM0_din     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashSmall DIN";
+	ATTRIBUTE X_INTERFACE_INFO of BRAM0_addr    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashSmall ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of BRAM0_en      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashSmall EN";
+	ATTRIBUTE X_INTERFACE_INFO of BRAM0_we      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashSmall WE";
+	ATTRIBUTE X_INTERFACE_INFO of BRAM0_dout    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashSmall DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of BRAM0_control : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashSmall CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of BRAM1_din     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashBig DIN";
+	ATTRIBUTE X_INTERFACE_INFO of BRAM1_addr    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashBig ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of BRAM1_en      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashBig EN";
+	ATTRIBUTE X_INTERFACE_INFO of BRAM1_we      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashBig WE";
+	ATTRIBUTE X_INTERFACE_INFO of BRAM1_dout    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashBig DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of BRAM1_control : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_HashBig CTRL";
+
 begin
 
 	BRAM0_din     <= hash_din     when bram_sel = '0' else ZERO_32;

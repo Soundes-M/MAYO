@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sun Dec  4 15:32:06 2022
+-- Last update : Tue May  2 15:08:08 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -71,6 +71,37 @@ end entity mayo_add_vectors;
 
 
 architecture Behavioral of mayo_add_vectors is
+
+	ATTRIBUTE X_INTERFACE_INFO                : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecA DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecA ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecA EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecA RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecA WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mema_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecA DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_controla  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecA CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecB DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecB ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecB EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecB RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecB WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_memb_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecB DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_controlb  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecB CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecC DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecC ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecC EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecC RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecC WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_memc_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecC DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_controlc  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Add_VecC CTRL";
+
+	ATTRIBUTE X_INTERFACE_IGNORE               : STRING;
+	ATTRIBUTE X_INTERFACE_IGNORE OF i_v1_addr  : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF i_v2_addr  : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF i_out_addr : SIGNAL IS "TRUE";
+
 	type state is (idle, read0, read1, read2, read3, read4, read5, read6, read7, read8, read9, read10, read11, read12, read13, read14, read15,
 			read16, read17, read18, read19, write0, write1, write2, write3, write4, done0, done1, done2);
 	type state_1 is (idle, main0, main1, main2);
@@ -146,6 +177,9 @@ begin
 								control0a <= '1';
 								control0b <= '1';
 								s_state   <= read13;
+							else
+								report "Reserved i_bram sel entry" severity error;
+								s_state <= idle;
 							end if;
 						end if;
 
@@ -416,7 +450,7 @@ begin
 						end if;
 
 					--------------------------------------------------------------------------------
-					-- BRAM SEL 01
+					-- BRAM SEL 10
 					--------------------------------------------------------------------------------
 					when main2 => -- [2 ~ 3 Clk Delay]
 						if (s_main_en = '1') then

@@ -40,6 +40,7 @@
     <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/mayo-axi/Mayo_axi_1.0"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../TRNG_project/TRNG_project.srcs"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/shake128"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/INTERFACES"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPDefaultOutputPath" Val="$PGENDIR/sources_1"/>
     <Option Name="IPCachePermission" Val="read"/>
@@ -199,9 +200,6 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_processing_system7_0_0/Mayo_keygen_processing_system7_0_0.xci">
-          <Proxy FileSetName="Mayo_keygen_processing_system7_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_xbar_0/Mayo_keygen_xbar_0.xci">
           <Proxy FileSetName="Mayo_keygen_xbar_0"/>
         </CompFileExtendedInfo>
@@ -229,8 +227,8 @@
         <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_blink_led_0_0/Mayo_keygen_blink_led_0_0.xci">
           <Proxy FileSetName="Mayo_keygen_blink_led_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_system_ila_0_3/Mayo_keygen_system_ila_0_3.xci">
-          <Proxy FileSetName="Mayo_keygen_system_ila_0_3"/>
+        <CompFileExtendedInfo CompFileName="Mayo_keygen.bd" FileRelPathName="ip/Mayo_keygen_processing_system7_0_0/Mayo_keygen_processing_system7_0_0.xci">
+          <Proxy FileSetName="Mayo_keygen_processing_system7_0_0"/>
         </CompFileExtendedInfo>
       </File>
       <File Path="$PGENDIR/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd">
@@ -301,6 +299,13 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_Sample_Vinegar.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_BRAM_Arbiter2.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -482,12 +487,6 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="Mayo_keygen_system_ila_0_3" Type="BlockSrcs" RelSrcDir="$PSRCDIR/Mayo_keygen_system_ila_0_3" RelGenDir="$PGENDIR/Mayo_keygen_system_ila_0_3">
-      <Config>
-        <Option Name="TopModule" Val="Mayo_keygen_system_ila_0_3"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -635,16 +634,6 @@
       <RQSFiles/>
     </Run>
     <Run Id="Mayo_keygen_blink_led_0_0_synth_1" Type="Ft3:Synth" SrcSet="Mayo_keygen_blink_led_0_0" Part="xc7z020clg484-1" ConstrsSet="Mayo_keygen_blink_led_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/Mayo_keygen_blink_led_0_0_synth_1" IncludeInArchive="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/Mayo_keygen_blink_led_0_0_synth_1">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="Mayo_keygen_system_ila_0_3_synth_1" Type="Ft3:Synth" SrcSet="Mayo_keygen_system_ila_0_3" Part="xc7z020clg484-1" ConstrsSet="Mayo_keygen_system_ila_0_3" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/Mayo_keygen_system_ila_0_3_synth_1" IncludeInArchive="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/Mayo_keygen_system_ila_0_3_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design"/>
@@ -867,23 +856,6 @@
       <RQSFiles/>
     </Run>
     <Run Id="Mayo_keygen_blink_led_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="Mayo_keygen_blink_led_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="Mayo_keygen_blink_led_0_0_synth_1" IncludeInArchive="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/Mayo_keygen_blink_led_0_0_impl_1">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2020"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="Mayo_keygen_system_ila_0_3_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg484-1" ConstrsSet="Mayo_keygen_system_ila_0_3" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="Mayo_keygen_system_ila_0_3_synth_1" IncludeInArchive="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/Mayo_keygen_system_ila_0_3_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>

@@ -14,7 +14,7 @@
 -- Description: 
 -- Reduces Input and write Output to BRAM (4 Bytes/CLK)
 -- Works only in chunks of 4!
--- BRAM SIZE : Max attached BRAM SIZE (Xilinx Max 8K). log2(Size) is needed.
+-- BRAM SIZE : Max attached BRAM SIZE. log2(Size) is needed.
 --------------------------------------------------------------------------------
 -- Revisions:  Revisions and documentation are controlled by
 -- the revision control system (RCS).  The RCS should be consulted
@@ -64,6 +64,23 @@ entity mayo_reduce is
 end mayo_reduce;
 
 architecture Behavioral of mayo_reduce is
+
+	ATTRIBUTE X_INTERFACE_INFO               : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of o_din0     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red0 DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_addr0    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red0 ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_en0      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red0 EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_rst0     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red0 RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_we0      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red0 WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_dout0    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red0 DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control0 : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red0 CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_din1     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red1 DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_addr1    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red1 ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_en1      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red1 EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_rst1     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red1 RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_we1      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red1 WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_dout1    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red1 DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control1 : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red1 CTRL";
 
 	type state is (idle, read1, read2, read3, read4, write1, write2, done);
 	signal t_state   : state := idle;

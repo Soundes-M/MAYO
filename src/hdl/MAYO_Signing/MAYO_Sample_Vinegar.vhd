@@ -54,8 +54,19 @@ entity mayo_sample_vinegar is
 	);
 end entity mayo_sample_vinegar;
 
-
 architecture Behavioral of mayo_sample_vinegar is
+
+	ATTRIBUTE X_INTERFACE_INFO                : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sam_vin0a DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sam_vin0a ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sam_vin0a EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sam_vin0a RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sam_vin0a WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_memb_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sam_vin0a DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_controlb  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sam_vin0a CTRL";
+
+	ATTRIBUTE X_INTERFACE_IGNORE       : STRING;
+	ATTRIBUTE X_INTERFACE_IGNORE OF en : SIGNAL IS "TRUE";
 
 	type states_t is (idle, rand0, rand1, rand2, rand3, main1, main2, main3, main4, main5, main6, main7, main8, main9, done);
 	signal state     : states_t := idle;
