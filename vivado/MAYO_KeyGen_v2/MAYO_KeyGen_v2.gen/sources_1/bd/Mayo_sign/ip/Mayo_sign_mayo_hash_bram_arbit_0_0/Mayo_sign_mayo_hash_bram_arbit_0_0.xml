@@ -9,7 +9,7 @@
       <spirit:name>BRAM_HashSmall</spirit:name>
       <spirit:busType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom_rtl" spirit:version="1.0"/>
-      <spirit:slave/>
+      <spirit:master/>
       <spirit:portMaps>
         <spirit:portMap>
           <spirit:logicalPort>
@@ -53,6 +53,14 @@
         </spirit:portMap>
         <spirit:portMap>
           <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>BRAM0_rst</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
             <spirit:name>CTRL</spirit:name>
           </spirit:logicalPort>
           <spirit:physicalPort>
@@ -65,7 +73,7 @@
       <spirit:name>BRAM_HashBig</spirit:name>
       <spirit:busType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom_rtl" spirit:version="1.0"/>
-      <spirit:slave/>
+      <spirit:master/>
       <spirit:portMaps>
         <spirit:portMap>
           <spirit:logicalPort>
@@ -105,6 +113,14 @@
           </spirit:logicalPort>
           <spirit:physicalPort>
             <spirit:name>BRAM1_addr</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>BRAM1_rst</spirit:name>
           </spirit:physicalPort>
         </spirit:portMap>
         <spirit:portMap>
@@ -351,6 +367,18 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
+        <spirit:name>BRAM0_rst</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
         <spirit:name>BRAM0_control</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
@@ -439,6 +467,18 @@
           <spirit:driver>
             <spirit:defaultValue spirit:format="long">8</spirit:defaultValue>
           </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>BRAM1_rst</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic</spirit:typeName>
+              <spirit:viewNameRef>dummy_view</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
         </spirit:wire>
       </spirit:port>
       <spirit:port>

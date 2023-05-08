@@ -82,6 +82,66 @@ end entity mayo_add_vectors_arbiter;
 
 architecture Behavioral of mayo_add_vectors_arbiter is
 
+	--------------------------------------------------------------------------------
+	-- INTERFACES
+	--------------------------------------------------------------------------------
+	ATTRIBUTE X_INTERFACE_INFO                : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of i_mema_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddA DIN";
+	ATTRIBUTE X_INTERFACE_INFO of i_mema_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddA ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of i_mema_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddA EN";
+	ATTRIBUTE X_INTERFACE_INFO of i_mema_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddA RST";
+	ATTRIBUTE X_INTERFACE_INFO of i_mema_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddA WE";
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddA DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of i_controla  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddA CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of i_memb_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddB DIN";
+	ATTRIBUTE X_INTERFACE_INFO of i_memb_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddB ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of i_memb_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddB EN";
+	ATTRIBUTE X_INTERFACE_INFO of i_memb_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddB RST";
+	ATTRIBUTE X_INTERFACE_INFO of i_memb_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddB WE";
+	ATTRIBUTE X_INTERFACE_INFO of o_memb_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddB DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of i_controlb  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddB CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of i_memc_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddC DIN";
+	ATTRIBUTE X_INTERFACE_INFO of i_memc_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddC ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of i_memc_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddC EN";
+	ATTRIBUTE X_INTERFACE_INFO of i_memc_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddC RST";
+	ATTRIBUTE X_INTERFACE_INFO of i_memc_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddC WE";
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddC DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of i_controlc  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_I_AddC CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM0a_din     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add0A DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM0a_addr    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add0A ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM0a_en      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add0A EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM0a_rst     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add0A RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM0a_we      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add0A WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_BRAM0a_dout    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add0A DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM0a_control : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add0A CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM1a_din     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add1A DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM1a_addr    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add1A ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM1a_en      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add1A EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM1a_rst     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add1A RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM1a_we      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add1A WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_BRAM1a_dout    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add1A DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM1a_control : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add1A CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2a_din     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2A DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2a_addr    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2A ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2a_en      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2A EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2a_rst     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2A RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2a_we      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2A WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_BRAM2a_dout    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2A DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2a_control : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2A CTRL";
+
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2b_din     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2B DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2b_addr    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2B ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2b_en      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2B EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2b_rst     : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2B RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2b_we      : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2B WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_BRAM2b_dout    : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2B DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2b_control : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_Add2B CTRL";
+
 begin
 
 	--------------------------------------------------------------------------------

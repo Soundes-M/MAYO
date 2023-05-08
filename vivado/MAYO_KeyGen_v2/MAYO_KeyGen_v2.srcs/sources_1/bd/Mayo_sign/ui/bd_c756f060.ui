@@ -1,0 +1,33 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-760,-241",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port clk_0 -pg 1 -lvl 0 -x -20 -y 210 -defaultsOSRD
+preplace port rst_0 -pg 1 -lvl 0 -x -20 -y 230 -defaultsOSRD
+preplace port i_enable -pg 1 -lvl 0 -x -20 -y 250 -defaultsOSRD
+preplace port o_done -pg 1 -lvl 2 -x 400 -y 300 -defaultsOSRD
+preplace portBus i_v1_addr -pg 1 -lvl 0 -x -20 -y 270 -defaultsOSRD
+preplace portBus i_v2_addr -pg 1 -lvl 0 -x -20 -y 290 -defaultsOSRD
+preplace portBus i_out_addr -pg 1 -lvl 0 -x -20 -y 310 -defaultsOSRD
+preplace portBus i_bram_sel -pg 1 -lvl 0 -x -20 -y 330 -defaultsOSRD
+preplace inst mayo_add_vectors_0 -pg 1 -lvl 1 -x 190 -y 270 -defaultsOSRD
+preplace inst mayo_add_vectors_arb_0 -pg 1 -lvl 1 -x 190 -y 80 -defaultsOSRD
+preplace netloc clk_0_1 1 0 1 NJ 210
+preplace netloc rst_0_1 1 0 1 NJ 230
+preplace netloc MAYO_SIGNING_FSM_0_o_add_enable 1 0 1 NJ 250
+preplace netloc MAYO_SIGNING_FSM_0_o_add_v1_addr 1 0 1 NJ 270
+preplace netloc MAYO_SIGNING_FSM_0_o_add_v2_addr 1 0 1 NJ 290
+preplace netloc MAYO_SIGNING_FSM_0_o_add_out_addr 1 0 1 NJ 310
+preplace netloc MAYO_SIGNING_FSM_0_o_add_bram_sel 1 0 1 NJ 330
+preplace netloc mayo_add_vectors_0_o_done 1 1 1 N 300
+preplace netloc mayo_add_vectors_0_BRAM_Add_VecA 1 0 2 0 390 380
+preplace netloc mayo_add_vectors_0_BRAM_Add_VecB 1 0 2 10 400 370
+preplace netloc mayo_add_vectors_0_BRAM_Add_VecC 1 0 2 20 410 360
+levelinfo -pg 1 -20 190 400
+pagesize -pg 1 -db -bbox -sgen -190 -10 500 420
+"
+}
+

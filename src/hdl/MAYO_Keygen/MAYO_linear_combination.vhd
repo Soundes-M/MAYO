@@ -108,7 +108,7 @@ entity mayo_linear_combination is
 end entity mayo_linear_combination;
 architecture Behavioral of mayo_linear_combination is
 
-	ATTRIBUTE X_INTERFACE_INFO                  : STRING;
+	ATTRIBUTE X_INTERFACE_INFO                 : STRING;
 	ATTRIBUTE X_INTERFACE_INFO of o_mem0a_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Lin0a DIN";
 	ATTRIBUTE X_INTERFACE_INFO of o_mem0a_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Lin0a ADDR";
 	ATTRIBUTE X_INTERFACE_INFO of o_mem0a_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Lin0a EN";
@@ -132,6 +132,11 @@ architecture Behavioral of mayo_linear_combination is
 	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Lin1a WE";
 	ATTRIBUTE X_INTERFACE_INFO of i_mem1a_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Lin1a DOUT";
 	ATTRIBUTE X_INTERFACE_INFO of o_control1a  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Lin1a CTRL";
+
+	ATTRIBUTE X_INTERFACE_IGNORE                  : STRING;
+	ATTRIBUTE X_INTERFACE_IGNORE OF i_vec_addr    : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF i_coeffs_addr : SIGNAL IS "TRUE";
+	ATTRIBUTE X_INTERFACE_IGNORE OF i_out_addr    : SIGNAL IS "TRUE";
 
 	type state is (idle, read1, read2, read3, read4, read5, done);
 	signal t_state : state := idle;

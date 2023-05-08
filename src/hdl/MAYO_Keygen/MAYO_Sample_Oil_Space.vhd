@@ -34,8 +34,8 @@ entity mayo_sample_oil_space is
 		o_done   : out std_logic; -- DONE
 
 		-- CONTROL 
-		i_oil_addr : in std_logic_vector(31 downto 0);
-
+		i_oil_addr   : in  std_logic_vector(31 downto 0);
+		i_mode       : in  std_logic; -- 0 : keygen, 1 : signing
 		o_trng_r     : out std_logic;
 		o_trng_w     : out std_logic;
 		o_trng_data  : out std_logic_vector(31 downto 0);
@@ -45,12 +45,13 @@ entity mayo_sample_oil_space is
 
 		--BRAM-0
 		-- ONLY FOR KEYGEN! Using 1 BRAM port
-		--		i_mema_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
-		--		o_mema_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		--		o_mema_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		--		o_mema_en   : out std_logic;
-		--		o_mema_rst  : out std_logic;
-		--		o_mema_we   : out std_logic_vector (3 downto 0);
+		i_mema_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mema_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mema_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_mema_en   : out std_logic;
+		o_mema_rst  : out std_logic;
+		o_mema_we   : out std_logic_vector (3 downto 0);
+		o_controla  : out std_logic;
 
 		--BRAM-1
 		i_memb_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -67,6 +68,14 @@ end entity mayo_sample_oil_space;
 architecture Behavioral of mayo_sample_oil_space is
 
 	ATTRIBUTE X_INTERFACE_INFO                : STRING;
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sama DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sama ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sama EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sama RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mema_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sama WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mema_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sama DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_controla  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Sama CTRL";
+
 	ATTRIBUTE X_INTERFACE_INFO of o_memb_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb DIN";
 	ATTRIBUTE X_INTERFACE_INFO of o_memb_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb ADDR";
 	ATTRIBUTE X_INTERFACE_INFO of o_memb_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb EN";
@@ -74,6 +83,9 @@ architecture Behavioral of mayo_sample_oil_space is
 	ATTRIBUTE X_INTERFACE_INFO of o_memb_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb WE";
 	ATTRIBUTE X_INTERFACE_INFO of i_memb_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb DOUT";
 	ATTRIBUTE X_INTERFACE_INFO of o_controlb  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Samb CTRL";
+
+	ATTRIBUTE X_INTERFACE_IGNORE               : STRING;
+	ATTRIBUTE X_INTERFACE_IGNORE OF i_oil_addr : SIGNAL IS "TRUE";
 
 
 	type state is (idle, rand0, rand1, rand2, rand3, main1, main2, main3, main4, main5, main6, main7, main8, done);
@@ -90,6 +102,7 @@ architecture Behavioral of mayo_sample_oil_space is
 	signal s_oil_adr   : std_logic_vector(31 downto 0);
 	signal s_oil_index : natural := 0; -- BRAM counter 
 	signal index       : natural := 0 ;
+	signal mode        : std_logic;
 
 	signal i   : integer := 0;
 	signal k   : integer := 0;
@@ -105,7 +118,6 @@ begin
 	begin
 		if (rising_edge (i_clk)) then
 			if (rst = '1') then
-				t_state     <= idle;
 				s_oil_adr   <= (others => '0');
 				index       <= 0;
 				o_trng_sel  <= '0';
@@ -118,11 +130,13 @@ begin
 				s_rand      <= ZERO_32;
 				o_trng_w    <= '0';
 				o_trng_r    <= '0';
+				mode        <= '0';
 				o_memb_addr <= ZERO_32;
 				o_memb_we   <= "0000";
 				o_memb_din  <= ZERO_32;
 				s_oil_space <= ZERO_32;
 				tmp         <= 0;
+				t_state     <= idle;
 
 			else
 				case t_state is
@@ -134,6 +148,7 @@ begin
 						if (i_enable = '1') then -- START
 							o_controlb <= '1';
 							s_oil_adr  <= i_oil_addr;
+							mode       <= i_mode;
 							t_state    <= rand0;
 							o_trng_sel <= '1';
 						end if;
@@ -142,8 +157,8 @@ begin
 						o_trng_w    <= '1';
 						o_trng_r    <= '0';
 						o_trng_data <= std_logic_vector(to_unsigned(OIL_SPACE_BYTES*2,PORT_WIDTH));
-						o_memb_we   <= "1111";
-						o_memb_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR,PORT_WIDTH));
+						o_mema_we   <= "1111";
+						o_mema_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR,PORT_WIDTH));
 						t_state     <= rand1;
 
 					when rand1 =>
@@ -154,22 +169,22 @@ begin
 					when rand2 =>
 						o_trng_r <= '1';
 						if ( i_trng_valid = '1') then
-							o_memb_en   <= '1';
-							o_memb_din  <= i_trng_data;
-							o_memb_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR+index,PORT_WIDTH)) ;
+							o_mema_en   <= '1';
+							o_mema_din  <= i_trng_data;
+							o_mema_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR+index,PORT_WIDTH)) ;
 							index       <= index + 4;
 							if (i_trng_done = '1') then
 								t_state <= rand3;
 							end if;
 
 						else
-							o_memb_en <= '0';
+							o_mema_en <= '0';
 						end if;
 
 					when rand3 =>
 						o_trng_r    <= '0';
-						o_memb_we   <= "0000";
-						o_memb_en   <= '0';
+						o_mema_we   <= "0000";
+						o_mema_en   <= '0';
 						t_state     <= main1;
 						s_ctr       <= 0;
 						s_oil_index <= 0;
@@ -177,10 +192,10 @@ begin
 					when main1 =>
 						-- USE BRAM PORT B 
 						o_trng_sel  <= '0';
-						o_memb_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR + s_ctr,PORT_WIDTH));
-						o_memb_en   <= '1';
-						o_memb_rst  <= '0';
-						o_memb_we   <= "0000";
+						o_mema_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR + s_ctr,PORT_WIDTH));
+						o_mema_en   <= '1';
+						o_mema_rst  <= '0';
+						o_mema_we   <= "0000";
 						t_state     <= main7;
 
 					when main7 => -- ADD CLOCK DELAY HERE! 100ps delayBRAM
@@ -188,8 +203,8 @@ begin
 						i       <= 0 ;
 
 					when main2 => -- GET 4 Bytes of randomness  
-						s_rand    <= i_memb_dout;
-						o_memb_en <= '0';
+						s_rand    <= i_mema_dout;
+						o_mema_en <= '0';
 						t_state   <= main8;
 
 					when main8 =>
@@ -227,16 +242,29 @@ begin
 						end if;
 
 					when main5 => -- OIL_SPACE TO BRAM
-						o_memb_addr <= std_logic_vector(unsigned(s_oil_adr) + s_oil_index);
-						o_memb_din  <= s_oil_space;
-						o_memb_en   <= '1';
-						o_memb_rst  <= '0';
-						o_memb_we   <= "1111"; -- WRITE FULLWORD in BRAM 
-						t_state     <= main6;
+						if (mode = '1') then
+							o_memb_addr <= std_logic_vector(unsigned(s_oil_adr) + s_oil_index);
+							o_memb_din  <= s_oil_space;
+							o_memb_en   <= '1';
+							o_memb_rst  <= '0';
+							o_memb_we   <= "1111"; -- WRITE FULLWORD in BRAM 
+						else
+							o_mema_addr <= std_logic_vector(unsigned(s_oil_adr) + s_oil_index);
+							o_mema_din  <= s_oil_space;
+							o_mema_en   <= '1';
+							o_mema_rst  <= '0';
+							o_mema_we   <= "1111"; -- WRITE FULLWORD in BRAM 
+						end if;
+						t_state <= main6;
 
 					when main6 =>
-						o_memb_en <= '0';
-						o_memb_we <= "0000";
+						if (mode = '1') then
+							o_memb_en <= '0';
+							o_memb_we <= "0000";
+						else
+							o_mema_en <= '0';
+							o_mema_we <= "0000";
+						end if;
 						if (s_oil_index < OIL_SPACE_RANGE -4) then
 							s_oil_index <= s_oil_index +4 ;
 							if (i <3) then

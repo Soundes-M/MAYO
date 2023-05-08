@@ -18,6 +18,7 @@
           <spirit:width>1</spirit:width>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
+        <spirit:defaultValue>0</spirit:defaultValue>
       </spirit:wire>
     </spirit:port>
     <spirit:port>
@@ -47,7 +48,7 @@
         <spirit:onSlave>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
-        <spirit:defaultValue>8</spirit:defaultValue>
+        <spirit:defaultValue>0</spirit:defaultValue>
       </spirit:wire>
     </spirit:port>
     <spirit:port>
@@ -59,6 +60,7 @@
         <spirit:onSlave>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
+        <spirit:defaultValue>0</spirit:defaultValue>
       </spirit:wire>
     </spirit:port>
     <spirit:port>
@@ -76,6 +78,7 @@
           <spirit:presence>required</spirit:presence>
           <spirit:direction>in</spirit:direction>
         </spirit:onSlave>
+        <spirit:defaultValue>0</spirit:defaultValue>
       </spirit:wire>
     </spirit:port>
     <spirit:port>

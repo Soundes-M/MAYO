@@ -61,13 +61,13 @@ architecture Behav of mayo_reduce_extension is
 	ATTRIBUTE X_INTERFACE_INFO of i_memb_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extb DOUT";
 	ATTRIBUTE X_INTERFACE_INFO of o_controlb  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extb CTRL";
 
-	ATTRIBUTE X_INTERFACE_INFO of o_memc_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extb DIN";
-	ATTRIBUTE X_INTERFACE_INFO of o_memc_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extb ADDR";
-	ATTRIBUTE X_INTERFACE_INFO of o_memc_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extb EN";
-	ATTRIBUTE X_INTERFACE_INFO of o_memc_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extb RST";
-	ATTRIBUTE X_INTERFACE_INFO of o_memc_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extb WE";
-	ATTRIBUTE X_INTERFACE_INFO of i_memc_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extb DOUT";
-	ATTRIBUTE X_INTERFACE_INFO of o_controlc  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extb CTRL";
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extc DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extc ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extc EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extc RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_memc_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extc WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_memc_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extc DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_controlc  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_Red_Extc CTRL";
 
 	ATTRIBUTE X_INTERFACE_IGNORE       : STRING;
 	ATTRIBUTE X_INTERFACE_IGNORE OF en : SIGNAL IS "TRUE";

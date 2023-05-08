@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari
 -- Company     : TU Berlin
 -- Created     : Sat Apr 29 18:37:13 2023
--- Last update : Tue May  2 17:04:21 2023
+-- Last update : Wed May  3 17:10:55 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -59,6 +59,7 @@ entity MAYO_SIGNING_FSM is
 		-- SAMPLE OIL SPACE
 		o_sam_enable   : out std_logic;
 		i_sam_done     : in  std_logic;
+		o_sam_mode     : out std_logic;
 		o_sam_oil_addr : out std_logic_vector(31 downto 0);
 
 		--REDUCE CORE
@@ -92,21 +93,23 @@ entity MAYO_SIGNING_FSM is
 		o_p1p1t_ji_equal : out std_logic;
 
 		-- LINEAR COMBINATION 
-		o_lin_enable      : out std_logic;
-		i_lin_done        : in  std_logic;
-		o_lin_bram_halt   : out std_logic; -- DMA Wait for Copy (Big BRAM)
-		o_lin_vec_addr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_lin_coeffs_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_lin_out_addr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_lin_len         : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_lin_enable         : out std_logic;
+		i_lin_done           : in  std_logic;
+		o_lin_bram_halt      : out std_logic; -- DMA Wait for Copy (Big BRAM)
+		o_lin_vec_addr       : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_lin_coeffs_addr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_lin_out_addr       : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_lin_len            : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_lin_demux_bram_sel : out std_logic_vector(4 downto 0);
 
 		-- ADD VECTORS
-		o_add_enable   : out std_logic;
-		o_add_v1_addr  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_add_v2_addr  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		o_add_out_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		i_add_done     : in  std_logic;
-		o_add_bram_sel : out std_logic_vector(1 downto 0);
+		o_add_enable         : out std_logic;
+		o_add_v1_addr        : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_add_v2_addr        : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		o_add_out_addr       : out std_logic_vector(PORT_WIDTH-1 downto 0);
+		i_add_done           : in  std_logic;
+		o_add_bram_sel       : out std_logic_vector(1 downto 0);
+		o_add_demux_bram_sel : out std_logic_vector(4 downto 0);
 
 		-- Sample Vinegar
 		o_sam_vin_en        : out std_logic;
@@ -527,11 +530,13 @@ begin
 					--------------------------------------------------------------------
 					when sample0 =>
 						o_sam_enable   <= '1';
+						o_sam_mode     <= '1';
 						o_sam_oil_addr <= std_logic_vector(to_unsigned(SK_EXP_BASE_ADR + SK_EXP_OIL,PORT_WIDTH)); -- BRAM II
 						state          <= sample1;
 
 					when sample1 =>
 						o_sam_enable <= '0';
+						o_sam_mode   <= '0';
 						state        <= sample2;
 
 					when sample2 =>
