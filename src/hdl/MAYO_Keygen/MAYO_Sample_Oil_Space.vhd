@@ -87,7 +87,6 @@ architecture Behavioral of mayo_sample_oil_space is
 	ATTRIBUTE X_INTERFACE_IGNORE               : STRING;
 	ATTRIBUTE X_INTERFACE_IGNORE OF i_oil_addr : SIGNAL IS "TRUE";
 
-
 	type state is (idle, rand0, rand1, rand2, rand3, main1, main2, main3, main4, main5, main6, main7, main8, done);
 
 	signal t_state : state := idle;
@@ -118,22 +117,29 @@ begin
 	begin
 		if (rising_edge (i_clk)) then
 			if (rst = '1') then
-				s_oil_adr   <= (others => '0');
 				index       <= 0;
-				o_trng_sel  <= '0';
-				o_controlb  <= '0';
 				i           <= 0 ;
 				k           <= 0 ;
-				o_memb_en   <= '0';
 				o_done      <= '0';
 				s_ctr       <= 0;
 				s_rand      <= ZERO_32;
+				o_trng_sel  <= '0';
 				o_trng_w    <= '0';
 				o_trng_r    <= '0';
 				mode        <= '0';
+
+				o_memb_en   <= '0';
 				o_memb_addr <= ZERO_32;
 				o_memb_we   <= "0000";
 				o_memb_din  <= ZERO_32;
+				o_controlb  <= '0';
+				o_mema_en   <= '0';
+				o_mema_addr <= ZERO_32;
+				o_mema_we   <= "0000";
+				o_mema_din  <= ZERO_32;
+				o_controla  <= '0';
+				
+				s_oil_adr   <= (others => '0');
 				s_oil_space <= ZERO_32;
 				tmp         <= 0;
 				t_state     <= idle;
@@ -144,8 +150,11 @@ begin
 						--s_seed_index  <= 0;
 						s_oil_adr  <= (others => '0');
 						o_trng_sel <= '0';
+						o_controla <= '0';
 						o_controlb <= '0';
+
 						if (i_enable = '1') then -- START
+							o_controla <= '1';
 							o_controlb <= '1';
 							s_oil_adr  <= i_oil_addr;
 							mode       <= i_mode;
@@ -190,7 +199,6 @@ begin
 						s_oil_index <= 0;
 
 					when main1 =>
-						-- USE BRAM PORT B 
 						o_trng_sel  <= '0';
 						o_mema_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR + s_ctr,PORT_WIDTH));
 						o_mema_en   <= '1';

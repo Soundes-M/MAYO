@@ -1,6 +1,69 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
+| Date         : Mon May 15 23:39:33 2023
+| Host         : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'Mayo_sign_MAYO_SHAKE_1_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of Mayo_sign_MAYO_SHAKE_1_0 (user.org:user:MAYO_SHAKE:3.0) from (Rev. 1) to (Rev. 2)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
+| Date         : Mon May 15 23:39:32 2023
+| Host         : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'Mayo_keygen_no_zynq_MAYO_SHAKE_1_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of Mayo_keygen_no_zynq_MAYO_SHAKE_1_0 (user.org:user:MAYO_SHAKE:3.0) from (Rev. 1) to (Rev. 2)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
+| Date         : Mon May 15 23:39:30 2023
+| Host         : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'Mayo_keygen_MAYO_SHAKE_1_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of Mayo_keygen_MAYO_SHAKE_1_0 (user.org:user:MAYO_SHAKE:3.0) from (Rev. 1) to (Rev. 2)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
 | Date         : Sun Jan  8 01:25:56 2023
 | Host         : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
 | Command      : upgrade_ip

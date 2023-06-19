@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Tue May  2 15:08:08 2023
+-- Last update : Tue May 16 17:58:24 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -165,6 +165,10 @@ begin
 							s_v1_addr  <= i_v1_addr;
 							s_v2_addr  <= i_v2_addr;
 							s_out_addr <= i_out_addr;
+							report "MAYO Add_vec core :" &
+							LF & "V1 Adr : " & integer'image(to_integer(unsigned(i_v1_addr))) &
+							"V2 Adr: " & integer'image(to_integer(unsigned(i_v2_addr))) &
+							"OUT Adr :" & integer'image(to_integer(unsigned(i_out_addr))) severity note;
 
 							if (i_bram_sel = "00") then -- V1 and V2 Parallel [Dual port]
 								control1a <= '1';

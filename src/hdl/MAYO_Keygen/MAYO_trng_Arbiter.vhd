@@ -17,7 +17,7 @@ entity mayo_trng_arbiter is
 		i_trng_valid : in  std_logic;
 		i_trng_done  : in  std_logic;
 
-		-- Input 1 
+		-- Input 0 
 		i_trng0_r     : in  std_logic;
 		i_trng0_w     : in  std_logic;
 		i_trng0_data  : in  std_logic_vector(31 downto 0);
@@ -25,7 +25,7 @@ entity mayo_trng_arbiter is
 		o_trng0_valid : out std_logic;
 		o_trng0_done  : out std_logic;
 
-		--Input 2
+		--Input 1
 		i_trng1_r     : in  std_logic;
 		i_trng1_w     : in  std_logic;
 		i_trng1_data  : in  std_logic_vector(31 downto 0);
@@ -33,6 +33,7 @@ entity mayo_trng_arbiter is
 		o_trng1_valid : out std_logic;
 		o_trng1_done  : out std_logic;
 
+		-- Input 2
 		i_trng2_r     : in  std_logic;
 		i_trng2_w     : in  std_logic;
 		i_trng2_data  : in  std_logic_vector(31 downto 0);

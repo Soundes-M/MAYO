@@ -6,7 +6,7 @@
   <spirit:version>1.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
-      <spirit:name>BRAM_P1P1T0b</spirit:name>
+      <spirit:name>BRAM_P1P1T1b</spirit:name>
       <spirit:busType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom_rtl" spirit:version="1.0"/>
       <spirit:master/>
@@ -70,7 +70,7 @@
       </spirit:portMaps>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>BRAM_P1P1T1a</spirit:name>
+      <spirit:name>BRAM_P1P1T2a</spirit:name>
       <spirit:busType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom_rtl" spirit:version="1.0"/>
       <spirit:master/>
@@ -183,7 +183,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>a5843d8b</spirit:value>
+            <spirit:value>f8afba39</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -196,7 +196,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>a5843d8b</spirit:value>
+            <spirit:value>f8afba39</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -581,7 +581,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2023-05-02T12:47:46Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2023-06-18T21:47:12Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.2</xilinx:xilinxVersion>

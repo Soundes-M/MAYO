@@ -91,6 +91,7 @@ set_property ip_repo_paths {
   /home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo-axi/Mayo_axi_1.0
   /home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs
   /home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/shake128
+  /home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/INTERFACES
 } [current_project]
 update_ip_catalog
 set_property ip_output_repo /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.cache/ip [current_project]

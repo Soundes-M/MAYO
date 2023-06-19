@@ -159,72 +159,80 @@ architecture Behavioral of mayo_lin_comb_arbiter is
 	ATTRIBUTE X_INTERFACE_INFO of o_BRAM2b_control : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_O_LinArb2b CTRL";
 
 begin
+
+	------------------------------------------------------------------------------
+	-- IN -> OUT
+	-- 00000: 0a -> 0a, 0b -> 0b, 1a -> 1a
+	-- 00001: 0a -> 1a, 0b -> 2b, 1a -> 2a  
+	-- 00010: 0a -> 2a, 0b -> 2b, 1a -> 1a 
+	-- 00011: XXX
+	--
 	--------------------------------------------------------------------------------
 	-- BRAM 0A
 	--------------------------------------------------------------------------------
-	o_BRAM0A_din <= i_mem0a_din when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0A_din <= i_mem0a_din when (bram_sel = "00000")
 	else ZERO_32;
 
-	o_BRAM0A_addr <= i_mem0a_addr when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0A_addr <= i_mem0a_addr when (bram_sel = "00000")
 	else ZERO_32;
 
-	o_BRAM0A_en <= i_mem0a_en when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0A_en <= i_mem0a_en when (bram_sel = "00000")
 	else '0';
 
-	o_BRAM0A_we <= i_mem0a_we when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0A_we <= i_mem0a_we when (bram_sel = "00000")
 	else "0000";
 
-	o_BRAM0A_control <= i_control0a when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0A_control <= i_control0a when (bram_sel = "00000")
 	else '0';
 
-	o_BRAM0A_rst <= i_mem0a_rst when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0A_rst <= i_mem0a_rst when (bram_sel = "00000")
 	else '0';
 
 	--------------------------------------------------------------------------------
 	-- BRAM 0B
 	--------------------------------------------------------------------------------
-	o_BRAM0B_din <= i_mem0b_din when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0B_din <= i_mem0b_din when (bram_sel = "00000" )
 	else ZERO_32;
 
-	o_BRAM0B_addr <= i_mem0b_addr when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0B_addr <= i_mem0b_addr when (bram_sel = "00000" )
 	else ZERO_32;
 
-	o_BRAM0B_en <= i_mem0b_en when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0B_en <= i_mem0b_en when (bram_sel = "00000" )
 	else '0';
 
-	o_BRAM0B_we <= i_mem0b_we when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0B_we <= i_mem0b_we when (bram_sel = "00000" )
 	else "0000";
 
-	o_BRAM0B_control <= i_control0b when (bram_sel = "00000" or bram_sel = "00011")
+	o_BRAM0B_control <= i_control0b when (bram_sel = "00000" )
 	else '0';
 
-	o_BRAM0B_rst <= i_mem0b_rst when (bram_sel = "00010" or bram_sel = "00011")
+	o_BRAM0B_rst <= i_mem0b_rst when (bram_sel = "0000" )
 	else '0';
 
 	--------------------------------------------------------------------------------
 	-- BRAM 1A
 	--------------------------------------------------------------------------------
-	o_BRAM1A_din <= i_mem1a_din when (bram_sel = "00000")
+	o_BRAM1A_din <= i_mem1a_din when (bram_sel = "00000" or bram_sel = "00010")
 	else i_mem0a_din            when (bram_sel = "00001")
 	else ZERO_32;
 
-	o_BRAM1A_addr <= i_mem1a_addr when (bram_sel = "00000")
+	o_BRAM1A_addr <= i_mem1a_addr when (bram_sel = "00000" or bram_sel = "00010")
 	else i_mem0a_addr             when (bram_sel = "00001")
 	else ZERO_32;
 
-	o_BRAM1A_en <= i_mem1a_en when (bram_sel = "00000")
+	o_BRAM1A_en <= i_mem1a_en when (bram_sel = "00000" or bram_sel = "00010")
 	else i_mem0a_en           when (bram_sel = "00001")
 	else '0';
 
-	o_BRAM1A_we <= i_mem1a_we when (bram_sel = "00000")
+	o_BRAM1A_we <= i_mem1a_we when (bram_sel = "00000" or bram_sel = "00010")
 	else i_mem0a_we           when (bram_sel = "00001")
 	else "0000";
 
-	o_BRAM1A_control <= i_control1a when (bram_sel = "00000")
+	o_BRAM1A_control <= i_control1a when (bram_sel = "00000" or bram_sel = "00010")
 	else i_control0a                when (bram_sel = "00001")
 	else '0';
 
-	o_BRAM1A_rst <= i_mem1a_rst when (bram_sel = "00000")
+	o_BRAM1A_rst <= i_mem1a_rst when (bram_sel = "00000" or bram_sel = "00010")
 	else i_mem0a_rst            when (bram_sel = "00001")
 	else '0';
 
@@ -278,14 +286,13 @@ begin
 
 	--------------------------------------------------------------------------------
 
-	o_mem0a_dout <= i_BRAM0A_dout when (bram_sel = "00000" or bram_sel = "00011")
+	o_mem0a_dout <= i_BRAM0A_dout when (bram_sel = "00000")
 	else i_BRAM1A_dout            when (bram_sel = "00001")
 	else i_BRAM2A_dout            when (bram_Sel = "00010")
 	else ZERO_32;
 
-	o_mem0b_dout <= i_BRAM0B_dout when (bram_sel = "00000" or bram_sel = "00011")
-	else i_BRAM2B_dout            when (bram_sel = "00001")
-	else i_BRAM2A_dout            when (bram_sel = "00010")
+	o_mem0b_dout <= i_BRAM0B_dout when (bram_sel = "00000")
+	else i_BRAM2B_dout            when (bram_sel = "00001" or bram_sel = "00010")
 	else ZERO_32;
 
 	o_mem1a_dout <= i_BRAM1A_dout when (bram_sel = "00000" or bram_sel = "00010")

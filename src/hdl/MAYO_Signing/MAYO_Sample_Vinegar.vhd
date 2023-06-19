@@ -94,8 +94,13 @@ begin
 				out_index   <= 0 ;
 				index       <= 0;
 				s_need_rand <= '1';
+				o_trng_sel  <= '0';
 				s_rand      <= ZERO_32;
 				o_controlb  <= '0';
+				o_trng_data <= ZERO_32;
+				o_trng_r    <= '0';
+				o_trng_w    <= '0';
+				o_trng_sel  <= '0';
 			else
 				case state is
 					when idle =>
@@ -110,7 +115,7 @@ begin
 							s_need_rand <= '1';
 							o_controlb  <= '1';
 							state       <= rand0;
-
+							o_trng_sel  <= '1';
 						else
 							s_input_adr <= ZERO_32;
 							o_controlb  <= '0';
@@ -120,7 +125,7 @@ begin
 					when rand0 =>
 						o_trng_w    <= '1';
 						o_trng_r    <= '0';
-						o_trng_data <= std_logic_vector(to_unsigned(N*K,PORT_WIDTH));
+						o_trng_data <= std_logic_vector(to_unsigned(620,PORT_WIDTH)); -- HARDCODED N*K
 						o_memb_we   <= "1111";
 						o_memb_addr <= std_logic_vector(to_unsigned(RANDOMNESS_BASE_ADR,PORT_WIDTH));
 						state       <= rand1;
@@ -156,6 +161,7 @@ begin
 						state     <= main1;
 
 					when main1 =>
+						o_trng_sel <= '0';
 						if (i < K) then
 							j     <= 0 ;
 							state <= main2;

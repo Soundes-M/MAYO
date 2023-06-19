@@ -32,7 +32,21 @@ PS: The number refers to the port number in the CORE.
 ### Keygen modes
 
 00011
+
 00100
 
 ### Reserved
 The rest is reserved for futher extensions
+
+## Lin. Comb. Arbiter:
+
+### Singing modes:
+
+00001
+
+00010
+
+### Keygen modes :
+
+00000
+

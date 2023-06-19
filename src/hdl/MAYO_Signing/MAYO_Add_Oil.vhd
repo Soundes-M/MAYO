@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari
 -- Company     : TU Berlin
 -- Created     : Sat Apr 29 18:39:04 2023
--- Last update : Sun Apr 30 21:21:56 2023
+-- Last update : Sun Jun 18 17:38:14 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -94,7 +94,9 @@ architecture Behavioral of mayo_add_oil is
 	constant OILSOL_ADR   : integer := OILSOL_BASE_ADR;
 	constant OILSPACE_ADR : integer := SK_EXP_BASE_ADR + SK_EXP_OIL;
 
-	signal i,j,l : integer := 0;
+	signal l : integer range 0 to K+1    := 0;
+	signal i : integer range 0 to N-O +1 := 0;
+	signal j : integer range 0 to 7      := 0;
 
 	signal s_inp_base_adr    : integer := 0;
 	signal s_inp_pos_in_line : integer range 0 to 3;
@@ -103,9 +105,10 @@ architecture Behavioral of mayo_add_oil is
 	signal mempcpy_scratch   : std_logic_vector(47 downto 0) := (others => '0');
 	signal mempcpy_scratch1  : std_logic_vector(47 downto 0) := (others => '0');
 	signal s_3_lines         : std_logic                     := '0';
-	signal bytes_first_line  : integer                       := 0;
-	signal bytes_second_line : integer                       := 0;
+	signal bytes_first_line  : integer range 0 to 7          := 0;
+	signal bytes_second_line : integer range 0 to 7          := 0;
 	signal t0                : std_logic_vector(15 downto 0) := ZERO_16;
+	signal tmp               : std_logic_vector(15 downto 0) := ZERO_16;
 
 	signal bram0a : bram_t := DEFAULT_BRAM;
 	signal bram0b : bram_t := DEFAULT_BRAM;
@@ -114,7 +117,7 @@ architecture Behavioral of mayo_add_oil is
 	type states is (idle,
 			memcpy0, memcpy1, memcpy2, memcpy3, memcpy4, memcpy5, memcpy6, memcpy7, memcpy8, memcpy9,
 			main0, main1, main2, main3, main4, main5, main6, main7, main8, main9, main10, main11, main12,
-			main13, main14, main15, main16, main17, main18, main19, main20, main21, main22, main23, main24,
+			main13, main14, main15, main16, main17, main18, main19, main20, main21, main22, main23, main24, main25,
 			done);
 	signal state : states := idle;
 
@@ -143,6 +146,7 @@ begin
 				bytes_second_line <= 0;
 				s_3_lines         <= '0';
 				t0                <= ZERO_16;
+				tmp               <= ZERO_16;
 				state             <= idle;
 			else
 				case (state) is
@@ -428,9 +432,16 @@ begin
 						state <= main19;
 
 					when main19 => -- Do ALU OP
-						bram1a.o.o_en <= '0';
+						bram1a.o.o_en   <= '0';
+						tmp(7 downto 0) <= bram1a.i.i_dout(s_oil_pos_in_line*8+7 downto s_oil_pos_in_line*8);
+						state           <= main25;
 
-						t0    <= std_logic_vector(resize(unsigned(t0) + unsigned(mempcpy_scratch(8*j+7 downto 8*j))*unsigned(bram1a.i.i_dout(s_oil_pos_in_line*8+7 downto s_oil_pos_in_line*8)),t0'length));
+					when main25 =>
+						tmp   <= std_logic_vector(unsigned(mempcpy_scratch(8*j+7 downto 8*j)) *unsigned(tmp(7 downto 0)));
+						state <= main23;
+
+					when main23 =>
+						t0    <= std_logic_vector(resize(unsigned(t0) + unsigned(tmp),t0'length));
 						j     <= j +1;
 						state <= main17;
 

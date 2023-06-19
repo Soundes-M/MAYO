@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari 
 -- Company     : TU BERLIN
 -- Created     : Mon Jan  9 00:23:33 2023
--- Last update : Tue May  2 14:51:57 2023
+-- Last update : Tue May  9 14:14:32 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -112,9 +112,10 @@ begin
 			else
 				case (state) is
 					when idle =>
-						o_done <= '0';
-
-						if (start = '1')then
+						o_done         <= '0';
+						o_src_control  <= '0';
+						o_dest_control <= '0';
+						if (start = '1') then
 							s_src_adr      <= i_src_adr;
 							s_dst_adr      <= i_dst_adr;
 							len            <= to_integer(unsigned(i_len));
@@ -129,7 +130,7 @@ begin
 								when "01" =>
 									state <= cpy4;
 								when "10" =>
-									null;
+									state <= cpy8;
 								when "11" =>
 									state <= idle; -- RESERVED
 									null;
@@ -186,7 +187,7 @@ begin
 						state             <= cpy5;
 
 					when cpy5 =>
-						state <= cpy6;
+						state <= cpy7;
 
 					when cpy7 =>
 						bram_src.o.o_addr <= std_logic_vector(unsigned(s_dst_adr) + copy_index);
@@ -225,7 +226,7 @@ begin
 							copy_index <= copy_index +4;
 							state      <= cpy8;
 						else
-							state <= done0;
+							state <= done1;
 						end if;
 
 					when done1 =>

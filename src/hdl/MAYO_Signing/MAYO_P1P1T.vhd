@@ -6,7 +6,7 @@
 -- Author      : User Name <user.email@user.company.com>
 -- Company     : User Company Name
 -- Created     : Thu Jan 12 13:40:45 2023
--- Last update : Sun Apr 30 21:26:18 2023
+-- Last update : Wed May 10 11:33:52 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ entity MAYO_P1P1T is
 
 		i_ji_equal : in std_logic;
 
-		--BRAM0-B
+		--BRAM0-B [II]
 		i_mem0b_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem0b_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem0b_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -49,7 +49,7 @@ entity MAYO_P1P1T is
 		o_mem0b_we   : out std_logic_vector (3 downto 0);
 		o_control0b  : out std_logic;
 
-		--BRAM1-A
+		--BRAM1-A [III]
 		i_mem1a_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem1a_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
 		o_mem1a_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -57,15 +57,6 @@ entity MAYO_P1P1T is
 		o_mem1a_rst  : out std_logic;
 		o_mem1a_we   : out std_logic_vector (3 downto 0);
 		o_control1a  : out std_logic
-
-		--BRAM1-B
-		--i_mem1b_dout : in  std_logic_vector(PORT_WIDTH-1 downto 0);
-		--o_mem1b_din  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		--o_mem1b_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
-		--o_mem1b_en   : out std_logic;
-		--o_mem1b_rst  : out std_logic;
-		--o_mem1b_we   : out std_logic_vector (3 downto 0)
-
 	);
 
 end entity;
@@ -73,22 +64,21 @@ end entity;
 architecture Behavioral of MAYO_P1P1T is
 
 	ATTRIBUTE X_INTERFACE_INFO                 : STRING;
-	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b DIN";
-	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b ADDR";
-	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b EN";
-	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b RST";
-	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b WE";
-	ATTRIBUTE X_INTERFACE_INFO of i_mem0b_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b DOUT";
-	ATTRIBUTE X_INTERFACE_INFO of o_control0b  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T0b CTRL";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1b DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1b ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1b EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1b RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem0b_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1b WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mem0b_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1b DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control0b  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1b CTRL";
 
-	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a DIN";
-	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a ADDR";
-	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a EN";
-	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a RST";
-	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a WE";
-	ATTRIBUTE X_INTERFACE_INFO of i_mem1a_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a DOUT";
-	ATTRIBUTE X_INTERFACE_INFO of o_control1a  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T1a CTRL";
-
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_din  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T2a DIN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_addr : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T2a ADDR";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_en   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T2a EN";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_rst  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T2a RST";
+	ATTRIBUTE X_INTERFACE_INFO of o_mem1a_we   : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T2a WE";
+	ATTRIBUTE X_INTERFACE_INFO of i_mem1a_dout : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T2a DOUT";
+	ATTRIBUTE X_INTERFACE_INFO of o_control1a  : SIGNAL is "MAYO:user:BRAM_BUS_custom_rtl:1.0 BRAM_P1P1T2a CTRL";
 
 	type states_t is (idle, cpy0, cpy1, cpy2, done);
 	signal state : states_t := idle;
@@ -102,13 +92,11 @@ architecture Behavioral of MAYO_P1P1T is
 	signal write_index        : integer                                 := 0 ;
 	signal p1_in              : std_logic_vector(PORT_WIDTH-1 downto 0) := ZERO_32;
 	signal tmp0,tmp1,tmp2     : std_logic_vector(PORT_WIDTH-1 downto 0) := ZERO_32;
-
 	------------------------------------------------------------------------------
 	-- BRAM
 	------------------------------------------------------------------------------
 	signal bram0b : bram_t := DEFAULT_BRAM;
 	signal bram1a : bram_t := DEFAULT_BRAM;
-	signal bram1b : bram_t := DEFAULT_BRAM;
 
 begin
 
@@ -132,6 +120,7 @@ begin
 						copy_index  <= 0 ;
 						o_control1a <= '0';
 						o_control0b <= '0';
+						o_done      <= '0';
 						if (enable = '1') then
 							s_src_adr   <= i_src_adr;
 							s_dsta_adr  <= i_dsta_adr;
@@ -141,11 +130,11 @@ begin
 							o_control0b <= '1';
 							state       <= cpy0;
 						else
-							state      <= state;
 							s_ji_eq    <= s_ji_eq;
 							s_src_adr  <= s_src_adr;
 							s_dsta_adr <= s_dsta_adr;
 							s_dstb_adr <= s_dstb_adr;
+							state      <= state;
 						end if;
 
 					when cpy0 =>
@@ -171,9 +160,10 @@ begin
 						end if;
 
 					when done =>
+						o_control0b <= '0';
 						if (state1 = done) then
-							o_control0b <= '0';
-							state       <= idle;
+							o_done <= '1';
+							state  <= idle;
 						end if;
 
 					when others =>
@@ -188,25 +178,27 @@ begin
 	begin
 		if (rising_edge(clk)) then
 			if (rst = '1') then
-				state1      <= idle;
 				bram1a.o    <= DEFAULT_OUT_BRAM;
 				write_index <= 0 ;
+				state1      <= idle;
 
 			else
 				case(state1) is
 					when idle =>
 						write_index <= 0;
 						if (start_main = '1' and s_ji_eq = '0') then
-							state1 <= main0;
+							bram1a.o.o_din <= p1_in;
+							state1         <= main0;
 						elsif (start_main = '1' and s_ji_eq = '1') then
-							state1 <= main1;
+							bram1a.o.o_din <= p1_in;
+							state1         <= main1;
 						else
 							state1 <= idle;
 						end if;
 
 					when main0 => -- double write 
-						bram1a.o.o_addr <= std_logic_vector(unsigned(s_dsta_adr) + write_index);
 						bram1a.o.o_din  <= p1_in;
+						bram1a.o.o_addr <= std_logic_vector(unsigned(s_dsta_adr) + write_index);
 						bram1a.o.o_en   <= '1';
 						bram1a.o.o_we   <= "1111";
 						state1          <= main2;
@@ -219,11 +211,6 @@ begin
 						else
 							state1 <= done;
 						end if;
-
-					when done =>
-						bram1a.o.o_en <= '0';
-						bram1a.o.o_we <= "0000";
-						state1        <= idle;
 
 					when main1 => -- Multiply by 2 (Pipelined) [NOP CYCLE]
 						state1 <= main3;
@@ -242,17 +229,20 @@ begin
 							write_index <= write_index +4;
 							state1      <= main4;
 						else
-
 							state1 <= done;
 						end if;
+
+					when done =>
+						bram1a.o.o_en <= '0';
+						bram1a.o.o_we <= "0000";
+						state1        <= idle;
+
 					when others =>
-						state <= idle;
+						state1 <= idle;
 				end case;
 			end if;
 		end if;
-
 	end process;
-
 
 	pp_Process : process(clk) is
 	begin
@@ -269,7 +259,7 @@ begin
 					for k in 0 to 3 loop -- MOD
 						tmp1(k*8+7 downto k*8) <= std_logic_vector(unsigned(tmp0(k*8+7 downto k*8)) mod PRIME);
 					end loop;
-				else
+				else -- nop
 					tmp0 <= tmp0;
 					tmp1 <= tmp1;
 				end if;
@@ -277,7 +267,7 @@ begin
 		end if;
 	end process;
 
-	start_main <= '1' when (copy_index >= 4) else '0';
+	start_main <= '1' when (copy_index >= 4) else '0'; -- Start after copying
 
 	bram0b.i.i_dout <= i_mem0b_dout;
 	o_mem0b_din     <= bram0b.o.o_din;
@@ -293,13 +283,4 @@ begin
 	o_mem1a_en      <= bram1a.o.o_en;
 	o_mem1a_rst     <= bram1a.o.o_rst;
 	o_mem1a_we      <= bram1a.o.o_we;
-
-	--BRAM1-B
-	--bram1b.i.i_dout <= i_mem1b_dout;
-	--o_mem1b_din     <= bram1b.o.o_din;
-	--o_mem1b_addr    <= bram1b.o.o_addr;
-	--o_mem1b_en      <= bram1b.o.o_en;
-	--o_mem1b_rst     <= bram1b.o.o_rst;
-	--o_mem1b_we      <= bram1b.o.o_we;
-
 end architecture Behavioral; 

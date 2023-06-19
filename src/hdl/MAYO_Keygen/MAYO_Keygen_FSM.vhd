@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Fri Feb  3 20:57:07 2023
+-- Last update : Sun May 14 21:58:28 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -78,21 +78,23 @@ ENTITY MAYO_KEYGEN_FSM IS
     o_sam_oil_addr : out std_logic_vector(31 downto 0);
 
     -- LINEAR COMBINATION 
-    o_lin_enable      : out std_logic;
-    i_lin_done        : in  std_logic;
-    o_lin_bram_halt   : out std_logic; -- DMA Wait for Copy (Big BRAM)
-    o_lin_vec_addr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_lin_coeffs_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_lin_out_addr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_lin_len         : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_lin_enable         : out std_logic;
+    i_lin_done           : in  std_logic;
+    o_lin_bram_halt      : out std_logic; -- DMA Wait for Copy (Big BRAM)
+    o_lin_vec_addr       : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_lin_coeffs_addr    : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_lin_out_addr       : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_lin_len            : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_lin_demux_bram_sel : out std_logic_vector(4 downto 0);
 
     -- ADD VECTORS
-    o_add_enable   : out std_logic;
-    o_add_v1_addr  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_add_v2_addr  : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    o_add_out_addr : out std_logic_vector(PORT_WIDTH-1 downto 0);
-    i_add_done     : in  std_logic;
-    o_add_bram_sel : out std_logic_vector(1 downto 0);
+    o_add_enable         : out std_logic;
+    o_add_v1_addr        : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_add_v2_addr        : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    o_add_out_addr       : out std_logic_vector(PORT_WIDTH-1 downto 0);
+    i_add_done           : in  std_logic;
+    o_add_bram_sel       : out std_logic_vector(1 downto 0);
+    o_add_demux_bram_sel : out std_logic_vector(4 downto 0);
 
     -- NEGATE 
     o_neg_enable : out std_logic;
@@ -198,32 +200,31 @@ BEGIN
     if (rising_edge(clk)) then
       if (RESET = '1') then
         -- add reset werte!
-        trng.o             <= DEFAULT_OUT_TRNG;
-        bram0a.o           <= DEFAULT_OUT_BRAM;
-        bram0b.o           <= DEFAULT_OUT_BRAM;
-        bram1a.o           <= DEFAULT_OUT_BRAM;
-        index              <= 0 ;
-        counter            <= 0;
-        p1_counter         <= 0;
-        i                  <= 0;
-        j                  <= 0;
-        s_p1_index         <= 0;
-        copy_index         <= 0;
-        s_oil_space_index  <= 0;
-        s_v1_index         <= 0;
-        s_src_index        <= 0;
-        s_dest_index       <= 0;
-        s_read_bram        <= ZERO_32;
-        s_p2_index         <= 0;
-        s_tempt_index      <= 0;
-        s_oil_space2_index <= 0;
-        s_hash_mem_sel     <= '1';
-        o_red_bram_sel     <= '0';
-        o_add_bram_sel     <= "00";
-
-        busy <= '0';
-        err  <= "00";
-
+        trng.o               <= DEFAULT_OUT_TRNG;
+        bram0a.o             <= DEFAULT_OUT_BRAM;
+        bram0b.o             <= DEFAULT_OUT_BRAM;
+        bram1a.o             <= DEFAULT_OUT_BRAM;
+        index                <= 0 ;
+        counter              <= 0;
+        p1_counter           <= 0;
+        i                    <= 0;
+        j                    <= 0;
+        s_p1_index           <= 0;
+        copy_index           <= 0;
+        s_oil_space_index    <= 0;
+        s_v1_index           <= 0;
+        s_src_index          <= 0;
+        s_dest_index         <= 0;
+        s_read_bram          <= ZERO_32;
+        s_p2_index           <= 0;
+        s_tempt_index        <= 0;
+        s_oil_space2_index   <= 0;
+        s_hash_mem_sel       <= '1';
+        o_red_bram_sel       <= '0';
+        o_add_bram_sel       <= "00";
+        o_lin_demux_bram_sel <= "00000";
+        busy                 <= '0';
+        err                  <= "00";
 
       else
         case (state) is
@@ -519,12 +520,13 @@ BEGIN
             end if;
 
           when compute5 =>
-            o_add_v1_addr  <= std_logic_vector(to_unsigned(s_v1_index,PORT_WIDTH));
-            o_add_v2_addr  <= std_logic_vector(to_unsigned(P2VEC_BASE_ADR,PORT_WIDTH));
-            o_add_out_addr <= std_logic_vector(to_unsigned(s_v1_index,PORT_WIDTH));
-            o_add_bram_sel <= "00";
-            o_add_enable   <= '1';
-            state          <= compute6;
+            o_add_v1_addr        <= std_logic_vector(to_unsigned(s_v1_index,PORT_WIDTH));
+            o_add_v2_addr        <= std_logic_vector(to_unsigned(P2VEC_BASE_ADR,PORT_WIDTH));
+            o_add_out_addr       <= std_logic_vector(to_unsigned(s_v1_index,PORT_WIDTH));
+            o_add_bram_sel       <= "00";
+            o_add_enable         <= '1';
+            o_add_demux_bram_sel <= "00011";
+            state                <= compute6;
 
           when compute6 => ----------------------------------------------------- END J 
             o_add_enable <= '0';
@@ -618,10 +620,11 @@ BEGIN
             j <= 0;
 
             -- Add vec
-            s_v1_index     <= TEMP_BASE_ADR;
-            s_p1_index     <= P1_BASE_ADR;
-            o_add_bram_sel <= "01";
-            state          <= compute9 ;
+            s_v1_index           <= TEMP_BASE_ADR;
+            s_p1_index           <= P1_BASE_ADR;
+            o_add_bram_sel       <= "01";
+            o_add_demux_bram_sel <= "00100";
+            state                <= compute9 ;
 
           when compute9 =>
             if (i < N-O) then
@@ -810,13 +813,13 @@ BEGIN
             s_oil_space_index  <= OIL_SPACE_BASE_ADR;
             s_oil_space2_index <= OIL_SPACE_BASE_ADR;
 
-            s_p2_index     <= PK_BASE_ADR + SEED_BYTES; -- PK_P2
-            s_v1_index     <= PK_BASE_ADR + SEED_BYTES;
-            o_add_bram_sel <= "10";
-
-            i     <= 0;
-            j     <= 0;
-            state <= compute23;
+            s_p2_index           <= PK_BASE_ADR + SEED_BYTES; -- PK_P2
+            s_v1_index           <= PK_BASE_ADR + SEED_BYTES;
+            o_add_bram_sel       <= "10";
+            o_add_demux_bram_sel <= "00100";
+            i                    <= 0;
+            j                    <= 0;
+            state                <= compute23;
 
           when compute23 =>
             if (i < O) then

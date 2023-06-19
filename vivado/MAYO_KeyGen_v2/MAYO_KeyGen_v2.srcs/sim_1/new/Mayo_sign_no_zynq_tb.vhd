@@ -83,7 +83,7 @@ begin
 
     wait until done = '1';
     if (err /= "00" ) then 
-    report "Something went wrong" severity warning;
+        report "Something went wrong" severity warning;
     end if;
     report "Done" severity failure;
 

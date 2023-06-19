@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Sat Apr 29 18:38:33 2023
+-- Last update : Sun Jun 18 22:55:41 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -43,7 +43,6 @@ PACKAGE UTILS_COMMON IS
 
   -- PARAMETERS
   CONSTANT PORT_WIDTH : natural := 32; -- 32 Bit arch
-
 
   function clipNext(currentVal         : integer := 0; max : integer := 0) return integer;
   function clipPrev(currentVal         : integer := 0; max : integer := 0) return integer;

@@ -72,8 +72,6 @@ architecture Behav of mayo_reduce_extension is
 	ATTRIBUTE X_INTERFACE_IGNORE       : STRING;
 	ATTRIBUTE X_INTERFACE_IGNORE OF en : SIGNAL IS "TRUE";
 
-
-
 	type states0_t is (idle, main0, main1, main2, main3, main4, main5, main6, done);
 	signal state0       : states0_t := idle;
 	signal s_input_adr  : std_logic_vector(PORT_WIDTH -1 downto 0);
@@ -83,11 +81,14 @@ architecture Behav of mayo_reduce_extension is
 
 	-- internal scartch memories
 	type uarray_32 is array(natural range <>) of unsigned(PORT_WIDTH-1 downto 0);
-	signal orig_input                : uarray_32(0 to 1) := (others => (others => '0'));
-	signal input_coef                : uarray_32(0 to 2) := (others => (others => '0'));
-	signal temp_output               : uarray_32(0 to 1) := (others => (others => '0'));
-	signal in_ctr, coef_ctr, out_ctr : integer           := 0 ;
-	signal prev_ctr                  : integer           := 0;
+	signal orig_input  : uarray_32(0 to 1) := (others => (others => '0'));
+	signal input_coef  : uarray_32(0 to 2) := (others => (others => '0'));
+	signal temp_output : uarray_32(0 to 1) := (others => (others => '0'));
+	signal temp_result : unsigned(PORT_WIDTH -1 downto 0);
+	signal flag        : integer range 0 to 3;
+
+	signal in_ctr, coef_ctr, out_ctr : integer range 0 to 3 := 0 ;
+	signal prev_ctr                  : integer range 0 to 3 := 0;
 	--control
 	signal first_add : std_logic := '0';
 	signal start_add : std_logic := '0';
@@ -108,7 +109,6 @@ begin
 				start_add    <= '0';
 				in_ctr       <= 0;
 				coef_ctr     <= 0;
-				out_ctr      <= 0;
 				i            <= 118;
 				o_mema_en    <= '0';
 				o_mema_we    <= "0000";
@@ -183,8 +183,8 @@ begin
 						state0 <= main5;
 
 					when main5 =>
-						coef_ctr <= clipNext(coef_ctr,1);
-						in_ctr   <= clipNext(in_ctr,2);
+						coef_ctr <= clipNext(coef_ctr,2);
+						in_ctr   <= clipNext(in_ctr,1);
 						state0   <= main6;
 
 					when main6 =>
@@ -207,27 +207,28 @@ begin
 	end process;
 
 	prev_ctr <= clipPrev(coef_ctr,2);
+
 	adder : process(clk) is
 	begin
 		if (rising_edge(clk)) then
 			if(rst = '1') then
 				temp_output <= (others => (others => '0'));
+				write_out   <= '0';
 				out_ctr     <= 0;
 			else
 				if (first_add = '1') then
-					temp_output(out_ctr)(31 downto 24) <= orig_input(in_ctr)(31 downto 24) - input_coef(coef_ctr)(31 downto 24);
-					temp_output(out_ctr)(23 downto 16) <= orig_input(in_ctr)(23 downto 16) - 3*input_coef(coef_ctr)(31 downto 24)- input_coef(coef_ctr)(23 downto 16);
-					temp_output(out_ctr)(15 downto 8)  <= orig_input(in_ctr)(15 downto 8) - 27*input_coef(coef_ctr)(31 downto 24)- 3*input_coef(coef_ctr)(23 downto 16) - input_coef(coef_ctr)(15 downto 8);
-					temp_output(out_ctr)(7 downto 0)   <= orig_input(in_ctr)(7 downto 0) - 27*input_coef(coef_ctr)(23 downto 16)- 3*input_coef(coef_ctr)(15 downto 8) - input_coef(coef_ctr)(7 downto 0);
+					temp_output(out_ctr)(31 downto 24) <= resize(orig_input(in_ctr)(31 downto 24) - input_coef(coef_ctr)(31 downto 24),8);
+					temp_output(out_ctr)(23 downto 16) <= resize(orig_input(in_ctr)(23 downto 16) - 3*input_coef(coef_ctr)(31 downto 24)- input_coef(coef_ctr)(23 downto 16),8);
+					temp_output(out_ctr)(15 downto 8)  <= resize(orig_input(in_ctr)(15 downto 8) - 27*input_coef(coef_ctr)(31 downto 24)- 3*input_coef(coef_ctr)(23 downto 16) - input_coef(coef_ctr)(15 downto 8),8);
+					temp_output(out_ctr)(7 downto 0)   <= resize(orig_input(in_ctr)(7 downto 0) - 27*input_coef(coef_ctr)(23 downto 16)- 3*input_coef(coef_ctr)(15 downto 8) - input_coef(coef_ctr)(7 downto 0),8);
 					write_out                          <= '1';
 
 				elsif (start_add = '1') then
-					temp_output(out_ctr)(31 downto 24) <= orig_input(in_ctr)(31 downto 24) - 27*input_coef(prev_ctr)(15 downto 8)- 3*input_coef(prev_ctr)(7 downto 0) - input_coef(coef_ctr)(31 downto 24);
-					temp_output(out_ctr)(23 downto 16) <= orig_input(in_ctr)(23 downto 16) - 27*input_coef(prev_ctr)(7 downto 0)- 3*input_coef(coef_ctr)(31 downto 24) - input_coef(coef_ctr)(23 downto 16);
-					temp_output(out_ctr)(15 downto 8)  <= orig_input(in_ctr)(15 downto 8) - 27*input_coef(coef_ctr)(31 downto 24)- 3*input_coef(coef_ctr)(23 downto 16) - input_coef(coef_ctr)(15 downto 8);
-					temp_output(out_ctr)(7 downto 0)   <= orig_input(in_ctr)(7 downto 0) - 27*input_coef(coef_ctr)(31 downto 24)- 3*input_coef(coef_ctr)(23 downto 16) - input_coef(coef_ctr)(15 downto 8);
+					temp_output(out_ctr)(31 downto 24) <= resize(orig_input(in_ctr)(31 downto 24) - 27*input_coef(prev_ctr)(15 downto 8)- 3*input_coef(prev_ctr)(7 downto 0) - input_coef(coef_ctr)(31 downto 24),8);
+					temp_output(out_ctr)(23 downto 16) <= resize(orig_input(in_ctr)(23 downto 16) - 27*input_coef(prev_ctr)(7 downto 0)- 3*input_coef(coef_ctr)(31 downto 24) - input_coef(coef_ctr)(23 downto 16),8);
+					temp_output(out_ctr)(15 downto 8)  <= resize(orig_input(in_ctr)(15 downto 8) - 27*input_coef(coef_ctr)(31 downto 24)- 3*input_coef(coef_ctr)(23 downto 16) - input_coef(coef_ctr)(15 downto 8),8);
+					temp_output(out_ctr)(7 downto 0)   <= resize(orig_input(in_ctr)(7 downto 0) - 27*input_coef(coef_ctr)(31 downto 24)- 3*input_coef(coef_ctr)(23 downto 16) - input_coef(coef_ctr)(15 downto 8),8);
 					write_out                          <= '1';
-
 				else
 					write_out <= '0';
 				end if;
@@ -242,25 +243,50 @@ begin
 	begin
 		if(rising_edge(clk)) then
 			if(rst ='1') then
-				k          <= M;
-				o_memc_en  <= '0';
-				o_memc_we  <= "0000";
-				o_controlc <= '0';
+				k           <= M;
+				o_memc_en   <= '0';
+				o_memc_we   <= "0000";
+				flag        <= 0;
+				temp_result <= (others => '0');
+				o_controlc  <= '0';
 			else
-				if (write_out <= '1') then
-					o_memc_din  <= std_logic_vector(((temp_output(clipPrev(out_ctr)) mod PRIME )+ PRIME) mod PRIME); -- todo : maybe too long : Timing
+
+				if (write_out = '1') then
+					temp_result(7 downto 0)   <= unsigned(temp_output(clipPrev(out_ctr))(7 downto 0));   --mod PRIME;
+					temp_result(15 downto 8)  <= unsigned(temp_output(clipPrev(out_ctr))(15 downto 8));  --mod PRIME;
+					temp_result(23 downto 16) <= unsigned(temp_output(clipPrev(out_ctr))(23 downto 16)); --mod PRIME;
+					temp_result(31 downto 24) <= unsigned(temp_output(clipPrev(out_ctr))(31 downto 24)); --mod PRIME;
+					flag                      <= 1;
+				end if;
+
+				if (flag = 1) then
+					temp_result(7 downto 0)   <= (temp_result(7 downto 0) + PRIME) mod PRIME;
+					temp_result(15 downto 8)  <= (temp_result(15 downto 8) + PRIME) mod PRIME;
+					temp_result(23 downto 16) <= (temp_result(23 downto 16) + PRIME) mod PRIME;
+					temp_result(31 downto 24) <= (temp_result(23 downto 16) + PRIME) mod PRIME;
+					flag                      <= 2;
+
+				elsif (flag = 2) then
+					o_memc_din  <= std_logic_vector(temp_result);
 					o_memc_addr <= std_logic_vector(unsigned(s_output_adr) +k-4);
 					o_memc_en   <= '1';
 					o_memc_we   <= "1111";
 					o_controlc  <= '1';
 					k           <= k -4 ;
-				else
-					k          <= k;
+					flag        <= 3;
+
+				elsif (flag = 3) then
 					o_memc_en  <= '0';
 					o_memc_we  <= "0000";
-					o_controlc <= '1';
+					o_controlc <= '0';
+					flag       <= 0;
+
+				else
+					null;
 				end if;
+
 				o_done <= '0';
+
 				if (k = 0) then
 					o_controlc <= '0';
 					o_done     <= '1';
@@ -271,6 +297,5 @@ begin
 			end if;
 		end if;
 	end process;
-
 
 end architecture Behav;

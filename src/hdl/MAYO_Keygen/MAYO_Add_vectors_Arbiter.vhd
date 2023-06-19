@@ -77,7 +77,6 @@ entity mayo_add_vectors_arbiter is
 
 	);
 
-
 end entity mayo_add_vectors_arbiter;
 
 architecture Behavioral of mayo_add_vectors_arbiter is
@@ -245,6 +244,8 @@ begin
 	o_BRAM1A_rst <= i_memb_rst when (bram_sel = "00000")
 	else i_memc_rst            when (bram_sel = "00011" or bram_sel = "00100")
 	else '0';
+
+	--------------------------------------------------------------------------------
 
 	o_mema_dout <= i_BRAM2A_dout when (bram_sel = "00000" or bram_sel = "00001" or bram_sel = "00010")
 	else i_BRAM0A_dout           when (bram_Sel = "00011")

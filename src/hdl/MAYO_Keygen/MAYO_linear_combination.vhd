@@ -147,13 +147,13 @@ architecture Behavioral of mayo_linear_combination is
 	-- BRAM 1 reg only for big data (Single Channel R/W)
 	signal bram0a : bram_t := DEFAULT_BRAM;
 	signal bram0b : bram_t := DEFAULT_BRAM;
-
 	signal bram1a : bram_t := DEFAULT_BRAM;
 
-	signal s_acc            : array_32(0 to 7) := (others => ZERO_32); -- Buffer for accumulation, using double buffering for WAR Hazards 
-	signal tmp              : array_32(0 to 7) := (others => ZERO_32);
-	attribute keep          : string; -- Force DSP usage
-	attribute keep of tmp   : signal is "true";
+	type array_p is array(natural range <>) of std_logic_vector(PRIME_BITS-1 downto 0);
+	signal s_acc   : array_p(0 to 7) := (others => (others => '0')); -- Buffer for accumulation, using double buffering for WAR Hazards 
+	signal tmp     : array_p(0 to 7) := (others => (others => '0'));
+	attribute keep : string; -- Force DSP usage
+	                         --attribute keep of tmp   : signal is "true";
 	attribute keep of s_acc : signal is "true";
 
 	signal tmp_sel : std_logic := '0';
@@ -167,7 +167,7 @@ architecture Behavioral of mayo_linear_combination is
 	signal dsp_enable   : std_logic                    := '0';
 
 	signal s_nomac_en  : std_logic        := '0';
-	signal s_tmp_nomac : array_32(0 to 3) := (others => ZERO_32);
+	signal s_tmp_nomac : array_16(0 to 3) := (others => (others => '0'));
 
 	signal s_vecs_addr   : std_logic_vector(PORT_WIDTH-1 downto 0);
 	signal s_coeffs_addr : std_logic_vector(PORT_WIDTH-1 downto 0);
@@ -178,6 +178,8 @@ architecture Behavioral of mayo_linear_combination is
 	-- Loop counters
 	signal i,j,c,s_out_ctr : integer := 0 ;
 
+	constant UPRIME : unsigned(PRIME_BITS-1 downto 0) := to_unsigned(PRIME,PRIME_BITS);
+
 	component DSP_Accum
 		port (clk : in std_logic;
 			i_global_en,i_en                        : in  std_logic;
@@ -185,7 +187,7 @@ architecture Behavioral of mayo_linear_combination is
 			rst                                     : in  std_logic;
 			ain0,ain1,ain2,ain3,bin0                : in  std_logic_vector(7 downto 0);
 			i_flush                                 : in  std_logic;
-			res0,res1,res2,res3,res4,res5,res6,res7 : out std_logic_vector(PORT_WIDTH-1 downto 0)
+			res0,res1,res2,res3,res4,res5,res6,res7 : out std_logic_vector(PRIME_BITS-1 downto 0)
 		);
 	end component DSP_Accum;
 
@@ -233,7 +235,7 @@ begin
 				s_nomac_en    <= '0';
 				dspb          <= (others => '0');
 				for k in 0 to 3 loop
-					s_tmp_nomac(k) <= ZERO_32;
+					s_tmp_nomac(k) <= (others => '0');
 				end loop;
 				t_state <= idle;
 
@@ -335,10 +337,10 @@ begin
 						t_state         <= read5;
 
 					when read5 =>
-						s_tmp_nomac(0) <= X"0000" & std_logic_vector(unsigned(s_vecs(7 downto 0)) * unsigned(s_coeffs(7 downto 0)));
-						s_tmp_nomac(1) <= X"0000" & std_logic_vector(unsigned(s_vecs(15 downto 8)) * unsigned(s_coeffs(7 downto 0)));
-						s_tmp_nomac(2) <= X"0000" & std_logic_vector(unsigned(s_vecs(23 downto 16)) * unsigned(s_coeffs(7 downto 0)));
-						s_tmp_nomac(3) <= X"0000" & std_logic_vector(unsigned(s_vecs(31 downto 24)) * unsigned(s_coeffs(7 downto 0)));
+						s_tmp_nomac(0) <= std_logic_vector(unsigned(s_vecs(7 downto 0)) * unsigned(s_coeffs(7 downto 0)));
+						s_tmp_nomac(1) <= std_logic_vector(unsigned(s_vecs(15 downto 8)) * unsigned(s_coeffs(7 downto 0)));
+						s_tmp_nomac(2) <= std_logic_vector(unsigned(s_vecs(23 downto 16)) * unsigned(s_coeffs(7 downto 0)));
+						s_tmp_nomac(3) <= std_logic_vector(unsigned(s_vecs(31 downto 24)) * unsigned(s_coeffs(7 downto 0)));
 						s_acc_change   <= '1';
 
 						if (j >= (M-4)) then
@@ -387,7 +389,7 @@ begin
 				t_state1  <= idle;
 				first     <= '0';
 				for k in 0 to 7 loop
-					tmp(k) <= ZERO_32;
+					tmp(k) <= (others => '0');
 				end loop;
 				tmp_sel <= '0';
 			else
@@ -426,15 +428,15 @@ begin
 
 					when main1 =>
 						if (tmp_sel = '1') then
-							bram0b.o.o_din(31 downto 24) <= tmp(3)(7 downto 0);
-							bram0b.o.o_din(23 downto 16) <= tmp(2)(7 downto 0);
-							bram0b.o.o_din(15 downto 8)  <= tmp(1)(7 downto 0);
-							bram0b.o.o_din(7 downto 0)   <= tmp(0)(7 downto 0);
+							bram0b.o.o_din(31 downto 24) <= "000" & tmp(3);
+							bram0b.o.o_din(23 downto 16) <= "000" & tmp(2);
+							bram0b.o.o_din(15 downto 8)  <= "000" & tmp(1);
+							bram0b.o.o_din(7 downto 0)   <= "000" & tmp(0);
 						else
-							bram0b.o.o_din(31 downto 24) <= tmp(7)(7 downto 0);
-							bram0b.o.o_din(23 downto 16) <= tmp(6)(7 downto 0);
-							bram0b.o.o_din(15 downto 8)  <= tmp(5)(7 downto 0);
-							bram0b.o.o_din(7 downto 0)   <= tmp(4)(7 downto 0);
+							bram0b.o.o_din(31 downto 24) <= "000" & tmp(7);
+							bram0b.o.o_din(23 downto 16) <= "000" & tmp(6);
+							bram0b.o.o_din(15 downto 8)  <= "000" & tmp(5);
+							bram0b.o.o_din(7 downto 0)   <= "000" & tmp(4);
 						end if;
 
 						bram0b.o.o_en <= '1';
@@ -457,10 +459,10 @@ begin
 
 					-- Special NO ACCUMULATE----------------------------------------------
 					when main4 =>
-						bram0b.o.o_din (31 downto 24) <= std_logic_vector(resize(unsigned(s_tmp_nomac(3)) mod 31,8));
-						bram0b.o.o_din (23 downto 16) <= std_logic_vector(resize(unsigned(s_tmp_nomac(2)) mod 31,8));
-						bram0b.o.o_din (15 downto 8)  <= std_logic_vector(resize(unsigned(s_tmp_nomac(1)) mod 31,8));
-						bram0b.o.o_din (7 downto 0)   <= std_logic_vector(resize(unsigned(s_tmp_nomac(0)) mod 31,8));
+						bram0b.o.o_din (31 downto 24) <= std_logic_vector(resize(unsigned(s_tmp_nomac(3)) mod UPRIME,8));
+						bram0b.o.o_din (23 downto 16) <= std_logic_vector(resize(unsigned(s_tmp_nomac(2)) mod UPRIME,8));
+						bram0b.o.o_din (15 downto 8)  <= std_logic_vector(resize(unsigned(s_tmp_nomac(1)) mod UPRIME,8));
+						bram0b.o.o_din (7 downto 0)   <= std_logic_vector(resize(unsigned(s_tmp_nomac(0)) mod UPRIME,8));
 						bram0b.o.o_en                 <= '1';
 						bram0b.o.o_we                 <= "1111";
 
@@ -479,7 +481,6 @@ begin
 						end if;
 
 					when done =>
-						report "Linear Combination done";
 						s_acc_flush   <= '0';
 						o_done        <= '1';
 						bram0b.o.o_en <= '0';
@@ -525,8 +526,6 @@ end architecture Behavioral;
 --------------------------------------------------------------------------------
 -- 8xDSP BOX (MACC) 
 --------------------------------------------------------------------------------
--- TODO: USe Schoolbook method to reduce DSPs amount
-
 -- RETURNS MOD! 
 
 library IEEE;
@@ -543,7 +542,7 @@ entity DSP_Accum is
 		rst                                     : in  std_logic;
 		ain0,ain1,ain2,ain3,bin0                : in  std_logic_vector(7 downto 0);
 		i_flush                                 : in  std_logic;
-		res0,res1,res2,res3,res4,res5,res6,res7 : out std_logic_vector(PORT_WIDTH-1 downto 0));
+		res0,res1,res2,res3,res4,res5,res6,res7 : out std_logic_vector(PRIME_BITS-1 downto 0));
 	attribute use_dsp : string; -- Force DSP usage
 
 end DSP_Accum;
@@ -555,6 +554,8 @@ architecture Behavioral of DSP_Accum is
 	signal acc_b                    : uarray_16(0 to 3) := (others => (others => '0'));
 	signal mult_b                   : uarray_16(0 to 3) := (others => (others => '0'));
 	attribute use_dsp of Behavioral : architecture is "yes";
+	constant UPRIME                 : unsigned(PRIME_BITS-1 downto 0) := to_unsigned(PRIME,PRIME_BITS);
+
 begin
 	process(clk)
 	begin
@@ -627,13 +628,13 @@ begin
 		end if;
 	end process;
 
-	res0 <= X"0000" & std_logic_vector(acc_a(0) mod PRIME);
-	res1 <= X"0000" & std_logic_vector(acc_a(1) mod PRIME);
-	res2 <= X"0000" & std_logic_vector(acc_a(2) mod PRIME);
-	res3 <= X"0000" & std_logic_vector(acc_a(3) mod PRIME);
-	res4 <= X"0000" & std_logic_vector(acc_b(0) mod PRIME);
-	res5 <= X"0000" & std_logic_vector(acc_b(1) mod PRIME);
-	res6 <= X"0000" & std_logic_vector(acc_b(2) mod PRIME);
-	res7 <= X"0000" & std_logic_vector(acc_b(3) mod PRIME);
+	res0 <= std_logic_vector(acc_a(0) mod UPRIME);
+	res1 <= std_logic_vector(acc_a(1) mod UPRIME);
+	res2 <= std_logic_vector(acc_a(2) mod UPRIME);
+	res3 <= std_logic_vector(acc_a(3) mod UPRIME);
+	res4 <= std_logic_vector(acc_b(0) mod UPRIME);
+	res5 <= std_logic_vector(acc_b(1) mod UPRIME);
+	res6 <= std_logic_vector(acc_b(2) mod UPRIME);
+	res7 <= std_logic_vector(acc_b(3) mod UPRIME);
 
 end Behavioral;

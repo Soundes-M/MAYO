@@ -6,7 +6,7 @@
   <spirit:version>1.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
-      <spirit:name>BRAM_P1P1T0b</spirit:name>
+      <spirit:name>BRAM_P1P1T1b</spirit:name>
       <spirit:busType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom_rtl" spirit:version="1.0"/>
       <spirit:master/>
@@ -70,7 +70,7 @@
       </spirit:portMaps>
     </spirit:busInterface>
     <spirit:busInterface>
-      <spirit:name>BRAM_P1P1T1a</spirit:name>
+      <spirit:name>BRAM_P1P1T2a</spirit:name>
       <spirit:busType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="MAYO" spirit:library="user" spirit:name="BRAM_BUS_custom_rtl" spirit:version="1.0"/>
       <spirit:master/>
@@ -218,7 +218,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN">Mayo_sign_clk</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN"/>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -579,7 +579,7 @@
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.ASSOCIATED_RESET" xilinx:valuePermission="bd_and_user"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_HZ" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.PHASE" xilinx:valuePermission="bd_and_user"/>
