@@ -40,11 +40,11 @@ preplace inst xlconcat_0 -pg 1 -lvl 5 -x 3110 -y 2930 -defaultsOSRD
 preplace inst mayo_axi_litev3_0 -pg 1 -lvl 6 -x 4430 -y 2980 -defaultsOSRD
 preplace inst blink_led_0 -pg 1 -lvl 8 -x 6260 -y 2790 -defaultsOSRD
 preplace inst MAYO_KEYGEN_FSM_0 -pg 1 -lvl 7 -x 5567 -y 2150 -defaultsOSRD
-preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1290 -y 800 -defaultsOSRD
 preplace inst mayo_negate_0 -pg 1 -lvl 3 -x 1290 -y 380 -defaultsOSRD
 preplace inst mayo_reduce_0 -pg 1 -lvl 3 -x 1290 -y 2120 -defaultsOSRD
 preplace inst mayo_sample_oil_space_0 -pg 1 -lvl 3 -x 1290 -y 2580 -defaultsOSRD
 preplace inst mayo_linear_combinat_0 -pg 1 -lvl 3 -x 1290 -y 1440 -defaultsOSRD
+preplace inst mayo_add_vectors_0 -pg 1 -lvl 3 -x 1290 -y 800 -defaultsOSRD
 preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 5 10 2930 NJ 2930 820J 3050 NJ 3050 2660
 preplace netloc BRAM0_dout_1 1 4 1 2840 750n
 preplace netloc BRAM_big_BRAM_add_dout 1 3 4 1960J 1390 NJ 1390 NJ 1390 4640

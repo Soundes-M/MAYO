@@ -60,6 +60,7 @@ ENTITY Mayo_sign_MAYO_SIGNING_FSM_0_0 IS
     i_enable : IN STD_LOGIC;
     i_secret : IN STD_LOGIC;
     o_done : OUT STD_LOGIC;
+    o_busy : OUT STD_LOGIC;
     o_err : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     o_trng_r : OUT STD_LOGIC;
     o_trng_w : OUT STD_LOGIC;
@@ -181,6 +182,7 @@ ARCHITECTURE Mayo_sign_MAYO_SIGNING_FSM_0_0_arch OF Mayo_sign_MAYO_SIGNING_FSM_0
       i_enable : IN STD_LOGIC;
       i_secret : IN STD_LOGIC;
       o_done : OUT STD_LOGIC;
+      o_busy : OUT STD_LOGIC;
       o_err : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
       o_trng_r : OUT STD_LOGIC;
       o_trng_w : OUT STD_LOGIC;
@@ -342,6 +344,7 @@ BEGIN
       i_enable => i_enable,
       i_secret => i_secret,
       o_done => o_done,
+      o_busy => o_busy,
       o_err => o_err,
       o_trng_r => o_trng_r,
       o_trng_w => o_trng_w,

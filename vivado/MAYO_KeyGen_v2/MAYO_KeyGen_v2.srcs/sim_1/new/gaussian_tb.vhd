@@ -44,11 +44,6 @@ architecture Behavioral of gaussian_tb is
 
 	--UUT 
 	component mayo_sample_oil is
-		generic ( -- Generics are usualy linked to constants, but can be set as INs
-			RHS_ADR : integer := RHS_BASE_ADR;
-			LIN_ADR : integer := LINEAR_BASE_ADR;
-			SOL_ADR : integer := OILSOL_BASE_ADR
-		);
 		port (
 			clk    : in  std_logic;
 			rst    : in  std_logic;
@@ -192,7 +187,6 @@ begin
 		);
 
 	uut : mayo_sample_oil
-		generic map(LIN_ADR => 0, RHS_ADR => M*K*O+4, SOL_ADR => 0)
 		port map (
 			clk    => clk,
 			rst    => reset,
@@ -232,6 +226,10 @@ begin
 		variable v_line2 : line;
 		variable v_tmp   : std_logic_vector(31 downto 0);
 		variable good    : boolean;
+		
+	   constant RHS_ADR : integer := RHS_BASE_ADR;
+	   constant LIN_ADR : integer := LINEAR_BASE_ADR;
+	   constant SOL_ADR : integer := OILSOL_BASE_ADR;
 
 	begin
 		bram_mine0 <= '0';
@@ -251,9 +249,10 @@ begin
 		FILE_OPEN(filein1,"/home/osm/Documents/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_linear.dat",read_mode);
 		FILE_OPEN(filein2,"/home/osm/Documents/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_rhs.dat",read_mode);
 		bram_mine0 <= '1'; -- Take control over BRAM Port 
+
+		i <= LIN_ADR;
 		wait for clk_period;
 
-		i <= 0;
 		-- Fill linear 
 		while not endfile(filein1) loop
 			readline(filein1, v_line1);
@@ -274,7 +273,7 @@ begin
 		user_dina0 <= ZERO_32;
 		wait for clk_period;
 		bram_mine0 <= '1';
-		i          <= M*K*O+4;
+		i          <= RHS_ADR;
 		wait for clk_period;
 
 		-- Fill rhs 

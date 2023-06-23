@@ -1,5 +1,5 @@
 # compile verilog/system verilog design source files
-verilog xil_defaultlib  --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/ec67/hdl" --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/34f8/hdl" --include "/tools/Xilinx/Vivado/2020.2/data/xilinx_vip/include" \
+verilog xil_defaultlib  --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_sign_with_zynq/ipshared/ec67/hdl" --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_sign_with_zynq/ipshared/34f8/hdl" --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/ec67/hdl" --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/34f8/hdl" --include "/tools/Xilinx/Vivado/2020.2/data/xilinx_vip/include" \
 "../../../../MAYO_KeyGen_v2.ip_user_files/bd/Mayo_sign/ip/Mayo_sign_Ground0_0/sim/Mayo_sign_Ground0_0.v" \
 "../../../../MAYO_KeyGen_v2.ip_user_files/bd/Mayo_sign/ip/Mayo_sign_Ground32_0/sim/Mayo_sign_Ground32_0.v" \
 "../../../../MAYO_KeyGen_v2.ip_user_files/bd/Mayo_sign/ip/Mayo_sign_Ground4_0/sim/Mayo_sign_Ground4_0.v" \

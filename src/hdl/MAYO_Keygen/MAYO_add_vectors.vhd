@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
 -- Company     : TU Berlin
 -- Created     : 
--- Last update : Tue May 16 17:58:24 2023
+-- Last update : Mon Jun 19 15:37:38 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -361,7 +361,9 @@ begin
 							bram0b.o.o_addr <= std_logic_vector(unsigned(s_v2_addr) + TO_UNSIGNED(s_ctr,PORT_WIDTH));
 							s_state         <= read18;
 						else
-							s_state <= write4;
+							bram0b.o.o_en <= '0';
+							bram0b.o.o_we <= "0000";
+					 		s_state       <= write4;
 						end if;
 
 					when read18 =>

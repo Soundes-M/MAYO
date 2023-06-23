@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari
 -- Company     : TU Berlin
 -- Created     : Sat Apr 22 15:07:52 2023
--- Last update : Mon Jun 19 12:30:19 2023
+-- Last update : Fri Jun 23 19:50:50 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -222,8 +222,8 @@ architecture Behavioral of mayo_sample_oil is
 
 begin
 	process(clk) is
-		variable v_tmp,v_tmp0 : integer;
-		variable v_myLine     : line; -- debug
+		variable v_tmp    : integer;
+		variable v_myLine : line; -- debug
 
 	begin
 		if (rising_edge(clk)) then
@@ -427,51 +427,53 @@ begin
 						col           <= 0;
 						find_row      <= 0;
 						state         <= unpack7;
+						--state         <= debug0;
 
-						--------------------------------------------------------------------------------
-						--when debug0 =>
-						--	report "Writing AUG_MATR";
-						--	file_open(myFile, "AUG_MATR.txt", write_mode);
-						--	i               <= 0;
-						--	bram0a.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH));
-						--	bram0a.o.o_we   <= "0000";
-						--	bram0a.o.o_en   <= '1';
-						--	state           <= debug1;
+					------------------------------------------------------------------------------
+					when debug0 =>
+						report "Writing AUG_MATR";
+						file_open(myFile, "AUG_MATR.txt", write_mode);
+						i               <= 0;
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH));
+						bram0a.o.o_we   <= "0000";
+						bram0a.o.o_en   <= '1';
+						state           <= debug1;
 
-						--when debug1 =>
-						--	state <= debug2;
+					when debug1 =>
+						state <= debug2;
 
-						--when debug2 =>
-						--	write(v_myLine, to_integer(unsigned(bram0a.i.i_dout(15 downto 0))),RIGHT,2);
-						--	write(v_myLine, string'(" "));
-						--	write(v_myLine, to_integer(unsigned(bram0a.i.i_dout(31 downto 16))),RIGHT,2);
-						--	write(v_myLine, string'(" "));
-						--	if (col = K*O) then
-						--		col <= 0;
-						--		writeline(myFile, v_myLine);
-						--	else
-						--		col <= col +2;
-						--	end if;
-						--	bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
+					when debug2 =>
+						write(v_myLine, to_integer(unsigned(bram0a.i.i_dout(15 downto 0))),RIGHT,2);
+						write(v_myLine, string'(" "));
+						write(v_myLine, to_integer(unsigned(bram0a.i.i_dout(31 downto 16))),RIGHT,2);
+						write(v_myLine, string'(" "));
+						if (col = K*O) then
+							col <= 0;
+							writeline(myFile, v_myLine);
+						else
+							col <= col +2;
+						end if;
+						bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
 
-						--	if (i <= UNPACKED_AUGMENT_RANGE - 4 ) then
-						--		i     <= i+4;
-						--		state <= debug1;
-						--	else
-						--		state <= debug3;
-						--	end if;
+						if (i <= UNPACKED_AUGMENT_RANGE - 4 ) then
+							i     <= i+4;
+							state <= debug1;
+						else
+							state <= debug3;
+						end if;
 
-						--when debug3 =>
-						--	bram0a.o.o_en <= '0';
-						--	col           <= 0;
-						--	i             <= 0;
-						--	file_close(myFile);
-						--	state <= unpack7;
-						--------------------------------------------------------------------------------
+					when debug3 =>
+						bram0a.o.o_en <= '0';
+						col           <= 0;
+						i             <= 0;
+						file_close(myFile);
+						state <= unpack7;
+						------------------------------------------------------------------------------
 
 					when unpack7 => -- while(1)
 						if (row = M) then
 							state <= sol0;
+							--state <= debug4;
 						else
 							find_row <= row;
 							state    <= unpack8;
@@ -565,8 +567,8 @@ begin
 						i             <= 0;
 
 						if (find_row /= row) then -- swap row!
-							uoffset0 <= unpackAdrOffset(row * (K*O+2)+i);
-							uoffset1 <= unpackAdrOffset(find_row * (K*O+2)+i);
+							uoffset0 <= unpackAdrOffset(row * (K*O+2));
+							uoffset1 <= unpackAdrOffset(find_row * (K*O+2));
 							state    <= swap0;
 						else
 							uoffset0 <= unpackAdrOffset(row * (K*O+2)+col);
@@ -772,7 +774,7 @@ begin
 						state                           <= rowop6;
 
 					when rowop6 =>
-						utmp          <= utmp16_1 & utmp16_1;
+						utmp          <= utmp16_1 & utmp16_0;
 						bram0a.o.o_en <= '0';
 						bram0a.o.o_we <= "0000";
 						if (j < K*O+1) then
@@ -801,33 +803,31 @@ begin
 						tmp0          <= bram0b.i.i_dout;
 						bram0a.o.o_en <= '0';
 						bram0b.o.o_en <= '0';
-						state         <= rowop14;
-
-					when rowop14 =>
-						if (isUneven(j) = '1') then
-							utmp2(31 downto 16) <= unsigned(tmp(31 downto 16)) + unsigned(tmp0(31 downto 16));
-						else
-							utmp2(15 downto 0)  <= unsigned(tmp(15 downto 0)) + unsigned(tmp0(15 downto 0));
-							utmp2(31 downto 16) <= unsigned(tmp(31 downto 16)) + unsigned(tmp0(31 downto 16));
-						end if;
-
 						if (s_isColEven = '1') then              -- Pick lower or upper part
 							s_coef <= utmp(PRIME_BITS-1 downto 0); -- Coef can be represented in only 5 bits
 						else
 							s_coef <= utmp(PRIME_BITS-1+16 downto 16);
 						end if;
+						state <= rowop14;
+
+					when rowop14 =>
+						if (isUneven(j) = '1') then
+							utmp2(31 downto 16) <= resize(unsigned(tmp0(31 downto 16)) * s_coef,16);
+						else
+							utmp2(15 downto 0)  <= resize(unsigned(tmp0(15 downto 0)) * s_coef,16);
+							utmp2(31 downto 16) <= resize(unsigned(tmp0(31 downto 16)) * s_coef,16);
+						end if;
 						state <= rowop9;
 
 					when rowop9 =>
-
 						if (isUneven(j) = '1') then
-							bram0a.o.o_din(31 downto 16) <= std_logic_vector(resize(utmp2(31 downto 16) * s_coef,16));
+							bram0a.o.o_din(31 downto 16) <= std_logic_vector(unsigned(tmp(31 downto 16)) + utmp2(31 downto 16));
 							bram0a.o.o_en                <= '1';
 							bram0a.o.o_we                <= "1100";
 							j                            <= j+1;
 						else
-							bram0a.o.o_din(15 downto 0)  <= std_logic_vector(resize(utmp2(15 downto 0) * s_coef,16));
-							bram0a.o.o_din(31 downto 16) <= std_logic_vector(resize(utmp2(31 downto 16) * s_coef,16));
+							bram0a.o.o_din(15 downto 0)  <= std_logic_vector(unsigned(tmp(15 downto 0)) + utmp2(15 downto 0));
+							bram0a.o.o_din(31 downto 16) <= std_logic_vector(unsigned(tmp(31 downto 16)) + utmp2(31 downto 16));
 							bram0a.o.o_en                <= '1';
 							bram0a.o.o_we                <= "1111";
 							j                            <= j+2;
@@ -845,47 +845,47 @@ begin
 						col   <= col +1;
 						state <= unpack7;
 
-						--------------------------------------------------------------------------------
-						--when debug4 =>
-						--	report "Writing AUG_MATR_POST";
-						--	file_open(myFile, "AUG_MATR_POST.txt", write_mode);
-						--	i               <= 0;
-						--	col             <= 0 ;
-						--	bram0a.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH));
-						--	bram0a.o.o_we   <= "0000";
-						--	bram0a.o.o_en   <= '1';
-						--	state           <= debug5;
+					--------------------------------------------------------------------------------
+					when debug4 =>
+						report "Writing AUG_MATR_POST";
+						file_open(myFile, "AUG_MATR_POST.txt", write_mode);
+						i               <= 0;
+						col             <= 0 ;
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(UNPACKED_AUGMENT_BASE_ADR,PORT_WIDTH));
+						bram0a.o.o_we   <= "0000";
+						bram0a.o.o_en   <= '1';
+						state           <= debug5;
 
-						--when debug5 =>
-						--	state <= debug6;
+					when debug5 =>
+						state <= debug6;
 
-						--when debug6 =>
-						--	write(v_myLine, to_integer(unsigned(bram0a.i.i_dout(15 downto 0))),RIGHT,2);
-						--	write(v_myLine, string'(" "));
-						--	write(v_myLine, to_integer(unsigned(bram0a.i.i_dout(31 downto 16))),RIGHT,2);
-						--	write(v_myLine, string'(" "));
-						--	if (col = K*O) then
-						--		col <= 0;
-						--		writeline(myFile, v_myLine);
-						--	else
-						--		col <= col +2;
-						--	end if;
-						--	bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
+					when debug6 =>
+						write(v_myLine, to_integer(unsigned(bram0a.i.i_dout(15 downto 0))),RIGHT,2);
+						write(v_myLine, string'(" "));
+						write(v_myLine, to_integer(unsigned(bram0a.i.i_dout(31 downto 16))),RIGHT,2);
+						write(v_myLine, string'(" "));
+						if (col = K*O) then
+							col <= 0;
+							writeline(myFile, v_myLine);
+						else
+							col <= col +2;
+						end if;
+						bram0a.o.o_addr <= std_logic_vector(unsigned(bram0a.o.o_addr) +4);
 
-						--	if (i <= UNPACKED_AUGMENT_RANGE - 4 ) then
-						--		i     <= i+4;
-						--		state <= debug5;
-						--	else
-						--		state <= debug7;
-						--	end if;
+						if (i <= UNPACKED_AUGMENT_RANGE - 4 ) then
+							i     <= i+4;
+							state <= debug5;
+						else
+							state <= debug7;
+						end if;
 
-						--when debug7 =>
-						--	bram0a.o.o_en <= '0';
-						--	col           <= 0;
-						--	i             <= 0;
-						--	file_close(myFile);
-						--	state <= sol0;
-						--	--state <= done;
+					when debug7 =>
+						bram0a.o.o_en <= '0';
+						col           <= 0;
+						i             <= 0;
+						file_close(myFile);
+						state <= sol0;
+						--state <= done;
 
 					--------------------------------------------------------------------------------
 					-- READ SOLUTION AFTER GAUSSIAN REDUCTiON
@@ -1030,7 +1030,7 @@ begin
 					when sol12 =>
 						bram0b.o.o_en                         <= '1';
 						bram0b.o.o_we                         <= "0011";
-						bram0b.o.o_din(PRIME_BITS-1 downto 0) <= std_logic_vector(utmp1(16+PRIME_BITS downto 0) mod UPRIME);
+						bram0b.o.o_din(PRIME_BITS-1 downto 0) <= std_logic_vector(utmp1(16+PRIME_BITS-1 downto 0) mod UPRIME);
 						bram0b.o.o_din(15 downto PRIME_BITS)  <= (others => '0');
 
 						i     <= i+1;
@@ -1052,7 +1052,7 @@ begin
 						-- Suppose that the unpacked version can fit into packed (16--> 8)
 						s_solution_col(j*8+7 downto j*8) <= bram0a.i.i_dout(7 downto 0); -- todo not sure if works 
 
-						--report "solution[" & integer'image(col-1) & "]= " & integer'image(to_integer(unsigned(bram0a.i.i_dout(7 downto 0))));
+						report "solution[" & integer'image(col-1) & "]= " & integer'image(to_integer(unsigned(bram0a.i.i_dout(7 downto 0))));
 
 						if (j = 0) then
 							bram1a.o.o_addr <= std_logic_vector(to_unsigned(SOL_ADR,PORT_WIDTH)+ sol_ctr);
@@ -1120,7 +1120,7 @@ begin
 					when sol20 =>
 						bram0b.o.o_en                         <= '1';
 						bram0b.o.o_we                         <= "0011";
-						bram0b.o.o_din(PRIME_BITS-1 downto 0) <= std_logic_vector(utmp1(16+PRIME_BITS downto 0) mod UPRIME);
+						bram0b.o.o_din(PRIME_BITS-1 downto 0) <= std_logic_vector(utmp1(16+PRIME_BITS-1 downto 0) mod UPRIME);
 						bram0b.o.o_din(15 downto PRIME_BITS)  <= (others => '0');
 						i                                     <= i+1;
 						state                                 <= sol16;

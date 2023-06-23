@@ -6,7 +6,7 @@
 -- Author      : Oussama Sayari
 -- Company     : TU Berlin
 -- Created     : Sat Apr 29 18:37:13 2023
--- Last update : Sun Jun 18 18:02:02 2023
+-- Last update : Fri Jun 23 19:51:03 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -1495,7 +1495,7 @@ begin
 							if (i_sam_oil_ret= '0') then --SUCCESS
 								state <= sample6;
 							else
-								state <= sign4;    -- OUT OF WHILE LOOP
+								--state <= sign4;    -- OUT OF WHILE LOOP
 								state <= sample6 ; -- DEBUG bruteforce
 								o_err <= "01";
 								report "Sample oil did not find a solution, repeating...";

@@ -3,30 +3,25 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="Mayo_sign_no_zynq_tb_behav.wdb" id="1">
+      <db_ref path="gaussian_tb_behav.wdb" id="1">
          <top_modules>
-            <top_module name="Mayo_sign_no_zynq_tb" />
+            <top_module name="gaussian_tb" />
             <top_module name="glbl" />
-            <top_module name="keccak_globals" />
             <top_module name="mayo_common" />
             <top_module name="utils_common" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="18722957250fs"></ZoomStartTime>
-      <ZoomEndTime time="18900957251fs"></ZoomEndTime>
-      <Cursor1Time time="18764357250fs"></Cursor1Time>
+      <ZoomStartTime time="92267fs"></ZoomStartTime>
+      <ZoomEndTime time="318668fs"></ZoomEndTime>
+      <Cursor1Time time="130000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="250"></NameColumnWidth>
-      <ValueColumnWidth column_width="132"></ValueColumnWidth>
+      <ValueColumnWidth column_width="107"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="107" />
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/clk">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
+   <WVObjectSize size="39" />
    <wvobject fp_name="divider27" type="divider">
       <obj_property name="label">BRAM2</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -34,47 +29,6 @@
    <wvobject type="group" fp_name="group73">
       <obj_property name="label">bram2</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/ena">
-         <obj_property name="ElementShortName">ena</obj_property>
-         <obj_property name="ObjectShortName">ena</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/wea">
-         <obj_property name="ElementShortName">wea[3:0]</obj_property>
-         <obj_property name="ObjectShortName">wea[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/addra">
-         <obj_property name="ElementShortName">addra[31:0]</obj_property>
-         <obj_property name="ObjectShortName">addra[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/dina">
-         <obj_property name="ElementShortName">dina[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dina[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/douta">
-         <obj_property name="ElementShortName">douta[31:0]</obj_property>
-         <obj_property name="ObjectShortName">douta[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/enb">
-         <obj_property name="ElementShortName">enb</obj_property>
-         <obj_property name="ObjectShortName">enb</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/web">
-         <obj_property name="ElementShortName">web[3:0]</obj_property>
-         <obj_property name="ObjectShortName">web[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/addrb">
-         <obj_property name="ElementShortName">addrb[31:0]</obj_property>
-         <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/dinb">
-         <obj_property name="ElementShortName">dinb[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/doutb">
-         <obj_property name="ElementShortName">doutb[31:0]</obj_property>
-         <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject fp_name="divider33" type="divider">
       <obj_property name="label">BRAM0</obj_property>
@@ -83,55 +37,6 @@
    <wvobject type="group" fp_name="group74">
       <obj_property name="label">bram0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/SmallBRAM_1_8K/ena">
-         <obj_property name="ElementShortName">ena</obj_property>
-         <obj_property name="ObjectShortName">ena</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/SmallBRAM_1_8K/wea">
-         <obj_property name="ElementShortName">wea[3:0]</obj_property>
-         <obj_property name="ObjectShortName">wea[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/SmallBRAM_1_8K/addra">
-         <obj_property name="ElementShortName">addra[31:0]</obj_property>
-         <obj_property name="ObjectShortName">addra[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/SmallBRAM_1_8K/dina">
-         <obj_property name="ElementShortName">dina[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dina[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/SmallBRAM_1_8K/douta">
-         <obj_property name="ElementShortName">douta[31:0]</obj_property>
-         <obj_property name="ObjectShortName">douta[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/SmallBRAM_1_8K/enb">
-         <obj_property name="ElementShortName">enb</obj_property>
-         <obj_property name="ObjectShortName">enb</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/SmallBRAM_1_8K/web">
-         <obj_property name="ElementShortName">web[3:0]</obj_property>
-         <obj_property name="ObjectShortName">web[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/SmallBRAM_1_8K/addrb">
-         <obj_property name="ElementShortName">addrb[31:0]</obj_property>
-         <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/SmallBRAM_1_8K/dinb">
-         <obj_property name="ElementShortName">dinb[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/SmallBRAM_1_8K/doutb">
-         <obj_property name="ElementShortName">doutb[31:0]</obj_property>
-         <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/mayo_bram_arbiter2_a/BRAM_sign_control">
-         <obj_property name="ElementShortName">BRAM_sign_control</obj_property>
-         <obj_property name="ObjectShortName">BRAM_sign_control</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/SmallBRAM/mayo_bram_arbiter2_a/BRAM_red_control">
-         <obj_property name="ElementShortName">BRAM_red_control</obj_property>
-         <obj_property name="ObjectShortName">BRAM_red_control</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject fp_name="divider33" type="divider">
       <obj_property name="label">BRAM1</obj_property>
@@ -140,445 +45,138 @@
    <wvobject type="group" fp_name="group75">
       <obj_property name="label">bram1</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/ena">
-         <obj_property name="ElementShortName">ena</obj_property>
-         <obj_property name="ObjectShortName">ena</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/wea">
-         <obj_property name="ElementShortName">wea[3:0]</obj_property>
-         <obj_property name="ObjectShortName">wea[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/addra">
-         <obj_property name="ElementShortName">addra[31:0]</obj_property>
-         <obj_property name="ObjectShortName">addra[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/dina">
-         <obj_property name="ElementShortName">dina[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dina[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/douta">
-         <obj_property name="ElementShortName">douta[31:0]</obj_property>
-         <obj_property name="ObjectShortName">douta[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/enb">
-         <obj_property name="ElementShortName">enb</obj_property>
-         <obj_property name="ObjectShortName">enb</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/web">
-         <obj_property name="ElementShortName">web[3:0]</obj_property>
-         <obj_property name="ObjectShortName">web[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/addrb">
-         <obj_property name="ElementShortName">addrb[31:0]</obj_property>
-         <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/dinb">
-         <obj_property name="ElementShortName">dinb[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dinb[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/BigBRAM1/BigBRAM_2_256K/doutb">
-         <obj_property name="ElementShortName">doutb[31:0]</obj_property>
-         <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
-      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/gaussian_tb/bram_mine0">
+      <obj_property name="ElementShortName">bram_mine0</obj_property>
+      <obj_property name="ObjectShortName">bram_mine0</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/user_addra0">
+      <obj_property name="ElementShortName">user_addra0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">user_addra0[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/user_dina0">
+      <obj_property name="ElementShortName">user_dina0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">user_dina0[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/gaussian_tb/user_ena0">
+      <obj_property name="ElementShortName">user_ena0</obj_property>
+      <obj_property name="ObjectShortName">user_ena0</obj_property>
    </wvobject>
    <wvobject fp_name="divider114" type="divider">
       <obj_property name="label">UUT</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/MAYO_SIGNING_FSM_0/U0/state">
-      <obj_property name="ElementShortName">state</obj_property>
-      <obj_property name="ObjectShortName">state</obj_property>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/i_mem0a_dout">
+      <obj_property name="ElementShortName">i_mem0a_dout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_mem0a_dout[31:0]</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/MAYO_SIGNING_FSM_0/U0/i">
+   <wvobject type="array" fp_name="/gaussian_tb/uut/o_mem0a_din">
+      <obj_property name="ElementShortName">o_mem0a_din[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_mem0a_din[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/o_mem0a_addr">
+      <obj_property name="ElementShortName">o_mem0a_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_mem0a_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/gaussian_tb/uut/o_mem0a_en">
+      <obj_property name="ElementShortName">o_mem0a_en</obj_property>
+      <obj_property name="ObjectShortName">o_mem0a_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/gaussian_tb/uut/o_mem0a_rst">
+      <obj_property name="ElementShortName">o_mem0a_rst</obj_property>
+      <obj_property name="ObjectShortName">o_mem0a_rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/o_mem0a_we">
+      <obj_property name="ElementShortName">o_mem0a_we[3:0]</obj_property>
+      <obj_property name="ObjectShortName">o_mem0a_we[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/gaussian_tb/uut/o_control0a">
+      <obj_property name="ElementShortName">o_control0a</obj_property>
+      <obj_property name="ObjectShortName">o_control0a</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/i_mem0b_dout">
+      <obj_property name="ElementShortName">i_mem0b_dout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_mem0b_dout[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/o_mem0b_din">
+      <obj_property name="ElementShortName">o_mem0b_din[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_mem0b_din[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/o_mem0b_addr">
+      <obj_property name="ElementShortName">o_mem0b_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_mem0b_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/gaussian_tb/uut/o_mem0b_en">
+      <obj_property name="ElementShortName">o_mem0b_en</obj_property>
+      <obj_property name="ObjectShortName">o_mem0b_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/gaussian_tb/uut/o_mem0b_rst">
+      <obj_property name="ElementShortName">o_mem0b_rst</obj_property>
+      <obj_property name="ObjectShortName">o_mem0b_rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/o_mem0b_we">
+      <obj_property name="ElementShortName">o_mem0b_we[3:0]</obj_property>
+      <obj_property name="ObjectShortName">o_mem0b_we[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/gaussian_tb/uut/o_control0b">
+      <obj_property name="ElementShortName">o_control0b</obj_property>
+      <obj_property name="ObjectShortName">o_control0b</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/i_mem1a_dout">
+      <obj_property name="ElementShortName">i_mem1a_dout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_mem1a_dout[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/o_mem1a_din">
+      <obj_property name="ElementShortName">o_mem1a_din[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_mem1a_din[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/o_mem1a_addr">
+      <obj_property name="ElementShortName">o_mem1a_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">o_mem1a_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/gaussian_tb/uut/o_mem1a_en">
+      <obj_property name="ElementShortName">o_mem1a_en</obj_property>
+      <obj_property name="ObjectShortName">o_mem1a_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/gaussian_tb/uut/o_mem1a_rst">
+      <obj_property name="ElementShortName">o_mem1a_rst</obj_property>
+      <obj_property name="ObjectShortName">o_mem1a_rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/gaussian_tb/uut/o_mem1a_we">
+      <obj_property name="ElementShortName">o_mem1a_we[3:0]</obj_property>
+      <obj_property name="ObjectShortName">o_mem1a_we[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/gaussian_tb/uut/col">
+      <obj_property name="ElementShortName">col</obj_property>
+      <obj_property name="ObjectShortName">col</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/gaussian_tb/uut/row">
+      <obj_property name="ElementShortName">row</obj_property>
+      <obj_property name="ObjectShortName">row</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/gaussian_tb/uut/find_row">
+      <obj_property name="ElementShortName">find_row</obj_property>
+      <obj_property name="ObjectShortName">find_row</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/gaussian_tb/uut/i">
       <obj_property name="ElementShortName">i</obj_property>
       <obj_property name="ObjectShortName">i</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/MAYO_SIGNING_FSM_0/U0/j">
+   <wvobject type="other" fp_name="/gaussian_tb/uut/j">
       <obj_property name="ElementShortName">j</obj_property>
       <obj_property name="ObjectShortName">j</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/MAYO_SIGNING_FSM_0/U0/ctr">
-      <obj_property name="ElementShortName">ctr</obj_property>
-      <obj_property name="ObjectShortName">ctr</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/MAYO_SIGNING_FSM_0/U0/c">
-      <obj_property name="ElementShortName">c</obj_property>
-      <obj_property name="ObjectShortName">c</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/MAYO_SIGNING_FSM_0/U0/s_m">
-      <obj_property name="ElementShortName">s_m</obj_property>
-      <obj_property name="ObjectShortName">s_m</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/MAYO_SIGNING_FSM_0/U0/s_k">
-      <obj_property name="ElementShortName">s_k</obj_property>
-      <obj_property name="ObjectShortName">s_k</obj_property>
+   <wvobject type="other" fp_name="/gaussian_tb/uut/state">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
    </wvobject>
    <wvobject fp_name="divider456" type="divider">
       <obj_property name="label">UUT2</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/en">
-      <obj_property name="ElementShortName">en</obj_property>
-      <obj_property name="ObjectShortName">en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_done">
-      <obj_property name="ElementShortName">o_done</obj_property>
-      <obj_property name="ObjectShortName">o_done</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/i_input_adr">
-      <obj_property name="ElementShortName">i_input_adr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_input_adr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/i_output_adr">
-      <obj_property name="ElementShortName">i_output_adr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_output_adr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/i_mema_dout">
-      <obj_property name="ElementShortName">i_mema_dout[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_mema_dout[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_mema_din">
-      <obj_property name="ElementShortName">o_mema_din[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_mema_din[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_mema_addr">
-      <obj_property name="ElementShortName">o_mema_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_mema_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_mema_en">
-      <obj_property name="ElementShortName">o_mema_en</obj_property>
-      <obj_property name="ObjectShortName">o_mema_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_mema_rst">
-      <obj_property name="ElementShortName">o_mema_rst</obj_property>
-      <obj_property name="ObjectShortName">o_mema_rst</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_mema_we">
-      <obj_property name="ElementShortName">o_mema_we[3:0]</obj_property>
-      <obj_property name="ObjectShortName">o_mema_we[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_controla">
-      <obj_property name="ElementShortName">o_controla</obj_property>
-      <obj_property name="ObjectShortName">o_controla</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/i_memb_dout">
-      <obj_property name="ElementShortName">i_memb_dout[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_memb_dout[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_memb_din">
-      <obj_property name="ElementShortName">o_memb_din[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memb_din[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_memb_addr">
-      <obj_property name="ElementShortName">o_memb_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memb_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_memb_en">
-      <obj_property name="ElementShortName">o_memb_en</obj_property>
-      <obj_property name="ObjectShortName">o_memb_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_memb_rst">
-      <obj_property name="ElementShortName">o_memb_rst</obj_property>
-      <obj_property name="ObjectShortName">o_memb_rst</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_memb_we">
-      <obj_property name="ElementShortName">o_memb_we[3:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memb_we[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_controlb">
-      <obj_property name="ElementShortName">o_controlb</obj_property>
-      <obj_property name="ObjectShortName">o_controlb</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/i_memc_dout">
-      <obj_property name="ElementShortName">i_memc_dout[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_memc_dout[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_memc_din">
-      <obj_property name="ElementShortName">o_memc_din[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memc_din[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_memc_addr">
-      <obj_property name="ElementShortName">o_memc_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memc_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_memc_en">
-      <obj_property name="ElementShortName">o_memc_en</obj_property>
-      <obj_property name="ObjectShortName">o_memc_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_memc_rst">
-      <obj_property name="ElementShortName">o_memc_rst</obj_property>
-      <obj_property name="ObjectShortName">o_memc_rst</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_memc_we">
-      <obj_property name="ElementShortName">o_memc_we[3:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memc_we[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/o_controlc">
-      <obj_property name="ElementShortName">o_controlc</obj_property>
-      <obj_property name="ObjectShortName">o_controlc</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/state0">
-      <obj_property name="ElementShortName">state0</obj_property>
-      <obj_property name="ObjectShortName">state0</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/s_input_adr">
-      <obj_property name="ElementShortName">s_input_adr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">s_input_adr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/s_output_adr">
-      <obj_property name="ElementShortName">s_output_adr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">s_output_adr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/read_ctr">
-      <obj_property name="ElementShortName">read_ctr</obj_property>
-      <obj_property name="ObjectShortName">read_ctr</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/write_ctr">
-      <obj_property name="ElementShortName">write_ctr</obj_property>
-      <obj_property name="ObjectShortName">write_ctr</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/orig_input">
-      <obj_property name="ElementShortName">orig_input[0:1][31:0]</obj_property>
-      <obj_property name="ObjectShortName">orig_input[0:1][31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/input_coef">
-      <obj_property name="ElementShortName">input_coef[0:2][31:0]</obj_property>
-      <obj_property name="ObjectShortName">input_coef[0:2][31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/temp_output">
-      <obj_property name="ElementShortName">temp_output[0:1][31:0]</obj_property>
-      <obj_property name="ObjectShortName">temp_output[0:1][31:0]</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/in_ctr">
-      <obj_property name="ElementShortName">in_ctr</obj_property>
-      <obj_property name="ObjectShortName">in_ctr</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/coef_ctr">
-      <obj_property name="ElementShortName">coef_ctr</obj_property>
-      <obj_property name="ObjectShortName">coef_ctr</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/out_ctr">
-      <obj_property name="ElementShortName">out_ctr</obj_property>
-      <obj_property name="ObjectShortName">out_ctr</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/prev_ctr">
-      <obj_property name="ElementShortName">prev_ctr</obj_property>
-      <obj_property name="ObjectShortName">prev_ctr</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/first_add">
-      <obj_property name="ElementShortName">first_add</obj_property>
-      <obj_property name="ObjectShortName">first_add</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/start_add">
-      <obj_property name="ElementShortName">start_add</obj_property>
-      <obj_property name="ObjectShortName">start_add</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/write_out">
-      <obj_property name="ElementShortName">write_out</obj_property>
-      <obj_property name="ObjectShortName">write_out</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/i">
-      <obj_property name="ElementShortName">i</obj_property>
-      <obj_property name="ObjectShortName">i</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/k">
-      <obj_property name="ElementShortName">k</obj_property>
-      <obj_property name="ObjectShortName">k</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/tmp">
-      <obj_property name="ElementShortName">tmp[31:0]</obj_property>
-      <obj_property name="ObjectShortName">tmp[31:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="divider234" type="divider">
       <obj_property name="label">UUT3</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/bram0a">
-      <obj_property name="ElementShortName">bram0a</obj_property>
-      <obj_property name="ObjectShortName">bram0a</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/bram0b">
-      <obj_property name="ElementShortName">bram0b</obj_property>
-      <obj_property name="ObjectShortName">bram0b</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/bram1a">
-      <obj_property name="ElementShortName">bram1a</obj_property>
-      <obj_property name="ObjectShortName">bram1a</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/control0a">
-      <obj_property name="ElementShortName">control0a</obj_property>
-      <obj_property name="ObjectShortName">control0a</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/control0b">
-      <obj_property name="ElementShortName">control0b</obj_property>
-      <obj_property name="ObjectShortName">control0b</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/control1a">
-      <obj_property name="ElementShortName">control1a</obj_property>
-      <obj_property name="ObjectShortName">control1a</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/i_bram_sel">
-      <obj_property name="ElementShortName">i_bram_sel[1:0]</obj_property>
-      <obj_property name="ObjectShortName">i_bram_sel[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/i_enable">
-      <obj_property name="ElementShortName">i_enable</obj_property>
-      <obj_property name="ObjectShortName">i_enable</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/i_mema_dout">
-      <obj_property name="ElementShortName">i_mema_dout[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_mema_dout[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/i_memb_dout">
-      <obj_property name="ElementShortName">i_memb_dout[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_memb_dout[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/i_memc_dout">
-      <obj_property name="ElementShortName">i_memc_dout[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_memc_dout[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/i_out_addr">
-      <obj_property name="ElementShortName">i_out_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_out_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/i_v1_addr">
-      <obj_property name="ElementShortName">i_v1_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_v1_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/i_v2_addr">
-      <obj_property name="ElementShortName">i_v2_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_v2_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_controla">
-      <obj_property name="ElementShortName">o_controla</obj_property>
-      <obj_property name="ObjectShortName">o_controla</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_controlb">
-      <obj_property name="ElementShortName">o_controlb</obj_property>
-      <obj_property name="ObjectShortName">o_controlb</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_controlc">
-      <obj_property name="ElementShortName">o_controlc</obj_property>
-      <obj_property name="ObjectShortName">o_controlc</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_done">
-      <obj_property name="ElementShortName">o_done</obj_property>
-      <obj_property name="ObjectShortName">o_done</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_mema_addr">
-      <obj_property name="ElementShortName">o_mema_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_mema_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_mema_din">
-      <obj_property name="ElementShortName">o_mema_din[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_mema_din[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_mema_en">
-      <obj_property name="ElementShortName">o_mema_en</obj_property>
-      <obj_property name="ObjectShortName">o_mema_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_mema_rst">
-      <obj_property name="ElementShortName">o_mema_rst</obj_property>
-      <obj_property name="ObjectShortName">o_mema_rst</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_mema_we">
-      <obj_property name="ElementShortName">o_mema_we[3:0]</obj_property>
-      <obj_property name="ObjectShortName">o_mema_we[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_memb_addr">
-      <obj_property name="ElementShortName">o_memb_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memb_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_memb_din">
-      <obj_property name="ElementShortName">o_memb_din[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memb_din[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_memb_en">
-      <obj_property name="ElementShortName">o_memb_en</obj_property>
-      <obj_property name="ObjectShortName">o_memb_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_memb_rst">
-      <obj_property name="ElementShortName">o_memb_rst</obj_property>
-      <obj_property name="ObjectShortName">o_memb_rst</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_memb_we">
-      <obj_property name="ElementShortName">o_memb_we[3:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memb_we[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_memc_addr">
-      <obj_property name="ElementShortName">o_memc_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memc_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_memc_din">
-      <obj_property name="ElementShortName">o_memc_din[31:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memc_din[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_memc_en">
-      <obj_property name="ElementShortName">o_memc_en</obj_property>
-      <obj_property name="ObjectShortName">o_memc_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_memc_rst">
-      <obj_property name="ElementShortName">o_memc_rst</obj_property>
-      <obj_property name="ObjectShortName">o_memc_rst</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/o_memc_we">
-      <obj_property name="ElementShortName">o_memc_we[3:0]</obj_property>
-      <obj_property name="ObjectShortName">o_memc_we[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_ctr">
-      <obj_property name="ElementShortName">s_ctr</obj_property>
-      <obj_property name="ObjectShortName">s_ctr</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_finish">
-      <obj_property name="ElementShortName">s_finish</obj_property>
-      <obj_property name="ObjectShortName">s_finish</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_main_en">
-      <obj_property name="ElementShortName">s_main_en</obj_property>
-      <obj_property name="ObjectShortName">s_main_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_main_start">
-      <obj_property name="ElementShortName">s_main_start</obj_property>
-      <obj_property name="ObjectShortName">s_main_start</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_out_addr">
-      <obj_property name="ElementShortName">s_out_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">s_out_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_state">
-      <obj_property name="ElementShortName">s_state</obj_property>
-      <obj_property name="ObjectShortName">s_state</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_state_1">
-      <obj_property name="ElementShortName">s_state_1</obj_property>
-      <obj_property name="ObjectShortName">s_state_1</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_v1">
-      <obj_property name="ElementShortName">s_v1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">s_v1[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_v1_addr">
-      <obj_property name="ElementShortName">s_v1_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">s_v1_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_v2">
-      <obj_property name="ElementShortName">s_v2[31:0]</obj_property>
-      <obj_property name="ObjectShortName">s_v2[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/s_v2_addr">
-      <obj_property name="ElementShortName">s_v2_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">s_v2_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/tmp0">
-      <obj_property name="ElementShortName">tmp0[31:0]</obj_property>
-      <obj_property name="ObjectShortName">tmp0[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/tmp1">
-      <obj_property name="ElementShortName">tmp1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">tmp1[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/tmp2">
-      <obj_property name="ElementShortName">tmp2[31:0]</obj_property>
-      <obj_property name="ObjectShortName">tmp2[31:0]</obj_property>
    </wvobject>
 </wave_config>
