@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date                      : Mon Jun 19 12:44:45 2023
+| Date                      : Sun Jun 25 19:11:58 2023
 | Host                      : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
 | Command                   : report_io -file Mayo_sign_with_zynq_wrapper_io_placed.rpt
 | Design                    : Mayo_sign_with_zynq_wrapper

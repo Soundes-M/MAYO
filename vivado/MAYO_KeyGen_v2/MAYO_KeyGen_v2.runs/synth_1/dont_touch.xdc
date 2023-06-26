@@ -108,20 +108,20 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_sign_w
 # IP: bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_mayo_add_oil_0_0/Mayo_sign_with_zynq_mayo_add_oil_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_sign_with_zynq_mayo_add_oil_0_0 || ORIG_REF_NAME==Mayo_sign_with_zynq_mayo_add_oil_0_0} -quiet] -quiet
 
-# IP: bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_MAYO_SIGNING_FSM_0_0/Mayo_sign_with_zynq_MAYO_SIGNING_FSM_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_sign_with_zynq_MAYO_SIGNING_FSM_0_0 || ORIG_REF_NAME==Mayo_sign_with_zynq_MAYO_SIGNING_FSM_0_0} -quiet] -quiet
-
 # IP: bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_mayo_reduce_extension_0_0/Mayo_sign_with_zynq_mayo_reduce_extension_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_sign_with_zynq_mayo_reduce_extension_0_0 || ORIG_REF_NAME==Mayo_sign_with_zynq_mayo_reduce_extension_0_0} -quiet] -quiet
 
 # IP: bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_mayo_negate_0_0/Mayo_sign_with_zynq_mayo_negate_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_sign_with_zynq_mayo_negate_0_0 || ORIG_REF_NAME==Mayo_sign_with_zynq_mayo_negate_0_0} -quiet] -quiet
 
+# IP: bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_MAYO_P1P1T_0_0/Mayo_sign_with_zynq_MAYO_P1P1T_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_sign_with_zynq_MAYO_P1P1T_0_0 || ORIG_REF_NAME==Mayo_sign_with_zynq_MAYO_P1P1T_0_0} -quiet] -quiet
+
 # IP: bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_mayo_sample_oil_0_0/Mayo_sign_with_zynq_mayo_sample_oil_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_sign_with_zynq_mayo_sample_oil_0_0 || ORIG_REF_NAME==Mayo_sign_with_zynq_mayo_sample_oil_0_0} -quiet] -quiet
 
-# IP: bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_MAYO_P1P1T_0_0/Mayo_sign_with_zynq_MAYO_P1P1T_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_sign_with_zynq_MAYO_P1P1T_0_0 || ORIG_REF_NAME==Mayo_sign_with_zynq_MAYO_P1P1T_0_0} -quiet] -quiet
+# IP: bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_MAYO_SIGNING_FSM_0_0/Mayo_sign_with_zynq_MAYO_SIGNING_FSM_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_sign_with_zynq_MAYO_SIGNING_FSM_0_0 || ORIG_REF_NAME==Mayo_sign_with_zynq_MAYO_SIGNING_FSM_0_0} -quiet] -quiet
 
 # IP: bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_auto_pc_1/Mayo_sign_with_zynq_auto_pc_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==Mayo_sign_with_zynq_auto_pc_1 || ORIG_REF_NAME==Mayo_sign_with_zynq_auto_pc_1} -quiet] -quiet

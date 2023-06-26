@@ -2767,3 +2767,36 @@ V1 Adr : 6900V2 Adr: 7140OUT Adr :7140
 Time: 34376905 ns  Iteration: 2  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/IO_Process  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd
 Note: Reduce_extension done
 Time: 34399195 ns  Iteration: 1  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/output  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Reduce_Extension.vhd
+Note: MAYO Add_vec core :
+V1 Adr : 6900V2 Adr: 3600OUT Adr :3600
+Time: 34399225 ns  Iteration: 2  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/IO_Process  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd
+Note: MAYO Add_vec core :
+V1 Adr : 6900V2 Adr: 7200OUT Adr :7200
+Time: 34399725 ns  Iteration: 2  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/IO_Process  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd
+Note: Reduce_extension done
+Time: 34455425 ns  Iteration: 1  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_reduce_extension_0/U0/output  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Reduce_Extension.vhd
+Note: MAYO Add_vec core :
+V1 Adr : 6900V2 Adr: 3130OUT Adr :6900
+Time: 34456245 ns  Iteration: 2  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/add_vectors/mayo_add_vectors_0/U0/IO_Process  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd
+Note: Sample_oil core :
+LINEAR ADR : 3300
+RHS ADR: 6900
+AUGmatrix ADR: 6960
+SOL ADR :3290
+Time: 34456745 ns  Iteration: 1  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_sample_oil_0/U0/line__224  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Sample_Oil.vhd
+Error: Error: not solvable
+Time: 34673365 ns  Iteration: 1  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_sample_oil_0/U0/line__224  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Sample_Oil.vhd
+Note: Sample oil did not find a solution, repeating...
+Time: 34673375 ns  Iteration: 1  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/MAYO_SIGNING_FSM_0/U0/SIGNING  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Signing_FSM.vhd
+Note: Add_oil core :
+OILSOL_ADR : 3290
+INPUTS_ADR: 2510
+OILSPACE_ADR: 115920
+Time: 34673395 ns  Iteration: 1  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/mayo_add_oil_0/U0/main  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Add_Oil.vhd
+Note: Sign Done
+Time: 34919975 ns  Iteration: 1  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/MAYO_SIGNING_FSM_0/U0/SIGNING  File: /home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Signing_FSM.vhd
+Warning: Something went wrong
+Time: 34919975 ns  Iteration: 3  Process: /Mayo_sign_no_zynq_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/sim_1/new/Mayo_sign_no_zynq_tb.vhd
+Failure: Done
+Time: 34919975 ns  Iteration: 3  Process: /Mayo_sign_no_zynq_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/sim_1/new/Mayo_sign_no_zynq_tb.vhd
+$finish called at time : 34919975 ns : File "/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/sim_1/new/Mayo_sign_no_zynq_tb.vhd" Line 88

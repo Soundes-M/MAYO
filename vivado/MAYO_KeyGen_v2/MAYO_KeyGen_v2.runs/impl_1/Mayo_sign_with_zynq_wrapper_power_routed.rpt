@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date             : Mon Jun 19 13:01:24 2023
+| Date             : Sun Jun 25 19:22:48 2023
 | Host             : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
 | Command          : report_power -file Mayo_sign_with_zynq_wrapper_power_routed.rpt -pb Mayo_sign_with_zynq_wrapper_power_summary_routed.pb -rpx Mayo_sign_with_zynq_wrapper_power_routed.rpx
 | Design           : Mayo_sign_with_zynq_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 2.290        |
+| Total On-Chip Power (W)  | 2.292        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 2.114        |
+| Dynamic (W)              | 2.116        |
 | Device Static (W)        | 0.175        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 58.6         |
@@ -52,21 +52,21 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.055 |        3 |       --- |             --- |
-| Slice Logic              |     0.111 |    57112 |       --- |             --- |
-|   LUT as Logic           |     0.104 |    23021 |     53200 |           43.27 |
-|   CARRY4                 |     0.005 |     1811 |     13300 |           13.62 |
-|   Register               |     0.002 |    24645 |    106400 |           23.16 |
-|   F7/F8 Muxes            |    <0.001 |     3032 |     53200 |            5.70 |
+| Clocks                   |     0.057 |        3 |       --- |             --- |
+| Slice Logic              |     0.113 |    57173 |       --- |             --- |
+|   LUT as Logic           |     0.106 |    23059 |     53200 |           43.34 |
+|   CARRY4                 |     0.005 |     1815 |     13300 |           13.65 |
+|   Register               |     0.002 |    24637 |    106400 |           23.16 |
+|   F7/F8 Muxes            |    <0.001 |     3043 |     53200 |            5.72 |
 |   LUT as Distributed RAM |    <0.001 |      256 |     17400 |            1.47 |
 |   LUT as Shift Register  |    <0.001 |       77 |     17400 |            0.44 |
 |   Others                 |     0.000 |      614 |       --- |             --- |
-| Signals                  |     0.210 |    44325 |       --- |             --- |
+| Signals                  |     0.209 |    44384 |       --- |             --- |
 | Block RAM                |     0.200 |      136 |       140 |           97.14 |
 | DSPs                     |     0.009 |       11 |       220 |            5.00 |
 | PS7                      |     1.529 |        1 |       --- |             --- |
 | Static Power             |     0.175 |          |           |                 |
-| Total                    |     2.290 |          |           |                 |
+| Total                    |     2.292 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.594 |       0.568 |      0.025 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.596 |       0.571 |      0.025 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.018 |       0.000 |      0.018 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -149,60 +149,59 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+------------------------------------------------+-----------+
-| Name                                           | Power (W) |
-+------------------------------------------------+-----------+
-| Mayo_sign_with_zynq_wrapper                    |     2.114 |
-|   Mayo_sign_with_zynq_i                        |     2.114 |
-|     BigBRAM1/BigBRAM_2_256K                    |     0.173 |
-|       U0                                       |     0.173 |
-|     BigBRAM1/axi_bram_ctrl_0                   |     0.003 |
-|       U0                                       |     0.003 |
-|     BigBRAM1/mayo_bram_arbiter2_a              |     0.006 |
-|     BigBRAM2/BigBRAM_3_256K                    |     0.024 |
-|       U0                                       |     0.024 |
-|     BigBRAM2/mayo_bram_arbiter2_a              |     0.012 |
-|     BigBRAM2/mayo_bram_arbiter2_b              |     0.009 |
-|     LInear_Combination/mayo_lin_comb_arbiter_0 |     0.001 |
-|     LInear_Combination/mayo_linear_combinat_0  |     0.024 |
-|       U0                                       |     0.024 |
-|     MAYO_P1P1T_0                               |     0.002 |
-|       U0                                       |     0.002 |
-|     MAYO_SIGNING_FSM_0                         |     0.038 |
-|       U0                                       |     0.036 |
-|     SmallBRAM/SmallBRAM_1_8K                   |     0.019 |
-|       U0                                       |     0.019 |
-|     SmallBRAM/mayo_bram_arbiter2_a             |     0.004 |
-|     SmallBRAM/mayo_bram_arbiter2_b             |     0.001 |
-|     TRNG/TRNG_0                                |     0.003 |
-|       U0                                       |     0.003 |
-|     add_vectors/mayo_add_vectors_0             |     0.008 |
-|       U0                                       |     0.008 |
-|     hash/MAYO_SHAKE_1                          |     0.189 |
-|       inst                                     |     0.189 |
-|     mayo_add_oil_0                             |     0.006 |
-|       U0                                       |     0.006 |
-|     mayo_axi_litev3_0                          |     0.001 |
-|       U0                                       |     0.001 |
-|     mayo_negate_0                              |     0.003 |
-|       U0                                       |     0.003 |
-|     mayo_reduce_0                              |     0.003 |
-|       U0                                       |     0.003 |
-|     mayo_reduce_extension_0                    |     0.010 |
-|       U0                                       |     0.010 |
-|     mayo_sample_oil_0                          |     0.026 |
-|       U0                                       |     0.026 |
-|     mayo_sample_oil_space_0                    |     0.003 |
-|       U0                                       |     0.003 |
-|     mayo_sample_vinegar_0                      |     0.003 |
-|       U0                                       |     0.003 |
-|     memcpy_0                                   |     0.002 |
-|       U0                                       |     0.002 |
-|     processing_system7_0                       |     1.530 |
-|       inst                                     |     1.530 |
-|     ps7_0_axi_periph                           |     0.007 |
-|       m00_couplers/auto_pc                     |     0.003 |
-|       xbar                                     |     0.004 |
-+------------------------------------------------+-----------+
++-------------------------------+-----------+
+| Name                          | Power (W) |
++-------------------------------+-----------+
+| Mayo_sign_with_zynq_wrapper   |     2.116 |
+|   Mayo_sign_with_zynq_i       |     2.116 |
+|     BigBRAM1                  |     0.182 |
+|       BigBRAM_2_256K          |     0.173 |
+|       axi_bram_ctrl_0         |     0.002 |
+|       mayo_bram_arbiter2_a    |     0.006 |
+|     BigBRAM2                  |     0.042 |
+|       BigBRAM_3_256K          |     0.023 |
+|       mayo_bram_arbiter2_a    |     0.010 |
+|       mayo_bram_arbiter2_b    |     0.008 |
+|     LInear_Combination        |     0.024 |
+|       mayo_lin_comb_arbiter_0 |     0.001 |
+|       mayo_linear_combinat_0  |     0.023 |
+|     MAYO_P1P1T_0              |     0.002 |
+|       U0                      |     0.002 |
+|     MAYO_SIGNING_FSM_0        |     0.038 |
+|       U0                      |     0.036 |
+|     SmallBRAM                 |     0.026 |
+|       SmallBRAM_1_8K          |     0.020 |
+|       mayo_bram_arbiter2_a    |     0.004 |
+|       mayo_bram_arbiter2_b    |     0.001 |
+|     TRNG                      |     0.003 |
+|       TRNG_0                  |     0.003 |
+|     add_vectors               |     0.008 |
+|       mayo_add_vectors_0      |     0.008 |
+|     hash                      |     0.195 |
+|       MAYO_SHAKE_1            |     0.194 |
+|     mayo_add_oil_0            |     0.007 |
+|       U0                      |     0.007 |
+|     mayo_axi_litev3_0         |     0.001 |
+|       U0                      |     0.001 |
+|     mayo_negate_0             |     0.003 |
+|       U0                      |     0.003 |
+|     mayo_reduce_0             |     0.003 |
+|       U0                      |     0.003 |
+|     mayo_reduce_extension_0   |     0.009 |
+|       U0                      |     0.009 |
+|     mayo_sample_oil_0         |     0.027 |
+|       U0                      |     0.026 |
+|     mayo_sample_oil_space_0   |     0.003 |
+|       U0                      |     0.003 |
+|     mayo_sample_vinegar_0     |     0.003 |
+|       U0                      |     0.003 |
+|     memcpy_0                  |     0.002 |
+|       U0                      |     0.002 |
+|     processing_system7_0      |     1.531 |
+|       inst                    |     1.531 |
+|     ps7_0_axi_periph          |     0.007 |
+|       m00_couplers            |     0.003 |
+|       xbar                    |     0.004 |
++-------------------------------+-----------+
 
 

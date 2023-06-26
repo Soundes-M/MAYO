@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
 
@@ -129,7 +130,7 @@ set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top Mayo_sign_with_zynq_wrapper -part xc7z020clg484-1 -flatten_hierarchy full -directive AlternateRoutability -no_lc -shreg_min_size 10
+synth_design -top Mayo_sign_with_zynq_wrapper -part xc7z020clg484-1 -directive AlternateRoutability -no_lc -shreg_min_size 10
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"

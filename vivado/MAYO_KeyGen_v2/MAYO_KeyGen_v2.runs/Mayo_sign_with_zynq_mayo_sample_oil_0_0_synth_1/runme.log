@@ -1,0 +1,313 @@
+
+*** Running vivado
+    with args -log Mayo_sign_with_zynq_mayo_sample_oil_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_sign_with_zynq_mayo_sample_oil_0_0.tcl
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source Mayo_sign_with_zynq_mayo_sample_oil_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo_axi_litev3/mayo_axi_litev3_3'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/mayo-axi/Mayo_axi_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/shake128'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/SECT-MAYO/MAYO/vivado/ip_repo/INTERFACES'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.2/data/ip'.
+Command: synth_design -top Mayo_sign_with_zynq_mayo_sample_oil_0_0 -part xc7z020clg484-1 -mode out_of_context
+Starting synth_design
+WARNING: [IP_Flow 19-3571] IP 'Mayo_sign_with_zynq_mayo_sample_oil_0_0' is restricted:
+* Module reference is stale and needs refreshing.
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 17289
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2321.703 ; gain = 0.000 ; free physical = 11191 ; free virtual = 25086
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Mayo_sign_with_zynq_mayo_sample_oil_0_0' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_mayo_sample_oil_0_0/synth/Mayo_sign_with_zynq_mayo_sample_oil_0_0.vhd:87]
+INFO: [Synth 8-3491] module 'mayo_sample_oil' declared at '/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Sample_Oil.vhd:34' bound to instance 'U0' of component 'mayo_sample_oil' [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_mayo_sample_oil_0_0/synth/Mayo_sign_with_zynq_mayo_sample_oil_0_0.vhd:156]
+INFO: [Synth 8-638] synthesizing module 'mayo_sample_oil' [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Sample_Oil.vhd:74]
+INFO: [Synth 8-256] done synthesizing module 'mayo_sample_oil' (1#1) [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Sample_Oil.vhd:74]
+INFO: [Synth 8-256] done synthesizing module 'Mayo_sign_with_zynq_mayo_sample_oil_0_0' (2#1) [/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_mayo_sample_oil_0_0/synth/Mayo_sign_with_zynq_mayo_sample_oil_0_0.vhd:87]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2321.703 ; gain = 0.000 ; free physical = 12222 ; free virtual = 26126
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2321.703 ; gain = 0.000 ; free physical = 12969 ; free virtual = 26885
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2321.703 ; gain = 0.000 ; free physical = 12969 ; free virtual = 26885
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2321.703 ; gain = 0.000 ; free physical = 12992 ; free virtual = 26900
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2385.609 ; gain = 0.000 ; free physical = 12819 ; free virtual = 26733
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2385.609 ; gain = 0.000 ; free physical = 12815 ; free virtual = 26729
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 12910 ; free virtual = 26828
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 12909 ; free virtual = 26827
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 12909 ; free virtual = 26827
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 12835 ; free virtual = 26774
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 13    
+	   2 Input   31 Bit       Adders := 3     
+	   2 Input   21 Bit       Adders := 1     
+	   2 Input   16 Bit       Adders := 2     
+	   2 Input   14 Bit       Adders := 2     
+	   2 Input   12 Bit       Adders := 12    
+	   2 Input    6 Bit       Adders := 14    
++---XORs : 
+	   4 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 16    
+	               16 Bit    Registers := 2     
+	               12 Bit    Registers := 2     
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 25    
+	                5 Bit    Registers := 6     
+	                4 Bit    Registers := 3     
+	                1 Bit    Registers := 13    
++---Muxes : 
+	  86 Input   32 Bit        Muxes := 8     
+	   4 Input   32 Bit        Muxes := 2     
+	   2 Input   32 Bit        Muxes := 8     
+	   3 Input   32 Bit        Muxes := 2     
+	   9 Input   32 Bit        Muxes := 1     
+	   2 Input   31 Bit        Muxes := 3     
+	   3 Input   16 Bit        Muxes := 2     
+	  86 Input   16 Bit        Muxes := 2     
+	   2 Input   16 Bit        Muxes := 2     
+	   2 Input   12 Bit        Muxes := 13    
+	  86 Input   12 Bit        Muxes := 3     
+	   3 Input    7 Bit        Muxes := 2     
+	   2 Input    7 Bit        Muxes := 5     
+	   2 Input    6 Bit        Muxes := 11    
+	   6 Input    6 Bit        Muxes := 1     
+	   3 Input    6 Bit        Muxes := 1     
+	  86 Input    6 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 6     
+	  86 Input    4 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 2     
+	   3 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 3     
+	  86 Input    3 Bit        Muxes := 2     
+	  86 Input    2 Bit        Muxes := 7     
+	   2 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 14    
+	  86 Input    1 Bit        Muxes := 26    
+	   4 Input    1 Bit        Muxes := 1     
+	   5 Input    1 Bit        Muxes := 1     
+	   3 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP utmp20, operation Mode is: A2*B2.
+DSP Report: register s_coef_reg is absorbed into DSP utmp20.
+DSP Report: register tmp0_reg is absorbed into DSP utmp20.
+DSP Report: operator utmp20 is absorbed into DSP utmp20.
+DSP Report: Generating DSP utmp20, operation Mode is: A2*B2.
+DSP Report: register s_coef_reg is absorbed into DSP utmp20.
+DSP Report: register utmp20 is absorbed into DSP utmp20.
+DSP Report: operator utmp20 is absorbed into DSP utmp20.
+DSP Report: Generating DSP utmp10, operation Mode is: A*B.
+DSP Report: operator utmp10 is absorbed into DSP utmp10.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13390 ; free virtual = 27352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping	Report
++----------------+-----------------+---------------+----------------+
+|Module Name     | RTL Object      | Depth x Width | Implemented As | 
++----------------+-----------------+---------------+----------------+
+|mayo_sample_oil | INV[0]          | 32x5          | LUT            | 
+|mayo_sample_oil | INV[0]          | 32x5          | LUT            | 
+|mayo_sample_oil | bram0a[o][o_en] | 128x1         | LUT            | 
+|mayo_sample_oil | bram0a[o][o_we] | 128x1         | LUT            | 
+|mayo_sample_oil | INV[0]          | 32x5          | LUT            | 
+|mayo_sample_oil | INV[0]          | 32x5          | LUT            | 
+|mayo_sample_oil | bram0a[o][o_en] | 128x1         | LUT            | 
+|mayo_sample_oil | bram0a[o][o_we] | 128x1         | LUT            | 
++----------------+-----------------+---------------+----------------+
+
+
+DSP: Preliminary Mapping	Report (see note below)
++----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name     | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|mayo_sample_oil | A2*B2       | 16     | 5      | -      | -      | 21     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|mayo_sample_oil | A2*B2       | 16     | 5      | -      | -      | 21     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|mayo_sample_oil | A*B         | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++----------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13965 ; free virtual = 27904
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13942 ; free virtual = 27881
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13886 ; free virtual = 27828
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13900 ; free virtual = 27844
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13900 ; free virtual = 27844
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13893 ; free virtual = 27836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13893 ; free virtual = 27836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13885 ; free virtual = 27829
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13885 ; free virtual = 27829
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |CARRY4  |   359|
+|2     |DSP48E1 |     3|
+|3     |LUT1    |   229|
+|4     |LUT2    |   561|
+|5     |LUT3    |   302|
+|6     |LUT4    |   200|
+|7     |LUT5    |   318|
+|8     |LUT6    |   664|
+|9     |MUXF7   |    29|
+|10    |FDCE    |     2|
+|11    |FDPE    |     4|
+|12    |FDRE    |   555|
+|13    |FDSE    |     1|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13885 ; free virtual = 27829
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2385.609 ; gain = 0.000 ; free physical = 13974 ; free virtual = 27918
+Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2385.609 ; gain = 63.906 ; free physical = 13974 ; free virtual = 27918
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2385.609 ; gain = 0.000 ; free physical = 14030 ; free virtual = 27974
+INFO: [Netlist 29-17] Analyzing 391 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'Mayo_sign_with_zynq_mayo_sample_oil_0_0' is not ideal for floorplanning, since the cellview 'mayo_sample_oil' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2385.609 ; gain = 0.000 ; free physical = 13917 ; free virtual = 27861
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+26 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:38 . Memory (MB): peak = 2385.609 ; gain = 64.031 ; free physical = 14046 ; free virtual = 27990
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/Mayo_sign_with_zynq_mayo_sample_oil_0_0_synth_1/Mayo_sign_with_zynq_mayo_sample_oil_0_0.dcp' has been generated.
+WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/SECT-MAYO/MAYO/vivado/MAYO_KeyGen_v2/MAYO_KeyGen_v2.runs/Mayo_sign_with_zynq_mayo_sample_oil_0_0_synth_1/Mayo_sign_with_zynq_mayo_sample_oil_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Mayo_sign_with_zynq_mayo_sample_oil_0_0_utilization_synth.rpt -pb Mayo_sign_with_zynq_mayo_sample_oil_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Jun 24 11:48:21 2023...
