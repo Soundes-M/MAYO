@@ -3,13 +3,13 @@
 -- Project     : MAYO
 --------------------------------------------------------------------------------
 -- File        : AXI_bram_mover.vhd
--- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
--- Company     : TU Berlin
--- Last update : Sun Jan  8 13:33:56 2023
+-- Author      : XXXXX
+-- Company     : XXXXX
+-- Last update : Thu Jun 29 19:39:51 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
--- Copyright (c) 2022 TU Berlin
+-- Copyright (c) 2022 XXXXX
 -------------------------------------------------------------------------------
 -- Description: Copies data from BRAM to DDR and fetches the next block.
 --------------------------------------------------------------------------------

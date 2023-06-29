@@ -3,14 +3,14 @@
 -- Project     : MAYO
 --------------------------------------------------------------------------------
 -- File        : MAYO_Scramble.vhd
--- Author      : Oussama Sayari
--- Company     : TU Berlin
+-- Author      : XXXXX
+-- Company     : XXXXX
 -- Created     : Sat Apr 29 18:39:54 2023
--- Last update : Sat Apr 29 18:40:16 2023
+-- Last update : Thu Jun 29 19:39:28 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
--- Copyright (c) 2023 TU Berlin
+-- Copyright (c) 2023 XXXXX
 -------------------------------------------------------------------------------
 -- Description: Used to scramble ops against power analysis attacks 
 --------------------------------------------------------------------------------

@@ -1,13 +1,13 @@
 --------------------------------------------------------------------------------
--- Title       : <Title Block>
--- Project     : Default Project Name
+-- Title       : MAYO_BRAM_Arbiter
+-- Project     : MAYO
 --------------------------------------------------------------------------------
 -- File        : MAYO_BRAM_Arbiter.vhd
--- Author      : User Name <user.email@user.company.com>
--- Company     : User Company Name
--- Created     : Mon Oct  3 12:33:18 2022
--- Last update : Sun Jan  8 14:22:22 2023
--- Platform    : Default Part Number
+-- Author      : XXXXX
+-- Company     : 
+-- Created     : 
+-- Last update : Thu Jun 29 19:37:46 2023
+-- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
 -- Copyright (c) 2022 User Company Name

@@ -3,14 +3,14 @@
 -- Project     : MAYO
 --------------------------------------------------------------------------------
 -- File        : MAYO_Add_Oil.vhd
--- Author      : Oussama Sayari
--- Company     : TU Berlin
+-- Author      : XXXXX
+-- Company     : XXXXX
 -- Created     : Sat Apr 29 18:39:04 2023
--- Last update : Sun Jun 18 17:38:14 2023
+-- Last update : Thu Jun 29 19:39:44 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
--- Copyright (c) 2023 TU Berlin
+-- Copyright (c) 2023 XXXXX
 -------------------------------------------------------------------------------
 -- Description: Adds solution to the appropriate memory space (used as final space)
 --------------------------------------------------------------------------------

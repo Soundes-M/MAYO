@@ -3,10 +3,10 @@
 -- Project     : Default Project Name
 --------------------------------------------------------------------------------
 -- File        : MAYO_BRAM_Arbiter.vhd
--- Author      : User Name <user.email@user.company.com>
--- Company     : User Company Name
+-- Author      : XXXXX
+-- Company     : XXXXX
 -- Created     : Mon Oct  3 12:33:18 2022
--- Last update : Sun Apr 30 20:09:54 2023
+-- Last update : Thu Jun 29 19:40:21 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------

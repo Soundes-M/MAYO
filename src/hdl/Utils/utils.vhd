@@ -3,14 +3,14 @@
 -- Project     : MAYO
 --------------------------------------------------------------------------------
 -- File        : utils.vhd
--- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
--- Company     : TU Berlin
+-- Author      : XXXXX
+-- Company     : XXXXX
 -- Created     : 
--- Last update : Sun Jun 18 22:55:41 2023
+-- Last update : Thu Jun 29 19:39:55 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
--- Copyright (c) 2022 TU Berlin
+-- Copyright (c) 2022 XXXXX
 -------------------------------------------------------------------------------
 -- Description: Utils package for MAYO that contains useful funcs
 --------------------------------------------------------------------------------

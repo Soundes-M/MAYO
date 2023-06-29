@@ -3,14 +3,14 @@
 -- Project     : MAYO
 --------------------------------------------------------------------------------
 -- File        : MAYO_add_vectors.vhd
--- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
--- Company     : TU Berlin
+-- Author      : XXXXX
+-- Company     : 
 -- Created     : 
--- Last update : Mon Jun 19 15:37:38 2023
+-- Last update : Thu Jun 29 19:39:59 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
--- Copyright (c) 2022 TU Berlin
+-- Copyright (c) 2022 XXXXX
 -------------------------------------------------------------------------------
 -- Description: Please read the readme file and use the arbiter accordingly
 -- add_vector : v1 + v2 = out (60==M steps)

@@ -3,10 +3,10 @@
 -- Project     : Default Project Name
 --------------------------------------------------------------------------------
 -- File        : MAYO_P1P1T.vhd
--- Author      : User Name <user.email@user.company.com>
--- Company     : User Company Name
+-- Author      : XXXXX
+-- Company     : XXXXX
 -- Created     : Thu Jan 12 13:40:45 2023
--- Last update : Wed May 10 11:33:52 2023
+-- Last update : Thu Jun 29 19:40:29 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------

@@ -3,10 +3,10 @@
 -- Project     : MAYO
 --------------------------------------------------------------------------------
 -- File        : Memcopy.vhd
--- Author      : Oussama Sayari 
--- Company     : TU BERLIN
+-- Author      : XXXXX 
+-- Company     : XXXXX
 -- Created     : Mon Jan  9 00:23:33 2023
--- Last update : Tue May  9 14:14:32 2023
+-- Last update : Thu Jun 29 19:39:49 2023
 -- Platform    : Default Part Number
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------

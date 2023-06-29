@@ -3,14 +3,14 @@
 -- Project     : MAYO
 --------------------------------------------------------------------------------
 -- File        : MAYO_Sample_Oil.vhd
--- Author      : Oussama Sayari
--- Company     : TU Berlin
+-- Author      : XXXXX
+-- Company     : XXXXX
 -- Created     : Sat Apr 22 15:07:52 2023
--- Last update : Fri Jun 23 19:50:50 2023
+-- Last update : Thu Jun 29 19:39:47 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
--- Copyright (c) 2023 TU Berlin
+-- Copyright (c) 2023 XXXXX
 -------------------------------------------------------------------------------
 -- Description: 
 -- Sample the oil and get a solution if possible

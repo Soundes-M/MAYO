@@ -3,14 +3,14 @@
 -- Project     : MAYO
 --------------------------------------------------------------------------------
 -- File        : MAYO_Keygen.vhd
--- Author      : Oussama Sayari <oussama.sayari@campus.tu-berlin.de>
--- Company     : TU Berlin
+-- Author      : XXXXX
+-- Company     : 
 -- Created     : 
--- Last update : Sun May 14 21:58:28 2023
+-- Last update : Thu Jun 29 19:40:02 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
--- Copyright (c) 2022 TU Berlin
+-- Copyright (c) 2022 XXXXX
 -------------------------------------------------------------------------------
 -- Description: Keygen for MAYO, USES 2 BRAMS
 --------------------------------------------------------------------------------
