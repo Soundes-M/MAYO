@@ -1,7 +1,6 @@
 
 # MAYO 
 A hardware implementation of the MAYO PQ Signature.  
-
 ```
 ░░░    ░░░  ░░░░░  ░░    ░░  ░░░░░░  
 ▒▒▒▒  ▒▒▒▒ ▒▒   ▒▒  ▒▒  ▒▒  ▒▒    ▒▒ 
@@ -10,6 +9,10 @@ A hardware implementation of the MAYO PQ Signature.
 ██      ██ ██   ██    ██     ██████  
 ```
 
+For futher information, please refer to the paper: 
+
+  HaMAYO: A Reconfigurable Hardware Implementation of the Post-Quantum Signature Scheme MAYO
+  
 # Board
 Digilent Xilinx Zynq-7000 [ZedBoard](https://www.avnet.com/wps/portal/us/products/avnet-boards/avnet-board-families/zedboard/)
 
