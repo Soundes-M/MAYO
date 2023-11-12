@@ -1,0 +1,109 @@
+Vivado Simulator 2020.2
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: /tools/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto d66b6319f1b64f71af99d4bfee06831f --incr --debug typical --relax --mt 8 -L xil_defaultlib -L xlconstant_v1_1_7 -L fifo_generator_v13_2_5 -L xlconcat_v2_1_4 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot Mayo_sign_no_zynq_tb_behav xil_defaultlib.Mayo_sign_no_zynq_tb xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-8437] comparison between unequal length arrays always returns FALSE, left argument length 5 is different from right argument length 4 for 'std_logic_vector_93' array [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Linear_Combination_Arbiter.vhd:209]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.mayo_common
+Compiling package xil_defaultlib.utils_common
+Compiling package unisim.vcomponents
+Compiling package ieee.math_real
+Compiling package ieee.std_logic_textio
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling package ieee.std_logic_arith
+Compiling package xil_defaultlib.keccak_globals
+Compiling package ieee.std_logic_unsigned
+Compiling package vl.vl_types
+Compiling module xil_defaultlib.glbl
+Compiling architecture behavioral of entity xil_defaultlib.mayo_bram_arbiter2 [mayo_bram_arbiter2_default]
+Compiling architecture mayo_sign_mayo_bram_arbiter2_1_0_arch of entity xil_defaultlib.Mayo_sign_mayo_bram_arbiter2_1_0 [mayo_sign_mayo_bram_arbiter2_1_0...]
+Compiling architecture mayo_sign_mayo_bram_arbiter2_0_2_arch of entity xil_defaultlib.Mayo_sign_mayo_bram_arbiter2_0_2 [mayo_sign_mayo_bram_arbiter2_0_2...]
+Compiling architecture rtl of entity xil_defaultlib.tdp_BigBRAM_2 [\tdp_BigBRAM_2(1,11)(1,0)\]
+Compiling architecture mayo_sign_tdp_bigbram_2_0_0_arch of entity xil_defaultlib.Mayo_sign_tdp_BigBRAM_2_0_0 [mayo_sign_tdp_bigbram_2_0_0_defa...]
+Compiling architecture structure of entity xil_defaultlib.BigBRAM1_imp_FGVWIZ [bigbram1_imp_fgvwiz_default]
+Compiling architecture mayo_sign_mayo_bram_arbiter2_0_4_arch of entity xil_defaultlib.Mayo_sign_mayo_bram_arbiter2_0_4 [mayo_sign_mayo_bram_arbiter2_0_4...]
+Compiling architecture mayo_sign_mayo_bram_arbiter2_0_3_arch of entity xil_defaultlib.Mayo_sign_mayo_bram_arbiter2_0_3 [mayo_sign_mayo_bram_arbiter2_0_3...]
+Compiling architecture mayo_sign_tdp_bigbram_2_0_1_arch of entity xil_defaultlib.Mayo_sign_tdp_BigBRAM_2_0_1 [mayo_sign_tdp_bigbram_2_0_1_defa...]
+Compiling architecture structure of entity xil_defaultlib.BigBRAM2_imp_1PB6TEW [bigbram2_imp_1pb6tew_default]
+Compiling module xlconstant_v1_1_7.xlconstant_v1_1_7_xlconstant(CON...
+Compiling module xil_defaultlib.Mayo_sign_Ground0_0
+Compiling module xlconstant_v1_1_7.xlconstant_v1_1_7_xlconstant(CON...
+Compiling module xil_defaultlib.Mayo_sign_Ground32_0
+Compiling module xlconstant_v1_1_7.xlconstant_v1_1_7_xlconstant(CON...
+Compiling module xil_defaultlib.Mayo_sign_Ground4_0
+Compiling architecture behavioral of entity xil_defaultlib.mayo_lin_comb_arbiter [mayo_lin_comb_arbiter_default]
+Compiling architecture mayo_sign_mayo_lin_comb_arbiter_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_lin_comb_arbiter_0_0 [mayo_sign_mayo_lin_comb_arbiter_...]
+Compiling architecture behavioral of entity xil_defaultlib.DSP_Accum [dsp_accum_default]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_linear_combination [mayo_linear_combination_default]
+Compiling architecture mayo_sign_mayo_linear_combinat_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_linear_combinat_0_0 [mayo_sign_mayo_linear_combinat_0...]
+Compiling architecture structure of entity xil_defaultlib.LInear_Combination_imp_DQ7H61 [linear_combination_imp_dq7h61_de...]
+Compiling architecture behavioral of entity xil_defaultlib.MAYO_P1P1T [mayo_p1p1t_default]
+Compiling architecture mayo_sign_mayo_p1p1t_0_0_arch of entity xil_defaultlib.Mayo_sign_MAYO_P1P1T_0_0 [mayo_sign_mayo_p1p1t_0_0_default]
+Compiling architecture behavioral of entity xil_defaultlib.MAYO_SIGNING_FSM [mayo_signing_fsm_default]
+Compiling architecture mayo_sign_mayo_signing_fsm_0_0_arch of entity xil_defaultlib.Mayo_sign_MAYO_SIGNING_FSM_0_0 [mayo_sign_mayo_signing_fsm_0_0_d...]
+Compiling architecture mayo_sign_mayo_bram_arbiter2_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_bram_arbiter2_0_0 [mayo_sign_mayo_bram_arbiter2_0_0...]
+Compiling architecture mayo_sign_mayo_bram_arbiter2_0_1_arch of entity xil_defaultlib.Mayo_sign_mayo_bram_arbiter2_0_1 [mayo_sign_mayo_bram_arbiter2_0_1...]
+Compiling architecture rtl of entity xil_defaultlib.tdp_SmallBRAM_1 [\tdp_SmallBRAM_1(1,11)(1,0)\]
+Compiling architecture mayo_sign_tdp_smallbram_1_0_0_arch of entity xil_defaultlib.Mayo_sign_tdp_SmallBRAM_1_0_0 [mayo_sign_tdp_smallbram_1_0_0_de...]
+Compiling architecture structure of entity xil_defaultlib.SmallBRAM_imp_MCN2TS [smallbram_imp_mcn2ts_default]
+Compiling module fifo_generator_v13_2_5.fifo_generator_v13_2_5_bhv_ver_s...
+Compiling module fifo_generator_v13_2_5.fifo_generator_v13_2_5_CONV_VER(...
+Compiling module fifo_generator_v13_2_5.fifo_generator_vlog_beh(C_COMMON...
+Compiling module xil_defaultlib.fifo_generator_0
+Compiling architecture neotrng_cell_rtl of entity xil_defaultlib.neoTRNG_cell [\neoTRNG_cell(num_inv_s=5,num_in...]
+Compiling architecture neotrng_cell_rtl of entity xil_defaultlib.neoTRNG_cell [\neoTRNG_cell(num_inv_s=7,num_in...]
+Compiling architecture neotrng_cell_rtl of entity xil_defaultlib.neoTRNG_cell [\neoTRNG_cell(num_inv_s=9,num_in...]
+Compiling architecture neotrng_rtl of entity xil_defaultlib.neoTRNG [\neoTRNG(num_cells=3,num_inv_sta...]
+Compiling architecture behavioral of entity xil_defaultlib.TRNG [\TRNG(is_sim=true)\]
+Compiling architecture mayo_sign_trng_0_0_arch of entity xil_defaultlib.Mayo_sign_TRNG_0_0 [mayo_sign_trng_0_0_default]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_trng_arbiter [mayo_trng_arbiter_default]
+Compiling architecture mayo_sign_mayo_trng_arbiter_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_trng_arbiter_0_0 [mayo_sign_mayo_trng_arbiter_0_0_...]
+Compiling module xlconcat_v2_1_4.xlconcat_v2_1_4_xlconcat_default
+Compiling module xil_defaultlib.Mayo_sign_xlconcat_0_0
+Compiling architecture structure of entity xil_defaultlib.TRNG_imp_803AL3 [trng_imp_803al3_default]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_add_vectors [mayo_add_vectors_default]
+Compiling architecture mayo_sign_mayo_add_vectors_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_add_vectors_0_0 [mayo_sign_mayo_add_vectors_0_0_d...]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_add_vectors_arbiter [mayo_add_vectors_arbiter_default]
+Compiling architecture mayo_sign_mayo_add_vectors_arb_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_add_vectors_arb_0_0 [mayo_sign_mayo_add_vectors_arb_0...]
+Compiling architecture structure of entity xil_defaultlib.add_vectors_imp_5D59YL [add_vectors_imp_5d59yl_default]
+Compiling architecture rtl of entity xil_defaultlib.keccak_round [keccak_round_default]
+Compiling architecture rtl of entity xil_defaultlib.keccak_round_constants_gen [keccak_round_constants_gen_defau...]
+Compiling architecture rtl of entity xil_defaultlib.keccak_buffer [keccak_buffer_default]
+Compiling architecture rtl of entity xil_defaultlib.keccak [keccak_default]
+Compiling module xil_defaultlib.SHA_SHAKE_wrapper
+Compiling module xil_defaultlib.MAYO_SHAKE
+Compiling module xil_defaultlib.Mayo_sign_MAYO_SHAKE_1_0
+Compiling architecture behavioral of entity xil_defaultlib.mayo_hash_bram_arbiter [mayo_hash_bram_arbiter_default]
+Compiling architecture mayo_sign_mayo_hash_bram_arbit_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_hash_bram_arbit_0_0 [mayo_sign_mayo_hash_bram_arbit_0...]
+Compiling architecture structure of entity xil_defaultlib.hash_imp_1H0AQ0H [hash_imp_1h0aq0h_default]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_add_oil [mayo_add_oil_default]
+Compiling architecture mayo_sign_mayo_add_oil_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_add_oil_0_0 [mayo_sign_mayo_add_oil_0_0_defau...]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_negate [mayo_negate_default]
+Compiling architecture mayo_sign_mayo_negate_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_negate_0_0 [mayo_sign_mayo_negate_0_0_defaul...]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_reduce [mayo_reduce_default]
+Compiling architecture mayo_sign_mayo_reduce_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_reduce_0_0 [mayo_sign_mayo_reduce_0_0_defaul...]
+Compiling architecture behav of entity xil_defaultlib.mayo_reduce_extension [mayo_reduce_extension_default]
+Compiling architecture mayo_sign_mayo_reduce_extension_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_reduce_extension_0_0 [mayo_sign_mayo_reduce_extension_...]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_sample_oil [mayo_sample_oil_default]
+Compiling architecture mayo_sign_mayo_sample_oil_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_sample_oil_0_0 [mayo_sign_mayo_sample_oil_0_0_de...]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_sample_oil_space [mayo_sample_oil_space_default]
+Compiling architecture mayo_sign_mayo_sample_oil_space_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_sample_oil_space_0_0 [mayo_sign_mayo_sample_oil_space_...]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_sample_vinegar [mayo_sample_vinegar_default]
+Compiling architecture mayo_sign_mayo_sample_vinegar_0_0_arch of entity xil_defaultlib.Mayo_sign_mayo_sample_vinegar_0_0 [mayo_sign_mayo_sample_vinegar_0_...]
+Compiling architecture behavioral of entity xil_defaultlib.memcpy [memcpy_default]
+Compiling architecture mayo_sign_memcpy_0_0_arch of entity xil_defaultlib.Mayo_sign_memcpy_0_0 [mayo_sign_memcpy_0_0_default]
+Compiling architecture mayo_sign_memcpy_0_1_arch of entity xil_defaultlib.Mayo_sign_memcpy_0_1 [mayo_sign_memcpy_0_1_default]
+Compiling architecture structure of entity xil_defaultlib.Mayo_sign [mayo_sign_default]
+Compiling architecture structure of entity xil_defaultlib.Mayo_sign_wrapper [mayo_sign_wrapper_default]
+Compiling architecture behavioral of entity xil_defaultlib.mayo_sign_no_zynq_tb
+Built simulation snapshot Mayo_sign_no_zynq_tb_behav

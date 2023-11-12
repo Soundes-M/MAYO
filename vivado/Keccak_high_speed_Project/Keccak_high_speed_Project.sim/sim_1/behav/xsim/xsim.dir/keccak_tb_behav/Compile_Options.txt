@@ -1,1 +1,0 @@
--wto "d10417d9dbce4efcb8817871fe48b51f" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "keccak_tb_behav" "xil_defaultlib.keccak_tb" -log "elaborate.log" 

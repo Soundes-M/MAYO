@@ -1,1 +1,0 @@
-set ::AESL_AUTOSIM::gTopFileName /home/osm/Documents/SECT-MAYO/MAYO/vitis/test_funcs/solution1/./sim/autowrap/testbench/test_func.cpp_pre.cpp.tb.cpp

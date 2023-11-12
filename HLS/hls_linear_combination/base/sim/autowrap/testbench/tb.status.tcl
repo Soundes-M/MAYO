@@ -1,1 +1,0 @@
-set ::AESL_AUTOSIM::gTopFileName /home/osm/Documents/SECT-MAYO/MAYO/HLS/hls_linear_combination/base/./sim/autowrap/testbench/hls_linear_combination.cpp_pre.cpp.tb.cpp

@@ -1,9 +1,0 @@
-Vivado Simulator 2020.2
-Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: /tools/Xilinx/Vivado/2020.2/bin/unwrapped/lnx64.o/xelab -wto c288448962fe4364bad66aba55020fde --incr --debug typical --relax --mt 8 -L xil_defaultlib -L xlconstant_v1_1_7 -L fifo_generator_v13_2_5 -L xlconcat_v2_1_4 -L blk_mem_gen_v8_4_4 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot Mayo_sign_no_zynq_tb_behav xil_defaultlib.Mayo_sign_no_zynq_tb xil_defaultlib.glbl -log elaborate.log 
-Using 8 slave threads.
-Starting static elaboration
-Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-8437] comparison between unequal length arrays always returns FALSE, left argument length 5 is different from right argument length 4 for 'std_logic_vector_93' array [/home/osm/Documents/SECT-MAYO/MAYO/src/hdl/MAYO_Signing/MAYO_Linear_Combination_Arbiter.vhd:209]
-Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

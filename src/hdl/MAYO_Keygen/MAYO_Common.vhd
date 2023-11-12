@@ -86,7 +86,7 @@ PACKAGE MAYO_COMMON IS
   -- Address Mapping (In BRAM I) (SMALL DATA)
   ------------------------------------------------------------------------------
   CONSTANT BRAM_I_PORT_WIDTH : natural := 31;
-  CONSTANT BRAM_I_SIZE       : natural := 8_192; -- Bytes
+  CONSTANT BRAM_I_SIZE       : natural := 4096; -- Bytes
 
   -- SECRET KEY (SK)
   CONSTANT SK_BASE_ADR : natural  := 0;
@@ -151,7 +151,7 @@ PACKAGE MAYO_COMMON IS
   -- Address Mapping (In BRAM II) (BIG DATA1)
   ------------------------------------------------------------------------------
   CONSTANT BRAM_II_PORT_WIDTH : natural := 31;
-  CONSTANT BRAM_II_SIZE       : natural := 262_144; -- Bytes
+  CONSTANT BRAM_II_SIZE       : natural := 262144; -- Bytes
 
   -----------------KEYGEN MEMORY SPACE-----------------------------
   CONSTANT P1_BASE_ADR : natural  := 16#0#;
@@ -177,9 +177,9 @@ PACKAGE MAYO_COMMON IS
   -- ADDRESS ZYNQ MEMORY SPACE [CPU SPACE]
   -----------------------> COPY WHEN EXPOSE = 1! 
   -- Read from, if CPU provides data
-  -- RESERVED 8K :)
+  -- RESERVED 1K :)
   -- CONSTANT OFFSET PADDING
-  CONSTANT OFFSET : positive := 8_192;
+  CONSTANT OFFSET : positive := 1024;
 
   -- PK [LAST WORD]
   CONSTANT CPU_SPACE_PK_HIGH_ADR  : positive := BRAM_II_SIZE - OFFSET;
@@ -205,7 +205,7 @@ PACKAGE MAYO_COMMON IS
   -- Address Mapping (In BRAM III) (BIG DATA2)
   ------------------------------------------------------------------------------
   CONSTANT BRAM_III_PORT_WIDTH : natural := 31;
-  CONSTANT BRAM_III_SIZE       : natural := 262_144; -- Bytes
+  CONSTANT BRAM_III_SIZE       : natural := 262144; -- Bytes
 
   -----------------SIGNING MEMORY SPACE-----------------------------
   -- WARNING: FOLLOWING 2 ARE USED ONLY ONCE SO POST USAGE and overwrite is allowed (Used in compute bilinear)
@@ -244,14 +244,6 @@ PACKAGE MAYO_COMMON IS
   CONSTANT UNPACKED_AUGMENT_BASE_ADR : positive := RHS_HIGH_ADR +4;
   CONSTANT UNPACKED_AUGMENT_RANGE    : positive := M*(K*O+2) *2; -- todo check this ! is it +1 or +2 for range! 
   CONSTANT UNPACKED_AUGMENT_HIGH_ADR : positive := UNPACKED_AUGMENT_BASE_ADR + UNPACKED_AUGMENT_RANGE -4;
-
-  ------------------------------------------------------------------------------
-  -- Address Mapping DDR MAPPING  [DISCARDED]
-  ------------------------------------------------------------------------------
-  -- Address Mapping 
-  CONSTANT DDR_BASE_ADR : natural  := 16#0#;       -- TODO CHANGE THIS
-  CONSTANT DDR_RANGE    : positive := 536_870_912; -- Zedboard --> 512MB DRAM TODO: Chnage this!
-  CONSTANT DDR_HIGH_ADR : positive := DDR_BASE_ADR + DDR_RANGE - 4;
 
   -- Default secret key if none provided
   type mem_array is array (0 to 7) of std_logic_vector(31 downto 0);

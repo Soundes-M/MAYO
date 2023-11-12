@@ -1,0 +1,12 @@
+
+{ 
+    crc :  12248408174907661435  , 
+    ccp_crc :  0  , 
+    cmdline : " -wto d66b6319f1b64f71af99d4bfee06831f --incr --debug typical --relax --mt 8 -L xil_defaultlib -L xlconstant_v1_1_7 -L fifo_generator_v13_2_5 -L xlconcat_v2_1_4 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot Mayo_sign_no_zynq_tb_behav xil_defaultlib.Mayo_sign_no_zynq_tb xil_defaultlib.glbl" , 
+    buildDate : "Nov 18 2020" , 
+    buildTime : "09:20:35" , 
+    linkCmd : "/usr/bin/gcc -Wa,-W  -O -fPIC  -m64  -Wl,--no-as-needed  -Wl,--unresolved-symbols=ignore-all  -o \"xsim.dir/Mayo_sign_no_zynq_tb_behav/xsimk\"   \"xsim.dir/Mayo_sign_no_zynq_tb_behav/obj/xsim_0.lnx64.o\" \"xsim.dir/Mayo_sign_no_zynq_tb_behav/obj/xsim_1.lnx64.o\" \"xsim.dir/Mayo_sign_no_zynq_tb_behav/obj/xsim_2.lnx64.o\" \"xsim.dir/Mayo_sign_no_zynq_tb_behav/obj/xsim_3.lnx64.o\" \"xsim.dir/Mayo_sign_no_zynq_tb_behav/obj/xsim_4.lnx64.o\" \"xsim.dir/Mayo_sign_no_zynq_tb_behav/obj/xsim_5.lnx64.o\" -L\"/tools/Xilinx/Vivado/2020.2/lib/lnx64.o\" -lrdi_simulator_kernel   -lrdi_simbridge_kernel" , 
+    aggregate_nets : 
+    [ 
+    ] 
+} 

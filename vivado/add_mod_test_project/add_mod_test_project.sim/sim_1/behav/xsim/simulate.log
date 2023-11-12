@@ -1,7 +1,0 @@
-Vivado Simulator 2020.2
-Time resolution is 1 ps
-Warning: Found 2000 PASS
-Time: 75 ns  Iteration: 2  Process: /dsp_accumu_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/add_mod_test_project/add_mod_test_project.srcs/sim_1/new/dsp_accumu_tb.vhd
-Failure: Found 1000 PASS
-Time: 195 ns  Iteration: 2  Process: /dsp_accumu_tb/tb  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/add_mod_test_project/add_mod_test_project.srcs/sim_1/new/dsp_accumu_tb.vhd
-$finish called at time : 195 ns : File "/home/osm/Documents/SECT-MAYO/MAYO/vivado/add_mod_test_project/add_mod_test_project.srcs/sim_1/new/dsp_accumu_tb.vhd" Line 86

@@ -1,6 +1,0 @@
-   Build using "/opt/Xilinx/Vitis_HLS/2020.2/tps/lnx64/gcc-6.2.0/bin/g++"
-   Compiling apatb_test_func.cpp
-   Compiling test_func.cpp_pre.cpp.tb.cpp
-   Compiling test_func_test.cpp_pre.cpp.tb.cpp
-   Compiling apatb_test_func_ir.ll
-   Generating cosim.tv.exe

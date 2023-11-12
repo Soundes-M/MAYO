@@ -1,8 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"adder_tb_func_synth.vhd" \
-"../../../../../add_mod_test_project.srcs/sources_1/new/mod.vhd" \
-"../../../../../add_mod_test_project.srcs/sim_1/new/adder_tb.vhd" \
-
-# Do not sort compile order
-nosort

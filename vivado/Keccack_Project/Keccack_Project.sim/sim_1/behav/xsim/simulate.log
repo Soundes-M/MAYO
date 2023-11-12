@@ -1,5 +1,0 @@
-Vivado Simulator 2020.2
-Time resolution is 1 ps
-Failure: Simulation completed
-Time: 10040 ns  Iteration: 1  Process: /keccak_tb/p_main  File: /home/osm/Documents/SECT-MAYO/MAYO/vivado/Keccack_Project/Keccack_Project.srcs/sources_1/imports/mid_range_core/tb_keccak.vhd
-$finish called at time : 10040 ns : File "/home/osm/Documents/SECT-MAYO/MAYO/vivado/Keccack_Project/Keccack_Project.srcs/sources_1/imports/mid_range_core/tb_keccak.vhd" Line 113

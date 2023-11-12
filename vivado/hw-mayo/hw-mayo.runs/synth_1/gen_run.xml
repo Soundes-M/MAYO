@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1699816722">
+  <File Type="VDS-TIMING-PB" Name="Mayo_sign_wrapper_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="Mayo_sign_wrapper_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="Mayo_sign_wrapper.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="Mayo_sign_wrapper_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="Mayo_sign_wrapper_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="Mayo_sign_wrapper_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="Mayo_sign_wrapper.vds"/>
+  <File Type="REPORTS-TCL" Name="Mayo_sign_wrapper_reports.tcl"/>
+  <File Type="PA-TCL" Name="Mayo_sign_wrapper.tcl"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Common.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/Utils/utils.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_trng_Arbiter.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_HASH_BRAM_Arbiter.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_BRAM_Arbiter2.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_Linear_Combination_Arbiter.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_linear_combination.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_add_vectors.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Add_vectors_Arbiter.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_P1P1T.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_Signing_FSM.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_Add_Oil.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_negate.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_reduce.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_Reduce_Extension.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_Sample_Oil.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Sample_Oil_Space.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/MAYO_Sample_Vinegar.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Signing/Memcopy.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/Utils/mem/SmallBRAM_1.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/Utils/mem/BigBRAM_2.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/Mayo_sign/Mayo_sign.bd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/sources_1/bd/Mayo_sign/Mayo_sign.bd"/>
+        <Attr Name="ImportTime" Val="1697116559"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PGENDIR/sources_1/bd/Mayo_sign/hdl/Mayo_sign_wrapper.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Mayo_sign_wrapper.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_sign/hdl/Mayo_sign_wrapper.vhd"/>
+        <Attr Name="ImportTime" Val="1687542793"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/bram_test.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/Mayo_sign_with_zynq/Mayo_sign_with_zynq.bd">
+      <FileInfo>
+        <Attr Name="UserDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/sources_1/bd/Mayo_sign_with_zynq/Mayo_sign_with_zynq.bd"/>
+        <Attr Name="ImportTime" Val="1697116559"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Mayo_sign_with_zynq_wrapper.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_sign_with_zynq/hdl/Mayo_sign_with_zynq_wrapper.vhd"/>
+        <Attr Name="ImportTime" Val="1687600005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_BRAM_Arbiter.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_Keygen_FSM.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/Mayo_keygen_no_zynq/Mayo_keygen_no_zynq.bd">
+      <FileInfo>
+        <Attr Name="UserDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/sources_1/bd/Mayo_keygen_no_zynq/Mayo_keygen_no_zynq.bd"/>
+        <Attr Name="ImportTime" Val="1697116559"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Mayo_keygen_no_zynq_wrapper.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen_no_zynq/hdl/Mayo_keygen_no_zynq_wrapper.vhd"/>
+        <Attr Name="ImportTime" Val="1680350906"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/Mayo_keygen/Mayo_keygen.bd">
+      <FileInfo>
+        <Attr Name="UserDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/sources_1/bd/Mayo_keygen/Mayo_keygen.bd"/>
+        <Attr Name="ImportTime" Val="1697116560"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Mayo_keygen_wrapper.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../MAYO_KeyGen_v2/MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/hdl/Mayo_keygen_wrapper.vhd"/>
+        <Attr Name="ImportTime" Val="1674644951"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/MAYO_Keygen/MAYO_HASH_Arbiter.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/Utils/bram_demux.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../ip_repo/mayo_keygen_fsm/component.xml">
+      <FileInfo SFType="IPXACT"/>
+    </File>
+    <File Path="$PPRDIR/../../src/hdl/Utils/mem/BigBRAM_3.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="Mayo_sign_wrapper"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/Mayo_keygen_wrapper.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../MAYO_KeyGen_v2/MAYO_KeyGen_v2.srcs/constrs_1/new/Mayo_keygen_wrapper.xdc"/>
+        <Attr Name="ImportTime" Val="1684313552"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/Mayo_keygen_wrapper.xdc"/>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Flow_AlternateRoutability" Flow="Vivado Synthesis 2020">
+      <Desc>Performs optimizations which creates alternative logic technology mapping, including disabling LUT combining, forcing F7/F8/F9 to logic, increasing the threshold of shift register inference.</Desc>
+    </StratHandle>
+    <Step Id="synth_design">
+      <Option Id="NoCombineLuts">1</Option>
+      <Option Id="ShregMinSize">10</Option>
+      <Option Id="Directive">3</Option>
+    </Step>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_memcpy_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_sample_vinegar_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_sample_oil_space_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_sample_oil_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_tdp_BigBRAM_2_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_negate_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_add_oil_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_MAYO_SIGNING_FSM_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_MAYO_P1P1T_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_add_vectors_arb_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_bram_arbiter2_0_4"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_tdp_SmallBRAM_1_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_reduce_extension_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_bram_arbiter2_0_3"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_tdp_BigBRAM_2_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_linear_combinat_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_reduce_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_bram_arbiter2_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_bram_arbiter2_0_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_bram_arbiter2_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_lin_comb_arbiter_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_bram_arbiter2_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_memcpy_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_hash_bram_arbit_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_MAYO_SHAKE_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_trng_arbiter_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_mayo_add_vectors_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="Mayo_sign_TRNG_0_0"/>
+</GenRun>

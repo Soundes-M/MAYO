@@ -6,7 +6,7 @@
 -- Author      : XXXXX
 -- Company     : 
 -- Created     : 
--- Last update : Thu Jun 29 19:37:46 2023
+-- Last update : Wed Oct 18 23:54:11 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -106,17 +106,55 @@ architecture Behavioral of mayo_bram_arbiter is
 
 begin
 
-	BRAM_din <= BRAM_key_din when (bram_control = '1') else BRAM_add_din when (add_control = '1') else BRAM_lin_din when (lin_control = '1')
-	else BRAM_neg_din        when (neg_control = '1') else BRAM_red_din when (red_control ='1') else BRAM_sam_din when (sam_control = '1') else BRAM_hash_din when (hash_control = '1') else (others => '0');
+	BRAM_din <=
+		BRAM_key_din  when (bram_control = '1') else
+		BRAM_add_din  when (add_control = '1') else
+		BRAM_lin_din  when (lin_control = '1') else
+		BRAM_neg_din  when (neg_control = '1') else
+		BRAM_red_din  when (red_control ='1') else
+		BRAM_sam_din  when (sam_control = '1') else
+		BRAM_hash_din when (hash_control = '1') else
+		(others => '0');
 
-	BRAM_addr <= BRAM_key_addr when (bram_control = '1') else BRAM_add_addr when (add_control = '1') else BRAM_lin_addr when (lin_control = '1')
-	else BRAM_neg_addr         when (neg_control = '1') else BRAM_red_addr when (red_control ='1') else BRAM_sam_addr when (sam_control = '1') else BRAM_hash_addr when (hash_control = '1') else (others => '0');
+	BRAM_addr <=
+		BRAM_key_addr  when (bram_control = '1') else
+		BRAM_add_addr  when (add_control = '1') else
+		BRAM_lin_addr  when (lin_control = '1') else
+		BRAM_neg_addr  when (neg_control = '1') else
+		BRAM_red_addr  when (red_control ='1') else
+		BRAM_sam_addr  when (sam_control = '1') else
+		BRAM_hash_addr when (hash_control = '1') else
+		(others => '0');
 
-	BRAM_we <= BRAM_key_we when (bram_control = '1') else BRAM_add_we when (add_control = '1') else BRAM_lin_we when (lin_control = '1')
-	else BRAM_neg_we       when (neg_control = '1') else BRAM_red_we when (red_control ='1') else BRAM_sam_we when (sam_control = '1') else BRAM_hash_we when (hash_control = '1') else (others => '0');
+	BRAM_we <=
+		BRAM_key_we  when (bram_control = '1') else
+		BRAM_add_we  when (add_control = '1') else
+		BRAM_lin_we  when (lin_control = '1') else
+		BRAM_neg_we  when (neg_control = '1') else
+		BRAM_red_we  when (red_control ='1') else
+		BRAM_sam_we  when (sam_control = '1') else
+		BRAM_hash_we when (hash_control = '1') else
+		(others => '0');
 
-	BRAM_en  <= '1' when ( (BRAM_add_en = '1') or (BRAM_lin_en = '1') or (BRAM_neg_en = '1') or (BRAM_red_en = '1') or (BRAM_key_en = '1') or (BRAM_sam_en = '1') or (BRAM_hash_en = '1')) else '0';
-	BRAM_rst <= '1' when ( (BRAM_add_rst = '1') or (BRAM_lin_rst = '1') or (BRAM_neg_rst = '1') or (BRAM_red_rst = '1') or (BRAM_key_rst = '1') or (BRAM_sam_rst ='1') or (BRAM_hash_rst = '1')) else '0';
+	BRAM_en <= '1' when
+		( (BRAM_add_en = '1') or
+			(BRAM_lin_en = '1') or
+			(BRAM_neg_en = '1') or
+			(BRAM_red_en = '1') or
+			(BRAM_key_en = '1') or
+			(BRAM_sam_en = '1') or
+			(BRAM_hash_en = '1'))
+	else '0';
+
+	BRAM_rst <= '1' when
+		( (BRAM_add_rst = '1') or
+			(BRAM_lin_rst = '1') or
+			(BRAM_neg_rst = '1') or
+			(BRAM_red_rst = '1') or
+			(BRAM_key_rst = '1') or
+			(BRAM_sam_rst ='1') or
+			(BRAM_hash_rst = '1'))
+	else '0';
 
 	BRAM_key_dout  <= BRAM_dout when (bram_control = '1') else (others => '0');
 	BRAM_add_dout  <= BRAM_dout when (add_control = '1') else (others  => '0');

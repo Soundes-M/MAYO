@@ -1,2 +1,0 @@
-BRAM64.v,verilog,xil_defaultlib,../../../ip/BRAM64/sim/BRAM64.v,
-glbl.v,Verilog,xil_defaultlib,glbl.v

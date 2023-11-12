@@ -1,0 +1,14 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Warning: neoTRNG WARNING: Implementing simulation-only PRNG (LFSR)!
+Time: 0 ps  Iteration: 0  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/TRNG/TRNG_0/U0/NEOTRNG_INST/\neoTRNG_cell_inst(2)\/neoTRNG_cell_inst_i/sim_rng/line__441  File: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.ip_user_files/bd/Mayo_sign/ipshared/a179/sources_1/imports/rtl/neoTRNG.vhd
+Warning: neoTRNG WARNING: Implementing simulation-only PRNG (LFSR)!
+Time: 0 ps  Iteration: 0  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/TRNG/TRNG_0/U0/NEOTRNG_INST/\neoTRNG_cell_inst(1)\/neoTRNG_cell_inst_i/sim_rng/line__441  File: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.ip_user_files/bd/Mayo_sign/ipshared/a179/sources_1/imports/rtl/neoTRNG.vhd
+Warning: neoTRNG WARNING: Implementing simulation-only PRNG (LFSR)!
+Time: 0 ps  Iteration: 0  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/TRNG/TRNG_0/U0/NEOTRNG_INST/\neoTRNG_cell_inst(0)\/neoTRNG_cell_inst_i/sim_rng/line__441  File: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.ip_user_files/bd/Mayo_sign/ipshared/a179/sources_1/imports/rtl/neoTRNG.vhd
+Warning: neoTRNG WARNING: Simulation mode (PRNG!) enabled!
+Time: 0 ps  Iteration: 0  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/TRNG/TRNG_0/U0/NEOTRNG_INST/line__136  File: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.ip_user_files/bd/Mayo_sign/ipshared/a179/sources_1/imports/rtl/neoTRNG.vhd
+Note: << neoTRNG V2 - A Tiny and Platform-Independent True Random Number Generator for any FPGA >>
+Time: 0 ps  Iteration: 0  Process: /Mayo_sign_no_zynq_tb/Sign/Mayo_sign_i/TRNG/TRNG_0/U0/NEOTRNG_INST/line__134  File: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.ip_user_files/bd/Mayo_sign/ipshared/a179/sources_1/imports/rtl/neoTRNG.vhd
+Note: Mayo Keyen (RTL) Begin
+Time: 0 ps  Iteration: 0  Process: /Mayo_sign_no_zynq_tb/tb  File: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.srcs/sim_1/new/Mayo_sign_no_zynq_tb.vhd

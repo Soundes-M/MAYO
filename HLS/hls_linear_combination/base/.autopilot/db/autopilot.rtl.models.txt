@@ -1,4 +1,0 @@
-hls_linear_combination_urem_32ns_6ns_8_36_seq_1
-hls_linear_combination_mac_muladd_8ns_8ns_32ns_32_4_1
-hls_linear_combination_accumulators
-hls_linear_combination

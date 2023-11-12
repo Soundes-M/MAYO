@@ -1,1 +1,0 @@
--wto "a5bca65d13a74c669d7e26d2e943c287" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "TB_BIKE_behav" "xil_defaultlib.TB_BIKE" -log "elaborate.log" 

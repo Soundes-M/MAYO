@@ -1,9 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.sim/sim_1/synth/timing/xsim/MAYO_SHAKE_tb_time_synth.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module MAYO_SHAKE
-INFO: [VRFC 10-311] analyzing module SHA_SHAKE_wrapper
-INFO: [VRFC 10-311] analyzing module keccak
-INFO: [VRFC 10-311] analyzing module keccak_buffer
-INFO: [VRFC 10-311] analyzing module keccak_round_constants_gen
-INFO: [VRFC 10-311] analyzing module glbl
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/osm/Documents/SECT-MAYO/MAYO/vivado/SHAKE_Saber/SHAKE_Saber.srcs/sim_1/new/MAYO_SHAKE_tb.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module MAYO_SHAKE_tb

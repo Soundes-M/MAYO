@@ -1,9 +1,0 @@
-# compile verilog/system verilog design source files
-verilog xil_defaultlib  \
-"../../../../blk_mem_gen_0_1_ex.gen/sources_1/ip/blk_mem_gen_0_1/sim/blk_mem_gen_0_1.v" \
-
-# compile glbl module
-verilog xil_defaultlib "glbl.v"
-
-# Do not sort compile order
-nosort

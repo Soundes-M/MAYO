@@ -1,9 +1,0 @@
-# compile verilog/system verilog design source files
-verilog xil_defaultlib  --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_sign_with_zynq/ipshared/ec67/hdl" --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_sign_with_zynq/ipshared/34f8/hdl" --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/ec67/hdl" --include "../../../../MAYO_KeyGen_v2.gen/sources_1/bd/Mayo_keygen/ipshared/34f8/hdl" --include "/tools/Xilinx/Vivado/2020.2/data/xilinx_vip/include" \
-"../../../../MAYO_KeyGen_v2.gen/sources_1/ip/Test_BRAM0/sim/Test_BRAM0.v" \
-
-# compile glbl module
-verilog xil_defaultlib "glbl.v"
-
-# Do not sort compile order
-nosort
