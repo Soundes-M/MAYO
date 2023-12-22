@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Dec 22 12:37:46 2023
+# Process ID: 254522
+# Current directory: /home/osm/Documents/Sect/SECT-MAYO/MAYO
+# Command line: vivado
+# Log file: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado.log
+# Journal file: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.xpr

@@ -11,7 +11,7 @@ A hardware implementation of the MAYO PQ Signature.
 
 For futher information, please refer to the paper: 
 
-  HaMAYO: A Reconfigurable Hardware Implementation of the Post-Quantum Signature Scheme MAYO
+  HaMAYO: A Fault-Tolerant Reconfigurable Hardware Implementation of the MAYO Signature Scheme
   
 # Board
 Digilent Xilinx Zynq-7000 [ZedBoard](https://www.avnet.com/wps/portal/us/products/avnet-boards/avnet-board-families/zedboard/)
@@ -22,9 +22,7 @@ This Hardware IP is private. Please do not share.
 # Requirements and tools
 _Mind the versions used_
 - Vivado & Vitis 2020.2
-- Yocto @gatesgarth
-- [linux-xlx](https://github.com/Xilinx/linux-xlnx) @d25c42dcc2a9
-- [u-boot-x](https://github.com/Xilinx/u-boot-xlnx) 
+- VHDL 2000
 
 # Directory Hierarchy:
 ```
