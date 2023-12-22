@@ -81,8 +81,7 @@ ARCHITECTURE Mayo_sign_tdp_SmallBRAM_1_0_0_arch OF Mayo_sign_tdp_SmallBRAM_1_0_0
     GENERIC (
       NB_COL : INTEGER;
       COL_WIDTH : INTEGER;
-      RAM_PERFORMANCE : STRING;
-      INIT_FILE : STRING
+      RAM_PERFORMANCE : STRING
     );
     PORT (
       addra : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -108,7 +107,7 @@ ARCHITECTURE Mayo_sign_tdp_SmallBRAM_1_0_0_arch OF Mayo_sign_tdp_SmallBRAM_1_0_0
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF Mayo_sign_tdp_SmallBRAM_1_0_0_arch : ARCHITECTURE IS "Mayo_sign_tdp_SmallBRAM_1_0_0,tdp_SmallBRAM_1,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF Mayo_sign_tdp_SmallBRAM_1_0_0_arch: ARCHITECTURE IS "Mayo_sign_tdp_SmallBRAM_1_0_0,tdp_SmallBRAM_1,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=tdp_SmallBRAM_1,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,NB_COL=4,COL_WIDTH=8,RAM_PERFORMANCE=LOW_LATENCY,INIT_FILE=}";
+  ATTRIBUTE CORE_GENERATION_INFO OF Mayo_sign_tdp_SmallBRAM_1_0_0_arch: ARCHITECTURE IS "Mayo_sign_tdp_SmallBRAM_1_0_0,tdp_SmallBRAM_1,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=tdp_SmallBRAM_1,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,NB_COL=4,COL_WIDTH=8,RAM_PERFORMANCE=LOW_LATENCY}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF Mayo_sign_tdp_SmallBRAM_1_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -134,8 +133,7 @@ BEGIN
     GENERIC MAP (
       NB_COL => 4,
       COL_WIDTH => 8,
-      RAM_PERFORMANCE => "LOW_LATENCY",
-      INIT_FILE => ""
+      RAM_PERFORMANCE => "LOW_LATENCY"
     )
     PORT MAP (
       addra => addra,

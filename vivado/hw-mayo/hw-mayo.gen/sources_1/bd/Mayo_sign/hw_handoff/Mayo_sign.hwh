@@ -1,51 +1,51 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Nov 12 20:11:25 2023" VIVADOVERSION="2020.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Dec  9 20:07:18 2023" VIVADOVERSION="2020.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="em.avnet.com:zed:part0:1.4" DEVICE="7z020" NAME="Mayo_sign" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="CLK_I"/>
-        <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="clk"/>
+        <CONNECTION INSTANCE="TRNG_aes_128_ctr_0" PORT="clk"/>
+        <CONNECTION INSTANCE="hash_shake_128_0" PORT="clk"/>
         <CONNECTION INSTANCE="SmallBRAM_tdp_SmallBRAM_1_0" PORT="clka"/>
         <CONNECTION INSTANCE="SmallBRAM_tdp_SmallBRAM_1_0" PORT="clkb"/>
         <CONNECTION INSTANCE="BigBRAM1_tdp_BigBRAM_2_0" PORT="clka"/>
         <CONNECTION INSTANCE="BigBRAM1_tdp_BigBRAM_2_0" PORT="clkb"/>
         <CONNECTION INSTANCE="LInear_Combination_mayo_linear_combinat_0" PORT="i_clk"/>
         <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="i_clk"/>
-        <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="clka"/>
-        <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="clkb"/>
+        <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="clka"/>
+        <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="clkb"/>
         <CONNECTION INSTANCE="MAYO_P1P1T_0" PORT="clk"/>
-        <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="clk"/>
         <CONNECTION INSTANCE="mayo_add_oil_0" PORT="clk"/>
         <CONNECTION INSTANCE="mayo_negate_0" PORT="i_clk"/>
         <CONNECTION INSTANCE="mayo_reduce_0" PORT="i_clk"/>
         <CONNECTION INSTANCE="mayo_reduce_extension_0" PORT="clk"/>
+        <CONNECTION INSTANCE="memcpy_0" PORT="clk"/>
+        <CONNECTION INSTANCE="memcpy_1" PORT="clk"/>
+        <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="clk"/>
         <CONNECTION INSTANCE="mayo_sample_oil_0" PORT="clk"/>
         <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="i_clk"/>
         <CONNECTION INSTANCE="mayo_sample_vinegar_0" PORT="clk"/>
-        <CONNECTION INSTANCE="memcpy_0" PORT="clk"/>
-        <CONNECTION INSTANCE="memcpy_1" PORT="clk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="RST"/>
-        <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="rst"/>
+        <CONNECTION INSTANCE="TRNG_aes_128_ctr_0" PORT="rst"/>
+        <CONNECTION INSTANCE="hash_shake_128_0" PORT="rst"/>
         <CONNECTION INSTANCE="LInear_Combination_mayo_linear_combinat_0" PORT="rst"/>
         <CONNECTION INSTANCE="add_vectors_mayo_add_vectors_0" PORT="rst"/>
         <CONNECTION INSTANCE="MAYO_P1P1T_0" PORT="rst"/>
-        <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="rst"/>
         <CONNECTION INSTANCE="mayo_add_oil_0" PORT="rst"/>
         <CONNECTION INSTANCE="mayo_negate_0" PORT="rst"/>
         <CONNECTION INSTANCE="mayo_reduce_0" PORT="rst"/>
         <CONNECTION INSTANCE="mayo_reduce_extension_0" PORT="rst"/>
+        <CONNECTION INSTANCE="memcpy_0" PORT="rst"/>
+        <CONNECTION INSTANCE="memcpy_1" PORT="rst"/>
+        <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="rst"/>
         <CONNECTION INSTANCE="mayo_sample_oil_0" PORT="rst"/>
         <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="rst"/>
         <CONNECTION INSTANCE="mayo_sample_vinegar_0" PORT="rst"/>
-        <CONNECTION INSTANCE="memcpy_0" PORT="rst"/>
-        <CONNECTION INSTANCE="memcpy_1" PORT="rst"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="done" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_done">
@@ -1401,7 +1401,6 @@
         <PARAMETER NAME="NB_COL" VALUE="4"/>
         <PARAMETER NAME="COL_WIDTH" VALUE="8"/>
         <PARAMETER NAME="RAM_PERFORMANCE" VALUE="LOW_LATENCY"/>
-        <PARAMETER NAME="INIT_FILE"/>
         <PARAMETER NAME="Component_Name" VALUE="Mayo_sign_tdp_BigBRAM_2_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -1533,37 +1532,37 @@
       <PORTS>
         <PORT DIR="I" LEFT="31" NAME="BRAM_sign_din" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_din">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2a_din"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2b_din"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="BRAM_sign_addr" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2a_addr"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2b_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="BRAM_sign_en" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2a_en"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2b_en"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="BRAM_sign_rst" SIGIS="rst" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_rst">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2a_rst"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2b_rst"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="3" NAME="BRAM_sign_we" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2a_we"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2b_we"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="BRAM_sign_dout" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_mem2a_dout"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_mem2b_dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="BRAM_sign_control" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_control">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_control2a"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_control2b"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="BRAM_add_vec_din" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_add_vec_din">
@@ -1987,37 +1986,37 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="BRAM_din" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_din">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="dina"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="dina"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="BRAM_addr" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="addra"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="addra"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="BRAM_en" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="ena"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="ena"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="BRAM_rst" SIGIS="rst" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_rst">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="rsta"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="rsta"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="3" NAME="BRAM_we" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="wea"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="wea"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="BRAM_dout" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_tdp_BigBRAM_2_0_douta">
+        <PORT DIR="I" LEFT="31" NAME="BRAM_dout" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_tdp_BigBRAM_3_0_douta">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="douta"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="douta"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="MAYO_SIGNING_FSM_0_BRAM_Sign2a" NAME="BRAM_Sign" TYPE="TARGET" VLNV="MAYO:user:BRAM_BUS_custom:1.0">
+        <BUSINTERFACE BUSNAME="MAYO_SIGNING_FSM_0_BRAM_Sign2b" NAME="BRAM_Sign" TYPE="TARGET" VLNV="MAYO:user:BRAM_BUS_custom:1.0">
           <PORTMAPS>
             <PORTMAP LOGICAL="EN" PHYSICAL="BRAM_sign_en"/>
             <PORTMAP LOGICAL="DOUT" PHYSICAL="BRAM_sign_dout"/>
@@ -2192,37 +2191,37 @@
       <PORTS>
         <PORT DIR="I" LEFT="31" NAME="BRAM_sign_din" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_din">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2b_din"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2a_din"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="BRAM_sign_addr" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2b_addr"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2a_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="BRAM_sign_en" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2b_en"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2a_en"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="BRAM_sign_rst" SIGIS="rst" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_rst">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2b_rst"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2a_rst"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="3" NAME="BRAM_sign_we" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2b_we"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_mem2a_we"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="BRAM_sign_dout" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_mem2b_dout"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_mem2a_dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="BRAM_sign_control" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_control">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_control2b"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_control2a"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="BRAM_add_vec_din" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_add_vec_din">
@@ -2646,37 +2645,37 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="BRAM_din" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_din">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="dinb"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="dinb"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="BRAM_addr" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="addrb"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="addrb"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="BRAM_en" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="enb"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="enb"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="BRAM_rst" SIGIS="rst" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_rst">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="rstb"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="rstb"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="3" NAME="BRAM_we" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="web"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="web"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="BRAM_dout" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_tdp_BigBRAM_2_0_doutb">
+        <PORT DIR="I" LEFT="31" NAME="BRAM_dout" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_tdp_BigBRAM_3_0_doutb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="doutb"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="doutb"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="MAYO_SIGNING_FSM_0_BRAM_Sign2b" NAME="BRAM_Sign" TYPE="TARGET" VLNV="MAYO:user:BRAM_BUS_custom:1.0">
+        <BUSINTERFACE BUSNAME="MAYO_SIGNING_FSM_0_BRAM_Sign2a" NAME="BRAM_Sign" TYPE="TARGET" VLNV="MAYO:user:BRAM_BUS_custom:1.0">
           <PORTMAPS>
             <PORTMAP LOGICAL="EN" PHYSICAL="BRAM_sign_en"/>
             <PORTMAP LOGICAL="DOUT" PHYSICAL="BRAM_sign_dout"/>
@@ -2842,14 +2841,13 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/BigBRAM2/tdp_BigBRAM_2_0" HWVERSION="1.0" INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="tdp_BigBRAM_2" VLNV="xilinx.com:module_ref:tdp_BigBRAM_2:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/BigBRAM2/tdp_BigBRAM_3_0" HWVERSION="1.0" INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="tdp_BigBRAM_3" VLNV="xilinx.com:module_ref:tdp_BigBRAM_3:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="NB_COL" VALUE="4"/>
         <PARAMETER NAME="COL_WIDTH" VALUE="8"/>
         <PARAMETER NAME="RAM_PERFORMANCE" VALUE="LOW_LATENCY"/>
-        <PARAMETER NAME="INIT_FILE"/>
-        <PARAMETER NAME="Component_Name" VALUE="Mayo_sign_tdp_BigBRAM_2_0_1"/>
+        <PARAMETER NAME="Component_Name" VALUE="Mayo_sign_tdp_BigBRAM_3_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -2923,12 +2921,12 @@
             <CONNECTION INSTANCE="Ground0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="douta" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_tdp_BigBRAM_2_0_douta">
+        <PORT DIR="O" LEFT="31" NAME="douta" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_tdp_BigBRAM_3_0_douta">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_tdp_BigBRAM_2_0_doutb">
+        <PORT DIR="O" LEFT="31" NAME="doutb" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_tdp_BigBRAM_3_0_doutb">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_b" PORT="BRAM_dout"/>
           </CONNECTIONS>
@@ -3127,8 +3125,8 @@
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_hash_en"/>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_hash_rst"/>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_hash_control"/>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="regcea"/>
-            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_2_0" PORT="regceb"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="regcea"/>
+            <CONNECTION INSTANCE="BigBRAM2_tdp_BigBRAM_3_0" PORT="regceb"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4069,24 +4067,9 @@
             <CONNECTION INSTANCE="External_Ports" PORT="o_err"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_trng_r" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_trng_r">
+        <PORT DIR="O" NAME="o_trng_en" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_trng_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng0_r"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_trng_w" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_trng_w">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng0_w"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_trng_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng0_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng0_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng0_data"/>
+            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng0_en"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="i_trng_valid" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng0_valid">
@@ -4094,44 +4077,44 @@
             <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng0_valid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="i_trng_done" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng0_done">
+        <PORT DIR="I" LEFT="127" NAME="i_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng0_random_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng0_done"/>
+            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng0_random_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="o_hash_en" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="en"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="en"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="o_hash_mlen" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_mlen">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="mlen"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="mlen"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="o_hash_olen" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_olen">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="olen"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="olen"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="o_hash_write_adr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_write_adr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="write_adr"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="write_adr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="o_hash_read_adr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_read_adr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="read_adr"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="read_adr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="i_hash_done" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_done">
+        <PORT DIR="I" NAME="i_hash_done" SIGIS="undef" SIGNAME="hash_shake_128_0_done">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="done"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="done"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="i_hash_dyn_done" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_dyn_done">
+        <PORT DIR="I" NAME="i_hash_dyn_done" SIGIS="undef" SIGNAME="hash_xlconstant_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="dyn_done"/>
+            <CONNECTION INSTANCE="hash_xlconstant_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="o_hash_memsel" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_memsel">
@@ -4519,64 +4502,64 @@
             <CONNECTION INSTANCE="BigBRAM1_mayo_bram_arbiter2_a" PORT="BRAM_sign_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_mem2a_dout" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_mem2a_din" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_din">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_din"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_mem2a_addr" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_mem2a_en" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_mem2a_rst" SIGIS="rst" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_rst">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_rst"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="o_mem2a_we" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_we">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_we"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_mem2b_dout" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_dout">
+        <PORT DIR="I" LEFT="31" NAME="i_mem2a_dout" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_b" PORT="BRAM_sign_dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_mem2b_din" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_din">
+        <PORT DIR="O" LEFT="31" NAME="o_mem2a_din" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_din">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_b" PORT="BRAM_sign_din"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_mem2b_addr" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_addr">
+        <PORT DIR="O" LEFT="31" NAME="o_mem2a_addr" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_addr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_b" PORT="BRAM_sign_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_mem2b_en" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_en">
+        <PORT DIR="O" NAME="o_mem2a_en" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_en">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_b" PORT="BRAM_sign_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_mem2b_rst" SIGIS="rst" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_rst">
+        <PORT DIR="O" NAME="o_mem2a_rst" SIGIS="rst" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_b" PORT="BRAM_sign_rst"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="o_mem2b_we" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_we">
+        <PORT DIR="O" LEFT="3" NAME="o_mem2a_we" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_we">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_b" PORT="BRAM_sign_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="i_mem2b_dout" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_mem2b_din" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_din">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="o_mem2b_addr" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_mem2b_en" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_mem2b_rst" SIGIS="rst" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="o_mem2b_we" RIGHT="0" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_we"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="o_control0a" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_control0a">
@@ -4594,14 +4577,14 @@
             <CONNECTION INSTANCE="BigBRAM1_mayo_bram_arbiter2_a" PORT="BRAM_sign_control"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_control2a" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_control">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_control"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_control2b" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_control">
+        <PORT DIR="O" NAME="o_control2a" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_b_BRAM_sign_control">
           <CONNECTIONS>
             <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_b" PORT="BRAM_sign_control"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_control2b" SIGIS="undef" SIGNAME="BigBRAM2_mayo_bram_arbiter2_a_BRAM_sign_control">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="BigBRAM2_mayo_bram_arbiter2_a" PORT="BRAM_sign_control"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4659,6 +4642,12 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="o_mem2b_addr"/>
             <PORTMAP LOGICAL="RST" PHYSICAL="o_mem2b_rst"/>
             <PORTMAP LOGICAL="CTRL" PHYSICAL="o_control2b"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="o_trng" TYPE="TARGET" VLNV="MAYO:user:BRAM_BUS_custom:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="EN" PHYSICAL="o_trng_en"/>
+            <PORTMAP LOGICAL="RST" PHYSICAL="rst"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -5995,7 +5984,6 @@
         <PARAMETER NAME="NB_COL" VALUE="4"/>
         <PARAMETER NAME="COL_WIDTH" VALUE="8"/>
         <PARAMETER NAME="RAM_PERFORMANCE" VALUE="LOW_LATENCY"/>
-        <PARAMETER NAME="INIT_FILE"/>
         <PARAMETER NAME="Component_Name" VALUE="Mayo_sign_tdp_SmallBRAM_1_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -6118,56 +6106,68 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="8" FULLNAME="/TRNG/TRNG_0" HWVERSION="1.6" INSTANCE="TRNG_TRNG_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TRNG" VLNV="user.org:user:TRNG:1.6">
+    <MODULE COREREVISION="1" FULLNAME="/TRNG/aes_128_ctr_0" HWVERSION="1.0" INSTANCE="TRNG_aes_128_ctr_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="aes_128_ctr" VLNV="xilinx.com:module_ref:aes_128_ctr:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="IS_SIM" VALUE="true"/>
-        <PARAMETER NAME="Component_Name" VALUE="Mayo_sign_TRNG_0_0"/>
+        <PARAMETER NAME="DEBUG" VALUE="0"/>
+        <PARAMETER NAME="ADDR_CTRL" VALUE="&quot;00001000&quot;"/>
+        <PARAMETER NAME="ADDR_CONFIG" VALUE="&quot;00001010&quot;"/>
+        <PARAMETER NAME="ADDR_KEY0" VALUE="&quot;00010000&quot;"/>
+        <PARAMETER NAME="ADDR_KEY1" VALUE="&quot;00010001&quot;"/>
+        <PARAMETER NAME="ADDR_KEY2" VALUE="&quot;00010010&quot;"/>
+        <PARAMETER NAME="ADDR_KEY3" VALUE="&quot;00010011&quot;"/>
+        <PARAMETER NAME="ADDR_KEY4" VALUE="&quot;00010100&quot;"/>
+        <PARAMETER NAME="ADDR_KEY5" VALUE="&quot;00010101&quot;"/>
+        <PARAMETER NAME="ADDR_KEY6" VALUE="&quot;00010110&quot;"/>
+        <PARAMETER NAME="ADDR_KEY7" VALUE="&quot;00010111&quot;"/>
+        <PARAMETER NAME="ADDR_BLOCK0" VALUE="&quot;00100000&quot;"/>
+        <PARAMETER NAME="ADDR_BLOCK1" VALUE="&quot;00100001&quot;"/>
+        <PARAMETER NAME="ADDR_BLOCK2" VALUE="&quot;00100010&quot;"/>
+        <PARAMETER NAME="ADDR_BLOCK3" VALUE="&quot;00100011&quot;"/>
+        <PARAMETER NAME="ADDR_RESULT0" VALUE="&quot;00110000&quot;"/>
+        <PARAMETER NAME="ADDR_RESULT1" VALUE="&quot;00110001&quot;"/>
+        <PARAMETER NAME="ADDR_RESULT2" VALUE="&quot;00110010&quot;"/>
+        <PARAMETER NAME="ADDR_RESULT3" VALUE="&quot;00110011&quot;"/>
+        <PARAMETER NAME="AES_128_BIT_KEY" VALUE="0"/>
+        <PARAMETER NAME="AES_ENCIPHER" VALUE="&quot;1&quot;"/>
+        <PARAMETER NAME="Component_Name" VALUE="Mayo_sign_aes_128_ctr_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="CLK_I" SIGIS="undef" SIGNAME="External_Ports_clk">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="RST" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="R_I" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng_r">
+        <PORT DIR="I" NAME="en" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng_r"/>
+            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="W_I" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng_w">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng_w"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="TRNG_DATA_I" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="TRNG_DATA_O" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_TRNG_0_TRNG_DATA_O">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="TRNG_VALID_O" SIGIS="undef" SIGNAME="TRNG_TRNG_0_TRNG_VALID_O">
+        <PORT DIR="O" NAME="o_valid" SIGIS="undef" SIGNAME="TRNG_aes_128_ctr_0_o_valid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng_valid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="TRNG_DONE_O" SIGIS="undef" SIGNAME="TRNG_TRNG_0_TRNG_DONE_O">
+        <PORT DIR="O" LEFT="127" NAME="o_random_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_aes_128_ctr_0_o_random_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng_done"/>
+            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng_random_data"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
-      <BUSINTERFACES/>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="user_BRAM_BUS_custom" TYPE="TARGET" VLNV="MAYO:user:BRAM_BUS_custom:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="EN" PHYSICAL="en"/>
+            <PORTMAP LOGICAL="RST" PHYSICAL="rst"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
     </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/TRNG/mayo_trng_arbiter_0" HWVERSION="1.0" INSTANCE="TRNG_mayo_trng_arbiter_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mayo_trng_arbiter" VLNV="xilinx.com:module_ref:mayo_trng_arbiter:1.0">
       <DOCUMENTS/>
@@ -6181,52 +6181,27 @@
             <CONNECTION INSTANCE="TRNG_xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_trng_r" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng_r">
+        <PORT DIR="O" NAME="o_trng_en" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="R_I"/>
+            <CONNECTION INSTANCE="TRNG_aes_128_ctr_0" PORT="en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_trng_w" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng_w">
+        <PORT DIR="I" LEFT="127" NAME="i_trng_random_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_aes_128_ctr_0_o_random_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="W_I"/>
+            <CONNECTION INSTANCE="TRNG_aes_128_ctr_0" PORT="o_random_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng_data">
+        <PORT DIR="I" NAME="i_trng_valid" SIGIS="undef" SIGNAME="TRNG_aes_128_ctr_0_o_valid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="TRNG_DATA_I"/>
+            <CONNECTION INSTANCE="TRNG_aes_128_ctr_0" PORT="o_valid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_TRNG_0_TRNG_DATA_O">
+        <PORT DIR="I" NAME="i_trng0_en" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_trng_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="TRNG_DATA_O"/>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_trng_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="i_trng_valid" SIGIS="undef" SIGNAME="TRNG_TRNG_0_TRNG_VALID_O">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="TRNG_VALID_O"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_trng_done" SIGIS="undef" SIGNAME="TRNG_TRNG_0_TRNG_DONE_O">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_TRNG_0" PORT="TRNG_DONE_O"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_trng0_r" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_trng_r">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_trng_r"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_trng0_w" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_trng_w">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_trng_w"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_trng0_data" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_trng_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_trng_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_trng0_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng0_data">
+        <PORT DIR="O" LEFT="127" NAME="o_trng0_random_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng0_random_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_trng_data"/>
           </CONNECTIONS>
@@ -6236,69 +6211,34 @@
             <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_trng_valid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_trng0_done" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng0_done">
+        <PORT DIR="I" NAME="i_trng1_en" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_trng_done"/>
+            <CONNECTION INSTANCE="mayo_sample_vinegar_0" PORT="o_trng_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="i_trng1_r" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_r">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="o_trng_r"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_trng1_w" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_w">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="o_trng_w"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_trng1_data" RIGHT="0" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="o_trng_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_trng1_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng1_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="i_trng_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_trng1_valid" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng1_valid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="i_trng_valid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_trng1_done" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng1_done">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="i_trng_done"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_trng2_r" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_r">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_vinegar_0" PORT="o_trng_r"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_trng2_w" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_w">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_vinegar_0" PORT="o_trng_w"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_trng2_data" RIGHT="0" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_vinegar_0" PORT="o_trng_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_trng2_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng2_data">
+        <PORT DIR="O" LEFT="127" NAME="o_trng1_random_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng1_random_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mayo_sample_vinegar_0" PORT="i_trng_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_trng2_valid" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng2_valid">
+        <PORT DIR="O" NAME="o_trng1_valid" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng1_valid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mayo_sample_vinegar_0" PORT="i_trng_valid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_trng2_done" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng2_done">
+        <PORT DIR="I" NAME="i_trng2_en" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_vinegar_0" PORT="i_trng_done"/>
+            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="o_trng_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="127" NAME="o_trng2_random_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng2_random_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="i_trng_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_trng2_valid" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng2_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="i_trng_valid"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6441,14 +6381,14 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_sel">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="o_trng_sel"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_sel">
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="mayo_sample_vinegar_0" PORT="o_trng_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mayo_sample_oil_space_0" PORT="o_trng_sel"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="1" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_xlconcat_0_dout">
@@ -6986,94 +6926,6 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/hash/MAYO_SHAKE_1" HWVERSION="3.0" INSTANCE="hash_MAYO_SHAKE_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="MAYO_SHAKE" VLNV="user.org:user:MAYO_SHAKE:3.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="C_BRAMSIZE" VALUE="31"/>
-        <PARAMETER NAME="C_WRITE_DESC_SIZE" VALUE="200"/>
-        <PARAMETER NAME="C_READ_DESC_SIZE" VALUE="32"/>
-        <PARAMETER NAME="Component_Name" VALUE="Mayo_sign_MAYO_SHAKE_1_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="en" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="mlen" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_mlen">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_mlen"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="olen" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_olen">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_olen"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="write_adr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_write_adr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_write_adr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="read_adr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_read_adr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_read_adr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="dyn_done" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_dyn_done">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_hash_dyn_done"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="done" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_done">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_hash_done"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="o_control" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_o_control">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_control"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="BRAMA_we" RIGHT="0" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_BRAMA_we">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_we"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="BRAMA_addr" RIGHT="0" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_BRAMA_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="BRAMA_din" RIGHT="0" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_BRAMA_din">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_din"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="BRAMA_en" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_BRAMA_en">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_en"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="BRAMA_dout" RIGHT="0" SIGIS="undef" SIGNAME="hash_mayo_hash_bram_arbit_0_hash_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_dout"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/hash/mayo_hash_bram_arbit_0" HWVERSION="1.0" INSTANCE="hash_mayo_hash_bram_arbit_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mayo_hash_bram_arbiter" VLNV="xilinx.com:module_ref:mayo_hash_bram_arbiter:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -7086,34 +6938,34 @@
             <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_memsel"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="hash_din" RIGHT="0" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_BRAMA_din">
+        <PORT DIR="I" LEFT="31" NAME="hash_din" RIGHT="0" SIGIS="undef" SIGNAME="hash_shake_128_0_bram_din">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="BRAMA_din"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="bram_din"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="hash_addr" RIGHT="0" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_BRAMA_addr">
+        <PORT DIR="I" LEFT="31" NAME="hash_addr" RIGHT="0" SIGIS="undef" SIGNAME="hash_shake_128_0_bram_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="BRAMA_addr"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="bram_addr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="hash_en" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_BRAMA_en">
+        <PORT DIR="I" NAME="hash_en" SIGIS="undef" SIGNAME="hash_shake_128_0_bram_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="BRAMA_en"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="bram_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="hash_control" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_o_control">
+        <PORT DIR="I" NAME="hash_control" SIGIS="undef" SIGNAME="hash_shake_128_0_bram_control">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="o_control"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="bram_control"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="hash_we" RIGHT="0" SIGIS="undef" SIGNAME="hash_MAYO_SHAKE_1_BRAMA_we">
+        <PORT DIR="I" LEFT="3" NAME="hash_we" RIGHT="0" SIGIS="undef" SIGNAME="hash_shake_128_0_bram_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="BRAMA_we"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="bram_we"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="hash_dout" RIGHT="0" SIGIS="undef" SIGNAME="hash_mayo_hash_bram_arbit_0_hash_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="hash_MAYO_SHAKE_1" PORT="BRAMA_dout"/>
+            <CONNECTION INSTANCE="hash_shake_128_0" PORT="bram_dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="BRAM0_din" RIGHT="0" SIGIS="undef" SIGNAME="SmallBRAM_mayo_bram_arbiter2_a_BRAM_hash_din">
@@ -7220,6 +7072,114 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/hash/shake_128_0" HWVERSION="1.0" INSTANCE="hash_shake_128_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="shake_128" VLNV="xilinx.com:module_ref:shake_128:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="Mayo_sign_shake_128_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="en" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mlen" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_mlen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_mlen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="olen" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_olen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_olen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="read_adr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_read_adr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_read_adr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="write_adr" RIGHT="0" SIGIS="undef" SIGNAME="MAYO_SIGNING_FSM_0_o_hash_write_adr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_hash_write_adr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="done" SIGIS="undef" SIGNAME="hash_shake_128_0_done">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_hash_done"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="bram_dout" RIGHT="0" SIGIS="undef" SIGNAME="hash_mayo_hash_bram_arbit_0_hash_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram_en" SIGIS="undef" SIGNAME="hash_shake_128_0_bram_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="bram_we" RIGHT="0" SIGIS="undef" SIGNAME="hash_shake_128_0_bram_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="bram_addr" RIGHT="0" SIGIS="undef" SIGNAME="hash_shake_128_0_bram_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="bram_din" RIGHT="0" SIGIS="undef" SIGNAME="hash_shake_128_0_bram_din">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bram_control" SIGIS="undef" SIGNAME="hash_shake_128_0_bram_control">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="hash_mayo_hash_bram_arbit_0" PORT="hash_control"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="bram" TYPE="TARGET" VLNV="MAYO:user:BRAM_BUS_custom:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="EN" PHYSICAL="bram_en"/>
+            <PORTMAP LOGICAL="DOUT" PHYSICAL="bram_dout"/>
+            <PORTMAP LOGICAL="DIN" PHYSICAL="bram_din"/>
+            <PORTMAP LOGICAL="WE" PHYSICAL="bram_we"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="bram_addr"/>
+            <PORTMAP LOGICAL="RST" PHYSICAL="rst"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="7" FULLNAME="/hash/xlconstant_0" HWVERSION="1.1" INSTANCE="hash_xlconstant_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="Component_Name" VALUE="Mayo_sign_xlconstant_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="hash_xlconstant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="i_hash_dyn_done"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
     </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/mayo_add_oil_0" HWVERSION="1.0" INSTANCE="mayo_add_oil_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mayo_add_oil" VLNV="xilinx.com:module_ref:mayo_add_oil:1.0">
       <DOCUMENTS/>
@@ -8007,34 +7967,19 @@
             <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_sam_mode"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_trng_r" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_r">
+        <PORT DIR="O" NAME="o_trng_en" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng1_r"/>
+            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng2_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_trng_w" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_w">
+        <PORT DIR="I" NAME="i_trng_valid" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng2_valid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng1_w"/>
+            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng2_valid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_data">
+        <PORT DIR="I" LEFT="127" NAME="i_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng2_random_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng1_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng1_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng1_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_trng_valid" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng1_valid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng1_valid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_trng_done" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng1_done">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng1_done"/>
+            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng2_random_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="i_mema_dout" RIGHT="0" SIGIS="undef" SIGNAME="SmallBRAM_mayo_bram_arbiter2_a_BRAM_sam_dout">
@@ -8109,7 +8054,7 @@
         </PORT>
         <PORT DIR="O" NAME="o_trng_sel" SIGIS="undef" SIGNAME="mayo_sample_oil_space_0_o_trng_sel">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_xlconcat_0" PORT="In0"/>
+            <CONNECTION INSTANCE="TRNG_xlconcat_0" PORT="In1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -8134,6 +8079,12 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="o_memb_addr"/>
             <PORTMAP LOGICAL="RST" PHYSICAL="o_memb_rst"/>
             <PORTMAP LOGICAL="CTRL" PHYSICAL="o_controlb"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="o_trng" TYPE="TARGET" VLNV="MAYO:user:BRAM_BUS_custom:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="EN" PHYSICAL="o_trng_en"/>
+            <PORTMAP LOGICAL="RST" PHYSICAL="rst"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -8170,39 +8121,24 @@
             <CONNECTION INSTANCE="MAYO_SIGNING_FSM_0" PORT="o_sam_vin_input_adr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_trng_r" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_r">
+        <PORT DIR="O" NAME="o_trng_en" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_en">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng2_r"/>
+            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng1_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="o_trng_w" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_w">
+        <PORT DIR="I" NAME="i_trng_valid" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng1_valid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng2_w"/>
+            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng1_valid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="o_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_data">
+        <PORT DIR="I" LEFT="127" NAME="i_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng1_random_data">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="i_trng2_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="i_trng_data" RIGHT="0" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng2_data">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng2_data"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_trng_valid" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng2_valid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng2_valid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="i_trng_done" SIGIS="undef" SIGNAME="TRNG_mayo_trng_arbiter_0_o_trng2_done">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng2_done"/>
+            <CONNECTION INSTANCE="TRNG_mayo_trng_arbiter_0" PORT="o_trng1_random_data"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="o_trng_sel" SIGIS="undef" SIGNAME="mayo_sample_vinegar_0_o_trng_sel">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TRNG_xlconcat_0" PORT="In1"/>
+            <CONNECTION INSTANCE="TRNG_xlconcat_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="i_memb_dout" RIGHT="0" SIGIS="undef" SIGNAME="SmallBRAM_mayo_bram_arbiter2_a_BRAM_sam_vin_dout">
@@ -8251,6 +8187,12 @@
             <PORTMAP LOGICAL="ADDR" PHYSICAL="o_memb_addr"/>
             <PORTMAP LOGICAL="RST" PHYSICAL="o_memb_rst"/>
             <PORTMAP LOGICAL="CTRL" PHYSICAL="o_controlb"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="o_trng" TYPE="TARGET" VLNV="MAYO:user:BRAM_BUS_custom:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="EN" PHYSICAL="o_trng_en"/>
+            <PORTMAP LOGICAL="RST" PHYSICAL="rst"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>

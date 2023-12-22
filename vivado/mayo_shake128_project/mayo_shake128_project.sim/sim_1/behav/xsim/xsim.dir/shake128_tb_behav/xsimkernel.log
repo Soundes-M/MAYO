@@ -1,7 +1,0 @@
-Running: xsim.dir/shake128_tb_behav/xsimk -simmode gui -wdb shake128_tb_behav.wdb -simrunnum 0 -socket 59521
-Design successfully loaded
-Design Loading Memory Usage: 38964 KB (Peak: 38964 KB)
-Design Loading CPU Usage: 40 ms
-Simulation completed
-Simulation Memory Usage: 131228 KB (Peak: 178232 KB)
-Simulation CPU Usage: 210 ms

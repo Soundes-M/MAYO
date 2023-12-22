@@ -1,0 +1,45 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.19",
+   "Default View_TopLeft":"-174,-127",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port clk -pg 1 -lvl 0 -x 0 -y 270 -defaultsOSRD
+preplace port rst -pg 1 -lvl 0 -x 0 -y 250 -defaultsOSRD
+preplace port i_trng_sel1 -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port i_trng0_en_0 -pg 1 -lvl 0 -x 0 -y 150 -defaultsOSRD
+preplace port i_trng1_en_0 -pg 1 -lvl 0 -x 0 -y 330 -defaultsOSRD
+preplace port i_trng2_en_0 -pg 1 -lvl 0 -x 0 -y 350 -defaultsOSRD
+preplace port o_trng0_valid_0 -pg 1 -lvl 3 -x 980 -y 260 -defaultsOSRD
+preplace port o_trng1_valid_0 -pg 1 -lvl 3 -x 980 -y 300 -defaultsOSRD
+preplace port o_trng2_valid_0 -pg 1 -lvl 3 -x 980 -y 340 -defaultsOSRD
+preplace portBus i_trng_sel2 -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace portBus o_trng0_random_data_0 -pg 1 -lvl 3 -x 980 -y 240 -defaultsOSRD
+preplace portBus o_trng1_random_data_0 -pg 1 -lvl 3 -x 980 -y 280 -defaultsOSRD
+preplace portBus o_trng2_random_data_0 -pg 1 -lvl 3 -x 980 -y 320 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 1 -x 240 -y 70 -defaultsOSRD
+preplace inst mayo_trng_arbiter_0 -pg 1 -lvl 2 -x 720 -y 280 -defaultsOSRD
+preplace inst aes_128_ctr_0 -pg 1 -lvl 1 -x 240 -y 240 -defaultsOSRD
+preplace netloc i_trng_sel_1 1 0 1 NJ 60
+preplace netloc In1_1 1 0 1 NJ 80
+preplace netloc xlconcat_0_dout 1 1 1 480 70n
+preplace netloc i_trng0_en_0_1 1 0 2 NJ 150 470J
+preplace netloc i_trng1_en_0_1 1 0 2 NJ 330 460J
+preplace netloc i_trng2_en_0_1 1 0 2 NJ 350 480J
+preplace netloc mayo_trng_arbiter_0_o_trng0_random_data 1 2 1 NJ 240
+preplace netloc mayo_trng_arbiter_0_o_trng0_valid 1 2 1 NJ 260
+preplace netloc mayo_trng_arbiter_0_o_trng1_random_data 1 2 1 NJ 280
+preplace netloc mayo_trng_arbiter_0_o_trng1_valid 1 2 1 NJ 300
+preplace netloc mayo_trng_arbiter_0_o_trng2_random_data 1 2 1 NJ 320
+preplace netloc mayo_trng_arbiter_0_o_trng2_valid 1 2 1 NJ 340
+preplace netloc clk_1 1 0 1 NJ 270
+preplace netloc rst_1 1 0 1 NJ 250
+preplace netloc mayo_trng_arbiter_0_o_trng_en 1 0 3 20 140 NJ 140 960
+preplace netloc aes_128_ctr_0_o_valid 1 1 1 460 230n
+preplace netloc aes_128_ctr_0_o_random_data 1 1 1 N 250
+levelinfo -pg 1 0 240 720 980
+pagesize -pg 1 -db -bbox -sgen -160 0 1260 400
+"
+}
+0

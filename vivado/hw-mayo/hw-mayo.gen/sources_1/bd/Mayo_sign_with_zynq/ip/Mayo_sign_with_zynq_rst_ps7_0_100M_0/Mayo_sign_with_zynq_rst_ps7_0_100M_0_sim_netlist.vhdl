@@ -1,11 +1,11 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
--- Date        : Tue Jan 10 17:13:56 2023
--- Host        : osm-hzb running 64-bit Ubuntu 20.04.5 LTS
--- Command     : write_vhdl -force -mode funcsim -rename_top Mayo_sign_with_zynq_rst_ps7_0_100M_0 -prefix
---               Mayo_sign_with_zynq_rst_ps7_0_100M_0_ Mayo_keygen_rst_ps7_0_100M_0_sim_netlist.vhdl
--- Design      : Mayo_keygen_rst_ps7_0_100M_0
+-- Date        : Sat Dec  9 18:10:18 2023
+-- Host        : zenith running 64-bit Ubuntu 22.04.3 LTS
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_rst_ps7_0_100M_0/Mayo_sign_with_zynq_rst_ps7_0_100M_0_sim_netlist.vhdl
+-- Design      : Mayo_sign_with_zynq_rst_ps7_0_100M_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7z020clg484-1
@@ -25,6 +25,8 @@ entity Mayo_sign_with_zynq_rst_ps7_0_100M_0_cdc_sync is
     aux_reset_in : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_rst_ps7_0_100M_0_cdc_sync : entity is "cdc_sync";
 end Mayo_sign_with_zynq_rst_ps7_0_100M_0_cdc_sync;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_rst_ps7_0_100M_0_cdc_sync is
@@ -235,6 +237,8 @@ entity Mayo_sign_with_zynq_rst_ps7_0_100M_0_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_rst_ps7_0_100M_0_upcnt_n : entity is "upcnt_n";
 end Mayo_sign_with_zynq_rst_ps7_0_100M_0_upcnt_n;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_rst_ps7_0_100M_0_upcnt_n is
@@ -399,6 +403,8 @@ entity Mayo_sign_with_zynq_rst_ps7_0_100M_0_lpf is
     ext_reset_in : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_rst_ps7_0_100M_0_lpf : entity is "lpf";
 end Mayo_sign_with_zynq_rst_ps7_0_100M_0_lpf;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_rst_ps7_0_100M_0_lpf is
@@ -585,6 +591,8 @@ entity Mayo_sign_with_zynq_rst_ps7_0_100M_0_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_rst_ps7_0_100M_0_sequence_psr : entity is "sequence_psr";
 end Mayo_sign_with_zynq_rst_ps7_0_100M_0_sequence_psr;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_rst_ps7_0_100M_0_sequence_psr is
@@ -923,6 +931,8 @@ entity Mayo_sign_with_zynq_rst_ps7_0_100M_0_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of Mayo_sign_with_zynq_rst_ps7_0_100M_0_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of Mayo_sign_with_zynq_rst_ps7_0_100M_0_proc_sys_reset : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_rst_ps7_0_100M_0_proc_sys_reset : entity is "proc_sys_reset";
 end Mayo_sign_with_zynq_rst_ps7_0_100M_0_proc_sys_reset;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_rst_ps7_0_100M_0_proc_sys_reset is
@@ -1049,7 +1059,7 @@ entity Mayo_sign_with_zynq_rst_ps7_0_100M_0 is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of Mayo_sign_with_zynq_rst_ps7_0_100M_0 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of Mayo_sign_with_zynq_rst_ps7_0_100M_0 : entity is "Mayo_keygen_rst_ps7_0_100M_0,proc_sys_reset,{}";
+  attribute CHECK_LICENSE_TYPE of Mayo_sign_with_zynq_rst_ps7_0_100M_0 : entity is "Mayo_sign_with_zynq_rst_ps7_0_100M_0,proc_sys_reset,{}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of Mayo_sign_with_zynq_rst_ps7_0_100M_0 : entity is "yes";
   attribute x_core_info : string;
@@ -1086,7 +1096,7 @@ architecture STRUCTURE of Mayo_sign_with_zynq_rst_ps7_0_100M_0 is
   attribute x_interface_info of mb_reset : signal is "xilinx.com:signal:reset:1.0 mb_rst RST";
   attribute x_interface_parameter of mb_reset : signal is "XIL_INTERFACENAME mb_rst, POLARITY ACTIVE_HIGH, TYPE PROCESSOR, INSERT_VIP 0";
   attribute x_interface_info of slowest_sync_clk : signal is "xilinx.com:signal:clock:1.0 clock CLK";
-  attribute x_interface_parameter of slowest_sync_clk : signal is "XIL_INTERFACENAME clock, ASSOCIATED_RESET mb_reset:bus_struct_reset:interconnect_aresetn:peripheral_aresetn:peripheral_reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN Mayo_keygen_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
+  attribute x_interface_parameter of slowest_sync_clk : signal is "XIL_INTERFACENAME clock, ASSOCIATED_RESET mb_reset:bus_struct_reset:interconnect_aresetn:peripheral_aresetn:peripheral_reset, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN Mayo_sign_with_zynq_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
   attribute x_interface_info of bus_struct_reset : signal is "xilinx.com:signal:reset:1.0 bus_struct_reset RST";
   attribute x_interface_parameter of bus_struct_reset : signal is "XIL_INTERFACENAME bus_struct_reset, POLARITY ACTIVE_HIGH, TYPE INTERCONNECT, INSERT_VIP 0";
   attribute x_interface_info of interconnect_aresetn : signal is "xilinx.com:signal:reset:1.0 interconnect_low_rst RST";

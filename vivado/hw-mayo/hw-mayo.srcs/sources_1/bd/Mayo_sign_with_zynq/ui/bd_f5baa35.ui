@@ -5,64 +5,63 @@
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
-preplace port BRAM_Sign -pg 1 -lvl 0 -x 0 -y 1970 -defaultsOSRD
-preplace port BRAM_Add_vec -pg 1 -lvl 0 -x 0 -y 1990 -defaultsOSRD
-preplace port BRAM_Sign1 -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
-preplace port BRAM_Lin -pg 1 -lvl 0 -x 0 -y 2010 -defaultsOSRD
-preplace port BRAM_Lin1 -pg 1 -lvl 0 -x 0 -y 210 -defaultsOSRD
-preplace port BRAM_Add_oil -pg 1 -lvl 0 -x 0 -y 2690 -defaultsOSRD
-preplace port BRAM_Add_oil1 -pg 1 -lvl 0 -x 0 -y 1190 -defaultsOSRD
-preplace port BRAM_P1P1T -pg 1 -lvl 0 -x 0 -y 930 -defaultsOSRD
-preplace port BRAM_Sam_oil -pg 1 -lvl 0 -x 0 -y 2670 -defaultsOSRD
-preplace port BRAM_Sam_oil1 -pg 1 -lvl 0 -x 0 -y 1170 -defaultsOSRD
-preplace port BRAM_Sam_vin -pg 1 -lvl 0 -x 0 -y 2650 -defaultsOSRD
-preplace port BRAM_Red -pg 1 -lvl 0 -x 0 -y 2170 -defaultsOSRD
-preplace port BRAM_Sam -pg 1 -lvl 0 -x 0 -y 2190 -defaultsOSRD
-preplace port BRAM_Red_ext -pg 1 -lvl 0 -x 0 -y 2630 -defaultsOSRD
-preplace port BRAM_Red_ext1 -pg 1 -lvl 0 -x 0 -y 1010 -defaultsOSRD
-preplace port BRAM_Hash -pg 1 -lvl 0 -x 0 -y 2710 -defaultsOSRD
-preplace port clk_0 -pg 1 -lvl 0 -x 0 -y 1610 -defaultsOSRD
-preplace port zero0 -pg 1 -lvl 0 -x 0 -y 2030 -defaultsOSRD
-preplace portBus zero -pg 1 -lvl 0 -x 0 -y 2050 -defaultsOSRD
-preplace portBus zero4 -pg 1 -lvl 0 -x 0 -y 2070 -defaultsOSRD
-preplace inst SmallBRAM_1_8K -pg 1 -lvl 1 -x 340 -y 1720 -defaultsOSRD
-preplace inst mayo_bram_arbiter2_a -pg 1 -lvl 1 -x 340 -y 2410 -defaultsOSRD
+preplace port BRAM_Sign -pg 1 -lvl 0 -x -70 -y 1970 -defaultsOSRD
+preplace port BRAM_Add_vec -pg 1 -lvl 0 -x -70 -y 1990 -defaultsOSRD
+preplace port BRAM_Sign1 -pg 1 -lvl 0 -x -70 -y 50 -defaultsOSRD
+preplace port BRAM_Lin -pg 1 -lvl 0 -x -70 -y 2010 -defaultsOSRD
+preplace port BRAM_Lin1 -pg 1 -lvl 0 -x -70 -y 210 -defaultsOSRD
+preplace port BRAM_Add_oil -pg 1 -lvl 0 -x -70 -y 2690 -defaultsOSRD
+preplace port BRAM_Add_oil1 -pg 1 -lvl 0 -x -70 -y 1190 -defaultsOSRD
+preplace port BRAM_P1P1T -pg 1 -lvl 0 -x -70 -y 930 -defaultsOSRD
+preplace port BRAM_Sam_oil -pg 1 -lvl 0 -x -70 -y 2670 -defaultsOSRD
+preplace port BRAM_Sam_oil1 -pg 1 -lvl 0 -x -70 -y 1170 -defaultsOSRD
+preplace port BRAM_Sam_vin -pg 1 -lvl 0 -x -70 -y 2650 -defaultsOSRD
+preplace port BRAM_Red -pg 1 -lvl 0 -x -70 -y 2170 -defaultsOSRD
+preplace port BRAM_Sam -pg 1 -lvl 0 -x -70 -y 2190 -defaultsOSRD
+preplace port BRAM_Red_ext -pg 1 -lvl 0 -x -70 -y 2630 -defaultsOSRD
+preplace port BRAM_Red_ext1 -pg 1 -lvl 0 -x -70 -y 1010 -defaultsOSRD
+preplace port BRAM_Hash -pg 1 -lvl 0 -x -70 -y 2710 -defaultsOSRD
+preplace port clk_0 -pg 1 -lvl 0 -x -70 -y 1610 -defaultsOSRD
+preplace port zero0 -pg 1 -lvl 0 -x -70 -y 2030 -defaultsOSRD
+preplace portBus zero -pg 1 -lvl 0 -x -70 -y 2050 -defaultsOSRD
+preplace portBus zero4 -pg 1 -lvl 0 -x -70 -y 2070 -defaultsOSRD
+preplace inst mayo_bram_arbiter2_a -pg 1 -lvl 1 -x 340 -y 2450 -defaultsOSRD
 preplace inst mayo_bram_arbiter2_b -pg 1 -lvl 1 -x 340 -y 760 -defaultsOSRD
-preplace inst tdp_SmallBRAM_1_4096_0 -pg 1 -lvl 2 -x 720 -y 1810 -defaultsOSRD
-preplace netloc mayo_bram_arbiter2_0_BRAM_din 1 0 1 100 1630n
-preplace netloc mayo_bram_arbiter2_0_BRAM_addr 1 0 1 60 1590n
-preplace netloc mayo_bram_arbiter2_0_BRAM_en 1 0 1 160 1670n
-preplace netloc mayo_bram_arbiter2_0_BRAM_rst 1 0 1 110 1690n
-preplace netloc mayo_bram_arbiter2_0_BRAM_we 1 0 1 150 1710n
-preplace netloc SmallBRAM_1_8K_douta 1 0 1 140 1650n
-preplace netloc mayo_bram_arbiter2_1_BRAM_din 1 0 1 120 1410n
-preplace netloc mayo_bram_arbiter2_1_BRAM_addr 1 0 1 170 1450n
-preplace netloc mayo_bram_arbiter2_1_BRAM_en 1 0 1 70 1370n
-preplace netloc mayo_bram_arbiter2_1_BRAM_rst 1 0 1 130 1470n
-preplace netloc mayo_bram_arbiter2_1_BRAM_we 1 0 1 80 1430n
-preplace netloc SmallBRAM_1_8K_doutb 1 0 1 90 1390n
+preplace inst tdp_SmallBRAM_1_0 -pg 1 -lvl 1 -x 340 -y 1740 -defaultsOSRD
 preplace netloc clk_0_1 1 0 1 50 1610n
-preplace netloc BRAM_add_vec_din1_1 1 0 1 30 110n
-preplace netloc BRAM_neg_we_1 1 0 1 20 130n
-preplace netloc BRAM_add_vec_en1_1 1 0 1 40 90n
-preplace netloc Conn5 1 0 1 NJ 1170
-preplace netloc Conn7 1 0 1 NJ 2170
-preplace netloc BRAM_Hash_1 1 0 1 NJ 2710
-preplace netloc BRAM_Red_ext_1 1 0 1 NJ 2630
-preplace netloc Conn1 1 0 1 NJ 2010
-preplace netloc mayo_add_vectors_0_BRAM_Add_VecA 1 0 1 NJ 1990
+preplace netloc BRAM_add_vec_din1_1 1 0 1 10 110n
+preplace netloc BRAM_neg_we_1 1 0 1 40 130n
+preplace netloc BRAM_add_vec_en1_1 1 0 1 0 90n
+preplace netloc mayo_bram_arbiter2_a_BRAM_en 1 0 1 120 1590n
+preplace netloc tdp_SmallBRAM_1_0_douta 1 0 1 130 1610n
+preplace netloc mayo_bram_arbiter2_a_BRAM_din 1 0 1 140 1630n
+preplace netloc mayo_bram_arbiter2_a_BRAM_we 1 0 1 150 1650n
+preplace netloc mayo_bram_arbiter2_a_BRAM_addr 1 0 1 160 1670n
+preplace netloc mayo_bram_arbiter2_a_BRAM_rst 1 0 1 170 1710n
+preplace netloc mayo_bram_arbiter2_b_BRAM_en 1 0 1 60 1370n
+preplace netloc tdp_SmallBRAM_1_0_doutb 1 0 1 70 1390n
+preplace netloc mayo_bram_arbiter2_b_BRAM_din 1 0 1 80 1410n
+preplace netloc mayo_bram_arbiter2_b_BRAM_we 1 0 1 90 1430n
+preplace netloc mayo_bram_arbiter2_b_BRAM_addr 1 0 1 100 1450n
+preplace netloc mayo_bram_arbiter2_b_BRAM_rst 1 0 1 110 1470n
+preplace netloc MAYO_SIGNING_FSM_0_BRAM_Sign0a 1 0 1 80J 1970n
+preplace netloc Conn8 1 0 1 -20J 2190n
 preplace netloc Conn3 1 0 1 NJ 930
-preplace netloc Conn2 1 0 1 NJ 210
+preplace netloc mayo_add_vectors_0_BRAM_Add_VecA 1 0 1 30J 1990n
 preplace netloc Conn9 1 0 1 NJ 1010
-preplace netloc Conn8 1 0 1 NJ 2190
-preplace netloc BRAM_Add_oil_1 1 0 1 NJ 2690
-preplace netloc Conn6 1 0 1 NJ 2650
-preplace netloc BRAM_Add_oil1_1 1 0 1 NJ 1190
+preplace netloc Conn5 1 0 1 NJ 1170
+preplace netloc Conn6 1 0 1 -20J 2650n
+preplace netloc Conn7 1 0 1 -10J 2170n
+preplace netloc BRAM_Add_oil_1 1 0 1 -40J 2690n
 preplace netloc MAYO_SIGNING_FSM_0_BRAM_Sign0b 1 0 1 NJ 50
-preplace netloc Conn4 1 0 1 NJ 2670
-preplace netloc MAYO_SIGNING_FSM_0_BRAM_Sign0a 1 0 1 NJ 1970
-levelinfo -pg 1 0 340 720 880
-pagesize -pg 1 -db -bbox -sgen -170 -20 880 2910
+preplace netloc BRAM_Red_ext_1 1 0 1 -10J 2630n
+preplace netloc BRAM_Hash_1 1 0 1 -50J 2710n
+preplace netloc Conn2 1 0 1 NJ 210
+preplace netloc BRAM_Add_oil1_1 1 0 1 NJ 1190
+preplace netloc Conn1 1 0 1 20J 2010n
+preplace netloc Conn4 1 0 1 -30J 2670n
+levelinfo -pg 1 -70 340 720 880
+pagesize -pg 1 -db -bbox -sgen -240 -20 880 2950
 "
 }
 0

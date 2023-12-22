@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
--- Date        : Wed May 17 00:49:21 2023
--- Host        : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
--- Command     : write_vhdl -force -mode funcsim -rename_top Mayo_sign_with_zynq_xbar_0 -prefix
---               Mayo_sign_with_zynq_xbar_0_ Mayo_sign_with_zynq_xbar_0_sim_netlist.vhdl
+-- Date        : Sat Dec  9 18:10:52 2023
+-- Host        : zenith running 64-bit Ubuntu 22.04.3 LTS
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_xbar_0/Mayo_sign_with_zynq_xbar_0_sim_netlist.vhdl
 -- Design      : Mayo_sign_with_zynq_xbar_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -54,6 +54,8 @@ entity Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_addr_arbiter is
     aresetn_d : in STD_LOGIC;
     \gen_no_arbiter.m_target_hot_i_reg[2]_2\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_addr_arbiter : entity is "axi_crossbar_v2_1_23_addr_arbiter";
 end Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_addr_arbiter;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_addr_arbiter is
@@ -2188,6 +2190,8 @@ entity Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_arbiter_resp is
     SR : in STD_LOGIC_VECTOR ( 0 to 0 );
     aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_arbiter_resp : entity is "axi_crossbar_v2_1_23_arbiter_resp";
 end Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_arbiter_resp;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_arbiter_resp is
@@ -4294,6 +4298,8 @@ entity Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_decerr_slave is
     \gen_axi.s_axi_rlast_i_reg_0\ : in STD_LOGIC;
     \gen_axi.s_axi_bid_i_reg[11]_0\ : in STD_LOGIC_VECTOR ( 11 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_decerr_slave : entity is "axi_crossbar_v2_1_23_decerr_slave";
 end Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_decerr_slave;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_decerr_slave is
@@ -5013,6 +5019,8 @@ entity Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_splitter is
     aresetn_d : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_splitter : entity is "axi_crossbar_v2_1_23_splitter";
 end Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_splitter;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_splitter is
@@ -10042,6 +10050,8 @@ entity Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_si_transactor is
     \gen_no_arbiter.m_valid_i_reg_inv_1\ : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_si_transactor : entity is "axi_crossbar_v2_1_23_si_transactor";
 end Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_si_transactor;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_si_transactor is
@@ -17125,6 +17135,8 @@ entity Mayo_sign_with_zynq_xbar_0_axi_data_fifo_v2_1_21_axic_reg_srl_fifo is
     mi_wready_2 : in STD_LOGIC;
     \storage_data1_reg[1]_0\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_xbar_0_axi_data_fifo_v2_1_21_axic_reg_srl_fifo : entity is "axi_data_fifo_v2_1_21_axic_reg_srl_fifo";
 end Mayo_sign_with_zynq_xbar_0_axi_data_fifo_v2_1_21_axic_reg_srl_fifo;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_xbar_0_axi_data_fifo_v2_1_21_axic_reg_srl_fifo is
@@ -17575,6 +17587,8 @@ entity Mayo_sign_with_zynq_xbar_0_axi_register_slice_v2_1_22_axi_register_slice 
     m_axi_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
     \m_payload_i_reg[13]_0\ : in STD_LOGIC_VECTOR ( 13 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_xbar_0_axi_register_slice_v2_1_22_axi_register_slice : entity is "axi_register_slice_v2_1_22_axi_register_slice";
 end Mayo_sign_with_zynq_xbar_0_axi_register_slice_v2_1_22_axi_register_slice;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_xbar_0_axi_register_slice_v2_1_22_axi_register_slice is
@@ -17862,6 +17876,8 @@ entity Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_wdata_router is
     mi_wready_2 : in STD_LOGIC;
     \storage_data1_reg[1]\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_wdata_router : entity is "axi_crossbar_v2_1_23_wdata_router";
 end Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_wdata_router;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_wdata_router is
@@ -17937,6 +17953,8 @@ entity Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_crossbar is
     s_axi_wlast : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_axi_wready : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_crossbar : entity is "axi_crossbar_v2_1_23_crossbar";
 end Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_crossbar;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_crossbar is
@@ -18867,6 +18885,8 @@ entity Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_axi_crossbar is
   attribute C_S_AXI_WRITE_ACCEPTANCE of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_axi_crossbar : entity is 8;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_axi_crossbar : entity is "yes";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_axi_crossbar : entity is "axi_crossbar_v2_1_23_axi_crossbar";
   attribute P_ADDR_DECODE : integer;
   attribute P_ADDR_DECODE of Mayo_sign_with_zynq_xbar_0_axi_crossbar_v2_1_23_axi_crossbar : entity is 1;
   attribute P_AXI3 : integer;

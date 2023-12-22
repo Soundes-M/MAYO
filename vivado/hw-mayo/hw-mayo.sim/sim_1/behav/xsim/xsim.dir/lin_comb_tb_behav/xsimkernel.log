@@ -1,0 +1,7 @@
+Running: xsim.dir/lin_comb_tb_behav/xsimk -simmode gui -wdb lin_comb_tb_behav.wdb -simrunnum 0 -socket 38895
+Design successfully loaded
+Design Loading Memory Usage: 35528 KB (Peak: 35528 KB)
+Design Loading CPU Usage: 60 ms
+Simulation completed
+Simulation Memory Usage: 125868 KB (Peak: 174796 KB)
+Simulation CPU Usage: 120 ms

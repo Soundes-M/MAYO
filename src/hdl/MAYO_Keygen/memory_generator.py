@@ -74,14 +74,12 @@ def generate_bram(
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-USE std.textio.all;
 
 entity tdp_{name} is
     generic (
         NB_COL          : integer := 4;             -- Specify number of columns (number of bytes)
         COL_WIDTH       : integer := 8;             -- Specify column width (byte width, typically 8 or 9)
-        RAM_PERFORMANCE : string  := "LOW_LATENCY"; -- Select "HIGH_PERFORMANCE" or "LOW_LATENCY" 
-        INIT_FILE       : string  := ""             -- Specify name/location of RAM initialization file if using one (leave blank if not)
+        RAM_PERFORMANCE : string  := "LOW_LATENCY"       -- Select "HIGH_PERFORMANCE" or "LOW_LATENCY" 
     );
 
     port (
@@ -128,7 +126,6 @@ architecture rtl of tdp_{name} is
     constant C_COL_WIDTH       : integer := COL_WIDTH;
     constant C_RAM_DEPTH       : integer := {depth};
     constant C_RAM_PERFORMANCE : string  := RAM_PERFORMANCE;
-    constant C_INIT_FILE       : string  := INIT_FILE;
 
     signal douta_reg : std_logic_vector(C_NB_COL*C_COL_WIDTH-1 downto 0) := (others => '0');
     signal doutb_reg : std_logic_vector(C_NB_COL*C_COL_WIDTH-1 downto 0) := (others => '0');
@@ -138,31 +135,8 @@ architecture rtl of tdp_{name} is
     signal ram_data_a : std_logic_vector(C_NB_COL*C_COL_WIDTH-1 downto 0) ;
     signal ram_data_b : std_logic_vector(C_NB_COL*C_COL_WIDTH-1 downto 0) ;
 
-    function initramfromfile (ramfilename : in string) return ram_type is
-        file ramfile                          :    text is in ramfilename;
-        variable ramfileline                  :    line;
-        variable ram_name                     :    ram_type;
-        variable bitvec                       :    bit_vector(C_NB_COL*C_COL_WIDTH-1 downto 0);
-    begin
-        for i in ram_type'range loop
-            readline (ramfile, ramfileline);
-            read (ramfileline, bitvec);
-            ram_name(i) := to_stdlogicvector(bitvec);
-        end loop;
-        return ram_name;
-    end function;
-
-    function init_from_file_or_zeroes(ramfile : string) return ram_type is
-    begin
-        if ramfile /= "" then
-            return InitRamFromFile(C_INIT_FILE) ;
-        else
-            return (others => (others => '0'));
-        end if;
-    end;
     -- Following code defines RAM
-
-    shared variable ram_name : ram_type := init_from_file_or_zeroes(C_INIT_FILE);
+    shared variable ram_name : ram_type := (others => (others => '0'));
 
 begin
 

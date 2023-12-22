@@ -1,0 +1,9 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../hw-mayo.srcs/sources_1/imports/MAYO/src/hdl/MAYO_Keygen/MAYO_Common.vhd" \
+"../../../../hw-mayo.srcs/sources_1/imports/MAYO/src/hdl/Utils/utils.vhd" \
+"../../../../hw-mayo.srcs/sources_1/imports/MAYO/src/hdl/MAYO_Keygen/MAYO_linear_combination.vhd" \
+"../../../../hw-mayo.srcs/sim_1/new/lin_comb_tb.vhd" \
+
+# Do not sort compile order
+nosort

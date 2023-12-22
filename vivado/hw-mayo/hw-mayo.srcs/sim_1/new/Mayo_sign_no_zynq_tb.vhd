@@ -75,7 +75,7 @@ begin
 
   tb : process
   begin
-    report "Mayo Keyen (RTL) Begin" severity note;
+    report "Mayo Sign (RTL) Begin" severity note;
 
     wait for 1000 ns;
 

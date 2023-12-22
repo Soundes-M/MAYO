@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
--- Date        : Wed May 17 00:49:20 2023
--- Host        : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
--- Command     : write_vhdl -force -mode synth_stub -rename_top Mayo_sign_with_zynq_xbar_0 -prefix
---               Mayo_sign_with_zynq_xbar_0_ Mayo_sign_with_zynq_xbar_0_stub.vhdl
+-- Date        : Sat Dec  9 18:10:52 2023
+-- Host        : zenith running 64-bit Ubuntu 22.04.3 LTS
+-- Command     : write_vhdl -force -mode synth_stub
+--               /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_xbar_0/Mayo_sign_with_zynq_xbar_0_stub.vhdl
 -- Design      : Mayo_sign_with_zynq_xbar_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg484-1

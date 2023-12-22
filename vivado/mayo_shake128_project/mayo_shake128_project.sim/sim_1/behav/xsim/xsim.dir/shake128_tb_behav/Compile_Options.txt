@@ -1,1 +1,0 @@
--wto "a572b227f0ba45d18a695388a9a92fe8" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "shake128_tb_behav" "xil_defaultlib.shake128_tb" -log "elaborate.log" 

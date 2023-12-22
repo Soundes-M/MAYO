@@ -220,8 +220,8 @@ begin
 		);
 
 	tb               : process
-		file filein1     : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_linear.dat";
-		file filein2     : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_rhs.dat";
+		file filein1     : text is in "/home/osm/Documents/Sect/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_linear.dat";
+		file filein2     : text is in "/home/osm/Documents/Sect/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_rhs.dat";
 		variable v_line1 : line;
 		variable v_line2 : line;
 		variable v_tmp   : std_logic_vector(31 downto 0);
@@ -246,8 +246,8 @@ begin
 		rstb_busy0 <= '0';
 		rsta_busy1 <= '0';
 		rstb_busy1 <= '0';
-		FILE_OPEN(filein1,"/home/osm/Documents/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_linear.dat",read_mode);
-		FILE_OPEN(filein2,"/home/osm/Documents/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_rhs.dat",read_mode);
+		FILE_OPEN(filein1,"/home/osm/Documents/Sect/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_linear.dat",read_mode);
+		FILE_OPEN(filein2,"/home/osm/Documents/Sect/SECT-MAYO/MAYO/tb/sample_oil_tb/sample_rhs.dat",read_mode);
 		bram_mine0 <= '1'; -- Take control over BRAM Port 
 
 		i <= LIN_ADR;

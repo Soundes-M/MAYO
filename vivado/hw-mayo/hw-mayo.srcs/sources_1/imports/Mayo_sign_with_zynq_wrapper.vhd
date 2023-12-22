@@ -33,15 +33,13 @@ entity Mayo_sign_with_zynq_wrapper is
     FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
     FIXED_IO_ps_clk : inout STD_LOGIC;
     FIXED_IO_ps_porb : inout STD_LOGIC;
-    FIXED_IO_ps_srstb : inout STD_LOGIC;
-    rst : in STD_LOGIC
+    FIXED_IO_ps_srstb : inout STD_LOGIC
   );
 end Mayo_sign_with_zynq_wrapper;
 
 architecture STRUCTURE of Mayo_sign_with_zynq_wrapper is
   component Mayo_sign_with_zynq is
   port (
-    rst : in STD_LOGIC;
     FIXED_IO_mio : inout STD_LOGIC_VECTOR ( 53 downto 0 );
     FIXED_IO_ddr_vrn : inout STD_LOGIC;
     FIXED_IO_ddr_vrp : inout STD_LOGIC;
@@ -88,7 +86,6 @@ Mayo_sign_with_zynq_i: component Mayo_sign_with_zynq
       FIXED_IO_mio(53 downto 0) => FIXED_IO_mio(53 downto 0),
       FIXED_IO_ps_clk => FIXED_IO_ps_clk,
       FIXED_IO_ps_porb => FIXED_IO_ps_porb,
-      FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
-      rst => rst
+      FIXED_IO_ps_srstb => FIXED_IO_ps_srstb
     );
 end STRUCTURE;

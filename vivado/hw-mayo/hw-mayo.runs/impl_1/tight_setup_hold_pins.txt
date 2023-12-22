@@ -1,0 +1,13 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|               clk_fpga_0 |               clk_fpga_0 |                                                Mayo_sign_with_zynq_i/mayo_sample_oil_0/U0/utmp1_reg[18]/D|
+|               clk_fpga_0 |               clk_fpga_0 |                                                Mayo_sign_with_zynq_i/mayo_sample_oil_0/U0/utmp1_reg[16]/D|
+|               clk_fpga_0 |               clk_fpga_0 |                         Mayo_sign_with_zynq_i/mayo_reduce_extension_0/U0/input_coef_reg_0_3_16_16/SP/ADR0|
+|               clk_fpga_0 |               clk_fpga_0 |                         Mayo_sign_with_zynq_i/mayo_reduce_extension_0/U0/input_coef_reg_0_3_17_17/SP/ADR1|
+|               clk_fpga_0 |               clk_fpga_0 |                         Mayo_sign_with_zynq_i/mayo_reduce_extension_0/U0/input_coef_reg_0_3_16_16/SP/ADR1|
+|               clk_fpga_0 |               clk_fpga_0 |                         Mayo_sign_with_zynq_i/mayo_reduce_extension_0/U0/input_coef_reg_0_3_17_17/SP/ADR0|
+|               clk_fpga_0 |               clk_fpga_0 |                         Mayo_sign_with_zynq_i/mayo_reduce_extension_0/U0/input_coef_reg_0_3_18_18/SP/ADR1|
+|               clk_fpga_0 |               clk_fpga_0 |                                                Mayo_sign_with_zynq_i/mayo_sample_oil_0/U0/utmp1_reg[19]/D|
+|               clk_fpga_0 |               clk_fpga_0 |                         Mayo_sign_with_zynq_i/mayo_reduce_extension_0/U0/input_coef_reg_0_3_18_18/SP/ADR0|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+

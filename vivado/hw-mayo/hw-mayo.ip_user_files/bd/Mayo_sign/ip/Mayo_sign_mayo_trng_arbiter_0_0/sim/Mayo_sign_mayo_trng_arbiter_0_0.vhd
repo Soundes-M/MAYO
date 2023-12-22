@@ -56,30 +56,18 @@ USE ieee.numeric_std.ALL;
 ENTITY Mayo_sign_mayo_trng_arbiter_0_0 IS
   PORT (
     i_trng_sel : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-    o_trng_r : OUT STD_LOGIC;
-    o_trng_w : OUT STD_LOGIC;
-    o_trng_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    i_trng_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    o_trng_en : OUT STD_LOGIC;
+    i_trng_random_data : IN STD_LOGIC_VECTOR(127 DOWNTO 0);
     i_trng_valid : IN STD_LOGIC;
-    i_trng_done : IN STD_LOGIC;
-    i_trng0_r : IN STD_LOGIC;
-    i_trng0_w : IN STD_LOGIC;
-    i_trng0_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    o_trng0_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    i_trng0_en : IN STD_LOGIC;
+    o_trng0_random_data : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
     o_trng0_valid : OUT STD_LOGIC;
-    o_trng0_done : OUT STD_LOGIC;
-    i_trng1_r : IN STD_LOGIC;
-    i_trng1_w : IN STD_LOGIC;
-    i_trng1_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    o_trng1_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    i_trng1_en : IN STD_LOGIC;
+    o_trng1_random_data : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
     o_trng1_valid : OUT STD_LOGIC;
-    o_trng1_done : OUT STD_LOGIC;
-    i_trng2_r : IN STD_LOGIC;
-    i_trng2_w : IN STD_LOGIC;
-    i_trng2_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    o_trng2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    o_trng2_valid : OUT STD_LOGIC;
-    o_trng2_done : OUT STD_LOGIC
+    i_trng2_en : IN STD_LOGIC;
+    o_trng2_random_data : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
+    o_trng2_valid : OUT STD_LOGIC
   );
 END Mayo_sign_mayo_trng_arbiter_0_0;
 
@@ -89,30 +77,18 @@ ARCHITECTURE Mayo_sign_mayo_trng_arbiter_0_0_arch OF Mayo_sign_mayo_trng_arbiter
   COMPONENT mayo_trng_arbiter IS
     PORT (
       i_trng_sel : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-      o_trng_r : OUT STD_LOGIC;
-      o_trng_w : OUT STD_LOGIC;
-      o_trng_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      i_trng_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      o_trng_en : OUT STD_LOGIC;
+      i_trng_random_data : IN STD_LOGIC_VECTOR(127 DOWNTO 0);
       i_trng_valid : IN STD_LOGIC;
-      i_trng_done : IN STD_LOGIC;
-      i_trng0_r : IN STD_LOGIC;
-      i_trng0_w : IN STD_LOGIC;
-      i_trng0_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      o_trng0_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      i_trng0_en : IN STD_LOGIC;
+      o_trng0_random_data : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
       o_trng0_valid : OUT STD_LOGIC;
-      o_trng0_done : OUT STD_LOGIC;
-      i_trng1_r : IN STD_LOGIC;
-      i_trng1_w : IN STD_LOGIC;
-      i_trng1_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      o_trng1_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      i_trng1_en : IN STD_LOGIC;
+      o_trng1_random_data : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
       o_trng1_valid : OUT STD_LOGIC;
-      o_trng1_done : OUT STD_LOGIC;
-      i_trng2_r : IN STD_LOGIC;
-      i_trng2_w : IN STD_LOGIC;
-      i_trng2_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      o_trng2_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      o_trng2_valid : OUT STD_LOGIC;
-      o_trng2_done : OUT STD_LOGIC
+      i_trng2_en : IN STD_LOGIC;
+      o_trng2_random_data : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
+      o_trng2_valid : OUT STD_LOGIC
     );
   END COMPONENT mayo_trng_arbiter;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -121,29 +97,17 @@ BEGIN
   U0 : mayo_trng_arbiter
     PORT MAP (
       i_trng_sel => i_trng_sel,
-      o_trng_r => o_trng_r,
-      o_trng_w => o_trng_w,
-      o_trng_data => o_trng_data,
-      i_trng_data => i_trng_data,
+      o_trng_en => o_trng_en,
+      i_trng_random_data => i_trng_random_data,
       i_trng_valid => i_trng_valid,
-      i_trng_done => i_trng_done,
-      i_trng0_r => i_trng0_r,
-      i_trng0_w => i_trng0_w,
-      i_trng0_data => i_trng0_data,
-      o_trng0_data => o_trng0_data,
+      i_trng0_en => i_trng0_en,
+      o_trng0_random_data => o_trng0_random_data,
       o_trng0_valid => o_trng0_valid,
-      o_trng0_done => o_trng0_done,
-      i_trng1_r => i_trng1_r,
-      i_trng1_w => i_trng1_w,
-      i_trng1_data => i_trng1_data,
-      o_trng1_data => o_trng1_data,
+      i_trng1_en => i_trng1_en,
+      o_trng1_random_data => o_trng1_random_data,
       o_trng1_valid => o_trng1_valid,
-      o_trng1_done => o_trng1_done,
-      i_trng2_r => i_trng2_r,
-      i_trng2_w => i_trng2_w,
-      i_trng2_data => i_trng2_data,
-      o_trng2_data => o_trng2_data,
-      o_trng2_valid => o_trng2_valid,
-      o_trng2_done => o_trng2_done
+      i_trng2_en => i_trng2_en,
+      o_trng2_random_data => o_trng2_random_data,
+      o_trng2_valid => o_trng2_valid
     );
 END Mayo_sign_mayo_trng_arbiter_0_0_arch;

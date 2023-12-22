@@ -6,7 +6,7 @@
 -- Author      : XXXXX
 -- Company     : XXXXX
 -- Created     : Sat Apr 29 18:39:04 2023
--- Last update : Thu Jun 29 19:39:44 2023
+-- Last update : Sat Dec  9 18:43:29 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -114,6 +114,11 @@ architecture Behavioral of mayo_add_oil is
 	signal bram0b : bram_t := DEFAULT_BRAM;
 	signal bram1a : bram_t := DEFAULT_BRAM;
 
+	----------------------------------------------------------------------------
+	-- SECURE
+	----------------------------------------------------------------------------
+	signal s_check : std_logic_vector(O-1 downto 0) := (others => '0');
+
 	type states is (idle,
 			memcpy0, memcpy1, memcpy2, memcpy3, memcpy4, memcpy5, memcpy6, memcpy7, memcpy8, memcpy9,
 			main0, main1, main2, main3, main4, main5, main6, main7, main8, main9, main10, main11, main12,
@@ -172,7 +177,7 @@ begin
 							s_oil_base_adr    <= v_tmp;
 							s_oil_pos_in_line <= v_tmp1; -- |3|2|1|0| ? 
 
-							if (v_tmp1 < 3) then                  -- 2 lines 
+							if (v_tmp1 < 3) then                    -- 2 lines 
 								                                    -- WARNING: O is hardcoded to 6!
 								bytes_first_line  <= 4- v_tmp1;     -- how many bytes to copy from first line 
 								bytes_second_line <= 6- (4-v_tmp1); -- how many bytes to copy from second line
@@ -239,7 +244,7 @@ begin
 						s_inp_base_adr    <= v_tmp;
 						s_inp_pos_in_line <= v_tmp1; -- |3|2|1|0| ? 
 
-						if (v_tmp1 < 3)then                   -- 2 lines 
+						if (v_tmp1 < 3)then                     -- 2 lines 
 							                                    -- WARNING: O is hardcoded to 6! 
 							bytes_first_line  <= 4- v_tmp1;     -- how many bytes to copy from first line 
 							bytes_second_line <= 6- (4-v_tmp1); -- how many bytes to copy from second line
@@ -395,6 +400,7 @@ begin
 						bram0b.o.o_we <= "0000";
 						bram0b.o.o_en <= '0';
 						j             <= 0;
+						s_check       <= (others => '0');
 						state         <= main17;
 
 					when main14 =>
@@ -411,6 +417,7 @@ begin
 						bram0a.o.o_en                 <= '0';
 						mempcpy_scratch(47 downto 40) <= bram0a.i.i_dout(7 downto 0);
 						j                             <= 0;
+						s_check                       <= (others => '0');
 						state                         <= main17;
 
 					when main17 => -- GET RS2 : oil_space[j*(N-O) + i] and do math
@@ -441,9 +448,10 @@ begin
 						state <= main23;
 
 					when main23 =>
-						t0    <= std_logic_vector(resize(unsigned(t0) + unsigned(tmp),t0'length));
-						j     <= j +1;
-						state <= main17;
+						t0         <= std_logic_vector(resize(unsigned(t0) + unsigned(tmp),t0'length));
+						j          <= j +1;
+						s_check(j) <= '1';
+						state      <= main17;
 
 					when main20 => -- write result
 						v_tmp             := base_adr(INPUTS_ADR + l*N +i);
@@ -471,7 +479,12 @@ begin
 							when others =>
 								report "Unexpected position" severity error;
 						end case;
-						state <= main22;
+						if (s_check != "111111") then
+							state <= main21;
+							assert "ERROR" severity error;
+						else
+							state <= main22;
+						end if;
 
 					when main22 =>
 						bram0a.o.o_en <= '0';

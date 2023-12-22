@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
---Date        : Sun Nov 12 20:11:24 2023
+--Date        : Sat Dec  9 20:07:17 2023
 --Host        : zenith running 64-bit Ubuntu 22.04.3 LTS
 --Command     : generate_target Mayo_sign_wrapper.bd
 --Design      : Mayo_sign_wrapper

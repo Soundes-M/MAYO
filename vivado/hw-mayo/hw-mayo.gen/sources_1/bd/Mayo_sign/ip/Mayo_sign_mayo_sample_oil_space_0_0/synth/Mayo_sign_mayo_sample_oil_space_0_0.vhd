@@ -61,12 +61,9 @@ ENTITY Mayo_sign_mayo_sample_oil_space_0_0 IS
     o_done : OUT STD_LOGIC;
     i_oil_addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     i_mode : IN STD_LOGIC;
-    o_trng_r : OUT STD_LOGIC;
-    o_trng_w : OUT STD_LOGIC;
-    o_trng_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    i_trng_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    o_trng_en : OUT STD_LOGIC;
     i_trng_valid : IN STD_LOGIC;
-    i_trng_done : IN STD_LOGIC;
+    i_trng_data : IN STD_LOGIC_VECTOR(127 DOWNTO 0);
     i_mema_dout : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     o_mema_din : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     o_mema_addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -96,12 +93,9 @@ ARCHITECTURE Mayo_sign_mayo_sample_oil_space_0_0_arch OF Mayo_sign_mayo_sample_o
       o_done : OUT STD_LOGIC;
       i_oil_addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       i_mode : IN STD_LOGIC;
-      o_trng_r : OUT STD_LOGIC;
-      o_trng_w : OUT STD_LOGIC;
-      o_trng_data : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      i_trng_data : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      o_trng_en : OUT STD_LOGIC;
       i_trng_valid : IN STD_LOGIC;
-      i_trng_done : IN STD_LOGIC;
+      i_trng_data : IN STD_LOGIC_VECTOR(127 DOWNTO 0);
       i_mema_dout : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       o_mema_din : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       o_mema_addr : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -143,9 +137,9 @@ ARCHITECTURE Mayo_sign_mayo_sample_oil_space_0_0_arch OF Mayo_sign_mayo_sample_o
   ATTRIBUTE X_INTERFACE_INFO OF o_mema_addr: SIGNAL IS "MAYO:user:BRAM_BUS_custom:1.0 BRAM_Sama ADDR";
   ATTRIBUTE X_INTERFACE_INFO OF o_mema_din: SIGNAL IS "MAYO:user:BRAM_BUS_custom:1.0 BRAM_Sama DIN";
   ATTRIBUTE X_INTERFACE_INFO OF i_mema_dout: SIGNAL IS "MAYO:user:BRAM_BUS_custom:1.0 BRAM_Sama DOUT";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF rst: SIGNAL IS "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF rst: SIGNAL IS "xilinx.com:signal:reset:1.0 rst RST";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF i_clk: SIGNAL IS "XIL_INTERFACENAME i_clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN Mayo_sign_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF o_trng_en: SIGNAL IS "MAYO:user:BRAM_BUS_custom:1.0 o_trng EN";
+  ATTRIBUTE X_INTERFACE_INFO OF rst: SIGNAL IS "MAYO:user:BRAM_BUS_custom:1.0 o_trng RST";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF i_clk: SIGNAL IS "XIL_INTERFACENAME i_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN Mayo_sign_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF i_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 i_clk CLK";
 BEGIN
   U0 : mayo_sample_oil_space
@@ -156,12 +150,9 @@ BEGIN
       o_done => o_done,
       i_oil_addr => i_oil_addr,
       i_mode => i_mode,
-      o_trng_r => o_trng_r,
-      o_trng_w => o_trng_w,
-      o_trng_data => o_trng_data,
-      i_trng_data => i_trng_data,
+      o_trng_en => o_trng_en,
       i_trng_valid => i_trng_valid,
-      i_trng_done => i_trng_done,
+      i_trng_data => i_trng_data,
       i_mema_dout => i_mema_dout,
       o_mema_din => o_mema_din,
       o_mema_addr => o_mema_addr,

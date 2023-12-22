@@ -6,7 +6,7 @@
 -- Author      : XXXXX
 -- Company     : XXXXX
 -- Created     : Sat Apr 29 18:37:13 2023
--- Last update : Thu Jun 29 19:39:43 2023
+-- Last update : Sat Dec  9 18:43:31 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -40,12 +40,9 @@ entity MAYO_SIGNING_FSM is
 		o_busy   : out std_logic;
 		o_err    : out std_logic_vector(1 downto 0);
 
-		o_trng_r     : out std_logic;
-		o_trng_w     : out std_logic;
-		o_trng_data  : out std_logic_vector(31 downto 0);
-		i_trng_data  : in  std_logic_vector(31 downto 0);
+		o_trng_en    : out std_logic;
 		i_trng_valid : in  std_logic;
-		i_trng_done  : in  std_logic;
+		i_trng_data  : in  std_logic_vector(127 downto 0);
 
 		--HASH (EXPAND [SHAKE128])
 		o_hash_en        : out std_logic;
@@ -295,6 +292,7 @@ ARCHITECTURE Behavioral OF MAYO_SIGNING_FSM IS
 	signal unsigned_tmp64 : unsigned(PORT_WIDTH*2 -1 downto 0);
 
 	constant UPRIME : unsigned(PRIME_BITS-1 downto 0) := to_unsigned(PRIME,PRIME_BITS);
+	constant debug  : std_logic                       := '1';
 
 	------------------------------------------------------------------------------
 	-- BRAM
@@ -344,6 +342,7 @@ begin
 				s_temp_adr      <= ZERO_32;
 				s_outputs_adr   <= ZERO_32;
 				s_secret        <= '0';
+				o_trng_en       <= '0';
 				o_busy          <= '0';
 				o_done          <= '0';
 				o_control0a     <= '0';
@@ -376,7 +375,9 @@ begin
 							index    <= 0;
 							state    <= msg0;
 							o_busy   <= '1';
-							state    <= sign4; -- debug bruteforce
+							if (debug) then
+								state <= sign4; -- debug bruteforce
+							end if;
 						else
 							state <= idle;
 						end if;
@@ -464,7 +465,7 @@ begin
 					when expand_sk0 => -- first copy Public seed to bigbram for hash
 						bram0a.o.o_en   <= '1';
 						bram0a.o.o_we   <= "0000";
-						bram0a.o.o_addr <= std_logic_vector(to_unsigned(SK_BASE_ADR,PORT_WIDTH)) ; -- TODO : Check
+						bram0a.o.o_addr <= std_logic_vector(to_unsigned(SK_BASE_ADR,PORT_WIDTH)) ;
 						state           <= expand_sk1;
 
 					when expand_sk1 =>
@@ -587,7 +588,7 @@ begin
 							state <= computeBil1;
 						end if;
 
-					when computeBil3 =>                    -- Runs for M 
+					when computeBil3 =>                      -- Runs for M 
 						o_p1p1t_src_adr  <= s_p1_adr;        -- BRAM II 
 						o_p1p1t_dsta_adr <= s_p1p1t_adr;     -- BRAM III 
 						o_p1p1t_dstb_adr <= s_p1p1t_inv_adr; -- BRAM III 
@@ -773,34 +774,27 @@ begin
 					-- BEGIN SIGN FAST
 					-----------------------------------------------------------------
 					when sign0 => --randomized message digest 
-						o_trng_w      <= '1';
-						o_trng_r      <= '0';
-						o_trng_data   <= std_logic_vector(to_unsigned(SEED_BYTES,PORT_WIDTH));
+						o_trng_en     <= '1';
 						o_control2a   <= '1';
 						o_control2b   <= '1';
 						bram2a.o.o_we <= "0000";
 						bram2b.o.o_we <= "0000";
 						index         <= 0 ;
-						state         <= sign1;
-
-					when sign1 =>
-						o_trng_w <= '0';
-						o_trng_r <= '0';
-						state    <= sign2;
+						state         <= sign2;
 
 					when sign2 =>
-						o_trng_w <= '0';
-						o_trng_r <= '1';
 
 						if (i_trng_valid = '1') then
-							bram2a.o.o_din  <= i_trng_data;
+							bram2a.o.o_din  <= i_trng_data(PORT_WIDTH-1 downto 0);
 							bram2a.o.o_en   <= '1';
 							bram2a.o.o_addr <= std_logic_vector(to_unsigned(SIG_BASE_ADR+index,PORT_WIDTH)) ;
+							bram2a.o.o_we   <= "0000";
 
 							-- Also copy in here for message digest
-							bram2b.o.o_din  <= i_trng_data;
+							bram2b.o.o_din  <= i_trng_data(PORT_WIDTH-1 downto 0);
 							bram2b.o.o_en   <= '1';
 							bram2b.o.o_addr <= std_logic_vector(to_unsigned(DIG_BASE_ADR+index,PORT_WIDTH)) ;
+							bram2b.o.o_we   <= "0000";
 
 							index <= index + 4;
 
@@ -809,12 +803,12 @@ begin
 							bram2b.o.o_en <= '0';
 						end if;
 
-						if (i_trng_done = '1') then
+						if (index >= SEED_BYTES) then
 							state <= sign3;
 						end if;
 
 					when sign3 =>
-						o_trng_r      <= '0';
+						o_trng_en     <= '0';
 						bram2a.o.o_en <= '0';
 						bram2a.o.o_we <= "0000";
 						bram2b.o.o_en <= '0';
@@ -1496,7 +1490,9 @@ begin
 								state <= sample6;
 							else
 								--state <= sign4;    -- OUT OF WHILE LOOP
-								state <= sample6 ; -- DEBUG bruteforce
+								if (debug) then
+									state <= sample6 ; -- DEBUG bruteforce
+								end if;
 								o_err <= "01";
 								report "Sample oil did not find a solution, repeating...";
 							end if;
@@ -1568,7 +1564,7 @@ begin
 	o_mem0b_addr <= bram0b.o.o_addr;
 	o_mem0b_en   <= bram0b.o.o_en;
 	o_mem0b_rst  <= bram0b.o.o_rst;
-	o_mem0b_we   <= bram0b.o.o_we;
+	o_mem0b_we <= bram0b.o.o_we;
 
 	--BRAM1-A
 	bram1a.i.i_dout <= i_mem1a_dout;

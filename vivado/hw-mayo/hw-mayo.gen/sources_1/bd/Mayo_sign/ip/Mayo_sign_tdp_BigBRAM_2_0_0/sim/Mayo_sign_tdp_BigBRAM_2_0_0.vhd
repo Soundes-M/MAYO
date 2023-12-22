@@ -81,8 +81,7 @@ ARCHITECTURE Mayo_sign_tdp_BigBRAM_2_0_0_arch OF Mayo_sign_tdp_BigBRAM_2_0_0 IS
     GENERIC (
       NB_COL : INTEGER;
       COL_WIDTH : INTEGER;
-      RAM_PERFORMANCE : STRING;
-      INIT_FILE : STRING
+      RAM_PERFORMANCE : STRING
     );
     PORT (
       addra : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -128,8 +127,7 @@ BEGIN
     GENERIC MAP (
       NB_COL => 4,
       COL_WIDTH => 8,
-      RAM_PERFORMANCE => "LOW_LATENCY",
-      INIT_FILE => ""
+      RAM_PERFORMANCE => "LOW_LATENCY"
     )
     PORT MAP (
       addra => addra,

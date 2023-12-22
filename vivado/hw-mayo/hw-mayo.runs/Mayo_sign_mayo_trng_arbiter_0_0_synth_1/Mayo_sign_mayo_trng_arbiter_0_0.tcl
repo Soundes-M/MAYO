@@ -70,6 +70,9 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "Mayo_sign_mayo_trng_arbiter_0_0_synth_1" START { ROLLUP_AUTO }
+set_msg_config -id {HDL-1065} -limit 10000
+set_msg_config  -string {{[Common 17-576]}}  -suppress 
+set_msg_config  -string {{[IP_Flow 19-3571]}}  -suppress 
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
@@ -87,7 +90,6 @@ set_property board_part em.avnet.com:zed:part0:1.4 [current_project]
 set_property ip_repo_paths {
   /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/mayo_axi_litev3/mayo_axi_litev3_3
   /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/mayo-axi/Mayo_axi_1.0
-  /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/TRNG_project/TRNG_project.srcs
   /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/shake128
   /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/INTERFACES
 } [current_project]
@@ -97,9 +99,9 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  /home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_Common.vhd
-  /home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/utils.vhd
-  /home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/MAYO_Keygen/MAYO_trng_Arbiter.vhd
+  /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.srcs/sources_1/imports/MAYO/src/hdl/MAYO_Keygen/MAYO_Common.vhd
+  /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.srcs/sources_1/imports/MAYO/src/hdl/Utils/utils.vhd
+  /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.srcs/sources_1/imports/MAYO/src/hdl/MAYO_Keygen/MAYO_trng_Arbiter.vhd
 }
 read_ip -quiet /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.srcs/sources_1/bd/Mayo_sign/ip/Mayo_sign_mayo_trng_arbiter_0_0/Mayo_sign_mayo_trng_arbiter_0_0.xci
 

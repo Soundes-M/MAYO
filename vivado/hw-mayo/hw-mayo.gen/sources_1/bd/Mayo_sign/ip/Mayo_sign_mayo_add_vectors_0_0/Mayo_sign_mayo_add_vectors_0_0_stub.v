@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-// Date        : Sun Nov 12 18:18:15 2023
+// Date        : Fri Dec  8 17:15:40 2023
 // Host        : zenith running 64-bit Ubuntu 22.04.3 LTS
 // Command     : write_verilog -force -mode synth_stub
 //               /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign/ip/Mayo_sign_mayo_add_vectors_0_0/Mayo_sign_mayo_add_vectors_0_0_stub.v

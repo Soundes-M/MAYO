@@ -1,0 +1,7 @@
+Running: xsim.dir/gaussian_tb_behav/xsimk -simmode gui -wdb gaussian_tb_behav.wdb -simrunnum 0 -socket 48717
+Design successfully loaded
+Design Loading Memory Usage: 35552 KB (Peak: 35552 KB)
+Design Loading CPU Usage: 120 ms
+Simulation completed
+Simulation Memory Usage: 125892 KB (Peak: 174820 KB)
+Simulation CPU Usage: 1580 ms

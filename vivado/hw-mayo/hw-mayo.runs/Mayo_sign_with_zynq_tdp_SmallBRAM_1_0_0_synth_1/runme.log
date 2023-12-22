@@ -1,0 +1,249 @@
+
+*** Running vivado
+    with args -log Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0.tcl
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/mayo_axi_litev3/mayo_axi_litev3_3'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/mayo-axi/Mayo_axi_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/INTERFACES'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.2/data/ip'.
+Command: synth_design -top Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0 -part xc7z020clg484-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 420876
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:10 . Memory (MB): peak = 2368.770 ; gain = 0.000 ; free physical = 1832 ; free virtual = 7134
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0/synth/Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0.vhd:77]
+	Parameter NB_COL bound to: 4 - type: integer 
+	Parameter COL_WIDTH bound to: 8 - type: integer 
+	Parameter RAM_PERFORMANCE bound to: LOW_LATENCY - type: string 
+INFO: [Synth 8-3491] module 'tdp_SmallBRAM_1' declared at '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.srcs/sources_1/imports/MAYO/src/hdl/Utils/mem/SmallBRAM_1.vhd:7' bound to instance 'U0' of component 'tdp_SmallBRAM_1' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0/synth/Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0.vhd:132]
+INFO: [Synth 8-638] synthesizing module 'tdp_SmallBRAM_1' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.srcs/sources_1/imports/MAYO/src/hdl/Utils/mem/SmallBRAM_1.vhd:35]
+	Parameter NB_COL bound to: 4 - type: integer 
+	Parameter COL_WIDTH bound to: 8 - type: integer 
+	Parameter RAM_PERFORMANCE bound to: LOW_LATENCY - type: string 
+INFO: [Synth 8-256] done synthesizing module 'tdp_SmallBRAM_1' (1#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.srcs/sources_1/imports/MAYO/src/hdl/Utils/mem/SmallBRAM_1.vhd:35]
+INFO: [Synth 8-256] done synthesizing module 'Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0' (2#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0/synth/Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0.vhd:77]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:13 . Memory (MB): peak = 2368.770 ; gain = 0.000 ; free physical = 8046 ; free virtual = 13358
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:14 . Memory (MB): peak = 2368.770 ; gain = 0.000 ; free physical = 8299 ; free virtual = 13613
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:14 . Memory (MB): peak = 2368.770 ; gain = 0.000 ; free physical = 8298 ; free virtual = 13612
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2368.770 ; gain = 0.000 ; free physical = 8285 ; free virtual = 13599
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2430.824 ; gain = 0.000 ; free physical = 8324 ; free virtual = 13642
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2430.824 ; gain = 0.000 ; free physical = 8319 ; free virtual = 13637
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:22 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 8285 ; free virtual = 13620
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:22 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 8284 ; free virtual = 13619
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:22 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 8288 ; free virtual = 13622
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3971] The signal "tdp_SmallBRAM_1:/ram_name_reg" was recognized as a true dual port RAM template.
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:22 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 8317 ; free virtual = 13661
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
++---RAMs : 
+	              32K Bit	(1024 X 32 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 12    
+	   2 Input    8 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3971] The signal "Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0/U0/ram_name_reg" was recognized as a true dual port RAM template.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:24 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 8204 ; free virtual = 13573
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping	Report (see note below)
++----------------------------------------+-----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                             | RTL Object      | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++----------------------------------------+-----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0 | U0/ram_name_reg | 1 K x 32(READ_FIRST)   | W | R | 1 K x 32(READ_FIRST)   | W | R | Port A and B     | 0      | 1      | 
++----------------------------------------+-----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:31 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 7113 ; free virtual = 12519
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:31 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 7112 ; free virtual = 12518
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping	Report
++----------------------------------------+-----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                             | RTL Object      | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++----------------------------------------+-----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0 | U0/ram_name_reg | 1 K x 32(READ_FIRST)   | W | R | 1 K x 32(READ_FIRST)   | W | R | Port A and B     | 0      | 1      | 
++----------------------------------------+-----------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance U0/ram_name_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance U0/ram_name_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:20 ; elapsed = 00:00:31 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 7123 ; free virtual = 12529
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 6601 ; free virtual = 12007
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 6615 ; free virtual = 12021
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 6629 ; free virtual = 12036
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 6628 ; free virtual = 12035
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 6631 ; free virtual = 12038
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 6631 ; free virtual = 12038
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |RAMB36E1 |     1|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 6631 ; free virtual = 12038
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:32 . Memory (MB): peak = 2430.824 ; gain = 0.000 ; free physical = 6745 ; free virtual = 12152
+Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:00:35 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 6745 ; free virtual = 12152
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2430.824 ; gain = 0.000 ; free physical = 6908 ; free virtual = 12322
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2430.824 ; gain = 0.000 ; free physical = 6895 ; free virtual = 12315
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+28 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:34 ; elapsed = 00:00:41 . Memory (MB): peak = 2430.824 ; gain = 62.055 ; free physical = 7029 ; free virtual = 12449
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0_synth_1/Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0_synth_1/Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0_utilization_synth.rpt -pb Mayo_sign_with_zynq_tdp_SmallBRAM_1_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Dec  9 16:22:21 2023...

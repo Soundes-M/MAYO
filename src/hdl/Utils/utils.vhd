@@ -6,7 +6,7 @@
 -- Author      : XXXXX
 -- Company     : XXXXX
 -- Created     : 
--- Last update : Thu Jun 29 19:39:55 2023
+-- Last update : Sat Dec  9 20:51:02 2023
 -- Platform    : Designed for Zynq 7000 Series
 -- Standard    : <VHDL-2008 | VHDL-2002 | VHDL-1993 | VHDL-1987>
 --------------------------------------------------------------------------------
@@ -38,16 +38,23 @@
 LIBRARY IEEE;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
+use STD.textio.all;
+use ieee.std_logic_textio.all;
 -- PACKAGE
 PACKAGE UTILS_COMMON IS
 
   -- PARAMETERS
   CONSTANT PORT_WIDTH : natural := 32; -- 32 Bit arch
 
+  CONSTANT DEBUG           : std_logic := '0'; -- SET DEBUG MODE FOR MAYO
+  CONSTANT LOG_OUTPUT_FILE : string    := "mayo-log.txt";
+
   function clipNext(currentVal         : integer := 0; max : integer := 0) return integer;
   function clipPrev(currentVal         : integer := 0; max : integer := 0) return integer;
   function isUneven(num                : integer) return std_logic;
   function firstOneIndex (input_vector : std_logic_vector) return integer;
+
+  procedure WriteToLog(data : in string);
 
   ------------------------------------------------------------------------------
   -- BRAM 
@@ -83,41 +90,6 @@ PACKAGE UTILS_COMMON IS
   constant DEFAULT_BRAM : bram_t := (
       o => DEFAULT_OUT_BRAM,
       i => DEFAULT_IN_BRAM);
-  ------------------------------------------------------------------------------
-  -- TRNG
-  ------------------------------------------------------------------------------
-
-  type o_trng is record -- out to trng
-    r    : std_logic;
-    w    : std_logic;
-    data : std_logic_vector(31 downto 0); -- size 
-  end record o_trng;
-
-  type i_trng is record -- in from trng
-    valid : std_logic;
-    done  : std_logic;
-    data  : std_logic_vector(31 downto 0); -- trng data
-  end record i_trng;
-
-  constant DEFAULT_OUT_TRNG : o_trng := (
-      r    => '0',
-      w    => '0',
-      data => ( others => '0')
-    );
-  constant DEFAULT_IN_TRNG : i_trng := (
-      valid => '0',
-      done  => '0',
-      data  => ( others => '0')
-    );
-
-  type trng_t is record
-    o : o_trng;
-    i : i_trng;
-  end record trng_t;
-
-  constant DEFAULT_TRNG : trng_t := (
-      o => DEFAULT_OUT_TRNG,
-      i => DEFAULT_IN_TRNG);
 
   type demux_output is array (natural range <>) of o_bram;
   type demux_input is array (natural range <>) of i_bram;
@@ -207,4 +179,12 @@ PACKAGE BODY UTILS_COMMON IS
     -- if there is no '1' in the input vector, return -1 or raise an exception
     return -1;
   end function;
+
+  procedure WriteToLog(data : in string) is
+    file output_file           :    text;
+  begin
+    file_open(output_file, LOG_OUTPUT_FILE, APPEND_MODE);
+    write(output_file, data);
+    file_close(output_file);
+  end procedure WriteToLog;
 END PACKAGE BODY UTILS_COMMON;

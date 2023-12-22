@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-// Date        : Thu Oct 12 15:27:51 2023
+// Date        : Thu Oct 12 15:27:50 2023
 // Host        : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
-// Command     : write_verilog -force -mode synth_stub
-//               /home/osm/Documents/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_auto_pc_0/Mayo_sign_with_zynq_auto_pc_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top Mayo_sign_with_zynq_auto_pc_0 -prefix
+//               Mayo_sign_with_zynq_auto_pc_0_ Mayo_sign_with_zynq_auto_pc_0_stub.v
 // Design      : Mayo_sign_with_zynq_auto_pc_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg484-1

@@ -1,0 +1,459 @@
+
+*** Running vivado
+    with args -log Mayo_sign_aes_128_ctr_0_1.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_sign_aes_128_ctr_0_1.tcl
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source Mayo_sign_aes_128_ctr_0_1.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/mayo_axi_litev3/mayo_axi_litev3_3'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/mayo-axi/Mayo_axi_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/INTERFACES'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.2/data/ip'.
+Command: synth_design -top Mayo_sign_aes_128_ctr_0_1 -part xc7z020clg484-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 309876
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2357.930 ; gain = 0.000 ; free physical = 18954 ; free virtual = 25252
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Mayo_sign_aes_128_ctr_0_1' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign/ip/Mayo_sign_aes_128_ctr_0_1/synth/Mayo_sign_aes_128_ctr_0_1.vhd:66]
+	Parameter DEBUG bound to: 0 - type: integer 
+	Parameter ADDR_CTRL bound to: 8 - type: integer 
+	Parameter ADDR_CONFIG bound to: 10 - type: integer 
+	Parameter ADDR_KEY0 bound to: 16 - type: integer 
+	Parameter ADDR_KEY1 bound to: 17 - type: integer 
+	Parameter ADDR_KEY2 bound to: 18 - type: integer 
+	Parameter ADDR_KEY3 bound to: 19 - type: integer 
+	Parameter ADDR_KEY4 bound to: 20 - type: integer 
+	Parameter ADDR_KEY5 bound to: 21 - type: integer 
+	Parameter ADDR_KEY6 bound to: 22 - type: integer 
+	Parameter ADDR_KEY7 bound to: 23 - type: integer 
+	Parameter ADDR_BLOCK0 bound to: 32 - type: integer 
+	Parameter ADDR_BLOCK1 bound to: 33 - type: integer 
+	Parameter ADDR_BLOCK2 bound to: 34 - type: integer 
+	Parameter ADDR_BLOCK3 bound to: 35 - type: integer 
+	Parameter ADDR_RESULT0 bound to: 48 - type: integer 
+	Parameter ADDR_RESULT1 bound to: 49 - type: integer 
+	Parameter ADDR_RESULT2 bound to: 50 - type: integer 
+	Parameter ADDR_RESULT3 bound to: 51 - type: integer 
+	Parameter AES_128_BIT_KEY bound to: 0 - type: integer 
+	Parameter AES_ENCIPHER bound to: 1 - type: integer 
+INFO: [Synth 8-3491] module 'aes_128_ctr' declared at '/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_ctr.v:5' bound to instance 'U0' of component 'aes_128_ctr' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign/ip/Mayo_sign_aes_128_ctr_0_1/synth/Mayo_sign_aes_128_ctr_0_1.vhd:117]
+INFO: [Synth 8-6157] synthesizing module 'aes_128_ctr' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_ctr.v:5]
+	Parameter DEBUG bound to: 0 - type: integer 
+	Parameter ADDR_CTRL bound to: 8 - type: integer 
+	Parameter ADDR_CONFIG bound to: 10 - type: integer 
+	Parameter ADDR_KEY0 bound to: 16 - type: integer 
+	Parameter ADDR_KEY1 bound to: 17 - type: integer 
+	Parameter ADDR_KEY2 bound to: 18 - type: integer 
+	Parameter ADDR_KEY3 bound to: 19 - type: integer 
+	Parameter ADDR_KEY4 bound to: 20 - type: integer 
+	Parameter ADDR_KEY5 bound to: 21 - type: integer 
+	Parameter ADDR_KEY6 bound to: 22 - type: integer 
+	Parameter ADDR_KEY7 bound to: 23 - type: integer 
+	Parameter ADDR_BLOCK0 bound to: 32 - type: integer 
+	Parameter ADDR_BLOCK1 bound to: 33 - type: integer 
+	Parameter ADDR_BLOCK2 bound to: 34 - type: integer 
+	Parameter ADDR_BLOCK3 bound to: 35 - type: integer 
+	Parameter ADDR_RESULT0 bound to: 48 - type: integer 
+	Parameter ADDR_RESULT1 bound to: 49 - type: integer 
+	Parameter ADDR_RESULT2 bound to: 50 - type: integer 
+	Parameter ADDR_RESULT3 bound to: 51 - type: integer 
+	Parameter AES_128_BIT_KEY bound to: 0 - type: integer 
+	Parameter AES_ENCIPHER bound to: 1 - type: integer 
+	Parameter SEED bound to: 5 - type: integer 
+	Parameter KEY bound to: 256'b1010000110110010110000111101010011100101111101100100011110001001000000010010001101000101011001111000100110101011110011011110111100010010001101000101011001111000100100001010101111001101111011110000100110000111011001010100001100100001111111101101110010111010 
+	Parameter KEY_LENGTH bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'aes' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes.v:41]
+	Parameter ADDR_NAME0 bound to: 8'b00000000 
+	Parameter ADDR_NAME1 bound to: 8'b00000001 
+	Parameter ADDR_VERSION bound to: 8'b00000010 
+	Parameter ADDR_CTRL bound to: 8'b00001000 
+	Parameter CTRL_INIT_BIT bound to: 0 - type: integer 
+	Parameter CTRL_NEXT_BIT bound to: 1 - type: integer 
+	Parameter ADDR_STATUS bound to: 8'b00001001 
+	Parameter STATUS_READY_BIT bound to: 0 - type: integer 
+	Parameter STATUS_VALID_BIT bound to: 1 - type: integer 
+	Parameter ADDR_CONFIG bound to: 8'b00001010 
+	Parameter CTRL_ENCDEC_BIT bound to: 0 - type: integer 
+	Parameter CTRL_KEYLEN_BIT bound to: 1 - type: integer 
+	Parameter ADDR_KEY0 bound to: 8'b00010000 
+	Parameter ADDR_KEY7 bound to: 8'b00010111 
+	Parameter ADDR_BLOCK0 bound to: 8'b00100000 
+	Parameter ADDR_BLOCK3 bound to: 8'b00100011 
+	Parameter ADDR_RESULT0 bound to: 8'b00110000 
+	Parameter ADDR_RESULT3 bound to: 8'b00110011 
+	Parameter CORE_NAME0 bound to: 1634038560 - type: integer 
+	Parameter CORE_NAME1 bound to: 538976288 - type: integer 
+	Parameter CORE_VERSION bound to: 808334896 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'aes_core' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_core.v:42]
+	Parameter CTRL_IDLE bound to: 2'b00 
+	Parameter CTRL_INIT bound to: 2'b01 
+	Parameter CTRL_NEXT bound to: 2'b10 
+INFO: [Synth 8-6157] synthesizing module 'aes_encipher_block' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_encipher_block.v:43]
+	Parameter AES_128_BIT_KEY bound to: 1'b0 
+	Parameter AES_256_BIT_KEY bound to: 1'b1 
+	Parameter AES128_ROUNDS bound to: 4'b1010 
+	Parameter AES256_ROUNDS bound to: 4'b1110 
+	Parameter NO_UPDATE bound to: 3'b000 
+	Parameter INIT_UPDATE bound to: 3'b001 
+	Parameter SBOX_UPDATE bound to: 3'b010 
+	Parameter MAIN_UPDATE bound to: 3'b011 
+	Parameter FINAL_UPDATE bound to: 3'b100 
+	Parameter CTRL_IDLE bound to: 2'b00 
+	Parameter CTRL_INIT bound to: 2'b01 
+	Parameter CTRL_SBOX bound to: 2'b10 
+	Parameter CTRL_MAIN bound to: 2'b11 
+INFO: [Synth 8-226] default block is never used [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_encipher_block.v:423]
+INFO: [Synth 8-6155] done synthesizing module 'aes_encipher_block' (1#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_encipher_block.v:43]
+INFO: [Synth 8-6157] synthesizing module 'aes_key_mem' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_key_mem.v:41]
+	Parameter AES_128_BIT_KEY bound to: 1'b0 
+	Parameter AES_256_BIT_KEY bound to: 1'b1 
+	Parameter AES_128_NUM_ROUNDS bound to: 10 - type: integer 
+	Parameter AES_256_NUM_ROUNDS bound to: 14 - type: integer 
+	Parameter CTRL_IDLE bound to: 3'b000 
+	Parameter CTRL_INIT bound to: 3'b001 
+	Parameter CTRL_GENERATE bound to: 3'b010 
+	Parameter CTRL_DONE bound to: 3'b011 
+INFO: [Synth 8-226] default block is never used [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_key_mem.v:236]
+INFO: [Synth 8-6155] done synthesizing module 'aes_key_mem' (2#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_key_mem.v:41]
+INFO: [Synth 8-6157] synthesizing module 'aes_sbox' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_sbox.v:42]
+INFO: [Synth 8-6155] done synthesizing module 'aes_sbox' (3#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_sbox.v:42]
+INFO: [Synth 8-6155] done synthesizing module 'aes_core' (4#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_core.v:42]
+INFO: [Synth 8-6155] done synthesizing module 'aes' (5#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes.v:41]
+INFO: [Synth 8-6155] done synthesizing module 'aes_128_ctr' (6#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_ctr.v:5]
+INFO: [Synth 8-256] done synthesizing module 'Mayo_sign_aes_128_ctr_0_1' (7#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign/ip/Mayo_sign_aes_128_ctr_0_1/synth/Mayo_sign_aes_128_ctr_0_1.vhd:66]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 2357.930 ; gain = 0.000 ; free physical = 20266 ; free virtual = 26573
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2357.930 ; gain = 0.000 ; free physical = 20253 ; free virtual = 26560
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2357.930 ; gain = 0.000 ; free physical = 20253 ; free virtual = 26560
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2357.930 ; gain = 0.000 ; free physical = 20204 ; free virtual = 26511
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2474.797 ; gain = 0.000 ; free physical = 20104 ; free virtual = 26424
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.10 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2474.797 ; gain = 0.000 ; free physical = 20093 ; free virtual = 26413
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:11 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 20162 ; free virtual = 26507
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:11 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 20164 ; free virtual = 26508
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:11 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 20161 ; free virtual = 26505
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'enc_ctrl_reg_reg' in module 'aes_encipher_block'
+INFO: [Synth 8-802] inferred FSM for state register 'key_mem_ctrl_reg_reg' in module 'aes_key_mem'
+INFO: [Synth 8-802] inferred FSM for state register 'aes_core_ctrl_reg_reg' in module 'aes_core'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'aes_128_ctr'
+INFO: [Synth 8-802] inferred FSM for state register 'state_write_reg' in module 'aes_128_ctr'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+               CTRL_IDLE |                               00 |                               00
+               CTRL_INIT |                               01 |                               01
+               CTRL_SBOX |                               10 |                               10
+               CTRL_MAIN |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'enc_ctrl_reg_reg' using encoding 'sequential' in module 'aes_encipher_block'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+               CTRL_IDLE |                             0001 |                              000
+               CTRL_INIT |                             0010 |                              001
+           CTRL_GENERATE |                             0100 |                              010
+               CTRL_DONE |                             1000 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'key_mem_ctrl_reg_reg' using encoding 'one-hot' in module 'aes_key_mem'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+               CTRL_IDLE |                               00 |                               00
+               CTRL_INIT |                               01 |                               01
+               CTRL_NEXT |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'aes_core_ctrl_reg_reg' using encoding 'sequential' in module 'aes_core'
+WARNING: [Synth 8-327] inferring latch for variable 'muxed_ready_reg' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_core.v:248]
+WARNING: [Synth 8-327] inferring latch for variable 'muxed_new_block_reg' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_core.v:179]
+WARNING: [Synth 8-327] inferring latch for variable 'muxed_round_nr_reg' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/Utils/aes/src/rtl/aes_core.v:163]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE0 |                              001 |                             0000
+                 iSTATE1 |                              010 |                             0001
+                  iSTATE |                              100 |                             0010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_write_reg' using encoding 'one-hot' in module 'aes_128_ctr'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                iSTATE12 |                            00000 |                        000011000
+                 iSTATE7 |                            00001 |                        000000000
+                 iSTATE5 |                            00010 |                        000000001
+                 iSTATE3 |                            00011 |                        000000010
+                 iSTATE1 |                            00100 |                        000000011
+                iSTATE20 |                            00101 |                        000000100
+                iSTATE18 |                            00110 |                        000000101
+                iSTATE14 |                            00111 |                        000000110
+                iSTATE11 |                            01000 |                        000000111
+                iSTATE17 |                            01001 |                        000001000
+                iSTATE16 |                            01010 |                        000001001
+                iSTATE10 |                            01011 |                        000001010
+                 iSTATE9 |                            01100 |                        000001011
+                iSTATE23 |                            01101 |                        000001100
+                iSTATE22 |                            01110 |                        000001101
+                iSTATE21 |                            01111 |                        000001110
+                iSTATE19 |                            10000 |                        000001111
+                 iSTATE4 |                            10001 |                        000010000
+                 iSTATE2 |                            10010 |                        000010001
+                 iSTATE0 |                            10011 |                        000010010
+                  iSTATE |                            10100 |                        000010011
+                iSTATE15 |                            10101 |                        000010100
+                iSTATE13 |                            10110 |                        000010101
+                 iSTATE8 |                            10111 |                        000010110
+                 iSTATE6 |                            11000 |                        000010111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'aes_128_ctr'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:12 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 20091 ; free virtual = 26418
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 1     
++---XORs : 
+	   2 Input    128 Bit         XORs := 3     
+	   2 Input     32 Bit         XORs := 14    
+	   3 Input     32 Bit         XORs := 2     
+	   4 Input     32 Bit         XORs := 1     
+	   2 Input      8 Bit         XORs := 23    
+	   4 Input      8 Bit         XORs := 12    
+	   5 Input      8 Bit         XORs := 4     
++---Registers : 
+	              128 Bit    Registers := 19    
+	               32 Bit    Registers := 17    
+	                9 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
+	                4 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 17    
++---Muxes : 
+	   2 Input  128 Bit        Muxes := 13    
+	  25 Input  128 Bit        Muxes := 2     
+	   4 Input   32 Bit        Muxes := 1     
+	   5 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 9     
+	   6 Input   32 Bit        Muxes := 1     
+	  25 Input   32 Bit        Muxes := 1     
+	  25 Input    9 Bit        Muxes := 1     
+	   3 Input    8 Bit        Muxes := 1     
+	  25 Input    8 Bit        Muxes := 1     
+	  25 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 6     
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 2     
+	   4 Input    3 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 7     
+	   4 Input    2 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 44    
+	   4 Input    1 Bit        Muxes := 8     
+	   8 Input    1 Bit        Muxes := 4     
+	   3 Input    1 Bit        Muxes := 10    
+	  25 Input    1 Bit        Muxes := 10    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 20143 ; free virtual = 26485
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping	Report
++--------------------------+----------------+---------------+----------------+
+|Module Name               | RTL Object     | Depth x Width | Implemented As | 
++--------------------------+----------------+---------------+----------------+
+|aes_sbox                  | sbox           | 256x8         | LUT            | 
+|aes_sbox                  | sbox           | 256x8         | LUT            | 
+|aes_sbox                  | sbox           | 256x8         | LUT            | 
+|aes_sbox                  | sbox           | 256x8         | LUT            | 
+|aes_core                  | sbox_inst/sbox | 256x8         | LUT            | 
+|aes_core                  | sbox_inst/sbox | 256x8         | LUT            | 
+|aes_core                  | sbox_inst/sbox | 256x8         | LUT            | 
+|aes_core                  | sbox_inst/sbox | 256x8         | LUT            | 
+|Mayo_sign_aes_128_ctr_0_1 | U0/            | 32x8          | LUT            | 
++--------------------------+----------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:26 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 19726 ; free virtual = 26075
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 19045 ; free virtual = 25394
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 19182 ; free virtual = 25531
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 18497 ; free virtual = 24870
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 18611 ; free virtual = 24984
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:00:31 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 18549 ; free virtual = 24922
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:31 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 18542 ; free virtual = 24916
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 18504 ; free virtual = 24877
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 18519 ; free virtual = 24892
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |    32|
+|2     |LUT1   |     1|
+|3     |LUT2   |   116|
+|4     |LUT3   |   288|
+|5     |LUT4   |   294|
+|6     |LUT5   |   496|
+|7     |LUT6   |  1492|
+|8     |MUXF7  |     1|
+|9     |FDCE   |  2851|
+|10    |FDPE   |     3|
+|11    |FDRE   |   312|
+|12    |FDSE   |     3|
+|13    |LD     |   135|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 18514 ; free virtual = 24887
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 2474.797 ; gain = 0.000 ; free physical = 18559 ; free virtual = 24933
+Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 2474.797 ; gain = 116.867 ; free physical = 18559 ; free virtual = 24932
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2474.797 ; gain = 0.000 ; free physical = 18589 ; free virtual = 24964
+INFO: [Netlist 29-17] Analyzing 168 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2489.641 ; gain = 0.000 ; free physical = 17472 ; free virtual = 23848
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 135 instances were transformed.
+  LD => LDCE: 135 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+46 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2489.641 ; gain = 131.711 ; free physical = 17581 ; free virtual = 23957
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_aes_128_ctr_0_1_synth_1/Mayo_sign_aes_128_ctr_0_1.dcp' has been generated.
+INFO: [Coretcl 2-1174] Renamed 6 cell refs.
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_aes_128_ctr_0_1_synth_1/Mayo_sign_aes_128_ctr_0_1.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Mayo_sign_aes_128_ctr_0_1_utilization_synth.rpt -pb Mayo_sign_aes_128_ctr_0_1_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Dec  9 15:37:23 2023...

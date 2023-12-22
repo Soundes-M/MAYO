@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-// Date        : Thu Oct 12 15:27:41 2023
+// Date        : Thu Oct 12 15:27:40 2023
 // Host        : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/osm/Documents/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_auto_pc_1/Mayo_sign_with_zynq_auto_pc_1_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top Mayo_sign_with_zynq_auto_pc_1 -prefix
+//               Mayo_sign_with_zynq_auto_pc_1_ Mayo_sign_with_zynq_auto_pc_1_sim_netlist.v
 // Design      : Mayo_sign_with_zynq_auto_pc_1
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -406,10 +406,10 @@ endmodule
 (* C_AXI_RUSER_WIDTH = "1" *) (* C_AXI_SUPPORTS_READ = "1" *) (* C_AXI_SUPPORTS_USER_SIGNALS = "0" *) 
 (* C_AXI_SUPPORTS_WRITE = "1" *) (* C_AXI_WUSER_WIDTH = "1" *) (* C_FAMILY = "zynq" *) 
 (* C_IGNORE_ID = "0" *) (* C_M_AXI_PROTOCOL = "0" *) (* C_S_AXI_PROTOCOL = "1" *) 
-(* C_TRANSLATION_MODE = "2" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "axi_protocol_converter_v2_1_22_axi_protocol_converter" *) 
-(* P_AXI3 = "1" *) (* P_AXI4 = "0" *) (* P_AXILITE = "2" *) 
-(* P_AXILITE_SIZE = "3'b010" *) (* P_CONVERSION = "2" *) (* P_DECERR = "2'b11" *) 
-(* P_INCR = "2'b01" *) (* P_PROTECTION = "1" *) (* P_SLVERR = "2'b10" *) 
+(* C_TRANSLATION_MODE = "2" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* P_AXI3 = "1" *) 
+(* P_AXI4 = "0" *) (* P_AXILITE = "2" *) (* P_AXILITE_SIZE = "3'b010" *) 
+(* P_CONVERSION = "2" *) (* P_DECERR = "2'b11" *) (* P_INCR = "2'b01" *) 
+(* P_PROTECTION = "1" *) (* P_SLVERR = "2'b10" *) 
 module Mayo_sign_with_zynq_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol_converter
    (aclk,
     aresetn,

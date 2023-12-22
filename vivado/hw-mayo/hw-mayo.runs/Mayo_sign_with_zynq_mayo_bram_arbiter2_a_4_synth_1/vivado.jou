@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Dec  9 16:21:23 2023
+# Process ID: 419995
+# Current directory: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_with_zynq_mayo_bram_arbiter2_a_4_synth_1
+# Command line: vivado -log Mayo_sign_with_zynq_mayo_bram_arbiter2_a_4.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_sign_with_zynq_mayo_bram_arbiter2_a_4.tcl
+# Log file: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_with_zynq_mayo_bram_arbiter2_a_4_synth_1/Mayo_sign_with_zynq_mayo_bram_arbiter2_a_4.vds
+# Journal file: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_with_zynq_mayo_bram_arbiter2_a_4_synth_1/vivado.jou
+#-----------------------------------------------------------
+source Mayo_sign_with_zynq_mayo_bram_arbiter2_a_4.tcl -notrace

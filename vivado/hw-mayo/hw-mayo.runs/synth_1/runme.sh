@@ -36,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log Mayo_sign_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_sign_wrapper.tcl
+EAStep vivado -log Mayo_sign_with_zynq_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_sign_with_zynq_wrapper.tcl

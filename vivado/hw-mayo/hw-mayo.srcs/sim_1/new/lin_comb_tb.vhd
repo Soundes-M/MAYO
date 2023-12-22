@@ -235,8 +235,8 @@ begin
     );
 
   tb               : process
-    file filein1     : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500linear.dat";
-    file filein2     : text is in "/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500solution.dat";
+    file filein1     : text is in "/home/osm/Documents/Sect/SECT-MAYO/MAYO/tb/lin_comb_tb/500linear.dat";
+    file filein2     : text is in "/home/osm/Documents/Sect/SECT-MAYO/MAYO/tb/lin_comb_tb/500solution.dat";
     variable v_line1 : line;
     variable v_line2 : line;
     variable v_tmp   : std_logic_vector(31 downto 0);
@@ -264,8 +264,8 @@ begin
     rstb_busy1 <= '0';
     i          <= 0;
     wait for clk_period;
-    FILE_OPEN(filein1,"/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500linear.dat",read_mode);
-    FILE_OPEN(filein2,"/home/osm/Documents/SECT-MAYO/MAYO/tb/lin_comb_tb/500solution.dat",read_mode);
+    FILE_OPEN(filein1,"/home/osm/Documents/Sect/SECT-MAYO/MAYO/tb/lin_comb_tb/500linear.dat",read_mode);
+    FILE_OPEN(filein2,"/home/osm/Documents/Sect/SECT-MAYO/MAYO/tb/lin_comb_tb/500solution.dat",read_mode);
     -- Fill BRAM Vecs
     while not endfile(filein1) loop
       readline(filein1, v_line1);

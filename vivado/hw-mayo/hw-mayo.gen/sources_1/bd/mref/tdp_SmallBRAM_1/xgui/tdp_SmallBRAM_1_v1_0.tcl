@@ -4,7 +4,6 @@ proc init_gui { IPINST } {
   #Adding Page
   set Page_0 [ipgui::add_page $IPINST -name "Page 0"]
   ipgui::add_param $IPINST -name "COL_WIDTH" -parent ${Page_0}
-  ipgui::add_param $IPINST -name "INIT_FILE" -parent ${Page_0}
   ipgui::add_param $IPINST -name "NB_COL" -parent ${Page_0}
   ipgui::add_param $IPINST -name "RAM_PERFORMANCE" -parent ${Page_0}
 
@@ -17,15 +16,6 @@ proc update_PARAM_VALUE.COL_WIDTH { PARAM_VALUE.COL_WIDTH } {
 
 proc validate_PARAM_VALUE.COL_WIDTH { PARAM_VALUE.COL_WIDTH } {
 	# Procedure called to validate COL_WIDTH
-	return true
-}
-
-proc update_PARAM_VALUE.INIT_FILE { PARAM_VALUE.INIT_FILE } {
-	# Procedure called to update INIT_FILE when any of the dependent parameters in the arguments change
-}
-
-proc validate_PARAM_VALUE.INIT_FILE { PARAM_VALUE.INIT_FILE } {
-	# Procedure called to validate INIT_FILE
 	return true
 }
 
@@ -61,10 +51,5 @@ proc update_MODELPARAM_VALUE.COL_WIDTH { MODELPARAM_VALUE.COL_WIDTH PARAM_VALUE.
 proc update_MODELPARAM_VALUE.RAM_PERFORMANCE { MODELPARAM_VALUE.RAM_PERFORMANCE PARAM_VALUE.RAM_PERFORMANCE } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	set_property value [get_property value ${PARAM_VALUE.RAM_PERFORMANCE}] ${MODELPARAM_VALUE.RAM_PERFORMANCE}
-}
-
-proc update_MODELPARAM_VALUE.INIT_FILE { MODELPARAM_VALUE.INIT_FILE PARAM_VALUE.INIT_FILE } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.INIT_FILE}] ${MODELPARAM_VALUE.INIT_FILE}
 }
 

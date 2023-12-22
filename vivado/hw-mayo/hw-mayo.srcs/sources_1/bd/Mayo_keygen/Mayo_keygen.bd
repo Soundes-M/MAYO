@@ -45,7 +45,6 @@
       },
       "xlconcat_0": "",
       "mayo_axi_litev3_0": "",
-      "blink_led_0": "",
       "MAYO_KEYGEN_FSM_0": "",
       "mayo_add_vectors_0": "",
       "mayo_linear_combinat_0": "",
@@ -1383,10 +1382,10 @@
           }
         },
         "interface_nets": {
-          "s00_couplers_to_xbar": {
+          "xbar_to_m00_couplers": {
             "interface_ports": [
-              "s00_couplers/M_AXI",
-              "xbar/S00_AXI"
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
             ]
           },
           "m01_couplers_to_ps7_0_axi_periph": {
@@ -1401,22 +1400,22 @@
               "s00_couplers/S_AXI"
             ]
           },
-          "xbar_to_m01_couplers": {
+          "s00_couplers_to_xbar": {
             "interface_ports": [
-              "xbar/M01_AXI",
-              "m01_couplers/S_AXI"
-            ]
-          },
-          "xbar_to_m00_couplers": {
-            "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
+              "s00_couplers/M_AXI",
+              "xbar/S00_AXI"
             ]
           },
           "m00_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
               "M00_AXI",
               "m00_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m01_couplers": {
+            "interface_ports": [
+              "xbar/M01_AXI",
+              "m01_couplers/S_AXI"
             ]
           }
         },
@@ -2063,16 +2062,16 @@
           }
         },
         "interface_nets": {
-          "Conn1": {
-            "interface_ports": [
-              "S_AXI",
-              "axi_bram_ctrl_0/S_AXI"
-            ]
-          },
           "axi_bram_ctrl_0_BRAM_PORTA": {
             "interface_ports": [
               "axi_bram_ctrl_0/BRAM_PORTA",
               "BIG_BRAM256KDP/BRAM_PORTA"
+            ]
+          },
+          "Conn1": {
+            "interface_ports": [
+              "S_AXI",
+              "axi_bram_ctrl_0/S_AXI"
             ]
           }
         },
@@ -4084,92 +4083,48 @@
                 "left": "1",
                 "right": "0"
               },
-              "o_trng_r": {
+              "o_trng_en": {
                 "direction": "O"
               },
-              "o_trng_w": {
-                "direction": "O"
-              },
-              "o_trng_data": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "i_trng_data": {
+              "i_trng_random_data": {
                 "direction": "I",
-                "left": "31",
+                "left": "127",
                 "right": "0"
               },
               "i_trng_valid": {
                 "direction": "I"
               },
-              "i_trng_done": {
+              "i_trng0_en": {
                 "direction": "I"
               },
-              "i_trng0_r": {
-                "direction": "I"
-              },
-              "i_trng0_w": {
-                "direction": "I"
-              },
-              "i_trng0_data": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "o_trng0_data": {
+              "o_trng0_random_data": {
                 "direction": "O",
-                "left": "31",
+                "left": "127",
                 "right": "0"
               },
               "o_trng0_valid": {
                 "direction": "O"
               },
-              "o_trng0_done": {
-                "direction": "O"
-              },
-              "i_trng1_r": {
+              "i_trng1_en": {
                 "direction": "I"
               },
-              "i_trng1_w": {
-                "direction": "I"
-              },
-              "i_trng1_data": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "o_trng1_data": {
+              "o_trng1_random_data": {
                 "direction": "O",
-                "left": "31",
+                "left": "127",
                 "right": "0"
               },
               "o_trng1_valid": {
                 "direction": "O"
               },
-              "o_trng1_done": {
-                "direction": "O"
-              },
-              "i_trng2_r": {
+              "i_trng2_en": {
                 "direction": "I"
               },
-              "i_trng2_w": {
-                "direction": "I"
-              },
-              "i_trng2_data": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "o_trng2_data": {
+              "o_trng2_random_data": {
                 "direction": "O",
-                "left": "31",
+                "left": "127",
                 "right": "0"
               },
               "o_trng2_valid": {
-                "direction": "O"
-              },
-              "o_trng2_done": {
                 "direction": "O"
               }
             }
@@ -4178,26 +4133,22 @@
         "nets": {
           "mayo_trng_arbiter_0_o_trng_r": {
             "ports": [
-              "mayo_trng_arbiter_0/o_trng_r",
               "TRNG_0/R_I"
             ]
           },
           "mayo_trng_arbiter_0_o_trng_w": {
             "ports": [
-              "mayo_trng_arbiter_0/o_trng_w",
               "TRNG_0/W_I"
             ]
           },
           "mayo_trng_arbiter_0_o_trng_data": {
             "ports": [
-              "mayo_trng_arbiter_0/o_trng_data",
               "TRNG_0/TRNG_DATA_I"
             ]
           },
           "TRNG_0_TRNG_DATA_O": {
             "ports": [
-              "TRNG_0/TRNG_DATA_O",
-              "mayo_trng_arbiter_0/i_trng_data"
+              "TRNG_0/TRNG_DATA_O"
             ]
           },
           "TRNG_0_TRNG_VALID_O": {
@@ -4208,8 +4159,7 @@
           },
           "TRNG_0_TRNG_DONE_O": {
             "ports": [
-              "TRNG_0/TRNG_DONE_O",
-              "mayo_trng_arbiter_0/i_trng_done"
+              "TRNG_0/TRNG_DONE_O"
             ]
           },
           "clk_1": {
@@ -4226,7 +4176,6 @@
           },
           "mayo_trng_arbiter_0_o_trng0_data": {
             "ports": [
-              "mayo_trng_arbiter_0/o_trng0_data",
               "o_trng0_data"
             ]
           },
@@ -4238,31 +4187,26 @@
           },
           "mayo_trng_arbiter_0_o_trng0_done": {
             "ports": [
-              "mayo_trng_arbiter_0/o_trng0_done",
               "o_trng0_done"
             ]
           },
           "i_trng0_r_1": {
             "ports": [
-              "i_trng0_r",
-              "mayo_trng_arbiter_0/i_trng0_r"
+              "i_trng0_r"
             ]
           },
           "i_trng0_w_1": {
             "ports": [
-              "i_trng0_w",
-              "mayo_trng_arbiter_0/i_trng0_w"
+              "i_trng0_w"
             ]
           },
           "i_trng0_data_1": {
             "ports": [
-              "i_trng0_data",
-              "mayo_trng_arbiter_0/i_trng0_data"
+              "i_trng0_data"
             ]
           },
           "mayo_trng_arbiter_0_o_trng1_data": {
             "ports": [
-              "mayo_trng_arbiter_0/o_trng1_data",
               "o_trng1_data"
             ]
           },
@@ -4274,7 +4218,6 @@
           },
           "mayo_trng_arbiter_0_o_trng1_done": {
             "ports": [
-              "mayo_trng_arbiter_0/o_trng1_done",
               "o_trng1_done"
             ]
           },
@@ -4286,20 +4229,17 @@
           },
           "i_trng1_r_1": {
             "ports": [
-              "i_trng1_r",
-              "mayo_trng_arbiter_0/i_trng1_r"
+              "i_trng1_r"
             ]
           },
           "i_trng1_w_1": {
             "ports": [
-              "i_trng1_w",
-              "mayo_trng_arbiter_0/i_trng1_w"
+              "i_trng1_w"
             ]
           },
           "i_trng1_data1_1": {
             "ports": [
-              "i_trng1_data1",
-              "mayo_trng_arbiter_0/i_trng1_data"
+              "i_trng1_data1"
             ]
           }
         }
@@ -4733,83 +4673,6 @@
         "xci_name": "Mayo_keygen_mayo_axi_litev3_0_0",
         "xci_path": "ip/Mayo_keygen_mayo_axi_litev3_0_0/Mayo_keygen_mayo_axi_litev3_0_0.xci",
         "inst_hier_path": "mayo_axi_litev3_0"
-      },
-      "blink_led_0": {
-        "vlnv": "xilinx.com:module_ref:blink_led:1.0",
-        "xci_name": "Mayo_keygen_blink_led_0_0",
-        "xci_path": "ip/Mayo_keygen_blink_led_0_0/Mayo_keygen_blink_led_0_0.xci",
-        "inst_hier_path": "blink_led_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "blink_led",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              },
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "Mayo_keygen_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_HIGH",
-                "value_src": "const_prop"
-              }
-            }
-          },
-          "in0": {
-            "direction": "I"
-          },
-          "in1": {
-            "direction": "I"
-          },
-          "in2": {
-            "direction": "I"
-          },
-          "in3": {
-            "direction": "I"
-          },
-          "in4": {
-            "direction": "I"
-          },
-          "in5": {
-            "direction": "I"
-          },
-          "led0": {
-            "direction": "O"
-          },
-          "led1": {
-            "direction": "O"
-          },
-          "led2": {
-            "direction": "O"
-          },
-          "led3": {
-            "direction": "O"
-          },
-          "led4": {
-            "direction": "O"
-          },
-          "led5": {
-            "direction": "O"
-          }
-        }
       },
       "MAYO_KEYGEN_FSM_0": {
         "vlnv": "xilinx.com:module_ref:MAYO_KEYGEN_FSM:1.0",
@@ -5848,21 +5711,25 @@
                 "direction": "O"
               }
             }
+          },
+          "o_trng": {
+            "mode": "Slave",
+            "vlnv": "MAYO:user:BRAM_BUS_custom_rtl:1.0",
+            "port_maps": {
+              "EN": {
+                "physical_name": "o_trng_en",
+                "direction": "O"
+              },
+              "RST": {
+                "physical_name": "rst",
+                "direction": "I"
+              }
+            }
           }
         },
         "ports": {
           "i_clk": {
             "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              }
-            }
-          },
-          "rst": {
-            "type": "rst",
             "direction": "I"
           },
           "i_enable": {
@@ -5879,27 +5746,13 @@
           "i_mode": {
             "direction": "I"
           },
-          "o_trng_r": {
-            "direction": "O"
-          },
-          "o_trng_w": {
-            "direction": "O"
-          },
-          "o_trng_data": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "i_trng_data": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
           "i_trng_valid": {
             "direction": "I"
           },
-          "i_trng_done": {
-            "direction": "I"
+          "i_trng_data": {
+            "direction": "I",
+            "left": "127",
+            "right": "0"
           },
           "o_trng_sel": {
             "direction": "O"
@@ -5914,16 +5767,16 @@
           "BRAM_big1/S_AXI"
         ]
       },
-      "ps7_0_axi_periph_M01_AXI": {
-        "interface_ports": [
-          "ps7_0_axi_periph/M01_AXI",
-          "mayo_axi_litev3_0/S00_AXI"
-        ]
-      },
       "processing_system7_0_DDR": {
         "interface_ports": [
           "DDR",
           "processing_system7_0/DDR"
+        ]
+      },
+      "processing_system7_0_M_AXI_GP0": {
+        "interface_ports": [
+          "processing_system7_0/M_AXI_GP0",
+          "ps7_0_axi_periph/S00_AXI"
         ]
       },
       "processing_system7_0_FIXED_IO": {
@@ -5932,10 +5785,10 @@
           "processing_system7_0/FIXED_IO"
         ]
       },
-      "processing_system7_0_M_AXI_GP0": {
+      "ps7_0_axi_periph_M01_AXI": {
         "interface_ports": [
-          "processing_system7_0/M_AXI_GP0",
-          "ps7_0_axi_periph/S00_AXI"
+          "ps7_0_axi_periph/M01_AXI",
+          "mayo_axi_litev3_0/S00_AXI"
         ]
       }
     },
@@ -6313,8 +6166,7 @@
       },
       "TRNG_o_trng1_done": {
         "ports": [
-          "TRNG/o_trng1_done",
-          "mayo_sample_oil_space_0/i_trng_done"
+          "TRNG/o_trng1_done"
         ]
       },
       "TRNG_o_trng1_valid": {
@@ -6835,13 +6687,11 @@
       },
       "mayo_sample_oil_space_0_o_trng_data": {
         "ports": [
-          "mayo_sample_oil_space_0/o_trng_data",
           "TRNG/i_trng1_data1"
         ]
       },
       "mayo_sample_oil_space_0_o_trng_r": {
         "ports": [
-          "mayo_sample_oil_space_0/o_trng_r",
           "TRNG/i_trng1_r"
         ]
       },
@@ -6853,7 +6703,6 @@
       },
       "mayo_sample_oil_space_0_o_trng_w": {
         "ports": [
-          "mayo_sample_oil_space_0/o_trng_w",
           "TRNG/i_trng1_w"
         ]
       },
@@ -6898,7 +6747,6 @@
           "rst_ps7_0_100M/peripheral_reset",
           "hash/rst",
           "TRNG/rst",
-          "blink_led_0/rst",
           "MAYO_KEYGEN_FSM_0/RESET",
           "mayo_add_vectors_0/rst",
           "mayo_linear_combinat_0/rst",
@@ -6933,7 +6781,6 @@
           "mayo_axi_litev3_0/s00_axi_aclk",
           "BRAM_big1/s_axi_aclk",
           "BRAM_big1/clkb",
-          "blink_led_0/clk",
           "MAYO_KEYGEN_FSM_0/CLK",
           "mayo_add_vectors_0/i_clk",
           "mayo_linear_combinat_0/i_clk",
@@ -6942,61 +6789,21 @@
           "mayo_sample_oil_space_0/i_clk"
         ]
       },
-      "blink_led_0_led0": {
-        "ports": [
-          "blink_led_0/led0",
-          "LD0"
-        ]
-      },
-      "blink_led_0_led1": {
-        "ports": [
-          "blink_led_0/led1",
-          "LD1"
-        ]
-      },
       "MAYO_KEYGEN_FSM_0_o_busy": {
         "ports": [
           "MAYO_KEYGEN_FSM_0/o_busy",
-          "mayo_axi_litev3_0/i_Keygen_busy",
-          "blink_led_0/in1"
+          "mayo_axi_litev3_0/i_Keygen_busy"
         ]
       },
       "MAYO_KEYGEN_FSM_0_o_done": {
         "ports": [
           "MAYO_KEYGEN_FSM_0/o_done",
-          "mayo_axi_litev3_0/i_Keygen_done",
-          "blink_led_0/in0"
-        ]
-      },
-      "BRAM_big1_BRAM_en": {
-        "ports": [
-          "BRAM_big1/BRAM_en",
-          "blink_led_0/in4"
-        ]
-      },
-      "BRAM_small_BRAM_en": {
-        "ports": [
-          "BRAM_small/BRAM_en",
-          "blink_led_0/in5"
-        ]
-      },
-      "blink_led_0_led5": {
-        "ports": [
-          "blink_led_0/led5",
-          "LD5"
-        ]
-      },
-      "blink_led_0_led4": {
-        "ports": [
-          "blink_led_0/led4",
-          "LD4"
+          "mayo_axi_litev3_0/i_Keygen_done"
         ]
       },
       "Ground1_dout": {
         "ports": [
           "Ground1/dout",
-          "blink_led_0/in2",
-          "blink_led_0/in3",
           "BRAM_small/Zero0",
           "mayo_axi_litev3_0/i_Signing_done",
           "mayo_axi_litev3_0/i_Verification_done",

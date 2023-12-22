@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Sun Nov 12 18:18:16 2023
+| Date         : Fri Dec  8 17:14:17 2023
 | Host         : zenith running 64-bit Ubuntu 22.04.3 LTS
 | Command      : report_utilization -file Mayo_sign_mayo_bram_arbiter2_0_4_utilization_synth.rpt -pb Mayo_sign_mayo_bram_arbiter2_0_4_utilization_synth.pb
 | Design       : Mayo_sign_mayo_bram_arbiter2_0_4

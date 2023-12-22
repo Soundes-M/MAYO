@@ -1,0 +1,269 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Dec  9 16:22:29 2023
+# Process ID: 424006
+# Current directory: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_with_zynq_shake_128_0_0_synth_1
+# Command line: vivado -log Mayo_sign_with_zynq_shake_128_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Mayo_sign_with_zynq_shake_128_0_0.tcl
+# Log file: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_with_zynq_shake_128_0_0_synth_1/Mayo_sign_with_zynq_shake_128_0_0.vds
+# Journal file: /home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_with_zynq_shake_128_0_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source Mayo_sign_with_zynq_shake_128_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/mayo_axi_litev3/mayo_axi_litev3_3'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/mayo-axi/Mayo_axi_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/ip_repo/INTERFACES'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.2/data/ip'.
+Command: synth_design -top Mayo_sign_with_zynq_shake_128_0_0 -part xc7z020clg484-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 425769
+WARNING: [Synth 8-6901] identifier 'perf_counter' is used before its declaration [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/shake/shake128/shake_128.v:265]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 2367.773 ; gain = 0.000 ; free physical = 7614 ; free virtual = 13036
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Mayo_sign_with_zynq_shake_128_0_0' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_shake_128_0_0/synth/Mayo_sign_with_zynq_shake_128_0_0.vhd:75]
+INFO: [Synth 8-3491] module 'shake_128' declared at '/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/shake/shake128/shake_128.v:7' bound to instance 'U0' of component 'shake_128' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_shake_128_0_0/synth/Mayo_sign_with_zynq_shake_128_0_0.vhd:115]
+INFO: [Synth 8-6157] synthesizing module 'shake_128' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/shake/shake128/shake_128.v:7]
+	Parameter debug bound to: 1 - type: integer 
+	Parameter DIGEST_WORD_COUNT bound to: 21 - type: integer 
+INFO: [Synth 8-251] Done : @ x cycles [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/shake/shake128/shake_128.v:265]
+INFO: [Synth 8-251] Writing xxxxxxxx at xxxxxxxx [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/shake/shake128/shake_128.v:282]
+INFO: [Synth 8-6157] synthesizing module 'sha3_64' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/shake/shake128/sha3_64.v:3]
+INFO: [Synth 8-6157] synthesizing module 'keccak_round' [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/shake/shake128/keccak_round.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'keccak_round' (1#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/shake/shake128/keccak_round.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'sha3_64' (2#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/shake/shake128/sha3_64.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'shake_128' (3#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/src/hdl/shake/shake128/shake_128.v:7]
+INFO: [Synth 8-256] done synthesizing module 'Mayo_sign_with_zynq_shake_128_0_0' (4#1) [/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_shake_128_0_0/synth/Mayo_sign_with_zynq_shake_128_0_0.vhd:75]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:26 . Memory (MB): peak = 2414.367 ; gain = 46.594 ; free physical = 9221 ; free virtual = 14675
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:17 ; elapsed = 00:00:31 . Memory (MB): peak = 2432.180 ; gain = 64.406 ; free physical = 9638 ; free virtual = 15111
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:31 . Memory (MB): peak = 2432.180 ; gain = 64.406 ; free physical = 9638 ; free virtual = 15111
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.20 ; elapsed = 00:00:00.20 . Memory (MB): peak = 2432.180 ; gain = 0.000 ; free physical = 9340 ; free virtual = 14813
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2585.992 ; gain = 0.000 ; free physical = 8967 ; free virtual = 14441
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.18 . Memory (MB): peak = 2588.961 ; gain = 2.969 ; free physical = 8894 ; free virtual = 14368
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:27 ; elapsed = 00:00:45 . Memory (MB): peak = 2588.961 ; gain = 221.188 ; free physical = 13460 ; free virtual = 18923
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:27 ; elapsed = 00:00:45 . Memory (MB): peak = 2588.961 ; gain = 221.188 ; free physical = 13463 ; free virtual = 18925
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:45 . Memory (MB): peak = 2588.961 ; gain = 221.188 ; free physical = 13460 ; free virtual = 18922
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:40 ; elapsed = 00:00:59 . Memory (MB): peak = 2588.961 ; gain = 221.188 ; free physical = 17572 ; free virtual = 23017
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   36 Bit       Adders := 1     
+	   3 Input   32 Bit       Adders := 2     
+	   2 Input   32 Bit       Adders := 4     
+	   2 Input   12 Bit       Adders := 1     
+	   2 Input   11 Bit       Adders := 2     
+	   2 Input    5 Bit       Adders := 1     
++---XORs : 
+	   2 Input     64 Bit         XORs := 1     
+	   5 Input      1 Bit         XORs := 320   
+	   2 Input      1 Bit         XORs := 4608  
++---Registers : 
+	             1345 Bit    Registers := 1     
+	               64 Bit    Registers := 2     
+	               35 Bit    Registers := 1     
+	               32 Bit    Registers := 8     
+	               12 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input 1345 Bit        Muxes := 2     
+	  13 Input 1345 Bit        Muxes := 1     
+	  19 Input 1088 Bit        Muxes := 1     
+	   2 Input   64 Bit        Muxes := 3     
+	  10 Input   64 Bit        Muxes := 1     
+	  13 Input   64 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 6     
+	   8 Input   32 Bit        Muxes := 4     
+	  13 Input   32 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 1     
+	   3 Input    5 Bit        Muxes := 3     
+	  13 Input    5 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 5     
+	   2 Input    4 Bit        Muxes := 1     
+	   8 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 4     
+	   8 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 44    
+	  13 Input    1 Bit        Muxes := 15    
+	   8 Input    1 Bit        Muxes := 14    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:12 ; elapsed = 00:01:43 . Memory (MB): peak = 2682.789 ; gain = 315.016 ; free physical = 18062 ; free virtual = 23525
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:15 ; elapsed = 00:01:47 . Memory (MB): peak = 2682.789 ; gain = 315.016 ; free physical = 18005 ; free virtual = 23467
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:15 ; elapsed = 00:01:47 . Memory (MB): peak = 2682.789 ; gain = 315.016 ; free physical = 18003 ; free virtual = 23466
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:20 ; elapsed = 00:01:52 . Memory (MB): peak = 2815.797 ; gain = 448.023 ; free physical = 17852 ; free virtual = 23315
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:22 ; elapsed = 00:01:54 . Memory (MB): peak = 2827.672 ; gain = 459.898 ; free physical = 18004 ; free virtual = 23466
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:22 ; elapsed = 00:01:54 . Memory (MB): peak = 2827.672 ; gain = 459.898 ; free physical = 17996 ; free virtual = 23458
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:23 ; elapsed = 00:01:55 . Memory (MB): peak = 2827.672 ; gain = 459.898 ; free physical = 17901 ; free virtual = 23364
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:23 ; elapsed = 00:01:55 . Memory (MB): peak = 2827.672 ; gain = 459.898 ; free physical = 17862 ; free virtual = 23325
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:23 ; elapsed = 00:01:55 . Memory (MB): peak = 2827.672 ; gain = 459.898 ; free physical = 17867 ; free virtual = 23330
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:23 ; elapsed = 00:01:55 . Memory (MB): peak = 2827.672 ; gain = 459.898 ; free physical = 17952 ; free virtual = 23414
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |    78|
+|2     |LUT1   |    66|
+|3     |LUT2   |   378|
+|4     |LUT3   |  1304|
+|5     |LUT4   |   195|
+|6     |LUT5   |  1022|
+|7     |LUT6   |  4849|
+|8     |MUXF7  |   489|
+|9     |MUXF8  |   150|
+|10    |FDRE   |  4537|
+|11    |FDSE   |     3|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:23 ; elapsed = 00:01:55 . Memory (MB): peak = 2827.672 ; gain = 459.898 ; free physical = 17949 ; free virtual = 23411
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:24 ; elapsed = 00:01:52 . Memory (MB): peak = 2831.582 ; gain = 307.027 ; free physical = 21607 ; free virtual = 27070
+Synthesis Optimization Complete : Time (s): cpu = 00:01:28 ; elapsed = 00:01:58 . Memory (MB): peak = 2831.582 ; gain = 463.809 ; free physical = 21607 ; free virtual = 27070
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.09 . Memory (MB): peak = 2831.582 ; gain = 0.000 ; free physical = 21384 ; free virtual = 26847
+INFO: [Netlist 29-17] Analyzing 717 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2870.660 ; gain = 0.000 ; free physical = 21551 ; free virtual = 27013
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+30 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:34 ; elapsed = 00:02:08 . Memory (MB): peak = 2870.660 ; gain = 502.887 ; free physical = 21672 ; free virtual = 27134
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_with_zynq_shake_128_0_0_synth_1/Mayo_sign_with_zynq_shake_128_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1174] Renamed 2 cell refs.
+INFO: [Common 17-1381] The checkpoint '/home/osm/Documents/Sect/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.runs/Mayo_sign_with_zynq_shake_128_0_0_synth_1/Mayo_sign_with_zynq_shake_128_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Mayo_sign_with_zynq_shake_128_0_0_utilization_synth.rpt -pb Mayo_sign_with_zynq_shake_128_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Dec  9 16:25:02 2023...

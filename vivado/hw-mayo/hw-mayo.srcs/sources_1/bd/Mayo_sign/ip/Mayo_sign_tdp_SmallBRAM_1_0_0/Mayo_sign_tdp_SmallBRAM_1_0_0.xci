@@ -22,12 +22,10 @@
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.BRAM_PORTB.READ_LATENCY">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.BRAM_PORTB.READ_WRITE_MODE"/>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.COL_WIDTH">8</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.INIT_FILE"/>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.NB_COL">4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.RAM_PERFORMANCE">LOW_LATENCY</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.COL_WIDTH">8</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.Component_Name">Mayo_sign_tdp_SmallBRAM_1_0_0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.INIT_FILE"/>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.NB_COL">4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.RAM_PERFORMANCE">LOW_LATENCY</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.ARCHITECTURE">zynq</spirit:configurableElementValue>

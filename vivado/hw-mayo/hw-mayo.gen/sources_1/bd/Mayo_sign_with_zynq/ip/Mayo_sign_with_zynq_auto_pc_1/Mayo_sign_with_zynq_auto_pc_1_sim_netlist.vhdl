@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
--- Date        : Thu Oct 12 15:27:41 2023
+-- Date        : Thu Oct 12 15:27:40 2023
 -- Host        : osm-hzb running 64-bit Ubuntu 20.04.6 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/osm/Documents/SECT-MAYO/MAYO/vivado/hw-mayo/hw-mayo.gen/sources_1/bd/Mayo_sign_with_zynq/ip/Mayo_sign_with_zynq_auto_pc_1/Mayo_sign_with_zynq_auto_pc_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top Mayo_sign_with_zynq_auto_pc_1 -prefix
+--               Mayo_sign_with_zynq_auto_pc_1_ Mayo_sign_with_zynq_auto_pc_1_sim_netlist.vhdl
 -- Design      : Mayo_sign_with_zynq_auto_pc_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -143,8 +143,6 @@ entity Mayo_sign_with_zynq_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol
   attribute C_TRANSLATION_MODE of Mayo_sign_with_zynq_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is 2;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of Mayo_sign_with_zynq_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of Mayo_sign_with_zynq_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is "axi_protocol_converter_v2_1_22_axi_protocol_converter";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of Mayo_sign_with_zynq_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is 1;
   attribute P_AXI4 : integer;
