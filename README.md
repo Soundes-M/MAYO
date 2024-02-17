@@ -1,5 +1,5 @@
 
-# MAYO 
+# HaMAYO 
 A hardware implementation of the MAYO PQ Signature.  
 ```
 ░░░    ░░░  ░░░░░  ░░    ░░  ░░░░░░  
@@ -17,7 +17,7 @@ For futher information, please refer to the paper:
 Digilent Xilinx Zynq-7000 [ZedBoard](https://www.avnet.com/wps/portal/us/products/avnet-boards/avnet-board-families/zedboard/)
 
 # License
-This Hardware IP is private. Please do not share.
+Apache 2.0
 
 # Requirements and tools
 _Mind the versions used_
